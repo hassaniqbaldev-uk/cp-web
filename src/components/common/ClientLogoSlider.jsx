@@ -71,7 +71,7 @@ const ClientLogoSlider = () => {
               </button>
 
               {/* Popup */}
-              <div
+              {/* <div
                 className={`absolute bottom-full left-1/2 z-50 -translate-x-1/2 transition-all duration-300 ${
                   activePopup === idx
                     ? "pointer-events-auto visible pb-[1.6rem] opacity-100"
@@ -79,7 +79,6 @@ const ClientLogoSlider = () => {
                 }`}
               >
                 <div className="w-[27.5rem] overflow-hidden rounded-[1.6rem] bg-white shadow-[0px_8px_20px_0px_#00000040]">
-                  {/* Image */}
                   <div className="relative overflow-hidden rounded-[1.6rem]">
                     <Image
                       src={item.popupImage}
@@ -89,13 +88,11 @@ const ClientLogoSlider = () => {
                     />
                   </div>
 
-                  {/* Content */}
                   <div className="px-[1.7rem] pt-[1.8rem] pb-[2.4rem]">
                     <Link
                       href={item.href}
                       className="group inline-flex cursor-pointer items-center"
                     >
-                      {/* Text */}
                       <div className="bg-text-primary relative z-[2] h-[4.4rem] overflow-hidden rounded-full px-[2.4rem] text-[1.6rem] font-semibold text-white">
                         <span className="flex size-full items-center justify-center transition-all duration-200 group-hover:-translate-y-full">
                           View Case Study
@@ -106,9 +103,7 @@ const ClientLogoSlider = () => {
                         </span>
                       </div>
 
-                      {/* Wrapper (animated arrow) */}
                       <div className="relative flex items-center justify-center">
-                        {/* Subtract Icon */}
                         <i className="mx-[-.5rem]">
                           <svg
                             width="19"
@@ -124,7 +119,6 @@ const ClientLogoSlider = () => {
                           </svg>
                         </i>
 
-                        {/* Arrow Icon */}
                         <div className="bg-text-primary relative size-[4.4rem] overflow-hidden rounded-full">
                           <i className="absolute top-0 left-0 flex size-full items-center justify-center transition-all duration-200 group-hover:left-full">
                             <RightArrowIcon className="fill-white" />
@@ -138,7 +132,7 @@ const ClientLogoSlider = () => {
                     </Link>
                   </div>
                 </div>
-              </div>
+              </div> */}
             </div>
           </SwiperSlide>
         ))}

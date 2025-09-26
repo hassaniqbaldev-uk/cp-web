@@ -15,6 +15,7 @@ import LineStroke23 from "@/assets/decorative-elements/line-stroke-23.svg";
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { useLoadingStore } from "@/store/useLoadingStore";
+import CaseStudyDetailMarquee from "../common/CaseStudyDetailMarquee";
 
 const CaseStudyDetailSection = ({ caseStudy }) => {
   const labelRef = useRef();
@@ -233,8 +234,8 @@ const CaseStudyDetailSection = ({ caseStudy }) => {
         </div>
       </div>
 
-      <div className="relative z-[1] mx-auto max-w-[120.3rem]">
-        <div className="flex flex-col items-center text-center xl:items-start xl:text-left">
+      <div className="relative z-[1]">
+        <div className="mx-auto flex max-w-[120.3rem] flex-col items-center text-center xl:items-start xl:text-left">
           <div ref={labelRef} className="inline-flex rotate-[2deg]">
             <SectionLabel2 text="Case Study" />
           </div>
@@ -252,9 +253,9 @@ const CaseStudyDetailSection = ({ caseStudy }) => {
 
           <div
             ref={gridRef1}
-            className="mt-[5.5rem] mb-[5rem] grid w-full grid-cols-1 items-center gap-[2rem] md:grid-cols-2 lg:grid-cols-4 lg:items-start"
+            className="mt-[5.5rem] mb-[5rem] flex w-full items-center lg:items-start"
           >
-            <div className="flex flex-col items-center gap-[1rem] text-center xl:items-start xl:text-left">
+            <div className="flex w-[33.33%] flex-col items-center gap-[1rem] text-center xl:items-start xl:text-left">
               <span className="inline-flex items-center justify-center rounded-[.4rem] bg-[#FFC300] px-[1.2rem] py-[.2rem] text-[1.6rem] leading-[2.4rem] font-medium text-white uppercase">
                 {caseStudy.gridRow?.column1?.label || "Industry"}
               </span>
@@ -264,18 +265,20 @@ const CaseStudyDetailSection = ({ caseStudy }) => {
               </span>
             </div>
 
-            <div className="flex flex-col items-center gap-[1rem] text-center xl:items-start xl:text-left">
+            <div className="mx-[5rem] h-[9.5rem] w-[1px] bg-black/20" />
+
+            <div className="flex w-[33.33%] flex-col items-center gap-[1rem] text-center xl:items-start xl:text-left">
               <span className="inline-flex items-center justify-center rounded-[.4rem] bg-[#FF37B3] px-[1.2rem] py-[.2rem] text-[1.6rem] leading-[2.4rem] font-medium text-white uppercase">
                 {caseStudy.gridRow?.column2?.label || "Services"}
               </span>
 
-              <span className="max-w-[20rem] text-[1.8rem] leading-[2.6rem] font-normal">
+              <span className="text-[1.8rem] leading-[2.6rem] font-normal">
                 {caseStudy.gridRow?.column2?.text ||
                   "Health & safety training courses"}
               </span>
             </div>
 
-            <div className="flex flex-col items-center gap-[1rem] text-center xl:items-start xl:text-left">
+            {/* <div className="flex flex-col items-center gap-[1rem] text-center xl:items-start xl:text-left">
               <span className="inline-flex items-center justify-center rounded-[.4rem] bg-[#F14A58] px-[1.2rem] py-[.2rem] text-[1.6rem] leading-[2.4rem] font-medium text-white uppercase">
                 {caseStudy.gridRow?.column3?.label || "Timeline"}
               </span>
@@ -283,9 +286,11 @@ const CaseStudyDetailSection = ({ caseStudy }) => {
               <span className="text-[1.8rem] leading-[2.6rem] font-normal">
                 {caseStudy.gridRow?.column3?.text || "45 Days"}
               </span>
-            </div>
+            </div> */}
 
-            <div className="flex flex-col items-center gap-[1rem] text-center xl:items-start xl:text-left">
+            <div className="mx-[5rem] h-[9.5rem] w-[1px] bg-black/20" />
+
+            <div className="flex w-[33.33%] flex-col items-center gap-[1rem] text-center xl:items-start xl:text-left">
               <span className="inline-flex items-center justify-center rounded-[.4rem] bg-[#007BFF] px-[1.2rem] py-[.2rem] text-[1.6rem] leading-[2.4rem] font-medium text-white uppercase">
                 {caseStudy.gridRow?.column4?.label || "Tools Used"}
               </span>
@@ -300,9 +305,10 @@ const CaseStudyDetailSection = ({ caseStudy }) => {
             </div>
           </div>
         </div>
+
         <div
           ref={mainImgRef}
-          className="relative w-full overflow-hidden rounded-[2rem] opacity-0 xl:h-[71.6rem]"
+          className="relative mx-auto w-full max-w-[120.3rem] overflow-hidden rounded-[2rem] opacity-0 xl:h-[71.6rem]"
         >
           <Image
             src={caseStudy.mainImage}
@@ -313,60 +319,8 @@ const CaseStudyDetailSection = ({ caseStudy }) => {
             className="size-full object-cover object-top"
           />
         </div>
-        <div className="my-[3rem] flex flex-col items-center gap-[2rem] text-center md:my-[5rem] md:mt-[5.8rem] xl:items-start xl:text-left">
-          <div ref={titleRef1} className="opacity-0">
-            <SectionTitle label={caseStudy.contentTitle?.title1} />
-          </div>
 
-          <div ref={descRef1} className="opacity-0">
-            <SectionDescription
-              label={caseStudy.contentDescription?.description1}
-            />
-          </div>
-        </div>
-        <div
-          ref={gridRef2}
-          className="grid grid-cols-1 justify-items-center gap-[4rem] text-center md:grid-cols-3 xl:justify-items-start xl:text-left"
-        >
-          <div className="flex flex-col">
-            <h3 className="text-[6rem] leading-[8rem] font-normal tracking-[-0.02em] text-[#44B276] md:text-[8rem] md:leading-[10rem] lg:text-[11rem] lg:leading-[13rem]">
-              {caseStudy.gridRow2?.column1?.label || "3.2x"}
-            </h3>
-
-            <hr className="mt-[.7rem] mb-[2rem] h-[1px] w-full border-0 bg-black/40" />
-
-            <span className="text-text-primary/70 text-[1.8rem] leading-[2.6rem] font-normal">
-              {caseStudy.gridRow2?.column1?.text || "Increase in page speeds"}
-            </span>
-          </div>
-
-          <div className="flex flex-col">
-            <h3 className="text-[6rem] leading-[8rem] font-normal tracking-[-0.02em] text-[#007BFF] md:text-[8rem] md:leading-[10rem] lg:text-[11rem] lg:leading-[13rem]">
-              {caseStudy.gridRow2?.column2?.label || "29%"}
-            </h3>
-
-            <hr className="mt-[.7rem] mb-[2rem] h-[1px] w-full border-0 bg-black/40" />
-
-            <span className="text-text-primary/70 text-[1.8rem] leading-[2.6rem] font-normal">
-              {caseStudy.gridRow2?.column2?.text ||
-                "Higher Click Through Rates (CTR's)"}
-            </span>
-          </div>
-
-          <div className="flex flex-col">
-            <h3 className="text-[6rem] leading-[8rem] font-normal tracking-[-0.02em] text-[#FFC300] md:text-[8rem] md:leading-[10rem] lg:text-[11rem] lg:leading-[13rem]">
-              {caseStudy.gridRow2?.column3?.label || "2.7%"}
-            </h3>
-
-            <hr className="mt-[.7rem] mb-[2rem] h-[1px] w-full border-0 bg-black/40" />
-
-            <span className="text-text-primary/70 text-[1.8rem] leading-[2.6rem] font-normal">
-              {caseStudy.gridRow2?.column3?.text ||
-                "Decrease in drop-off rates"}
-            </span>
-          </div>
-        </div>
-        <div className="my-[5rem] flex flex-col items-center text-center lg:my-[9rem] xl:items-start xl:text-left">
+        <div className="mx-auto my-[5rem] flex max-w-[120.3rem] flex-col items-center text-center lg:my-[9rem] xl:items-start xl:text-left">
           <h3
             ref={titleRef2}
             className="mb-[3rem] text-[2.5rem] leading-[3.5rem] font-semibold tracking-[-0.02em] opacity-0 md:text-[4rem] md:leading-[5rem] lg:text-[4.8rem] lg:leading-[6rem]"
@@ -406,9 +360,10 @@ const CaseStudyDetailSection = ({ caseStudy }) => {
             </Link>
           </div>
         </div>
+
         <div
           ref={gridRef3}
-          className="grid w-full grid-cols-1 gap-[1rem] md:grid-cols-2 lg:gap-[3.3rem]"
+          className="mx-auto grid w-full max-w-[120.3rem] grid-cols-1 gap-[1rem] md:grid-cols-2 lg:gap-[3.3rem]"
         >
           <div className="w-full overflow-hidden rounded-[2rem] lg:h-[43.9rem]">
             <Image
@@ -432,7 +387,230 @@ const CaseStudyDetailSection = ({ caseStudy }) => {
             />
           </div>
         </div>
+
+        <div className="mx-auto my-[9rem] flex max-w-[120.3rem] gap-[3.3rem]">
+          <div className="relative flex h-[51.4rem] w-[37.9rem] items-center justify-center overflow-hidden rounded-tl-[2rem] rounded-tr-[2rem]">
+            <Image
+              src="/images/new-compass-img-01.png"
+              width={379}
+              height={514}
+              className="size-full object-contain"
+              alt="Image"
+            />
+
+            <div className="absolute bottom-0 h-[4.8rem] w-full bg-[linear-gradient(180deg,rgba(18,18,18,0)_0%,#ffffff_100%)]" />
+          </div>
+
+          <div className="flex w-[79.1rem] flex-col gap-[3rem]">
+            <div className="flex flex-col gap-[2rem]">
+              <h3 className="text-text-primary text-[4.8rem] leading-[6rem] font-semibold tracking-[-0.02em]">
+                The Challenge
+              </h3>
+
+              <p className="text-text-primary text-[1.8rem] leading-[2.6rem] font-normal">
+                The previous New Compass website, built in Webflow, struggled to
+                scale with the company’s growth. It lacked the flexibility and
+                SEO optimisation needed to compete in the software industry. The
+                design felt flat and didn’t capture the bold, modern identity of
+                the brand. The goals were clear:
+              </p>
+            </div>
+
+            <div className="flex gap-[3.3rem]">
+              <div className="relative flex h-[30rem] w-[27.6rem] items-center justify-center overflow-hidden rounded-[1.6rem]">
+                <Image
+                  src="/images/new-compass-img-02.png"
+                  width={276}
+                  height={300}
+                  className="size-full object-contain"
+                  alt="Image"
+                />
+              </div>
+
+              <div className="flex flex-col gap-[1rem]">
+                <div className="relative flex size-[6.6rem] items-center justify-center">
+                  <Image
+                    src="/images/new-compass-logo-symbol.png"
+                    width={66}
+                    height={66}
+                    className="size-full object-contain"
+                  />
+                </div>
+
+                <div className="flex flex-col">
+                  {[
+                    "Showcase their cutting-edge software solutions",
+                    "Improve performance and user experience",
+                    "Provide scalability for future growth",
+                    "Strengthen SEO and online visibility",
+                  ].map((item, idx) => (
+                    <div key={idx} className="flex items-center gap-[.8rem]">
+                      <div className="size-[1rem] rounded-full border-2 border-[#FF37B3]" />
+
+                      <span className="text-text-primary w-full border-b border-black/25 text-[1.8rem] leading-[5.6rem] font-normal">
+                        {item}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="case-study-detail-gradient-card mx-auto h-[56.5rem] w-full max-w-[120.3rem]">
+          <div className="flex flex-col gap-[2rem] px-[6rem] py-[7.3rem]">
+            <h3 className="text-text-primary text-[4.8rem] leading-[6rem] font-semibold tracking-[-0.02em]">
+              Our Approach
+            </h3>
+
+            <p className="text-text-primary max-w-[41.2rem] text-[1.8rem] leading-[2.6rem] font-normal">
+              Working closely with New Compass, Creative Pixels used a
+              design-thinking process to define goals and create a user-focused
+              experience. We:
+            </p>
+
+            <div className="flex max-w-[51.5rem] flex-col">
+              {[
+                "Mapped user journeys to highlight decision points",
+                "Designed a dark, modern visual style in Figma",
+                "Created wireframes and prototypes for early feedback",
+                "Migrated the website from Webflow to WordPress + Elementor for flexibility and easier content management",
+              ].map((item, idx) => (
+                <div
+                  key={idx}
+                  className="flex items-center gap-[.8rem] [&:last-child_span]:py-[1.5rem] [&:last-child_span]:leading-[3rem]"
+                >
+                  <div className="size-[1rem] rounded-full border-2 border-[#FF37B3]" />
+                  <span className="text-text-primary w-full border-b border-black/25 text-[1.8rem] leading-[5.6rem] font-normal">
+                    {item}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="pointer-events-none absolute top-[21.5rem] right-[24.3rem] flex items-center justify-center select-none">
+            <Image
+              src="/images/dash-line.svg"
+              width={178}
+              height={91}
+              alt="Image"
+              className="size-full object-contain"
+            />
+          </div>
+
+          <div className="pointer-events-none absolute top-[-13rem] right-[16.9rem] flex size-[51.5rem] items-center justify-center select-none">
+            <Image
+              src="/images/new-compass-img-03.png"
+              width={515}
+              height={515}
+              alt="Image"
+              className="size-full object-contain"
+            />
+          </div>
+
+          <div className="pointer-events-none absolute right-[0rem] bottom-[-13rem] flex size-[51.5rem] items-center justify-center select-none">
+            <Image
+              src="/images/new-compass-img-04.png"
+              width={515}
+              height={515}
+              alt="Image"
+              className="size-full object-contain"
+            />
+          </div>
+        </div>
+
+        <div className="hero-sec my-[9rem] py-[8rem]">
+          <div className="mx-auto flex max-w-[116rem] flex-col gap-[2rem]">
+            <h3 className="text-[4.8rem] leading-[6rem] font-semibold tracking-[-0.02em] text-white">
+              The Solution
+            </h3>
+
+            <p className="text-[2.6rem] leading-[4.4rem] font-medium tracking-[-1px] text-white">
+              The redesigned website balances bold branding with functionality.
+              Built in WordPress with Elementor, it gives the New Compass team
+              full control while ensuring consistency across pages. <br />{" "}
+              <br /> We introduced subtle animations to add polish without
+              slowing down performance. The design showcases the complexity of
+              their software in an accessible, professional way - building trust
+              with enterprise clients.
+            </p>
+          </div>
+
+          <div className="mt-[5rem]">
+            <CaseStudyDetailMarquee />
+          </div>
+        </div>
+
+        <div className="mx-auto flex max-w-[120.3rem] flex-col items-center gap-[2rem] text-center md:my-[5rem] md:mt-[5.8rem] xl:items-start xl:text-left">
+          <div ref={titleRef1} className="opacity-0">
+            <SectionTitle label={caseStudy.contentTitle?.title1} />
+          </div>
+
+          <div ref={descRef1} className="opacity-0">
+            <SectionDescription
+              label={caseStudy.contentDescription?.description1}
+            />
+          </div>
+        </div>
+
         <div
+          ref={gridRef2}
+          className="mx-auto grid max-w-[120.3rem] grid-cols-1 justify-items-center gap-[4rem] text-center md:grid-cols-4 xl:justify-items-start xl:text-left"
+        >
+          <div className="flex flex-col">
+            <h3 className="text-[6rem] leading-[8rem] font-normal tracking-[-0.02em] text-[#44B276] md:text-[8rem] md:leading-[10rem] lg:text-[11rem] lg:leading-[13rem]">
+              {caseStudy.gridRow2?.column1?.label || "3.2x"}
+            </h3>
+
+            <hr className="mt-[.7rem] mb-[2rem] h-[1px] w-full border-0 bg-black/40" />
+
+            <span className="text-text-primary/70 text-[1.8rem] leading-[2.6rem] font-normal">
+              {caseStudy.gridRow2?.column1?.text || "Increase in page speeds"}
+            </span>
+          </div>
+
+          <div className="flex flex-col">
+            <h3 className="text-[6rem] leading-[8rem] font-normal tracking-[-0.02em] text-[#007BFF] md:text-[8rem] md:leading-[10rem] lg:text-[11rem] lg:leading-[13rem]">
+              {caseStudy.gridRow2?.column2?.label || "29%"}
+            </h3>
+
+            <hr className="mt-[.7rem] mb-[2rem] h-[1px] w-full border-0 bg-black/40" />
+
+            <span className="text-text-primary/70 text-[1.8rem] leading-[2.6rem] font-normal">
+              {caseStudy.gridRow2?.column2?.text ||
+                "Higher Click Through Rates (CTR's)"}
+            </span>
+          </div>
+
+          <div className="flex flex-col">
+            <h3 className="text-[6rem] leading-[8rem] font-normal tracking-[-0.02em] text-[#FFC300] md:text-[8rem] md:leading-[10rem] lg:text-[11rem] lg:leading-[13rem]">
+              {caseStudy.gridRow2?.column3?.label || "2.7%"}
+            </h3>
+
+            <hr className="mt-[.7rem] mb-[2rem] h-[1px] w-full border-0 bg-black/40" />
+
+            <span className="text-text-primary/70 text-[1.8rem] leading-[2.6rem] font-normal">
+              {caseStudy.gridRow2?.column3?.text ||
+                "Decrease in drop-off rates"}
+            </span>
+          </div>
+
+          <div className="mt-[1.7rem] flex flex-col">
+            <h3 className="text-[6rem] leading-[8rem] font-semibold tracking-[-0.02em] text-[#FFC300] md:text-[8rem] md:leading-[10rem] lg:text-[3.4rem] lg:leading-[4.8rem]">
+              Higher organic visibility
+            </h3>
+
+            <hr className="mt-[.7rem] mb-[2rem] h-[1px] w-full border-0 bg-black/40" />
+
+            <span className="text-text-primary/70 text-[1.8rem] leading-[2.6rem] font-normal">
+              For cloud software and data management keywords
+            </span>
+          </div>
+        </div>
+
+        {/* <div
           ref={imgRef1}
           className="mt-[2rem] mb-[5rem] h-[25rem] w-full overflow-hidden rounded-[2rem] opacity-0 md:h-[40rem] lg:mt-[3.3rem] lg:mb-[8rem] lg:h-[61.2rem]"
         >
@@ -444,8 +622,9 @@ const CaseStudyDetailSection = ({ caseStudy }) => {
             priority
             className="size-full object-cover"
           />
-        </div>
-        <div
+        </div> */}
+
+        {/* <div
           ref={imgRef2}
           className="h-[25rem] w-full overflow-hidden rounded-[2rem] opacity-0 backdrop-blur-[10px] md:h-[40rem] lg:h-[56.5rem]"
         >
@@ -457,8 +636,9 @@ const CaseStudyDetailSection = ({ caseStudy }) => {
             priority
             className="size-full object-cover"
           />
-        </div>
-        <div
+        </div> */}
+
+        {/* <div
           ref={gridRef4}
           className="my-[5rem] flex flex-col gap-[3.3rem] lg:my-[8rem] xl:flex-row"
         >
@@ -505,8 +685,9 @@ const CaseStudyDetailSection = ({ caseStudy }) => {
               </div>
             ))}
           </div>
-        </div>
-        <div
+        </div> */}
+
+        {/* <div
           ref={gridRef5}
           className="grid grid-cols-1 gap-[3.3rem] xl:grid-cols-2"
         >
@@ -542,11 +723,11 @@ const CaseStudyDetailSection = ({ caseStudy }) => {
               className="size-full object-cover object-top"
             />
           </div>
-        </div>
+        </div> */}
 
         <div
           ref={imgRef3}
-          className="mt-[5rem] h-[25rem] w-full overflow-hidden rounded-[2rem] opacity-0 md:h-[40rem] lg:mt-[9rem] lg:h-[61.2rem]"
+          className="mx-auto mt-[5rem] h-[25rem] w-full max-w-[120.3rem] overflow-hidden rounded-[2rem] opacity-0 md:h-[40rem] lg:mt-[9rem] lg:h-[61.2rem]"
         >
           <Image
             src={caseStudy.imageColumn5}

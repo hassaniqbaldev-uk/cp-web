@@ -931,7 +931,7 @@ body {
 .case-study-detail-gradient-card {
   position: relative;
   border-radius: 2rem;
-  padding: 2rem;
+  /* padding: 2rem; */
   background: linear-gradient(
     301.83deg,
     rgba(255, 255, 255, 0.05) 1.23%,
@@ -958,6 +958,16 @@ body {
   -webkit-mask-composite: xor;
   mask-composite: exclude;
   z-index: -1;
+}
+
+.case-study-detail-gradient-card-02 {
+  background: linear-gradient(
+    119.59deg,
+    #070707 1.07%,
+    #212121 49.82%,
+    #070707 100.33%
+  );
+  border-radius: 2rem;
 }
 
 .case-study-detail-gradient-card-tag {
