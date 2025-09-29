@@ -63,11 +63,11 @@ const StickyHeader = () => {
         <div className="flex items-center justify-end gap-[2rem] xl:gap-[6rem]">
           <nav className="hidden items-center justify-center gap-[1rem] xl:flex">
             <NavigationLink href="/">Home</NavigationLink>
-            <NavigationLink href="/about">About CP</NavigationLink>
+            <NavigationLink href="/about">About </NavigationLink>
             <NavigationLink href="/services">Services</NavigationLink>
             {/* <NavigationDropdown /> */}
             <NavigationLink href="/case-studies">Case Studies</NavigationLink>
-            <NavigationLink href="/contact">Contact Us</NavigationLink>
+            <NavigationLink href="/contact">Contact</NavigationLink>
           </nav>
 
           <div className="hidden items-center gap-[1rem] overflow-hidden xl:flex">
