@@ -23,6 +23,16 @@ const CaseStudyDetailPage = async ({ params }) => {
               "image_column_3",
               "image_column_4",
               "image_column_5",
+              "image_column_6",
+              "image_column_7",
+              "image_column_8",
+              "image_column_9",
+              "image_column_10",
+              "image_column_11",
+              "image_column_12",
+              "image_column_13",
+              "image_column_14",
+              "image_column_15",
             ], // Add main_image here
           },
           "button.link-button": {
@@ -32,7 +42,6 @@ const CaseStudyDetailPage = async ({ params }) => {
             populate: {
               grid_column_1: true,
               grid_column_2: true,
-              grid_column_3: true,
               grid_column_4: {
                 populate: ["images"], // populate images for column 4
               },
@@ -125,6 +134,46 @@ const CaseStudyDetailPage = async ({ params }) => {
 
   const imageColumn5 = galleryComponent?.image_column_5
     ? getStrapiMedia(galleryComponent.image_column_5)
+    : null;
+
+  const imageColumn6 = galleryComponent?.image_column_6
+    ? getStrapiMedia(galleryComponent.image_column_6)
+    : null;
+
+  const imageColumn7 = galleryComponent?.image_column_7
+    ? getStrapiMedia(galleryComponent.image_column_7)
+    : null;
+
+  const imageColumn8 = galleryComponent?.image_column_8
+    ? getStrapiMedia(galleryComponent.image_column_8)
+    : null;
+
+  const imageColumn9 = galleryComponent?.image_column_9
+    ? getStrapiMedia(galleryComponent.image_column_9)
+    : null;
+
+  const imageColumn10 = galleryComponent?.image_column_10
+    ? getStrapiMedia(galleryComponent.image_column_10)
+    : null;
+
+  const imageColumn11 = galleryComponent?.image_column_11
+    ? getStrapiMedia(galleryComponent.image_column_11)
+    : null;
+
+  const imageColumn12 = galleryComponent?.image_column_12
+    ? getStrapiMedia(galleryComponent.image_column_12)
+    : null;
+
+  const imageColumn13 = galleryComponent?.image_column_13
+    ? getStrapiMedia(galleryComponent.image_column_13)
+    : null;
+
+  const imageColumn14 = galleryComponent?.image_column_14
+    ? getStrapiMedia(galleryComponent.image_column_14)
+    : null;
+
+  const imageColumn15 = galleryComponent?.image_column_15
+    ? getStrapiMedia(galleryComponent.image_column_15)
     : null;
 
   // extract link button component from dynamic zone
@@ -237,7 +286,6 @@ const CaseStudyDetailPage = async ({ params }) => {
       ? {
           column1: gridRowComponent.grid_column_1,
           column2: gridRowComponent.grid_column_2,
-          column3: gridRowComponent.grid_column_3,
           column4: {
             label: gridRowComponent.grid_column_4?.label,
             images: (gridRowComponent.grid_column_4?.images || []).map(
@@ -251,12 +299,22 @@ const CaseStudyDetailPage = async ({ params }) => {
       ? {
           title1: contentTitleComponent.title_1,
           title2: contentTitleComponent.title_2,
+          title3: contentTitleComponent.title_3,
+          title4: contentTitleComponent.title_4,
+          title5: contentTitleComponent.title_5,
+          title6: contentTitleComponent.title_6,
+          title7: contentTitleComponent.title_7,
+          title8: contentTitleComponent.title_8,
         }
       : null,
     contentDescription: contentDescriptionComponent
       ? {
           description1: contentDescriptionComponent.description_1,
           description2: contentDescriptionComponent.description_2,
+          description3: contentDescriptionComponent.description_3,
+          description4: contentDescriptionComponent.description_4,
+          description5: contentDescriptionComponent.description_5,
+          description6: contentDescriptionComponent.description_6,
         }
       : null,
     gridRow2: gridRowComponent2
@@ -264,6 +322,7 @@ const CaseStudyDetailPage = async ({ params }) => {
           column1: gridRowComponent2.grid_column_1,
           column2: gridRowComponent2.grid_column_2,
           column3: gridRowComponent2.grid_column_3,
+          column5: gridRowComponent2.grid_column_5,
         }
       : null,
     imageColumn1: imageColumn1,
@@ -271,6 +330,16 @@ const CaseStudyDetailPage = async ({ params }) => {
     imageColumn3: imageColumn3,
     imageColumn4: imageColumn4,
     imageColumn5: imageColumn5,
+    imageColumn6: imageColumn6,
+    imageColumn7: imageColumn7,
+    imageColumn8: imageColumn8,
+    imageColumn9: imageColumn9,
+    imageColumn10: imageColumn10,
+    imageColumn11: imageColumn11,
+    imageColumn12: imageColumn12,
+    imageColumn13: imageColumn13,
+    imageColumn14: imageColumn14,
+    imageColumn15: imageColumn15,
     gridCardRow: gridCardRow,
     gridCardRow2: gridCardRow2,
   };
