@@ -447,14 +447,14 @@ const CaseStudyDetailSection = ({ caseStudy }) => {
                         {innerCard.title}
                       </h4> */}
 
-                      <div className="flex w-full flex-col gap-[.8rem]">
+                      <div className="flex w-full flex-col gap-[1.5rem]">
                         {innerCard.labels?.map((label, idx) => (
                           <div
                             key={idx}
                             className="flex items-center gap-[.8rem]"
                           >
                             <div className="size-[1rem] rounded-full border-2 border-[#FF37B3]" />
-                            <span className="text-text-primary w-full border-b border-black/25 text-[1.4rem] font-normal md:text-[1.8rem] md:leading-[5.6rem]">
+                            <span className="text-text-primary w-full border-b border-black/25 text-[1.4rem] font-normal md:text-[1.8rem] md:leading-[3rem]">
                               {label}
                             </span>
                           </div>
@@ -469,7 +469,7 @@ const CaseStudyDetailSection = ({ caseStudy }) => {
         </div>
 
         <div className="px-[3rem] xl:px-[0rem]">
-          <div className="case-study-detail-gradient-card mx-auto w-full max-w-[120.3rem] overflow-hidden md:h-[56.5rem]">
+          <div className="case-study-detail-gradient-card mx-auto w-full max-w-[120.3rem] overflow-hidden md:min-h-[56.5rem]">
             <div className="flex flex-col gap-[1rem] p-[3rem] md:gap-[2rem] md:px-[6rem] md:py-[7.3rem]">
               <h3 className="text-text-primary text-[3rem] leading-[4rem] font-semibold tracking-[-0.02em] md:text-[4.8rem] md:leading-[6rem]">
                 {caseStudy.contentTitle?.title4}
@@ -479,14 +479,11 @@ const CaseStudyDetailSection = ({ caseStudy }) => {
                 {caseStudy.contentDescription?.description4}
               </p>
 
-              <div className="flex flex-col items-start gap-[2rem] md:gap-[0rem] lg:max-w-[51.5rem]">
+              <div className="flex flex-col items-start gap-[2rem] md:gap-[1.5rem] lg:max-w-[51.5rem]">
                 {caseStudy.gridCardRow2?.column1.workflowItems?.map((item) => (
-                  <div
-                    key={item.id}
-                    className="flex items-center gap-[.8rem] md:[&:last-child_span]:py-[1.5rem] md:[&:last-child_span]:leading-[3rem]"
-                  >
+                  <div key={item.id} className="flex items-center gap-[.8rem]">
                     <div className="size-[1rem] rounded-full border-2 border-[#FF37B3]" />
-                    <span className="text-text-primary w-full border-b border-black/25 text-[1.6rem] font-normal md:text-[1.8rem] md:leading-[5.6rem]">
+                    <span className="text-text-primary w-full border-b border-black/25 text-[1.6rem] font-normal md:text-[1.8rem] md:leading-[3rem]">
                       {item.label1}
                     </span>
                   </div>
@@ -559,7 +556,7 @@ const CaseStudyDetailSection = ({ caseStudy }) => {
           className="lg::grid-cols-3 mx-auto grid max-w-[120.3rem] grid-cols-1 justify-items-center gap-[4rem] px-[3rem] text-center md:grid-cols-2 xl:grid-cols-4 xl:justify-items-start xl:px-[0rem] xl:text-left"
         >
           <div className="flex flex-col">
-            <h3 className="text-[6rem] leading-[8rem] font-normal tracking-[-0.02em] text-[#44B276] md:text-[8rem] md:leading-[10rem] lg:text-[11rem] lg:leading-[13rem]">
+            <h3 className="text-[3rem] leading-[5rem] font-semibold tracking-[-0.02em] text-[#44b276] lg:text-[3.4rem] lg:leading-[4.8rem]">
               {caseStudy.gridRow2?.column1?.label || "3.2x"}
             </h3>
 
@@ -571,7 +568,7 @@ const CaseStudyDetailSection = ({ caseStudy }) => {
           </div>
 
           <div className="flex flex-col">
-            <h3 className="text-[6rem] leading-[8rem] font-normal tracking-[-0.02em] text-[#007BFF] md:text-[8rem] md:leading-[10rem] lg:text-[11rem] lg:leading-[13rem]">
+            <h3 className="text-[3rem] leading-[5rem] font-semibold tracking-[-0.02em] text-[#007Bff] lg:text-[3.4rem] lg:leading-[4.8rem]">
               {caseStudy.gridRow2?.column2?.label || "29%"}
             </h3>
 
@@ -584,7 +581,7 @@ const CaseStudyDetailSection = ({ caseStudy }) => {
           </div>
 
           <div className="flex flex-col">
-            <h3 className="text-[6rem] leading-[8rem] font-normal tracking-[-0.02em] text-[#FFC300] md:text-[8rem] md:leading-[10rem] lg:text-[11rem] lg:leading-[13rem]">
+            <h3 className="text-[3rem] leading-[5rem] font-semibold tracking-[-0.02em] text-[#FFC300] lg:text-[3.4rem] lg:leading-[4.8rem]">
               {caseStudy.gridRow2?.column3?.label || "2.7%"}
             </h3>
 
@@ -596,7 +593,7 @@ const CaseStudyDetailSection = ({ caseStudy }) => {
             </span>
           </div>
 
-          <div className="flex flex-col xl:mt-[1.7rem]">
+          <div className="flex flex-col">
             <h3 className="text-[3rem] leading-[5rem] font-semibold tracking-[-0.02em] text-[#FF37B3] lg:text-[3.4rem] lg:leading-[4.8rem]">
               {caseStudy.gridRow2?.column5?.label ||
                 "Higher organic visibility"}

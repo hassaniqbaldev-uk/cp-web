@@ -4,6 +4,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { ChevronDownIcon } from "lucide-react";
 import Link from "next/link";
 
 const FooterAccordion = ({ title, links, value }) => {
@@ -11,7 +12,8 @@ const FooterAccordion = ({ title, links, value }) => {
     <Accordion type="single" collapsible>
       <AccordionItem value={value}>
         <AccordionTrigger className="flex w-full items-center justify-between text-[2rem] leading-[3rem] font-semibold text-white">
-          {title}
+          {title}{" "}
+          <ChevronDownIcon className="pointer-events-none translate-y-0.5 transition-transform duration-200" />
         </AccordionTrigger>
         <AccordionContent>
           <ul className="flex flex-col gap-[2rem] pt-[2rem]">

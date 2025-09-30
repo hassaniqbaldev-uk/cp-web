@@ -443,7 +443,7 @@ export const footerLinksCardData = [
       { label: "Design and Branding", href: "/services#design-branding" },
       { label: "Website Development", href: "/services#website-development" },
       { label: "Maintenance and Growth", href: "/services#maintenance-growth" },
-      { label: "For Agencies", href: "/services" },
+      { label: "For Agencies", href: "/agencies" },
     ],
   },
   {

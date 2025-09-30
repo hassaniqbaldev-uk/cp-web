@@ -4,8 +4,6 @@ import Link from "next/link";
 import FooterLinkCard from "../common/FooterLinkCard";
 import LogoPopup from "../common/LogoPopup";
 import LineStroke06 from "@/assets/decorative-elements/line-stroke-06.svg";
-import CLetter from "@/assets/decorative-elements/c-letter.svg";
-import PLetter from "@/assets/decorative-elements/p-letter.svg";
 import FooterAccordion from "../common/FooterAccordion";
 import ClientLogoSlider from "../common/ClientLogoSlider";
 import {

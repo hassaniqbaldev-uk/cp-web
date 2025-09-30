@@ -699,6 +699,21 @@ body {
   z-index: -1;
 }
 
+.contact-details-bg:nth-child(3):before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  padding: 2px; /* border thickness */
+  border-radius: inherit;
+  background: linear-gradient(90deg, #ffe400 0%, #ff37b3 100%);
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  z-index: -1;
+}
+
 .contact-form-bg {
   position: relative;
   border-radius: 2rem;

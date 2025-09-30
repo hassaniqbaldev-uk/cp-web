@@ -1,8 +1,8 @@
+"use client";
 import { getCalApi } from "@calcom/embed-react";
 import { useEffect } from "react";
-import CtaBtnAvatarIcon from "@/assets/icons/cta-btn-avatar-icon.svg";
 
-const CommonBtn2 = () => {
+const CommonBtn2 = ({ text = "Get Free Consultation" }) => {
   useEffect(() => {
     (async function () {
       const cal = await getCalApi({ namespace: "15min" });
@@ -33,7 +33,7 @@ const CommonBtn2 = () => {
         <div className="fill-layer" />
 
         {/* Text Layer */}
-        <span className="relative z-10">Get Free Consultation</span>
+        <span className="relative z-10">{text}</span>
       </div>
 
       <i className="relative z-[0] mx-[-.3rem]">
@@ -52,7 +52,6 @@ const CommonBtn2 = () => {
       </i>
 
       <i className="relative z-[0]">
-        {/* <CtaBtnAvatarIcon /> */}
         <img
           src="/images/cta-btn-avatar-icon.png"
           alt="Image"

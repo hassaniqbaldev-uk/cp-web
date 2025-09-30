@@ -6,7 +6,7 @@ import CtaSection2 from "../common/CtaSection2";
 import TextMarquee from "../common/TextMarquee";
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
-import { ScrollTrigger } from "gsap/all";
+import { getCalApi } from "@calcom/embed-react";
 
 const ContactSection = () => {
   const titleRef = useRef();
@@ -50,20 +50,31 @@ const ContactSection = () => {
     });
   }, []);
 
+  useEffect(() => {
+    (async function () {
+      const cal = await getCalApi({ namespace: "15min" });
+      cal("ui", {
+        theme: "dark",
+        cssVarsPerTheme: {
+          light: { "cal-brand": "#292929" },
+          dark: { "cal-brand": "#FF37B3" },
+        },
+        hideEventTypeDetails: false,
+        layout: "month_view",
+      });
+    })();
+  }, []);
+
   return (
     <section className="relative py-[5rem] xl:py-[10rem]">
-      <div className="relative z-[3] mx-auto flex max-w-[112.3rem] flex-col items-center px-[3rem] xl:px-[0rem]">
+      <div className="relative z-[3] mx-auto flex max-w-[122.3rem] flex-col items-center px-[3rem] xl:px-[0rem]">
         <div ref={titleRef} className="text-center opacity-0">
           <SectionTitle label="Ready to Start Working With Us?" />
         </div>
 
         <div ref={cardRef1} className="w-full">
-          <div className="contact-details-bg mt-[4.5rem] mb-[3.7rem] flex w-full flex-col items-center justify-between gap-[4rem] px-[4rem] py-[3.5rem] text-center lg:flex-row lg:gap-[0rem] lg:text-left">
-            <div className="flex flex-col">
-              <span className="text-[2.6rem] leading-[3.2rem] font-semibold tracking-[-0.02em] uppercase">
-                GIVE US A CALL
-              </span>
-
+          <div className="mt-[4.5rem] mb-[3.7rem] grid grid-cols-1 items-center gap-[3.3rem] text-center md:grid-cols-2 xl:grid-cols-3">
+            <div className="contact-details-bg !px-[2.2rem] !py-[5rem]">
               <Link
                 href="tel:01618202667"
                 className="text-[3.4rem] leading-[4.8rem] font-semibold tracking-[-0.02em] text-[#FFC300]"
@@ -72,27 +83,24 @@ const ContactSection = () => {
               </Link>
             </div>
 
-            <div className="flex flex-col">
-              <span className="text-[2.6rem] leading-[3.2rem] font-semibold tracking-[-0.02em] uppercase">
-                EMAIL US
-              </span>
-
+            <div className="contact-details-bg !px-[2.2rem] !py-[5rem]">
               <Link
                 href="mailto:hello@cp.agency"
-                className="text-[3.4rem] leading-[4.8rem] font-semibold tracking-[-0.02em] text-[#FF37B3]"
+                className="text-[3.4rem] leading-[4.8rem] font-semibold tracking-[-0.02em] text-[#3078FF]"
               >
                 hello@cp.agency
               </Link>
             </div>
 
-            <div className="flex flex-col">
-              <span className="text-[2.6rem] leading-[3.2rem] font-semibold tracking-[-0.02em] uppercase">
-                LOCATION
-              </span>
-
-              <span className="text-[3.4rem] leading-[4.8rem] font-semibold tracking-[-0.02em] text-[#3078FF]">
-                Manchester, M12 6PN
-              </span>
+            <div className="contact-details-bg !px-[2.2rem] !py-[5rem]">
+              <button
+                data-cal-namespace="15min"
+                data-cal-link="hassan-iqbal-mznzu9/15min"
+                data-cal-config='{"layout":"month_view","theme":"dark"}'
+                className="cursor-pointer text-[3.4rem] leading-[4.8rem] font-semibold tracking-[-0.02em] text-[#FC529F]"
+              >
+                Schedule a Quick Call
+              </button>
             </div>
           </div>
         </div>

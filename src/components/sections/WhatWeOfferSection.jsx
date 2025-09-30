@@ -209,12 +209,12 @@ const WhatWeOfferSection = () => {
                 </p>
               </div>
 
-              <div className="pointer-events-none relative top-[-2rem] z-[10] xl:top-[-4rem]">
+              <div className="pointer-events-none relative z-[10]">
                 <Image
                   src="/images/offer-web-img.png"
                   alt="offer web image"
-                  width={363}
-                  height={316}
+                  width={332}
+                  height={247}
                   priority
                 />
               </div>
@@ -274,8 +274,8 @@ const WhatWeOfferSection = () => {
                 <Image
                   src="/images/offer-maintenance-img.png"
                   alt="offer web image"
-                  width={209}
-                  height={241}
+                  width={331}
+                  height={212}
                   priority
                 />
               </div>
