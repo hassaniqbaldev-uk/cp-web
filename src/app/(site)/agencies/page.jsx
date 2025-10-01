@@ -1,6 +1,7 @@
 import AgenciesHeroSection from "@/components/sections/AgenciesHeroSection";
 import AnAgencySection from "@/components/sections/AnAgencySection";
 import ContactSection from "@/components/sections/ContactSection";
+import DifferenceSection from "@/components/sections/DifferenceSection";
 import GeneralQASection2 from "@/components/sections/GeneralQASection2";
 import ReviewSection from "@/components/sections/ReviewSection";
 import WorkingProcessSection from "@/components/sections/WorkingProcessSection";
@@ -15,13 +16,14 @@ const AgenciesPage = () => {
   return (
     <>
       <AgenciesHeroSection />
-      <AnAgencySection />
-      <WorkingProcessSection />
+      {/* <AnAgencySection /> */}
+      {/* <DifferenceSection /> */}
+      {/* <WorkingProcessSection /> */}
       <div className="overflow-hidden">
-        <ReviewSection />
-        <GeneralQASection2 />
+        {/* <ReviewSection /> */}
+        {/* <GeneralQASection2 /> */}
       </div>
-      <ContactSection />
+      {/* <ContactSection /> */}
     </>
   );
 };

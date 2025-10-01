@@ -37,34 +37,42 @@ const AgenciesHeroSection = () => {
   }, [isLoading]);
 
   return (
-    <section className="hero-sec relative h-[70rem] w-full overflow-hidden rounded-br-[5rem] rounded-bl-[5rem] lg:h-[79rem]">
+    <section className="hero-sec relative h-[70rem] w-full overflow-hidden rounded-br-[5rem] rounded-bl-[5rem] px-[3rem] lg:h-[79rem] xl:px-[0rem]">
       {/* Decorative stroke line */}
       <div ref={lineRef} className="absolute inset-0 z-[1] opacity-0">
         <LineStroke01 className="absolute bottom-[2.058rem] left-1/2 w-full -translate-x-1/2" />
       </div>
 
-      <div className="relative z-[10] mx-auto flex max-w-[120rem] items-center gap-[6rem] pt-[19.1rem]">
-        <div className="flex flex-col gap-[3rem]">
-          <h1 className="max-w-[60.9rem] text-[5.6rem] leading-[6.4rem] font-semibold tracking-[-0.02em] text-white">
+      <div className="relative z-[10] mx-auto flex max-w-[120rem] flex-col items-center gap-[3rem] pt-[15rem] lg:flex-row lg:pt-[19.1rem] xl:gap-[6rem]">
+        <div className="flex flex-col gap-[2rem] lg:gap-[3rem]">
+          <h1 className="max-w-[60.9rem] text-center text-[4rem] leading-[5rem] font-semibold tracking-[-0.02em] text-white lg:text-left lg:text-[5.6rem] lg:leading-[6.4rem]">
             White Label
             <div className="bg-gradient-to-r from-[#FFD900] via-[#EE7621] to-[#FF37B3] bg-clip-text text-transparent">
               Web Design & Branding
             </div>
           </h1>
 
-          <p className="max-w-[61.8rem] text-[2.2rem] leading-[3.2rem] font-medium text-white">
+          <p className="max-w-[61.8rem] text-center text-[1.8rem] leading-[2.8rem] font-medium text-white lg:text-left lg:text-[2.2rem] lg:leading-[3.2rem]">
             Since 2014, CreativePixels has supported agencies across the UK, US
             & Australia with WordPress websites, branding, and ongoing support
             all delivered under your brand.
           </p>
 
-          <div>
+          <div className="flex justify-center lg:justify-start">
             <CommonBtn2 text="See how we can help you" />
           </div>
         </div>
 
         <div className="h-[37.8rem] w-[52.3rem] rounded-[2rem] bg-black p-[2rem]">
           <div className="flex size-full flex-col justify-end rounded-[.6rem] bg-white">
+            <div className="relative mb-[6.6rem] flex h-[12.3rem] w-[43.3rem] items-center justify-center">
+              <img
+                src="/images/white-label-card-logo.png"
+                alt="Image"
+                className="size-full object-contain"
+              />
+            </div>
+
             <div className="border-t border-black/10 px-[2rem] py-[1rem] text-right text-[1.4rem] font-medium text-black/30">
               01
             </div>

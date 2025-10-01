@@ -2,6 +2,23 @@ import TimeIcon from "@/assets/icons/time-icon.svg";
 import ProcessIcon from "@/assets/icons/process-icon.svg";
 import CollaborationIcon from "@/assets/icons/collaboration-icon.svg";
 import EstimateIcon from "@/assets/icons/estimate-icon.svg";
+import DiscoveryIcon from "@/assets/icons/discovery-icon.svg";
+import CollborativeIcon from "@/assets/icons/collaborative-icon.svg";
+import DesignIcon from "@/assets/icons/design-icon.svg";
+import MonitorIcon from "@/assets/icons/monitor.svg";
+import SupportIcon from "@/assets/icons/support-icon.svg";
+import ExpertiseIcon from "@/assets/icons/expertise-icon.svg";
+import CostIcon from "@/assets/icons/cost-icon.svg";
+import ScaleableIcon from "@/assets/icons/scaleable-icon.svg";
+import FasterIcon from "@/assets/icons/faster-icon.svg";
+import FocusIcon from "@/assets/icons/focus-icon.svg";
+import GridIcon from "@/assets/icons/grid-icon.svg";
+import LimitedIcon from "@/assets/icons/limited-icon.svg";
+import HigherIcon from "@/assets/icons/higher-icon.svg";
+import SlowIcon from "@/assets/icons/slow-icon.svg";
+import HardIcon from "@/assets/icons/hard-icon.svg";
+import LessIcon from "@/assets/icons/less-icon.svg";
+import WeakerIcon from "@/assets/icons/weaker-icon.svg";
 
 export const generalQAData = [
   {
@@ -70,5 +87,129 @@ export const generalQAData = [
     question: "What kind of agencies do you usually partner with?",
     answer:
       "We work with small to mid-sized agencies that want to scale without hiring full-time staff. Some focus purely on design and need development support, while others handle strategy but need help with execution. Our flexibility means we fit into whatever gap your team has.",
+  },
+];
+
+export const accordionData = [
+  {
+    id: "item-1",
+    number: "1",
+    title: "Discovery & Fit",
+    description:
+      "We start by understanding your agency's goals, client expectations, and existing workflows. This is where we learn how we can best integrate as your white label.",
+    icon: DiscoveryIcon,
+  },
+  {
+    id: "item-2",
+    number: "2",
+    title: "Collaborative Planning",
+    description:
+      "From UX planning and wireframes to broader agency growth strategy, we map out the scope together so it aligns with your goals and tools.",
+    icon: CollborativeIcon,
+  },
+  {
+    id: "item-3",
+    number: "3",
+    title: "Design & Development",
+    description:
+      "Need Figma design only? Custom WordPress development? Or a full end-to-end build? We tailor each project so you get exactly what your clients need.",
+    icon: DesignIcon,
+  },
+  {
+    id: "item-4",
+    number: "4",
+    title: "Seamless Integration",
+    description:
+      "We plug into your systems — from project management tools to communication channels — so our work feels like part of your own in-house team.",
+    icon: MonitorIcon,
+  },
+  {
+    id: "item-5",
+    number: "5",
+    title: "Quality & Ongoing Support",
+    description:
+      "Rigorous QA, smooth handoff, and ongoing white label support. We help you deliver consistent results while you focus on growing client relationships.",
+    icon: SupportIcon,
+  },
+];
+
+export const withDifferenceData = [
+  {
+    id: 1,
+    icon: ExpertiseIcon,
+    title: "Expertise on Demand",
+    description:
+      "Tap into senior designers, developers, and strategists when you need them.",
+  },
+  {
+    id: 2,
+    icon: CostIcon,
+    title: "Cost-Efficient",
+    description:
+      "Deliver more projects without the overheadof hiring full-time. Scalable Capacity - Scale up or down",
+  },
+  {
+    id: 3,
+    icon: ScaleableIcon,
+    title: "Scalable Capacity",
+    description:
+      "Scale up or down instantly based on client demand. Faster Delivery - Hit deadlines with",
+  },
+  {
+    id: 4,
+    icon: FasterIcon,
+    title: "Faster Delivery",
+    description: "Hit deadlines with proven processes and experienced teams.",
+  },
+  {
+    id: 5,
+    icon: FocusIcon,
+    title: "Focus on Clients",
+    description: "Spend more time building relationships and winning new work.",
+  },
+  {
+    id: 6,
+    icon: GridIcon,
+    title: "Seamless Branding",
+    description: "Every project delivered under your agency's name.",
+  },
+];
+
+export const withoutDifferenceData = [
+  {
+    id: 1,
+    icon: LimitedIcon,
+    title: "Limited Skills",
+    description: "In-house only, gaps in expertise.",
+  },
+  {
+    id: 2,
+    icon: HigherIcon,
+    title: "Higher Overheads",
+    description: "Salaries, training, and recruitment costs.",
+  },
+  {
+    id: 3,
+    icon: SlowIcon,
+    title: "Slow Turnaround",
+    description: "Capacity limits delay projects.",
+  },
+  {
+    id: 4,
+    icon: HardIcon,
+    title: "Hard to Scale",
+    description: "Struggle to take on new clients quickly.",
+  },
+  {
+    id: 5,
+    icon: LessIcon,
+    title: "Less Strategy Time",
+    description: "Stuck in production, not growth.",
+  },
+  {
+    id: 6,
+    icon: WeakerIcon,
+    title: "Weaker Offering",
+    description: "Can’t always deliver the full package under your brand.",
   },
 ];
