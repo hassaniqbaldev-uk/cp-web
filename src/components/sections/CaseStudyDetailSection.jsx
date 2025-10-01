@@ -403,18 +403,18 @@ const CaseStudyDetailSection = ({ caseStudy }) => {
               </p>
             </div>
 
-            <div className="flex flex-col items-center gap-[3.3rem] lg:flex-row xl:items-start">
+            <div className="flex flex-col items-center gap-[3.3rem] lg:flex-row xl:items-end">
               <div className="relative flex h-[30rem] w-[27.6rem] items-center justify-center overflow-hidden rounded-[1.6rem]">
                 <Image
                   src={caseStudy.imageColumn4}
                   width={276}
                   height={300}
-                  className="size-full object-contain"
+                  className="size-full object-cover"
                   alt="Image"
                 />
               </div>
 
-              <div className="flex flex-col items-center gap-[1rem] lg:items-start">
+              <div className="flex w-[48.3rem] flex-col items-center gap-[1rem] lg:items-start">
                 <div className="relative flex size-[6.6rem] items-center justify-center">
                   <Image
                     src={caseStudy.imageColumn5}
