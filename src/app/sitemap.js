@@ -11,7 +11,7 @@ export default async function sitemap() {
   const caseStudies = response.data || [];
 
   const caseStudyUrls = caseStudies.map((item) => ({
-    url: `${siteUrl}/case-studies/${item.slug}`,
+    url: `${siteUrl}/case-studies${item.slug}`,
     lastModified: item.updatedAt,
   }));
 
@@ -21,6 +21,7 @@ export default async function sitemap() {
     { url: `${siteUrl}about`, lastModified: new Date().toISOString() },
     { url: `${siteUrl}services`, lastModified: new Date().toISOString() },
     { url: `${siteUrl}contact`, lastModified: new Date().toISOString() },
+    { url: `${siteUrl}case-studies`, lastModified: new Date().toISOString() },
     { url: `${siteUrl}agencies`, lastModified: new Date().toISOString() },
     { url: `${siteUrl}privacy-policy`, lastModified: new Date().toISOString() },
     { url: `${siteUrl}cookies-policy`, lastModified: new Date().toISOString() },
