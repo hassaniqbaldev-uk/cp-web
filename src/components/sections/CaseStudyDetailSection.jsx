@@ -311,7 +311,7 @@ const CaseStudyDetailSection = ({ caseStudy }) => {
           />
         </div>
 
-        <div className="mx-auto my-[5rem] flex max-w-[120.3rem] flex-col items-center px-[3rem] text-center lg:my-[9rem] xl:items-start xl:px-[0rem] xl:text-left">
+        <div className="mx-auto my-[5rem] flex max-w-[120.3rem] flex-col items-center px-[3rem] text-center xl:my-[9rem] xl:items-start xl:px-[0rem] xl:text-left">
           <h3
             ref={titleRef2}
             className="mb-[3rem] text-[2.5rem] leading-[3.5rem] font-semibold tracking-[-0.02em] opacity-0 md:text-[4rem] md:leading-[5rem] lg:text-[4.8rem] lg:leading-[6rem]"
@@ -379,8 +379,8 @@ const CaseStudyDetailSection = ({ caseStudy }) => {
           </div>
         </div>
 
-        <div className="mx-auto my-[9rem] flex max-w-[120.3rem] flex-col items-center gap-[3.3rem] px-[3rem] xl:flex-row xl:items-start xl:px-[0rem]">
-          <div className="relative flex h-[51.4rem] items-center justify-center overflow-hidden rounded-tl-[2rem] rounded-tr-[2rem] xl:w-[37.9rem]">
+        <div className="mx-auto my-[5rem] flex max-w-[120.3rem] flex-col items-center gap-[3.3rem] px-[3rem] xl:my-[9rem] xl:flex-row xl:items-start xl:px-[0rem]">
+          <div className="relative flex h-[40rem] items-center justify-center overflow-hidden rounded-tl-[2rem] rounded-tr-[2rem] md:h-[50rem] md:w-[40rem] xl:h-[51.4rem] xl:w-[37.9rem]">
             <Image
               src={caseStudy.imageColumn3}
               width={379}
