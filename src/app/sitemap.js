@@ -21,6 +21,7 @@ export default async function sitemap() {
     { url: `${siteUrl}about`, lastModified: new Date().toISOString() },
     { url: `${siteUrl}services`, lastModified: new Date().toISOString() },
     { url: `${siteUrl}contact`, lastModified: new Date().toISOString() },
+    { url: `${siteUrl}case-studies`, lastModified: new Date().toISOString() },
     { url: `${siteUrl}agencies`, lastModified: new Date().toISOString() },
     { url: `${siteUrl}privacy-policy`, lastModified: new Date().toISOString() },
     { url: `${siteUrl}cookies-policy`, lastModified: new Date().toISOString() },
