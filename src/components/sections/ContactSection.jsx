@@ -99,7 +99,7 @@ const ContactSection = () => {
                 data-cal-config='{"layout":"month_view","theme":"dark"}'
                 className="cursor-pointer text-[3.4rem] leading-[4.8rem] font-semibold tracking-[-0.02em] text-[#FC529F]"
               >
-                Schedule a Quick Call
+                Schedule a Call
               </button>
             </div>
           </div>

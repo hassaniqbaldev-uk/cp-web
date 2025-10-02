@@ -2,6 +2,33 @@ import CaseStudyDetailSection from "@/components/sections/CaseStudyDetailSection
 import ContactSection from "@/components/sections/ContactSection";
 import { fetchAPI, getStrapiMedia } from "@/lib/strapi";
 
+export async function generateMetadata({ params }) {
+  const { slug } = params;
+
+  // Fetch this case study with SEO
+  const response = await fetchAPI("/api/case-studies", {
+    filters: { slug: { $eq: slug } },
+    populate: { seo: true },
+  });
+
+  const item = response.data?.[0];
+
+  if (!item) {
+    return {
+      title: "Case Study Not Found",
+      description: "This case study could not be found.",
+    };
+  }
+
+  const seo = item.seo;
+
+  return {
+    title: seo?.title || item.title,
+    description: seo?.description || item.excerpt,
+    keywords: seo?.keywords,
+  };
+}
+
 const CaseStudyDetailPage = async ({ params }) => {
   const { slug } = await params; // Add await here
 
