@@ -9,9 +9,11 @@ import PlayYellowIcon from "@/assets/icons/play-yellow-icon.svg";
 import SubtractDarkIcon from "@/assets/icons/subtract-dark.svg";
 import LineStroke19 from "@/assets/decorative-elements/line-stroke-19.svg";
 import LineStroke20 from "@/assets/decorative-elements/line-stroke-20.svg";
-import LineStroke21 from "@/assets/decorative-elements/line-stroke-21.svg";
 import LineStroke22 from "@/assets/decorative-elements/line-stroke-22.svg";
 import LineStroke23 from "@/assets/decorative-elements/line-stroke-23.svg";
+import LineStroke27 from "@/assets/decorative-elements/line-stroke-27.svg";
+import LineStroke28 from "@/assets/decorative-elements/line-stroke-28.svg";
+import LineStroke29 from "@/assets/decorative-elements/line-stroke-29.svg";
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { useLoadingStore } from "@/store/useLoadingStore";
@@ -210,14 +212,6 @@ const CaseStudyDetailSection = ({ caseStudy }) => {
         <LineStroke19 className="absolute top-[15.4rem] left-1/2 w-full -translate-x-1/2" />
       </div>
 
-      <div className="absolute inset-0 z-[0]">
-        <LineStroke20 className="absolute top-[552rem] left-1/2 w-full -translate-x-1/2" />
-      </div>
-
-      <div className="absolute inset-0 z-[0]">
-        <LineStroke22 className="absolute top-[355rem] left-1/2 w-full -translate-x-1/2" />
-      </div>
-
       <div className="absolute inset-0 z-[0] hidden overflow-hidden xl:block">
         <LineStroke23 className="absolute top-[5.5rem] right-[-8.8rem]" />
 
@@ -233,6 +227,18 @@ const CaseStudyDetailSection = ({ caseStudy }) => {
             className="size-full object-cover object-center"
           />
         </div>
+      </div>
+
+      <div className="absolute inset-0 z-[0]">
+        <LineStroke27 className="absolute top-[176.8rem] left-1/2 w-full -translate-x-1/2" />
+      </div>
+
+      <div className="absolute inset-0 z-[0]">
+        <LineStroke28 className="absolute top-[294.2rem] left-1/2 w-full -translate-x-1/2" />
+      </div>
+
+      <div className="pointer-events-none absolute inset-0 overflow-hidden select-none">
+        <LineStroke29 className="absolute top-[530rem] right-[-30rem] w-full" />
       </div>
 
       <div className="relative z-[1]">
@@ -610,7 +616,7 @@ const CaseStudyDetailSection = ({ caseStudy }) => {
 
         <div
           ref={imgRef3}
-          className="mx-auto mt-[5rem] h-[25rem] w-full max-w-[120.3rem] overflow-hidden rounded-[2rem] px-[3rem] opacity-0 md:h-[40rem] lg:mt-[9rem] lg:h-[61.2rem] xl:px-[0rem]"
+          className="relative mx-auto mt-[5rem] h-[25rem] w-full max-w-[120.3rem] overflow-hidden rounded-[2rem] px-[3rem] opacity-0 md:h-[40rem] lg:mt-[9rem] lg:h-[61.2rem] xl:px-[0rem]"
         >
           <Image
             src={caseStudy.imageColumn13}
