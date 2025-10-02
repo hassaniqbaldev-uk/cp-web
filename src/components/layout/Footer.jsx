@@ -229,7 +229,7 @@ const Footer = () => {
 
         <div className="relative z-[3] mx-auto flex max-w-[120rem] flex-col items-center justify-between gap-[2rem] px-[2rem] text-center lg:flex-row lg:gap-[0rem] lg:text-left xl:px-[0rem]">
           <p className="max-w-[32rem] text-[1.8rem] leading-[2.6rem] font-normal text-white md:max-w-fit">
-            2025 (C) CP Agency Ltd. Trading as CreativePixels.
+            2025 © CP Agency Ltd. Trading as CreativePixels.
           </p>
 
           <div className="flex flex-col items-center justify-end gap-[3rem] text-center lg:flex-row lg:text-left">
