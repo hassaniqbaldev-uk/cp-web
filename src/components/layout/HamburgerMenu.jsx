@@ -132,9 +132,9 @@ const HamburgerMenu = ({ isOpen, setIsOpen }) => {
 
           <div className="flex flex-col gap-[2rem] px-[2.5rem] pt-[1rem]">
             <div className="flex flex-col">
-              <h5 className="text-[1.6rem] leading-[2.4rem] font-medium text-white">
+              {/* <h5 className="text-[1.6rem] leading-[2.4rem] font-medium text-white">
                 GIVE US A CALL
-              </h5>
+              </h5> */}
 
               <Link
                 href="tel:01618202667"
@@ -145,9 +145,9 @@ const HamburgerMenu = ({ isOpen, setIsOpen }) => {
             </div>
 
             <div className="flex flex-col">
-              <h5 className="text-[1.6rem] leading-[2.4rem] font-medium text-white">
+              {/* <h5 className="text-[1.6rem] leading-[2.4rem] font-medium text-white">
                 EMAIL US
-              </h5>
+              </h5> */}
 
               <Link
                 href="mailto:hello@cp.agency"
