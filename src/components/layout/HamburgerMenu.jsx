@@ -68,8 +68,8 @@ const HamburgerMenu = ({ isOpen, setIsOpen }) => {
         </div>
 
         <div className="overflow-x-hidden overflow-y-auto">
-          <nav className="flex flex-col gap-[2rem] py-[2rem] text-white md:py-[4rem]">
-            <div className="relative border-b border-white/20 pb-[2rem] md:px-[4rem]">
+          <nav className="flex flex-col gap-[1rem] text-white">
+            <div className="relative border-b border-white/20 pb-[1rem] md:px-[4rem]">
               <Link
                 href="/"
                 onClick={() => setIsOpen(false)}
@@ -79,7 +79,7 @@ const HamburgerMenu = ({ isOpen, setIsOpen }) => {
               </Link>
             </div>
 
-            <div className="relative border-b border-white/20 pb-[2rem] md:px-[4rem]">
+            <div className="relative border-b border-white/20 pb-[1rem] md:px-[4rem]">
               <Link
                 href="/about"
                 onClick={() => setIsOpen(false)}
@@ -89,7 +89,7 @@ const HamburgerMenu = ({ isOpen, setIsOpen }) => {
               </Link>
             </div>
 
-            <div className="relative border-b border-white/20 pb-[2rem] md:px-[4rem]">
+            <div className="relative border-b border-white/20 pb-[1rem] md:px-[4rem]">
               <Link
                 href="/services"
                 onClick={() => setIsOpen(false)}
@@ -99,11 +99,7 @@ const HamburgerMenu = ({ isOpen, setIsOpen }) => {
               </Link>
             </div>
 
-            {/* <div className="border-b border-white px-[2rem] pb-[2rem] md:px-[4rem]">
-              <HamburgerAccordion setIsOpen={setIsOpen} />
-            </div> */}
-
-            <div className="relative border-b border-white/20 pb-[2rem] md:px-[4rem]">
+            <div className="relative border-b border-white/20 pb-[1rem] md:px-[4rem]">
               <Link
                 href="/case-studies"
                 onClick={() => setIsOpen(false)}
@@ -113,7 +109,7 @@ const HamburgerMenu = ({ isOpen, setIsOpen }) => {
               </Link>
             </div>
 
-            <div className="relative border-b border-white/20 pb-[2rem] md:px-[4rem]">
+            <div className="relative border-b border-white/20 pb-[1rem] md:px-[4rem]">
               <Link
                 href="/contact"
                 onClick={() => setIsOpen(false)}
@@ -125,7 +121,7 @@ const HamburgerMenu = ({ isOpen, setIsOpen }) => {
           </nav>
         </div>
 
-        <div className="flex flex-col gap-[2rem] pb-[6rem]">
+        <div className="flex flex-col gap-[2rem] pt-[2rem] pb-[4rem]">
           <div className="px-[2.5rem]">
             <CommonBtn2 />
           </div>
