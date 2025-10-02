@@ -414,7 +414,7 @@ const CaseStudyDetailSection = ({ caseStudy }) => {
                 />
               </div>
 
-              <div className="flex w-[48.3rem] flex-col items-center gap-[1rem] lg:items-start">
+              <div className="flex flex-col items-center gap-[1rem] lg:items-start xl:w-[48.3rem]">
                 <div className="relative flex size-[6.6rem] items-center justify-center">
                   <Image
                     src={caseStudy.imageColumn5}
@@ -451,9 +451,9 @@ const CaseStudyDetailSection = ({ caseStudy }) => {
                         {innerCard.labels?.map((label, idx) => (
                           <div
                             key={idx}
-                            className="flex items-center gap-[.8rem]"
+                            className="flex items-start gap-[.8rem]"
                           >
-                            <div className="size-[1rem] rounded-full border-2 border-[#FF37B3]" />
+                            <div className="relative top-[.6rem] size-[1rem] rounded-full border-2 border-[#FF37B3] md:top-[1rem]" />
                             <span className="text-text-primary w-full border-b border-black/25 text-[1.4rem] font-normal md:text-[1.8rem] md:leading-[3rem]">
                               {label}
                             </span>
@@ -481,8 +481,8 @@ const CaseStudyDetailSection = ({ caseStudy }) => {
 
               <div className="flex flex-col items-start gap-[2rem] md:gap-[1.5rem] lg:max-w-[51.5rem]">
                 {caseStudy.gridCardRow2?.column1.workflowItems?.map((item) => (
-                  <div key={item.id} className="flex items-center gap-[.8rem]">
-                    <div className="size-[1rem] rounded-full border-2 border-[#FF37B3]" />
+                  <div key={item.id} className="flex items-start gap-[.8rem]">
+                    <div className="relative top-[.6rem] size-[1rem] rounded-full border-2 border-[#FF37B3] md:top-[1rem]" />
                     <span className="text-text-primary w-full border-b border-black/25 text-[1.6rem] font-normal md:text-[1.8rem] md:leading-[3rem]">
                       {item.label1}
                     </span>

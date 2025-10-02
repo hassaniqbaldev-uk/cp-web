@@ -92,7 +92,7 @@ const ContactSection = () => {
               </Link>
             </div>
 
-            <div className="contact-details-bg !px-[2.2rem] !py-[5rem]">
+            <div className="contact-details-bg !px-[2.2rem] !py-[5rem] md:col-span-2 xl:col-span-1">
               <button
                 data-cal-namespace="15min"
                 data-cal-link="hassan-iqbal-mznzu9/15min"

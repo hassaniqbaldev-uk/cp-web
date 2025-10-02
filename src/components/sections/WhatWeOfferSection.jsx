@@ -224,7 +224,7 @@ const WhatWeOfferSection = () => {
             <Link
               ref={lineRef}
               href="/services#design-branding"
-              className="offer-grid-card group flex h-[36.4rem] flex-col items-center text-center hover:!border-[#44B276] hover:!bg-[#44B276] xl:text-left"
+              className="offer-grid-card group mb-[-5rem] flex h-[36.4rem] flex-col items-center text-center hover:!border-[#44B276] hover:!bg-[#44B276] md:mb-0 xl:text-left"
             >
               <div className="flex flex-col gap-[1.4rem] p-[2rem] md:p-[3rem]">
                 <h3 className="relative w-full text-[3.4rem] leading-[4.8rem] font-semibold tracking-[-0.02em] text-white transition-all duration-300 group-hover:text-black">
@@ -240,12 +240,12 @@ const WhatWeOfferSection = () => {
                 </p>
               </div>
 
-              <div className="relative z-[10]">
+              <div className="pointer-events-none relative z-[10]">
                 <Image
                   src="/images/offer-design-img.png"
                   alt="offer web image"
-                  width={360}
-                  height={229}
+                  width={327}
+                  height={196}
                   priority
                 />
               </div>
