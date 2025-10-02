@@ -125,7 +125,7 @@ const HamburgerMenu = ({ isOpen, setIsOpen }) => {
           </nav>
         </div>
 
-        <div className="flex flex-col gap-[2rem] pb-[4rem]">
+        <div className="flex flex-col gap-[2rem] pb-[6rem]">
           <div className="px-[2.5rem]">
             <CommonBtn2 />
           </div>
