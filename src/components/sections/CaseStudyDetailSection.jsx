@@ -545,7 +545,7 @@ const CaseStudyDetailSection = ({ caseStudy }) => {
           </div>
         </div>
 
-        <div className="mx-auto flex max-w-[120.3rem] flex-col items-center gap-[2rem] px-[3rem] text-center md:my-[5rem] md:mt-[5.8rem] xl:items-start xl:px-[0rem] xl:text-left">
+        {/* <div className="mx-auto flex max-w-[120.3rem] flex-col items-center gap-[2rem] px-[3rem] text-center md:my-[5rem] md:mt-[5.8rem] xl:items-start xl:px-[0rem] xl:text-left">
           <div ref={titleRef1} className="opacity-0">
             <SectionTitle label={caseStudy.contentTitle?.title1} />
           </div>
@@ -612,11 +612,11 @@ const CaseStudyDetailSection = ({ caseStudy }) => {
                 "For cloud software and data management keywords"}
             </span>
           </div>
-        </div>
+        </div> */}
 
         <div
           ref={imgRef3}
-          className="relative mx-auto mt-[5rem] h-[25rem] w-full max-w-[120.3rem] overflow-hidden rounded-[2rem] px-[3rem] opacity-0 md:h-[40rem] lg:mt-[9rem] lg:h-[61.2rem] xl:px-[0rem]"
+          className="relative mx-auto mt-[5rem] mb-[-10rem] h-[25rem] w-full max-w-[120.3rem] overflow-hidden rounded-[2rem] px-[3rem] opacity-0 md:h-[40rem] lg:mt-[9rem] lg:h-[61.2rem] xl:px-[0rem]"
         >
           <Image
             src={caseStudy.imageColumn13}
@@ -628,7 +628,7 @@ const CaseStudyDetailSection = ({ caseStudy }) => {
           />
         </div>
 
-        <div
+        {/* <div
           style={{
             background:
               "linear-gradient(0deg, #070707, #070707),linear-gradient(119.9deg, #070707 1.18%, #212121 49.71%, #070707 100%)",
@@ -679,7 +679,7 @@ const CaseStudyDetailSection = ({ caseStudy }) => {
               />
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
     </section>
   );
