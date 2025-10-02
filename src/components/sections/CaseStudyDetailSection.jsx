@@ -338,7 +338,7 @@ const CaseStudyDetailSection = ({ caseStudy }) => {
           >
             {caseStudy.contentDescription?.description2}
           </p>
-
+          {/* 
           <div className="mt-[4rem]">
             <Link
               href=""
@@ -355,7 +355,7 @@ const CaseStudyDetailSection = ({ caseStudy }) => {
                 <PlayYellowIcon />
               </i>
             </Link>
-          </div>
+          </div> */}
         </div>
 
         <div

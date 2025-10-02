@@ -3,7 +3,7 @@ import ContactSection from "@/components/sections/ContactSection";
 import { fetchAPI, getStrapiMedia } from "@/lib/strapi";
 
 export async function generateMetadata({ params }) {
-  const { slug } = params;
+  const { slug } = await params; // Add await here
 
   // Fetch this case study with SEO
   const response = await fetchAPI("/api/case-studies", {
