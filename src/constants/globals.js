@@ -434,7 +434,7 @@ export const footerLinksCardData = [
       { label: "Services", href: "/services" },
       { label: "Case Studies", href: "/case-studies" },
       { label: "Contact", href: "/contact" },
-      { label: "Sitemap", href: "/" },
+      { label: "Sitemap", href: "/sitemap.xml" },
     ],
   },
   {
