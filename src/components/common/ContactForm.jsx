@@ -164,7 +164,7 @@ const ContactForm = () => {
             <button
               type="submit"
               disabled={loading}
-              className="px-6 py-3 bg-black text-white rounded-lg"
+              className="rounded-lg bg-black px-6 py-3 text-white"
             >
               {loading ? "Sending..." : "Submit Request"}
             </button>
