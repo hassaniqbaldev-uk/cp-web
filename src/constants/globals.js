@@ -117,7 +117,7 @@ export const logoPopupsData = [
   },
 
   {
-    logo: "/images/ivy-logo.png",
+    logo: "/images/alert-logo.png",
     popupImage: "/images/ivy-popup-img.png",
     href: "/case-studies/ivy",
   },
@@ -127,7 +127,7 @@ export const logoPopupsData = [
     href: "/case-studies/fultons",
   },
   {
-    logo: "/images/lola-logo.png",
+    logo: "/images/unicef-logo.png",
     popupImage: "/images/lola-popup-img.png",
     href: "/case-studies/lola",
   },
