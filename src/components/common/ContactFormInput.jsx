@@ -5,6 +5,9 @@ const ContactFormInput = ({
   type = "text",
   value,
   onChange,
+  name,
+  id,
+  required,
 }) => {
   return (
     <Input
@@ -13,6 +16,9 @@ const ContactFormInput = ({
       type={type}
       value={value}
       onChange={onChange}
+      name={name}
+      id={id}
+      required={required}
     />
   );
 };
