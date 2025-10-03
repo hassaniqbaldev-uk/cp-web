@@ -9,7 +9,7 @@ const AnAgencySection = () => {
         <CLetter2 className="absolute top-[2rem] right-[-13rem] h-[60.3rem] w-[40rem]" />
       </div>
 
-      <div className="mx-auto flex max-w-[113rem] flex-col items-center gap-[2rem] text-center">
+      <div className="relative mx-auto flex max-w-[113rem] flex-col items-center gap-[2rem] text-center">
         <h2 className="text-[3.5rem] leading-[4rem] font-semibold tracking-[-0.02em] text-[#070707] md:text-[4.5rem] md:leading-[5.6rem] lg:text-[5.6rem] lg:leading-[6.4rem]">
           An agency, for your agency
         </h2>

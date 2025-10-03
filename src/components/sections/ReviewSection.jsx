@@ -14,7 +14,7 @@ const ReviewSection = () => {
     >
       {/* Decorative stroke line */}
       <div className="absolute inset-0 z-[0]">
-        <LineStroke24 className="absolute top-[32.5rem] right-[-23.6rem]" />
+        <LineStroke24 className="absolute top-[28rem] right-[-23.6rem] xl:top-[32.5rem]" />
       </div>
 
       <div className="absolute inset-0 z-[0]">

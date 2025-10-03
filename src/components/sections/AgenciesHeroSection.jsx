@@ -69,7 +69,7 @@ const AgenciesHeroSection = () => {
               <img
                 src="/images/white-label-card-logo.png"
                 alt="Image"
-                className="w-[25rem] md:w-[35rem]"
+                className="w-[25rem] md:w-[34.1rem]"
               />
             </div>
 
