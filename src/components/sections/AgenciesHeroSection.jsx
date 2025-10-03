@@ -37,13 +37,13 @@ const AgenciesHeroSection = () => {
   }, [isLoading]);
 
   return (
-    <section className="hero-sec relative h-[70rem] w-full overflow-hidden rounded-br-[5rem] rounded-bl-[5rem] px-[3rem] lg:h-[79rem] xl:px-[0rem]">
+    <section className="hero-sec relative h-[76rem] w-full overflow-hidden rounded-br-[5rem] rounded-bl-[5rem] px-[3rem] md:h-[79rem] xl:px-[0rem]">
       {/* Decorative stroke line */}
       <div ref={lineRef} className="absolute inset-0 z-[1] opacity-0">
         <LineStroke01 className="absolute bottom-[2.058rem] left-1/2 w-full -translate-x-1/2" />
       </div>
 
-      <div className="relative z-[10] mx-auto flex max-w-[120rem] flex-col items-center gap-[3rem] pt-[12rem] lg:flex-row lg:pt-[19.1rem] xl:gap-[6rem]">
+      <div className="relative z-[10] mx-auto flex max-w-[120rem] flex-col items-center gap-[3rem] pt-[14rem] lg:flex-row lg:pt-[19.1rem] xl:gap-[6rem]">
         <div className="flex flex-col gap-[2rem] lg:gap-[3rem]">
           <h1 className="max-w-[60.9rem] text-center text-[3rem] leading-[4rem] font-semibold tracking-[-0.02em] text-white md:text-[4rem] md:leading-[5rem] lg:text-left lg:text-[5.6rem] lg:leading-[6.4rem]">
             White Label
@@ -63,13 +63,13 @@ const AgenciesHeroSection = () => {
           </div>
         </div>
 
-        <div className="h-[22rem] w-[30rem] rounded-[2rem] bg-black p-[2rem] md:h-[25rem] md:w-[35rem] lg:h-[37.8rem] lg:w-[52.3rem]">
-          <div className="flex size-full flex-col justify-end rounded-[.6rem] bg-white">
-            <div className="relative mx-auto mb-[1rem] flex h-[10rem] w-[20rem] items-center justify-center md:mb-[3rem] md:w-[25rem] lg:mb-[6.6rem] lg:w-[40rem] xl:h-[12.3rem] xl:w-[43.3rem]">
+        <div className="h-[25rem] w-full rounded-[2rem] bg-black p-[2rem] md:h-[34rem] md:w-[52.3rem] xl:h-[37.8rem]">
+          <div className="flex size-full flex-col justify-between overflow-hidden rounded-[.6rem] bg-white">
+            <div className="flex size-full items-center justify-center">
               <img
                 src="/images/white-label-card-logo.png"
                 alt="Image"
-                className="size-full object-contain"
+                className="w-[25rem] md:w-[35rem]"
               />
             </div>
 
