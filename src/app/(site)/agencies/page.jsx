@@ -16,8 +16,8 @@ const AgenciesPage = () => {
   return (
     <>
       <AgenciesHeroSection />
-      {/* <AnAgencySection /> */}
-      {/* <DifferenceSection /> */}
+      <AnAgencySection />
+      <DifferenceSection />
       {/* <WorkingProcessSection /> */}
       <div className="overflow-hidden">
         {/* <ReviewSection /> */}
