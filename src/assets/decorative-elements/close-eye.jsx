@@ -6,7 +6,7 @@ const CloseEye = (props) => {
       xmlns="http://www.w3.org/2000/svg"
       {...props}
     >
-      <foreignObject x="-47.7" y="-47.7" width="350.4" height="287.4">
+      <foreignObject x="-47.7" y="-47.7">
         <div
           xmlns="http://www.w3.org/1999/xhtml"
           style={{

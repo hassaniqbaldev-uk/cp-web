@@ -51,7 +51,7 @@ const GeneralQASection2 = () => {
   }, []);
 
   return (
-    <section className="relative pt-[12rem]">
+    <section className="relative pt-[5rem] xl:pt-[12rem]">
       {/* Decorative stroke line */}
       <div className="absolute inset-0 z-[0]">
         <LineStroke18 className="absolute top-[43.6rem] left-1/2 w-full -translate-x-1/2" />
