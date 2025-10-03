@@ -39,8 +39,8 @@ const ReviewSection = () => {
 
           <div className="flex items-center gap-[1.2rem] text-left">
             <div className="relative inline-flex h-[5.6rem] min-w-[5.6rem] items-center justify-center overflow-hidden rounded-full bg-white">
-              <i className="relative inline-flex h-[3rem] w-[4rem] items-center justify-center">
-                <CloseEye />
+              <i className="relative inline-flex items-center justify-center">
+                <CloseEye className="h-[3rem] w-[4rem]" />
               </i>
             </div>
 
@@ -57,8 +57,8 @@ const ReviewSection = () => {
 
         <div className="testimonials-card h-[40rem] w-full !p-[2rem] md:h-[51.6rem] md:w-[57.5rem] lg:ml-[-2rem]">
           <div className="flex size-full items-center justify-center rounded-[2rem] bg-white">
-            <i className="relative inline-flex h-[19.2rem] w-[20rem] items-center justify-center md:w-[25.5rem]">
-              <CloseEye />
+            <i className="relative inline-flex items-center justify-center">
+              <CloseEye className="h-[19.2rem] w-[20rem] md:w-[25.5rem]" />
             </i>
           </div>
         </div>
