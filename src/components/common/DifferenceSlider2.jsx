@@ -23,7 +23,7 @@ const DifferenceSlider2 = () => {
         spaceBetween={10}
         breakpoints={{
           768: {
-            slidesPerView: 2,
+            slidesPerView: 3,
             spaceBetween: 10,
           },
         }}

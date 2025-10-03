@@ -146,7 +146,7 @@ const AboutSection = () => {
               }
               onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = "")}
             >
-              <item.icon />
+              <item.icon className="size-[5.5rem]" />
 
               <h4 className="max-w-[22rem] text-center text-[2.8rem] leading-[3.8rem] font-semibold tracking-[-0.02em] md:text-[2.5rem] md:leading-[3.5rem] xl:text-left">
                 {item.title}
