@@ -56,8 +56,8 @@ const WorkingProcessSection = () => {
               >
                 <AccordionTrigger className="group flex w-full items-center justify-between">
                   <div className="flex items-center gap-[3rem] md:gap-[6rem]">
-                    <i className="relative inline-flex h-[4rem] min-w-[4rem] items-center justify-center md:h-[5.8rem] md:min-w-[5.8rem]">
-                      <item.icon />
+                    <i className="relative inline-flex items-center justify-center">
+                      <item.icon className="h-[4rem] min-w-[4rem] md:h-[5.8rem] md:min-w-[5.8rem]" />
                     </i>
 
                     <span className="text-left text-[3rem] leading-[4rem] font-semibold tracking-[-0.02em] text-[#070707] md:text-[4.8rem] md:leading-[6rem]">
