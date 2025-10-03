@@ -45,7 +45,7 @@ const AgenciesHeroSection = () => {
 
       <div className="relative z-[10] mx-auto flex max-w-[120rem] flex-col items-center gap-[3rem] pt-[14rem] lg:flex-row lg:pt-[19.1rem] xl:gap-[6rem]">
         <div className="flex flex-col gap-[2rem] lg:gap-[3rem]">
-          <h1 className="max-w-[60.9rem] text-center text-[3rem] leading-[4rem] font-semibold tracking-[-0.02em] text-white md:text-[4rem] md:leading-[5rem] lg:text-left lg:text-[5.6rem] lg:leading-[6.4rem]">
+          <h1 className="max-w-[60.9rem] text-center text-[2.5rem] leading-[3rem] font-semibold tracking-[-0.02em] text-white md:text-[4rem] md:leading-[5rem] lg:text-left lg:text-[5.6rem] lg:leading-[6.4rem]">
             White Label
             <div className="bg-gradient-to-r from-[#FFD900] via-[#EE7621] to-[#FF37B3] bg-clip-text text-transparent">
               Web Design & Branding
