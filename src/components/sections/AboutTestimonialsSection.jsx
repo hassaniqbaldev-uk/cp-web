@@ -6,6 +6,7 @@ import SectionLabel2 from "../common/SectionLabel2";
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/all";
+import TestimonialSlider from "../common/TestimonialSlider";
 
 const AboutTestimonialsSection = () => {
   const labelRef = useRef();
@@ -87,8 +88,12 @@ const AboutTestimonialsSection = () => {
         </div>
       </div>
 
-      <div ref={cardRef} className="mt-[5rem] opacity-0">
+      <div ref={cardRef} className="mt-[5rem] hidden opacity-0 xl:block">
         <TestimonialsMarquee />
+      </div>
+
+      <div className="mt-[5rem] block px-[3rem] xl:hidden xl:px-[0rem]">
+        <TestimonialSlider />
       </div>
     </section>
   );

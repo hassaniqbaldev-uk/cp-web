@@ -162,14 +162,6 @@ const ContactForm = () => {
           </fieldset>
 
           <div className="mt-[1.5rem] mb-[1rem]">
-            {/* <button
-              type="submit"
-              disabled={loading}
-              className="rounded-lg bg-black px-6 py-3 text-white"
-            >
-              {loading ? "Sending..." : "Submit Request"}
-            </button> */}
-
             <button
               type="submit"
               disabled={loading}

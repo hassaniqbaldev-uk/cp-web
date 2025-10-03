@@ -8,6 +8,7 @@ import TestimonialsMarquee from "../common/TestimonialsMarquee";
 import { testimonialsCardData } from "@/constants/globals";
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
+import TestimonialSlider from "../common/TestimonialSlider";
 
 const TestimonialSection = () => {
   const labelRef = useRef();
@@ -150,10 +151,10 @@ const TestimonialSection = () => {
             ))}
           </div>
         </div>
-      </div>
 
-      <div className="mt-20 block xl:hidden">
-        <TestimonialsMarquee />
+        <div className="mt-20 block xl:hidden">
+          <TestimonialSlider />
+        </div>
       </div>
     </section>
   );
