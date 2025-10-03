@@ -53,12 +53,10 @@ const Footer = () => {
       </div>
 
       <div className="pointer-events-none absolute inset-0 z-[0] overflow-hidden select-none">
-        {/* <CLetter className="absolute bottom-[3rem] left-[-3rem] w-[8.4rem]" /> */}
         <CLetter2 className="absolute bottom-[6rem] left-[-3rem] w-[8.4rem] md:bottom-[3rem]" />
       </div>
 
       <div className="pointer-events-none absolute inset-0 z-[0] hidden overflow-hidden select-none xl:block">
-        {/* <PLetter className="absolute top-[43.5rem] right-[-3rem]" /> */}
         <PLetter2 className="absolute top-[43.5rem] right-[-3rem]" />
       </div>
 
@@ -279,4 +277,3 @@ const Footer = () => {
 };
 
 export default Footer;
-// djn
