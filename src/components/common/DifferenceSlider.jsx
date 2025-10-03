@@ -23,6 +23,10 @@ const DifferenceSlider = () => {
             slidesPerView: 2,
             spaceBetween: 10,
           },
+          1024: {
+            slidesPerView: 3,
+            spaceBetween: 10,
+          },
         }}
       >
         {withDifferenceData.map((item) => (

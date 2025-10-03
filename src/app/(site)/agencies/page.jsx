@@ -20,7 +20,7 @@ const AgenciesPage = () => {
       <DifferenceSection />
       <WorkingProcessSection />
       <div className="overflow-hidden">
-        {/* <ReviewSection /> */}
+        <ReviewSection />
         {/* <GeneralQASection2 /> */}
       </div>
       {/* <ContactSection /> */}

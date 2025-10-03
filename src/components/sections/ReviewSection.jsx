@@ -6,7 +6,7 @@ import LineStroke25 from "@/assets/decorative-elements/line-stroke-25.svg";
 const ReviewSection = () => {
   return (
     <section
-      className="relative py-[7rem]"
+      className="relative px-[3rem] py-[5rem] xl:px-[0rem] xl:py-[7rem]"
       style={{
         background:
           "linear-gradient(0deg, #070707, #070707),linear-gradient(119.9deg, #070707 1.18%, #212121 49.71%, #070707 100%)",
@@ -21,11 +21,11 @@ const ReviewSection = () => {
         <LineStroke25 className="absolute top-[-9.3rem] left-[-103.9rem]" />
       </div>
 
-      <div className="mx-auto flex max-w-[120rem] items-center">
-        <div className="testimonials-card !z-[10] w-[64.5rem]">
+      <div className="mx-auto flex max-w-[120rem] flex-col items-center lg:flex-row">
+        <div className="testimonials-card !z-[10] flex w-full flex-col items-center text-center md:w-[64.5rem] lg:items-start lg:text-left">
           <RatingStar />
 
-          <h4 className="mt-[2rem] text-[4.8rem] leading-[6rem] font-semibold tracking-[-0.02em] text-white">
+          <h4 className="mt-[2rem] text-[3rem] leading-[4rem] font-semibold tracking-[-0.02em] text-white md:text-[4.8rem] md:leading-[6rem]">
             Imaginative vision. Outstanding Web Design.
           </h4>
 
@@ -44,7 +44,7 @@ const ReviewSection = () => {
               </i>
             </div>
 
-            <div className="flex flex-col">
+            <div className="flex flex-col text-left">
               <span className="text-[1.8rem] leading-[2.6rem] font-normal text-[#f6f6f6]">
                 Agency Owner, Managing Director
               </span>
@@ -55,9 +55,9 @@ const ReviewSection = () => {
           </div>
         </div>
 
-        <div className="testimonials-card ml-[-2rem] h-[51.6rem] w-[57.5rem] !p-[2rem]">
+        <div className="testimonials-card h-[40rem] w-full !p-[2rem] md:h-[51.6rem] md:w-[57.5rem] lg:ml-[-2rem]">
           <div className="flex size-full items-center justify-center rounded-[2rem] bg-white">
-            <i className="relative inline-flex h-[19.2rem] w-[25.5rem] items-center justify-center">
+            <i className="relative inline-flex h-[19.2rem] w-[20rem] items-center justify-center md:w-[25.5rem]">
               <CloseEye />
             </i>
           </div>

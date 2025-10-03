@@ -75,7 +75,7 @@ const WorkingProcessSection = () => {
                 </AccordionTrigger>
 
                 <AccordionContent>
-                  <p className="mx-auto mt-[2rem] max-w-[66rem] text-[1.6rem] leading-[2.4rem] font-medium text-[#070707] xl:max-w-[75.2rem]">
+                  <p className="mx-auto mt-[2rem] max-w-[66rem] text-[1.4rem] leading-[2.2rem] font-medium text-[#070707] md:text-[1.6rem] md:leading-[2.4rem] xl:max-w-[75.2rem]">
                     {item.description}
                   </p>
                 </AccordionContent>
