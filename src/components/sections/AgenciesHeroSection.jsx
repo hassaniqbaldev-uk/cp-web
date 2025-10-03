@@ -43,16 +43,16 @@ const AgenciesHeroSection = () => {
         <LineStroke01 className="absolute bottom-[2.058rem] left-1/2 w-full -translate-x-1/2" />
       </div>
 
-      <div className="relative z-[10] mx-auto flex max-w-[120rem] flex-col items-center gap-[3rem] pt-[15rem] lg:flex-row lg:pt-[19.1rem] xl:gap-[6rem]">
+      <div className="relative z-[10] mx-auto flex max-w-[120rem] flex-col items-center gap-[3rem] pt-[12rem] lg:flex-row lg:pt-[19.1rem] xl:gap-[6rem]">
         <div className="flex flex-col gap-[2rem] lg:gap-[3rem]">
-          <h1 className="max-w-[60.9rem] text-center text-[4rem] leading-[5rem] font-semibold tracking-[-0.02em] text-white lg:text-left lg:text-[5.6rem] lg:leading-[6.4rem]">
+          <h1 className="max-w-[60.9rem] text-center text-[3rem] leading-[4rem] font-semibold tracking-[-0.02em] text-white md:text-[4rem] md:leading-[5rem] lg:text-left lg:text-[5.6rem] lg:leading-[6.4rem]">
             White Label
             <div className="bg-gradient-to-r from-[#FFD900] via-[#EE7621] to-[#FF37B3] bg-clip-text text-transparent">
               Web Design & Branding
             </div>
           </h1>
 
-          <p className="max-w-[61.8rem] text-center text-[1.8rem] leading-[2.8rem] font-medium text-white lg:text-left lg:text-[2.2rem] lg:leading-[3.2rem]">
+          <p className="max-w-[61.8rem] text-center text-[1.6rem] leading-[2.6rem] font-medium text-white md:text-[1.8rem] md:leading-[2.8rem] lg:text-left lg:text-[2.2rem] lg:leading-[3.2rem]">
             Since 2014, CreativePixels has supported agencies across the UK, US
             & Australia with WordPress websites, branding, and ongoing support
             all delivered under your brand.
@@ -63,9 +63,9 @@ const AgenciesHeroSection = () => {
           </div>
         </div>
 
-        <div className="h-[37.8rem] w-[52.3rem] rounded-[2rem] bg-black p-[2rem]">
+        <div className="h-[22rem] w-[30rem] rounded-[2rem] bg-black p-[2rem] md:h-[25rem] md:w-[35rem] lg:h-[37.8rem] lg:w-[52.3rem]">
           <div className="flex size-full flex-col justify-end rounded-[.6rem] bg-white">
-            <div className="relative mb-[6.6rem] flex h-[12.3rem] w-[43.3rem] items-center justify-center">
+            <div className="relative mx-auto mb-[1rem] flex h-[10rem] w-[20rem] items-center justify-center md:mb-[3rem] md:w-[25rem] lg:mb-[6.6rem] lg:w-[40rem] xl:h-[12.3rem] xl:w-[43.3rem]">
               <img
                 src="/images/white-label-card-logo.png"
                 alt="Image"
