@@ -37,13 +37,13 @@ const AgenciesHeroSection = () => {
   }, [isLoading]);
 
   return (
-    <section className="hero-sec relative h-[76rem] w-full overflow-hidden rounded-br-[5rem] rounded-bl-[5rem] px-[3rem] md:h-[79rem] xl:px-[0rem]">
+    <section className="hero-sec relative h-[76rem] w-full overflow-hidden rounded-br-[5rem] rounded-bl-[5rem] px-[3rem] lg:h-[64.8rem] xl:px-[0rem]">
       {/* Decorative stroke line */}
       <div ref={lineRef} className="absolute inset-0 z-[1] opacity-0">
         <LineStroke01 className="absolute bottom-[2.058rem] left-1/2 w-full -translate-x-1/2" />
       </div>
 
-      <div className="relative z-[10] mx-auto flex max-w-[120rem] flex-col items-center gap-[3rem] pt-[14rem] lg:flex-row lg:pt-[19.1rem] xl:gap-[6rem]">
+      <div className="relative z-[10] mx-auto flex max-w-[120rem] flex-col items-center gap-[3rem] pt-[12rem] lg:flex-row lg:pt-[17.3rem] xl:gap-[6rem]">
         <div className="flex flex-col gap-[2rem] lg:gap-[3rem]">
           <h1 className="max-w-[60.9rem] text-center text-[2.5rem] leading-[3rem] font-semibold tracking-[-0.02em] text-white md:text-[4rem] md:leading-[5rem] lg:text-left lg:text-[5.6rem] lg:leading-[6.4rem]">
             White Label

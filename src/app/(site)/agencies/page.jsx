@@ -21,9 +21,9 @@ const AgenciesPage = () => {
       <WorkingProcessSection />
       <div className="overflow-hidden">
         <ReviewSection />
-        {/* <GeneralQASection2 /> */}
+        <GeneralQASection2 />
       </div>
-      {/* <ContactSection /> */}
+      <ContactSection />
     </>
   );
 };
