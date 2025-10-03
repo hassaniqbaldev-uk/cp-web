@@ -16,14 +16,14 @@ const DifferenceSection = () => {
 
   return (
     <section
-      className="relative px-[3rem] pt-[8.4rem] pb-[9.2rem] xl:px-[0rem]"
+      className="relative px-[3rem] pt-[5rem] pb-[5rem] xl:px-[0rem] xl:pt-[8.4rem] xl:pb-[9.2rem]"
       style={{
         background:
           "url('/images/why-choose-us-gradient-bg.webp') no-repeat center / cover",
       }}
     >
       <div className="absolute inset-0 z-[0]">
-        <LineStroke26 className="absolute top-[48rem] left-1/2 w-full -translate-x-1/2" />
+        <LineStroke26 className="absolute top-[35rem] left-1/2 w-full -translate-x-1/2 xl:top-[48rem]" />
       </div>
 
       <div className="mx-auto max-w-[124.7rem]">

@@ -18,7 +18,7 @@ const AgenciesPage = () => {
       <AgenciesHeroSection />
       <AnAgencySection />
       <DifferenceSection />
-      {/* <WorkingProcessSection /> */}
+      <WorkingProcessSection />
       <div className="overflow-hidden">
         {/* <ReviewSection /> */}
         {/* <GeneralQASection2 /> */}

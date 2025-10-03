@@ -13,9 +13,9 @@ import LineStroke25 from "@/assets/decorative-elements/line-stroke-25.svg";
 
 const WorkingProcessSection = () => {
   return (
-    <section className="relative pt-[14.7rem] pb-[6.8rem]">
+    <section className="relative px-[3rem] pt-[5rem] pb-[5rem] xl:px-[0rem] xl:pt-[14.7rem] xl:pb-[6.8rem]">
       <div className="pointer-events-none absolute inset-0 z-[0] select-none">
-        <LineStroke25 className="absolute top-[50rem] left-1/2 -translate-x-1/2" />
+        <LineStroke25 className="absolute top-[50rem] left-1/2 w-full -translate-x-1/2" />
       </div>
 
       <div className="mx-auto max-w-[120rem]">
@@ -52,19 +52,19 @@ const WorkingProcessSection = () => {
               <AccordionItem
                 key={item.id}
                 value={item.id}
-                className="!border-b border-[#9C9C9C] px-[2.8rem] py-[3rem] transition-all duration-200 data-[state=open]:rounded-[2rem] data-[state=open]:bg-[#FFE500]"
+                className="!border-b border-[#9C9C9C] px-[2rem] py-[2rem] transition-all duration-200 data-[state=open]:rounded-[2rem] data-[state=open]:bg-[#FFE500] md:px-[2.8rem] md:py-[3rem]"
               >
                 <AccordionTrigger className="group flex w-full items-center justify-between">
-                  <div className="flex items-center gap-[6rem]">
-                    <i className="relative inline-flex size-[5.8rem] items-center justify-center">
+                  <div className="flex items-center gap-[3rem] md:gap-[6rem]">
+                    <i className="relative inline-flex h-[4rem] min-w-[4rem] items-center justify-center md:h-[5.8rem] md:min-w-[5.8rem]">
                       <item.icon />
                     </i>
 
-                    <span className="text-[4.8rem] leading-[6rem] font-semibold tracking-[-0.02em] text-[#070707]">
+                    <span className="text-left text-[3rem] leading-[4rem] font-semibold tracking-[-0.02em] text-[#070707] md:text-[4.8rem] md:leading-[6rem]">
                       {item.number}
                     </span>
 
-                    <span className="text-[2.6rem] leading-[3.2rem] font-semibold tracking-[-0.02em] text-[#070707]">
+                    <span className="text-left text-[2rem] leading-[2.8rem] font-semibold tracking-[-0.02em] text-[#070707] md:text-[2.6rem] md:leading-[3.2rem]">
                       {item.title}
                     </span>
                   </div>
@@ -75,7 +75,7 @@ const WorkingProcessSection = () => {
                 </AccordionTrigger>
 
                 <AccordionContent>
-                  <p className="mx-auto mt-[2rem] max-w-[75.2rem] text-[1.6rem] leading-[2.4rem] font-medium text-[#070707]">
+                  <p className="mx-auto mt-[2rem] max-w-[66rem] text-[1.6rem] leading-[2.4rem] font-medium text-[#070707] xl:max-w-[75.2rem]">
                     {item.description}
                   </p>
                 </AccordionContent>
