@@ -17,6 +17,7 @@ const HeroSection = () => {
   const ctaBtnRef = useRef();
   const headingRef2 = useRef();
   const logoRef = useRef();
+  const logoSliderRef = useRef();
   const lineRef = useRef(null);
   const { isLoading } = useLoadingStore(); // 👈 access global loader state
 
@@ -131,6 +132,16 @@ const HeroSection = () => {
       ) // 👈 Short delay
 
       .to(
+        logoSliderRef.current,
+        {
+          opacity: 1,
+          duration: 0.4,
+          ease: "power2.out",
+        },
+        ">0.1",
+      ) // 👈 Short delay
+
+      .to(
         logoRef.current,
         {
           opacity: 1,
@@ -223,7 +234,10 @@ const HeroSection = () => {
         </div>
 
         {/* Mobile Logos */}
-        <div className="relative z-[200] block w-full xl:hidden">
+        <div
+          ref={logoSliderRef}
+          className="relative z-[200] block w-full opacity-0 xl:hidden"
+        >
           <ClientLogoSlider />
         </div>
       </div>

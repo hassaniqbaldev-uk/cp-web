@@ -102,47 +102,6 @@ const ContactUsSection = () => {
           </div>
         </div>
 
-        {/* <div
-          ref={gridCardRef}
-          className="mt-[4rem] grid w-full grid-cols-1 items-center gap-[2rem] text-center md:grid-cols-2 lg:text-left xl:grid-cols-3"
-        >
-          <div className="contact-us-card flex flex-col">
-            <h6 className="text-[2.6rem] leading-[3.2rem] font-semibold tracking-[-0.02em] uppercase">
-              GIVE US A CALL
-            </h6>
-
-            <Link
-              href="tel:01618202667"
-              className="text-[3rem] leading-[4.8rem] font-semibold tracking-[-0.02em] text-[#FFC300]"
-            >
-              0161 820 2667
-            </Link>
-          </div>
-
-          <div className="contact-us-card flex flex-col">
-            <h6 className="text-[2.6rem] leading-[3.2rem] font-semibold tracking-[-0.02em] uppercase">
-              EMAIL US
-            </h6>
-
-            <Link
-              href="mailto:hello@cp.agency"
-              className="text-[3rem] leading-[4.8rem] font-semibold tracking-[-0.02em] text-[#FF37B3]"
-            >
-              hello@cp.agency
-            </Link>
-          </div>
-
-          <div className="contact-us-card flex flex-col">
-            <h6 className="text-[2.6rem] leading-[3.2rem] font-semibold tracking-[-0.02em] uppercase">
-              LOCATION
-            </h6>
-
-            <span className="text-[3rem] leading-[4.8rem] font-semibold tracking-[-0.02em] text-[#3078FF]">
-              Manchester, M12 6PN
-            </span>
-          </div>
-        </div> */}
-
         <div
           ref={gridCardRef}
           className="mt-[4rem] grid w-full grid-cols-1 items-center gap-[3.3rem] text-center md:grid-cols-2 xl:grid-cols-3"
