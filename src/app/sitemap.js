@@ -4,7 +4,7 @@ import { fetchAPI } from "@/lib/strapi";
 export const revalidate = 60; // re-generate every 60 seconds
 
 export default async function sitemap() {
-  const siteUrl = "https://cp-web-taupe.vercel.app/"; // replace with your real domain
+  const siteUrl = "https://creativepixels.agency/"; // replace with your real domain
 
   let caseStudies = [];
 
