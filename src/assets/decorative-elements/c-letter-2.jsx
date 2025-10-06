@@ -1,47 +1,58 @@
 "use client";
 
+import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
 
 const CLetter2 = (props) => {
   const svgRef = useRef(null);
 
-  useEffect(() => {
-    if (svgRef.current) {
-      const paths = svgRef.current.querySelectorAll("path");
+  useGSAP(() => {
+    if (!svgRef.current) return;
 
-      paths.forEach((path) => {
-        const length = path.getTotalLength();
+    const paths = svgRef.current.querySelectorAll("path");
 
-        // reset stroke & fill before animation
-        gsap.set(path, {
-          strokeDasharray: length,
-          strokeDashoffset: length,
-          fillOpacity: 0,
-        });
-
-        // create timeline that runs on scroll
-        gsap
-          .timeline({
-            scrollTrigger: {
-              trigger: svgRef.current, // the SVG triggers animation
-              start: "top 80%", // when top of SVG hits 80% of viewport
-              toggleActions: "play none none none", // play only once
-            },
-          })
-          .to(path, {
-            strokeDashoffset: 0,
-            duration: 3, // slow stroke draw
-            ease: "power1.inOut",
-          })
-          .to(path, {
-            fillOpacity: 1,
-            duration: 1, // then fade fill
-            ease: "power1.inOut",
-          });
+    // Prepare all paths
+    paths.forEach((path) => {
+      const length = path.getTotalLength();
+      gsap.set(path, {
+        strokeDasharray: length,
+        strokeDashoffset: length,
+        fillOpacity: 0,
       });
-    }
-  }, []);
+    });
+
+    // Single timeline with stagger
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: svgRef.current,
+        start: "top 60%",
+        toggleActions: "play none none none",
+      },
+    });
+
+    // Animate all strokes with stagger
+    tl.to(paths, {
+      strokeDashoffset: 0,
+      duration: 3,
+      stagger: 0.3, // 0.3s between each path
+      ease: "power1.inOut",
+    }).to(
+      paths,
+      {
+        fillOpacity: 1,
+        duration: 1,
+        stagger: 0.3,
+        ease: "power1.inOut",
+      },
+      "-=2",
+    ); // Start 2 seconds before stroke animation ends
+
+    return () => {
+      tl.kill();
+      tl.scrollTrigger?.kill();
+    };
+  });
 
   return (
     <svg
