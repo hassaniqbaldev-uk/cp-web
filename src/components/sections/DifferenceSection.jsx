@@ -18,6 +18,7 @@ import { SplitText } from "gsap/all";
 const DifferenceSection = () => {
   const [isWith, setIsWith] = useState(true); // default: show "With"
   const container = useRef();
+  const lineRef = useRef(); // Ref for the line
 
   useGSAP(
     () => {
@@ -28,6 +29,31 @@ const DifferenceSection = () => {
           linesClass: "line",
         },
       );
+
+      // Line draw animation
+      if (lineRef.current) {
+        const path = lineRef.current.querySelector("path");
+        if (path) {
+          const length = path.getTotalLength();
+
+          gsap.set(path, {
+            strokeDasharray: length,
+            strokeDashoffset: length,
+          });
+
+          gsap.to(path, {
+            strokeDashoffset: 0,
+            duration: 2,
+            ease: "power2.inOut",
+            scrollTrigger: {
+              trigger: lineRef.current,
+              start: "top 80%",
+              end: "bottom 20%",
+              scrub: true, // Smooth scrubbing
+            },
+          });
+        }
+      }
 
       // Timeline for heading
       const headingTl = gsap.timeline({
@@ -99,7 +125,7 @@ const DifferenceSection = () => {
           "url('/images/why-choose-us-gradient-bg.webp') no-repeat center / cover",
       }}
     >
-      <div className="absolute inset-0 z-[0]">
+      <div ref={lineRef} className="absolute inset-0 z-[0]">
         <LineStroke26 className="absolute top-[35rem] left-1/2 w-full -translate-x-1/2 xl:top-[48rem]" />
       </div>
 
@@ -121,7 +147,7 @@ const DifferenceSection = () => {
             <span>Without</span>
           </div>
 
-          <div className="switch-card opacity-0">
+          <div className="switch-card w-full opacity-0">
             {isWith ? (
               <>
                 <div

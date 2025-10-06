@@ -1,3 +1,4 @@
+"use client";
 import SectionLabel2 from "../common/SectionLabel2";
 import SectionTitle from "../common/SectionTitle";
 import {
@@ -10,8 +11,25 @@ import UpArrowIcon from "@/assets/icons/up-arrow-dark.svg";
 import { accordionData } from "@/constants/agenciesPage";
 import CommonBtn3 from "../common/CommonBtn3";
 import LineStroke25 from "@/assets/decorative-elements/line-stroke-25.svg";
+import { useRef } from "react";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
 
 const WorkingProcessSection = () => {
+  const labelRef = useRef();
+
+  useGSAP(() => {
+    // Wobble/shake animation
+    gsap.to(labelRef.current, {
+      rotation: "+=3", // Rotate 3 degrees back and forth
+      duration: 0.15, // Very short duration for quick wobble
+      yoyo: true, // Go back and forth
+      repeat: -1, // Infinite repeat
+      ease: "sine.inOut", // Best ease for wobble effects
+      repeatDelay: 0.5, // Small pause between wobbles
+    });
+  });
+
   return (
     <section className="relative px-[3rem] pt-[5rem] pb-[5rem] xl:px-[0rem] xl:pt-[14.7rem] xl:pb-[6.8rem]">
       <div className="pointer-events-none absolute inset-0 z-[0] select-none">
@@ -20,7 +38,7 @@ const WorkingProcessSection = () => {
 
       <div className="mx-auto max-w-[120rem]">
         <div className="flex flex-col items-center text-center">
-          <div className="rotate-[-2deg]">
+          <div ref={labelRef} className="rotate-[-2deg]">
             <SectionLabel2
               text="Our Working Process"
               bgColor="bg-[#FFC300]"
