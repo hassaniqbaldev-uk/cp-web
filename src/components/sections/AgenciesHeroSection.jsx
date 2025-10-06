@@ -3,41 +3,81 @@
 import LineStroke01 from "@/assets/decorative-elements/line-stroke-01.svg";
 import { useLoadingStore } from "@/store/useLoadingStore";
 import gsap from "gsap";
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
 import CommonBtn2 from "../common/CommonBtn2";
+import { useGSAP } from "@gsap/react";
+import { SplitText } from "gsap/all";
 
 const AgenciesHeroSection = () => {
+  const { isLoading } = useLoadingStore();
   const lineRef = useRef(null);
-  const { isLoading } = useLoadingStore(); // 👈 access global loader state
+  const container = useRef();
 
-  useEffect(() => {
-    if (isLoading) return; // ⛔ don’t run until loader is done
-
-    const linePath = lineRef.current.querySelector("path");
-
-    if (linePath) {
-      gsap.fromTo(
-        linePath,
-        { drawSVG: "0%" }, // start hidden
+  useGSAP(
+    () => {
+      const splitHeading = new SplitText(
+        container.current.querySelector(".agencies-hero-heading"),
         {
-          drawSVG: "100%", // fully drawn
-          duration: 5,
-          ease: "power2.inOut",
+          type: "lines",
+          linesClass: "line",
         },
       );
-    }
+      const linePath = lineRef.current.querySelector("path");
 
-    const tl = gsap.timeline();
+      if (isLoading) return;
 
-    tl.to(lineRef.current, {
-      opacity: 1,
-      duration: 0.6,
-      ease: "power2.out",
-    });
-  }, [isLoading]);
+      if (linePath) {
+        gsap.fromTo(
+          linePath,
+          { drawSVG: "0%" },
+          {
+            drawSVG: "100%",
+            duration: 5,
+            ease: "power2.inOut",
+          },
+        );
+      }
+
+      gsap.to(lineRef.current, {
+        opacity: 1,
+        duration: 0.6,
+        ease: "power2.out",
+      });
+
+      const tl = gsap.timeline();
+
+      tl.to(".agencies-hero-heading", {
+        opacity: 1,
+        duration: 0.4,
+        ease: "power2.out",
+      }).fromTo(
+        splitHeading.lines,
+        { opacity: 0, y: 40 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.4,
+          stagger: 0.2,
+          ease: "power2.out",
+        },
+      );
+
+      // Cleanup function (important for SplitText)
+      return () => {
+        splitHeading.revert();
+      };
+    },
+    {
+      scope: container,
+      dependencies: [isLoading], // ✅ Moved dependencies here
+    },
+  );
 
   return (
-    <section className="hero-sec relative h-[76rem] w-full overflow-hidden rounded-br-[5rem] rounded-bl-[5rem] px-[3rem] lg:h-[64.8rem] xl:px-[0rem]">
+    <section
+      ref={container}
+      className="hero-sec relative h-[76rem] w-full overflow-hidden rounded-br-[5rem] rounded-bl-[5rem] px-[3rem] lg:h-[64.8rem] xl:px-[0rem]"
+    >
       {/* Decorative stroke line */}
       <div ref={lineRef} className="absolute inset-0 z-[1] opacity-0">
         <LineStroke01 className="absolute bottom-[2.058rem] left-1/2 w-full -translate-x-1/2" />
@@ -45,7 +85,7 @@ const AgenciesHeroSection = () => {
 
       <div className="relative z-[10] mx-auto flex max-w-[120rem] flex-col items-center gap-[3rem] pt-[12rem] lg:flex-row lg:pt-[17.3rem] xl:gap-[6rem]">
         <div className="flex flex-col gap-[2rem] lg:gap-[3rem]">
-          <h1 className="max-w-[60.9rem] text-center text-[2.5rem] leading-[3rem] font-semibold tracking-[-0.02em] text-white md:text-[4rem] md:leading-[5rem] lg:text-left lg:text-[5.6rem] lg:leading-[6.4rem]">
+          <h1 className="agencies-hero-heading max-w-[60.9rem] overflow-hidden text-center text-[2.5rem] leading-[3rem] font-semibold tracking-[-0.02em] text-white opacity-0 md:text-[4rem] md:leading-[5rem] lg:text-left lg:text-[5.5rem] lg:leading-[6.3rem]">
             White Label
             <div className="bg-gradient-to-r from-[#FFD900] via-[#EE7621] to-[#FF37B3] bg-clip-text text-transparent">
               Web Design & Branding

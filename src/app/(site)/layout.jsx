@@ -1,5 +1,6 @@
 "use client";
 import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
 import { ScrollTrigger, SplitText } from "gsap/all";
 import Script from "next/script";
 import Header from "@/components/layout/Header";
@@ -16,7 +17,7 @@ import { useLoadingStore } from "@/store/useLoadingStore";
 import Flip from "gsap/Flip";
 
 // Register the plugin globally
-gsap.registerPlugin(ScrollTrigger, SplitText, DrawSVGPlugin, Flip);
+gsap.registerPlugin(useGSAP, ScrollTrigger, SplitText, DrawSVGPlugin, Flip);
 
 export default function SiteLayout({ children }) {
   const lenisRef = useRef();
