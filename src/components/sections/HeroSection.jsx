@@ -175,14 +175,14 @@ const HeroSection = () => {
 
       <div className="relative z-[10] flex h-full w-full flex-col items-center justify-end gap-[4rem] pt-[15rem] pb-[4rem] xl:gap-[6rem]">
         {/* Main content */}
-        <div className="flex max-w-[106.5rem] flex-col items-center gap-[2rem] px-[2rem] text-center md:gap-[2.7rem] xl:px-[0rem]">
+        <div className="flex w-full max-w-[106.5rem] flex-col items-center gap-[2rem] px-[2rem] text-center md:gap-[2.7rem] xl:px-[0rem]">
           <div ref={badgeRef} className="opacity-0">
             <BookBadge />
           </div>
 
           <h1
             ref={headingRef}
-            className="overflow-hidden text-[2.8rem] leading-[3.7rem] font-semibold tracking-[-0.03em] text-white opacity-0 md:text-[4.5rem] md:leading-[5.5rem] md:font-bold lg:text-[6rem] lg:leading-[7rem] xl:text-[7rem] xl:leading-[8.4rem]"
+            className="w-full overflow-hidden text-[2.8rem] leading-[3.7rem] font-semibold tracking-[-0.03em] text-white opacity-0 md:text-[4.5rem] md:leading-[5.5rem] md:font-bold lg:text-[6rem] lg:leading-[7rem] xl:text-[6.5rem] xl:leading-[8rem]"
           >
             Grow your digital presence today with real{" "}
             <span className="bg-gradient-01 bg-clip-text text-transparent">
