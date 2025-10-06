@@ -73,6 +73,15 @@ const DifferenceSection = () => {
       });
 
       // Independent card animation
+      gsap.to(".switch-card", {
+        opacity: 1,
+        duration: 0.4,
+        scrollTrigger: {
+          trigger: ".switch-card",
+          start: "top 60%",
+          toggleActions: "play none none none",
+        },
+      });
 
       return () => {
         splitHeading.revert();
