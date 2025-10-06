@@ -153,8 +153,6 @@ const AgenciesHeroSection = () => {
       return () => {
         splitHeading.revert();
         splitDesc.revert();
-        tl.kill();
-        svgTl.kill(); // Clean and simple
       };
     },
     {

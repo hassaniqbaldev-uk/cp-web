@@ -61,13 +61,16 @@ const AnAgencySection = () => {
         );
 
       // Timeline for desc 1
-      const descTl1 = gsap.timeline({
-        scrollTrigger: {
-          trigger: ".an-agency-description-1",
-          start: "top 60%",
-          toggleActions: "play none none none",
+      const descTl1 = gsap.timeline(
+        {
+          scrollTrigger: {
+            trigger: ".an-agency-description-1",
+            start: "top 60%",
+            toggleActions: "play none none none",
+          },
         },
-      });
+        "<0.1",
+      );
 
       descTl1
         .to(".an-agency-description-1", {
@@ -89,13 +92,16 @@ const AnAgencySection = () => {
         );
 
       // Timeline for desc 2
-      const descTl2 = gsap.timeline({
-        scrollTrigger: {
-          trigger: ".an-agency-description-2",
-          start: "top 60%",
-          toggleActions: "play none none none",
+      const descTl2 = gsap.timeline(
+        {
+          scrollTrigger: {
+            trigger: ".an-agency-description-2",
+            start: "top 60%",
+            toggleActions: "play none none none",
+          },
         },
-      });
+        "<0.1",
+      );
 
       descTl2
         .to(".an-agency-description-2", {
@@ -118,14 +124,8 @@ const AnAgencySection = () => {
 
       return () => {
         splitHeading.revert();
-        headingTl.kill();
-        headingTl.scrollTrigger?.kill();
         splitDesc1.revert();
-        descTl1.kill();
-        descTl1.scrollTrigger?.kill();
         splitDesc2.revert();
-        descTl2.kill();
-        descTl2.scrollTrigger?.kill();
       };
     },
     { scope: container },
