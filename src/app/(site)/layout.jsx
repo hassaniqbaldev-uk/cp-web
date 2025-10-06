@@ -54,7 +54,9 @@ export default function SiteLayout({ children }) {
           <StickyHeader />
           {children}
           <Footer />
-          <BackToTopBtn />
+          <div className="hidden md:block">
+            <BackToTopBtn />
+          </div>
         </div>
       </body>
     </html>
