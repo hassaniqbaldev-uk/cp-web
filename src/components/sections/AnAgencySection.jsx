@@ -138,7 +138,7 @@ const AnAgencySection = () => {
     >
       {/* Bg Element */}
       <div className="absolute inset-0 z-[0] hidden overflow-hidden xl:block">
-        <CLetter2 className="absolute top-[2rem] right-[-13rem] h-[60.3rem] w-[40rem]" />
+        <CLetter2 className="absolute top-[10rem] right-[-10rem] size-[26.8rem]" />
       </div>
 
       <div className="relative mx-auto flex max-w-[113rem] flex-col items-center gap-[2rem] text-center">
