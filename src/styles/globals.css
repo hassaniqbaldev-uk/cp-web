@@ -1072,6 +1072,33 @@ body {
   background-position: center;
 }
 
+/* Agencies Hero Section */
+
+.your-logo-here-gradient-border {
+  position: relative;
+  background: linear-gradient(
+    301.75deg,
+    rgba(255, 255, 255, 0.05) 1.41%,
+    rgba(29, 29, 29, 0.05) 95.05%
+  );
+  z-index: 0;
+}
+
+.your-logo-here-gradient-border::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  padding: 8px; /* border thickness */
+  border-radius: inherit;
+  background: linear-gradient(90deg, #ffe400 0%, #ff37b3 100%);
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  z-index: -1;
+}
+
 /* Difference Section */
 
 .toggle-switch {
