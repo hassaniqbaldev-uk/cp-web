@@ -24,7 +24,7 @@ const BookBadge = () => {
       data-cal-namespace="15min"
       data-cal-link="hassan-iqbal-mznzu9/15min"
       data-cal-config='{"layout":"month_view","theme":"dark"}'
-      className="inline-flex h-[4rem] min-w-[25rem] cursor-pointer items-center justify-center gap-[1rem] rounded-[.8rem] bg-white/20 px-[2rem] py-[1rem] text-[1.4rem] leading-[2.2rem] font-medium text-white md:h-[4.4rem] md:min-w-[28.1rem] md:text-[1.6rem] md:leading-[2.4rem]"
+      className="inline-flex h-[4rem] cursor-pointer items-center justify-center gap-[1rem] rounded-[.8rem] bg-white/20 px-[2rem] py-[1rem] text-[1.4rem] leading-[2.2rem] font-medium text-white md:h-[4.4rem] md:min-w-[28.1rem] md:text-[1.6rem] md:leading-[2.4rem]"
     >
       {/* Pulsing dot */}
       <span className="relative">
