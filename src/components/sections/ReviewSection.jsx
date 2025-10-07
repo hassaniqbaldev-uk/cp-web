@@ -153,7 +153,7 @@ const ReviewSection = () => {
           <div className="flex size-full items-center justify-center rounded-[2rem] bg-white">
             <i className="relative inline-flex items-center justify-center">
               {/* <CloseEye className="h-[19.2rem] w-[20rem] md:w-[25.5rem]" /> */}
-              <WhiteLabelEye />
+              <WhiteLabelEye className="h-[19.2rem] w-[20rem] md:w-[25.5rem]" />
             </i>
           </div>
         </div>

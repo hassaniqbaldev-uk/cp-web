@@ -6,6 +6,7 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { SplitText } from "gsap/all";
 import { useRef } from "react";
+import GeneralQASlider from "../common/GeneralQASlider";
 
 const GeneralQASection2 = () => {
   const lineRef = useRef(); // Ref for the line
@@ -76,6 +77,21 @@ const GeneralQASection2 = () => {
         },
       );
 
+      // Independent Card Slider Animation
+      gsap.fromTo(
+        ".grid-qa-slider",
+        { opacity: 0 },
+        {
+          opacity: 1,
+          duration: 0.4,
+          scrollTrigger: {
+            trigger: ".grid-qa-slider",
+            start: "top 60%",
+            toggleActions: "play none none none",
+          },
+        },
+      );
+
       // Timeline for heading
       const headingTl = gsap.timeline({
         scrollTrigger: {
@@ -119,6 +135,9 @@ const GeneralQASection2 = () => {
         },
         "<0.3",
       );
+      return () => {
+        splitHeading.revert();
+      };
     },
     { scope: container },
   );
@@ -139,7 +158,7 @@ const GeneralQASection2 = () => {
           Questions and Answers
         </h2>
 
-        <div className="mt-[5rem] grid grid-cols-1 gap-[4.3rem] lg:grid-cols-2">
+        <div className="mt-[5rem] hidden grid-cols-1 gap-[4.3rem] lg:grid lg:grid-cols-2">
           {generalQAData.map((item, idx) => (
             <div
               key={idx}
@@ -159,6 +178,10 @@ const GeneralQASection2 = () => {
               </div>
             </div>
           ))}
+        </div>
+
+        <div className="grid-qa-slider mt-[5rem] block w-full lg:hidden">
+          <GeneralQASlider />
         </div>
       </div>
     </section>

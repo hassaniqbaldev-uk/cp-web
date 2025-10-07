@@ -201,7 +201,13 @@ const WorkingProcessSection = () => {
           },
         },
       );
+      return () => {
+        splitHeading.revert();
+        splitDesc1.revert();
+        splitDesc2.revert();
+      };
     },
+
     { scope: container },
   );
 

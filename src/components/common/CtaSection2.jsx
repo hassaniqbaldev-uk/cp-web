@@ -9,11 +9,12 @@ import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import RightArrowIcon from "@/assets/icons/right-arrow-icon.svg";
 import { getCalApi } from "@calcom/embed-react";
+import { useGSAP } from "@gsap/react";
 
 const CtaSection2 = () => {
   const containerRef = useRef();
 
-  useEffect(() => {
+  useGSAP(() => {
     gsap.to(containerRef.current, {
       opacity: 1,
       duration: 0.6,
@@ -24,7 +25,7 @@ const CtaSection2 = () => {
         toggleActions: "play none none none",
       },
     });
-  }, []);
+  });
 
   useEffect(() => {
     (async function () {

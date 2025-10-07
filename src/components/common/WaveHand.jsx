@@ -1,11 +1,12 @@
 "use client";
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
 import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
 
 const WaveHand = () => {
   const handRef = useRef();
 
-  useEffect(() => {
+  useGSAP(() => {
     // Wave animation (rotate back and forth)
     gsap.to(handRef.current, {
       rotation: 20, // Rotate 20 degrees
@@ -15,7 +16,7 @@ const WaveHand = () => {
       ease: "sine.inOut", // Smooth easing
       repeatDelay: 0.2, // Small pause between waves
     });
-  }, []);
+  });
 
   return (
     <span

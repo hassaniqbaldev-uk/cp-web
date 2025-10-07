@@ -10,9 +10,10 @@ import {
 } from "../ui/select";
 import ContactFormInput from "./ContactFormInput";
 import WaveHand from "./WaveHand";
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import gsap from "gsap";
 import RightArrowIcon from "@/assets/icons/right-arrow-icon.svg";
+import { useGSAP } from "@gsap/react";
 
 const ContactForm = () => {
   const formContainerRef = useRef();
@@ -27,7 +28,7 @@ const ContactForm = () => {
   const [loading, setLoading] = useState(false);
   const [status, setStatus] = useState("");
 
-  useEffect(() => {
+  useGSAP(() => {
     gsap.set(formContainerRef.current, {
       height: 0,
       autoAlpha: 0,
@@ -44,7 +45,7 @@ const ContactForm = () => {
         toggleActions: "play none none none",
       },
     });
-  }, []);
+  });
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });

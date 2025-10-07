@@ -4,7 +4,7 @@ import { useGSAP } from "@gsap/react";
 import { useRef } from "react";
 import gsap from "gsap";
 
-const WhiteLabelEye = () => {
+const WhiteLabelEye = (props) => {
   const containerRef = useRef();
 
   useGSAP(
@@ -41,20 +41,13 @@ const WhiteLabelEye = () => {
   return (
     <div ref={containerRef}>
       <svg
-        width="282"
-        height="259"
         viewBox="0 0 282 259"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
+        {...props}
       >
         <foreignObject x="-47.7" y="-7.56816" width="377.4" height="275.136">
-          <div
-            xmlns="http://www.w3.org/1999/xhtml"
-            style={{
-              backdropFilter:
-                "blur(23.85px);clip-path:url(#bgblur_0_519_7_clip_path);height:100%;width:100%",
-            }}
-          ></div>
+          <div xmlns="http://www.w3.org/1999/xhtml"></div>
         </foreignObject>
 
         {/* Eye paths with fade animation */}
@@ -79,13 +72,7 @@ const WhiteLabelEye = () => {
           width="260.879"
           height="353.743"
         >
-          <div
-            xmlns="http://www.w3.org/1999/xhtml"
-            style={{
-              backdropFilter:
-                "blur(23.85px);clip-path:url(#bgblur_1_519_7_clip_path);height:100%;width:100%",
-            }}
-          ></div>
+          <div xmlns="http://www.w3.org/1999/xhtml"></div>
         </foreignObject>
 
         {/* Gradient line with fade animation */}
