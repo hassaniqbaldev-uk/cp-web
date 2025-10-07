@@ -1,11 +1,105 @@
+"use client";
 import CloseEye from "@/assets/decorative-elements/close-eye";
 import RatingStar from "@/assets/icons/rating-star.svg";
 import LineStroke24 from "@/assets/decorative-elements/line-stroke-24.svg";
 import LineStroke25 from "@/assets/decorative-elements/line-stroke-25.svg";
+import { useRef } from "react";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
+import WhiteLabelEye from "@/assets/decorative-elements/white-label-eye";
 
 const ReviewSection = () => {
+  const container = useRef();
+  const lineRef1 = useRef(); // Ref for the line
+  const lineRef2 = useRef(); // Ref for the line
+
+  useGSAP(
+    () => {
+      // Line draw animation
+      if (lineRef1.current) {
+        const path = lineRef1.current.querySelector("path");
+        if (path) {
+          const length = path.getTotalLength();
+
+          gsap.set(path, {
+            strokeDasharray: length,
+            strokeDashoffset: length,
+          });
+
+          gsap.to(path, {
+            strokeDashoffset: 0,
+            duration: 2,
+            ease: "power2.inOut",
+            scrollTrigger: {
+              trigger: lineRef1.current,
+              start: "top 80%",
+              end: "bottom 20%",
+              scrub: true, // Smooth scrubbing
+            },
+          });
+        }
+      }
+
+      if (lineRef2.current) {
+        const path = lineRef2.current.querySelector("path");
+        if (path) {
+          const length = path.getTotalLength();
+
+          gsap.set(path, {
+            strokeDasharray: length,
+            strokeDashoffset: length,
+          });
+
+          gsap.to(path, {
+            strokeDashoffset: 0,
+            duration: 2,
+            ease: "power2.inOut",
+            scrollTrigger: {
+              trigger: lineRef2.current,
+              start: "top 80%",
+              end: "bottom 60%",
+              scrub: true, // Smooth scrubbing
+            },
+          });
+        }
+      }
+
+      // Independent Card Animation
+      gsap.fromTo(
+        ".review-card-1",
+        { opacity: 0 },
+        {
+          opacity: 1,
+          duration: 0.4,
+          scrollTrigger: {
+            trigger: ".review-card-1",
+            start: "top 60%",
+            toggleActions: "play none none none",
+          },
+        },
+      );
+
+      gsap.fromTo(
+        ".review-card-2",
+        { opacity: 0 },
+        {
+          opacity: 1,
+          duration: 0.4,
+          delay: 0.2,
+          scrollTrigger: {
+            trigger: ".review-card-2",
+            start: "top 60%",
+            toggleActions: "play none none none",
+          },
+        },
+      );
+    },
+    { scope: container },
+  );
+
   return (
     <section
+      ref={container}
       className="relative px-[3rem] py-[5rem] xl:px-[0rem] xl:py-[7rem]"
       style={{
         background:
@@ -13,16 +107,16 @@ const ReviewSection = () => {
       }}
     >
       {/* Decorative stroke line */}
-      <div className="absolute inset-0 z-[0]">
+      <div ref={lineRef1} className="absolute inset-0 z-[0]">
         <LineStroke24 className="absolute top-[28rem] right-[-23.6rem] xl:top-[32.5rem]" />
       </div>
 
-      <div className="absolute inset-0 z-[0]">
+      <div ref={lineRef2} className="absolute inset-0 z-[0]">
         <LineStroke25 className="absolute top-[-9.3rem] left-[-103.9rem]" />
       </div>
 
       <div className="mx-auto flex max-w-[120rem] flex-col items-center lg:flex-row">
-        <div className="testimonials-card !z-[10] flex w-full flex-col items-center text-center md:w-[64.5rem] lg:items-start lg:text-left">
+        <div className="testimonials-card review-card-1 !z-[10] flex w-full flex-col items-center text-center md:w-[64.5rem] lg:items-start lg:text-left">
           <RatingStar />
 
           <h4 className="mt-[2rem] text-[3rem] leading-[4rem] font-semibold tracking-[-0.02em] text-white md:text-[4.8rem] md:leading-[6rem]">
@@ -55,10 +149,11 @@ const ReviewSection = () => {
           </div>
         </div>
 
-        <div className="testimonials-card h-[40rem] w-full !p-[2rem] md:h-[51.6rem] md:w-[57.5rem] lg:ml-[-2rem]">
+        <div className="testimonials-card review-card-2 h-[40rem] w-full !p-[2rem] md:h-[51.6rem] md:w-[57.5rem] lg:ml-[-2rem]">
           <div className="flex size-full items-center justify-center rounded-[2rem] bg-white">
             <i className="relative inline-flex items-center justify-center">
-              <CloseEye className="h-[19.2rem] w-[20rem] md:w-[25.5rem]" />
+              {/* <CloseEye className="h-[19.2rem] w-[20rem] md:w-[25.5rem]" /> */}
+              <WhiteLabelEye />
             </i>
           </div>
         </div>

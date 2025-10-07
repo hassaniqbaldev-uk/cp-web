@@ -19,6 +19,7 @@ import { SplitText } from "gsap/all";
 const WorkingProcessSection = () => {
   const labelRef = useRef();
   const container = useRef();
+  const lineRef = useRef(); // Ref for the line
 
   useGSAP(
     () => {
@@ -43,6 +44,31 @@ const WorkingProcessSection = () => {
           linesClass: "line",
         },
       );
+
+      // Line draw animation
+      if (lineRef.current) {
+        const path = lineRef.current.querySelector("path");
+        if (path) {
+          const length = path.getTotalLength();
+
+          gsap.set(path, {
+            strokeDasharray: length,
+            strokeDashoffset: length,
+          });
+
+          gsap.to(path, {
+            strokeDashoffset: 0,
+            duration: 2,
+            ease: "power2.inOut",
+            scrollTrigger: {
+              trigger: lineRef.current,
+              start: "top 80%",
+              end: "bottom 20%",
+              scrub: true, // Smooth scrubbing
+            },
+          });
+        }
+      }
 
       // Wobble/shake animation
       gsap.fromTo(
@@ -99,7 +125,7 @@ const WorkingProcessSection = () => {
           stagger: 0.2,
           ease: "power2.out",
         },
-        "<",
+        "<0.3",
       );
 
       // Timeline for description2
@@ -121,7 +147,7 @@ const WorkingProcessSection = () => {
           stagger: 0.2,
           ease: "power2.out",
         },
-        "<",
+        "<0.3",
       );
 
       // Timeline for Accordion
@@ -143,7 +169,7 @@ const WorkingProcessSection = () => {
           stagger: 0.2,
           ease: "power2.out",
         },
-        "<",
+        "<0.3",
       );
 
       // Independent Label Animation
@@ -184,7 +210,10 @@ const WorkingProcessSection = () => {
       ref={container}
       className="relative px-[3rem] pt-[5rem] pb-[5rem] xl:px-[0rem] xl:pt-[14.7rem] xl:pb-[6.8rem]"
     >
-      <div className="pointer-events-none absolute inset-0 z-[0] select-none">
+      <div
+        ref={lineRef}
+        className="pointer-events-none absolute inset-0 z-[0] select-none"
+      >
         <LineStroke25 className="absolute top-[50rem] left-1/2 w-full -translate-x-1/2" />
       </div>
 
