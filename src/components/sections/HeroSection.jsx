@@ -5,168 +5,15 @@ import LineStroke01 from "@/assets/decorative-elements/line-stroke-01.svg";
 import CommonBtn2 from "../common/CommonBtn2";
 import ClientLogoSlider from "../common/ClientLogoSlider";
 import { logoPopupsData } from "@/constants/globals";
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
 import gsap from "gsap";
-import { SplitText } from "gsap/all";
 import { useLoadingStore } from "@/store/useLoadingStore";
 import { useGSAP } from "@gsap/react";
 
 const HeroSection = () => {
-  const badgeRef = useRef();
-  const headingRef = useRef();
-  const descRef = useRef();
-  const ctaBtnRef = useRef();
-  const headingRef2 = useRef();
-  const logoRef = useRef();
-  const logoSliderRef = useRef();
-  const { isLoading } = useLoadingStore(); // 👈 access global loader state
+  const { isLoading } = useLoadingStore();
   const lineRef = useRef(null);
   const container = useRef();
-
-  // useEffect(() => {
-  //   if (isLoading) return; // ⛔ don’t run until loader is done
-
-  //   const splitHeading = new SplitText(headingRef.current, {
-  //     type: "lines",
-  //     linesClass: "line",
-  //   });
-  //   const splitDesc = new SplitText(descRef.current, {
-  //     type: "lines",
-  //     linesClass: "line",
-  //   });
-
-  //   const linePath = lineRef.current.querySelector("path");
-
-  //   if (linePath) {
-  //     gsap.fromTo(
-  //       linePath,
-  //       { drawSVG: "0%" }, // start hidden
-  //       {
-  //         drawSVG: "100%", // fully drawn
-  //         duration: 5,
-  //         ease: "power2.inOut",
-  //       },
-  //     );
-  //   }
-
-  //   const tl = gsap.timeline();
-
-  //   tl.to(lineRef.current, {
-  //     opacity: 1,
-  //     duration: 0.6,
-  //     ease: "power2.out",
-  //   })
-
-  //     // Header animation
-  //     .to(badgeRef.current, {
-  //       opacity: 1,
-  //       duration: 0.6,
-  //       ease: "power2.out",
-  //       delay: 0.1,
-  //     })
-
-  //     // FASTER SEQUENCE STARTS HERE - Use position parameters to reduce delays
-  //     .to(
-  //       headingRef.current,
-  //       {
-  //         opacity: 1,
-  //         duration: 0.4,
-  //         ease: "power2.out",
-  //       },
-  //       ">0.1",
-  //     ) // 👈 Only 0.1s delay after previous
-
-  //     .fromTo(
-  //       splitHeading.lines,
-  //       { opacity: 0, y: 20 },
-  //       {
-  //         opacity: 1,
-  //         y: 0,
-  //         duration: 0.3,
-  //         stagger: 0.1, // 👈 Faster stagger
-  //         ease: "power2.out",
-  //       },
-  //       "<0.2", // 👈 Start 0.2s BEFORE the previous animation ends
-  //     )
-
-  //     .to(
-  //       descRef.current,
-  //       {
-  //         opacity: 1,
-  //         duration: 0.4,
-  //         ease: "power2.out",
-  //       },
-  //       ">0.1",
-  //     ) // 👈 Short delay
-
-  //     .fromTo(
-  //       splitDesc.lines,
-  //       { opacity: 0, y: 20 },
-  //       {
-  //         opacity: 1,
-  //         y: 0,
-  //         duration: 0.3,
-  //         stagger: 0.1, // 👈 Faster stagger
-  //         ease: "power2.out",
-  //       },
-  //       "<0.2", // 👈 Overlap with previous animation
-  //     )
-
-  //     .to(
-  //       ctaBtnRef.current,
-  //       {
-  //         opacity: 1,
-  //         duration: 0.6,
-  //         ease: "power2.out",
-  //       },
-  //       ">0.1",
-  //     ) // 👈 Short delay
-
-  //     .to(
-  //       headingRef2.current,
-  //       {
-  //         opacity: 1,
-  //         y: 0,
-  //         duration: 0.6,
-  //         ease: "power2.out",
-  //       },
-  //       ">0.1",
-  //     ) // 👈 Short delay
-
-  //     .to(
-  //       logoSliderRef.current,
-  //       {
-  //         opacity: 1,
-  //         duration: 0.4,
-  //         ease: "power2.out",
-  //       },
-  //       ">0.1",
-  //     ) // 👈 Short delay
-
-  //     .to(
-  //       logoRef.current,
-  //       {
-  //         opacity: 1,
-  //         duration: 0.4,
-  //         ease: "power2.out",
-  //       },
-  //       ">0.1",
-  //     ) // 👈 Short delay
-
-  //     .fromTo(
-  //       gsap.utils.toArray(logoRef.current.children),
-  //       { opacity: 0, y: -20 },
-  //       {
-  //         opacity: 1,
-  //         y: 0,
-  //         duration: 0.6,
-  //         stagger: 0.1, // 👈 Faster stagger
-  //         ease: "power2.out",
-  //         clearProps: "all",
-  //       },
-  //       "<0.1",
-  //     );
-  // }, [isLoading]);
 
   useGSAP(
     () => {
@@ -196,7 +43,7 @@ const HeroSection = () => {
           );
       }
 
-      const tl = gsap.timeline();
+      const tl = gsap.timeline({ delay: 0.6 });
 
       tl.to(".book-badge", {
         opacity: 1,
@@ -293,14 +140,14 @@ const HeroSection = () => {
   return (
     <section
       ref={container}
-      className="hero-sec relative h-[70rem] w-full overflow-hidden rounded-br-[5rem] rounded-bl-[5rem] lg:h-[79rem]"
+      className="hero-sec relative w-full overflow-hidden rounded-br-[5rem] rounded-bl-[5rem] pt-[17.2rem] pb-[3.3rem]"
     >
       {/* Decorative stroke line */}
       <div ref={lineRef} className="absolute inset-0 z-[1] opacity-0">
         <LineStroke01 className="absolute bottom-[2.058rem] left-1/2 w-full -translate-x-1/2" />
       </div>
 
-      <div className="relative z-[10] flex h-full w-full flex-col items-center justify-end gap-[4rem] pt-[15rem] pb-[4rem] xl:gap-[6rem]">
+      <div className="relative z-[10] flex h-full w-full flex-col items-center justify-end gap-[4rem] xl:gap-[6rem]">
         {/* Main content */}
         <div className="flex w-full max-w-[106.5rem] flex-col items-center gap-[2rem] px-[2rem] text-center md:gap-[2.7rem] xl:px-[0rem]">
           <div className="book-badge opacity-0">
@@ -327,7 +174,7 @@ const HeroSection = () => {
 
           <div
             aria-label="Smart websites, standout branding, and ongoing support everything you need…"
-            className="max-w-[70rem] overflow-hidden text-[clamp(1.4rem,1.5vw,2.2rem)] leading-[clamp(2.2rem,2vw,3.2rem)] font-normal text-white md:font-medium"
+            className="max-w-[70rem] overflow-hidden text-[clamp(1.1rem,1.5vw,2.2rem)] leading-[clamp(2rem,2vw,3.2rem)] font-normal text-white md:font-medium"
           >
             <div className="overflow-hidden">
               <div className="hero-desc opacity-0">
