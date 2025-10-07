@@ -1,3 +1,4 @@
+import { getContactEmailTemplate } from "@/emails/contact-template";
 import { NextResponse } from "next/server";
 import nodemailer from "nodemailer";
 
@@ -9,7 +10,7 @@ export async function POST(req) {
     if (!name || !email || !message) {
       return NextResponse.json(
         { success: false, error: "Missing required fields" },
-        { status: 400 }
+        { status: 400 },
       );
     }
 
@@ -25,15 +26,16 @@ export async function POST(req) {
 
     await transporter.sendMail({
       from: process.env.SMTP_FROM,
-      to: 'hassan@cp.agency, afzal@cp.agency, ahsan@cp.agency',
+      to: "hassan@cp.agency, afzal@cp.agency, ahsan@cp.agency",
       subject: `New Contact Request from ${name}`,
-      html: `
-        <h2>New Contact Request</h2>
-        <p><strong>Name:</strong> ${name}</p>
-        <p><strong>Email:</strong> ${email}</p>
-        <p><strong>Service:</strong> ${service || "Not specified"}</p>
-        <p><strong>Message:</strong><br/>${message}</p>
-      `,
+      // html: `
+      //   <h2>New Contact Request</h2>
+      //   <p><strong>Name:</strong> ${name}</p>
+      //   <p><strong>Email:</strong> ${email}</p>
+      //   <p><strong>Service:</strong> ${service || "Not specified"}</p>
+      //   <p><strong>Message:</strong><br/>${message}</p>
+      // `,
+      html: getContactEmailTemplate(name, email, service, message), // Clean!
     });
 
     return NextResponse.json({ success: true });
@@ -41,7 +43,7 @@ export async function POST(req) {
     console.error("Contact form error:", err);
     return NextResponse.json(
       { success: false, error: "Failed to send email" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
