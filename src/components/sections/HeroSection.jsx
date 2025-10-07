@@ -149,12 +149,12 @@ const HeroSection = () => {
 
       <div className="relative z-[10] flex h-full w-full flex-col items-center justify-end gap-[4rem] xl:gap-[6rem]">
         {/* Main content */}
-        <div className="flex w-full max-w-[106.5rem] flex-col items-center gap-[2rem] px-[2rem] text-center md:gap-[2.7rem] xl:px-[0rem]">
+        <div className="flex w-full max-w-[106.5rem] flex-col items-center gap-[2rem] text-center md:gap-[2.7rem]">
           <div className="book-badge opacity-0">
             <BookBadge />
           </div>
 
-          <h1 className="w-full text-[clamp(2rem,5vw,7rem)] leading-[clamp(2.5rem,6vw,8.4rem)] font-semibold tracking-[-0.03em] text-white md:font-bold">
+          <h1 className="w-full text-[clamp(2.2rem,5vw,7rem)] leading-[clamp(2.8rem,6vw,8.4rem)] font-semibold tracking-[-0.03em] text-white md:font-bold">
             <div className="overflow-hidden">
               <div className="hero-heading opacity-0">
                 Grow your digital presence today
@@ -174,7 +174,7 @@ const HeroSection = () => {
 
           <div
             aria-label="Smart websites, standout branding, and ongoing support everything you need…"
-            className="max-w-[70rem] overflow-hidden text-[clamp(1.1rem,1.5vw,2.2rem)] leading-[clamp(2rem,2vw,3.2rem)] font-normal text-white md:font-medium"
+            className="max-w-[70rem] overflow-hidden text-[clamp(1.2rem,1.5vw,2.2rem)] leading-[clamp(2rem,2vw,3.2rem)] font-normal text-white md:font-medium"
           >
             <div className="overflow-hidden">
               <div className="hero-desc opacity-0">
