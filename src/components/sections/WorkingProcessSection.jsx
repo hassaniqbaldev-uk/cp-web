@@ -222,7 +222,7 @@ const WorkingProcessSection = () => {
               <AccordionItem
                 key={item.id}
                 value={item.id}
-                className="working-process-accordion !border-b border-[#9C9C9C] px-[2rem] py-[2rem] opacity-0 transition-all duration-200 data-[state=open]:rounded-[2rem] data-[state=open]:bg-[#FFE500] md:px-[2.8rem] md:py-[3rem]"
+                className="working-process-accordion !border-b border-[#9C9C9C] px-[2rem] py-[2rem] transition-all duration-200 data-[state=open]:rounded-[2rem] data-[state=open]:bg-[#FFE500] md:px-[2.8rem] md:py-[3rem]"
               >
                 <AccordionTrigger className="group flex w-full items-center justify-between">
                   <div className="flex items-center gap-[3rem] md:gap-[6rem]">
