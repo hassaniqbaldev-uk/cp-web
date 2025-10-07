@@ -71,7 +71,7 @@ const ClientLogoSlider = () => {
               </button>
 
               {/* Popup */}
-              {/* <div
+              <div
                 className={`absolute bottom-full left-1/2 z-50 -translate-x-1/2 transition-all duration-300 ${
                   activePopup === idx
                     ? "pointer-events-auto visible pb-[1.6rem] opacity-100"
@@ -132,7 +132,7 @@ const ClientLogoSlider = () => {
                     </Link>
                   </div>
                 </div>
-              </div> */}
+              </div>
             </div>
           </SwiperSlide>
         ))}

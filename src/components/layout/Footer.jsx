@@ -11,39 +11,52 @@ import {
   logoPopupsData,
   socialLinks,
 } from "@/constants/globals";
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
 import gsap from "gsap";
 import CLetter2 from "@/assets/decorative-elements/c-letter-2";
 import PLetter2 from "@/assets/decorative-elements/p-letter-2";
 import CommonBtn3 from "../common/CommonBtn3";
+import { useGSAP } from "@gsap/react";
 
 const Footer = () => {
-  const lineRef = useRef(null);
+  const container = useRef();
+  const lineRef = useRef(); // Ref for the line
 
-  useEffect(() => {
-    const line = lineRef.current.querySelector("path");
+  useGSAP(
+    () => {
+      // Line draw animation
+      if (lineRef.current) {
+        const path = lineRef.current.querySelector("path");
+        if (path) {
+          const length = path.getTotalLength();
 
-    if (line) {
-      gsap.fromTo(
-        line,
-        { drawSVG: "0%" },
-        {
-          drawSVG: "100%",
-          duration: 2,
-          ease: "power2.inOut",
-          scrollTrigger: {
-            trigger: lineRef.current,
-            start: "top 90%", // when line enters viewport
-            end: "bottom 80%", // when line leaves viewport
-            scrub: true, // tie progress to scroll
-          },
-        },
-      );
-    }
-  }, []);
+          gsap.set(path, {
+            strokeDasharray: length,
+            strokeDashoffset: length,
+          });
+
+          gsap.to(path, {
+            strokeDashoffset: 0,
+            duration: 2,
+            ease: "power2.inOut",
+            scrollTrigger: {
+              trigger: lineRef.current,
+              start: "top 80%",
+              end: "bottom 20%",
+              scrub: true, // Smooth scrubbing
+            },
+          });
+        }
+      }
+    },
+    { scope: container },
+  );
 
   return (
-    <footer className="footer relative w-full pt-[5rem] pb-[2.764rem] xl:pt-[6.2rem]">
+    <footer
+      ref={container}
+      className="footer relative w-full pt-[5rem] pb-[2.764rem] xl:pt-[6.2rem]"
+    >
       {/* Decorative stroke line */}
       <div
         ref={lineRef}

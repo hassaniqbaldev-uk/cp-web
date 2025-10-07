@@ -11,6 +11,31 @@ import CommonBtn2 from "./CommonBtn2";
 
 const CtaSection1 = () => {
   const containerRef = useRef();
+  const getDynamicMonth = () => {
+    const months = [
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "November",
+      "December",
+    ];
+
+    const now = new Date();
+    const currentMonth = now.getMonth();
+
+    // Show next month for booking (more relevant for users)
+    const nextMonth = (currentMonth + 1) % 12;
+    return months[nextMonth];
+  };
+
+  const dynamicText = getDynamicMonth();
 
   useEffect(() => {
     gsap.to(containerRef.current, {
@@ -32,7 +57,20 @@ const CtaSection1 = () => {
     >
       <div className="relative z-[1] flex flex-col items-center justify-between gap-[5.3rem] lg:flex-row">
         <div className="flex w-full flex-col items-center text-center lg:w-auto lg:items-start lg:text-left">
-          <SectionLabel text="Book now for October slots" />
+          <div
+            className={`inline-flex h-[4rem] items-center justify-center gap-[1rem] rounded-[.8rem] border-[0.5px] border-dashed border-white/50 px-[2rem] py-[1rem] text-[1.4rem] leading-[2.2rem] font-medium text-white md:h-[4.4rem] md:min-w-[18.3rem] md:text-[1.6rem] md:leading-[2.4rem]`}
+          >
+            {/* Pulsing dot */}
+            <span className="relative">
+              <span
+                className={`absolute top-1/2 left-1/2 inline-flex size-[1.8rem] -translate-x-1/2 -translate-y-1/2 animate-ping rounded-full bg-[#FFE400] opacity-75`}
+              ></span>
+              <span
+                className={`relative inline-flex size-[1rem] rounded-full bg-[#FFE400]`}
+              ></span>
+            </span>
+            Book now for {dynamicText} slots
+          </div>
 
           <h3 className="mt-[2rem] mb-[3rem] max-w-[50rem] text-[3rem] leading-[4rem] font-semibold tracking-[-0.02em] text-white md:text-[4rem] md:leading-[5rem] xl:max-w-[60rem] xl:text-[4.8rem] xl:leading-[6rem]">
             Let’s design, build, and grow your next big project.

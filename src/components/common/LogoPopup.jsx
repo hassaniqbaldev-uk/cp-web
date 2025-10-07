@@ -72,7 +72,7 @@ const LogoPopup = ({ logo, popupImage, title, href }) => {
       </button>
 
       {/* Popup */}
-      {/* <div
+      <div
         className={`absolute bottom-full left-1/2 z-50 -translate-x-1/2 transition-all duration-300 ${
           activePopup
             ? "pointer-events-auto visible pb-[1.6rem] opacity-100"
@@ -136,7 +136,7 @@ const LogoPopup = ({ logo, popupImage, title, href }) => {
             </Link>
           </div>
         </div>
-      </div> */}
+      </div>
     </div>
   );
 };

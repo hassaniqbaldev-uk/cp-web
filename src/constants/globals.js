@@ -98,7 +98,7 @@ export const logoPopupsData = [
   {
     logo: "/images/game-art-logo.png",
     popupImage: "/images/game-art-popup-img.png",
-    href: "/case-studies/game-art-brain-studio",
+    href: "/case-studies/games-art-brain",
   },
   {
     logo: "/images/new-compass-logo.png",
@@ -113,13 +113,13 @@ export const logoPopupsData = [
   {
     logo: "/images/casabolanica-logo.png",
     popupImage: "/images/casabolanica-popup-img.png",
-    href: "/case-studies/casa",
+    href: "/case-studies/casa-botanica-panama",
   },
 
   {
     logo: "/images/alert-logo.png",
     popupImage: "/images/ivy-popup-img.png",
-    href: "/case-studies/ivy",
+    href: "/case-studies/alert-force",
   },
   {
     logo: "/images/fultons-logo.png",
