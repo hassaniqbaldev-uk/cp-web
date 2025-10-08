@@ -1,242 +1,45 @@
 // emails/contact-template.js
 export const getContactEmailTemplate = (name, email, service, message) => `
-<!doctype html>
+<!DOCTYPE html>
 <html>
-  <head>
-    <style>
-      * {
-        padding: 0;
-        margin: 0;
-        box-sizing: border-box;
-      }
-
-      body {
-        font-size: 16px;
-        line-height: 1.5;
-        font-weight: 400;
-        font-family: "Onest", sans-serif;
-      }
-
-      .main-container {
-        width: 100%;
-        max-width: 600px;
-        margin-inline: auto;
-        background-color: #ffffff;
-      }
-
-      .banner {
-        width: 100%;
-        height: 235px;
-        margin-inline: auto;
-      }
-
-      .banner img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        display: block;
-        object-position: center;
-      }
-
-      .content .container {
-        max-width: 540px;
-        margin-inline: auto;
-        padding-top: 22px;
-        padding-bottom: 25px;
-      }
-
-      .content .container .msg-heading {
-        font-weight: 600;
-        font-size: 21px;
-        letter-spacing: -0.02em;
-        color: #070707;
-      }
-
-      .content .container .msg-heading span {
-        color: #3078ff;
-      }
-
-      .content .container .msg-text {
-        font-weight: 400;
-        font-size: 16px;
-        line-height: 26px;
-        color: #070707;
-        margin: 25px 0px;
-      }
-
-      .content .container .msg-text strong {
-        font-weight: 700;
-      }
-
-      .content .container .msg-text a {
-        color: #ee8d00;
-        font-weight: 700;
-      }
-
-      .group {
-        display: inline-flex;
-        cursor: pointer;
-        align-items: center;
-        text-decoration: none;
-      }
-
-      .content .container .button-container {
-        position: relative;
-        z-index: 2;
-        height: 40px;
-        min-width: max-content;
-        overflow: hidden;
-        border-radius: 60px;
-        background-color: #ff37b3;
-        padding: 0 20px;
-        font-size: 16px;
-        font-weight: 600;
-        color: white;
-      }
-
-      .content .container .button-text {
-        display: flex;
-        width: 100%;
-        height: 100%;
-        align-items: center;
-        justify-content: center;
-      }
-
-      .content .container .icon-container {
-        position: relative;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
-
-      .content .container .svg-icon {
-        margin-inline: -5px;
-        position: relative;
-        top: 3px;
-      }
-
-      .content .container .circle-container {
-        position: relative;
-        width: 40px;
-        height: 40px;
-        overflow: hidden;
-        border-radius: 50%;
-        background-color: #ff37b3;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
-
-      .content .container .arrow-icon {
-        width: 14px;
-        height: 14px;
-      }
-
-      .content .container .subtract-icon {
-        width: 18px;
-        height: 18px;
-      }
-
-      .content .container .bottom-card {
-        width: 100%;
-        height: 338px;
-        margin-inline: auto;
-      }
-
-      .content .container .bottom-card img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        display: block;
-        object-position: center;
-      }
-    </style>
-  </head>
-  <body>
-    <div class="main-container">
-      <!--  Banner -->
-      <div class="banner">
-        <img
-          src="https://creativepixels.agency/images/email-template-assets/email-template-banner.png"
-          alt="Banner Image"
-        />
-      </div>
-
-      <!--  Content  -->
-      <div class="content">
-        <div class="container">
-          <h2 class="msg-heading">
-            Thanks for reaching out about <span>“Website Development”</span>
-          </h2>
-
-          <p class="msg-text">
-            Hi Mohammad, <br />
-            Thank you for contacting
-            <strong>CreativePixels Agency</strong> we've received your request
-            for <strong>Website Development</strong>, and our team will get back
-            to you shortly to discuss the next steps. <br />
-            <br />
-
-            We're excited to learn more about your goals and see how we can help
-            bring your ideas to life. Whether it's crafting a standout brand,
-            developing a high-performing website, or maintaining and optimising
-            your current one — our team is here to make it happen. <br />
-            <br />
-
-            Want to skip the wait? You can book a quick discovery call with our
-            experts and get tailored recommendations for your project.
-          </p>
-
-          <div>
-            <a href="#" class="group">
-              <div class="button-container">
-                <span class="button-text">Schedule a Quick Call</span>
-              </div>
-
-              <div class="icon-container">
-                <i class="svg-icon">
-                  <img
-                    src="https://creativepixels.agency/images/email-template-assets/subtract-pink.svg"
-                    alt="Icon"
-                    class="subtract-icon"
-                  />
-                </i>
-
-                <div class="circle-container">
-                  <i class="circle-icon">
-                    <img
-                      src="https://creativepixels.agency/images/email-template-assets/right-arrow-icon.svg"
-                      alt="Icon"
-                      class="arrow-icon"
-                    />
-                  </i>
-                </div>
-              </div>
-            </a>
-          </div>
-
-          <p class="msg-text">
-            You can also learn more about our recent work and process here:
-            <a href="www.creativepixels.agency">www.creativepixels.agency</a>
-            <br />
-            <br />
-
-            Thanks again for choosing CreativePixels — we can’t wait to
-            collaborate! <br />
-            <br />
-
-            Warm regards,<br /><strong>The CreativePixels Team</strong>
-          </p>
-
-          <div class="bottom-card">
-            <img
-              src="https://creativepixels.agency/images/email-template-assets/bottom-card-img.png"
-              alt="Bottom Card Image"
-            />
-          </div>
-        </div>
-      </div>
+<head>
+  <style>
+    body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
+    .container { max-width: 600px; margin: 0 auto; padding: 20px; }
+    .header { background: #f8f9fa; padding: 20px; border-radius: 8px; margin-bottom: 20px; }
+    .field { margin-bottom: 15px; }
+    .label { font-weight: bold; color: #555; }
+    .message { background: #f8f9fa; padding: 15px; border-radius: 5px; border-left: 4px solid #007bff; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>New Contact Request</h1>
+      <p>You have received a new contact form submission</p>
     </div>
-  </body>
+    
+    <div class="field">
+      <span class="label">Name:</span> ${name}
+    </div>
+    
+    <div class="field">
+      <span class="label">Email:</span> ${email}
+    </div>
+    
+    <div class="field">
+      <span class="label">Service:</span> ${service || "Not specified"}
+    </div>
+    
+    <div class="field">
+      <span class="label">Message:</span>
+      <div class="message">${message}</div>
+    </div>
+    
+    <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid #eee; color: #666;">
+      <p>This email was sent from your website contact form.</p>
+    </div>
+  </div>
+</body>
 </html>
 `;
