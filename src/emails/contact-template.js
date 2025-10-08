@@ -22,7 +22,7 @@ export const getContactEmailTemplate = (name, email, service, message) => `
       }
 
       .main-banner {
-        background: url("../../public/images/hero-bg-gradient.webp");
+        background: url("/images/hero-bg-gradient.webp");
         background-repeat: no-repeat;
         background-size: cover;
         background-position: center;
@@ -87,7 +87,7 @@ export const getContactEmailTemplate = (name, email, service, message) => `
 
         <div class="container">
           <a href="/" class="banner-logo">
-            <img src="../../public/images/logo.svg" alt="Brand Logo" />
+            <img src="/images/logo.svg" alt="Brand Logo" />
           </a>
 
           <h1 class="banner-heading">
