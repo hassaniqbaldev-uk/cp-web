@@ -1,45 +1,271 @@
 // emails/contact-template.js
 export const getContactEmailTemplate = (name, email, service, message) => `
-<!DOCTYPE html>
+<!doctype html>
 <html>
-<head>
-  <style>
-    body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
-    .container { max-width: 600px; margin: 0 auto; padding: 20px; }
-    .header { background: #f8f9fa; padding: 20px; border-radius: 8px; margin-bottom: 20px; }
-    .field { margin-bottom: 15px; }
-    .label { font-weight: bold; color: #555; }
-    .message { background: #f8f9fa; padding: 15px; border-radius: 5px; border-left: 4px solid #007bff; }
-  </style>
-</head>
-<body>
-  <div class="container">
-    <div class="header">
-      <h1>New Contact Request</h1>
-      <p>You have received a new contact form submission</p>
-    </div>
-    
-    <div class="field">
-      <span class="label">Name:</span> ${name}
-    </div>
-    
-    <div class="field">
-      <span class="label">Email:</span> ${email}
-    </div>
-    
-    <div class="field">
-      <span class="label">Service:</span> ${service || "Not specified"}
-    </div>
-    
-    <div class="field">
-      <span class="label">Message:</span>
-      <div class="message">${message}</div>
-    </div>
-    
-    <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid #eee; color: #666;">
-      <p>This email was sent from your website contact form.</p>
-    </div>
-  </div>
-</body>
+  <head>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+      }
+
+      html {
+        font-size: 62.5%;
+      }
+
+      body {
+        font-size: 1.6rem;
+        line-height: 1.5;
+        font-weight: 400;
+        font-family: "Onest", sans-serif;
+      }
+
+      .main-banner {
+        background: url("https://creativepixels.agency/images/email-template-assets/main-banner-gradient-bg.png");
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        padding-top: 2.4rem;
+        padding-bottom: 3rem;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .main-banner .banner-line-stroke {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+
+      .main-banner .container {
+        max-width: 40rem;
+        margin-inline: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        gap: 1.6rem;
+      }
+
+      .main-banner .container .banner-logo {
+        display: inline-flex;
+        position: relative;
+      }
+
+      .main-banner .container .banner-logo img {
+        width: 11.8rem;
+      }
+
+      .main-banner .container .banner-heading {
+        font-weight: 600;
+        font-size: 4.8rem;
+        line-height: 6rem;
+        letter-spacing: -0.02em;
+        color: white;
+      }
+
+      .main-banner .container .banner-heading span {
+        background: linear-gradient(90deg, #ffd900 35.01%, #ee7621 67.72%);
+        background-clip: text;
+        color: transparent;
+      }
+
+      .main-content .container {
+        max-width: 54rem;
+        margin-inline: auto;
+        padding-top: 2.2rem;
+        padding-bottom: 2.5rem;
+        display: flex;
+        flex-direction: column;
+        gap: 2.5rem;
+      }
+
+      .main-content .container .msg-heading {
+        font-weight: 600;
+        font-size: 2.1rem;
+        letter-spacing: -0.02em;
+        color: #070707;
+      }
+
+      .main-content .container .msg-heading span {
+        color: #3078ff;
+      }
+
+      .main-content .container .msg-text {
+        font-weight: 400;
+        font-size: 1.6rem;
+        line-height: 2.6rem;
+        color: #070707;
+      }
+
+      .main-content .container .msg-text strong {
+        font-weight: 700;
+      }
+
+      .main-content .container .msg-text a {
+        color: #ee8d00;
+        font-weight: 700;
+      }
+
+      .group {
+        display: inline-flex;
+        cursor: pointer;
+        align-items: center;
+        text-decoration: none;
+      }
+
+      .main-content .container .button-container {
+        position: relative;
+        z-index: 2;
+        height: 4rem;
+        min-width: max-content;
+        overflow: hidden;
+        border-radius: 6rem;
+        background-color: #ff37b3;
+        padding: 0 2rem;
+        font-size: 1.6rem;
+        font-weight: 600;
+        color: white;
+      }
+
+      .main-content .container .button-text {
+        display: flex;
+        width: 100%;
+        height: 100%;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .main-content .container .icon-container {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .main-content .container .svg-icon {
+        margin-inline: -0.5rem;
+      }
+
+      .main-content .container .circle-container {
+        position: relative;
+        width: 4rem;
+        height: 4rem;
+        overflow: hidden;
+        border-radius: 50%;
+        background-color: #ff37b3;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .main-content .container .arrow-icon {
+        width: 1.4rem;
+        height: 1.4rem;
+      }
+
+      .main-content .container .subtract-icon {
+        width: 1.8rem;
+        height: 1.8rem;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <!-- Main Banner -->
+      <div class="main-banner">
+        <div class="banner-line-stroke">
+          <img
+            src="/images/email-template-assets/email-template-banner-line.svg"
+            alt="Line Stroke"
+          />
+        </div>
+
+        <div class="container">
+          <a href="/" class="banner-logo">
+            <img
+              src="/images/email-template-assets/logo.svg"
+              alt="Brand Logo"
+            />
+          </a>
+
+          <h1 class="banner-heading">
+            Thank you for <span>being with us</span> 👋
+          </h1>
+        </div>
+      </div>
+
+      <!-- Main Content  -->
+      <div class="main-content">
+        <div class="container">
+          <h2 class="msg-heading">
+            Thanks for reaching out about <span>“Website Development”</span>
+          </h2>
+
+          <p class="msg-text">
+            Hi Mohammad, Thank you for contacting
+            <strong>CreativePixels Agency</strong> we've received your request
+            for <strong>Website Development</strong>, and our team will get back
+            to you shortly to discuss the next steps. <br />
+            <br />
+
+            We're excited to learn more about your goals and see how we can help
+            bring your ideas to life. Whether it's crafting a standout brand,
+            developing a high-performing website, or maintaining and optimising
+            your current one — our team is here to make it happen. <br />
+            <br />
+
+            Want to skip the wait? You can book a quick discovery call with our
+            experts and get tailored recommendations for your project.
+          </p>
+
+          <div>
+            <a href="#" class="group">
+              <div class="button-container">
+                <span class="button-text">Schedule a Quick Call</span>
+              </div>
+
+              <div class="icon-container">
+                <i class="svg-icon">
+                  <img
+                    src="/images/email-template-assets/subtract-pink.svg"
+                    alt="Icon"
+                    class="subtract-icon"
+                  />
+                </i>
+
+                <div class="circle-container">
+                  <i class="circle-icon">
+                    <img
+                      src="/images/email-template-assets/right-arrow-icon.svg"
+                      alt="Icon"
+                      class="arrow-icon"
+                    />
+                  </i>
+                </div>
+              </div>
+            </a>
+          </div>
+
+          <p class="msg-text">
+            You can also learn more about our recent work and process here:
+            <a href="www.creativepixels.agency">www.creativepixels.agency</a>
+            <br />
+            <br />
+
+            Thanks again for choosing CreativePixels — we can’t wait to
+            collaborate! <br />
+            <br />
+
+            Warm regards,<br /><strong>The CreativePixels Team</strong>
+          </p>
+        </div>
+      </div>
+    </main>
+  </body>
 </html>
+
 `;
