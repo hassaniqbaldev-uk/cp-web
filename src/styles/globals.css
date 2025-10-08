@@ -1126,3 +1126,45 @@ body {
   mask-composite: exclude;
   z-index: -1;
 }
+
+/* Call Page */
+
+.call-glass-card {
+  max-width: 120rem;
+  margin-inline: auto;
+  background: linear-gradient(
+    301.75deg,
+    rgba(255, 255, 255, 0.05) 1.41%,
+    rgba(29, 29, 29, 0.05) 95.05%
+  );
+  border: 0.85px solid transparent;
+  background-clip: padding-box;
+  backdrop-filter: blur(33.8px);
+  border-radius: 16px;
+  color: white;
+  position: relative;
+  z-index: 10;
+}
+
+/* Gradient border using pseudo-element */
+.call-glass-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 1.6rem;
+  padding: 0.85px;
+  background: linear-gradient(
+    124.23deg,
+    rgba(255, 255, 255, 0.3) 3.32%,
+    rgba(7, 7, 7, 0.3) 97.31%
+  );
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
