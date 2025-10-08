@@ -22,7 +22,7 @@ export const getContactEmailTemplate = (name, email, service, message) => `
       }
 
       .main-banner {
-        background: url("/images/hero-bg-gradient.webp");
+        background: url("../assets/email-template-assets/main-banner-gradient-bg.png");
         background-repeat: no-repeat;
         background-size: cover;
         background-position: center;
@@ -72,6 +72,134 @@ export const getContactEmailTemplate = (name, email, service, message) => `
         background-clip: text;
         color: transparent;
       }
+
+      .main-content .container {
+        max-width: 54rem;
+        margin-inline: auto;
+        padding-top: 2.2rem;
+        padding-bottom: 2.5rem;
+        display: flex;
+        flex-direction: column;
+        gap: 2.5rem;
+      }
+
+      .main-content .container .msg-heading {
+        font-weight: 600;
+        font-size: 2.1rem;
+        letter-spacing: -0.02em;
+        color: #070707;
+      }
+
+      .main-content .container .msg-heading span {
+        color: #3078ff;
+      }
+
+      .main-content .container .msg-text {
+        font-weight: 400;
+        font-size: 1.6rem;
+        line-height: 2.6rem;
+        color: #070707;
+      }
+
+      .main-content .container .msg-text strong {
+        font-weight: 700;
+      }
+
+      .main-content .container .msg-text a {
+        color: #ee8d00;
+        font-weight: 700;
+      }
+
+      .group {
+        display: inline-flex;
+        cursor: pointer;
+        align-items: center;
+        text-decoration: none;
+      }
+
+      .main-content .container .button-container {
+        position: relative;
+        z-index: 2;
+        height: 4rem;
+        min-width: max-content;
+        overflow: hidden;
+        border-radius: 6rem;
+        background-color: #ff37b3;
+        padding: 0 2rem;
+        font-size: 1.6rem;
+        font-weight: 600;
+        color: white;
+      }
+
+      .main-content .container .button-text {
+        display: flex;
+        width: 100%;
+        height: 100%;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.2s;
+      }
+
+      .main-content .container .group:hover .button-text {
+        transform: translateY(-100%);
+      }
+
+      .main-content .container .icon-container {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .main-content .container .svg-icon {
+        margin: 0 -0.5rem;
+      }
+
+      .main-content .container .circle-container {
+        position: relative;
+        width: 4rem;
+        height: 4rem;
+        overflow: hidden;
+        border-radius: 50%;
+        background-color: #ff37b3;
+      }
+
+      .main-content .container .circle-icon {
+        position: absolute;
+        top: 0;
+        display: flex;
+        width: 100%;
+        height: 100%;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.2s;
+      }
+
+      .main-content .container .circle-icon:first-child {
+        left: 0;
+      }
+
+      .main-content .container .circle-icon:last-child {
+        left: -100%;
+      }
+
+      .main-content .container .group:hover .circle-icon:first-child {
+        left: 100%;
+      }
+
+      .main-content .container .group:hover .circle-icon:last-child {
+        left: 0;
+      }
+
+      .main-content .container .arrow-icon {
+        width: 14px;
+        height: 14px;
+      }
+
+      .main-content .container .subtract-icon {
+        width: 18px;
+        height: 18px;
+      }
     </style>
   </head>
   <body>
@@ -80,19 +208,98 @@ export const getContactEmailTemplate = (name, email, service, message) => `
       <div class="main-banner">
         <div class="banner-line-stroke">
           <img
-            src="../../public/images/email-template-banner-line.svg"
+            src="../assets/email-template-assets/email-template-banner-line.svg"
             alt="Line Stroke"
           />
         </div>
 
         <div class="container">
           <a href="/" class="banner-logo">
-            <img src="/images/logo.svg" alt="Brand Logo" />
+            <img
+              src="../assets/email-template-assets/logo.svg"
+              alt="Brand Logo"
+            />
           </a>
 
           <h1 class="banner-heading">
             Thank you for <span>being with us</span> 👋
           </h1>
+        </div>
+      </div>
+
+      <!-- Main Content  -->
+      <div class="main-content">
+        <div class="container">
+          <h2 class="msg-heading">
+            Thanks for reaching out about <span>“Website Development”</span>
+          </h2>
+
+          <p class="msg-text">
+            Hi Mohammad, Thank you for contacting
+            <strong>CreativePixels Agency</strong> we've received your request
+            for <strong>Website Development</strong>, and our team will get back
+            to you shortly to discuss the next steps. <br />
+            <br />
+
+            We're excited to learn more about your goals and see how we can help
+            bring your ideas to life. Whether it's crafting a standout brand,
+            developing a high-performing website, or maintaining and optimising
+            your current one — our team is here to make it happen. <br />
+            <br />
+
+            Want to skip the wait? You can book a quick discovery call with our
+            experts and get tailored recommendations for your project.
+          </p>
+
+          <div>
+            <a href="#" class="group">
+              <div class="button-container">
+                <span class="button-text">Schedule a Quick Call</span>
+                <span class="button-text">Schedule a Quick Call</span>
+              </div>
+
+              <div class="icon-container">
+                <i class="svg-icon">
+                  <img
+                    src="../assets/email-template-assets/subtract-pink.svg"
+                    alt="Icon"
+                    class="subtract-icon"
+                  />
+                </i>
+
+                <div class="circle-container">
+                  <i class="circle-icon">
+                    <img
+                      src="../assets/email-template-assets/right-arrow-icon.svg"
+                      alt="Icon"
+                      class="arrow-icon"
+                    />
+                  </i>
+
+                  <i class="circle-icon">
+                    <img
+                      src="../assets/email-template-assets/right-arrow-icon.svg"
+                      alt="Icon"
+                      class="arrow-icon"
+                    />
+                  </i>
+                </div>
+              </div>
+            </a>
+          </div>
+
+          <p class="msg-text">
+            You can also learn more about our recent work and process here:
+            <a href="www.creativepixels.agency">www.creativepixels.agency</a>
+            <br />
+            <br />
+
+            Thanks again for choosing CreativePixels — we can’t wait to
+            collaborate! <br />
+            <br />
+
+            Warm regards,<br /><strong>The CreativePixels Team</strong>
+          </p>
         </div>
       </div>
     </main>
