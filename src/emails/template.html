@@ -20,55 +20,17 @@
       }
 
       .main-banner {
-        background: url("https://creativepixels.agency/images/email-template-assets/main-banner-gradient-bg.png");
-        background-repeat: no-repeat;
-        background-size: cover;
-        background-position: center;
-        padding-top: 2.4rem;
-        padding-bottom: 3rem;
-        position: relative;
-        overflow: hidden;
-      }
-
-      .main-banner .banner-line-stroke {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-      }
-
-      .main-banner .container {
-        max-width: 40rem;
+        width: 600px;
+        height: 235px;
         margin-inline: auto;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-        gap: 1.6rem;
       }
 
-      .main-banner .container .banner-logo {
-        display: inline-flex;
-        position: relative;
-      }
-
-      .main-banner .container .banner-logo img {
-        width: 11.8rem;
-      }
-
-      .main-banner .container .banner-heading {
-        font-weight: 600;
-        font-size: 4.8rem;
-        line-height: 6rem;
-        letter-spacing: -0.02em;
-        color: white;
-      }
-
-      .main-banner .container .banner-heading span {
-        background: linear-gradient(90deg, #ffd900 35.01%, #ee7621 67.72%);
-        background-clip: text;
-        color: transparent;
+      .main-banner img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        object-position: center;
       }
 
       .main-content .container {
@@ -172,32 +134,17 @@
     </style>
   </head>
   <body>
-    <main>
+    <div>
       <!-- Main Banner -->
       <div class="main-banner">
-        <div class="banner-line-stroke">
-          <img
-            src="/images/email-template-assets/email-template-banner-line.svg"
-            alt="Line Stroke"
-          />
-        </div>
-
-        <div class="container">
-          <a href="/" class="banner-logo">
-            <img
-              src="/images/email-template-assets/logo.svg"
-              alt="Brand Logo"
-            />
-          </a>
-
-          <h1 class="banner-heading">
-            Thank you for <span>being with us</span> 👋
-          </h1>
-        </div>
+        <img
+          src="https://creativepixels.agency/images/email-template-assets/email-template-banner.png"
+          alt="Banner Image"
+        />
       </div>
 
       <!-- Main Content  -->
-      <div class="main-content">
+      <!-- <div class="main-content">
         <div class="container">
           <h2 class="msg-heading">
             Thanks for reaching out about <span>“Website Development”</span>
@@ -261,7 +208,7 @@
             Warm regards,<br /><strong>The CreativePixels Team</strong>
           </p>
         </div>
-      </div>
-    </main>
+      </div> -->
+    </div>
   </body>
 </html>
