@@ -23,14 +23,34 @@ const HeroSection = () => {
       const linePath = lineRef.current?.querySelector("path");
       const isMobile = window.innerWidth < 1280;
 
-      // Auto-split the hero heading
       const splitHeading = new SplitText(".hero-heading", {
         type: "lines",
         linesClass: "split-line",
       });
+      const splitSubtitle = new SplitText(".hero-subtitle", {
+        type: "lines",
+        linesClass: "split-line-2",
+      });
+      const splitLogoHeading = new SplitText(".hero-logo-heading", {
+        type: "lines",
+        linesClass: "split-line-3",
+      });
 
-      // Wrap each line in overflow container
       splitHeading.lines.forEach((line) => {
+        const wrapper = document.createElement("div");
+        wrapper.className = "overflow-hidden";
+        line.parentNode.insertBefore(wrapper, line);
+        wrapper.appendChild(line);
+      });
+
+      splitLogoHeading.lines.forEach((line) => {
+        const wrapper = document.createElement("div");
+        wrapper.className = "overflow-hidden";
+        line.parentNode.insertBefore(wrapper, line);
+        wrapper.appendChild(line);
+      });
+
+      splitSubtitle.lines.forEach((line) => {
         const wrapper = document.createElement("div");
         wrapper.className = "overflow-hidden";
         line.parentNode.insertBefore(wrapper, line);
@@ -56,10 +76,8 @@ const HeroSection = () => {
         );
       }
 
-      // Faster master timeline (without SVG)
       const masterTl = gsap.timeline({ delay: 0.4 });
 
-      // Book Badge - quick bounce
       masterTl.fromTo(
         ".book-badge",
         { opacity: 0, y: 20 },
@@ -72,18 +90,16 @@ const HeroSection = () => {
         ">0.1",
       );
 
-      // Hero Heading Opacity - FASTER (overlaps with split lines)
       masterTl.to(
         ".hero-heading",
         {
           opacity: 1,
-          duration: 0.3, // Faster opacity
+          duration: 0.3,
           ease: "power2.out",
         },
         ">0.05",
       );
 
-      // Hero Heading Split Lines - STARTS DURING OPACITY
       masterTl.fromTo(
         ".split-line",
         { opacity: 0, y: 60 },
@@ -94,24 +110,32 @@ const HeroSection = () => {
           ease: "power2.out",
           stagger: 0.1,
         },
-        "-=0.2", // Start 0.2s BEFORE opacity completes
+        "-=0.2",
       );
 
-      // Hero Description - tight overlap with heading
+      masterTl.to(
+        ".hero-subtitle",
+        {
+          opacity: 1,
+          duration: 0.3,
+          ease: "power2.out",
+        },
+        ">0.05",
+      );
+
       masterTl.fromTo(
-        ".hero-desc",
-        { opacity: 0, y: 40 },
+        ".split-line-2",
+        { opacity: 0, y: 60 },
         {
           opacity: 1,
           y: 0,
-          duration: 0.5,
+          duration: 0.6,
           ease: "power2.out",
-          stagger: 0.08,
+          stagger: 0.1,
         },
-        "-=0.4", // Stronger overlap
+        "-=0.3",
       );
 
-      // CTA Button - quick entrance
       masterTl.fromTo(
         ".hero-cta",
         { opacity: 0, y: 30 },
@@ -121,23 +145,32 @@ const HeroSection = () => {
           duration: 0.4,
           ease: "back.out(1.8)",
         },
-        ">0.05",
+        "-=0.1",
       );
 
-      // Logo Title - fast
+      masterTl.to(
+        ".hero-logo-heading",
+        {
+          opacity: 1,
+          duration: 0.3,
+          ease: "power2.out",
+        },
+        "-=0.1",
+      );
+
       masterTl.fromTo(
-        ".hero-logo-title",
-        { opacity: 0, y: 30 },
+        ".split-line-3",
+        { opacity: 0, y: 60 },
         {
           opacity: 1,
           y: 0,
-          duration: 0.4,
+          duration: 0.6,
           ease: "power2.out",
+          stagger: 0.1,
         },
-        ">0.05",
+        "-=0.2",
       );
 
-      // Desktop Logos - quick cascade
       if (!isMobile) {
         masterTl.fromTo(
           ".hero-logo",
@@ -159,7 +192,6 @@ const HeroSection = () => {
         );
       }
 
-      // Mobile Logo Slider - quick
       if (isMobile) {
         masterTl.fromTo(
           ".hero-logo-slider",
@@ -205,22 +237,13 @@ const HeroSection = () => {
             strategy.
           </h1>
 
-          <div
+          <h5
             aria-label="Smart websites, standout branding, and ongoing support everything you need…"
-            className="max-w-[70rem] overflow-hidden text-[clamp(1.2rem,1.5vw,2.2rem)] leading-[clamp(2rem,2vw,3.2rem)] font-normal text-white md:font-medium"
+            className="hero-subtitle max-w-[70rem] text-[1.2rem] leading-[1.8rem] font-normal text-white opacity-0 md:text-[2.2rem] md:leading-[3.2rem] md:font-medium"
           >
-            <div className="overflow-hidden">
-              <div className="hero-desc opacity-0">
-                Smart websites, standout branding, and ongoing support
-              </div>
-            </div>
-
-            <div className="overflow-hidden">
-              <div className="hero-desc opacity-0">
-                everything you need to grow with confidence.
-              </div>
-            </div>
-          </div>
+            Smart websites, standout branding, and ongoing support everything
+            you need to grow with confidence.
+          </h5>
 
           <div className="hero-cta opacity-0">
             <CommonBtn2 />
@@ -229,12 +252,8 @@ const HeroSection = () => {
 
         {/* Logos */}
         <div className="flex max-w-[120rem] flex-col items-center gap-[4rem] px-[3rem] text-center 2xl:max-w-[136rem] 2xl:px-[0rem]">
-          <h3 className="text-[1.4rem] leading-[2.4rem] font-normal text-white md:text-[1.8rem] md:leading-[2.6rem]">
-            <div className="overflow-hidden">
-              <div className="hero-logo-title opacity-0">
-                Trusted by brands in the UK, US & Australia
-              </div>
-            </div>
+          <h3 className="hero-logo-heading text-[1.2rem] leading-[2.2rem] font-normal text-white opacity-0 md:text-[1.8rem] md:leading-[2.6rem]">
+            Trusted by brands in the UK, US & Australia
           </h3>
 
           <ul className="hidden h-[7rem] items-center gap-[3rem] xl:flex 2xl:gap-[5rem]">
