@@ -7,52 +7,50 @@ import { useRef } from "react";
 const CLetter2 = (props) => {
   const svgRef = useRef(null);
 
-  useGSAP(() => {
-    if (!svgRef.current) return;
+  useGSAP(
+    () => {
+      if (!svgRef.current) return;
 
-    const paths = svgRef.current.querySelectorAll("path");
+      const paths = svgRef.current.querySelectorAll("path");
 
-    // Prepare all paths
-    paths.forEach((path) => {
-      const length = path.getTotalLength();
-      gsap.set(path, {
-        strokeDasharray: length,
-        strokeDashoffset: length,
-        fillOpacity: 0,
+      // Prepare all paths
+      paths.forEach((path) => {
+        const length = path.getTotalLength();
+        gsap.set(path, {
+          strokeDasharray: length,
+          strokeDashoffset: length,
+          fillOpacity: 0,
+        });
       });
-    });
 
-    // Single timeline with stagger
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: svgRef.current,
-        start: "top 60%",
-        toggleActions: "play none none none",
-      },
-    });
+      // Single timeline with stagger
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: svgRef.current,
+          start: "top 60%",
+          toggleActions: "play none none none",
+        },
+      });
 
-    // Animate all strokes with stagger
-    tl.to(paths, {
-      strokeDashoffset: 0,
-      duration: 3,
-      stagger: 0.3, // 0.3s between each path
-      ease: "power1.inOut",
-    }).to(
-      paths,
-      {
-        fillOpacity: 1,
-        duration: 1,
-        stagger: 0.3,
+      // Animate all strokes with stagger
+      tl.to(paths, {
+        strokeDashoffset: 0,
+        duration: 3,
+        stagger: 0.3, // 0.3s between each path
         ease: "power1.inOut",
-      },
-      "-=2",
-    ); // Start 2 seconds before stroke animation ends
-
-    return () => {
-      tl.kill();
-      tl.scrollTrigger?.kill();
-    };
-  });
+      }).to(
+        paths,
+        {
+          fillOpacity: 1,
+          duration: 1,
+          stagger: 0.3,
+          ease: "power1.inOut",
+        },
+        "-=2",
+      ); // Start 2 seconds before stroke animation ends
+    },
+    { scope: svgRef },
+  );
 
   return (
     <svg

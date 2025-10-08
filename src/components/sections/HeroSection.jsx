@@ -205,6 +205,11 @@ const HeroSection = () => {
           ">0.05",
         );
       }
+      return () => {
+        splitHeading.revert();
+        splitSubtitle.revert();
+        splitLogoHeading.revert();
+      };
     },
     {
       scope: container,
