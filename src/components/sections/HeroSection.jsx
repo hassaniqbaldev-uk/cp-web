@@ -197,7 +197,7 @@ const HeroSection = () => {
             <BookBadge />
           </div>
 
-          <h1 className="hero-heading w-full text-[2.2rem] leading-[3.2rem] font-semibold tracking-[-0.03em] text-white opacity-0 md:text-[4.5rem] md:leading-[5.5rem] md:font-bold lg:text-[6rem] lg:leading-[7rem] xl:text-[6.9rem] xl:leading-[8.3rem]">
+          <h1 className="hero-heading w-full text-[2rem] leading-[3rem] font-semibold tracking-[-0.03em] text-white opacity-0 md:text-[4.5rem] md:leading-[5.5rem] md:font-bold lg:text-[6rem] lg:leading-[7rem] xl:text-[6.9rem] xl:leading-[8.3rem]">
             Grow your digital presence today with real{" "}
             <span className="bg-gradient-01 bg-clip-text text-transparent">
               human-led
