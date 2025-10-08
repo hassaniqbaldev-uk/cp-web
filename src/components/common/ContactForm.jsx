@@ -41,7 +41,7 @@ const ContactForm = () => {
       ease: "power2.out",
       scrollTrigger: {
         trigger: formContainerRef.current,
-        start: "top 70%",
+        start: "top 50%",
         toggleActions: "play none none none",
       },
     });

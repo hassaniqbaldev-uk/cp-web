@@ -20,115 +20,135 @@ const HeroSection = () => {
       if (isLoading) return;
 
       const linePath = lineRef.current?.querySelector("path");
-      const isMobile = window.innerWidth < 1280; // Your breakpoint
+      const isMobile = window.innerWidth < 1280;
 
+      // SVG Animation - COMPLETELY INDEPENDENT
       if (linePath) {
-        const svgTl = gsap.timeline();
-
-        svgTl
-          .to(lineRef.current, {
-            opacity: 1,
-            duration: 0.4,
-            ease: "power2.out",
-          })
-          .fromTo(
-            linePath,
-            { drawSVG: "0%" },
-            {
-              drawSVG: "100%",
-              duration: 5,
-              ease: "power2.inOut",
-            },
-            "<",
-          );
-      }
-
-      const tl = gsap.timeline({ delay: 0.6 });
-
-      tl.to(".book-badge", {
-        opacity: 1,
-        duration: 0.4,
-        ease: "power2.out",
-      });
-
-      tl.to(".hero-heading", {
-        opacity: 1,
-        duration: 0.3,
-        ease: "power2.out",
-      }).fromTo(
-        ".hero-heading",
-        { opacity: 0, y: 100 },
-        {
+        gsap.to(lineRef.current, {
           opacity: 1,
-          y: 0,
           duration: 0.6,
-          stagger: 0.2,
           ease: "power2.out",
-        },
-      );
+        });
 
-      tl.to(".hero-desc", {
-        opacity: 1,
-        duration: 0.3,
-        ease: "power2.out",
-      }).fromTo(
-        ".hero-desc",
-        { opacity: 0, y: 100 },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 0.6,
-          stagger: 0.2,
-          ease: "power2.out",
-        },
-      );
-
-      tl.to(".hero-cta", {
-        opacity: 1,
-        duration: 0.4,
-        ease: "power2.out",
-      });
-
-      tl.to(".hero-logo-title", {
-        opacity: 1,
-        duration: 0.3,
-        ease: "power2.out",
-      }).fromTo(
-        ".hero-logo-title",
-        { opacity: 0, y: 100 },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 0.6,
-          stagger: 0.2,
-          ease: "power2.out",
-        },
-      );
-
-      if (!isMobile) {
-        tl.to(".hero-logo", {
-          opacity: 1,
-          duration: 0.3,
-          ease: "power2.out",
-        }).fromTo(
-          ".hero-logo",
-          { opacity: 0, y: 150 },
+        gsap.fromTo(
+          linePath,
+          { drawSVG: "0%" },
           {
-            opacity: 1,
-            y: 0,
-            duration: 0.6,
-            stagger: 0.2,
-            ease: "power2.out",
+            drawSVG: "100%",
+            duration: 4,
+            ease: "power2.inOut",
           },
         );
       }
 
-      if (isMobile) {
-        tl.to(".hero-logo-slider", {
+      // Faster master timeline (without SVG)
+      const masterTl = gsap.timeline({ delay: 0.4 });
+
+      // Book Badge - quick bounce
+      masterTl.fromTo(
+        ".book-badge",
+        { opacity: 0, y: 20 },
+        {
           opacity: 1,
+          y: 0,
+          duration: 0.5,
+          ease: "back.out(1.7)",
+        },
+        ">0.1",
+      );
+
+      // Hero Heading - fast wave
+      masterTl.fromTo(
+        ".hero-heading",
+        { opacity: 0, y: 60 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.6,
+          ease: "power2.out",
+          stagger: {
+            each: 0.1,
+            from: "start",
+          },
+        },
+        ">0.05",
+      );
+
+      // Hero Description - tight overlap
+      masterTl.fromTo(
+        ".hero-desc",
+        { opacity: 0, y: 40 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.5,
+          ease: "power2.out",
+          stagger: 0.08,
+        },
+        "-=0.3",
+      );
+
+      // CTA Button - quick entrance
+      masterTl.fromTo(
+        ".hero-cta",
+        { opacity: 0, y: 30 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.4,
+          ease: "back.out(1.8)",
+        },
+        ">0.05",
+      );
+
+      // Logo Title - fast
+      masterTl.fromTo(
+        ".hero-logo-title",
+        { opacity: 0, y: 30 },
+        {
+          opacity: 1,
+          y: 0,
           duration: 0.4,
           ease: "power2.out",
-        });
+        },
+        ">0.05",
+      );
+
+      // Desktop Logos - quick cascade
+      if (!isMobile) {
+        masterTl.fromTo(
+          ".hero-logo",
+          {
+            opacity: 0,
+            y: 80,
+          },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.5,
+            stagger: {
+              each: 0.1,
+              from: "center",
+            },
+            ease: "power2.out",
+          },
+          ">0.05",
+        );
+      }
+
+      // Mobile Logo Slider - quick
+      if (isMobile) {
+        masterTl.fromTo(
+          ".hero-logo-slider",
+          { opacity: 0, x: 30 },
+          {
+            opacity: 1,
+            x: 0,
+            duration: 0.4,
+            ease: "power2.out",
+          },
+          ">0.05",
+        );
       }
     },
     {
@@ -136,7 +156,6 @@ const HeroSection = () => {
       dependencies: [isLoading],
     },
   );
-
   return (
     <section
       ref={container}
