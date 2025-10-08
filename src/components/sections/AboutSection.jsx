@@ -1,8 +1,7 @@
 "use client";
 import Image from "next/image";
 import CommonBtn3 from "../common/CommonBtn3";
-import { useEffect, useRef, useState } from "react";
-import { Volume2, VolumeOff } from "lucide-react";
+import { useRef } from "react";
 import { aboutCardData } from "@/constants/homePage";
 import { SplitText } from "gsap/all";
 import gsap from "gsap";
@@ -10,10 +9,6 @@ import CLetter2 from "@/assets/decorative-elements/c-letter-2";
 import { useGSAP } from "@gsap/react";
 
 const AboutSection = () => {
-  // const descRef = useRef();
-  // const btnRef = useRef();
-  // const gridCardRef1 = useRef();
-  // const gridCardRef2 = useRef();
   const container = useRef();
 
   useGSAP(
@@ -91,70 +86,6 @@ const AboutSection = () => {
     },
     { scope: container },
   );
-
-  // useEffect(() => {
-  //   const splitDesc = new SplitText(descRef.current, {
-  //     type: "lines",
-  //   });
-
-  //   gsap.fromTo(
-  //     splitDesc.lines,
-  //     { opacity: 0, y: -30 },
-  //     {
-  //       opacity: 1,
-  //       y: 0,
-  //       duration: 0.8,
-  //       stagger: 0.1,
-  //       ease: "power2.out",
-  //       scrollTrigger: {
-  //         trigger: descRef.current,
-  //         start: "top 80%",
-  //         toggleActions: "play none none none",
-  //       },
-  //     },
-  //   );
-
-  //   gsap.to(btnRef.current, {
-  //     opacity: 1,
-  //     duration: 0.6,
-  //     ease: "power2.out",
-  //     scrollTrigger: {
-  //       trigger: btnRef.current,
-  //       start: "top 80%",
-  //       toggleActions: "play none none none",
-  //     },
-  //   });
-
-  //   gsap.to(gridCardRef1.current, {
-  //     opacity: 1,
-  //     y: 0,
-  //     duration: 0.6,
-  //     ease: "power2.out",
-  //     scrollTrigger: {
-  //       trigger: gridCardRef1.current,
-  //       start: "top 60%",
-  //       toggleActions: "play none none none",
-  //     },
-  //   });
-
-  //   gsap.fromTo(
-  //     gsap.utils.toArray(gridCardRef2.current.children),
-  //     { opacity: 0, y: -20 },
-  //     {
-  //       opacity: 1,
-  //       y: 0,
-  //       duration: 0.6,
-  //       stagger: 0.1,
-  //       ease: "power2.out",
-  //       clearProps: "all",
-  //       scrollTrigger: {
-  //         trigger: gridCardRef2.current,
-  //         start: "top 60%",
-  //         toggleActions: "play none none none",
-  //       },
-  //     },
-  //   );
-  // }, []);
 
   return (
     <section ref={container} className="relative py-[5rem] xl:py-[8rem]">

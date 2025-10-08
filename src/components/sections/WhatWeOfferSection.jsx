@@ -7,168 +7,286 @@ import SectionLabel2 from "../common/SectionLabel2";
 import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import Link from "next/link";
+import { useGSAP } from "@gsap/react";
 
 const WhatWeOfferSection = () => {
-  const labelRef = useRef();
-  const gridCardRef1 = useRef();
-  const gridCardRef2 = useRef();
-  const lineRef = useRef(null);
+  // const labelRef = useRef();
+  // const gridCardRef1 = useRef();
+  // const gridCardRef2 = useRef();
+  // const lineRef = useRef(null);
   const cursorRef = useRef(null);
-  const linkRef = useRef(null);
+  // const linkRef = useRef(null);
+  const labelRef = useRef();
+  const container = useRef();
+  const lineRef = useRef();
 
-  useEffect(() => {
-    const gridCardRefs = [gridCardRef1, gridCardRef2];
+  // useEffect(() => {
+  //   const gridCardRefs = [gridCardRef1, gridCardRef2];
 
-    const line = lineRef.current.querySelector("path");
+  //   const line = lineRef.current.querySelector("path");
 
-    if (line) {
+  //   if (line) {
+  //     gsap.fromTo(
+  //       line,
+  //       { drawSVG: "0%" },
+  //       {
+  //         drawSVG: "100%",
+  //         duration: 2,
+  //         ease: "power2.inOut",
+  //         scrollTrigger: {
+  //           trigger: lineRef.current,
+  //           start: "top 50%",
+  //           end: "bottom 20%",
+  //           scrub: true,
+  //           markers: false,
+  //         },
+  //       },
+  //     );
+  //   }
+
+  //   // Wobble/shake animation
+  //   gsap.to(labelRef.current, {
+  //     rotation: "+=3",
+  //     duration: 0.15,
+  //     yoyo: true,
+  //     repeat: -1,
+  //     ease: "sine.inOut",
+  //     repeatDelay: 0.5,
+  //   });
+
+  //   gridCardRefs.forEach((ref, index) => {
+  //     if (ref.current) {
+  //       gsap.fromTo(
+  //         gsap.utils.toArray(ref.current.children),
+  //         { opacity: 0 },
+  //         {
+  //           opacity: 1,
+  //           duration: 0.6,
+  //           stagger: 0.1,
+  //           ease: "power2.out",
+  //           delay: index * 0.1,
+  //           clearProps: "all",
+  //           scrollTrigger: {
+  //             trigger: ref.current,
+  //             start: "top 80%",
+  //             toggleActions: "play none none none",
+  //           },
+  //         },
+  //       );
+  //     }
+  //   });
+
+  //   const cursor = cursorRef.current;
+
+  //   // Initial cursor position
+  //   let mouseX = 0;
+  //   let mouseY = 0;
+  //   let cursorX = 0;
+  //   let cursorY = 0;
+  // }, []);
+
+  // useEffect(() => {
+  //   const cursor = cursorRef.current;
+
+  //   // Get all card links
+  //   const links = document.querySelectorAll(".offer-grid-card");
+
+  //   let mouseX = 0;
+  //   let mouseY = 0;
+  //   let cursorX = 0;
+  //   let cursorY = 0;
+
+  //   const moveCursor = (e) => {
+  //     mouseX = e.clientX;
+  //     mouseY = e.clientY;
+  //   };
+
+  //   const updateCursor = () => {
+  //     cursorX = gsap.utils.interpolate(cursorX, mouseX, 0.1);
+  //     cursorY = gsap.utils.interpolate(cursorY, mouseY, 0.1);
+
+  //     gsap.set(cursor, {
+  //       x: cursorX - cursor.offsetWidth / 2,
+  //       y: cursorY - cursor.offsetHeight / 2,
+  //     });
+
+  //     requestAnimationFrame(updateCursor);
+  //   };
+
+  //   const handleMouseEnter = () => {
+  //     gsap.to(cursor, {
+  //       scale: 1,
+  //       opacity: 1,
+  //       width: "100px",
+  //       height: "100px",
+  //       duration: 0.3,
+  //       ease: "power2.out",
+  //     });
+
+  //     gsap.to(".cursor-text", { opacity: 1, delay: 0.1, duration: 0.2 });
+  //   };
+
+  //   const handleMouseLeave = () => {
+  //     gsap.to(cursor, {
+  //       scale: 1,
+  //       opacity: 0,
+  //       width: "20px",
+  //       height: "20px",
+  //       duration: 0.3,
+  //       ease: "power2.out",
+  //     });
+
+  //     gsap.to(".cursor-text", { opacity: 0, duration: 0.1 });
+  //   };
+
+  //   // Attach listeners to all cards
+  //   links.forEach((link) => {
+  //     link.addEventListener("mouseenter", handleMouseEnter);
+  //     link.addEventListener("mouseleave", handleMouseLeave);
+  //   });
+
+  //   window.addEventListener("mousemove", moveCursor);
+  //   updateCursor();
+
+  //   return () => {
+  //     links.forEach((link) => {
+  //       link.removeEventListener("mouseenter", handleMouseEnter);
+  //       link.removeEventListener("mouseleave", handleMouseLeave);
+  //     });
+  //     window.removeEventListener("mousemove", moveCursor);
+  //   };
+  // }, []);
+
+  useGSAP(
+    () => {
+      if (lineRef.current) {
+        const path = lineRef.current.querySelector("path");
+        if (path) {
+          const length = path.getTotalLength();
+
+          gsap.set(path, {
+            strokeDasharray: length,
+            strokeDashoffset: length,
+          });
+
+          gsap.to(path, {
+            strokeDashoffset: 0,
+            duration: 2,
+            ease: "power2.inOut",
+            scrollTrigger: {
+              trigger: lineRef.current,
+              start: "top 80%",
+              end: "bottom 20%",
+              scrub: true,
+            },
+          });
+        }
+      }
+
       gsap.fromTo(
-        line,
-        { drawSVG: "0%" },
+        labelRef.current,
+        { rotate: "-2deg" },
         {
-          drawSVG: "100%",
-          duration: 2,
-          ease: "power2.inOut",
-          scrollTrigger: {
-            trigger: lineRef.current,
-            start: "top 50%",
-            end: "bottom 20%",
-            scrub: true,
-            markers: false,
-          },
+          rotation: "+=3",
+          duration: 0.15,
+          yoyo: true,
+          repeat: -1,
+          ease: "sine.inOut",
+          repeatDelay: 0.5,
         },
       );
-    }
 
-    // Wobble/shake animation
-    gsap.to(labelRef.current, {
-      rotation: "+=3",
-      duration: 0.15,
-      yoyo: true,
-      repeat: -1,
-      ease: "sine.inOut",
-      repeatDelay: 0.5,
-    });
+      const cursor = cursorRef.current;
+      if (!cursor) return;
 
-    gridCardRefs.forEach((ref, index) => {
-      if (ref.current) {
-        gsap.fromTo(
-          gsap.utils.toArray(ref.current.children),
-          { opacity: 0 },
-          {
-            opacity: 1,
-            duration: 0.6,
-            stagger: 0.1,
-            ease: "power2.out",
-            delay: index * 0.1,
-            clearProps: "all",
-            scrollTrigger: {
-              trigger: ref.current,
-              start: "top 80%",
-              toggleActions: "play none none none",
-            },
-          },
-        );
-      }
-    });
+      const links = gsap.utils.toArray(".offer-grid-card");
 
-    const cursor = cursorRef.current;
+      let mouseX = 0;
+      let mouseY = 0;
+      let cursorX = 0;
+      let cursorY = 0;
 
-    // Initial cursor position
-    let mouseX = 0;
-    let mouseY = 0;
-    let cursorX = 0;
-    let cursorY = 0;
-  }, []);
+      const moveCursor = (e) => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+      };
 
-  useEffect(() => {
-    const cursor = cursorRef.current;
+      const updateCursor = () => {
+        cursorX = gsap.utils.interpolate(cursorX, mouseX, 0.1);
+        cursorY = gsap.utils.interpolate(cursorY, mouseY, 0.1);
 
-    // Get all card links
-    const links = document.querySelectorAll(".offer-grid-card");
+        gsap.set(cursor, {
+          x: cursorX - cursor.offsetWidth / 2,
+          y: cursorY - cursor.offsetHeight / 2,
+        });
 
-    let mouseX = 0;
-    let mouseY = 0;
-    let cursorX = 0;
-    let cursorY = 0;
+        requestAnimationFrame(updateCursor);
+      };
 
-    const moveCursor = (e) => {
-      mouseX = e.clientX;
-      mouseY = e.clientY;
-    };
+      const handleMouseEnter = () => {
+        gsap.to(cursor, {
+          scale: 1,
+          opacity: 1,
+          width: "100px",
+          height: "100px",
+          duration: 0.3,
+          ease: "power2.out",
+        });
 
-    const updateCursor = () => {
-      cursorX = gsap.utils.interpolate(cursorX, mouseX, 0.1);
-      cursorY = gsap.utils.interpolate(cursorY, mouseY, 0.1);
+        gsap.to(".cursor-text", { opacity: 1, delay: 0.1, duration: 0.2 });
+      };
 
-      gsap.set(cursor, {
-        x: cursorX - cursor.offsetWidth / 2,
-        y: cursorY - cursor.offsetHeight / 2,
-      });
+      const handleMouseLeave = () => {
+        gsap.to(cursor, {
+          scale: 1,
+          opacity: 0,
+          width: "20px",
+          height: "20px",
+          duration: 0.3,
+          ease: "power2.out",
+        });
 
-      requestAnimationFrame(updateCursor);
-    };
+        gsap.to(".cursor-text", { opacity: 0, duration: 0.1 });
+      };
 
-    const handleMouseEnter = () => {
-      gsap.to(cursor, {
-        scale: 1,
-        opacity: 1,
-        width: "100px",
-        height: "100px",
-        duration: 0.3,
-        ease: "power2.out",
-      });
-
-      gsap.to(".cursor-text", { opacity: 1, delay: 0.1, duration: 0.2 });
-    };
-
-    const handleMouseLeave = () => {
-      gsap.to(cursor, {
-        scale: 1,
-        opacity: 0,
-        width: "20px",
-        height: "20px",
-        duration: 0.3,
-        ease: "power2.out",
-      });
-
-      gsap.to(".cursor-text", { opacity: 0, duration: 0.1 });
-    };
-
-    // Attach listeners to all cards
-    links.forEach((link) => {
-      link.addEventListener("mouseenter", handleMouseEnter);
-      link.addEventListener("mouseleave", handleMouseLeave);
-    });
-
-    window.addEventListener("mousemove", moveCursor);
-    updateCursor();
-
-    return () => {
       links.forEach((link) => {
-        link.removeEventListener("mouseenter", handleMouseEnter);
-        link.removeEventListener("mouseleave", handleMouseLeave);
+        link.addEventListener("mouseenter", handleMouseEnter);
+        link.addEventListener("mouseleave", handleMouseLeave);
       });
-      window.removeEventListener("mousemove", moveCursor);
-    };
-  }, []);
+
+      window.addEventListener("mousemove", moveCursor);
+      updateCursor();
+
+      return () => {
+        links.forEach((link) => {
+          link.removeEventListener("mouseenter", handleMouseEnter);
+          link.removeEventListener("mouseleave", handleMouseLeave);
+        });
+        window.removeEventListener("mousemove", moveCursor);
+      };
+    },
+    { scope: container },
+  );
 
   return (
     <>
-      {/* Custom Cursor with Text Inside */}
-      <div
-        ref={cursorRef}
-        className="custom-cursor pointer-events-none fixed top-0 left-0 z-50 hidden items-center justify-center rounded-full bg-black/50 opacity-0 xl:flex"
+      <section
+        ref={container}
+        className="offer-sec relative pt-[5rem] pb-[5rem] xl:pt-[8rem] xl:pb-[10rem]"
       >
-        {/* Gradient Layer */}
-        <div className="gradient-layer" />
+        {/* Custom Cursor with Text Inside */}
+        <div
+          ref={cursorRef}
+          className="custom-cursor pointer-events-none fixed top-0 left-0 z-50 hidden items-center justify-center rounded-full bg-black/50 opacity-0 xl:flex"
+        >
+          {/* Gradient Layer */}
+          <div className="gradient-layer" />
 
-        <span className="cursor-text text-center text-[1.4rem] leading-tight font-medium text-white opacity-0">
-          Learn More
-        </span>
-      </div>
+          <span className="cursor-text text-center text-[1.4rem] leading-tight font-medium text-white opacity-0">
+            Learn More
+          </span>
+        </div>
 
-      <section className="offer-sec relative pt-[5rem] pb-[5rem] xl:pt-[8rem] xl:pb-[10rem]">
         {/* Decorative stroke line */}
         <div
           ref={lineRef}
@@ -178,7 +296,7 @@ const WhatWeOfferSection = () => {
         </div>
 
         <div className="relative z-[3] flex flex-col items-center gap-[4rem] px-[3rem] md:gap-[7.6rem] xl:px-[0rem]">
-          <div ref={labelRef} className="rotate-[2deg]">
+          <div ref={labelRef}>
             <SectionLabel2
               text="What We Offer"
               bgColor="bg-[#FFC300]"
@@ -186,10 +304,7 @@ const WhatWeOfferSection = () => {
             />
           </div>
 
-          <div
-            ref={gridCardRef1}
-            className="mx-auto grid w-full max-w-[132rem] grid-cols-1 justify-items-center gap-x-[6rem] gap-y-[25rem] lg:grid-cols-2 xl:grid-cols-3 xl:justify-items-normal"
-          >
+          <div className="mx-auto grid w-full max-w-[132rem] grid-cols-1 justify-items-center gap-x-[6rem] gap-y-[25rem] lg:grid-cols-2 xl:grid-cols-3 xl:justify-items-normal">
             {/* Card 1 with yellow cursor */}
             <Link
               href="/services#website-development"
@@ -222,7 +337,6 @@ const WhatWeOfferSection = () => {
 
             {/* Card 2 with blue cursor */}
             <Link
-              ref={lineRef}
               href="/services#design-branding"
               className="offer-grid-card group mb-[-5rem] flex h-[36.4rem] flex-col items-center text-center hover:!border-[#44B276] hover:!bg-[#44B276] md:mb-0 xl:text-left"
             >
@@ -283,10 +397,7 @@ const WhatWeOfferSection = () => {
           </div>
         </div>
 
-        <div
-          ref={gridCardRef2}
-          className="mt-[18rem] px-[3rem] md:mt-[22.8rem] xl:px-[0rem]"
-        >
+        <div className="mt-[18rem] px-[3rem] md:mt-[22.8rem] xl:px-[0rem]">
           <div className="offer-cta-card mx-auto flex max-w-[130rem] rounded-[2rem]">
             <div className="flex w-full flex-col items-center justify-center gap-[2rem] text-center md:flex-row md:justify-between md:text-left">
               <p className="text-[2.4rem] leading-[3.2rem] font-semibold tracking-[-0.02em] text-white">
