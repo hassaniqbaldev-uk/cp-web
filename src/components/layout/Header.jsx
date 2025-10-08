@@ -23,7 +23,7 @@ const Header = () => {
     () => {
       if (isLoading) return;
 
-      const isMobile = window.innerWidth < 1280; // Your breakpoint
+      const isMobile = window.innerWidth < 1280;
       const elements = isMobile
         ? ".header-logo, .header-cta, .hamburger-button"
         : ".header-logo, .header-nav, .header-cta, .hamburger-button";
@@ -32,19 +32,31 @@ const Header = () => {
 
       tl.to(container.current, {
         opacity: 1,
-        duration: 0.4,
+        duration: 0.6,
+        ease: "sine.out",
       })
 
+        // Smooth curvy animation with bounce
         .fromTo(
           elements,
-          { y: -80, opacity: 0 },
+          {
+            y: -60,
+            opacity: 0,
+            scale: 0.9, // Added scale for depth
+          },
           {
             y: 0,
             opacity: 1,
-            duration: 0.8,
-            stagger: 0.1,
-            ease: "power2.out",
+            scale: 1,
+            duration: 0.9,
+            stagger: {
+              each: 0.15, // Smoother stagger
+              from: "start", // Wave from left to right
+              grid: "auto", // Better distribution
+            },
+            ease: "back.out(1.4)", // Nice bounce curve
           },
+          "-=0.3", // Overlap with container fade
         );
     },
     {
