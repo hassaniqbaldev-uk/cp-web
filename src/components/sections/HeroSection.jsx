@@ -9,6 +9,7 @@ import { useRef } from "react";
 import gsap from "gsap";
 import { useLoadingStore } from "@/store/useLoadingStore";
 import { useGSAP } from "@gsap/react";
+import { SplitText } from "gsap/all";
 
 const HeroSection = () => {
   const { isLoading } = useLoadingStore();
@@ -21,6 +22,20 @@ const HeroSection = () => {
 
       const linePath = lineRef.current?.querySelector("path");
       const isMobile = window.innerWidth < 1280;
+
+      // Auto-split the hero heading
+      const splitHeading = new SplitText(".hero-heading", {
+        type: "lines",
+        linesClass: "split-line",
+      });
+
+      // Wrap each line in overflow container
+      splitHeading.lines.forEach((line) => {
+        const wrapper = document.createElement("div");
+        wrapper.className = "overflow-hidden";
+        line.parentNode.insertBefore(wrapper, line);
+        wrapper.appendChild(line);
+      });
 
       // SVG Animation - COMPLETELY INDEPENDENT
       if (linePath) {
@@ -57,24 +72,32 @@ const HeroSection = () => {
         ">0.1",
       );
 
-      // Hero Heading - fast wave
-      masterTl.fromTo(
+      // Hero Heading Opacity - FASTER (overlaps with split lines)
+      masterTl.to(
         ".hero-heading",
+        {
+          opacity: 1,
+          duration: 0.3, // Faster opacity
+          ease: "power2.out",
+        },
+        ">0.05",
+      );
+
+      // Hero Heading Split Lines - STARTS DURING OPACITY
+      masterTl.fromTo(
+        ".split-line",
         { opacity: 0, y: 60 },
         {
           opacity: 1,
           y: 0,
           duration: 0.6,
           ease: "power2.out",
-          stagger: {
-            each: 0.1,
-            from: "start",
-          },
+          stagger: 0.1,
         },
-        ">0.05",
+        "-=0.2", // Start 0.2s BEFORE opacity completes
       );
 
-      // Hero Description - tight overlap
+      // Hero Description - tight overlap with heading
       masterTl.fromTo(
         ".hero-desc",
         { opacity: 0, y: 40 },
@@ -85,7 +108,7 @@ const HeroSection = () => {
           ease: "power2.out",
           stagger: 0.08,
         },
-        "-=0.3",
+        "-=0.4", // Stronger overlap
       );
 
       // CTA Button - quick entrance
@@ -156,10 +179,11 @@ const HeroSection = () => {
       dependencies: [isLoading],
     },
   );
+
   return (
     <section
       ref={container}
-      className="hero-sec relative w-full overflow-hidden rounded-br-[5rem] rounded-bl-[5rem] pt-[17.2rem] pb-[3.3rem]"
+      className="hero-sec relative w-full overflow-hidden rounded-br-[5rem] rounded-bl-[5rem] px-[3rem] pt-[17.2rem] pb-[3.3rem] xl:px-[0rem]"
     >
       {/* Decorative stroke line */}
       <div ref={lineRef} className="absolute inset-0 z-[1] opacity-0">
@@ -173,22 +197,12 @@ const HeroSection = () => {
             <BookBadge />
           </div>
 
-          <h1 className="w-full text-[clamp(2.2rem,5vw,7rem)] leading-[clamp(2.8rem,6vw,8.4rem)] font-semibold tracking-[-0.03em] text-white md:font-bold">
-            <div className="overflow-hidden">
-              <div className="hero-heading opacity-0">
-                Grow your digital presence today
-              </div>
-            </div>
-
-            <div className="overflow-hidden">
-              <div className="hero-heading opacity-0">
-                with real{" "}
-                <span className="bg-gradient-01 bg-clip-text text-transparent">
-                  human-led
-                </span>{" "}
-                strategy.
-              </div>
-            </div>
+          <h1 className="hero-heading w-full text-[2.2rem] leading-[3.2rem] font-semibold tracking-[-0.03em] text-white opacity-0 md:text-[4.5rem] md:leading-[5.5rem] md:font-bold lg:text-[6rem] lg:leading-[7rem] xl:text-[6.9rem] xl:leading-[8.3rem]">
+            Grow your digital presence today with real{" "}
+            <span className="bg-gradient-01 bg-clip-text text-transparent">
+              human-led
+            </span>{" "}
+            strategy.
           </h1>
 
           <div

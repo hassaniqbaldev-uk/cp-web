@@ -90,10 +90,7 @@ const AboutSection = () => {
       </div>
 
       <div className="relative z-10 mx-auto flex w-full max-w-[120rem] flex-col items-center px-[3rem] xl:items-start xl:px-[0rem]">
-        <h5
-          ref={descRef}
-          className="mb-[3rem] max-w-[99rem] text-center text-[1.6rem] leading-[2.8rem] font-semibold tracking-[-0.02em] text-[#333333] md:text-[3.4rem] md:leading-[4.8rem] xl:text-left [&>*:nth-child(2)]:mb-[2rem]"
-        >
+        <h5 className="mb-[3rem] max-w-[99rem] text-center text-[1.6rem] leading-[2.8rem] font-semibold tracking-[-0.02em] text-[#333333] md:text-[3.4rem] md:leading-[4.8rem] xl:text-left">
           <div>
             We believe every website and brand should work harder for the people
             behind it.{" "}
