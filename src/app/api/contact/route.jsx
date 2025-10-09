@@ -25,20 +25,16 @@ export async function POST(req) {
       },
     });
 
+    // 1. Notification to your team
     await transporter.sendMail({
       from: process.env.SMTP_FROM,
       to: "hassan@cp.agency, afzal@cp.agency, ahsan@cp.agency, taha.b@cp.agency",
       subject: `New Contact Request from ${name}`,
-      // html: `
-      //   <h2>New Contact Request</h2>
-      //   <p><strong>Name:</strong> ${name}</p>
-      //   <p><strong>Email:</strong> ${email}</p>
-      //   <p><strong>Service:</strong> ${service || "Not specified"}</p>
-      //   <p><strong>Message:</strong><br/>${message}</p>
-      // `,
+
       html: getContactEmailTemplate(name, email, service, message), // Clean!
     });
 
+    // 2. Thank you to customer
     await transporter.sendMail({
       from: process.env.SMTP_FROM,
       to: email,
