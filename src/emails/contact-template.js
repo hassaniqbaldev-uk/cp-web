@@ -275,19 +275,19 @@ export const getContactEmailTemplate = (name, email, service, message) => `
               <h4>Connect With Us</h4>
 
               <div class="social-links">
-                <a href=""
+                <a href="/"
                   ><img
                     src="https://creativepixels.agency/images/email-template-assets/fb-white.png"
                     alt="Icon"
                 /></a>
 
-                <a href=""
+                <a href="/"
                   ><img
                     src="https://creativepixels.agency/images/email-template-assets/ig-white.png"
                     alt="Icon"
                 /></a>
 
-                <a href=""
+                <a href="/"
                   ><img
                     src="https://creativepixels.agency/images/email-template-assets/linkedin-white.png"
                     alt="Icon"
