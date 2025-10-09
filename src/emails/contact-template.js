@@ -5,7 +5,44 @@ export const getContactEmailTemplate = (
   service,
   message,
   userEmail = "Mohammad",
-) => `
+) => {
+  // Define different bottom cards for different services
+  const getBottomCard = (serviceType) => {
+    const cards = {
+      "Design & Branding": {
+        image:
+          "https://creativepixels.agency/images/email-template-assets/design-branding-card.png",
+        link: "https://creativepixels.agency/case-studies/design-branding-case-study",
+        alt: "Design & Branding Case Study",
+      },
+      "Website Development": {
+        image:
+          "https://creativepixels.agency/images/email-template-assets/website-development-card-img.png",
+        link: "https://creativepixels.agency/case-studies/casa-botanica-panama",
+        alt: "Website Development Case Study",
+      },
+      "Maintenance & Support": {
+        image:
+          "https://creativepixels.agency/images/email-template-assets/website-support-card.png",
+        link: "https://creativepixels.agency/case-studies/website-support-case-study",
+        alt: "Maintenance & Support Case Study",
+      },
+    };
+
+    // Default card if service not found
+    return (
+      cards[serviceType] || {
+        image:
+          "https://creativepixels.agency/images/email-template-assets/default-card.png",
+        link: "https://creativepixels.agency/case-studies",
+        alt: "CreativePixels Case Studies",
+      }
+    );
+  };
+
+  const bottomCard = getBottomCard(service);
+
+  return `
 <!doctype html>
 <html>
   <head>
@@ -112,6 +149,8 @@ export const getContactEmailTemplate = (
         width: 100%;
         height: 338px;
         margin: 0 auto;
+        display: block;
+        text-decoration: none;
       }
 
       .content .container .bottom-card img {
@@ -120,6 +159,7 @@ export const getContactEmailTemplate = (
         object-fit: cover;
         display: block;
         object-position: center;
+        border-radius: 12px;
       }
 
       .content .container .bottom-grid {
@@ -157,6 +197,7 @@ export const getContactEmailTemplate = (
         background-color: #ff8630;
         display: inline-block;
         vertical-align: middle;
+        margin: 0 5px;
       }
 
       .content .container .bottom-grid .grid-column .button-container {
@@ -256,19 +297,16 @@ export const getContactEmailTemplate = (
             <br />
             <br />
 
-            Thanks again for choosing CreativePixels — we can't wait to
-            collaborate! <br />
-            <br />
-
-            Warm regards,<br /><strong>The CreativePixels Team</strong>
+            Check out this relevant case study for <strong>${service || "your project"}</strong>:
           </p>
 
-          <div class="bottom-card">
+          <!-- Dynamic Bottom Card -->
+          <a href="${bottomCard.link}" class="bottom-card">
             <img
-              src="https://creativepixels.agency/images/email-template-assets/bottom-card-img.png"
-              alt="Bottom Card Image"
+              src="${bottomCard.image}"
+              alt="${bottomCard.alt}"
             />
-          </div>
+          </a>
 
           <div class="bottom-grid">
             <div class="grid-column">
@@ -340,3 +378,4 @@ export const getContactEmailTemplate = (
   </body>
 </html>
 `;
+};
