@@ -74,24 +74,24 @@ export const getContactEmailTemplate = (name, email, service, message) => `
       }
 
       .group {
-        display: inline-flex;
         cursor: pointer;
-        align-items: center;
         text-decoration: none;
+        display: inline-block;
       }
 
       .content .container .button-container {
         position: relative;
         z-index: 2;
-        height: 40px;
         min-width: max-content;
         overflow: hidden;
         border-radius: 60px;
         background-color: #ff37b3;
-        padding: 0 20px;
+        padding: 10px 20px;
         font-size: 16px;
         font-weight: 600;
         color: white;
+        display: inline-block;
+        vertical-align: middle;
       }
 
       .content .container .button-text {
@@ -104,27 +104,26 @@ export const getContactEmailTemplate = (name, email, service, message) => `
 
       .content .container .icon-container {
         position: relative;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+        display: inline-block;
+        vertical-align: middle;
       }
 
       .content .container .svg-icon {
-        margin-inline: -5px;
+        margin-inline: -10px;
         position: relative;
         top: 3px;
+        display: inline-block;
+        vertical-align: middle;
       }
 
       .content .container .circle-container {
         position: relative;
-        width: 40px;
-        height: 40px;
         overflow: hidden;
         border-radius: 50%;
         background-color: #ff37b3;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+        display: inline-block;
+        vertical-align: middle;
+        padding: 10px 14px;
       }
 
       .content .container .arrow-icon {
@@ -224,7 +223,7 @@ export const getContactEmailTemplate = (name, email, service, message) => `
             experts and get tailored recommendations for your project.
           </p>
 
-          <a href="#" class="group">
+          <a href="https://creativepixels.agency/call" class="group">
             <div class="button-container">
               <span class="button-text">Schedule a Quick Call</span>
             </div>
@@ -275,19 +274,19 @@ export const getContactEmailTemplate = (name, email, service, message) => `
               <h4>Connect With Us</h4>
 
               <div class="social-links">
-                <a href="/"
+                <a href="https://www.facebook.com/CPAgencyUK"
                   ><img
                     src="https://creativepixels.agency/images/email-template-assets/fb-white.png"
                     alt="Icon"
                 /></a>
 
-                <a href="/"
+                <a href="https://www.instagram.com/cpagencyuk/"
                   ><img
                     src="https://creativepixels.agency/images/email-template-assets/ig-white.png"
                     alt="Icon"
                 /></a>
 
-                <a href="/"
+                <a href="https://www.linkedin.com/company/creativepixels/"
                   ><img
                     src="https://creativepixels.agency/images/email-template-assets/linkedin-white.png"
                     alt="Icon"
