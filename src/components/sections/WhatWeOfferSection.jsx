@@ -4,158 +4,16 @@ import LineStroke03 from "@/assets/decorative-elements/line-stroke-03.svg";
 import CommonBtn3 from "../common/CommonBtn3";
 import SectionLabel2 from "../common/SectionLabel2";
 
-import { useEffect, useRef, useState } from "react";
+import { useRef } from "react";
 import gsap from "gsap";
 import Link from "next/link";
 import { useGSAP } from "@gsap/react";
 
 const WhatWeOfferSection = () => {
-  // const labelRef = useRef();
-  // const gridCardRef1 = useRef();
-  // const gridCardRef2 = useRef();
-  // const lineRef = useRef(null);
   const cursorRef = useRef(null);
-  // const linkRef = useRef(null);
   const labelRef = useRef();
   const container = useRef();
   const lineRef = useRef();
-
-  // useEffect(() => {
-  //   const gridCardRefs = [gridCardRef1, gridCardRef2];
-
-  //   const line = lineRef.current.querySelector("path");
-
-  //   if (line) {
-  //     gsap.fromTo(
-  //       line,
-  //       { drawSVG: "0%" },
-  //       {
-  //         drawSVG: "100%",
-  //         duration: 2,
-  //         ease: "power2.inOut",
-  //         scrollTrigger: {
-  //           trigger: lineRef.current,
-  //           start: "top 50%",
-  //           end: "bottom 20%",
-  //           scrub: true,
-  //           markers: false,
-  //         },
-  //       },
-  //     );
-  //   }
-
-  //   // Wobble/shake animation
-  //   gsap.to(labelRef.current, {
-  //     rotation: "+=3",
-  //     duration: 0.15,
-  //     yoyo: true,
-  //     repeat: -1,
-  //     ease: "sine.inOut",
-  //     repeatDelay: 0.5,
-  //   });
-
-  //   gridCardRefs.forEach((ref, index) => {
-  //     if (ref.current) {
-  //       gsap.fromTo(
-  //         gsap.utils.toArray(ref.current.children),
-  //         { opacity: 0 },
-  //         {
-  //           opacity: 1,
-  //           duration: 0.6,
-  //           stagger: 0.1,
-  //           ease: "power2.out",
-  //           delay: index * 0.1,
-  //           clearProps: "all",
-  //           scrollTrigger: {
-  //             trigger: ref.current,
-  //             start: "top 80%",
-  //             toggleActions: "play none none none",
-  //           },
-  //         },
-  //       );
-  //     }
-  //   });
-
-  //   const cursor = cursorRef.current;
-
-  //   // Initial cursor position
-  //   let mouseX = 0;
-  //   let mouseY = 0;
-  //   let cursorX = 0;
-  //   let cursorY = 0;
-  // }, []);
-
-  // useEffect(() => {
-  //   const cursor = cursorRef.current;
-
-  //   // Get all card links
-  //   const links = document.querySelectorAll(".offer-grid-card");
-
-  //   let mouseX = 0;
-  //   let mouseY = 0;
-  //   let cursorX = 0;
-  //   let cursorY = 0;
-
-  //   const moveCursor = (e) => {
-  //     mouseX = e.clientX;
-  //     mouseY = e.clientY;
-  //   };
-
-  //   const updateCursor = () => {
-  //     cursorX = gsap.utils.interpolate(cursorX, mouseX, 0.1);
-  //     cursorY = gsap.utils.interpolate(cursorY, mouseY, 0.1);
-
-  //     gsap.set(cursor, {
-  //       x: cursorX - cursor.offsetWidth / 2,
-  //       y: cursorY - cursor.offsetHeight / 2,
-  //     });
-
-  //     requestAnimationFrame(updateCursor);
-  //   };
-
-  //   const handleMouseEnter = () => {
-  //     gsap.to(cursor, {
-  //       scale: 1,
-  //       opacity: 1,
-  //       width: "100px",
-  //       height: "100px",
-  //       duration: 0.3,
-  //       ease: "power2.out",
-  //     });
-
-  //     gsap.to(".cursor-text", { opacity: 1, delay: 0.1, duration: 0.2 });
-  //   };
-
-  //   const handleMouseLeave = () => {
-  //     gsap.to(cursor, {
-  //       scale: 1,
-  //       opacity: 0,
-  //       width: "20px",
-  //       height: "20px",
-  //       duration: 0.3,
-  //       ease: "power2.out",
-  //     });
-
-  //     gsap.to(".cursor-text", { opacity: 0, duration: 0.1 });
-  //   };
-
-  //   // Attach listeners to all cards
-  //   links.forEach((link) => {
-  //     link.addEventListener("mouseenter", handleMouseEnter);
-  //     link.addEventListener("mouseleave", handleMouseLeave);
-  //   });
-
-  //   window.addEventListener("mousemove", moveCursor);
-  //   updateCursor();
-
-  //   return () => {
-  //     links.forEach((link) => {
-  //       link.removeEventListener("mouseenter", handleMouseEnter);
-  //       link.removeEventListener("mouseleave", handleMouseLeave);
-  //     });
-  //     window.removeEventListener("mousemove", moveCursor);
-  //   };
-  // }, []);
 
   useGSAP(
     () => {
@@ -240,10 +98,6 @@ const WhatWeOfferSection = () => {
           y: 0,
           duration: 0.6,
           ease: "power2.out",
-          stagger: {
-            each: 0.2,
-            from: "start",
-          },
           scrollTrigger: {
             trigger: ".offer-cta-card-animate",
             start: "top 60%",

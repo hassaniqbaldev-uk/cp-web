@@ -124,12 +124,12 @@ export const logoPopupsData = [
   {
     logo: "/images/fultons-logo.png",
     popupImage: "/images/fultons-popup-img.png",
-    href: "/case-studies/fultons",
+    href: "/case-studies/fulton-jewellery",
   },
   {
     logo: "/images/unicef-logo.png",
-    popupImage: "/images/lola-popup-img.png",
-    href: "/case-studies/lola",
+    popupImage: "/images/unicef-popup-img.png",
+    href: "/case-studies/unicef",
   },
 ];
 
