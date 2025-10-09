@@ -86,7 +86,7 @@ const CallPage = () => {
           </Link>
         </div>
 
-        <div className="call-glass-card mt-[4.4rem] h-[30rem] p-[2rem] md:h-[50rem] md:p-[4rem] lg:h-[60rem]">
+        <div className="call-glass-card relative z-[100] mt-[4.4rem] h-[30rem] p-[2rem] md:h-[50rem] md:p-[4rem] lg:h-[60rem]">
           <Cal
             namespace="30min"
             calLink="hassan-iqbal-mznzu9/30min"
