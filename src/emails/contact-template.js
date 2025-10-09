@@ -21,11 +21,11 @@ export const getContactEmailTemplate = (
         link: "https://creativepixels.agency/case-studies/casa-botanica-panama",
         alt: "Website Development Case Study",
       },
-      "Maintenance & Support": {
+      "Maintenance & Growth": {
         image:
           "https://creativepixels.agency/images/email-template-assets/website-support-card.png",
         link: "https://creativepixels.agency/case-studies/website-support-case-study",
-        alt: "Maintenance & Support Case Study",
+        alt: "Maintenance & Growth Case Study",
       },
     };
 
