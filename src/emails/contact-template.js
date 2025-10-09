@@ -33,7 +33,7 @@ export const getContactEmailTemplate = (
       .banner {
         width: 100%;
         height: 235px;
-        margin-inline: auto;
+        margin: 0 auto;
       }
 
       .banner img {
@@ -46,7 +46,7 @@ export const getContactEmailTemplate = (
 
       .content .container {
         max-width: 540px;
-        margin-inline: auto;
+        margin: 0 auto;
         padding-top: 22px;
         padding-bottom: 25px;
       }
@@ -111,7 +111,7 @@ export const getContactEmailTemplate = (
       .content .container .bottom-card {
         width: 100%;
         height: 338px;
-        margin-inline: auto;
+        margin: 0 auto;
       }
 
       .content .container .bottom-card img {
