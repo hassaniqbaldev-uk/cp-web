@@ -275,7 +275,7 @@ const WhatWeOfferSection = () => {
               </div>
             </Link>
 
-            {/* Card 3 with red cursor */}
+            {/* Card 3 with red cursor*/}
             <Link
               href="/case-studies"
               className="offer-grid-card group offer-grid-card-animate flex h-[36.4rem] flex-col items-center text-center hover:!border-[#FF37B3] hover:!bg-[#FF37B3] lg:col-span-2 xl:col-span-1 xl:text-left"
