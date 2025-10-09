@@ -11,20 +11,20 @@ export const getContactEmailTemplate = (
     const cards = {
       "Design & Branding": {
         image:
-          "https://creativepixels.agency/images/email-template-assets/design-branding-card.png",
-        link: "https://creativepixels.agency/case-studies/design-branding-case-study",
+          "https://creativepixels.agency/images/email-template-assets/design-branding-card-img.png",
+        link: "https://creativepixels.agency/case-studies",
         alt: "Design & Branding Case Study",
       },
       "Website Development": {
         image:
           "https://creativepixels.agency/images/email-template-assets/website-development-card-img.png",
-        link: "https://creativepixels.agency/case-studies/casa-botanica-panama",
+        link: "https://creativepixels.agency/case-studies",
         alt: "Website Development Case Study",
       },
       "Maintenance & Growth": {
         image:
-          "https://creativepixels.agency/images/email-template-assets/website-support-card.png",
-        link: "https://creativepixels.agency/case-studies/website-support-case-study",
+          "https://creativepixels.agency/images/email-template-assets/maintenance-growth-card-img.png",
+        link: "https://creativepixels.agency/case-studies",
         alt: "Maintenance & Growth Case Study",
       },
     };
