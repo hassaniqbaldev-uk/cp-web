@@ -1,5 +1,11 @@
 // emails/contact-template.js
-export const getContactEmailTemplate = (name, email, service, message) => `
+export const getContactEmailTemplate = (
+  name,
+  email,
+  service,
+  message,
+  userEmail = "Mohammad",
+) => `
 <!doctype html>
 <html>
   <head>
@@ -102,40 +108,6 @@ export const getContactEmailTemplate = (name, email, service, message) => `
         justify-content: center;
       }
 
-      .content .container .icon-container {
-        position: relative;
-        display: inline-block;
-        vertical-align: middle;
-      }
-
-      .content .container .svg-icon {
-        margin-inline: -10px;
-        position: relative;
-        top: 3px;
-        display: inline-block;
-        vertical-align: middle;
-      }
-
-      .content .container .circle-container {
-        position: relative;
-        overflow: hidden;
-        border-radius: 50%;
-        background-color: #ff37b3;
-        display: inline-block;
-        vertical-align: middle;
-        padding: 10px 14px;
-      }
-
-      .content .container .arrow-icon {
-        width: 14px;
-        height: 14px;
-      }
-
-      .content .container .subtract-icon {
-        width: 18px;
-        height: 18px;
-      }
-
       .content .container .bottom-card {
         width: 100%;
         height: 338px;
@@ -186,6 +158,53 @@ export const getContactEmailTemplate = (name, email, service, message) => `
         display: inline-block;
         vertical-align: middle;
       }
+
+      .content .container .bottom-grid .grid-column .button-container {
+        position: relative;
+        z-index: 2;
+        min-width: max-content;
+        overflow: hidden;
+        border-radius: 60px;
+        background-color: #3078ff;
+        padding: 10px 20px;
+        font-size: 16px;
+        font-weight: 600;
+        color: white;
+        display: inline-block;
+        vertical-align: middle;
+      }
+
+      .footer {
+        width: 100%;
+        padding: 15px 30px 32px 30px;
+        background-color: #070707;
+      }
+
+      .footer h5 {
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 22px;
+        color: #8f8f8f;
+        margin-bottom: 12px;
+      }
+
+      .footer .footer-links a {
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 22px;
+        color: #8f8f8f;
+        display: inline-block;
+        vertical-align: middle;
+      }
+
+      .footer .footer-links div {
+        width: 4px;
+        height: 4px;
+        border-radius: 100px;
+        background-color: #8f8f8f;
+        display: inline-block;
+        vertical-align: middle;
+      }
     </style>
   </head>
   <body>
@@ -202,16 +221,18 @@ export const getContactEmailTemplate = (name, email, service, message) => `
       <div class="content">
         <div class="container">
           <h2 class="msg-heading">
-            Thanks for reaching out about <span>“Website Development”</span>
+            Thanks for reaching out about <span>"${service || "Website Development"}"</span>
           </h2>
 
           <p class="msg-text">
-            Hi Mohammad, <br />
+            Hi ${name || userEmail}, <br />
             Thank you for contacting
             <strong>CreativePixels Agency</strong> we've received your request
-            for <strong>Website Development</strong>, and our team will get back
+            for <strong>${service || "Website Development"}</strong>, and our team will get back
             to you shortly to discuss the next steps. <br />
             <br />
+
+            ${message ? `You mentioned: "${message}"<br /><br />` : ""}
 
             We're excited to learn more about your goals and see how we can help
             bring your ideas to life. Whether it's crafting a standout brand,
@@ -227,35 +248,15 @@ export const getContactEmailTemplate = (name, email, service, message) => `
             <div class="button-container">
               <span class="button-text">Schedule a Quick Call</span>
             </div>
-
-            <div class="icon-container">
-              <div class="svg-icon">
-                <img
-                  src="https://creativepixels.agency/images/email-template-assets/subtract-pink.png"
-                  alt="Icon"
-                  class="subtract-icon"
-                />
-              </div>
-
-              <div class="circle-container">
-                <div class="circle-icon">
-                  <img
-                    src="https://creativepixels.agency/images/email-template-assets/right-arrow-white.png"
-                    alt="Icon"
-                    class="arrow-icon"
-                  />
-                </div>
-              </div>
-            </div>
           </a>
 
           <p class="msg-text">
             You can also learn more about our recent work and process here:
-            <a href="www.creativepixels.agency">www.creativepixels.agency</a>
+            <a href="https://creativepixels.agency">www.creativepixels.agency</a>
             <br />
             <br />
 
-            Thanks again for choosing CreativePixels — we can’t wait to
+            Thanks again for choosing CreativePixels — we can't wait to
             collaborate! <br />
             <br />
 
@@ -274,31 +275,68 @@ export const getContactEmailTemplate = (name, email, service, message) => `
               <h4>Connect With Us</h4>
 
               <div class="social-links">
-                <a href="https://www.facebook.com/CPAgencyUK"
-                  ><img
+                <a href="https://www.facebook.com/CPAgencyUK">
+                  <img
                     src="https://creativepixels.agency/images/email-template-assets/fb-white.png"
-                    alt="Icon"
-                /></a>
+                    alt="Facebook"
+                    width="38"
+                    height="38"
+                    style="display: block;"
+                  />
+                </a>
 
-                <a href="https://www.instagram.com/cpagencyuk/"
-                  ><img
+                <a href="https://www.instagram.com/cpagencyuk/">
+                  <img
                     src="https://creativepixels.agency/images/email-template-assets/ig-white.png"
-                    alt="Icon"
-                /></a>
+                    alt="Instagram"
+                    width="38"
+                    height="38"
+                    style="display: block;"
+                  />
+                </a>
 
-                <a href="https://www.linkedin.com/company/creativepixels/"
-                  ><img
+                <a href="https://www.linkedin.com/company/creativepixels/">
+                  <img
                     src="https://creativepixels.agency/images/email-template-assets/linkedin-white.png"
-                    alt="Icon"
-                /></a>
+                    alt="LinkedIn"
+                    width="38"
+                    height="38"
+                    style="display: block;"
+                  />
+                </a>
               </div>
             </div>
-            <div class="grid-column">2</div>
+            <div class="grid-column">
+              <h4>View Case Studies</h4>
+
+              <a
+                href="https://creativepixels.agency/case-studies"
+                class="group"
+              >
+                <div class="button-container">
+                  <span class="button-text">View All</span>
+                </div>
+              </a>
+            </div>
           </div>
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <div class="footer">
+        <h5>This email was sent to ${email} by CreativePixels Team.</h5>
+
+        <div class="footer-links">
+          <a href="https://creativepixels.agency/privacy-policy"
+            >Privacy Policy</a
+          >
+          <div></div>
+          <a href="https://creativepixels.agency/cookies-policy"
+            >Cookies Policy</a
+          >
         </div>
       </div>
     </div>
   </body>
 </html>
-
 `;
