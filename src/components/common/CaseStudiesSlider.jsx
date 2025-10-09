@@ -39,8 +39,8 @@ const CaseStudiesSlider = ({ caseStudies }) => {
               <Image
                 src={cs.image}
                 alt="Case Study Image"
-                height={345}
-                width={488}
+                height={378}
+                width={535}
                 priority
                 className="size-full"
               />
