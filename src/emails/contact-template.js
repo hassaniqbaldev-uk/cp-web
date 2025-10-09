@@ -246,6 +246,89 @@ export const getContactEmailTemplate = (
         display: inline-block;
         vertical-align: middle;
       }
+
+      /* Mobile Responsive Styles */
+      @media only screen and (max-width: 480px) {
+        .main-container {
+          width: 100% !important;
+        }
+        
+        .banner {
+          height: 180px !important;
+        }
+        
+        .content .container {
+          padding-top: 15px !important;
+          padding-bottom: 20px !important;
+        }
+        
+        .content .container .msg-heading {
+          font-size: 18px !important;
+          line-height: 1.3 !important;
+          padding: 0 15px !important;
+        }
+        
+        .content .container .msg-text {
+          font-size: 14px !important;
+          line-height: 22px !important;
+          margin: 20px 0px !important;
+          padding: 0 15px !important;
+        }
+        
+        .content .container .button-container {
+          padding: 8px 16px !important;
+          font-size: 14px !important;
+          margin: 0 15px !important;
+          display: block !important;
+          text-align: center !important;
+        }
+        
+        .content .container .bottom-card {
+          height: 250px !important;
+          padding: 0 15px !important;
+        }
+        
+        .content .container .bottom-grid {
+          display: block !important;
+          padding: 0 15px !important;
+        }
+        
+        .content .container .bottom-grid .grid-column {
+          display: block !important;
+          width: 100% !important;
+          margin-bottom: 15px !important;
+        }
+        
+        .content .container .bottom-grid .grid-column h4 {
+          font-size: 16px !important;
+          margin-bottom: 15px !important;
+        }
+        
+        .content .container .bottom-grid .grid-column .social-links a {
+          width: 32px !important;
+          height: 32px !important;
+          margin: 0 3px !important;
+        }
+        
+        .content .container .bottom-grid .grid-column .button-container {
+          padding: 8px 16px !important;
+          font-size: 14px !important;
+        }
+        
+        .footer {
+          padding: 15px 20px 25px 20px !important;
+        }
+        
+        .footer h5 {
+          font-size: 12px !important;
+          line-height: 18px !important;
+        }
+        
+        .footer .footer-links a {
+          font-size: 12px !important;
+          line-height: 18px !important;
+        }
+      }
     </style>
   </head>
   <body>
