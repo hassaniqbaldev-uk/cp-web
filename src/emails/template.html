@@ -148,6 +148,24 @@
         display: block;
         object-position: center;
       }
+
+      .content .container .bottom-grid {
+        display: table;
+        width: 100%;
+        table-layout: fixed;
+        margin: 20px 0px;
+        border-spacing: 8px;
+      }
+
+      .content .container .bottom-grid .grid-column {
+        display: table-cell;
+        width: 50%;
+        border-radius: 12px;
+        background: #ffffff;
+        border: 2px solid #07070734;
+        text-align: center;
+        padding: 25px 0px;
+      }
     </style>
   </head>
   <body>
@@ -185,33 +203,31 @@
             experts and get tailored recommendations for your project.
           </p>
 
-          <div>
-            <a href="#" class="group">
-              <div class="button-container">
-                <span class="button-text">Schedule a Quick Call</span>
+          <a href="#" class="group">
+            <div class="button-container">
+              <span class="button-text">Schedule a Quick Call</span>
+            </div>
+
+            <div class="icon-container">
+              <div class="svg-icon">
+                <img
+                  src="https://creativepixels.agency/images/email-template-assets/subtract-pink.png"
+                  alt="Icon"
+                  class="subtract-icon"
+                />
               </div>
 
-              <div class="icon-container">
-                <div class="svg-icon">
+              <div class="circle-container">
+                <div class="circle-icon">
                   <img
-                    src="https://creativepixels.agency/images/email-template-assets/subtract-pink.png"
+                    src="https://creativepixels.agency/images/email-template-assets/right-arrow-white.png"
                     alt="Icon"
-                    class="subtract-icon"
+                    class="arrow-icon"
                   />
                 </div>
-
-                <div class="circle-container">
-                  <div class="circle-icon">
-                    <img
-                      src="https://creativepixels.agency/images/email-template-assets/right-arrow-white.png"
-                      alt="Icon"
-                      class="arrow-icon"
-                    />
-                  </div>
-                </div>
               </div>
-            </a>
-          </div>
+            </div>
+          </a>
 
           <p class="msg-text">
             You can also learn more about our recent work and process here:
@@ -231,6 +247,21 @@
               src="https://creativepixels.agency/images/email-template-assets/bottom-card-img.png"
               alt="Bottom Card Image"
             />
+          </div>
+
+          <div class="bottom-grid">
+            <div class="grid-column">
+              <h4>Connect With Us</h4>
+
+              <div class="social-links">
+                <a href=""
+                  ><img
+                    src="https://creativepixels.agency/images/email-template-assets/fb-white.png"
+                    alt="Icon"
+                /></a>
+              </div>
+            </div>
+            <div class="grid-column">2</div>
           </div>
         </div>
       </div>
