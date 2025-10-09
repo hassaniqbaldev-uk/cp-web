@@ -196,6 +196,62 @@ const WhatWeOfferSection = () => {
         },
       );
 
+      gsap.fromTo(
+        labelRef.current,
+        { opacity: 0, y: 20 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.6,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: labelRef.current,
+            start: "top 60%",
+            toggleActions: "play none none none",
+          },
+        },
+      );
+
+      gsap.fromTo(
+        ".offer-grid-card-animate",
+        { opacity: 0, y: 20 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.6,
+          ease: "power2.out",
+          stagger: {
+            each: 0.2,
+            from: "start",
+          },
+          scrollTrigger: {
+            trigger: ".offer-grid-card-animate",
+            start: "top 60%",
+            toggleActions: "play none none none",
+          },
+        },
+      );
+
+      gsap.fromTo(
+        ".offer-cta-card-animate",
+        { opacity: 0, y: 20 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.6,
+          ease: "power2.out",
+          stagger: {
+            each: 0.2,
+            from: "start",
+          },
+          scrollTrigger: {
+            trigger: ".offer-cta-card-animate",
+            start: "top 60%",
+            toggleActions: "play none none none",
+          },
+        },
+      );
+
       const cursor = cursorRef.current;
       if (!cursor) return;
 
@@ -308,7 +364,7 @@ const WhatWeOfferSection = () => {
             {/* Card 1 with yellow cursor */}
             <Link
               href="/services#website-development"
-              className="offer-grid-card group flex h-[36.4rem] flex-col items-center text-center hover:!border-[#ffc300] hover:!bg-[#ffc300] xl:text-left"
+              className="offer-grid-card offer-grid-card-animate group flex h-[36.4rem] flex-col items-center text-center hover:!border-[#ffc300] hover:!bg-[#ffc300] xl:text-left"
             >
               <div className="flex flex-col gap-[1.4rem] p-[2rem] md:p-[3rem]">
                 <h3 className="relative w-full text-[3.4rem] leading-[4.8rem] font-semibold tracking-[-0.02em] text-white transition-all duration-300 group-hover:text-black">
@@ -338,7 +394,7 @@ const WhatWeOfferSection = () => {
             {/* Card 2 with blue cursor */}
             <Link
               href="/services#design-branding"
-              className="offer-grid-card group mb-[-5rem] flex h-[36.4rem] flex-col items-center text-center hover:!border-[#44B276] hover:!bg-[#44B276] md:mb-0 xl:text-left"
+              className="offer-grid-card group offer-grid-card-animate mb-[-5rem] flex h-[36.4rem] flex-col items-center text-center hover:!border-[#44B276] hover:!bg-[#44B276] md:mb-0 xl:text-left"
             >
               <div className="flex flex-col gap-[1.4rem] p-[2rem] md:p-[3rem]">
                 <h3 className="relative w-full text-[3.4rem] leading-[4.8rem] font-semibold tracking-[-0.02em] text-white transition-all duration-300 group-hover:text-black">
@@ -368,7 +424,7 @@ const WhatWeOfferSection = () => {
             {/* Card 3 with red cursor */}
             <Link
               href="/case-studies"
-              className="offer-grid-card group flex h-[36.4rem] flex-col items-center text-center hover:!border-[#FF37B3] hover:!bg-[#FF37B3] lg:col-span-2 xl:col-span-1 xl:text-left"
+              className="offer-grid-card group offer-grid-card-animate flex h-[36.4rem] flex-col items-center text-center hover:!border-[#FF37B3] hover:!bg-[#FF37B3] lg:col-span-2 xl:col-span-1 xl:text-left"
             >
               <div className="flex flex-col gap-[1.4rem] p-[2rem] md:p-[3rem]">
                 <h3 className="relative w-full text-[3.4rem] leading-[4.8rem] font-semibold tracking-[-0.02em] text-white transition-all duration-300 group-hover:text-black">
@@ -398,7 +454,7 @@ const WhatWeOfferSection = () => {
         </div>
 
         <div className="mt-[18rem] px-[3rem] md:mt-[22.8rem] xl:px-[0rem]">
-          <div className="offer-cta-card mx-auto flex max-w-[130rem] rounded-[2rem]">
+          <div className="offer-cta-card offer-cta-card-animate mx-auto flex max-w-[130rem] rounded-[2rem]">
             <div className="flex w-full flex-col items-center justify-center gap-[2rem] text-center md:flex-row md:justify-between md:text-left">
               <p className="text-[2.4rem] leading-[3.2rem] font-semibold tracking-[-0.02em] text-white">
                 Want a website and brand that actually grows your business?
