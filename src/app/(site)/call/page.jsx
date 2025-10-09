@@ -4,8 +4,26 @@ import RightArrowIcon from "@/assets/icons/right-arrow-icon.svg";
 import Link from "next/link";
 import LineStroke30 from "@/assets/decorative-elements/line-stroke-30.svg";
 import ContactForm from "@/components/common/ContactForm";
+import Cal, { getCalApi } from "@calcom/embed-react";
+import { useEffect } from "react";
 
 const CallPage = () => {
+  useEffect(() => {
+    (async function () {
+      const cal = await getCalApi({ namespace: "30min" });
+      cal("ui", {
+        theme: "dark",
+        cssVarsPerTheme: {
+          light: { "cal-brand": "#292929" },
+          dark: { "cal-brand": "#FF37B3" },
+        },
+        hideEventTypeDetails: false,
+        layout: "month_view",
+        hideBranding: true, // This hides the Cal.com branding
+      });
+    })();
+  }, []);
+
   return (
     <>
       <div className="hero-sec relative h-[60rem] w-full rounded-br-[5rem] rounded-bl-[5rem] px-[3rem] pt-[14.1rem] md:h-[79rem] xl:px-[0rem]">
@@ -69,7 +87,22 @@ const CallPage = () => {
         </div>
 
         <div className="call-glass-card mt-[4.4rem] h-[30rem] p-[2rem] md:h-[50rem] md:p-[4rem] lg:h-[60rem]">
-          {/* <div className="size-full rounded-[1.2rem] bg-black/30"></div> */}
+          <Cal
+            namespace="30min"
+            calLink="hassan-iqbal-mznzu9/30min"
+            style={{
+              width: "100%",
+              height: "100%",
+              border: "none",
+              borderRadius: "1.2rem",
+              overflow: "scroll",
+            }}
+            config={{
+              layout: "month_view",
+              theme: "dark",
+              hideBranding: true,
+            }}
+          />
         </div>
       </div>
 
