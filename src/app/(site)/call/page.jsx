@@ -26,7 +26,7 @@ const CallPage = () => {
 
   return (
     <>
-      <div className="hero-sec relative h-[60rem] w-full rounded-br-[5rem] rounded-bl-[5rem] px-[3rem] pt-[14.1rem] md:h-[79rem] xl:px-[0rem]">
+      <div className="hero-sec relative z-[50] h-[60rem] w-full rounded-br-[5rem] rounded-bl-[5rem] px-[3rem] pt-[14.1rem] md:h-[79rem] xl:px-[0rem]">
         {/* Decorative stroke line */}
         <div className="absolute inset-0 z-[1]">
           <LineStroke30 className="absolute bottom-[-21.1rem] left-1/2 w-full -translate-x-1/2" />
@@ -86,7 +86,7 @@ const CallPage = () => {
           </Link>
         </div>
 
-        <div className="call-glass-card relative z-[100] mt-[4.4rem] h-[30rem] p-[2rem] md:h-[50rem] md:p-[4rem] lg:h-[60rem]">
+        <div className="call-glass-card mt-[4.4rem] h-[30rem] p-[2rem] md:h-[50rem] md:p-[4rem] lg:h-[60rem]">
           <Cal
             namespace="30min"
             calLink="hassan-iqbal-mznzu9/30min"
