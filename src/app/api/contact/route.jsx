@@ -1,4 +1,5 @@
 import { getContactEmailTemplate } from "@/emails/contact-template";
+import { getCustomerEmailTemplate } from "@/emails/customer-template";
 import { NextResponse } from "next/server";
 import nodemailer from "nodemailer";
 
@@ -36,6 +37,13 @@ export async function POST(req) {
       //   <p><strong>Message:</strong><br/>${message}</p>
       // `,
       html: getContactEmailTemplate(name, email, service, message), // Clean!
+    });
+
+    await transporter.sendMail({
+      from: process.env.SMTP_FROM,
+      to: email,
+      subject: `Thanks for reaching out about ${service}`,
+      html: getCustomerEmailTemplate(name, email, service, message), // Clean!
     });
 
     return NextResponse.json({ success: true });
