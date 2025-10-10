@@ -1139,7 +1139,7 @@ body {
   );
   border: 0.85px solid transparent;
   background-clip: padding-box;
-  backdrop-filter: blur(33.8px);
+  backdrop-filter: blur(10px);
   border-radius: 16px;
   color: white;
   position: relative;
