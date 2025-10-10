@@ -4,62 +4,17 @@ import SectionDescription from "../common/SectionDescription";
 import SectionTitle from "../common/SectionTitle";
 import SectionLabel2 from "../common/SectionLabel2";
 import CaseStudiesSlider from "../common/CaseStudiesSlider";
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { SplitText } from "gsap/all";
+import CtaSection1 from "../common/CtaSection1";
+import LineStroke04 from "@/assets/decorative-elements/line-stroke-04.svg";
 
 const CaseStudiesSection = ({ caseStudies }) => {
   const labelRef = useRef();
   const container = useRef();
-  // const titleRef = useRef();
-  // const descRef = useRef();
-  // const gridRef = useRef();
-
-  // useEffect(() => {
-  //   // Wobble/shake animation
-  //   gsap.to(labelRef.current, {
-  //     rotation: "+=3", // Rotate 3 degrees back and forth
-  //     duration: 0.15, // Very short duration for quick wobble
-  //     yoyo: true, // Go back and forth
-  //     repeat: -1, // Infinite repeat
-  //     ease: "sine.inOut", // Best ease for wobble effects
-  //     repeatDelay: 0.5, // Small pause between wobbles
-  //   });
-
-  //   gsap.to(titleRef.current, {
-  //     opacity: 1,
-  //     duration: 0.6,
-  //     ease: "power2.out",
-  //     scrollTrigger: {
-  //       trigger: titleRef.current,
-  //       start: "top 80%",
-  //       toggleActions: "play none none none",
-  //     },
-  //   });
-
-  //   gsap.to(descRef.current, {
-  //     opacity: 1,
-  //     duration: 0.6,
-  //     ease: "power2.out",
-  //     scrollTrigger: {
-  //       trigger: descRef.current,
-  //       start: "top 80%",
-  //       toggleActions: "play none none none",
-  //     },
-  //   });
-
-  //   gsap.to(gridRef.current, {
-  //     opacity: 1,
-  //     duration: 0.6,
-  //     ease: "power2.out",
-  //     scrollTrigger: {
-  //       trigger: gridRef.current,
-  //       start: "top 80%",
-  //       toggleActions: "play none none none",
-  //     },
-  //   });
-  // }, []);
+  const lineRef = useRef();
 
   useGSAP(
     () => {
@@ -85,6 +40,30 @@ const CaseStudiesSection = ({ caseStudies }) => {
         line.parentNode.insertBefore(wrapper, line);
         wrapper.appendChild(line);
       });
+
+      if (lineRef.current) {
+        const path = lineRef.current.querySelector("path");
+        if (path) {
+          const length = path.getTotalLength();
+
+          gsap.set(path, {
+            strokeDasharray: length,
+            strokeDashoffset: length,
+          });
+
+          gsap.to(path, {
+            strokeDashoffset: 0,
+            duration: 2,
+            ease: "power2.inOut",
+            scrollTrigger: {
+              trigger: lineRef.current,
+              start: "top -100%",
+              end: "bottom 50%",
+              scrub: true,
+            },
+          });
+        }
+      }
 
       gsap.fromTo(
         labelRef.current,
@@ -189,7 +168,12 @@ const CaseStudiesSection = ({ caseStudies }) => {
     { scope: container },
   );
   return (
-    <section ref={container} className="relative pt-[5rem] xl:pt-[10rem]">
+    <section ref={container} className="relative py-[5rem] xl:py-[10rem]">
+      {/* Decorative stroke line */}
+      <div ref={lineRef} className="absolute inset-0 z-[0]">
+        <LineStroke04 className="absolute bottom-0 left-1/2 w-full -translate-x-1/2" />
+      </div>
+
       <div className="relative mx-auto max-w-[120rem] px-[3rem] xl:px-[0rem]">
         <div className="top-[6rem] flex flex-col items-center gap-[2rem] text-center xl:sticky">
           <div ref={labelRef}>
@@ -232,6 +216,10 @@ const CaseStudiesSection = ({ caseStudies }) => {
       <div className="case-cta-card-animate mt-10 block w-full overflow-hidden lg:mt-20 xl:hidden">
         {/* <CaseStudiesMarquee /> */}
         <CaseStudiesSlider caseStudies={caseStudies} />
+      </div>
+
+      <div className="mx-auto mt-[5rem] max-w-[120rem] px-[2rem] xl:mt-[9rem] xl:px-[0rem]">
+        <CtaSection1 />
       </div>
     </section>
   );

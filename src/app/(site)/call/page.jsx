@@ -10,7 +10,7 @@ import { useEffect } from "react";
 const CallPage = () => {
   useEffect(() => {
     (async function () {
-      const cal = await getCalApi({ namespace: "30min" });
+      const cal = await getCalApi({ namespace: "cwh" });
       cal("ui", {
         theme: "dark",
         cssVarsPerTheme: {
@@ -90,8 +90,8 @@ const CallPage = () => {
       <div className="mt-[-41rem] mb-[5rem] px-[2rem] md:mt-[-38.7rem] md:mb-[10rem] xl:px-[0rem]">
         <div className="call-glass-card p-[2rem] md:p-[4rem]">
           <Cal
-            namespace="30min"
-            calLink="hassan-iqbal-mznzu9/30min"
+            namespace="cwh"
+            calLink="hassan-iqbal-mznzu9/cwh"
             style={{
               width: "100%",
               height: "100%",
