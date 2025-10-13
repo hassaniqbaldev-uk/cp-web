@@ -5,6 +5,8 @@ import Script from "next/script";
 const onest = Onest({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
+  preload: true,
+  display: "swap", // Optional: ensures text remains visible during webfont load
 });
 
 export const metadata = {

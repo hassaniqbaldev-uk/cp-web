@@ -1168,3 +1168,13 @@ body {
   mask-composite: exclude;
   pointer-events: none;
 }
+
+/* Web Design Service Section */
+
+.web-design-service-slider {
+  overflow: visible !important;
+}
+
+.web-design-service-slider .swiper-slide {
+  height: auto !important;
+}
