@@ -4,6 +4,7 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { useRef } from "react";
 import SectionLabel2 from "../common/SectionLabel2";
+import LineStroke31 from "@/assets/decorative-elements/line-stroke-31.svg";
 
 const WhatWeCanHelpSection = () => {
   const labelRef = useRef();
@@ -30,10 +31,12 @@ const WhatWeCanHelpSection = () => {
   );
 
   return (
-    <section
-      ref={container}
-      className="relative h-screen px-[3rem] xl:px-[0rem]"
-    >
+    <section ref={container} className="relative px-[3rem] xl:px-[0rem]">
+      {/* Decorative stroke line */}
+      <div className="absolute inset-0 z-[1]">
+        <LineStroke31 className="absolute top-[-15.4rem] left-[-115.8rem] w-full" />
+      </div>
+
       <div className="mx-auto max-w-[120rem]">
         <div className="flex flex-col items-center text-center">
           <div ref={labelRef}>

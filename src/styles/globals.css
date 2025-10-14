@@ -1178,3 +1178,78 @@ body {
 .web-design-service-slider .swiper-slide {
   height: auto !important;
 }
+
+/* Key Benefit Section */
+
+.key-benefit-slider {
+  overflow: visible !important;
+}
+
+.key-benefit-slider .swiper-slide {
+  height: auto !important;
+}
+
+.key-benefit-card {
+  position: relative;
+  border-radius: 2rem;
+  background: linear-gradient(
+    301.75deg,
+    rgba(255, 255, 255, 0.05) 1.41%,
+    rgba(29, 29, 29, 0.05) 95.05%
+  );
+  backdrop-filter: blur(10px);
+  z-index: 0;
+}
+
+.key-benefit-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  padding: 0.85px; /* border thickness */
+  border-radius: inherit;
+  background: linear-gradient(
+    124.23deg,
+    rgba(255, 255, 255, 0.3) 3.32%,
+    rgba(7, 7, 7, 0.3) 97.31%
+  );
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  z-index: -1;
+}
+
+/* Feedback Section */
+
+.feedback-card {
+  position: relative;
+  border-radius: 2rem;
+  /* padding: 2rem; */
+  background: linear-gradient(
+    301.83deg,
+    rgba(255, 255, 255, 0.05) 1.23%,
+    rgba(29, 29, 29, 0.05) 95.04%
+  );
+  backdrop-filter: blur(10px);
+  z-index: 0;
+}
+
+.feedback-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  padding: 0.85px; /* border thickness */
+  border-radius: inherit;
+  background: linear-gradient(
+    124.3deg,
+    rgba(255, 255, 255, 0.3) 3.32%,
+    rgba(7, 7, 7, 0.3) 97.48%
+  );
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  z-index: -1;
+}

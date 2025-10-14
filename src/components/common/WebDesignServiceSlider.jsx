@@ -64,7 +64,11 @@ const WebDesignServiceSlider = () => {
         clickable: true,
       }}
       breakpoints={{
-        1024: {
+        768: {
+          slidesPerView: 2,
+          spaceBetween: 15,
+        },
+        1280: {
           slidesPerView: 3,
           spaceBetween: 15,
         },
@@ -75,7 +79,7 @@ const WebDesignServiceSlider = () => {
         <SwiperSlide key={idx}>
           <div
             ref={(el) => (cardRefs.current[idx] = el)}
-            className="relative h-[52rem] w-[37.9rem] cursor-pointer overflow-hidden rounded-[2rem]"
+            className="relative h-[45rem] cursor-pointer overflow-hidden rounded-[2rem] md:h-[52rem]"
             onMouseEnter={() => handleMouseEnter(idx)}
             onMouseLeave={() => handleMouseLeave(idx)}
           >
@@ -83,14 +87,14 @@ const WebDesignServiceSlider = () => {
               <img
                 src={card.image}
                 alt={card.title}
-                className="size-full object-contain object-top"
+                className="size-full object-cover object-top"
               />
             </div>
 
             <div
               className={`absolute bottom-0 flex w-full flex-col items-center justify-center ${card.bgColor} px-[5rem] py-[2.4rem] text-center`}
             >
-              <h5 className="text-[2.6rem] leading-[3.2rem] font-semibold tracking-[-0.02em] text-white">
+              <h5 className="text-[2rem] leading-[2.8rem] font-semibold tracking-[-0.02em] text-white md:text-[2.6rem] md:leading-[3.2rem]">
                 {card.title}
               </h5>
 

@@ -37,7 +37,7 @@ const WebDesignServiceSection = () => {
   return (
     <section
       ref={container}
-      className="relative overflow-hidden px-[3rem] pt-[9.2rem] pb-[7rem] xl:px-[0rem]"
+      className="relative overflow-hidden px-[3rem] pt-[8rem] pb-[7rem] xl:px-[0rem] xl:pt-[9.2rem]"
       style={{
         background:
           "url('/images/web-design-service-gradient-bg.png') no-repeat center center/cover",
@@ -58,7 +58,7 @@ const WebDesignServiceSection = () => {
             />
           </div>
 
-          <h4 className="text-center text-[6rem] leading-[7.4rem] font-bold tracking-[-0.03em] text-white">
+          <h4 className="text-center text-[4rem] leading-[5rem] font-bold tracking-[-0.03em] text-white md:text-[6rem] md:leading-[7.4rem]">
             Full-Stack Web Design Services
           </h4>
         </div>

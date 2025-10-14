@@ -63,7 +63,7 @@ const UiUxHeroSection = () => {
   return (
     <section
       ref={container}
-      className="relative w-full overflow-hidden rounded-br-[5rem] rounded-bl-[5rem] px-[3rem] pt-[17.2rem] pb-[3.3rem] xl:px-[0rem]"
+      className="relative w-full overflow-hidden rounded-br-[5rem] rounded-bl-[5rem] px-[3rem] pt-[14rem] pb-[3.3rem] xl:px-[0rem] xl:pt-[17.2rem]"
       style={{
         background:
           "url('/images/ui-ux-hero-bg-gradient.webp') no-repeat center center/cover",
@@ -75,8 +75,8 @@ const UiUxHeroSection = () => {
       </div>
 
       <div className="relative z-[10] mx-auto max-w-[120rem]">
-        <div className="flex items-center justify-between gap-[4rem]">
-          <div className="flex w-[51.5rem] flex-col items-start">
+        <div className="flex flex-col items-center justify-between gap-[4rem] xl:flex-row">
+          <div className="flex w-full flex-col items-center text-center xl:w-[51.5rem] xl:items-start xl:text-left">
             <div ref={labelRef}>
               <SectionLabel2
                 text="Our Services"
@@ -85,11 +85,11 @@ const UiUxHeroSection = () => {
               />
             </div>
 
-            <h1 className="mt-[2.9rem] text-[2rem] leading-[3rem] font-semibold tracking-[-0.03em] text-white md:text-[4.5rem] md:leading-[5.5rem] md:font-bold lg:text-[6rem] lg:leading-[7rem] xl:text-[6.9rem] xl:leading-[8.3rem]">
+            <h1 className="mt-[2.9rem] text-[3rem] leading-[3rem] font-bold tracking-[-0.03em] text-white md:text-[4.5rem] md:leading-[5.5rem] lg:text-[6rem] lg:leading-[7rem] xl:text-[6.9rem] xl:leading-[8.3rem]">
               UI/UX Design
             </h1>
 
-            <p className="mt-[1.2rem] mb-[2.5rem] text-[1.8rem] leading-[2.6rem] font-normal text-white">
+            <p className="mt-[1.2rem] mb-[2.5rem] max-w-[60rem] text-[1.6rem] leading-[2.4rem] font-normal text-white md:text-[1.8rem] md:leading-[2.6rem]">
               We design in Figma to create websites, apps, and dashboards that
               are intuitive, responsive, and built to convert. From wireframes
               to polished interfaces, every detail is crafted for clarity and
@@ -100,7 +100,7 @@ const UiUxHeroSection = () => {
           </div>
 
           <div
-            className="h-[52.3rem] w-[62.5rem] overflow-hidden rounded-[2rem]"
+            className="h-[27rem] w-full overflow-hidden rounded-[2rem] md:h-[52.3rem] md:w-[62.5rem]"
             style={{
               boxShadow: "-24px 18px 40px 0px #07070799",
             }}
@@ -108,7 +108,7 @@ const UiUxHeroSection = () => {
             <img
               src="/images/ui-ux-hero-card-img.png"
               alt="Hero Image"
-              className="size-full object-cover"
+              className="size-full"
             />
           </div>
         </div>

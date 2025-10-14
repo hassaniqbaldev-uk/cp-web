@@ -7,6 +7,7 @@ import SectionLabel2 from "../common/SectionLabel2";
 import CommonBtn3 from "../common/CommonBtn3";
 import { approachItems } from "@/constants/uiUxPage";
 import Link from "next/link";
+import OurApproachSlider from "../common/OurApproachSlider";
 
 const OurApproachSection = () => {
   const labelRef = useRef();
@@ -33,10 +34,13 @@ const OurApproachSection = () => {
   );
 
   return (
-    <section ref={container} className="px-[3rem] py-[9.6rem] xl:px-[0rem]">
+    <section
+      ref={container}
+      className="px-[3rem] py-[8rem] xl:px-[0rem] xl:py-[9.6rem]"
+    >
       <div className="mx-auto max-w-[120rem]">
-        <div className="flex items-center justify-between gap-[4rem]">
-          <div className="flex w-[46.6rem] flex-col items-start">
+        <div className="flex flex-col items-center justify-between gap-[4rem] xl:flex-row">
+          <div className="flex w-full flex-col items-center text-center xl:w-[46.6rem] xl:items-start xl:text-left">
             <div ref={labelRef}>
               <SectionLabel2
                 text="Our Approach"
@@ -45,11 +49,11 @@ const OurApproachSection = () => {
               />
             </div>
 
-            <h2 className="mt-[2.4rem] text-[5.2rem] leading-[6rem] font-semibold tracking-[-0.02em] text-[#070707]">
+            <h2 className="mt-[2.4rem] text-[3rem] leading-[4rem] font-semibold tracking-[-0.02em] text-[#070707] md:text-[5.2rem] md:leading-[6rem]">
               A practical design process that's clear and collaborative.
             </h2>
 
-            <p className="mt-[1.6rem] mb-[3.8rem] max-w-[44.2rem] text-[2.2rem] leading-[3.2rem] font-medium text-[#070707]">
+            <p className="mt-[1.6rem] mb-[3.8rem] text-[1.8rem] leading-[2.8rem] font-medium text-[#070707] md:text-[2.2rem] md:leading-[3.2rem] xl:max-w-[44.2rem]">
               We keep things simple: every UI/UX project starts with a
               consultation call to understand your goals. From there, we design
               in Figma and deliver websites, apps, and dashboards that are
@@ -59,11 +63,14 @@ const OurApproachSection = () => {
             <CommonBtn3 label="Book a 15-min free call" href="/contact" />
           </div>
 
-          <div className="grid w-[66rem] grid-cols-2 gap-x-[9rem] gap-y-[2rem]">
+          <div className="hidden w-full grid-cols-2 gap-x-[9rem] gap-y-[2rem] md:grid xl:w-[66rem]">
             {approachItems.map((item, index) => {
               const IconComponent = item.icon;
               return (
-                <div key={index} className="flex flex-col items-start">
+                <div
+                  key={index}
+                  className="flex flex-col items-center text-center xl:items-start xl:text-left"
+                >
                   <div
                     className={`flex size-[8.8rem] items-center justify-center rounded-full ${item.bgColor}`}
                     style={{ boxShadow: "0px 8px 24px -14px #000000B2" }}
@@ -81,6 +88,10 @@ const OurApproachSection = () => {
                 </div>
               );
             })}
+          </div>
+
+          <div className="block w-full md:hidden">
+            <OurApproachSlider />
           </div>
         </div>
 

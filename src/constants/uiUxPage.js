@@ -8,6 +8,11 @@ import DashboardIcon from "@/assets/icons/dashboard-icon.svg";
 import ResponsiveIcon from "@/assets/icons/responsive-icon.svg";
 import PrototypingIcon from "@/assets/icons/prototyping-icon.svg";
 import DesignStrategyIcon from "@/assets/icons/design-strategy-icon.svg";
+import AutomotiveIcon from "@/assets/icons/automotive-icon.svg";
+import FinancialIcon from "@/assets/icons/financial-icon.svg";
+import TechElecIcon from "@/assets/icons/tech-elec-icon.svg";
+import HealthcareIcon from "@/assets/icons/healthcare-icon.svg";
+import NonProfitIcon from "@/assets/icons/non-profit-icon.svg";
 
 export const approachItems = [
   {
@@ -133,5 +138,114 @@ export const whatWeCanHelpData = [
     description:
       "Consultation-led approach that aligns your UI/UX with business goals and future growth.",
     iconWidth: "w-[2.8rem]",
+  },
+];
+
+export const keyBenefitCards = [
+  {
+    id: 1,
+    title: "Clearer User Journeys",
+    description:
+      "Intuitive layouts that reduce friction and help visitors take action faster.",
+  },
+  {
+    id: 2,
+    title: "Higher Conversions",
+    description:
+      "Designs shaped around your goals — whether that's more sales, sign-ups, or engagement.",
+  },
+  {
+    id: 3,
+    title: "Figma Collaboration",
+    description:
+      "Work with us in real time using Figma for quick feedback and iterations.",
+  },
+  {
+    id: 4,
+    title: "Ready for Development",
+    description:
+      "Every design is structured for seamless handoff to your dev team, saving time and cost.",
+  },
+  {
+    id: 5,
+    title: "Future-Proofed",
+    description:
+      "Responsive, scalable designs that adapt as your business evolves.",
+  },
+];
+
+export const ourProcessData = [
+  {
+    step: "STEP #1",
+    title: "Consultation & Planning",
+    description:
+      "We start with a call to understand your goals, audience, and project scope. No guesswork, just clear direction from the start.",
+    topValue: "4rem",
+    backgroundColor: "linear-gradient(270deg, #FFD900 0%, #EE7621 100%)",
+  },
+  {
+    step: "STEP #2",
+    title: "Concepts in Figma",
+    description:
+      "We create clear wireframes and visual design concepts for early feedback and collaboration.",
+    topValue: "7.2rem",
+    backgroundColor: "linear-gradient(270deg, #FF37B3 0%, #FFD900 100%)",
+  },
+  {
+    step: "STEP #3",
+    title: "UI Design & Refinement",
+    description:
+      "Your approved designs are built with pixel-perfect precision using modern, scalable code.",
+    topValue: "7.2rem",
+    backgroundColor: "linear-gradient(90deg, #FF37B3 0%, #F14A58 100%)",
+  },
+  {
+    step: "STEP #4",
+    title: "Development Handoff",
+    description:
+      "We test everything thoroughly and apply refinements to ensure optimal performance.",
+    topValue: "10.4rem",
+    backgroundColor: "linear-gradient(90deg, #F14A58 0%, #3078FF 100%)",
+  },
+  {
+    step: "STEP #5",
+    title: "Review & Support",
+    description:
+      "Your site goes live smoothly — and we’re there to support you afterward.",
+    topValue: "10.4rem",
+    backgroundColor: "linear-gradient(90deg, #3078FF 0%, #44B276 100%)",
+  },
+];
+
+export const industriesData = [
+  {
+    icon: AutomotiveIcon,
+    title: "Automotive",
+    description:
+      "Engaging websites and digital tools that drive customer interest and streamline dealer or service operations.",
+  },
+  {
+    icon: FinancialIcon,
+    title: "Financial",
+    description:
+      "Clear, trustworthy dashboards and client portals designed to simplify complex data and build user confidence.",
+  },
+  {
+    icon: TechElecIcon,
+    title: "Technology & Electronics",
+    description:
+      "User-friendly product sites and SaaS interfaces that enhance customer experience and boost conversions.",
+  },
+  {
+    icon: HealthcareIcon,
+    title: "Healthcare",
+    description:
+      "Accessible, secure platforms that make it easier for patients and professionals to connect and manage information.",
+  },
+  {
+    icon: NonProfitIcon,
+    title: "Non-Profit",
+    description:
+      "Impactful digital platforms that amplify causes, engage supporters, and drive measurable results.",
   },
 ];

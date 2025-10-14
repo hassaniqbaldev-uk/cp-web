@@ -1,0 +1,85 @@
+"use client";
+import { useRef } from "react";
+import SectionLabel2 from "../common/SectionLabel2";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
+import CommonBtn3 from "../common/CommonBtn3";
+import KeyBenefitSlider from "../common/KeyBenefitSlider";
+import LineStroke32 from "@/assets/decorative-elements/line-stroke-32.svg";
+
+const KeyBenefitSection = () => {
+  const labelRef = useRef();
+  const container = useRef();
+
+  useGSAP(
+    () => {
+      gsap.fromTo(
+        labelRef.current,
+        { rotate: "-2deg" },
+        {
+          rotation: "+=3",
+          duration: 0.15,
+          yoyo: true,
+          repeat: -1,
+          ease: "sine.inOut",
+          repeatDelay: 0.5,
+        },
+      );
+    },
+    {
+      scope: container,
+    },
+  );
+
+  return (
+    <section
+      ref={container}
+      className="relative overflow-hidden px-[3rem] py-[7.8rem] xl:px-[0rem]"
+    >
+      {/* Decorative stroke line */}
+      <div className="absolute inset-0 z-[1]">
+        <LineStroke32 className="absolute top-[12.6rem] left-[40rem] w-full" />
+      </div>
+
+      <div className="relative z-[10] mx-auto max-w-[120rem]">
+        <div className="flex items-center justify-between gap-[4rem]">
+          <div className="flex w-[56.8rem] flex-col items-start">
+            <div ref={labelRef}>
+              <SectionLabel2
+                text="Key Benefits"
+                bgColor="bg-[#FFC300]"
+                textColor="text-[#070707]"
+              />
+            </div>
+
+            <h2 className="mt-[2rem] text-[6rem] leading-[7.4rem] font-bold tracking-[-0.03em] text-[#070707]">
+              Why great design drives better results.
+            </h2>
+
+            <p className="mt-[2rem] mb-[4.7rem] max-w-[54.2rem] text-[2.2rem] leading-[3.2rem] font-medium text-[#070707]">
+              Investing in professional UI/UX design isn't just about looks —
+              it’s about creating websites, apps, and dashboards that are easier
+              to use, faster to launch, and built to grow with your business.
+            </p>
+
+            <CommonBtn3 label="Book a 15-min free call" href="/call" />
+          </div>
+
+          <div className="h-[52rem] w-[58.5rem] overflow-hidden rounded-[2rem] bg-amber-300">
+            <img
+              src="/images/key-benefits-card img.png"
+              alt="Image"
+              className="size-full object-cover object-center"
+            />
+          </div>
+        </div>
+
+        <div className="mt-[5rem] w-full">
+          <KeyBenefitSlider />
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default KeyBenefitSection;
