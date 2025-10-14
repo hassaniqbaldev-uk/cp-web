@@ -9,9 +9,9 @@ import { useGSAP } from "@gsap/react";
 
 const WebDesignServiceSlider = () => {
   const cardRefs = useRef([]);
+  const swiperRef = useRef(null); // 👈 keep reference to Swiper instance
 
   useGSAP(() => {
-    // Initially hide all descriptions
     gsap.set(".card-description", {
       height: 0,
       opacity: 0,
@@ -49,6 +49,18 @@ const WebDesignServiceSlider = () => {
     }
   };
 
+  const handleTouchStart = (index) => {
+    // 👇 Pause Swiper autoplay
+    if (swiperRef.current?.autoplay) swiperRef.current.autoplay.stop();
+    handleMouseEnter(index);
+  };
+
+  const handleTouchEnd = (index) => {
+    handleMouseLeave(index);
+    // 👇 Resume Swiper autoplay
+    if (swiperRef.current?.autoplay) swiperRef.current.autoplay.start();
+  };
+
   return (
     <Swiper
       modules={[Navigation, Autoplay]}
@@ -56,22 +68,15 @@ const WebDesignServiceSlider = () => {
         delay: 2500,
         disableOnInteraction: false,
       }}
+      onSwiper={(swiper) => (swiperRef.current = swiper)} // 👈 capture Swiper instance
       navigation={false}
       slidesPerView={1}
       spaceBetween={10}
       grabCursor={true}
-      pagination={{
-        clickable: true,
-      }}
+      pagination={{ clickable: true }}
       breakpoints={{
-        768: {
-          slidesPerView: 2,
-          spaceBetween: 15,
-        },
-        1280: {
-          slidesPerView: 3,
-          spaceBetween: 15,
-        },
+        768: { slidesPerView: 2, spaceBetween: 15 },
+        1280: { slidesPerView: 3, spaceBetween: 15 },
       }}
       className="mySwiper web-design-service-slider"
     >
@@ -82,8 +87,8 @@ const WebDesignServiceSlider = () => {
             className="relative h-[45rem] cursor-pointer overflow-hidden rounded-[2rem] md:h-[52rem]"
             onMouseEnter={() => handleMouseEnter(idx)}
             onMouseLeave={() => handleMouseLeave(idx)}
-            onTouchStart={() => handleMouseEnter(idx)} // 👈 for Safari / touch
-            onTouchEnd={() => handleMouseLeave(idx)} // 👈 for Safari / touch
+            onTouchStart={() => handleTouchStart(idx)} // 👈 pause + animate
+            onTouchEnd={() => handleTouchEnd(idx)} // 👈 resume + hide
           >
             <div className="absolute inset-0 z-[0]">
               <img
