@@ -82,6 +82,8 @@ const WebDesignServiceSlider = () => {
             className="relative h-[45rem] cursor-pointer overflow-hidden rounded-[2rem] md:h-[52rem]"
             onMouseEnter={() => handleMouseEnter(idx)}
             onMouseLeave={() => handleMouseLeave(idx)}
+            onTouchStart={() => handleMouseEnter(idx)} // 👈 for Safari / touch
+            onTouchEnd={() => handleMouseLeave(idx)} // 👈 for Safari / touch
           >
             <div className="absolute inset-0 z-[0]">
               <img
