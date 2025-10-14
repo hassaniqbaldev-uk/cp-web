@@ -3,14 +3,16 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/swiper-bundle.css";
 import { Navigation, Autoplay } from "swiper/modules";
 import { webDesignServiceCards } from "@/constants/uiUxPage";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 
 const WebDesignServiceSlider = () => {
   const cardRefs = useRef([]);
-  const swiperRef = useRef(null); // 👈 keep reference to Swiper instance
+  const swiperRef = useRef(null);
+  const [activeIndex, setActiveIndex] = useState(null); // 👈 which card is open
 
+  // Hide all card descriptions initially
   useGSAP(() => {
     gsap.set(".card-description", {
       height: 0,
@@ -19,46 +21,49 @@ const WebDesignServiceSlider = () => {
     });
   });
 
-  const handleMouseEnter = (index) => {
+  const showDescription = (index) => {
     const cardRef = cardRefs.current[index];
-    if (cardRef) {
-      const description = cardRef.querySelector(".card-description");
+    if (!cardRef) return;
+    const description = cardRef.querySelector(".card-description");
 
-      gsap.to(description, {
-        height: "auto",
-        opacity: 1,
-        marginTop: "1rem",
-        duration: 0.3,
-        ease: "power2.out",
-      });
-    }
+    gsap.to(description, {
+      height: "auto",
+      opacity: 1,
+      marginTop: "1rem",
+      duration: 0.3,
+      ease: "power2.out",
+    });
   };
 
-  const handleMouseLeave = (index) => {
+  const hideDescription = (index) => {
     const cardRef = cardRefs.current[index];
-    if (cardRef) {
-      const description = cardRef.querySelector(".card-description");
+    if (!cardRef) return;
+    const description = cardRef.querySelector(".card-description");
 
-      gsap.to(description, {
-        height: 0,
-        opacity: 0,
-        marginTop: 0,
-        duration: 0.3,
-        ease: "power2.in",
-      });
+    gsap.to(description, {
+      height: 0,
+      opacity: 0,
+      marginTop: 0,
+      duration: 0.3,
+      ease: "power2.in",
+    });
+  };
+
+  // 👇 Handles click toggle + autoplay control
+  const handleCardClick = (index) => {
+    if (activeIndex === index) {
+      // already open → close and resume autoplay
+      hideDescription(index);
+      setActiveIndex(null);
+      swiperRef.current?.autoplay?.start();
+    } else {
+      // close previous one
+      if (activeIndex !== null) hideDescription(activeIndex);
+      // open this one
+      showDescription(index);
+      setActiveIndex(index);
+      swiperRef.current?.autoplay?.stop();
     }
-  };
-
-  const handleTouchStart = (index) => {
-    // 👇 Pause Swiper autoplay
-    if (swiperRef.current?.autoplay) swiperRef.current.autoplay.stop();
-    handleMouseEnter(index);
-  };
-
-  const handleTouchEnd = (index) => {
-    handleMouseLeave(index);
-    // 👇 Resume Swiper autoplay
-    if (swiperRef.current?.autoplay) swiperRef.current.autoplay.start();
   };
 
   return (
@@ -68,7 +73,7 @@ const WebDesignServiceSlider = () => {
         delay: 2500,
         disableOnInteraction: false,
       }}
-      onSwiper={(swiper) => (swiperRef.current = swiper)} // 👈 capture Swiper instance
+      onSwiper={(swiper) => (swiperRef.current = swiper)} // capture instance
       navigation={false}
       slidesPerView={1}
       spaceBetween={10}
@@ -85,10 +90,7 @@ const WebDesignServiceSlider = () => {
           <div
             ref={(el) => (cardRefs.current[idx] = el)}
             className="relative h-[45rem] cursor-pointer overflow-hidden rounded-[2rem] md:h-[52rem]"
-            onMouseEnter={() => handleMouseEnter(idx)}
-            onMouseLeave={() => handleMouseLeave(idx)}
-            onTouchStart={() => handleTouchStart(idx)} // 👈 pause + animate
-            onTouchEnd={() => handleTouchEnd(idx)} // 👈 resume + hide
+            onClick={() => handleCardClick(idx)} // 👈 click toggle
           >
             <div className="absolute inset-0 z-[0]">
               <img
