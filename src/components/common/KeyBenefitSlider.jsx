@@ -21,16 +21,14 @@ const KeyBenefitSlider = () => {
         clickable: true,
       }}
       breakpoints={{
-        1024: {
-          slidesPerView: 3,
-          spaceBetween: 15,
-        },
+        768: { slidesPerView: 2, spaceBetween: 15 },
+        1280: { slidesPerView: 3, spaceBetween: 15 },
       }}
       className="mySwiper key-benefit-slider"
     >
       {keyBenefitCards.map((card, idx) => (
         <SwiperSlide key={idx} className="!h-auto">
-          <div className="key-benefit-card flex h-full w-[37.9rem] items-start gap-[1.2rem] px-[2.8rem] py-[3rem]">
+          <div className="key-benefit-card flex h-full flex-col items-center gap-[1.2rem] px-[2.8rem] py-[3rem] text-center md:flex-row md:items-start md:text-left">
             <DarkBgCheck className="size-[3.2rem] min-w-[3.2rem]" />
             <div className="flex flex-col">
               <span className="text-[2rem] leading-[3.2rem] font-semibold tracking-[-0.02em] text-[#070707]">

@@ -6,6 +6,7 @@ import { useRef } from "react";
 import LineStroke31 from "@/assets/decorative-elements/line-stroke-31.svg";
 import SectionLabel2 from "../common/SectionLabel2";
 import { industriesData } from "@/constants/uiUxPage";
+import IndustriesSlider from "../common/IndustriesSlider";
 
 const IndustriesSection = () => {
   const container = useRef();
@@ -29,7 +30,10 @@ const IndustriesSection = () => {
     { scope: container },
   );
   return (
-    <section ref={container} className="relative pt-[10rem]">
+    <section
+      ref={container}
+      className="relative px-[3rem] pt-[8rem] xl:px-[0rem] xl:pt-[10rem]"
+    >
       {/* Decorative stroke line */}
       <div className="absolute inset-0 z-[1]">
         <LineStroke31 className="absolute top-[30.5rem] left-[-103.9rem] w-full" />
@@ -45,17 +49,17 @@ const IndustriesSection = () => {
             />
           </div>
 
-          <h4 className="mt-[2rem] mb-[.7rem] max-w-[103rem] text-center text-[6rem] leading-[7.4rem] font-bold tracking-[-0.03em]">
+          <h4 className="mt-[2rem] mb-[.7rem] max-w-[103rem] text-center text-[3rem] leading-[4rem] font-bold tracking-[-0.03em] md:text-[6rem] md:leading-[7.4rem]">
             Design solutions built for every sector
           </h4>
 
-          <p className="max-w-[70rem] text-[2.2rem] leading-[3.2rem] font-medium">
+          <p className="max-w-[70rem] text-[1.8rem] leading-[2.8rem] font-medium md:text-[2.2rem] md:leading-[3.2rem]">
             From websites to apps and dashboards, our Figma-first UI/UX design
             and development-ready workflows adapt to any industry.
           </p>
         </div>
 
-        <div className="mt-[5rem] grid grid-cols-5 items-start gap-[2rem]">
+        <div className="mt-[5rem] hidden grid-cols-5 items-start gap-[2rem] lg:grid">
           {industriesData.map((item, idx) => {
             const Icon = item.icon;
             return (
@@ -75,6 +79,10 @@ const IndustriesSection = () => {
               </div>
             );
           })}
+        </div>
+
+        <div className="mt-[5rem] block w-full lg:hidden">
+          <IndustriesSlider />
         </div>
       </div>
     </section>

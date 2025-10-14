@@ -42,8 +42,8 @@ const KeyBenefitSection = () => {
       </div>
 
       <div className="relative z-[10] mx-auto max-w-[120rem]">
-        <div className="flex items-center justify-between gap-[4rem]">
-          <div className="flex w-[56.8rem] flex-col items-start">
+        <div className="flex flex-col items-center justify-between gap-[4rem] lg:flex-row">
+          <div className="flex w-full flex-col items-center text-center lg:w-[56.8rem] lg:items-start lg:text-left">
             <div ref={labelRef}>
               <SectionLabel2
                 text="Key Benefits"
@@ -52,11 +52,11 @@ const KeyBenefitSection = () => {
               />
             </div>
 
-            <h2 className="mt-[2rem] text-[6rem] leading-[7.4rem] font-bold tracking-[-0.03em] text-[#070707]">
+            <h2 className="mt-[2rem] text-[3rem] leading-[4rem] font-bold tracking-[-0.03em] text-[#070707] md:text-[6rem] md:leading-[7.4rem]">
               Why great design drives better results.
             </h2>
 
-            <p className="mt-[2rem] mb-[4.7rem] max-w-[54.2rem] text-[2.2rem] leading-[3.2rem] font-medium text-[#070707]">
+            <p className="mt-[2rem] mb-[4.7rem] w-full text-[1.8rem] leading-[2.8rem] font-medium text-[#070707] md:text-[2.2rem] md:leading-[3.2rem] lg:max-w-[54.2rem]">
               Investing in professional UI/UX design isn't just about looks —
               it’s about creating websites, apps, and dashboards that are easier
               to use, faster to launch, and built to grow with your business.
@@ -65,7 +65,7 @@ const KeyBenefitSection = () => {
             <CommonBtn3 label="Book a 15-min free call" href="/call" />
           </div>
 
-          <div className="h-[52rem] w-[58.5rem] overflow-hidden rounded-[2rem] bg-amber-300">
+          <div className="h-[25rem] w-full overflow-hidden rounded-[2rem] bg-amber-300 md:h-[52rem] lg:w-[58.5rem]">
             <img
               src="/images/key-benefits-card img.png"
               alt="Image"

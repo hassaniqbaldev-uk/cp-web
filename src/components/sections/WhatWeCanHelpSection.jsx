@@ -5,6 +5,7 @@ import gsap from "gsap";
 import { useRef } from "react";
 import SectionLabel2 from "../common/SectionLabel2";
 import LineStroke31 from "@/assets/decorative-elements/line-stroke-31.svg";
+import WhatWeCanHelpSlider from "../common/WhatWeCanHelpSlider";
 
 const WhatWeCanHelpSection = () => {
   const labelRef = useRef();
@@ -47,12 +48,12 @@ const WhatWeCanHelpSection = () => {
             />
           </div>
 
-          <h2 className="mt-[2rem] text-[5.6rem] leading-[6.4rem] font-semibold tracking-[-0.02em] text-[#070707]">
+          <h2 className="mt-[2rem] text-[3rem] leading-[4rem] font-semibold tracking-[-0.02em] text-[#070707] md:text-[5.6rem] md:leading-[6.4rem]">
             What we can help you with
           </h2>
         </div>
 
-        <div className="mt-[5rem] grid grid-cols-3 gap-x-[3rem] gap-y-[4rem]">
+        <div className="mt-[5rem] hidden grid-cols-3 gap-x-[3rem] gap-y-[4rem] lg:grid">
           {whatWeCanHelpData.map((card) => {
             const IconComponent = card.icon;
             return (
@@ -79,6 +80,10 @@ const WhatWeCanHelpSection = () => {
               </div>
             );
           })}
+        </div>
+
+        <div className="mt-[5rem] block w-full lg:hidden">
+          <WhatWeCanHelpSlider />
         </div>
       </div>
     </section>

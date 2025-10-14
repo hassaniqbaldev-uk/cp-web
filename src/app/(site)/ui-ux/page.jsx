@@ -52,24 +52,24 @@ const UiUxPage = async () => {
       <UiUxHeroSection />
       <OurApproachSection />
       <WebDesignServiceSection />
-      {/* <div className="overflow-hidden">
+      <div className="overflow-hidden">
         <WhatWeCanDesignSection />
         <WhatWeCanHelpSection />
-      </div> */}
-      {/* <KeyBenefitSection /> */}
-      {/* <OurProcessSection /> */}
-      {/* <div className="relative pt-[5rem] xl:pt-[10rem]">
+      </div>
+      <KeyBenefitSection />
+      <OurProcessSection />
+      <div className="relative pt-[5rem] xl:pt-[10rem]">
         <div className="absolute inset-0 z-[0]">
           <LineStroke09 className="absolute top-[20rem] left-[-60rem] w-full xl:top-[20rem]" />
         </div>
 
         <CaseStudiesSection02 caseStudies={caseStudies} />
-      </div> */}
-      {/* <div className="overflow-hidden">
+      </div>
+      <div className="overflow-hidden">
         <FeedbackSection />
         <IndustriesSection />
         <ContactSection />
-      </div> */}
+      </div>
     </>
   );
 };

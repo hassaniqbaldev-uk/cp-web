@@ -17,6 +17,7 @@ import {
 } from "@floating-ui/react";
 import LightBgPlus from "@/assets/icons/light-bg-plus.svg";
 import { ourProcessData } from "@/constants/uiUxPage";
+import OurProcessSlider from "../common/OurProcessSlider";
 
 const OurProcessSection = () => {
   const container = useRef();
@@ -46,7 +47,7 @@ const OurProcessSection = () => {
   return (
     <section
       ref={container}
-      className="relative overflow-hidden py-[10rem]"
+      className="relative overflow-hidden px-[3rem] py-[8rem] xl:px-[0rem] xl:py-[10rem]"
       style={{
         background:
           "url('/images/our-process-gradient-bg.png') no-repeat center center/cover",
@@ -67,7 +68,7 @@ const OurProcessSection = () => {
             />
           </div>
 
-          <h4 className="mt-[2rem] mb-[.7rem] max-w-[103.1rem] text-center text-[6rem] leading-[7.4rem] font-bold tracking-[-0.03em] text-white">
+          <h4 className="mt-[2rem] mb-[.7rem] max-w-[103.1rem] text-center text-[3rem] leading-[4rem] font-bold tracking-[-0.03em] text-white md:text-[6rem] md:leading-[7.4rem]">
             A simple, collaborative design process that delivers results
           </h4>
 
@@ -78,7 +79,7 @@ const OurProcessSection = () => {
           </p>
         </div>
 
-        <div className="mt-[6rem] grid h-[29rem] grid-cols-5">
+        <div className="mt-[6rem] hidden h-[29rem] grid-cols-5 md:grid">
           {ourProcessData.map((item, idx) => (
             <ProcessStep
               key={idx}
@@ -88,6 +89,10 @@ const OurProcessSection = () => {
               onOpenChange={(open) => setOpenIndex(open ? idx : null)}
             />
           ))}
+        </div>
+
+        <div className="mt-[6rem] block w-full md:hidden">
+          <OurProcessSlider />
         </div>
       </div>
     </section>
