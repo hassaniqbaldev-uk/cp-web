@@ -74,7 +74,7 @@ const FullStackWordpressSlider = () => {
               width={257}
               height={352}
               alt={item.alt}
-              className="size-full object-cover" // Added object-cover for better image display
+              className="size-full" // Added object-cover for better image display
             />
           </div>
         </SwiperSlide>
