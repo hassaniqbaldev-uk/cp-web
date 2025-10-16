@@ -43,7 +43,7 @@ const IndustriesSlider = ({ data = [] }) => {
                 {item.title}
               </h5>
 
-              <p className="text-[1.8rem] leading-[2.6rem] font-normal text-[#070707]">
+              <p className="text-[1.6rem] leading-[2.6rem] font-normal text-[#070707]">
                 {item.description}
               </p>
             </div>
