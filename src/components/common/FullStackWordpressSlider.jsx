@@ -64,11 +64,8 @@ const FullStackWordpressSlider = () => {
       className="mySwiper"
     >
       {fullStackWordpressSlides.map((item, idx) => (
-        <SwiperSlide
-          key={idx}
-          className="!flex !items-center !justify-center xl:!h-auto xl:!w-auto"
-        >
-          <div className="w-full overflow-hidden rounded-[1.3rem] 2xl:h-[35.2rem]">
+        <SwiperSlide key={idx} className="!flex !items-center !justify-center">
+          <div className="w-full overflow-hidden rounded-[1.3rem] xl:h-[35rem]">
             <Image
               src={item.src}
               width={257}
