@@ -56,7 +56,7 @@ const WpElementorPage = async () => {
       <AreYouSection />
       <WhatWeCanHelpSection2 />
       <OurProcessSection2 />
-      <div className="relative pt-[5rem] xl:pt-[10rem]">
+      <div className="relative py-[5rem] xl:py-[10rem]">
         <div className="absolute inset-0 z-[0]">
           <LineStroke09 className="absolute top-[20rem] left-[-60rem] w-full xl:top-[20rem]" />
         </div>
