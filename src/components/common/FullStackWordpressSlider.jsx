@@ -68,7 +68,7 @@ const FullStackWordpressSlider = () => {
           key={idx}
           className="!flex !items-center !justify-center xl:!h-auto xl:!w-auto"
         >
-          <div className="w-full overflow-hidden rounded-[1.3rem] xl:h-[35.2rem]">
+          <div className="w-full overflow-hidden rounded-[1.3rem] 2xl:h-[35.2rem]">
             <Image
               src={item.src}
               width={257}
