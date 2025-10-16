@@ -9,7 +9,7 @@ import CommonBtn2 from "../common/CommonBtn2";
 import Image from "next/image";
 import { wpElementorHeroSlides } from "@/constants/wpElementorPage";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { EffectCoverflow } from "swiper/modules"; // Add this
+import { Autoplay, EffectCoverflow } from "swiper/modules"; // Add this
 import "swiper/css";
 import "swiper/css/effect-coverflow"; // Add this
 
@@ -66,7 +66,7 @@ const WpElementorHeroSection = () => {
   return (
     <section
       ref={container}
-      className="relative h-[79rem] w-full rounded-br-[5rem] rounded-bl-[5rem] px-[3rem] xl:px-[0rem] xl:pt-[14rem]"
+      className="relative w-full rounded-br-[5rem] rounded-bl-[5rem] pt-[14rem] xl:h-[79rem]"
       style={{
         background:
           "url('/images/ui-ux-hero-bg-gradient.webp') no-repeat center center/cover",
@@ -77,7 +77,7 @@ const WpElementorHeroSection = () => {
         <LineStroke01 className="absolute bottom-[2.058rem] left-1/2 w-full -translate-x-1/2" />
       </div>
 
-      <div className="relative z-[10] mx-auto max-w-[120rem]">
+      <div className="relative z-[10] mx-auto max-w-[120rem] px-[3rem] xl:px-[0rem]">
         <div className="flex flex-col items-center text-center">
           <div ref={labelRef}>
             <SectionLabel2
@@ -109,17 +109,33 @@ const WpElementorHeroSection = () => {
           spaceBetween={30}
           centeredSlides={true}
           loop={true}
-          modules={[EffectCoverflow]}
+          modules={[EffectCoverflow, Autoplay]}
+          autoplay={{
+            delay: 2500,
+            disableOnInteraction: false,
+          }}
           effect="coverflow"
           coverflowEffect={{
             rotate: 0,
             stretch: 0,
-            depth: 10, // Increased depth for more pronounced 3D effect
+            depth: 10,
             modifier: 1,
             slideShadows: false,
             scale: 0.45,
           }}
-          className="wp-elementor-hero-swiper !size-full !py-[7rem]"
+          breakpoints={{
+            768: {
+              coverflowEffect: {
+                rotate: 0,
+                stretch: 0,
+                depth: 10,
+                modifier: 1,
+                slideShadows: false,
+                scale: 0.45,
+              },
+            },
+          }}
+          className="wp-elementor-hero-swiper !size-full !py-[4rem] md:!py-[7rem]"
         >
           {wpElementorHeroSlides.map((slide, index) => (
             <SwiperSlide
@@ -127,7 +143,7 @@ const WpElementorHeroSection = () => {
               className="!flex !items-center !justify-center !select-none"
             >
               <div
-                className="slide-item h-[40rem] min-w-[60rem] overflow-hidden rounded-[1.5rem] transition-all duration-500 2xl:h-[44rem] 2xl:min-w-[68rem]"
+                className="slide-item h-[18rem] min-w-[25rem] overflow-hidden rounded-[1rem] transition-all duration-500 md:h-[30rem] md:min-w-[45rem] md:rounded-[1.5rem] lg:h-[35rem] lg:min-w-[50rem] xl:h-[40rem] xl:min-w-[60rem] 2xl:h-[44rem] 2xl:min-w-[68rem]"
                 style={{ boxShadow: "0px 7.85px 39.25px 0px #00000040" }}
               >
                 <Image

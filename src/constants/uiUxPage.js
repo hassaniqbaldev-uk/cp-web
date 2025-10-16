@@ -8,11 +8,11 @@ import DashboardIcon from "@/assets/icons/dashboard-icon.svg";
 import ResponsiveIcon from "@/assets/icons/responsive-icon.svg";
 import PrototypingIcon from "@/assets/icons/prototyping-icon.svg";
 import DesignStrategyIcon from "@/assets/icons/design-strategy-icon.svg";
-import AutomotiveIcon from "@/assets/icons/automotive-icon.svg";
-import FinancialIcon from "@/assets/icons/financial-icon.svg";
-import TechElecIcon from "@/assets/icons/tech-elec-icon.svg";
-import HealthcareIcon from "@/assets/icons/healthcare-icon.svg";
-import NonProfitIcon from "@/assets/icons/non-profit-icon.svg";
+// import automotiveIcon from "../assets/icons/automotive-icon.svg";
+// import financialIcon from "../assets/icons/financial-icon.svg";
+// import techElecIcon from "../assets/icons/tech-elec-icon.svg";
+// import healthcareIcon from "../assets/icons/healthcare-icon.svg";
+// import nonProfitIcon from "../assets/icons/non-profit-icon.svg";
 
 export const approachItems = [
   {
@@ -219,31 +219,31 @@ export const ourProcessData = [
 
 export const industriesData = [
   {
-    icon: AutomotiveIcon,
+    icon: "/images/automotive-icon.svg",
     title: "Automotive",
     description:
       "Engaging websites and digital tools that drive customer interest and streamline dealer or service operations.",
   },
   {
-    icon: FinancialIcon,
+    icon: "/images/financial-icon.svg",
     title: "Financial",
     description:
       "Clear, trustworthy dashboards and client portals designed to simplify complex data and build user confidence.",
   },
   {
-    icon: TechElecIcon,
+    icon: "/images/tech-elec-icon.svg",
     title: "Technology & Electronics",
     description:
       "User-friendly product sites and SaaS interfaces that enhance customer experience and boost conversions.",
   },
   {
-    icon: HealthcareIcon,
+    icon: "/images/healthcare-icon.svg",
     title: "Healthcare",
     description:
       "Accessible, secure platforms that make it easier for patients and professionals to connect and manage information.",
   },
   {
-    icon: NonProfitIcon,
+    icon: "/images/non-profit-icon.svg",
     title: "Non-Profit",
     description:
       "Impactful digital platforms that amplify causes, engage supporters, and drive measurable results.",

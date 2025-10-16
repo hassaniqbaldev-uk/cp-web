@@ -11,6 +11,7 @@ import LineStroke09 from "@/assets/decorative-elements/line-stroke-09.svg";
 import ContactSection from "@/components/sections/ContactSection";
 import FeedbackSection from "@/components/sections/FeedbackSection";
 import IndustriesSection from "@/components/sections/IndustriesSection";
+import { industriesData } from "@/constants/uiUxPage";
 
 export const metadata = {
   title: "UI UX CreativePixels | Manchester Web Design & Branding Agency",
@@ -66,8 +67,21 @@ const UiUxPage = async () => {
         <CaseStudiesSection02 caseStudies={caseStudies} />
       </div>
       <div className="overflow-hidden">
-        <FeedbackSection />
-        <IndustriesSection />
+        <FeedbackSection
+          reverse
+          title="Imaginative vision. Outstanding Design."
+          description="From beginning to end, it was an incredible experience. Working with the entire team was enjoyable due to their creativity and expertise. They completely understood our goals as a studio with a very ambitious and distinctive website, from concept to design. We are quite happy with the outcome."
+          author="Emily Chen"
+          projectType="E-Commerce Website"
+          avatar="/images/ui-ux-feedback-avatar.png"
+          image="/images/ui-ux-feedback-card-img.png"
+        />
+        <IndustriesSection
+          labelText="Industries"
+          title="Design solutions built for every sector"
+          description="From websites to apps and dashboards, our Figma-first UI/UX design and development-ready workflows adapt to any industry."
+          data={industriesData}
+        />
         <ContactSection />
       </div>
     </>

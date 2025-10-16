@@ -5,10 +5,9 @@ import gsap from "gsap";
 import { useRef } from "react";
 import LineStroke31 from "@/assets/decorative-elements/line-stroke-31.svg";
 import SectionLabel2 from "../common/SectionLabel2";
-import { industriesData } from "@/constants/uiUxPage";
 import IndustriesSlider from "../common/IndustriesSlider";
 
-const IndustriesSection = () => {
+const IndustriesSection = ({ labelText, title, description, data = [] }) => {
   const container = useRef();
   const labelRef = useRef();
 
@@ -43,46 +42,42 @@ const IndustriesSection = () => {
         <div className="flex flex-col items-center text-center">
           <div ref={labelRef}>
             <SectionLabel2
-              text="Industries"
+              text={labelText}
               bgColor="bg-[#F14A58]"
               textColor="text-[#ffffff]"
             />
           </div>
 
           <h4 className="mt-[2rem] mb-[.7rem] max-w-[103rem] text-center text-[3rem] leading-[4rem] font-bold tracking-[-0.03em] md:text-[6rem] md:leading-[7.4rem]">
-            Design solutions built for every sector
+            {title}
           </h4>
 
           <p className="max-w-[70rem] text-[1.8rem] leading-[2.8rem] font-medium md:text-[2.2rem] md:leading-[3.2rem]">
-            From websites to apps and dashboards, our Figma-first UI/UX design
-            and development-ready workflows adapt to any industry.
+            {description}
           </p>
         </div>
 
         <div className="mt-[5rem] hidden grid-cols-5 items-start gap-[2rem] lg:grid">
-          {industriesData.map((item, idx) => {
-            const Icon = item.icon;
-            return (
-              <div
-                key={idx}
-                className="flex flex-col items-center justify-center text-center"
-              >
-                <Icon className="size-[8.2rem]" />
+          {data.map((item, idx) => (
+            <div
+              key={idx}
+              className="flex flex-col items-center justify-center text-center"
+            >
+              <img src={item.icon} alt="icon" className="size-[8.2rem]" />
 
-                <h5 className="mt-[2rem] mb-[1rem] text-[2.6rem] leading-[3.2rem] font-semibold tracking-[-0.02em] text-[#070707]">
-                  {item.title}
-                </h5>
+              <h5 className="mt-[2rem] mb-[1rem] text-[2.6rem] leading-[3.2rem] font-semibold tracking-[-0.02em] text-[#070707]">
+                {item.title}
+              </h5>
 
-                <p className="text-[1.8rem] leading-[2.6rem] font-normal text-[#070707]">
-                  {item.description}
-                </p>
-              </div>
-            );
-          })}
+              <p className="text-[1.8rem] leading-[2.6rem] font-normal text-[#070707]">
+                {item.description}
+              </p>
+            </div>
+          ))}
         </div>
 
         <div className="mt-[5rem] block w-full lg:hidden">
-          <IndustriesSlider />
+          <IndustriesSlider data={data} />
         </div>
       </div>
     </section>

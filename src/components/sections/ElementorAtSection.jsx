@@ -35,11 +35,11 @@ const ElementorAtSection = () => {
   return (
     <section
       ref={container}
-      className="px-[3rem] pt-[31.6rem] pb-[8.5rem] xl:px-[0rem]"
+      className="px-[3rem] pt-[8rem] pb-[8.5rem] xl:px-[0rem] xl:pt-[31.6rem]"
     >
       <div className="mx-auto max-w-[120rem]">
         <div className="flex flex-col items-center justify-between gap-[4rem] xl:flex-row">
-          <div className="h-[47.9rem] w-[56.2rem]">
+          <div className="h-[25rem] w-full md:h-[47.9rem] md:w-[56.2rem]">
             <Image
               src="/images/elementor-at-card-img.png"
               alt="Image"
@@ -62,7 +62,7 @@ const ElementorAtSection = () => {
               Elementor at CP
             </h2>
 
-            <p className="mt-[1.6rem] mb-[3.8rem] text-[1.8rem] leading-[2.8rem] font-medium text-[#070707] md:text-[2.2rem] md:leading-[3.2rem]">
+            <p className="mt-[1.6rem] mb-[3.8rem] text-[1.6rem] leading-[2.6rem] font-medium text-[#070707] md:text-[2.2rem] md:leading-[3.2rem]">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus
               laoreet enim ut sem egestas, in feugiat elit aliquam. Donec
               tincidunt pellentesque turpis, vel rhoncus tellus cursus non.

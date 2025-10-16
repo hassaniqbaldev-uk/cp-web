@@ -3,9 +3,8 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import { Autoplay } from "swiper/modules";
-import { industriesData } from "@/constants/uiUxPage";
 
-const IndustriesSlider = () => {
+const IndustriesSlider = ({ data = [] }) => {
   return (
     <>
       <Swiper
@@ -25,7 +24,7 @@ const IndustriesSlider = () => {
           },
         }}
       >
-        {industriesData.map((item, idx) => (
+        {data.map((item, idx) => (
           <SwiperSlide
             key={idx}
             className="!flex !h-auto !items-center !justify-center"
@@ -34,7 +33,11 @@ const IndustriesSlider = () => {
               key={idx}
               className="flex flex-col items-center justify-center text-center"
             >
-              <item.icon className="size-[6rem] md:size-[8.2rem]" />
+              <img
+                src={item.icon}
+                className="size-[6rem] md:size-[8.2rem]"
+                alt="icon"
+              />
 
               <h5 className="mt-[2rem] mb-[1rem] text-[2.6rem] leading-[3.2rem] font-semibold tracking-[-0.02em] text-[#070707]">
                 {item.title}
