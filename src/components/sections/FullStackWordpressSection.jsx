@@ -45,7 +45,7 @@ const FullStackWordpressSection = () => {
             "url('/images/web-design-service-gradient-bg.png') no-repeat center center/cover",
         }}
       >
-        <div className="mx-auto flex max-w-[144rem] flex-col items-center gap-[4rem] xl:flex-row xl:items-start xl:pl-[12rem]">
+        <div className="mx-auto flex max-w-[144rem] flex-col items-center gap-[4rem] 2xl:flex-row 2xl:items-start 2xl:pl-[12rem]">
           <div className="flex flex-col items-center gap-[2.2rem] text-center xl:min-w-[40rem] xl:items-start xl:text-left">
             <div ref={labelRef}>
               <SectionLabel2
