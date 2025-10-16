@@ -38,70 +38,71 @@ const FullStackWordpressSlider = () => {
   };
 
   return (
-    <>
-      <Swiper
-        modules={[Navigation, Autoplay]}
-        autoplay={{
-          delay: 2500,
-          disableOnInteraction: false,
-        }}
-        navigation={{
-          prevEl: prevButtonRef.current,
-          nextEl: nextButtonRef.current,
-        }}
-        onSwiper={handleSwiperInit}
-        slidesPerView={1}
-        spaceBetween={0}
-        grabCursor={true}
-        breakpoints={{
-          1024: {
-            slidesPerView: 3,
-            spaceBetween: 12,
-          },
-        }}
-        className="mySwiper !overflow-visible"
-      >
-        {fullStackWordpressSlides.map((item, idx) => (
-          <SwiperSlide
-            key={idx}
-            className="!flex !h-auto !w-auto !items-center !justify-center"
-          >
-            <div className="h-[35.2rem] w-full overflow-hidden rounded-[1.3rem]">
-              <Image
-                src={item.src}
-                width={257}
-                height={352}
-                alt={item.alt}
-                className="size-full object-cover" // Added object-cover for better image display
-              />
-            </div>
-          </SwiperSlide>
-        ))}
-
-        {/* Custom Navigation */}
-        <div className="mt-[4rem] flex items-center gap-[3.7rem]">
-          <div className="flex items-center gap-[.8rem]">
-            <button
-              ref={prevButtonRef}
-              onClick={goPrev}
-              className="hover:bg-opacity-10 inline-flex size-[5.4rem] cursor-pointer items-center justify-center rounded-full border border-white transition-all"
-            >
-              <LeftArrowLightIcon />
-            </button>
-
-            <button
-              ref={nextButtonRef}
-              onClick={goNext}
-              className="hover:bg-opacity-10 inline-flex size-[5.4rem] cursor-pointer items-center justify-center rounded-full border border-white transition-all"
-            >
-              <LeftArrowLightIcon className="rotate-180" />
-            </button>
+    <Swiper
+      modules={[Navigation, Autoplay]}
+      autoplay={{
+        delay: 2500,
+        disableOnInteraction: false,
+      }}
+      navigation={{
+        prevEl: prevButtonRef.current,
+        nextEl: nextButtonRef.current,
+      }}
+      onSwiper={handleSwiperInit}
+      slidesPerView={1}
+      spaceBetween={0}
+      breakpoints={{
+        768: {
+          slidesPerView: 2,
+          spaceBetween: 12,
+        },
+        1024: {
+          slidesPerView: 3,
+          spaceBetween: 12,
+        },
+      }}
+      className="mySwiper"
+    >
+      {fullStackWordpressSlides.map((item, idx) => (
+        <SwiperSlide
+          key={idx}
+          className="!flex !items-center !justify-center xl:!h-auto xl:!w-auto"
+        >
+          <div className="w-full overflow-hidden rounded-[1.3rem] xl:h-[35.2rem]">
+            <Image
+              src={item.src}
+              width={257}
+              height={352}
+              alt={item.alt}
+              className="size-full object-cover" // Added object-cover for better image display
+            />
           </div>
+        </SwiperSlide>
+      ))}
 
-          <div className="h-[1px] w-full bg-white"></div>
+      {/* Custom Navigation */}
+      <div className="mt-[4rem] flex items-center gap-[2rem] md:gap-[3.7rem]">
+        <div className="flex items-center gap-[.8rem]">
+          <button
+            ref={prevButtonRef}
+            onClick={goPrev}
+            className="hover:bg-opacity-10 inline-flex size-[4rem] cursor-pointer items-center justify-center rounded-full border border-white transition-all md:size-[5.4rem]"
+          >
+            <LeftArrowLightIcon />
+          </button>
+
+          <button
+            ref={nextButtonRef}
+            onClick={goNext}
+            className="hover:bg-opacity-10 inline-flex size-[4rem] cursor-pointer items-center justify-center rounded-full border border-white transition-all md:size-[5.4rem]"
+          >
+            <LeftArrowLightIcon className="rotate-180" />
+          </button>
         </div>
-      </Swiper>
-    </>
+
+        <div className="h-[1px] w-full bg-white"></div>
+      </div>
+    </Swiper>
   );
 };
 

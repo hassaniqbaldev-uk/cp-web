@@ -9,6 +9,7 @@ import Image from "next/image";
 import FullStackWordpressSlider from "../common/FullStackWordpressSlider";
 import LogoPopup from "../common/LogoPopup";
 import { logoPopupsData } from "@/constants/globals";
+import ClientLogoSlider from "../common/ClientLogoSlider";
 
 const FullStackWordpressSection = () => {
   const container = useRef();
@@ -35,17 +36,17 @@ const FullStackWordpressSection = () => {
   );
 
   return (
-    <section>
+    <section className="overflow-hidden">
       <div
         ref={container}
-        className="relative overflow-hidden pt-[12.7rem] pb-[8.5rem]"
+        className="relative px-[3rem] pt-[8rem] pb-[8.5rem] xl:px-[0rem] xl:pt-[12.7rem]"
         style={{
           background:
             "url('/images/web-design-service-gradient-bg.png') no-repeat center center/cover",
         }}
       >
-        <div className="mx-auto flex max-w-[144rem] items-start gap-[4rem] pl-[12rem]">
-          <div className="flex min-w-[40rem] flex-col items-start gap-[2.2rem] text-left">
+        <div className="mx-auto flex max-w-[144rem] flex-col items-center gap-[4rem] xl:flex-row xl:items-start xl:pl-[12rem]">
+          <div className="flex flex-col items-center gap-[2.2rem] text-center xl:min-w-[40rem] xl:items-start xl:text-left">
             <div ref={labelRef}>
               <SectionLabel2
                 text="Web Design Services"
@@ -54,7 +55,7 @@ const FullStackWordpressSection = () => {
               />
             </div>
 
-            <h4 className="max-w-[40rem] text-[4rem] leading-[5rem] font-bold tracking-[-0.03em] text-white md:text-[6rem] md:leading-[7.4rem]">
+            <h4 className="max-w-[60rem] text-[3rem] leading-[4rem] font-bold tracking-[-0.03em] text-white md:text-[6rem] md:leading-[7.4rem] xl:max-w-[40rem]">
               Full-Stack WordPress Services
             </h4>
 
@@ -65,14 +66,14 @@ const FullStackWordpressSection = () => {
             />
           </div>
 
-          <div className="flex gap-[2.2rem] overflow-hidden">
+          <div className="flex w-full gap-[2.2rem] overflow-hidden">
             <FullStackWordpressSlider />
           </div>
         </div>
       </div>
 
       <div className="bg-[#3078FF] py-[3.5rem]">
-        <ul className="mx-auto flex h-[7rem] max-w-[120rem] items-center gap-[5rem]">
+        <ul className="mx-auto hidden h-[7rem] w-full max-w-[120rem] items-center gap-[5rem] xl:flex">
           {logoPopupsData.map((item, idx) => (
             <li key={idx} className="">
               <LogoPopup
@@ -86,6 +87,10 @@ const FullStackWordpressSection = () => {
             </li>
           ))}
         </ul>
+
+        <div className="relative z-[200] block w-full xl:hidden">
+          <ClientLogoSlider />
+        </div>
       </div>
     </section>
   );

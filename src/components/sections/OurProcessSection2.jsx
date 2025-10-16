@@ -1,10 +1,10 @@
 "use client";
-import LineStroke31 from "@/assets/decorative-elements/line-stroke-31.svg";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import SectionLabel2 from "../common/SectionLabel2";
 import { ourProcessData } from "@/constants/wpElementorPage";
+import OurProcessSlider2 from "../common/OurProcessSlider2";
 
 const OurProcessSection2 = () => {
   const container = useRef();
@@ -70,7 +70,7 @@ const OurProcessSection2 = () => {
           </p>
         </div>
 
-        <div className="relative mt-[6rem] flex h-[42rem] items-start justify-between">
+        <div className="relative mt-[6rem] hidden h-[42rem] items-start justify-between xl:flex">
           {ourProcessData.map((item, i) => (
             <div
               key={i}
@@ -113,6 +113,10 @@ const OurProcessSection2 = () => {
               </div>
             </div>
           ))}
+        </div>
+
+        <div className="block w-full xl:hidden">
+          <OurProcessSlider2 />
         </div>
       </div>
     </section>

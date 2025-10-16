@@ -52,18 +52,18 @@ const WpElementorPage = async () => {
     <>
       <WpElementorHeroSection />
       <ElementorAtSection />
-      {/* <FullStackWordpressSection /> */}
-      {/* <AreYouSection /> */}
-      {/* <WhatWeCanHelpSection2 /> */}
-      {/* <OurProcessSection2 /> */}
-      {/* <div className="relative pt-[5rem] xl:pt-[10rem]">
+      <FullStackWordpressSection />
+      <AreYouSection />
+      <WhatWeCanHelpSection2 />
+      <OurProcessSection2 />
+      <div className="relative pt-[5rem] xl:pt-[10rem]">
         <div className="absolute inset-0 z-[0]">
           <LineStroke09 className="absolute top-[20rem] left-[-60rem] w-full xl:top-[20rem]" />
         </div>
 
         <CaseStudiesSection02 caseStudies={caseStudies} />
-      </div> */}
-      {/* <div className="overflow-hidden">
+      </div>
+      <div className="overflow-hidden">
         <FeedbackSection
           reverse
           title="Imaginative vision. Outstanding Design."
@@ -80,7 +80,7 @@ const WpElementorPage = async () => {
           data={industriesData}
         />
         <ContactSection />
-      </div> */}
+      </div>
     </>
   );
 };

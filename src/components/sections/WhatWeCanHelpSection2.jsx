@@ -4,8 +4,8 @@ import gsap from "gsap";
 import { useRef } from "react";
 import SectionLabel2 from "../common/SectionLabel2";
 import LineStroke34 from "@/assets/decorative-elements/line-stroke-34.svg";
-import WhatWeCanHelpSlider from "../common/WhatWeCanHelpSlider";
 import { whatWeCanHelpData2 } from "@/constants/wpElementorPage";
+import WhatWeCanHelpSlider2 from "../common/WhatWeCanHelpSlider2";
 
 const WhatWeCanHelpSection2 = () => {
   const labelRef = useRef();
@@ -75,7 +75,9 @@ const WhatWeCanHelpSection2 = () => {
                 >
                   <div>
                     <div className="flex items-center gap-[1.5rem]">
-                      <IconComponent className={card.iconWidth} />
+                      <div className="min-w-max">
+                        <IconComponent className={card.iconWidth} />
+                      </div>
 
                       <span className="text-[2.6rem] leading-[3.2rem] font-semibold tracking-[-0.02em] text-[#070707]">
                         {card.title}
@@ -92,7 +94,7 @@ const WhatWeCanHelpSection2 = () => {
         </div>
 
         <div className="mt-[5rem] block w-full lg:hidden">
-          <WhatWeCanHelpSlider />
+          <WhatWeCanHelpSlider2 />
         </div>
       </div>
     </section>

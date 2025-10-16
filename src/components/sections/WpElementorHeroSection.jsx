@@ -123,18 +123,6 @@ const WpElementorHeroSection = () => {
             slideShadows: false,
             scale: 0.45,
           }}
-          breakpoints={{
-            768: {
-              coverflowEffect: {
-                rotate: 0,
-                stretch: 0,
-                depth: 10,
-                modifier: 1,
-                slideShadows: false,
-                scale: 0.45,
-              },
-            },
-          }}
           className="wp-elementor-hero-swiper !size-full !py-[4rem] md:!py-[7rem]"
         >
           {wpElementorHeroSlides.map((slide, index) => (
