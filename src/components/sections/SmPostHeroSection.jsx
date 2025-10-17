@@ -103,7 +103,7 @@ const SmPostHeroSection = () => {
             <CommonBtn2 />
           </div>
 
-          <div className="min-w-[77rem]">
+          <div className="w-full xl:min-w-[77rem]">
             <Swiper
               className="mySwiper"
               modules={[Autoplay]}
