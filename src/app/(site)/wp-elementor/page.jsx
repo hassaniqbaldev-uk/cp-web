@@ -1,5 +1,5 @@
 import WpElementorHeroSection from "@/components/sections/WpElementorHeroSection";
-import ElementorAtSection from "@/components/sections/ElementorAtSection";
+import OurApproachSection2 from "@/components/sections/OurApproachSection2";
 import FullStackWordpressSection from "@/components/sections/FullStackWordpressSection";
 import AreYouSection from "@/components/sections/AreYouSection";
 import WhatWeCanHelpSection2 from "@/components/sections/WhatWeCanHelpSection2";
@@ -51,7 +51,7 @@ const WpElementorPage = async () => {
   return (
     <>
       <WpElementorHeroSection />
-      <ElementorAtSection />
+      <OurApproachSection2 />
       <FullStackWordpressSection />
       <AreYouSection />
       <WhatWeCanHelpSection2 />

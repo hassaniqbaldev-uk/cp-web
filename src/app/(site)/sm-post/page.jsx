@@ -1,6 +1,7 @@
 import ContactSection from "@/components/sections/ContactSection";
 import FeedbackSection from "@/components/sections/FeedbackSection";
 import IndustriesSection from "@/components/sections/IndustriesSection";
+import OurApproachSection3 from "@/components/sections/OurApproachSection3";
 import SmPostHeroSection from "@/components/sections/SmPostHeroSection";
 import { industriesData } from "@/constants/smPostPage";
 
@@ -8,6 +9,7 @@ const SmPostPage = () => {
   return (
     <>
       <SmPostHeroSection />
+      <OurApproachSection3 />
       <div className="overflow-hidden">
         <FeedbackSection
           reverse

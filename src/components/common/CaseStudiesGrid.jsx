@@ -134,8 +134,8 @@ const CaseStudiesGrid = ({
             <Image
               src={image}
               alt="Case Study Image"
-              height={345}
-              width={488}
+              height={380}
+              width={530}
               priority
               className="size-full"
             />

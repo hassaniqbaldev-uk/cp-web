@@ -8,7 +8,7 @@ import CommonBtn3 from "../common/CommonBtn3";
 import Link from "next/link";
 import Image from "next/image";
 
-const ElementorAtSection = () => {
+const OurApproachSection3 = () => {
   const labelRef = useRef();
   const container = useRef();
 
@@ -35,7 +35,7 @@ const ElementorAtSection = () => {
   return (
     <section
       ref={container}
-      className="px-[3rem] pt-[8rem] pb-[8.5rem] xl:px-[0rem] xl:pt-[31.6rem]"
+      className="px-[3rem] py-[8rem] xl:px-[0rem] xl:py-[10rem]"
     >
       <div className="mx-auto max-w-[120rem]">
         <div className="flex flex-col items-center justify-between gap-[4rem] xl:flex-row">
@@ -59,19 +59,8 @@ const ElementorAtSection = () => {
             </div>
 
             <h2 className="mt-[2.4rem] text-[3rem] leading-[4rem] font-semibold tracking-[-0.02em] text-[#070707] md:text-[5.2rem] md:leading-[6rem]">
-              Elementor at CP
+              Creative branding agency based in Manchester
             </h2>
-
-            <p className="mt-[1.6rem] mb-[3.8rem] text-[1.6rem] leading-[2.6rem] font-medium text-[#070707] md:text-[2.2rem] md:leading-[3.2rem]">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus
-              laoreet enim ut sem egestas, in feugiat elit aliquam. Donec
-              tincidunt pellentesque turpis, vel rhoncus tellus cursus non.
-              Proin varius ipsum placerat risus laoreet, in euismod augue
-              viverra. Suspendisse vitae augue quis massa elementum congue.
-              Quisque blandit sem dolor, ullamcorper imperdiet eros.
-            </p>
-
-            <CommonBtn3 label="Book a 15-min free call" href="/call" />
           </div>
         </div>
 
@@ -110,4 +99,4 @@ const ElementorAtSection = () => {
   );
 };
 
-export default ElementorAtSection;
+export default OurApproachSection3;
