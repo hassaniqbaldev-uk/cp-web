@@ -51,13 +51,14 @@ const FullStackWordpressSlider = () => {
       onSwiper={handleSwiperInit}
       slidesPerView={1}
       spaceBetween={0}
+      loop={true}
       breakpoints={{
         768: {
           slidesPerView: 2,
           spaceBetween: 12,
         },
         1024: {
-          slidesPerView: 3,
+          slidesPerView: 4,
           spaceBetween: 12,
         },
       }}
@@ -65,7 +66,7 @@ const FullStackWordpressSlider = () => {
     >
       {fullStackWordpressSlides.map((item, idx) => (
         <SwiperSlide key={idx} className="!flex !items-center !justify-center">
-          <div className="w-full overflow-hidden rounded-[1.3rem] xl:h-[35rem]">
+          <div className="size-full overflow-hidden rounded-[1.3rem]">
             <Image
               src={item.src}
               width={257}

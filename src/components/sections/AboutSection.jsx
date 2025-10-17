@@ -95,9 +95,10 @@ const AboutSection = () => {
       </div>
 
       <div className="relative z-10 mx-auto flex w-full max-w-[120rem] flex-col items-center px-[3rem] xl:items-start xl:px-[0rem]">
-        <p className="about-desc mb-[3rem] max-w-[99rem] text-center text-[1.4rem] leading-[2rem] font-semibold tracking-[-0.02em] text-[#333333] md:text-[3rem] md:leading-[4rem] lg:text-[3.4rem] lg:leading-[4.8rem] xl:text-left">
+        <p className="about-desc mb-[3rem] max-w-[99rem] text-center text-[1.6rem] leading-[2.6rem] font-semibold tracking-[-0.02em] text-[#333333] md:text-[3rem] md:leading-[4rem] lg:text-[3.4rem] lg:leading-[4.8rem] xl:text-left">
           We believe every website and brand should work harder for the people
-          behind it. Since 2014, <br />
+          behind it. <br />
+          Since 2014,{" "}
           <span className="mt-[1rem] inline-flex text-[#EE8D00] md:mt-[2rem]">
             Creative Pixels
           </span>{" "}

@@ -69,7 +69,7 @@ const UiUxHeroSection = () => {
   return (
     <section
       ref={container}
-      className="relative w-full overflow-hidden rounded-br-[5rem] rounded-bl-[5rem] px-[3rem] pt-[14rem] pb-[3.3rem] xl:px-[0rem] xl:pt-[17.2rem]"
+      className="relative w-full overflow-hidden rounded-br-[5rem] rounded-bl-[5rem] px-[3rem] pt-[16.7rem] pb-[3.3rem] xl:px-[0rem] xl:pt-[17.2rem]"
       style={{
         background:
           "url('/images/ui-ux-hero-bg-gradient.webp') no-repeat center center/cover",

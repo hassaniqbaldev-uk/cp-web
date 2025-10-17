@@ -61,6 +61,22 @@ export const fullStackWordpressSlides = [
     src: "/images/full-stack-wordpress-card-img-4.png",
     alt: "Image 4",
   },
+  {
+    src: "/images/full-stack-wordpress-card-img-1.png",
+    alt: "Image 1",
+  },
+  {
+    src: "/images/full-stack-wordpress-card-img-2.png",
+    alt: "Image 2",
+  },
+  {
+    src: "/images/full-stack-wordpress-card-img-3.png",
+    alt: "Image 3",
+  },
+  {
+    src: "/images/full-stack-wordpress-card-img-4.png",
+    alt: "Image 4",
+  },
 ];
 
 export const featureItems = [
