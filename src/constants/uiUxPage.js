@@ -14,6 +14,34 @@ import DesignStrategyIcon from "@/assets/icons/design-strategy-icon.svg";
 // import healthcareIcon from "../assets/icons/healthcare-icon.svg";
 // import nonProfitIcon from "../assets/icons/non-profit-icon.svg";
 
+export const heroSlideData = [
+  {
+    id: 1,
+    img: "/images/ui-ux-hero-slide-img-1.png",
+    alt: "Hero Image 1",
+  },
+  {
+    id: 2,
+    img: "/images/ui-ux-hero-slide-img-1.png",
+    alt: "Hero Image 1",
+  },
+  {
+    id: 3,
+    img: "/images/ui-ux-hero-slide-img-3.png",
+    alt: "Hero Image 1",
+  },
+  {
+    id: 4,
+    img: "/images/ui-ux-hero-slide-img-4.png",
+    alt: "Hero Image 1",
+  },
+  {
+    id: 5,
+    img: "/images/ui-ux-hero-slide-img-5.png",
+    alt: "Hero Image 1",
+  },
+];
+
 export const approachItems = [
   {
     icon: ConsultationFirstIcon,

@@ -9,6 +9,12 @@ import CommonBtn2 from "../common/CommonBtn2";
 import { logoPopupsData } from "@/constants/globals";
 import LogoPopup from "../common/LogoPopup";
 import ClientLogoSlider from "../common/ClientLogoSlider";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import { Autoplay, EffectFade } from "swiper/modules";
+import "swiper/css/effect-fade";
+import { heroSlideData } from "@/constants/uiUxPage";
+import Image from "next/image";
 
 const UiUxHeroSection = () => {
   const { isLoading } = useLoadingStore();
@@ -100,16 +106,42 @@ const UiUxHeroSection = () => {
           </div>
 
           <div
-            className="h-[27rem] w-full overflow-hidden rounded-[2rem] md:h-[52.3rem] md:w-[62.5rem]"
+            className="h-[27rem] w-full overflow-hidden rounded-[1rem] md:h-[52.3rem] md:w-[62.5rem] md:rounded-[2rem]"
             style={{
               boxShadow: "-24px 18px 40px 0px #07070799",
+              background:
+                "url('/images/ui-ux-hero-card-img.png') center center / 100% 100% no-repeat",
             }}
           >
-            <img
-              src="/images/ui-ux-hero-card-img.png"
-              alt="Hero Image"
-              className="size-full"
-            />
+            <Swiper
+              className="mySwiper"
+              modules={[Autoplay, EffectFade]}
+              effect="fade"
+              fadeEffect={{ crossFade: true }}
+              loop={true}
+              autoplay={{
+                delay: 2500,
+                disableOnInteraction: false,
+              }}
+              slidesPerView={1}
+            >
+              {heroSlideData.map((item) => (
+                <SwiperSlide
+                  key={item.id}
+                  className="!flex !h-auto !items-center !justify-center"
+                >
+                  <div className="relative size-full px-[2rem] pt-[5rem] pb-[2rem] md:pt-[7.2rem]">
+                    <Image
+                      src={item.img}
+                      width={585}
+                      height={431}
+                      alt={item.alt}
+                      className="size-full"
+                    />
+                  </div>
+                </SwiperSlide>
+              ))}
+            </Swiper>
           </div>
         </div>
 
