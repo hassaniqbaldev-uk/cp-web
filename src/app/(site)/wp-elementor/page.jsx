@@ -1,6 +1,5 @@
 import WpElementorHeroSection from "@/components/sections/WpElementorHeroSection";
 import OurApproachSection2 from "@/components/sections/OurApproachSection2";
-import FullStackWordpressSection from "@/components/sections/FullStackWordpressSection";
 import AreYouSection from "@/components/sections/AreYouSection";
 import WhatWeCanHelpSection2 from "@/components/sections/WhatWeCanHelpSection2";
 import LineStroke09 from "@/assets/decorative-elements/line-stroke-09.svg";
@@ -11,6 +10,7 @@ import IndustriesSection from "@/components/sections/IndustriesSection";
 import ContactSection from "@/components/sections/ContactSection";
 import OurProcessSection2 from "@/components/sections/OurProcessSection2";
 import { industriesData } from "@/constants/wpElementorPage";
+import WebDesignServiceSection2 from "@/components/sections/WebDesignServiceSection2";
 
 export const metadata = {
   title:
@@ -52,7 +52,7 @@ const WpElementorPage = async () => {
     <>
       <WpElementorHeroSection />
       <OurApproachSection2 />
-      <FullStackWordpressSection />
+      <WebDesignServiceSection2 />
       <AreYouSection />
       <WhatWeCanHelpSection2 />
       <OurProcessSection2 />

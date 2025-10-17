@@ -1286,3 +1286,119 @@ body {
   mask-composite: exclude;
   z-index: -1;
 }
+
+/* Our Approach Section 3 */
+
+.our-approach-3-card {
+  position: relative;
+  border-radius: 2rem;
+  background: linear-gradient(
+    301.83deg,
+    rgba(255, 195, 0, 0.15) 1.23%,
+    rgba(255, 195, 0, 0.075) 95.04%
+  );
+  backdrop-filter: blur(10px);
+  z-index: 0;
+}
+
+.our-approach-3-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  padding: 2px; /* border thickness */
+  border-radius: inherit;
+  background: linear-gradient(
+    124.3deg,
+    rgba(255, 255, 255, 0.5) 3.32%,
+    rgba(255, 195, 0, 0.5) 97.48%
+  );
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  z-index: -1;
+}
+
+.our-approach-3-card:nth-child(2) {
+  background: linear-gradient(
+    301.83deg,
+    rgba(255, 134, 48, 0.15) 1.23%,
+    rgba(255, 134, 48, 0.075) 95.04%
+  );
+}
+
+.our-approach-3-card:nth-child(2)::before {
+  background: linear-gradient(
+    124.3deg,
+    rgba(255, 255, 255, 0.3) 3.32%,
+    rgba(255, 134, 48, 0.3) 97.48%
+  );
+}
+
+.our-approach-3-card:nth-child(3) {
+  background: linear-gradient(
+    301.83deg,
+    rgba(48, 120, 255, 0.15) 1.23%,
+    rgba(48, 120, 255, 0.075) 95.04%
+  );
+}
+
+.our-approach-3-card:nth-child(3)::before {
+  background: linear-gradient(
+    124.3deg,
+    rgba(255, 255, 255, 0.3) 3.32%,
+    rgba(48, 120, 255, 0.3) 97.48%
+  );
+}
+
+.our-approach-3-card:nth-child(4) {
+  background: linear-gradient(
+    301.83deg,
+    rgba(241, 74, 88, 0.15) 1.23%,
+    rgba(241, 74, 88, 0.075) 95.04%
+  );
+}
+
+.our-approach-3-card:nth-child(4)::before {
+  background: linear-gradient(
+    124.3deg,
+    rgba(255, 255, 255, 0.3) 3.32%,
+    rgba(241, 74, 88, 0.3) 97.48%
+  );
+}
+
+.our-approach-3-card .label {
+  position: relative;
+  border-radius: 2rem;
+  background: #ffffff;
+  backdrop-filter: blur(10px);
+  z-index: 0;
+}
+
+.our-approach-3-card .label::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  padding: 1px; /* border thickness */
+  border-radius: inherit;
+  background: linear-gradient(124.3deg, #ffc300 3.32%, #ffffff 97.48%);
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  z-index: -1;
+}
+
+.our-approach-3-card:nth-child(2) .label::before {
+  background: linear-gradient(124.3deg, #ff8630 3.32%, #ffffff 97.48%);
+}
+
+.our-approach-3-card:nth-child(3) .label::before {
+  background: linear-gradient(124.3deg, #3078ff 3.32%, #ffffff 97.48%);
+}
+
+.our-approach-3-card:nth-child(4) .label::before {
+  background: linear-gradient(124.3deg, #f14a58 3.32%, #ffffff 97.48%);
+}

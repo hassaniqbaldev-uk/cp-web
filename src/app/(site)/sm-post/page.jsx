@@ -2,7 +2,9 @@ import ContactSection from "@/components/sections/ContactSection";
 import FeedbackSection from "@/components/sections/FeedbackSection";
 import IndustriesSection from "@/components/sections/IndustriesSection";
 import OurApproachSection3 from "@/components/sections/OurApproachSection3";
+import OurProcessSection3 from "@/components/sections/OurProcessSection3";
 import SmPostHeroSection from "@/components/sections/SmPostHeroSection";
+import WebDesignServiceSection3 from "@/components/sections/WebDesignServiceSection3";
 import { industriesData } from "@/constants/smPostPage";
 
 const SmPostPage = () => {
@@ -11,6 +13,18 @@ const SmPostPage = () => {
       <SmPostHeroSection />
       <OurApproachSection3 />
       <div className="overflow-hidden">
+        <WebDesignServiceSection3 />
+        <OurProcessSection3 />
+      </div>
+      <div className="overflow-hidden">
+        <div className="pb-[8rem] xl:pb-[10rem]">
+          <IndustriesSection
+            labelText="Industries"
+            title="Design solutions built for every sector"
+            description="From websites to apps and dashboards, our Figma-first UI/UX design and development-ready workflows adapt to any industry."
+            data={industriesData}
+          />
+        </div>
         <FeedbackSection
           reverse
           title="Imaginative vision. Outstanding Design."
@@ -19,12 +33,6 @@ const SmPostPage = () => {
           projectType="E-Commerce Website"
           avatar="/images/ui-ux-feedback-avatar.png"
           image="/images/sm-post-feedback-card-img.png"
-        />
-        <IndustriesSection
-          labelText="Industries"
-          title="Design solutions built for every sector"
-          description="From websites to apps and dashboards, our Figma-first UI/UX design and development-ready workflows adapt to any industry."
-          data={industriesData}
         />
         <ContactSection />
       </div>

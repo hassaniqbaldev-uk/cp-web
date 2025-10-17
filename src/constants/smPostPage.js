@@ -1,3 +1,8 @@
+import InnovativeIcon from "@/assets/icons/innovative-icon.svg";
+import PerformanceOptimizedIcon2 from "@/assets/icons/performance-optimized-icon-2.svg";
+import CompleteCustomizeIcon from "@/assets/icons/complete-customize-icon.svg";
+import AwareIcon from "@/assets/icons/aware-icon.svg";
+
 export const heroSlideData = [
   {
     id: 1,
@@ -51,5 +56,63 @@ export const industriesData = [
     title: "Non-Profit",
     description:
       "Impactful digital platforms that amplify causes, engage supporters, and drive measurable results.",
+  },
+];
+
+export const ourApproachCards = [
+  {
+    label: "Innovative Design",
+    title: "Innovative Design",
+    desc: "Crafting exceptional digital experiences your premier branding partner.",
+    Icon: InnovativeIcon,
+  },
+  {
+    label: "Performance-Optimized",
+    title: "Performance-Optimized",
+    desc: "Crafting exceptional digital experiences your premier branding partner.",
+    Icon: PerformanceOptimizedIcon2,
+  },
+  {
+    label: "Completely Customized",
+    title: "Completely Customized",
+    desc: "Crafting exceptional digital experiences your premier branding partner.",
+    Icon: CompleteCustomizeIcon,
+  },
+  {
+    label: "Aware of Objectives",
+    title: "Aware of Objectives",
+    desc: "Crafting exceptional digital experiences your premier branding partner.",
+    Icon: AwareIcon,
+  },
+];
+
+export const ourProcessSteps = [
+  {
+    id: 1,
+    color: "#FF37B3",
+    label: "Step #1",
+    title: "Discovery & Strategy Planning",
+    desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+  },
+  {
+    id: 2,
+    color: "#3078FF",
+    label: "Step #2",
+    title: "Design & Wireframing",
+    desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+  },
+  {
+    id: 3,
+    color: "#EE8D00",
+    label: "Step #3",
+    title: "Development & Integration",
+    desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+  },
+  {
+    id: 4,
+    color: "#44B276",
+    label: "Step #4",
+    title: "Testing & Launch",
+    desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
   },
 ];
