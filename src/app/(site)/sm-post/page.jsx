@@ -43,4 +43,3 @@ const SmPostPage = () => {
 };
 
 export default SmPostPage;
-//
