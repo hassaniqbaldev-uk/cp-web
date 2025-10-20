@@ -4,12 +4,7 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import SectionLabel2 from "../common/SectionLabel2";
 import { useRef } from "react";
-import CommonBtn3 from "../common/CommonBtn3";
 import Image from "next/image";
-import WebDesignServiceSlider2 from "../common/WebDesignServiceSlider2";
-import LogoPopup from "../common/LogoPopup";
-import { logoPopupsData } from "@/constants/globals";
-import ClientLogoSlider from "../common/ClientLogoSlider";
 import LineStroke35 from "@/assets/decorative-elements/line-stroke-35.svg";
 
 const WebDesignServiceSection3 = () => {
@@ -61,8 +56,8 @@ const WebDesignServiceSection3 = () => {
           </h4>
         </div>
 
-        <div class="mt-[5rem] grid h-[66.9rem] grid-cols-4 grid-rows-2 gap-[3.3rem]">
-          <div class="col-span-2 row-span-2 size-full rounded-[2rem]">
+        <div className="mt-[5rem] grid grid-cols-1 grid-rows-1 gap-[2rem] md:h-[45rem] md:grid-cols-4 md:grid-rows-2 lg:h-[55rem] xl:h-[66.9rem] xl:gap-[3.3rem]">
+          <div className="size-full rounded-[2rem] md:col-span-2 md:row-span-2">
             <Image
               src="/images/web-design-service-3-card-img-1.png"
               width={585}
@@ -72,7 +67,8 @@ const WebDesignServiceSection3 = () => {
               className="size-full"
             />
           </div>
-          <div class="size-full rounded-[2rem]">
+
+          <div className="size-full rounded-[2rem]">
             <Image
               src="/images/web-design-service-3-card-img-2.png"
               width={276}
@@ -82,7 +78,8 @@ const WebDesignServiceSection3 = () => {
               className="size-full"
             />
           </div>
-          <div class="size-full rounded-[2rem]">
+
+          <div className="size-full rounded-[2rem]">
             <Image
               src="/images/web-design-service-3-card-img-3.png"
               width={276}
@@ -92,7 +89,8 @@ const WebDesignServiceSection3 = () => {
               className="size-full"
             />
           </div>
-          <div class="size-full rounded-[2rem]">
+
+          <div className="size-full rounded-[2rem]">
             <Image
               src="/images/web-design-service-3-card-img-4.png"
               width={276}
@@ -102,7 +100,8 @@ const WebDesignServiceSection3 = () => {
               className="size-full"
             />
           </div>
-          <div class="size-full rounded-[2rem]">
+
+          <div className="size-full rounded-[2rem]">
             <Image
               src="/images/web-design-service-3-card-img-5.png"
               width={276}

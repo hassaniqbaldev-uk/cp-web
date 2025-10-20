@@ -40,8 +40,9 @@ const OurProcessSection3 = () => {
       <div className="absolute inset-0 z-[0] hidden xl:block">
         <CLetter2 className="absolute top-[-6rem] right-[-10rem] w-[30rem] rotate-[-20deg]" />
       </div>
+
       <div className="relative z-[10] mx-auto max-w-[120rem]">
-        <div className="flex flex-col items-start">
+        <div className="flex flex-col items-center text-center xl:items-start xl:text-left">
           <div ref={labelRef}>
             <SectionLabel2
               text="Our Process"
@@ -62,18 +63,21 @@ const OurProcessSection3 = () => {
         </div>
 
         <div className="relative mt-[4rem]">
-          <div className="grid grid-cols-4">
+          <div className="grid grid-cols-1 gap-[4rem] md:grid-cols-4 md:gap-[0rem]">
             {ourProcessSteps.map((step) => (
-              <div key={step.id} className="flex flex-col">
+              <div
+                key={step.id}
+                className="flex flex-col items-center text-center md:items-start md:text-left"
+              >
                 {/* Progress line + colored dot */}
-                <div className="relative">
+                <div className="relative w-full">
                   <hr
                     className="rounded-[6px] border-t-[6px] border-white/10"
                     style={{ boxShadow: "0px 4px 12px 0px #00000040" }}
                   />
 
                   <div
-                    className="absolute top-1/2 left-0 size-[2.6rem] -translate-y-1/2 rounded-full outline-2 outline-white"
+                    className="absolute top-1/2 left-1/2 size-[2.6rem] -translate-1/2 rounded-full outline-2 outline-white md:left-0 md:-translate-0 md:-translate-y-1/2"
                     style={{ backgroundColor: step.color }}
                   />
                 </div>
@@ -81,13 +85,13 @@ const OurProcessSection3 = () => {
                 {/* Step number + label */}
                 <h3 className="relative mt-[3rem] text-[11rem] leading-[11rem] font-bold text-white/10">
                   <span>{step.id}</span>
-                  <span className="absolute top-1/2 left-0 -translate-y-1/2 text-[1.6rem] leading-[2.4rem] font-medium text-white uppercase">
+                  <span className="absolute top-1/2 left-0 w-max -translate-y-1/2 text-[1.6rem] leading-[2.4rem] font-medium text-white uppercase">
                     {step.label}
                   </span>
                 </h3>
 
                 {/* Title + description */}
-                <div className="flex max-w-[16.3rem] flex-col gap-[8px]">
+                <div className="flex flex-col gap-[8px] md:max-w-[16.3rem]">
                   <h4
                     className="text-[1.8rem] leading-[2.6rem] font-bold"
                     style={{ color: step.color }}

@@ -8,6 +8,7 @@ import Link from "next/link";
 import { ourApproachCards } from "@/constants/smPostPage";
 import LineStroke31 from "@/assets/decorative-elements/line-stroke-31.svg";
 import CLetter2 from "@/assets/decorative-elements/c-letter-2";
+import OurApproach3Slider from "../common/OurApproach3Slider";
 
 const OurApproachSection3 = () => {
   const labelRef = useRef();
@@ -63,19 +64,19 @@ const OurApproachSection3 = () => {
           </h2>
         </div>
 
-        <div className="mt-[5rem] grid w-full grid-cols-2 gap-[3.3rem]">
+        <div className="mt-[5rem] grid w-full grid-cols-1 gap-[3.3rem] md:grid-cols-2">
           {ourApproachCards.map((item, index) => (
             <div
               key={index}
-              className="our-approach-3-card flex w-full items-center justify-between gap-[3rem] p-[3rem]"
+              className="our-approach-3-card flex w-full flex-col items-center justify-between gap-[3rem] p-[3rem] xl:flex-row"
             >
-              <div className="flex flex-col items-start">
+              <div className="flex flex-col items-center text-center xl:items-start xl:text-left">
                 <span className="label inline-flex h-[3.2rem] items-center justify-center px-[1.5rem] text-[1.4rem] leading-[2rem] font-medium text-[#070707]">
                   {item.label}
                 </span>
 
                 <div className="mt-[1.5rem] flex flex-col gap-[1rem]">
-                  <h4 className="text-[3.4rem] leading-[4.8rem] font-semibold tracking-[-0.02em] whitespace-nowrap text-[#070707]">
+                  <h4 className="text-[2.5rem] leading-[4rem] font-semibold tracking-[-0.02em] text-[#070707] lg:text-[3.3rem] lg:leading-[4.7rem]">
                     {item.title}
                   </h4>
 
@@ -85,7 +86,7 @@ const OurApproachSection3 = () => {
                 </div>
               </div>
 
-              <div className="min-w-[12.8rem]">
+              <div className="w-[12.8rem]">
                 <item.Icon />
               </div>
             </div>

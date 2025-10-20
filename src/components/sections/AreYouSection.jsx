@@ -78,7 +78,7 @@ const AreYouSection = () => {
               <i
                 className={`inline-flex size-[2.4rem] items-center justify-center rounded-full ${item.bgColor}`}
               >
-                <CheckIcon />
+                <CheckIcon className="w-[1.4rem]" />
               </i>
 
               <span className="text-left text-[1.8rem] leading-[2.8rem] font-medium md:text-[2.2rem] md:leading-[3.2rem]">

@@ -116,3 +116,67 @@ export const ourProcessSteps = [
     desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
   },
 ];
+
+export const keyBenefitTabData = [
+  {
+    id: "tab1",
+    title: "Vivamus sed mi nulla malesuada.",
+    image: "/images/key-benefit-tab-img-1.png",
+    heading: "Vivamus sed mi nulla malesuada",
+    description:
+      "Crafting exceptional digital experiences your premier branding partner.",
+    list: [
+      "Vivamus sed mi eu nulla malesuada aliquet.",
+      "Sed ut perspiciatis unde omnis iste natus error.",
+      "Aenean commodo ligula eget dolor.",
+    ],
+  },
+  {
+    id: "tab2",
+    title: "Sed ut perspiciatis unde omnis iste.",
+    image: "/images/key-benefit-tab-img-2.png",
+    heading: "Sed ut perspiciatis unde omnis iste",
+    description: "Building identities that connect and inspire globally.",
+    list: [
+      "Curabitur blandit tempus porttitor.",
+      "Integer posuere erat a ante venenatis dapibus.",
+      "Praesent commodo cursus magna.",
+    ],
+  },
+  {
+    id: "tab3",
+    title: "Curabitur blandit tempus porttitor.",
+    image: "/images/key-benefit-tab-img-3.png",
+    heading: "Curabitur blandit tempus porttitor",
+    description: "Innovating through design and technology synergy.",
+    list: [
+      "Donec ullamcorper nulla non metus auctor fringilla.",
+      "Maecenas sed diam eget risus varius blandit.",
+      "Etiam porta sem malesuada magna mollis euismod.",
+    ],
+  },
+  {
+    id: "tab4",
+    title: "Curabitur blandit tempus porttitor.",
+    image: "/images/key-benefit-tab-img-3.png",
+    heading: "Curabitur blandit tempus porttitor",
+    description: "Innovating through design and technology synergy.",
+    list: [
+      "Donec ullamcorper nulla non metus auctor fringilla.",
+      "Maecenas sed diam eget risus varius blandit.",
+      "Etiam porta sem malesuada magna mollis euismod.",
+    ],
+  },
+  {
+    id: "tab5",
+    title: "Curabitur blandit tempus porttitor.",
+    image: "/images/key-benefit-tab-img-3.png",
+    heading: "Curabitur blandit tempus porttitor",
+    description: "Innovating through design and technology synergy.",
+    list: [
+      "Donec ullamcorper nulla non metus auctor fringilla.",
+      "Maecenas sed diam eget risus varius blandit.",
+      "Etiam porta sem malesuada magna mollis euismod.",
+    ],
+  },
+];

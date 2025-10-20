@@ -1,6 +1,7 @@
 import ContactSection from "@/components/sections/ContactSection";
 import FeedbackSection from "@/components/sections/FeedbackSection";
 import IndustriesSection from "@/components/sections/IndustriesSection";
+import KeyBenefitSection2 from "@/components/sections/KeyBenefitSection2";
 import OurApproachSection3 from "@/components/sections/OurApproachSection3";
 import OurProcessSection3 from "@/components/sections/OurProcessSection3";
 import SmPostHeroSection from "@/components/sections/SmPostHeroSection";
@@ -12,6 +13,7 @@ const SmPostPage = () => {
     <>
       <SmPostHeroSection />
       <OurApproachSection3 />
+      <KeyBenefitSection2 />
       <div className="overflow-hidden">
         <WebDesignServiceSection3 />
         <OurProcessSection3 />

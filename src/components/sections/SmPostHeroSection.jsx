@@ -12,6 +12,9 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import { Autoplay } from "swiper/modules";
 import Image from "next/image";
+import ClientLogoSlider from "../common/ClientLogoSlider";
+import { logoPopupsData } from "@/constants/globals";
+import LogoPopup from "../common/LogoPopup";
 
 const SmPostHeroSection = () => {
   const { isLoading } = useLoadingStore();
@@ -77,8 +80,8 @@ const SmPostHeroSection = () => {
         <LineStroke01 className="absolute bottom-[2.058rem] left-1/2 w-full -translate-x-1/2" />
       </div>
 
-      <div className="relative z-[10] mx-auto max-w-[144rem] overflow-hidden pl-[12rem]">
-        <div className="flex items-center gap-[3rem]">
+      <div className="relative z-[10] mx-auto max-w-[144rem] overflow-hidden xl:pl-[12rem]">
+        <div className="flex flex-col items-center gap-[3rem] xl:flex-row">
           <div className="flex w-full flex-col items-center text-center xl:min-w-[58.5rem] xl:items-start xl:text-left">
             <div ref={labelRef}>
               <SectionLabel2
@@ -112,8 +115,14 @@ const SmPostHeroSection = () => {
                 delay: 2500,
                 disableOnInteraction: false,
               }}
-              slidesPerView={2}
-              spaceBetween={16.5}
+              slidesPerView={1}
+              spaceBetween={0}
+              breakpoints={{
+                768: {
+                  slidesPerView: 2,
+                  spaceBetween: 16.5,
+                },
+              }}
             >
               {heroSlideData.map((item) => (
                 <SwiperSlide
@@ -134,6 +143,26 @@ const SmPostHeroSection = () => {
             </Swiper>
           </div>
         </div>
+
+        <ul className="mt-[8.6rem] hidden h-[7rem] items-center gap-[3rem] xl:flex 2xl:gap-[5rem]">
+          {logoPopupsData.map((item, idx) => (
+            <li key={idx} className="">
+              <LogoPopup
+                logo={item.logo}
+                popupImage={item.popupImage}
+                title={item.title}
+                href={item.href}
+                logoWidth={item.logoWidth}
+                logoHeight={item.logoHeight}
+              />
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      {/* Mobile Logos */}
+      <div className="relative z-[200] mt-[8.6rem] block w-full xl:hidden">
+        <ClientLogoSlider />
       </div>
     </section>
   );
