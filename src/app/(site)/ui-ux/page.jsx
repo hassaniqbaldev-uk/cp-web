@@ -3,7 +3,7 @@ import KeyBenefitSection from "@/components/sections/KeyBenefitSection";
 import OurApproachSection from "@/components/sections/OurApproachSection";
 import OurProcessSection from "@/components/sections/OurProcessSection";
 import UiUxHeroSection from "@/components/sections/UiUxHeroSection";
-import WebDesignServiceSection from "@/components/sections/WebDesignServiceSection";
+import ServiceSection from "@/components/sections/ServiceSection";
 import WhatWeCanDesignSection from "@/components/sections/WhatWeCanDesignSection";
 import WhatWeCanHelpSection from "@/components/sections/WhatWeCanHelpSection";
 import { fetchAPI, getStrapiMedia } from "@/lib/strapi";
@@ -52,7 +52,7 @@ const UiUxPage = async () => {
     <>
       <UiUxHeroSection />
       <OurApproachSection />
-      <WebDesignServiceSection />
+      <ServiceSection />
       <div className="overflow-hidden">
         <WhatWeCanDesignSection />
         <WhatWeCanHelpSection />

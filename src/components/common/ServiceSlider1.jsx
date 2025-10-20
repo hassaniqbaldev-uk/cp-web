@@ -7,7 +7,7 @@ import { useRef, useState } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 
-const WebDesignServiceSlider = () => {
+const ServiceSlider1 = () => {
   const cardRefs = useRef([]);
   const swiperRef = useRef(null);
   const [activeIndex, setActiveIndex] = useState(null); // 👈 which card is open
@@ -118,4 +118,4 @@ const WebDesignServiceSlider = () => {
   );
 };
 
-export default WebDesignServiceSlider;
+export default ServiceSlider1;

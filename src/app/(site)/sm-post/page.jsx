@@ -5,7 +5,7 @@ import KeyBenefitSection2 from "@/components/sections/KeyBenefitSection2";
 import OurApproachSection3 from "@/components/sections/OurApproachSection3";
 import OurProcessSection3 from "@/components/sections/OurProcessSection3";
 import SmPostHeroSection from "@/components/sections/SmPostHeroSection";
-import WebDesignServiceSection3 from "@/components/sections/WebDesignServiceSection3";
+import ServiceSection3 from "@/components/sections/ServiceSection3";
 import { industriesData } from "@/constants/smPostPage";
 
 const SmPostPage = () => {
@@ -15,7 +15,7 @@ const SmPostPage = () => {
       <OurApproachSection3 />
       <KeyBenefitSection2 />
       <div className="overflow-hidden">
-        <WebDesignServiceSection3 />
+        <ServiceSection3 />
         <OurProcessSection3 />
       </div>
       <div className="overflow-hidden">

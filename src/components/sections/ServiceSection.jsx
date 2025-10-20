@@ -7,10 +7,10 @@ import SectionLabel2 from "../common/SectionLabel2";
 import { logoPopupsData } from "@/constants/globals";
 import LogoPopup from "../common/LogoPopup";
 import ClientLogoSlider from "../common/ClientLogoSlider";
-import WebDesignServiceSlider from "../common/WebDesignServiceSlider";
+import ServiceSlider1 from "../common/ServiceSlider1";
 import LineStroke31 from "@/assets/decorative-elements/line-stroke-31.svg";
 
-const WebDesignServiceSection = () => {
+const ServiceSection = () => {
   const container = useRef();
   const labelRef = useRef();
 
@@ -64,7 +64,7 @@ const WebDesignServiceSection = () => {
         </div>
 
         <div className="mt-[5rem] w-full">
-          <WebDesignServiceSlider />
+          <ServiceSlider1 />
         </div>
 
         <ul className="mt-[8rem] hidden h-[7rem] items-center gap-[3rem] xl:flex 2xl:gap-[5rem]">
@@ -91,4 +91,4 @@ const WebDesignServiceSection = () => {
   );
 };
 
-export default WebDesignServiceSection;
+export default ServiceSection;

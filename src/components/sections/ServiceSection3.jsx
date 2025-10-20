@@ -7,7 +7,7 @@ import { useRef } from "react";
 import Image from "next/image";
 import LineStroke35 from "@/assets/decorative-elements/line-stroke-35.svg";
 
-const WebDesignServiceSection3 = () => {
+const ServiceSection3 = () => {
   const container = useRef();
   const labelRef = useRef();
 
@@ -117,4 +117,4 @@ const WebDesignServiceSection3 = () => {
   );
 };
 
-export default WebDesignServiceSection3;
+export default ServiceSection3;

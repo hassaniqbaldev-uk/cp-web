@@ -7,7 +7,7 @@ import { fullStackWordpressSlides } from "@/constants/wpElementorPage";
 import LeftArrowLightIcon from "@/assets/icons/left-arrow-light-icon.svg";
 import { useRef } from "react"; // Add this import
 
-const WebDesignServiceSlider2 = () => {
+const ServiceSlider2 = () => {
   // Create refs for Swiper instance and navigation
   const swiperRef = useRef(null);
   const prevButtonRef = useRef(null);
@@ -104,4 +104,4 @@ const WebDesignServiceSlider2 = () => {
   );
 };
 
-export default WebDesignServiceSlider2;
+export default ServiceSlider2;

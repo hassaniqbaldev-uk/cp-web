@@ -1,25 +1,16 @@
-import WpElementorHeroSection from "@/components/sections/WpElementorHeroSection";
-import OurApproachSection2 from "@/components/sections/OurApproachSection2";
-import AreYouSection from "@/components/sections/AreYouSection";
-import WhatWeCanHelpSection2 from "@/components/sections/WhatWeCanHelpSection2";
-import LineStroke09 from "@/assets/decorative-elements/line-stroke-09.svg";
-import { fetchAPI, getStrapiMedia } from "@/lib/strapi";
-import CaseStudiesSection02 from "@/components/sections/CaseStudiesSection02";
+import ContactSection from "@/components/sections/ContactSection";
 import FeedbackSection from "@/components/sections/FeedbackSection";
 import IndustriesSection from "@/components/sections/IndustriesSection";
-import ContactSection from "@/components/sections/ContactSection";
-import OurProcessSection2 from "@/components/sections/OurProcessSection2";
-import { industriesData } from "@/constants/wpElementorPage";
-import ServiceSection2 from "@/components/sections/ServiceSection2";
+import { industriesData } from "@/constants/maintenanceGrowthPage";
+import { fetchAPI, getStrapiMedia } from "@/lib/strapi";
+import LineStroke09 from "@/assets/decorative-elements/line-stroke-09.svg";
+import CaseStudiesSection02 from "@/components/sections/CaseStudiesSection02";
+import OurProcessSection4 from "@/components/sections/OurProcessSection4";
+import MaintenanceGrowthHeroSection from "@/components/sections/MaintenanceGrowthHeroSection";
+import OurApproachSection4 from "@/components/sections/OurApproachSection4";
+import ServiceSection4 from "@/components/sections/ServiceSection4";
 
-export const metadata = {
-  title:
-    "Wp Elementor CreativePixels | Manchester Web Design & Branding Agency",
-  description:
-    "Since 2014, CreativePixels has combined design, development, and strategy to deliver digital experiences that build trust and lasting growth. Based in Manchester, trusted worldwide.",
-};
-
-const WpElementorPage = async () => {
+const MaintenanceGrowthPage = async () => {
   const response = await fetchAPI("/api/case-studies", {
     populate: {
       hero_image: true,
@@ -50,13 +41,13 @@ const WpElementorPage = async () => {
 
   return (
     <>
-      <WpElementorHeroSection />
-      <OurApproachSection2 />
-      <ServiceSection2 />
-      <AreYouSection />
-      <WhatWeCanHelpSection2 />
-      <OurProcessSection2 />
-      <div className="relative py-[5rem] xl:py-[10rem]">
+      <MaintenanceGrowthHeroSection />
+      <div className="overflow-hidden">
+        <OurApproachSection4 />
+        <ServiceSection4 />
+      </div>
+      <OurProcessSection4 />
+      <div className="relative pb-[8rem] xl:py-[9rem]">
         <div className="absolute inset-0 z-[0]">
           <LineStroke09 className="absolute top-[20rem] left-[-60rem] w-full xl:top-[20rem]" />
         </div>
@@ -71,11 +62,11 @@ const WpElementorPage = async () => {
           author="Emily Chen"
           projectType="E-Commerce Website"
           avatar="/images/ui-ux-feedback-avatar.png"
-          image="/images/wp-elementor-feedback-card-img.png"
+          image="/images/sm-post-feedback-card-img.png"
         />
         <IndustriesSection
           labelText="Industries"
-          title="Industries We Work With"
+          title="Design solutions built for every sector"
           description="From websites to apps and dashboards, our Figma-first UI/UX design and development-ready workflows adapt to any industry."
           data={industriesData}
         />
@@ -85,4 +76,4 @@ const WpElementorPage = async () => {
   );
 };
 
-export default WpElementorPage;
+export default MaintenanceGrowthPage;

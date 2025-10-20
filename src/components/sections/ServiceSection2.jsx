@@ -6,12 +6,12 @@ import SectionLabel2 from "../common/SectionLabel2";
 import { useRef } from "react";
 import CommonBtn3 from "../common/CommonBtn3";
 import Image from "next/image";
-import WebDesignServiceSlider2 from "../common/WebDesignServiceSlider2";
+import ServiceSlider2 from "../common/ServiceSlider2";
 import LogoPopup from "../common/LogoPopup";
 import { logoPopupsData } from "@/constants/globals";
 import ClientLogoSlider from "../common/ClientLogoSlider";
 
-const WebDesignServiceSection2 = () => {
+const ServiceSection2 = () => {
   const container = useRef();
   const labelRef = useRef();
 
@@ -77,7 +77,7 @@ const WebDesignServiceSection2 = () => {
             </div>
 
             <div className="flex w-full gap-[2.2rem] overflow-hidden xl:min-w-[110rem]">
-              <WebDesignServiceSlider2 />
+              <ServiceSlider2 />
             </div>
           </div>
         </div>
@@ -107,4 +107,4 @@ const WebDesignServiceSection2 = () => {
   );
 };
 
-export default WebDesignServiceSection2;
+export default ServiceSection2;
