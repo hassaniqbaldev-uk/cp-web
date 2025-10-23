@@ -90,7 +90,7 @@ const KeyBenefitTab = () => {
                           className="flex items-start gap-[1rem] text-[1.8rem] leading-[2.4rem] font-normal text-white"
                         >
                           <i className="min-w-max">
-                            <CheckIcon className="relative top-[.8rem] flex w-[1.4rem] items-center justify-center" />
+                            <CheckIcon className="relative top-[.8rem] flex w-[1.4rem] items-center justify-center fill-white" />
                           </i>
                           <span>{item}</span>
                         </li>

@@ -40,6 +40,7 @@ const nextConfig = {
         pathname: "/**", // allow all paths
       },
     ],
+    domains: ["localhost"], // 👈 allow local WP images
   },
 };
 

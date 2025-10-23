@@ -616,7 +616,7 @@ const CaseStudyDetailSection = ({ caseStudy }) => {
 
         <div
           ref={imgRef3}
-          className="relative mx-auto mt-[5rem] mb-[-10rem] h-[25rem] w-full max-w-[120.3rem] overflow-hidden rounded-[2rem] px-[3rem] opacity-0 md:h-[40rem] lg:mt-[9rem] lg:h-[61.2rem] xl:px-[0rem]"
+          className="relative mx-auto mt-[5rem] mb-[-5rem] h-[25rem] w-full max-w-[120.3rem] overflow-hidden rounded-[2rem] px-[3rem] opacity-0 md:h-[40rem] lg:mt-[9rem] lg:h-[61.2rem] xl:mb-[-10rem] xl:px-[0rem]"
         >
           <Image
             src={caseStudy.imageColumn13}

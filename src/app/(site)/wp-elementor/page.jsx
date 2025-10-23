@@ -1,6 +1,6 @@
 import WpElementorHeroSection from "@/components/sections/WpElementorHeroSection";
 import OurApproachSection2 from "@/components/sections/OurApproachSection2";
-import AreYouSection from "@/components/sections/AreYouSection";
+import FeaturedSection from "@/components/sections/FeaturedSection";
 import WhatWeCanHelpSection2 from "@/components/sections/WhatWeCanHelpSection2";
 import LineStroke09 from "@/assets/decorative-elements/line-stroke-09.svg";
 import { fetchAPI, getStrapiMedia } from "@/lib/strapi";
@@ -53,7 +53,7 @@ const WpElementorPage = async () => {
       <WpElementorHeroSection />
       <OurApproachSection2 />
       <ServiceSection2 />
-      <AreYouSection />
+      <FeaturedSection />
       <WhatWeCanHelpSection2 />
       <OurProcessSection2 />
       <div className="relative py-[5rem] xl:py-[10rem]">
