@@ -27,6 +27,62 @@ const OurApproachSection = () => {
           repeatDelay: 0.5,
         },
       );
+
+      gsap.fromTo(
+        ".our-approach-left-col",
+        { opacity: 0, y: 20 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.6,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: ".our-approach-left-col",
+            start: "top 60%",
+            toggleActions: "play none none none",
+          },
+        },
+      );
+
+      gsap.fromTo(
+        ".our-approach-right-col-card",
+        { opacity: 0, y: 20 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.6,
+          ease: "power2.out",
+          stagger: {
+            each: 0.2,
+            from: "start",
+          },
+          scrollTrigger: {
+            trigger: ".our-approach-right-col-card",
+            start: "top 60%",
+            toggleActions: "play none none none",
+          },
+        },
+      );
+
+      gsap.fromTo(
+        ".our-approach-contact-card",
+        { opacity: 0, y: 20 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.6,
+          ease: "power2.out",
+          stagger: {
+            each: 0.2,
+            from: "start",
+          },
+          scrollTrigger: {
+            trigger: ".our-approach-contact-card",
+            start: "top 60%",
+            toggleActions: "play none none none",
+          },
+        },
+      );
     },
     {
       scope: container,
@@ -40,7 +96,7 @@ const OurApproachSection = () => {
     >
       <div className="mx-auto max-w-[120rem]">
         <div className="flex flex-col items-center justify-between gap-[4rem] xl:flex-row">
-          <div className="flex w-full flex-col items-center text-center xl:w-[46.6rem] xl:items-start xl:text-left">
+          <div className="our-approach-left-col flex w-full flex-col items-center text-center xl:w-[46.6rem] xl:items-start xl:text-left">
             <div ref={labelRef}>
               <SectionLabel2
                 text="Our Approach"
@@ -69,7 +125,7 @@ const OurApproachSection = () => {
               return (
                 <div
                   key={index}
-                  className="flex flex-col items-center text-center xl:items-start xl:text-left"
+                  className="our-approach-right-col-card flex flex-col items-center text-center xl:items-start xl:text-left"
                 >
                   <div
                     className={`flex size-[8.8rem] items-center justify-center rounded-full ${item.bgColor}`}
@@ -96,7 +152,7 @@ const OurApproachSection = () => {
         </div>
 
         <div className="mt-[3.8rem] grid w-full grid-cols-1 items-center gap-[3.3rem] text-center md:grid-cols-2 xl:grid-cols-3">
-          <div className="contact-details-bg !px-[2.2rem] !py-[5rem]">
+          <div className="contact-details-bg our-approach-contact-card !px-[2.2rem] !py-[5rem]">
             <Link
               href="tel:01618202667"
               className="text-[3.4rem] leading-[4.8rem] font-semibold tracking-[-0.02em] text-[#FFC300]"
@@ -105,7 +161,7 @@ const OurApproachSection = () => {
             </Link>
           </div>
 
-          <div className="contact-details-bg !px-[2.2rem] !py-[5rem]">
+          <div className="contact-details-bg our-approach-contact-card !px-[2.2rem] !py-[5rem]">
             <Link
               href="mailto:hello@cp.agency"
               className="text-[3.4rem] leading-[4.8rem] font-semibold tracking-[-0.02em] text-[#3078FF]"
@@ -114,7 +170,7 @@ const OurApproachSection = () => {
             </Link>
           </div>
 
-          <div className="contact-details-bg !px-[2.2rem] !py-[5rem] md:col-span-2 xl:col-span-1">
+          <div className="contact-details-bg our-approach-contact-card !px-[2.2rem] !py-[5rem] md:col-span-2 xl:col-span-1">
             <button
               data-cal-namespace="15min"
               data-cal-link="hassan-iqbal-mznzu9/15min"

@@ -10,9 +10,34 @@ import WhatWeCanHelpSlider from "../common/WhatWeCanHelpSlider";
 const WhatWeCanHelpSection = () => {
   const labelRef = useRef();
   const container = useRef();
+  const lineRef = useRef();
 
   useGSAP(
     () => {
+      if (lineRef.current) {
+        const path = lineRef.current.querySelector("path");
+        if (path) {
+          const length = path.getTotalLength();
+
+          gsap.set(path, {
+            strokeDasharray: length,
+            strokeDashoffset: length,
+          });
+
+          gsap.to(path, {
+            strokeDashoffset: 0,
+            duration: 2,
+            ease: "power2.inOut",
+            scrollTrigger: {
+              trigger: lineRef.current,
+              start: "top 250%",
+              end: "bottom 20%",
+              scrub: true,
+            },
+          });
+        }
+      }
+
       gsap.fromTo(
         labelRef.current,
         { rotate: "-2deg" },
@@ -25,6 +50,56 @@ const WhatWeCanHelpSection = () => {
           repeatDelay: 0.5,
         },
       );
+
+      gsap.fromTo(
+        labelRef.current,
+        { opacity: 0 },
+        {
+          opacity: 1,
+          duration: 0.6,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: labelRef.current,
+            start: "top 60%",
+            toggleActions: "play none none none",
+          },
+        },
+      );
+
+      gsap.fromTo(
+        ".what-we-can-help-heading",
+        { opacity: 0 },
+        {
+          opacity: 1,
+          duration: 0.6,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: ".what-we-can-help-heading",
+            start: "top 60%",
+            toggleActions: "play none none none",
+          },
+        },
+      );
+
+      gsap.fromTo(
+        ".what-we-can-help-card",
+        { opacity: 0, y: 20 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.6,
+          ease: "power2.out",
+          stagger: {
+            each: 0.2,
+            from: "start",
+          },
+          scrollTrigger: {
+            trigger: ".what-we-can-help-card",
+            start: "top 60%",
+            toggleActions: "play none none none",
+          },
+        },
+      );
     },
     {
       scope: container,
@@ -34,7 +109,7 @@ const WhatWeCanHelpSection = () => {
   return (
     <section ref={container} className="relative px-[3rem] xl:px-[0rem]">
       {/* Decorative stroke line */}
-      <div className="absolute inset-0 z-[1]">
+      <div ref={lineRef} className="absolute inset-0 z-[1]">
         <LineStroke31 className="absolute top-[-15.4rem] left-[-115.8rem] w-full" />
       </div>
 
@@ -48,7 +123,7 @@ const WhatWeCanHelpSection = () => {
             />
           </div>
 
-          <h2 className="mt-[2rem] text-[3rem] leading-[4rem] font-semibold tracking-[-0.02em] text-[#070707] md:text-[5.6rem] md:leading-[6.4rem]">
+          <h2 className="what-we-can-help-heading mt-[2rem] text-[3rem] leading-[4rem] font-semibold tracking-[-0.02em] text-[#070707] md:text-[5.6rem] md:leading-[6.4rem]">
             What we can help you with
           </h2>
         </div>
@@ -59,7 +134,7 @@ const WhatWeCanHelpSection = () => {
             return (
               <div
                 key={card.id}
-                className="flex h-full flex-col items-start justify-between"
+                className="what-we-can-help-card flex h-full flex-col items-start justify-between"
               >
                 <div>
                   <div className="flex items-center gap-[1.5rem]">

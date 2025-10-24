@@ -27,6 +27,7 @@ const UiUxHeroSection = () => {
       if (isLoading) return;
 
       const linePath = lineRef.current?.querySelector("path");
+      const isMobile = window.innerWidth < 1280;
 
       // SVG Animation - COMPLETELY INDEPENDENT
       if (linePath) {
@@ -59,6 +60,66 @@ const UiUxHeroSection = () => {
           repeatDelay: 0.5,
         },
       );
+
+      const masterTl = gsap.timeline({ delay: 0.4 });
+
+      masterTl.fromTo(
+        ".left-col",
+        { opacity: 0, y: 20 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.5,
+          ease: "back.out(1.7)",
+        },
+        ">0.1",
+      );
+      masterTl.fromTo(
+        ".right-col",
+        { opacity: 0, y: 20 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.5,
+          ease: "back.out(1.7)",
+        },
+        ">0.2",
+      );
+
+      if (!isMobile) {
+        masterTl.fromTo(
+          ".hero-logo",
+          {
+            opacity: 0,
+            y: 80,
+          },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.5,
+            stagger: {
+              each: 0.1,
+              from: "center",
+            },
+            ease: "power2.out",
+          },
+          ">0.05",
+        );
+      }
+
+      if (isMobile) {
+        masterTl.fromTo(
+          ".hero-logo-slider",
+          { opacity: 0, x: 30 },
+          {
+            opacity: 1,
+            x: 0,
+            duration: 0.4,
+            ease: "power2.out",
+          },
+          ">0.05",
+        );
+      }
     },
     {
       scope: container,
@@ -82,7 +143,7 @@ const UiUxHeroSection = () => {
 
       <div className="relative z-[10] mx-auto max-w-[120rem]">
         <div className="flex flex-col items-center justify-between gap-[4rem] xl:flex-row">
-          <div className="flex w-full flex-col items-center text-center xl:w-[51.5rem] xl:items-start xl:text-left">
+          <div className="left-col flex w-full flex-col items-center text-center opacity-0 xl:w-[51.5rem] xl:items-start xl:text-left">
             <div ref={labelRef}>
               <SectionLabel2
                 text="Our Services"
@@ -106,7 +167,7 @@ const UiUxHeroSection = () => {
           </div>
 
           <div
-            className="h-[27rem] w-full overflow-hidden rounded-[1rem] md:h-[52.3rem] md:w-[62.5rem] md:rounded-[2rem]"
+            className="right-col h-[27rem] w-full overflow-hidden rounded-[1rem] opacity-0 md:h-[52.3rem] md:w-[62.5rem] md:rounded-[2rem]"
             style={{
               boxShadow: "-24px 18px 40px 0px #07070799",
               background:
@@ -147,7 +208,7 @@ const UiUxHeroSection = () => {
 
         <ul className="mt-[5rem] hidden h-[7rem] items-center gap-[3rem] xl:flex 2xl:gap-[5rem]">
           {logoPopupsData.map((item, idx) => (
-            <li key={idx} className="">
+            <li key={idx} className="hero-logo opacity-0">
               <LogoPopup
                 logo={item.logo}
                 popupImage={item.popupImage}
@@ -162,7 +223,7 @@ const UiUxHeroSection = () => {
       </div>
 
       {/* Mobile Logos */}
-      <div className="relative z-[200] mt-[5rem] block w-full xl:hidden">
+      <div className="hero-logo-slider relative z-[200] mt-[5rem] block w-full opacity-0 xl:hidden">
         <ClientLogoSlider />
       </div>
     </section>

@@ -22,10 +22,36 @@ import OurProcessSlider from "../common/OurProcessSlider";
 const OurProcessSection = () => {
   const container = useRef();
   const labelRef = useRef();
+  const lineRef = useRef();
 
-  // 🔹 Floating GSAP label animation
   useGSAP(
     () => {
+      const isMobile = window.innerWidth < 1280;
+
+      if (lineRef.current) {
+        const path = lineRef.current.querySelector("path");
+        if (path) {
+          const length = path.getTotalLength();
+
+          gsap.set(path, {
+            strokeDasharray: length,
+            strokeDashoffset: length,
+          });
+
+          gsap.to(path, {
+            strokeDashoffset: 0,
+            duration: 2,
+            ease: "power2.inOut",
+            scrollTrigger: {
+              trigger: lineRef.current,
+              start: "top 80%",
+              end: "bottom 20%",
+              scrub: true,
+            },
+          });
+        }
+      }
+
       gsap.fromTo(
         labelRef.current,
         { rotate: "-2deg" },
@@ -38,6 +64,89 @@ const OurProcessSection = () => {
           repeatDelay: 0.5,
         },
       );
+
+      gsap.fromTo(
+        labelRef.current,
+        { opacity: 0 },
+        {
+          opacity: 1,
+          duration: 0.6,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: labelRef.current,
+            start: "top 60%",
+            toggleActions: "play none none none",
+          },
+        },
+      );
+
+      gsap.fromTo(
+        ".our-process-heading",
+        { opacity: 0 },
+        {
+          opacity: 1,
+          duration: 0.6,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: ".our-process-heading",
+            start: "top 60%",
+            toggleActions: "play none none none",
+          },
+        },
+      );
+
+      gsap.fromTo(
+        ".our-process-desc",
+        { opacity: 0 },
+        {
+          opacity: 1,
+          duration: 0.6,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: ".our-process-desc",
+            start: "top 60%",
+            toggleActions: "play none none none",
+          },
+        },
+      );
+
+      if (!isMobile) {
+        gsap.fromTo(
+          ".our-process-card",
+          { opacity: 0 },
+          {
+            opacity: 1,
+            duration: 0.6,
+            ease: "power2.out",
+            stagger: {
+              each: 0.2,
+              from: "start",
+            },
+            scrollTrigger: {
+              trigger: ".our-process-card",
+              start: "top 60%",
+              toggleActions: "play none none none",
+            },
+          },
+        );
+      }
+
+      if (isMobile) {
+        gsap.fromTo(
+          ".our-process-slider",
+          { opacity: 0 },
+          {
+            opacity: 1,
+            duration: 0.6,
+            ease: "power2.out",
+            scrollTrigger: {
+              trigger: ".our-process-slider",
+              start: "top 60%",
+              toggleActions: "play none none none",
+            },
+          },
+        );
+      }
     },
     { scope: container },
   );
@@ -54,7 +163,7 @@ const OurProcessSection = () => {
       }}
     >
       {/* Decorative stroke line */}
-      <div className="absolute inset-0 z-[1]">
+      <div ref={lineRef} className="absolute inset-0 z-[1]">
         <LineStroke31 className="absolute top-[-5.8rem] left-[-103.9rem] w-full" />
       </div>
 
@@ -68,11 +177,11 @@ const OurProcessSection = () => {
             />
           </div>
 
-          <h4 className="mt-[2rem] mb-[.7rem] max-w-[103.1rem] text-center text-[3rem] leading-[4rem] font-bold tracking-[-0.03em] text-white md:text-[6rem] md:leading-[7.4rem]">
+          <h4 className="our-process-heading mt-[2rem] mb-[.7rem] max-w-[103.1rem] text-center text-[3rem] leading-[4rem] font-bold tracking-[-0.03em] text-white md:text-[6rem] md:leading-[7.4rem]">
             A simple, collaborative design process that delivers results
           </h4>
 
-          <p className="max-w-[73rem] text-[1.8rem] leading-[2.6rem] font-normal text-white">
+          <p className="our-process-desc max-w-[73rem] text-[1.8rem] leading-[2.6rem] font-normal text-white">
             We keep our workflow transparent and efficient. From first call to
             final handoff, everything is designed in Figma and prepared for
             smooth development — saving you time and reducing costly revisions.
@@ -81,17 +190,18 @@ const OurProcessSection = () => {
 
         <div className="mt-[6rem] hidden h-[29rem] grid-cols-5 md:grid">
           {ourProcessData.map((item, idx) => (
-            <ProcessStep
-              key={idx}
-              item={item}
-              index={idx}
-              isOpen={openIndex === idx}
-              onOpenChange={(open) => setOpenIndex(open ? idx : null)}
-            />
+            <div key={idx} className="our-process-card">
+              <ProcessStep
+                item={item}
+                index={idx}
+                isOpen={openIndex === idx}
+                onOpenChange={(open) => setOpenIndex(open ? idx : null)}
+              />
+            </div>
           ))}
         </div>
 
-        <div className="mt-[6rem] block w-full md:hidden">
+        <div className="our-process-slider mt-[6rem] block w-full md:hidden">
           <OurProcessSlider />
         </div>
       </div>

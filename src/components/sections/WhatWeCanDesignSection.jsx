@@ -26,6 +26,36 @@ const WhatWeCanDesignSection = () => {
           repeatDelay: 0.5,
         },
       );
+
+      gsap.fromTo(
+        ".what-we-can-design-left-col",
+        { opacity: 0 },
+        {
+          opacity: 1,
+          duration: 0.6,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: ".what-we-can-design-left-col",
+            start: "top 60%",
+            toggleActions: "play none none none",
+          },
+        },
+      );
+
+      gsap.fromTo(
+        ".what-we-can-design-right-col",
+        { opacity: 0 },
+        {
+          opacity: 1,
+          duration: 0.6,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: ".what-we-can-design-right-col",
+            start: "top 60%",
+            toggleActions: "play none none none",
+          },
+        },
+      );
     },
     {
       scope: container,
@@ -39,7 +69,7 @@ const WhatWeCanDesignSection = () => {
     >
       <div className="mx-auto max-w-[111rem]">
         <div className="flex flex-col items-center justify-between gap-[4rem] lg:flex-row">
-          <div className="flex w-full flex-col items-center text-center lg:w-[61.2rem] lg:items-start lg:text-left">
+          <div className="what-we-can-design-left-col flex w-full flex-col items-center text-center lg:w-[61.2rem] lg:items-start lg:text-left">
             <div ref={labelRef}>
               <SectionLabel2
                 text="Our Services"
@@ -66,7 +96,7 @@ const WhatWeCanDesignSection = () => {
           </div>
 
           <div
-            className="relative w-full rounded-[1.8rem] px-[.9rem] pt-[1.6rem] pb-[4rem] lg:w-[41.3rem]"
+            className="what-we-can-design-right-col relative w-full rounded-[1.8rem] px-[.9rem] pt-[1.6rem] pb-[4rem] lg:w-[41.3rem]"
             style={{
               background: "linear-gradient(270deg, #FFD801 0%, #EF7821 100%)",
               backdropFilter: "blur(10px)",

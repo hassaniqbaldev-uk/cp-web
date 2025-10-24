@@ -10,9 +10,34 @@ import LineStroke32 from "@/assets/decorative-elements/line-stroke-32.svg";
 const KeyBenefitSection = () => {
   const labelRef = useRef();
   const container = useRef();
+  const lineRef = useRef();
 
   useGSAP(
     () => {
+      if (lineRef.current) {
+        const path = lineRef.current.querySelector("path");
+        if (path) {
+          const length = path.getTotalLength();
+
+          gsap.set(path, {
+            strokeDasharray: length,
+            strokeDashoffset: length,
+          });
+
+          gsap.to(path, {
+            strokeDashoffset: 0,
+            duration: 2,
+            ease: "power2.inOut",
+            scrollTrigger: {
+              trigger: lineRef.current,
+              start: "top 80%",
+              end: "bottom 20%",
+              scrub: true,
+            },
+          });
+        }
+      }
+
       gsap.fromTo(
         labelRef.current,
         { rotate: "-2deg" },
@@ -23,6 +48,51 @@ const KeyBenefitSection = () => {
           repeat: -1,
           ease: "sine.inOut",
           repeatDelay: 0.5,
+        },
+      );
+
+      gsap.fromTo(
+        ".key-benefit-left-col",
+        { opacity: 0 },
+        {
+          opacity: 1,
+          duration: 0.6,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: ".key-benefit-left-col",
+            start: "top 60%",
+            toggleActions: "play none none none",
+          },
+        },
+      );
+
+      gsap.fromTo(
+        ".key-benefit-right-col",
+        { opacity: 0 },
+        {
+          opacity: 1,
+          duration: 0.6,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: ".key-benefit-right-col",
+            start: "top 60%",
+            toggleActions: "play none none none",
+          },
+        },
+      );
+
+      gsap.fromTo(
+        ".key-benefit-slider",
+        { opacity: 0 },
+        {
+          opacity: 1,
+          duration: 0.6,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: ".key-benefit-slider",
+            start: "top 60%",
+            toggleActions: "play none none none",
+          },
         },
       );
     },
@@ -37,13 +107,13 @@ const KeyBenefitSection = () => {
       className="relative overflow-hidden px-[3rem] py-[7.8rem] xl:px-[0rem]"
     >
       {/* Decorative stroke line */}
-      <div className="absolute inset-0 z-[1]">
+      <div ref={lineRef} className="absolute inset-0 z-[1]">
         <LineStroke32 className="absolute top-[12.6rem] left-[40rem] w-full" />
       </div>
 
       <div className="relative z-[10] mx-auto max-w-[120rem]">
         <div className="flex flex-col items-center justify-between gap-[4rem] lg:flex-row">
-          <div className="flex w-full flex-col items-center text-center lg:w-[56.8rem] lg:items-start lg:text-left">
+          <div className="key-benefit-left-col flex w-full flex-col items-center text-center lg:w-[56.8rem] lg:items-start lg:text-left">
             <div ref={labelRef}>
               <SectionLabel2
                 text="Key Benefits"
@@ -65,7 +135,7 @@ const KeyBenefitSection = () => {
             <CommonBtn3 label="Book a 15-min free call" href="/call" />
           </div>
 
-          <div className="h-[25rem] w-full overflow-hidden rounded-[2rem] bg-amber-300 md:h-[52rem] lg:w-[58.5rem]">
+          <div className="key-benefit-right-col h-[25rem] w-full overflow-hidden rounded-[2rem] md:h-[52rem] lg:w-[58.5rem]">
             <img
               src="/images/key-benefits-card img.png"
               alt="Image"
@@ -74,7 +144,7 @@ const KeyBenefitSection = () => {
           </div>
         </div>
 
-        <div className="mt-[5rem] w-full">
+        <div className="key-benefit-slider mt-[5rem] w-full">
           <KeyBenefitSlider />
         </div>
       </div>

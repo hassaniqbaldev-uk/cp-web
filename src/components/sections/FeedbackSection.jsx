@@ -3,6 +3,9 @@
 import Image from "next/image";
 import LineStroke33 from "@/assets/decorative-elements/line-stroke-33.svg";
 import RatingStar from "@/assets/icons/rating-star.svg";
+import { useRef } from "react";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
 
 const FeedbackSection = ({
   title = "Imaginative vision. Outstanding Design.",
@@ -14,13 +17,76 @@ const FeedbackSection = ({
   reverse = false, // optional layout flip
   background = "linear-gradient(0deg, #070707, #070707),linear-gradient(119.9deg, #070707 1.18%, #212121 49.71%, #070707 100%)",
 }) => {
+  const container = useRef();
+  const lineRef = useRef();
+
+  useGSAP(
+    () => {
+      if (lineRef.current) {
+        const path = lineRef.current.querySelector("path");
+        if (path) {
+          const length = path.getTotalLength();
+
+          gsap.set(path, {
+            strokeDasharray: length,
+            strokeDashoffset: length,
+          });
+
+          gsap.to(path, {
+            strokeDashoffset: 0,
+            duration: 2,
+            ease: "power2.inOut",
+            scrollTrigger: {
+              trigger: lineRef.current,
+              start: "top 80%",
+              end: "bottom 20%",
+              scrub: true,
+            },
+          });
+        }
+      }
+
+      gsap.fromTo(
+        ".feedback-left-col",
+        { opacity: 0 },
+        {
+          opacity: 1,
+          duration: 0.6,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: ".feedback-left-col",
+            start: "top 60%",
+            toggleActions: "play none none none",
+          },
+        },
+      );
+
+      gsap.fromTo(
+        ".feedback-right-col",
+        { opacity: 0 },
+        {
+          opacity: 1,
+          duration: 0.6,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: ".feedback-right-col",
+            start: "top 60%",
+            toggleActions: "play none none none",
+          },
+        },
+      );
+    },
+    { scope: container },
+  );
+
   return (
     <section
+      ref={container}
       style={{ background }}
       className="relative px-[3rem] py-[5rem] xl:px-[0rem] xl:py-[7rem]"
     >
       {/* Decorative line background */}
-      <div className="absolute inset-0 z-[0]">
+      <div ref={lineRef} className="absolute inset-0 z-[0]">
         <LineStroke33 className="absolute right-[-45rem] bottom-[-6.8rem] w-full" />
       </div>
 
@@ -31,7 +97,7 @@ const FeedbackSection = ({
         }`}
       >
         {/* Text Card */}
-        <div className="feedback-card h-full w-full p-[2rem] md:px-[3.5rem] md:py-[4.4rem]">
+        <div className="feedback-card feedback-left-col h-full w-full p-[2rem] md:px-[3.5rem] md:py-[4.4rem]">
           <RatingStar />
 
           <h4 className="mt-[2rem] text-[3rem] leading-[4rem] font-semibold tracking-[-0.02em] text-white md:text-[4.8rem] md:leading-[6rem]">
@@ -65,7 +131,7 @@ const FeedbackSection = ({
         </div>
 
         {/* Image Card */}
-        <div className="feedback-card h-full w-full p-[2rem]">
+        <div className="feedback-card feedback-right-col h-full w-full p-[2rem]">
           <Image
             src={image}
             width={585}

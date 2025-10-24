@@ -13,9 +13,36 @@ import LineStroke31 from "@/assets/decorative-elements/line-stroke-31.svg";
 const ServiceSection = () => {
   const container = useRef();
   const labelRef = useRef();
+  const lineRef = useRef();
 
   useGSAP(
     () => {
+      const isMobile = window.innerWidth < 1280;
+
+      if (lineRef.current) {
+        const path = lineRef.current.querySelector("path");
+        if (path) {
+          const length = path.getTotalLength();
+
+          gsap.set(path, {
+            strokeDasharray: length,
+            strokeDashoffset: length,
+          });
+
+          gsap.to(path, {
+            strokeDashoffset: 0,
+            duration: 2,
+            ease: "power2.inOut",
+            scrollTrigger: {
+              trigger: lineRef.current,
+              start: "top 250%",
+              end: "bottom 20%",
+              scrub: true,
+            },
+          });
+        }
+      }
+
       gsap.fromTo(
         labelRef.current,
         { rotate: "-2deg" },
@@ -28,6 +55,96 @@ const ServiceSection = () => {
           repeatDelay: 0.5,
         },
       );
+
+      gsap.fromTo(
+        labelRef.current,
+        { opacity: 0 },
+        {
+          opacity: 1,
+          duration: 0.6,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: labelRef.current,
+            start: "top 60%",
+            toggleActions: "play none none none",
+          },
+        },
+      );
+
+      gsap.fromTo(
+        ".service-heading",
+        { opacity: 0 },
+        {
+          opacity: 1,
+          duration: 0.6,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: ".service-heading",
+            start: "top 60%",
+            toggleActions: "play none none none",
+          },
+        },
+      );
+
+      gsap.fromTo(
+        ".service-slider",
+        { opacity: 0 },
+        {
+          opacity: 1,
+          duration: 0.6,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: ".service-slider",
+            start: "top 60%",
+            toggleActions: "play none none none",
+          },
+        },
+      );
+
+      if (!isMobile) {
+        gsap.fromTo(
+          ".service-logo",
+          {
+            opacity: 0,
+            y: 80,
+          },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.5,
+            stagger: {
+              each: 0.1,
+              from: "center",
+            },
+            scrollTrigger: {
+              trigger: ".service-logo",
+              start: "top 80%",
+              toggleActions: "play none none none",
+            },
+            ease: "power2.out",
+          },
+          ">0.05",
+        );
+      }
+
+      if (isMobile) {
+        gsap.fromTo(
+          ".service-logo-slider",
+          { opacity: 0, x: 30 },
+          {
+            opacity: 1,
+            x: 0,
+            duration: 0.4,
+            ease: "power2.out",
+            scrollTrigger: {
+              trigger: ".service-logo-slider",
+              start: "top 80%",
+              toggleActions: "play none none none",
+            },
+          },
+          ">0.05",
+        );
+      }
     },
     {
       scope: container,
@@ -44,7 +161,7 @@ const ServiceSection = () => {
       }}
     >
       {/* Decorative stroke line */}
-      <div className="absolute inset-0 z-[1]">
+      <div ref={lineRef} className="absolute inset-0 z-[1]">
         <LineStroke31 className="absolute top-[-5.8rem] left-[-103.9rem] w-full" />
       </div>
 
@@ -58,18 +175,18 @@ const ServiceSection = () => {
             />
           </div>
 
-          <h4 className="text-center text-[4rem] leading-[5rem] font-bold tracking-[-0.03em] text-white md:text-[6rem] md:leading-[7.4rem]">
+          <h4 className="service-heading text-center text-[4rem] leading-[5rem] font-bold tracking-[-0.03em] text-white md:text-[6rem] md:leading-[7.4rem]">
             Full-Stack Web Design Services
           </h4>
         </div>
 
-        <div className="mt-[5rem] w-full">
+        <div className="service-slider mt-[5rem] w-full">
           <ServiceSlider1 />
         </div>
 
-        <ul className="mt-[8rem] hidden h-[7rem] items-center gap-[3rem] xl:flex 2xl:gap-[5rem]">
+        <ul className="relative z-[100] mt-[8rem] hidden h-[7rem] items-center gap-[3rem] xl:flex 2xl:gap-[5rem]">
           {logoPopupsData.map((item, idx) => (
-            <li key={idx} className="">
+            <li key={idx} className="service-logo">
               <LogoPopup
                 logo={item.logo}
                 popupImage={item.popupImage}
@@ -84,7 +201,7 @@ const ServiceSection = () => {
       </div>
 
       {/* Mobile Logos */}
-      <div className="relative z-[200] mt-[8rem] block w-full xl:hidden">
+      <div className="service-logo-slider relative z-[200] mt-[8rem] block w-full xl:hidden">
         <ClientLogoSlider />
       </div>
     </section>

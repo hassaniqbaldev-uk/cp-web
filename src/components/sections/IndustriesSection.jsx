@@ -13,6 +13,8 @@ const IndustriesSection = ({ labelText, title, description, data = [] }) => {
 
   useGSAP(
     () => {
+      const isMobile = window.innerWidth < 1280;
+
       gsap.fromTo(
         labelRef.current,
         { rotate: "-2deg" },
@@ -25,6 +27,89 @@ const IndustriesSection = ({ labelText, title, description, data = [] }) => {
           repeatDelay: 0.5,
         },
       );
+
+      gsap.fromTo(
+        labelRef.current,
+        { opacity: 0 },
+        {
+          opacity: 1,
+          duration: 0.6,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: labelRef.current,
+            start: "top 60%",
+            toggleActions: "play none none none",
+          },
+        },
+      );
+
+      gsap.fromTo(
+        ".industries-heading",
+        { opacity: 0 },
+        {
+          opacity: 1,
+          duration: 0.6,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: ".industries-heading",
+            start: "top 60%",
+            toggleActions: "play none none none",
+          },
+        },
+      );
+
+      gsap.fromTo(
+        ".industries-desc",
+        { opacity: 0 },
+        {
+          opacity: 1,
+          duration: 0.6,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: ".industries-desc",
+            start: "top 60%",
+            toggleActions: "play none none none",
+          },
+        },
+      );
+
+      if (!isMobile) {
+        gsap.fromTo(
+          ".industries-card",
+          { opacity: 0 },
+          {
+            opacity: 1,
+            duration: 0.6,
+            ease: "power2.out",
+            stagger: {
+              each: 0.2,
+              from: "start",
+            },
+            scrollTrigger: {
+              trigger: ".industries-card",
+              start: "top 60%",
+              toggleActions: "play none none none",
+            },
+          },
+        );
+      }
+
+      if (isMobile) {
+        gsap.fromTo(
+          ".industries-slider",
+          { opacity: 0 },
+          {
+            opacity: 1,
+            duration: 0.6,
+            ease: "power2.out",
+            scrollTrigger: {
+              trigger: ".industries-slider",
+              start: "top 60%",
+              toggleActions: "play none none none",
+            },
+          },
+        );
+      }
     },
     { scope: container },
   );
@@ -48,11 +133,11 @@ const IndustriesSection = ({ labelText, title, description, data = [] }) => {
             />
           </div>
 
-          <h4 className="mt-[2rem] mb-[.7rem] max-w-[103rem] text-center text-[3rem] leading-[4rem] font-bold tracking-[-0.03em] md:text-[6rem] md:leading-[7.4rem]">
+          <h4 className="industries-heading mt-[2rem] mb-[.7rem] max-w-[103rem] text-center text-[3rem] leading-[4rem] font-bold tracking-[-0.03em] md:text-[6rem] md:leading-[7.4rem]">
             {title}
           </h4>
 
-          <p className="max-w-[70rem] text-[1.8rem] leading-[2.8rem] font-medium md:text-[2.2rem] md:leading-[3.2rem]">
+          <p className="industries-desc max-w-[70rem] text-[1.8rem] leading-[2.8rem] font-medium md:text-[2.2rem] md:leading-[3.2rem]">
             {description}
           </p>
         </div>
@@ -61,7 +146,7 @@ const IndustriesSection = ({ labelText, title, description, data = [] }) => {
           {data.map((item, idx) => (
             <div
               key={idx}
-              className="flex flex-col items-center justify-center text-center"
+              className="industries-card flex flex-col items-center justify-center text-center"
             >
               <img src={item.icon} alt="icon" className="size-[8.2rem]" />
 
@@ -76,7 +161,7 @@ const IndustriesSection = ({ labelText, title, description, data = [] }) => {
           ))}
         </div>
 
-        <div className="mt-[5rem] block w-full lg:hidden">
+        <div className="industries-slider mt-[5rem] block w-full lg:hidden">
           <IndustriesSlider data={data} />
         </div>
       </div>
