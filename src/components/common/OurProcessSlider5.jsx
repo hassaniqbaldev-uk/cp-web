@@ -3,13 +3,13 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import { Autoplay } from "swiper/modules";
-import { ourProcessData } from "@/constants/wpElementorPage";
+import { ourProcessData } from "@/constants/brandingPage";
 
 const OurProcessSlider5 = () => {
   return (
     <>
       <Swiper
-        className="mySwiper !py-[4rem]"
+        className="mySwiper !px-[1rem] !py-[4rem]"
         modules={[Autoplay]}
         loop={true}
         autoplay={{
@@ -17,16 +17,16 @@ const OurProcessSlider5 = () => {
           disableOnInteraction: false,
         }}
         slidesPerView={1}
-        spaceBetween={20}
+        spaceBetween={10}
         breakpoints={{
           768: {
             slidesPerView: 2,
-            spaceBetween: 20,
+            spaceBetween: 10,
           },
 
           1024: {
             slidesPerView: 3,
-            spaceBetween: 20,
+            spaceBetween: 10,
           },
         }}
       >
@@ -57,7 +57,7 @@ const OurProcessSlider5 = () => {
 
               {/* Content */}
               <div className="our-process-5-card flex w-full flex-col items-start gap-[3.4rem] p-[2rem]">
-                <span className="text-[1.6rem] leading-[2.4rem] font-medium text-white">
+                <span className="text-[1.6rem] leading-[2.4rem] font-medium text-[#07070]/40">
                   {item.step}
                 </span>
 
@@ -68,7 +68,7 @@ const OurProcessSlider5 = () => {
                   >
                     {item.title}
                   </h5>
-                  <p className="text-[1.6rem] leading-[2.4rem] font-medium text-white">
+                  <p className="text-[1.6rem] leading-[2.4rem] font-medium text-[#070707]/70">
                     {item.desc}
                   </p>
                 </div>

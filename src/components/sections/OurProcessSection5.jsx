@@ -6,6 +6,7 @@ import SectionLabel2 from "../common/SectionLabel2";
 import { ourProcessData } from "@/constants/wpElementorPage";
 import OurProcessSlider2 from "../common/OurProcessSlider2";
 import LineStroke31 from "@/assets/decorative-elements/line-stroke-31.svg";
+import OurProcessSlider5 from "../common/OurProcessSlider5";
 
 const OurProcessSection5 = () => {
   const container = useRef();
@@ -32,7 +33,7 @@ const OurProcessSection5 = () => {
   return (
     <section
       ref={container}
-      className="relative my-[-5rem] overflow-hidden rounded-tl-[5rem] rounded-tr-[5rem] bg-white px-[3rem] py-[8rem] xl:px-[0rem] xl:py-[10rem]"
+      className="relative my-[-5rem] overflow-hidden rounded-tl-[5rem] rounded-tr-[5rem] bg-white py-[8rem] xl:py-[10rem]"
     >
       {/* Decorative stroke line */}
       <div className="absolute inset-0 z-[1]">
@@ -51,7 +52,7 @@ const OurProcessSection5 = () => {
         </div>
       </div>
 
-      <div className="relative z-[10] mx-auto max-w-[123rem]">
+      <div className="relative z-[10] mx-auto max-w-[123rem] px-[3rem] xl:px-[0rem]">
         <div className="flex flex-col items-center text-center">
           <div ref={labelRef}>
             <SectionLabel2
@@ -65,7 +66,7 @@ const OurProcessSection5 = () => {
             Our Innovative Branding Process
           </h4>
 
-          <p className="max-w-[73rem] text-[1.8rem] leading-[2.6rem] font-normal text-white">
+          <p className="max-w-[73rem] text-[1.8rem] leading-[2.6rem] font-normal">
             Enhance your online visibility with a high-performing website that
             captivates users, drives conversions, and provides quantifiable
             outcomes.
@@ -116,10 +117,10 @@ const OurProcessSection5 = () => {
             </div>
           ))}
         </div>
+      </div>
 
-        <div className="block w-full xl:hidden">
-          <OurProcessSlider2 />
-        </div>
+      <div className="block w-full xl:hidden">
+        <OurProcessSlider5 />
       </div>
     </section>
   );

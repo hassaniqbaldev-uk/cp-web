@@ -32,8 +32,8 @@ const FeaturedSection2 = () => {
 
   return (
     <section ref={container} className="relative">
-      <div className="mx-auto flex max-w-[144rem] items-stretch overflow-hidden rounded-tl-[5rem] rounded-tr-[5rem]">
-        <div className="flex w-[87.8rem] flex-col items-start bg-[#F7F0FE] py-[6.8rem] pr-[7.1rem] pl-[11.9rem]">
+      <div className="mx-auto flex max-w-[144rem] flex-col items-stretch overflow-hidden rounded-tl-[5rem] rounded-tr-[5rem] xl:flex-row">
+        <div className="flex flex-col items-start bg-[#F7F0FE] px-[4rem] py-[6.8rem] xl:w-[87.8rem] xl:pr-[7.1rem] xl:pl-[11.9rem]">
           <div ref={labelRef}>
             <SectionLabel2
               text="Featured Categories"
@@ -55,7 +55,7 @@ const FeaturedSection2 = () => {
         </div>
 
         <div
-          className="flex w-[56.2rem] flex-col gap-[2rem] pt-[13.5rem] pr-[15.6rem] pb-[21.9rem] pl-[6.5rem]"
+          className="flex flex-col gap-[2rem] px-[4rem] py-[6.8rem] xl:w-[56.2rem] xl:pt-[13.5rem] xl:pr-[15.6rem] xl:pb-[21.9rem] xl:pl-[6.5rem]"
           style={{
             background:
               "url('/images/ui-ux-hero-bg-gradient.webp') no-repeat center center/cover",
@@ -65,7 +65,7 @@ const FeaturedSection2 = () => {
             Our Website Capabilities
           </h4>
 
-          <ul>
+          <ul className="flex flex-wrap items-center gap-x-[2rem] gap-y-[1rem] xl:block">
             {[
               "Brand Personality",
               "Brand Guidelines",

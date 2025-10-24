@@ -46,10 +46,10 @@ const BrandingPage = async () => {
       <BrandingHeroSection />
       <KeyBenefitSection3 />
       <ServiceSection5 />
-      {/* <WhatWeCanHelpSection3 /> */}
-      {/* <FeaturedSection2 /> */}
-      {/* <OurProcessSection5 /> */}
-      {/* <div className="overflow-hidden">
+      <WhatWeCanHelpSection3 />
+      <FeaturedSection2 />
+      <OurProcessSection5 />
+      <div className="overflow-hidden">
         <FeedbackSection
           reverse
           title="Imaginative vision. Outstanding Design."
@@ -72,9 +72,9 @@ const BrandingPage = async () => {
 
           <CaseStudiesSection02 caseStudies={caseStudies} />
         </div>
-      </div> */}
+      </div>
 
-      {/* <ContactSection /> */}
+      <ContactSection />
     </>
   );
 };

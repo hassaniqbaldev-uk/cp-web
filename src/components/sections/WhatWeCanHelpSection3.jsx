@@ -11,6 +11,8 @@ import ColorPshycologyIcon from "@/assets/icons/color-pshycology-icon.svg";
 import BrandPersonalityIcon from "@/assets/icons/brand-personality-icon.svg";
 import CompetitorAnalysisIcon from "@/assets/icons/competitor-analysis-icon.svg";
 import LineStroke31 from "@/assets/decorative-elements/line-stroke-31.svg";
+import { whatWeCanHelpData3 } from "@/constants/brandingPage";
+import WhatWeCanHelpSlider3 from "../common/WhatWeCanHelpSlider3";
 
 const WhatWeCanHelpSection3 = () => {
   const labelRef = useRef();
@@ -61,8 +63,8 @@ const WhatWeCanHelpSection3 = () => {
           </h2>
         </div>
 
-        <div className="mt-[4rem] grid grid-cols-2 items-center gap-[4.2rem]">
-          <div className="h-[50rem] w-full">
+        <div className="mt-[4rem] grid grid-cols-1 items-center gap-[4.2rem] xl:grid-cols-2">
+          <div className="h-[30rem] w-full md:h-[60rem] lg:h-[65rem] xl:h-[50rem]">
             <Image
               src="/images/what-we-can-help-3-card-img.png"
               width={575}
@@ -72,114 +74,27 @@ const WhatWeCanHelpSection3 = () => {
             />
           </div>
 
-          <div className="grid grid-cols-2 gap-[3rem]">
-            <div className="flex flex-col">
-              <div className="flex items-center gap-[1.4rem]">
-                <i className="flex min-w-min items-center justify-center">
-                  <BrandGuidlineIcon />
-                </i>
-
-                <span className="text-[2.6rem] leading-[3.2rem] font-semibold tracking-[-0.02em] text-[#070707]">
-                  Brand Guidelines
-                </span>
+          <div className="hidden grid-cols-2 gap-[3rem] md:grid">
+            {whatWeCanHelpData3.map((item, index) => (
+              <div key={index} className="flex flex-col">
+                <div className="flex items-center gap-[1.4rem]">
+                  <i className="flex min-w-min items-center justify-center">
+                    {item.icon}
+                  </i>
+                  <span className="text-[2.6rem] leading-[3.2rem] font-semibold tracking-[-0.02em] text-[#070707]">
+                    {item.title}
+                  </span>
+                </div>
+                <p className="mt-[.8rem] mb-[2rem] text-[1.8rem] leading-[2.6rem] font-normal text-[#070707]">
+                  {item.description}
+                </p>
+                <hr className="w-full border-t border-[#9c9c9c]/60" />
               </div>
+            ))}
+          </div>
 
-              <p className="mt-[.8rem] mb-[2rem] text-[1.8rem] leading-[2.6rem] font-normal text-[#070707]">
-                Bespoke web design perfect for your brand and target audience.
-              </p>
-
-              <hr className="w-full border-t border-[#9c9c9c]/60" />
-            </div>
-
-            <div className="flex flex-col">
-              <div className="flex items-center gap-[1.4rem]">
-                <i className="flex min-w-min items-center justify-center">
-                  <AssetCreationIcon />
-                </i>
-
-                <span className="text-[2.6rem] leading-[3.2rem] font-semibold tracking-[-0.02em] text-[#070707]">
-                  Asset Creation
-                </span>
-              </div>
-
-              <p className="mt-[.8rem] mb-[2rem] text-[1.8rem] leading-[2.6rem] font-normal text-[#070707]">
-                Web design perfect for your brand and target audience.
-              </p>
-
-              <hr className="w-full border-t border-[#9c9c9c]/60" />
-            </div>
-
-            <div className="flex flex-col">
-              <div className="flex items-center gap-[1.4rem]">
-                <i className="flex min-w-min items-center justify-center">
-                  <TypographyIcon />
-                </i>
-
-                <span className="text-[2.6rem] leading-[3.2rem] font-semibold tracking-[-0.02em] text-[#070707]">
-                  Typography
-                </span>
-              </div>
-
-              <p className="mt-[.8rem] mb-[2rem] text-[1.8rem] leading-[2.6rem] font-normal text-[#070707]">
-                Web design perfect for your brand and target audience.
-              </p>
-
-              <hr className="w-full border-t border-[#9c9c9c]/60" />
-            </div>
-
-            <div className="flex flex-col">
-              <div className="flex items-center gap-[1.4rem]">
-                <i className="flex min-w-min items-center justify-center">
-                  <ColorPshycologyIcon />
-                </i>
-
-                <span className="text-[2.6rem] leading-[3.2rem] font-semibold tracking-[-0.02em] text-[#070707]">
-                  Color Psychology
-                </span>
-              </div>
-
-              <p className="mt-[.8rem] mb-[2rem] text-[1.8rem] leading-[2.6rem] font-normal text-[#070707]">
-                Bespoke web design perfect for your brand and target audience.
-              </p>
-
-              <hr className="w-full border-t border-[#9c9c9c]/60" />
-            </div>
-
-            <div className="flex flex-col">
-              <div className="flex items-center gap-[1.4rem]">
-                <i className="flex min-w-min items-center justify-center">
-                  <BrandPersonalityIcon />
-                </i>
-
-                <span className="text-[2.6rem] leading-[3.2rem] font-semibold tracking-[-0.02em] text-[#070707]">
-                  Brand Personality
-                </span>
-              </div>
-
-              <p className="mt-[.8rem] mb-[2rem] text-[1.8rem] leading-[2.6rem] font-normal text-[#070707]">
-                Bespoke web design perfect for your brand and target audience.
-              </p>
-
-              <hr className="w-full border-t border-[#9c9c9c]/60" />
-            </div>
-
-            <div className="flex flex-col">
-              <div className="flex items-center gap-[1.4rem]">
-                <i className="flex min-w-min items-center justify-center">
-                  <CompetitorAnalysisIcon />
-                </i>
-
-                <span className="text-[2.6rem] leading-[3.2rem] font-semibold tracking-[-0.02em] whitespace-nowrap text-[#070707]">
-                  Competitor Analysis
-                </span>
-              </div>
-
-              <p className="mt-[.8rem] mb-[2rem] text-[1.8rem] leading-[2.6rem] font-normal text-[#070707]">
-                Web design perfect for your brand and target audience.
-              </p>
-
-              <hr className="w-full border-t border-[#9c9c9c]/60" />
-            </div>
+          <div className="block w-full md:hidden">
+            <WhatWeCanHelpSlider3 />
           </div>
         </div>
       </div>
