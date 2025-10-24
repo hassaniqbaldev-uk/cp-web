@@ -8,6 +8,7 @@ import LineStroke01 from "@/assets/decorative-elements/line-stroke-01.svg";
 import SectionLabel2 from "../common/SectionLabel2";
 import CommonBtn2 from "../common/CommonBtn2";
 import Image from "next/image";
+import BrandingHeroSlider from "../common/BrandingHeroSlider";
 
 const BrandingHeroSection = () => {
   const { isLoading } = useLoadingStore();
@@ -62,15 +63,15 @@ const BrandingHeroSection = () => {
   return (
     <section
       ref={container}
-      className="relative z-[10] w-full overflow-hidden rounded-br-[5rem] rounded-bl-[5rem] px-[3rem] pt-[14.8rem] pb-[3.7rem] xl:px-[0rem]"
+      className="relative z-[10] w-full overflow-hidden rounded-br-[5rem] rounded-bl-[5rem] px-[3rem] pt-[14.8rem] pb-[7rem] xl:px-[0rem]"
       style={{
         background:
           "url('/images/ui-ux-hero-bg-gradient.webp') no-repeat center center/cover",
       }}
     >
       {/* Decorative stroke line */}
-      <div ref={lineRef} className="absolute inset-0 z-[1] opacity-0">
-        <LineStroke01 className="absolute top-[42.9rem] left-1/2 w-full -translate-x-1/2" />
+      <div ref={lineRef} className="absolute inset-0 z-[0] opacity-0">
+        <LineStroke01 className="absolute top-[42.9rem] left-1/2 w-full -translate-x-1/2 opacity-50 xl:opacity-100" />
       </div>
 
       <div className="relative z-[10] mx-auto max-w-[120rem]">
@@ -98,7 +99,7 @@ const BrandingHeroSection = () => {
           <CommonBtn2 />
         </div>
 
-        <div className="mt-[6rem] grid grid-cols-3 gap-[1.6rem]">
+        <div className="mt-[6rem] hidden grid-cols-3 gap-[1.6rem] xl:grid">
           <div className="flex flex-col gap-[1.6rem]">
             <div className="branding-hero-glass flex h-[17.5rem] flex-col gap-[5px] p-[3rem]">
               <h4 className="text-[2.6rem] leading-[3.2rem] font-semibold tracking-[-0.02em] text-[#FFE103]">
@@ -230,6 +231,10 @@ const BrandingHeroSection = () => {
               />
             </div>
           </div>
+        </div>
+
+        <div className="mt-[6rem] block w-full xl:hidden">
+          <BrandingHeroSlider />
         </div>
       </div>
     </section>

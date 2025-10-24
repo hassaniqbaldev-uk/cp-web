@@ -70,7 +70,7 @@ const KeyBenefitSection3 = () => {
               ].map((item, idx) => (
                 <li
                   key={idx}
-                  className="flex items-center gap-[1.5rem] text-[1.8rem] font-normal text-white"
+                  className="flex items-center gap-[1.5rem] text-left text-[1.6rem] font-normal text-white md:text-[1.8rem]"
                 >
                   <i className="inline-flex h-[3.2rem] min-w-[3.2rem] items-center justify-center rounded-full bg-[#FF8630]">
                     <CheckIcon className="h-[1rem] w-[1.4rem] fill-white" />

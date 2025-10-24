@@ -40,11 +40,11 @@ const ServiceSection5 = () => {
   return (
     <section
       ref={container}
-      className="service-sec-5 relative rounded-tl-[5rem] rounded-tr-[5rem] bg-[#F7F0FE] px-[3rem] py-[8rem] xl:px-[0rem] xl:py-[9rem]"
+      className="service-sec-5 relative rounded-tl-[5rem] rounded-tr-[5rem] bg-[#F7F0FE] py-[8rem] xl:py-[9rem]"
     >
       {/* Decorative stroke line */}
       <div className="absolute inset-0 z-[1]">
-        <LineStroke36 className="absolute top-[16.8rem] left-1/2 w-full -translate-x-1/2" />
+        <LineStroke36 className="absolute top-[10rem] left-1/2 w-full -translate-x-1/2 md:top-[16.8rem]" />
       </div>
 
       <div className="relative z-[10] mx-auto max-w-[120rem]">
@@ -57,8 +57,8 @@ const ServiceSection5 = () => {
             />
           </div>
 
-          <h4 className="text-center text-[4rem] leading-[5rem] font-bold tracking-[-0.03em] md:text-[6rem] md:leading-[7.4rem]">
-            Full-Stack Branding Services
+          <h4 className="px-[3rem] text-center text-[4rem] leading-[5rem] font-bold tracking-[-0.03em] md:text-[6rem] md:leading-[7.4rem] xl:px-[0rem]">
+            Full-Stack Branding Services
           </h4>
         </div>
 
@@ -71,11 +71,40 @@ const ServiceSection5 = () => {
             centeredSlides={true}
             slidesPerView={"auto"}
             coverflowEffect={{
-              rotate: 20,
-              stretch: 500,
-              depth: 400,
+              rotate: 15,
+              stretch: 250,
+              depth: 150,
               modifier: 1,
               slideShadows: false,
+            }}
+            breakpoints={{
+              768: {
+                coverflowEffect: {
+                  rotate: 15,
+                  stretch: 400,
+                  depth: 200,
+                  modifier: 1,
+                  slideShadows: false,
+                },
+              },
+              1024: {
+                coverflowEffect: {
+                  rotate: 15,
+                  stretch: 450,
+                  depth: 300,
+                  modifier: 1,
+                  slideShadows: false,
+                },
+              },
+              1280: {
+                coverflowEffect: {
+                  rotate: 20,
+                  stretch: 500,
+                  depth: 400,
+                  modifier: 1,
+                  slideShadows: false,
+                },
+              },
             }}
           >
             <SwiperSlide>
