@@ -22,6 +22,7 @@ const CaseStudyDetailMarquee = ({ caseStudy }) => {
               height={326}
               priority
               className="size-full"
+              unoptimized
             />
           </div>
         </div>
