@@ -45,11 +45,12 @@ const BrandingHeroSlider = () => {
         <SwiperSlide>
           <div className="branding-hero-glass flex h-[28rem] items-center justify-center p-[3rem] md:h-[32rem]">
             <Image
-              src="/images/branding-hero-card-img-1.png"
+              src="/images/branding-hero-card-img-1.webp"
               width={366}
               height={303}
               alt="Image"
               className="size-full"
+              unoptimized
             />
           </div>
         </SwiperSlide>
@@ -70,7 +71,7 @@ const BrandingHeroSlider = () => {
         <SwiperSlide className="!h-auto">
           <div className="branding-hero-glass flex h-[28rem] items-center justify-center p-[3rem] md:h-[32rem]">
             <Image
-              src="/images/branding-hero-card-img-2.png"
+              src="/images/branding-hero-card-img-2.webp"
               width={328}
               height={239}
               alt="Image"
@@ -82,7 +83,7 @@ const BrandingHeroSlider = () => {
         <SwiperSlide className="!h-auto">
           <div className="branding-hero-glass flex h-[28rem] items-center justify-center p-[3rem] md:h-[32rem]">
             <Image
-              src="/images/branding-hero-card-img-3.png"
+              src="/images/branding-hero-card-img-3.webp"
               width={298}
               height={246}
               alt="Image"
@@ -107,7 +108,7 @@ const BrandingHeroSlider = () => {
         <SwiperSlide className="!h-auto">
           <div className="branding-hero-glass flex h-[28rem] items-center justify-center p-[3rem] md:h-[32rem]">
             <Image
-              src="/images/branding-hero-card-img-4.png"
+              src="/images/branding-hero-card-img-4.webp"
               width={282}
               height={242}
               alt="Image"
@@ -145,7 +146,7 @@ const BrandingHeroSlider = () => {
         <SwiperSlide className="!h-auto">
           <div className="branding-hero-glass flex h-[28rem] items-center justify-center p-[3rem] md:h-[32rem]">
             <Image
-              src="/images/branding-hero-card-img-5.png"
+              src="/images/branding-hero-card-img-5.webp"
               width={288}
               height={220}
               alt="Image"
@@ -170,7 +171,7 @@ const BrandingHeroSlider = () => {
         <SwiperSlide className="!h-auto">
           <div className="branding-hero-glass flex h-[28rem] items-center justify-center py-[3rem] md:h-[32rem]">
             <Image
-              src="/images/branding-hero-card-img-6.png"
+              src="/images/branding-hero-card-img-6.webp"
               width={388}
               height={259}
               alt="Image"
