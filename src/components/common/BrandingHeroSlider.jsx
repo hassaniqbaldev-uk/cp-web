@@ -76,6 +76,7 @@ const BrandingHeroSlider = () => {
               height={239}
               alt="Image"
               className="size-full"
+              unoptimized
             />
           </div>
         </SwiperSlide>
@@ -88,6 +89,7 @@ const BrandingHeroSlider = () => {
               height={246}
               alt="Image"
               className="size-full"
+              unoptimized
             />
           </div>
         </SwiperSlide>
@@ -113,6 +115,7 @@ const BrandingHeroSlider = () => {
               height={242}
               alt="Image"
               className="size-full"
+              unoptimized
             />
           </div>
         </SwiperSlide>
@@ -151,6 +154,7 @@ const BrandingHeroSlider = () => {
               height={220}
               alt="Image"
               className="size-full"
+              unoptimized
             />
           </div>
         </SwiperSlide>
@@ -176,6 +180,7 @@ const BrandingHeroSlider = () => {
               height={259}
               alt="Image"
               className="size-full"
+              unoptimized
             />
           </div>
         </SwiperSlide>
