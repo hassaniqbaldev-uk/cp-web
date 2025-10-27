@@ -85,6 +85,7 @@ const ClientLogoSlider = () => {
                       alt={`${item.title} Popup Image`}
                       width={275}
                       height={194}
+                      unoptimized
                     />
                   </div>
 
