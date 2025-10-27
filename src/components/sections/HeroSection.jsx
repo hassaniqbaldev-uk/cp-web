@@ -220,7 +220,11 @@ const HeroSection = () => {
   return (
     <section
       ref={container}
-      className="hero-sec relative w-full overflow-hidden rounded-br-[5rem] rounded-bl-[5rem] px-[3rem] pt-[17.2rem] pb-[3.3rem] xl:px-[0rem]"
+      className="relative w-full overflow-hidden rounded-br-[5rem] rounded-bl-[5rem] px-[3rem] pt-[17.2rem] pb-[3.3rem] xl:px-[0rem]"
+      style={{
+        background:
+          "url('/images/hero-bg-gradient.webp') no-repeat center center/cover",
+      }}
     >
       {/* Decorative stroke line */}
       <div ref={lineRef} className="absolute inset-0 z-[1] opacity-0">

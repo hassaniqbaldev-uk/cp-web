@@ -182,7 +182,11 @@ const WhatWeOfferSection = () => {
     <>
       <section
         ref={container}
-        className="offer-sec relative pt-[5rem] pb-[5rem] xl:pt-[8rem] xl:pb-[10rem]"
+        className="relative pt-[5rem] pb-[5rem] xl:pt-[8rem] xl:pb-[10rem]"
+        style={{
+          background:
+            "url('/images/offer-bg-gradient.webp') no-repeat center center/cover",
+        }}
       >
         {/* Custom Cursor with Text Inside */}
         <div
@@ -236,11 +240,12 @@ const WhatWeOfferSection = () => {
 
               <div className="pointer-events-none relative z-[10]">
                 <Image
-                  src="/images/offer-web-img.png"
+                  src="/images/offer-web-img.webp"
                   alt="offer web image"
                   width={332}
                   height={247}
                   priority
+                  unoptimized
                 />
               </div>
             </Link>
@@ -266,11 +271,12 @@ const WhatWeOfferSection = () => {
 
               <div className="pointer-events-none relative z-[10]">
                 <Image
-                  src="/images/offer-design-img.png"
+                  src="/images/offer-design-img.webp"
                   alt="offer web image"
                   width={327}
                   height={196}
                   priority
+                  unoptimized
                 />
               </div>
             </Link>
@@ -296,11 +302,12 @@ const WhatWeOfferSection = () => {
 
               <div className="pointer-events-none relative z-[10]">
                 <Image
-                  src="/images/offer-maintenance-img.png"
+                  src="/images/offer-maintenance-img.webp"
                   alt="offer web image"
                   width={331}
                   height={212}
                   priority
+                  unoptimized
                 />
               </div>
             </Link>

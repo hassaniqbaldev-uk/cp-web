@@ -15,30 +15,101 @@ const ServiceSection2 = () => {
   const container = useRef();
   const labelRef = useRef();
 
-  useGSAP(
-    () => {
+  useGSAP(() => {
+    const isMobile = window.innerWidth < 1280;
+
+    gsap.fromTo(
+      labelRef.current,
+      { rotate: "-2deg" },
+      {
+        rotation: "+=3",
+        duration: 0.15,
+        yoyo: true,
+        repeat: -1,
+        ease: "sine.inOut",
+        repeatDelay: 0.5,
+      },
+    );
+
+    gsap.fromTo(
+      ".service-section-2-left-col-card",
+      { opacity: 0 },
+      {
+        opacity: 1,
+        duration: 0.6,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: ".service-section-2-left-col-card",
+          start: "top 60%",
+          toggleActions: "play none none none",
+        },
+      },
+    );
+
+    gsap.fromTo(
+      ".service-section-2-right-col-card",
+      { opacity: 0 },
+      {
+        opacity: 1,
+        delay: 0.2,
+        duration: 0.6,
+        ease: "power2.out",
+
+        scrollTrigger: {
+          trigger: ".service-section-2-right-col-card",
+          start: "top 60%",
+          toggleActions: "play none none none",
+        },
+      },
+    );
+
+    if (!isMobile) {
       gsap.fromTo(
-        labelRef.current,
-        { rotate: "-2deg" },
+        ".service-section-2-logo",
         {
-          rotation: "+=3",
-          duration: 0.15,
-          yoyo: true,
-          repeat: -1,
-          ease: "sine.inOut",
-          repeatDelay: 0.5,
+          opacity: 0,
+          y: 80,
+        },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.5,
+          stagger: {
+            each: 0.1,
+            from: "center",
+          },
+          scrollTrigger: {
+            trigger: ".service-section-2-logo",
+            start: "top 80%",
+            toggleActions: "play none none none",
+          },
+          ease: "power2.out",
         },
       );
-    },
-    {
-      scope: container,
-    },
-  );
+    }
+
+    if (isMobile) {
+      gsap.fromTo(
+        ".service-section-2-logo-slider",
+        { opacity: 0, x: 30 },
+        {
+          opacity: 1,
+          x: 0,
+          duration: 0.4,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: ".service-section-2-logo-slider",
+            start: "top 60%",
+            toggleActions: "play none none none",
+          },
+        },
+      );
+    }
+  });
 
   return (
     <section className="overflow-hidden">
       <div
-        ref={container}
         className="relative px-[3rem] pt-[8rem] pb-[8.5rem] xl:px-[0rem] xl:pt-[12.7rem]"
         style={{
           background:
@@ -54,9 +125,10 @@ const ServiceSection2 = () => {
             alt="Bg Image"
           />
         </div>
+
         <div className="relative z-[10] mx-auto max-w-[144rem] overflow-hidden xl:pl-[12rem]">
           <div className="flex flex-col items-center justify-between gap-[4rem] xl:flex-row xl:items-start">
-            <div className="flex flex-col items-center gap-[2.2rem] text-center xl:w-[29rem] xl:items-start xl:text-left">
+            <div className="service-section-2-left-col-card flex flex-col items-center gap-[2.2rem] text-center xl:w-[29rem] xl:items-start xl:text-left">
               <div ref={labelRef}>
                 <SectionLabel2
                   text="Web Design Services"
@@ -76,7 +148,7 @@ const ServiceSection2 = () => {
               />
             </div>
 
-            <div className="flex w-full gap-[2.2rem] overflow-hidden xl:min-w-[110rem]">
+            <div className="service-section-2-right-col-card flex w-full gap-[2.2rem] overflow-hidden xl:min-w-[110rem]">
               <ServiceSlider2 />
             </div>
           </div>
@@ -86,7 +158,7 @@ const ServiceSection2 = () => {
       <div className="bg-[#3078FF] py-[3.5rem]">
         <ul className="mx-auto hidden h-[7rem] w-full max-w-[120rem] items-center gap-[5rem] xl:flex">
           {logoPopupsData.map((item, idx) => (
-            <li key={idx} className="">
+            <li key={idx} className="service-section-2-logo">
               <LogoPopup
                 logo={item.logo}
                 popupImage={item.popupImage}
@@ -99,7 +171,7 @@ const ServiceSection2 = () => {
           ))}
         </ul>
 
-        <div className="relative z-[200] block w-full xl:hidden">
+        <div className="service-section-2-logo-slider relative z-[200] block w-full xl:hidden">
           <ClientLogoSlider />
         </div>
       </div>

@@ -123,7 +123,6 @@ const ServiceSection = () => {
             },
             ease: "power2.out",
           },
-          ">0.05",
         );
       }
 
@@ -142,7 +141,6 @@ const ServiceSection = () => {
               toggleActions: "play none none none",
             },
           },
-          ">0.05",
         );
       }
     },

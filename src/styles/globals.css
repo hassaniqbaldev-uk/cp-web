@@ -401,15 +401,6 @@ body {
   height: auto !important;
 }
 
-/* Hero Section */
-
-.hero-sec {
-  background: url("/images/hero-bg-gradient.webp");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-}
-
 /* About Section  */
 
 .about-card-gradient {
@@ -495,13 +486,6 @@ body {
 }
 
 /* Offer Section  */
-
-@utility offer-sec {
-  background: url("/images/offer-bg-gradient.webp");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-}
 
 .offer-grid-card {
   position: relative;

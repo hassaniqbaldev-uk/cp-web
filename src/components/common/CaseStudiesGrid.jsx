@@ -138,6 +138,7 @@ const CaseStudiesGrid = ({
               width={530}
               priority
               className="size-full"
+              unoptimized
             />
           </div>
 

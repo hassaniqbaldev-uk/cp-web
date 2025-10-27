@@ -89,6 +89,7 @@ const LogoPopup = ({ logo, popupImage, title, href }) => {
               alt={`${title} Popup Image`}
               width={275}
               height={194}
+              unoptimized
             />
           </div>
 

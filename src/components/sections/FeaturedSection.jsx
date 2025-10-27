@@ -12,9 +12,34 @@ import CLetter2 from "@/assets/decorative-elements/c-letter-2";
 const FeaturedSection = () => {
   const labelRef = useRef();
   const container = useRef();
+  const lineRef = useRef();
 
   useGSAP(
     () => {
+      if (lineRef.current) {
+        const path = lineRef.current.querySelector("path");
+        if (path) {
+          const length = path.getTotalLength();
+
+          gsap.set(path, {
+            strokeDasharray: length,
+            strokeDashoffset: length,
+          });
+
+          gsap.to(path, {
+            strokeDashoffset: 0,
+            duration: 2,
+            ease: "power2.inOut",
+            scrollTrigger: {
+              trigger: lineRef.current,
+              start: "top 250%",
+              end: "bottom 20%",
+              scrub: true,
+            },
+          });
+        }
+      }
+
       gsap.fromTo(
         labelRef.current,
         { rotate: "-2deg" },
@@ -27,7 +52,84 @@ const FeaturedSection = () => {
           repeatDelay: 0.5,
         },
       );
+
+      gsap.fromTo(
+        labelRef.current,
+        { opacity: 0 },
+        {
+          opacity: 1,
+          duration: 0.6,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: labelRef.current,
+            start: "top 60%",
+            toggleActions: "play none none none",
+          },
+        },
+      );
+
+      gsap.fromTo(
+        ".featured-section-heading",
+        { opacity: 0 },
+        {
+          opacity: 1,
+          duration: 0.6,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: ".featured-section-heading",
+            start: "top 60%",
+            toggleActions: "play none none none",
+          },
+        },
+      );
+
+      gsap.fromTo(
+        ".featured-section-description",
+        { opacity: 0 },
+        {
+          opacity: 1,
+          duration: 0.6,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: ".featured-section-description",
+            start: "top 60%",
+            toggleActions: "play none none none",
+          },
+        },
+      );
+
+      gsap.fromTo(
+        ".featured-section-cards",
+        { opacity: 0 },
+        {
+          opacity: 1,
+          duration: 0.6,
+          ease: "power2.out",
+          stagger: 0.1,
+          scrollTrigger: {
+            trigger: ".featured-section-cards",
+            start: "top 60%",
+            toggleActions: "play none none none",
+          },
+        },
+      );
+
+      gsap.fromTo(
+        ".featured-section-cta-btn",
+        { opacity: 0 },
+        {
+          opacity: 1,
+          duration: 0.6,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: ".featured-section-cta-btn",
+            start: "top 60%",
+            toggleActions: "play none none none",
+          },
+        },
+      );
     },
+
     {
       scope: container,
     },
@@ -39,7 +141,7 @@ const FeaturedSection = () => {
       className="relative px-[3rem] py-[8rem] xl:px-[0rem] xl:py-[10rem]"
     >
       {/* Decorative stroke line */}
-      <div className="pointer-events-none absolute inset-0 z-[1]">
+      <div ref={lineRef} className="pointer-events-none absolute inset-0 z-[1]">
         <LineStroke34 className="absolute top-[0rem] left-[-103rem] w-full" />
       </div>
 
@@ -56,12 +158,12 @@ const FeaturedSection = () => {
           />
         </div>
 
-        <h2 className="mt-[2rem] max-w-[110rem] text-[3rem] leading-[4rem] font-bold tracking-[-0.03em] text-[#070707] md:text-[6rem] md:leading-[7.4rem]">
+        <h2 className="featured-section-heading mt-[2rem] max-w-[110rem] text-[3rem] leading-[4rem] font-bold tracking-[-0.03em] text-[#070707] md:text-[6rem] md:leading-[7.4rem]">
           Are you a well-established business in the UK or one that is just
           starting out?
         </h2>
 
-        <p className="] mt-[1.6rem] text-[1.8rem] leading-[2.8rem] font-medium text-[#070707] md:text-[2.2rem] md:leading-[3.2rem]">
+        <p className="] featured-section-description mt-[1.6rem] text-[1.8rem] leading-[2.8rem] font-medium text-[#070707] md:text-[2.2rem] md:leading-[3.2rem]">
           Flexible, supported by data, and designed for success—at all phases of
           the funnel. libero eget volutpat porta, mi felis elementum leo, et
           aliquet orci felis sit amet orci. Donec varius justo eget orci
@@ -73,7 +175,7 @@ const FeaturedSection = () => {
           {featureItems.map((item) => (
             <div
               key={item.id}
-              className="flex h-[4.8rem] items-center gap-[1.2rem] rounded-[20rem] border border-[#070707] px-[1.6rem] py-[.8rem]"
+              className="featured-section-cards flex h-[4.8rem] items-center gap-[1.2rem] rounded-[20rem] border border-[#070707] px-[1.6rem] py-[.8rem]"
             >
               <i
                 className={`inline-flex size-[2.4rem] items-center justify-center rounded-full ${item.bgColor}`}
@@ -88,11 +190,13 @@ const FeaturedSection = () => {
           ))}
         </div>
 
-        <CommonBtn3
-          label="About CreativePixels"
-          href="/about"
-          bgColor="#FF37B3"
-        />
+        <div className="featured-section-cta-btn">
+          <CommonBtn3
+            label="About CreativePixels"
+            href="/about"
+            bgColor="#FF37B3"
+          />
+        </div>
       </div>
     </section>
   );

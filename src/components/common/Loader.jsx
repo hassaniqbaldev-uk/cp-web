@@ -26,7 +26,11 @@ const Loader = ({ onHidden }) => {
   return (
     <div
       ref={wrapperRef}
-      className="hero-sec fixed inset-0 z-[1000] flex items-center justify-center"
+      className="fixed inset-0 z-[1000] flex items-center justify-center"
+      style={{
+        background:
+          "url('/images/hero-bg-gradient.webp') no-repeat center center/cover",
+      }}
     >
       <Logo onComplete={handleLogoComplete} />
     </div>

@@ -97,38 +97,38 @@ export const offerServicesDropdownData = [
 export const logoPopupsData = [
   {
     logo: "/images/game-art-logo.png",
-    popupImage: "/images/game-art-popup-img.png",
+    popupImage: "/images/game-art-popup-img.webp",
     href: "/case-studies/games-art-brain",
   },
   {
     logo: "/images/new-compass-logo.png",
-    popupImage: "/images/new-compass-popup-img.png",
+    popupImage: "/images/new-compass-popup-img.webp",
     href: "/case-studies/new-compass",
   },
   {
     logo: "/images/ayoa-logo.png",
-    popupImage: "/images/ayoa-popup-img.png",
+    popupImage: "/images/ayoa-popup-img.webp",
     href: "/case-studies/ayoa",
   },
   {
     logo: "/images/casabolanica-logo.png",
-    popupImage: "/images/casabolanica-popup-img.png",
+    popupImage: "/images/casa-popup-img.webp",
     href: "/case-studies/casa-botanica-panama",
   },
 
   {
     logo: "/images/alert-logo.png",
-    popupImage: "/images/ivy-popup-img.png",
+    popupImage: "/images/alertforce-popup-img.webp",
     href: "/case-studies/alert-force",
   },
   {
     logo: "/images/fultons-logo.png",
-    popupImage: "/images/fultons-popup-img.png",
+    popupImage: "/images/fultons-popup-img.webp",
     href: "/case-studies/fulton-jewellery",
   },
   {
     logo: "/images/unicef-logo.png",
-    popupImage: "/images/unicef-popup-img.png",
+    popupImage: "/images/unicef-popup-img.webp",
     href: "/case-studies/unicef",
   },
 ];

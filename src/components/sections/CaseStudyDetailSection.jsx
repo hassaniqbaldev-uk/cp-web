@@ -225,6 +225,7 @@ const CaseStudyDetailSection = ({ caseStudy }) => {
             height={170}
             alt="Case Study Badge"
             className="size-full object-cover object-center"
+            unoptimized
           />
         </div>
       </div>
@@ -314,6 +315,7 @@ const CaseStudyDetailSection = ({ caseStudy }) => {
             width={1204}
             priority
             className="size-full object-cover object-top"
+            unoptimized
           />
         </div>
 
@@ -370,6 +372,7 @@ const CaseStudyDetailSection = ({ caseStudy }) => {
               height={439}
               priority
               className="size-full object-cover"
+              unoptimized
             />
           </div>
 
@@ -381,6 +384,7 @@ const CaseStudyDetailSection = ({ caseStudy }) => {
               height={439}
               priority
               className="size-full object-cover"
+              unoptimized
             />
           </div>
         </div>
@@ -393,6 +397,7 @@ const CaseStudyDetailSection = ({ caseStudy }) => {
               height={514}
               className="size-full object-contain"
               alt="Image"
+              unoptimized
             />
 
             <div className="absolute bottom-0 h-[4.8rem] w-full bg-[linear-gradient(180deg,rgba(18,18,18,0)_0%,#ffffff_100%)]" />
@@ -417,6 +422,7 @@ const CaseStudyDetailSection = ({ caseStudy }) => {
                   height={300}
                   className="size-full object-cover"
                   alt="Image"
+                  unoptimized
                 />
               </div>
 
@@ -428,6 +434,7 @@ const CaseStudyDetailSection = ({ caseStudy }) => {
                     height={66}
                     alt="Image"
                     className="size-full object-contain"
+                    unoptimized
                   />
                 </div>
 
@@ -504,6 +511,7 @@ const CaseStudyDetailSection = ({ caseStudy }) => {
                 height={91}
                 alt="Image"
                 className="size-full object-contain"
+                unoptimized
               />
             </div>
 
@@ -514,6 +522,7 @@ const CaseStudyDetailSection = ({ caseStudy }) => {
                 height={515}
                 alt="Image"
                 className="size-full object-contain"
+                unoptimized
               />
             </div>
 
@@ -524,12 +533,19 @@ const CaseStudyDetailSection = ({ caseStudy }) => {
                 height={515}
                 alt="Image"
                 className="size-full object-contain"
+                unoptimized
               />
             </div>
           </div>
         </div>
 
-        <div className="hero-sec my-[5rem] py-[5rem] xl:my-[9rem] xl:py-[8rem]">
+        <div
+          className="my-[5rem] py-[5rem] xl:my-[9rem] xl:py-[8rem]"
+          style={{
+            background:
+              "url('/images/hero-bg-gradient.webp') no-repeat center center/cover",
+          }}
+        >
           <div className="mx-auto flex max-w-[116rem] flex-col items-center gap-[2rem] px-[3rem] text-center xl:items-start xl:px-[0rem] xl:text-left">
             <h3 className="text-[3rem] leading-[4rem] font-semibold tracking-[-0.02em] text-white md:text-[4.8rem] md:leading-[6rem]">
               {caseStudy.contentTitle?.title5}
@@ -625,6 +641,7 @@ const CaseStudyDetailSection = ({ caseStudy }) => {
             height={612}
             priority
             className="size-full rounded-[2rem] object-cover"
+            unoptimized
           />
         </div>
 

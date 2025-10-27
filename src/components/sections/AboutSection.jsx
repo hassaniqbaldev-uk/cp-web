@@ -122,11 +122,12 @@ const AboutSection = () => {
             </h3>
 
             <Image
-              src="/images/about-main-img.png"
+              src="/images/about-main-img.webp"
               width={629}
               height={611}
               alt="Image"
               className="size-full object-cover"
+              unoptimized
             />
           </div>
         </div>

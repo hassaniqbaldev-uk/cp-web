@@ -56,6 +56,67 @@ const WpElementorHeroSection = () => {
           repeatDelay: 0.5,
         },
       );
+
+      const masterTl = gsap.timeline({ delay: 0.4 });
+
+      masterTl.fromTo(
+        labelRef.current,
+        { opacity: 0 },
+        {
+          opacity: 1,
+          duration: 0.5,
+          ease: "back.out(1.7)",
+        },
+        ">0.1",
+      );
+
+      masterTl.fromTo(
+        ".wp-elementor-hero-heading",
+        { opacity: 0, y: 20 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.5,
+          ease: "back.out(1.7)",
+        },
+        ">0.1",
+      );
+
+      masterTl.fromTo(
+        ".wp-elementor-hero-desc",
+        { opacity: 0, y: 20 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.5,
+          ease: "back.out(1.7)",
+        },
+        ">0.1",
+      );
+
+      masterTl.fromTo(
+        ".wp-elementor-hero-cta-btn",
+        { opacity: 0, y: 20 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.5,
+          ease: "back.out(1.7)",
+        },
+        ">0.1",
+      );
+
+      masterTl.fromTo(
+        ".wp-elementor-hero-slider",
+        { opacity: 0, y: 20 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.5,
+          ease: "back.out(1.7)",
+        },
+        ">0.1",
+      );
     },
     {
       scope: container,
@@ -79,7 +140,7 @@ const WpElementorHeroSection = () => {
 
       <div className="relative z-[10] mx-auto max-w-[120rem] px-[3rem] xl:px-[0rem]">
         <div className="flex flex-col items-center text-center">
-          <div ref={labelRef}>
+          <div ref={labelRef} className="opacity-0">
             <SectionLabel2
               text="Our Services"
               bgColor="bg-[#FFC300]"
@@ -87,11 +148,11 @@ const WpElementorHeroSection = () => {
             />
           </div>
 
-          <h1 className="mt-[2.9rem] text-[3rem] leading-[3rem] font-bold tracking-[-0.03em] text-white md:text-[4.5rem] md:leading-[5.5rem] lg:text-[6rem] lg:leading-[7rem] xl:text-[6.9rem] xl:leading-[8.3rem]">
+          <h1 className="wp-elementor-hero-heading mt-[2.9rem] text-[3rem] leading-[3rem] font-bold tracking-[-0.03em] text-white opacity-0 md:text-[4.5rem] md:leading-[5.5rem] lg:text-[6rem] lg:leading-[7rem] xl:text-[6.9rem] xl:leading-[8.3rem]">
             WP / Elementor
           </h1>
 
-          <p className="mt-[1.2rem] mb-[4rem] max-w-[90rem] text-[1.6rem] leading-[2.4rem] font-normal text-white md:text-[1.8rem] md:leading-[2.6rem]">
+          <p className="wp-elementor-hero-desc mt-[1.2rem] mb-[4rem] max-w-[90rem] text-[1.6rem] leading-[2.4rem] font-normal text-white opacity-0 md:text-[1.8rem] md:leading-[2.6rem]">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer
             mollis, libero eget volutpat porta, mi felis elementum leo, et
             aliquet orci felis sit amet orci. Donec varius justo eget orci
@@ -99,11 +160,13 @@ const WpElementorHeroSection = () => {
             risus nec, dapibus ligula.
           </p>
 
-          <CommonBtn2 />
+          <div className="wp-elementor-hero-cta-btn opacity-0">
+            <CommonBtn2 />
+          </div>
         </div>
       </div>
 
-      <div className="mx-auto w-full max-w-[150rem]">
+      <div className="wp-elementor-hero-slider relative z-[100] mx-auto w-full max-w-[150rem] opacity-0">
         <Swiper
           slidesPerView={3}
           spaceBetween={30}
