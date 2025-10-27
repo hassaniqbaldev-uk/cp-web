@@ -115,6 +115,7 @@ const ServiceSection5 = () => {
                   height={520}
                   alt={item.alt}
                   className="size-full"
+                  unoptimized
                 />
               </SwiperSlide>
             ))}
