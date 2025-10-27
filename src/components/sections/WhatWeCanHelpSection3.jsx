@@ -4,12 +4,6 @@ import gsap from "gsap";
 import { useRef } from "react";
 import SectionLabel2 from "../common/SectionLabel2";
 import Image from "next/image";
-import BrandGuidlineIcon from "@/assets/icons/brand-guideline-icon.svg";
-import AssetCreationIcon from "@/assets/icons/asset-creation-icon.svg";
-import TypographyIcon from "@/assets/icons/typography-icon.svg";
-import ColorPshycologyIcon from "@/assets/icons/color-pshycology-icon.svg";
-import BrandPersonalityIcon from "@/assets/icons/brand-personality-icon.svg";
-import CompetitorAnalysisIcon from "@/assets/icons/competitor-analysis-icon.svg";
 import LineStroke31 from "@/assets/decorative-elements/line-stroke-31.svg";
 import { whatWeCanHelpData3 } from "@/constants/brandingPage";
 import WhatWeCanHelpSlider3 from "../common/WhatWeCanHelpSlider3";
@@ -81,7 +75,7 @@ const WhatWeCanHelpSection3 = () => {
                   <i className="flex min-w-min items-center justify-center">
                     {item.icon}
                   </i>
-                  <span className="text-[2.6rem] leading-[3.2rem] font-semibold tracking-[-0.02em] text-[#070707]">
+                  <span className="text-[2.6rem] leading-[3.2rem] font-semibold tracking-[-0.02em] whitespace-nowrap text-[#070707]">
                     {item.title}
                   </span>
                 </div>
