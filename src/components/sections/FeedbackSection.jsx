@@ -110,11 +110,9 @@ const FeedbackSection = ({
 
           <div className="flex items-center gap-[1.2rem] text-left">
             <div className="relative h-[5.6rem] min-w-[5.6rem] overflow-hidden rounded-full">
-              <Image
+              <img
                 src={avatar}
                 alt={author}
-                width={56}
-                height={56}
                 className="size-full object-cover object-center"
               />
             </div>
@@ -138,6 +136,7 @@ const FeedbackSection = ({
             height={520}
             alt={title}
             className="size-full rounded-[2rem] object-cover"
+            unoptimized
           />
         </div>
       </div>

@@ -114,11 +114,12 @@ const BrandingHeroSection = () => {
 
             <div className="branding-hero-glass flex h-[32rem] items-center justify-center p-[3rem]">
               <Image
-                src="/images/branding-hero-card-img-1.png"
+                src="/images/branding-hero-card-img-1.webp"
                 width={366}
                 height={303}
                 alt="Image"
                 className="size-full"
+                unoptimized
               />
             </div>
 
@@ -135,11 +136,12 @@ const BrandingHeroSection = () => {
 
             <div className="branding-hero-glass flex h-[32rem] items-center justify-center p-[3rem]">
               <Image
-                src="/images/branding-hero-card-img-2.png"
+                src="/images/branding-hero-card-img-2.webp"
                 width={328}
                 height={239}
                 alt="Image"
                 className="size-full"
+                unoptimized
               />
             </div>
           </div>
@@ -147,11 +149,12 @@ const BrandingHeroSection = () => {
           <div className="flex flex-col gap-[1.6rem]">
             <div className="branding-hero-glass flex h-[32rem] items-center justify-center p-[3rem]">
               <Image
-                src="/images/branding-hero-card-img-3.png"
+                src="/images/branding-hero-card-img-3.webp"
                 width={298}
                 height={246}
                 alt="Image"
                 className="size-full"
+                unoptimized
               />
             </div>
 
@@ -168,11 +171,12 @@ const BrandingHeroSection = () => {
 
             <div className="branding-hero-glass flex h-[32rem] items-center justify-center p-[3rem]">
               <Image
-                src="/images/branding-hero-card-img-4.png"
+                src="/images/branding-hero-card-img-4.webp"
                 width={282}
                 height={242}
                 alt="Image"
                 className="size-full"
+                unoptimized
               />
             </div>
 
@@ -202,11 +206,12 @@ const BrandingHeroSection = () => {
 
             <div className="branding-hero-glass flex h-[32rem] items-center justify-center p-[3rem]">
               <Image
-                src="/images/branding-hero-card-img-5.png"
+                src="/images/branding-hero-card-img-5.webp"
                 width={288}
                 height={220}
                 alt="Image"
                 className="size-full"
+                unoptimized
               />
             </div>
 
@@ -223,11 +228,12 @@ const BrandingHeroSection = () => {
 
             <div className="branding-hero-glass flex h-[32rem] items-center justify-center py-[3rem]">
               <Image
-                src="/images/branding-hero-card-img-6.png"
+                src="/images/branding-hero-card-img-6.webp"
                 width={388}
                 height={259}
                 alt="Image"
                 className="size-full"
+                unoptimized
               />
             </div>
           </div>

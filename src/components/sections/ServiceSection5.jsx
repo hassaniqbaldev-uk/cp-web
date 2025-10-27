@@ -4,7 +4,6 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { useRef } from "react";
 import SectionLabel2 from "../common/SectionLabel2";
-import { wpElementorHeroSlides } from "@/constants/wpElementorPage";
 import LineStroke36 from "@/assets/decorative-elements/line-stroke-36.svg";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules"; // Add this
@@ -12,6 +11,7 @@ import "swiper/css";
 import "swiper/css/effect-coverflow";
 import Image from "next/image";
 import { EffectCoverflow } from "swiper/modules";
+import { service5SlideData } from "@/constants/brandingPage";
 
 const ServiceSection5 = () => {
   const container = useRef();
@@ -107,50 +107,17 @@ const ServiceSection5 = () => {
               },
             }}
           >
-            <SwiperSlide>
-              <Image
-                src="/images/service-section-5-slide-img-1.png"
-                width={770}
-                height={520}
-                alt="Service 1"
-              />
-            </SwiperSlide>
-
-            <SwiperSlide>
-              <Image
-                src="/images/service-section-5-slide-img-2.png"
-                width={770}
-                height={520}
-                alt="Service 1"
-              />
-            </SwiperSlide>
-
-            <SwiperSlide>
-              <Image
-                src="/images/service-section-5-slide-img-3.png"
-                width={770}
-                height={520}
-                alt="Service 1"
-              />
-            </SwiperSlide>
-
-            <SwiperSlide>
-              <Image
-                src="/images/service-section-5-slide-img-4.png"
-                width={770}
-                height={520}
-                alt="Service 1"
-              />
-            </SwiperSlide>
-
-            <SwiperSlide>
-              <Image
-                src="/images/service-section-5-slide-img-5.png"
-                width={770}
-                height={520}
-                alt="Service 1"
-              />
-            </SwiperSlide>
+            {service5SlideData.map((item) => (
+              <SwiperSlide key={item.id}>
+                <Image
+                  src={item.img}
+                  width={770}
+                  height={520}
+                  alt={item.alt}
+                  className="size-full"
+                />
+              </SwiperSlide>
+            ))}
           </Swiper>
         </div>
       </div>

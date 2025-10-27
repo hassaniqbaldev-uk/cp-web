@@ -57,7 +57,7 @@ const BrandingPage = async () => {
           author="Emily Chen"
           projectType="E-Commerce Website"
           avatar="/images/ui-ux-feedback-avatar.png"
-          image="/images/wp-elementor-feedback-card-img.png"
+          image="/images/branding-feedback-card-img.webp"
         />
         <IndustriesSection
           labelText="Industries"

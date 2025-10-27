@@ -58,13 +58,14 @@ const WhatWeCanHelpSection3 = () => {
         </div>
 
         <div className="mt-[4rem] grid grid-cols-1 items-center gap-[4.2rem] xl:grid-cols-2">
-          <div className="h-[30rem] w-full md:h-[60rem] lg:h-[65rem] xl:h-[50rem]">
+          <div className="h-[30rem] w-full overflow-hidden rounded-[.8rem] md:h-[60rem] lg:h-[65rem] xl:h-[50rem]">
             <Image
-              src="/images/what-we-can-help-3-card-img.png"
+              src="/images/what-we-can-help-3-card-img.webp"
               width={575}
               height={500}
               alt="Image"
               className="size-full"
+              unoptimized
             />
           </div>
 

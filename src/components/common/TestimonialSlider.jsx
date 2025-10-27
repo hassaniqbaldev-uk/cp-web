@@ -47,11 +47,9 @@ const TestimonialSlider = () => {
               {/* Author Info */}
               <div className="flex flex-col gap-[1.2rem]">
                 <div className="relative size-[5.6rem] overflow-hidden rounded-full">
-                  <Image
+                  <img
                     src={item.authorImage}
                     alt={item.authorName}
-                    width={56}
-                    height={56}
                     className="size-full object-contain object-center"
                   />
                 </div>

@@ -69,12 +69,10 @@ const CtaSection2 = () => {
             </i>
 
             <i className="absolute top-[-5.3rem] flex size-[9.9rem] items-center justify-center">
-              <Image
+              <img
                 src="/images/cta-card-avatar.png"
                 alt="Avatar"
-                width={99}
-                height={99}
-                priority
+                className="size-full"
               />
 
               <div className="outline-text-primary absolute top-[5.3px] right-[5.3px] size-[1.8rem] animate-pulse rounded-full bg-[#7EE972] outline-[4px]" />

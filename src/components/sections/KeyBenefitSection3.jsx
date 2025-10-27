@@ -6,6 +6,7 @@ import { useGSAP } from "@gsap/react";
 import LineStroke31 from "@/assets/decorative-elements/line-stroke-31.svg";
 import LineStroke32 from "@/assets/decorative-elements/line-stroke-32.svg";
 import CheckIcon from "@/assets/icons/check-icon.svg";
+import Image from "next/image";
 
 const KeyBenefitSection3 = () => {
   const labelRef = useRef();
@@ -81,11 +82,14 @@ const KeyBenefitSection3 = () => {
             </ul>
           </div>
 
-          <div className="h-[25rem] w-full overflow-hidden rounded-[2rem] bg-amber-300 md:h-[52rem] lg:w-[58.5rem]">
-            <img
-              src="/images/key-benefits-card-img-2.png"
+          <div className="h-[25rem] w-full overflow-hidden rounded-[2rem] md:h-[52rem] lg:w-[58.5rem]">
+            <Image
+              src="/images/key-benefits-card-img-2.webp"
               alt="Image"
               className="size-full object-cover object-center"
+              width={585}
+              height={520}
+              unoptimized
             />
           </div>
         </div>
