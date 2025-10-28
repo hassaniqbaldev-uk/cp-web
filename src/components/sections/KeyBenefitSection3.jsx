@@ -11,9 +11,59 @@ import Image from "next/image";
 const KeyBenefitSection3 = () => {
   const labelRef = useRef();
   const container = useRef();
+  const lineRef = useRef();
+  const lineRef2 = useRef();
 
   useGSAP(
     () => {
+      if (lineRef.current) {
+        const path = lineRef.current.querySelector("path");
+        if (path) {
+          const length = path.getTotalLength();
+
+          gsap.set(path, {
+            strokeDasharray: length,
+            strokeDashoffset: length,
+          });
+
+          gsap.to(path, {
+            strokeDashoffset: 0,
+            duration: 2,
+            ease: "power2.inOut",
+            scrollTrigger: {
+              trigger: lineRef.current,
+              start: "top 200%",
+              end: "bottom 20%",
+              scrub: true,
+            },
+          });
+        }
+      }
+
+      if (lineRef2.current) {
+        const path = lineRef2.current.querySelector("path");
+        if (path) {
+          const length = path.getTotalLength();
+
+          gsap.set(path, {
+            strokeDasharray: length,
+            strokeDashoffset: length,
+          });
+
+          gsap.to(path, {
+            strokeDashoffset: 0,
+            duration: 2,
+            ease: "power2.inOut",
+            scrollTrigger: {
+              trigger: lineRef2.current,
+              start: "top 200%",
+              end: "bottom 20%",
+              scrub: true,
+            },
+          });
+        }
+      }
+
       gsap.fromTo(
         labelRef.current,
         { rotate: "-2deg" },
@@ -24,6 +74,52 @@ const KeyBenefitSection3 = () => {
           repeat: -1,
           ease: "sine.inOut",
           repeatDelay: 0.5,
+        },
+      );
+
+      gsap.fromTo(
+        labelRef.current,
+        { opacity: 0 },
+        {
+          opacity: 1,
+          duration: 0.6,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: labelRef.current,
+            start: "top 60%",
+            toggleActions: "play none none none",
+          },
+        },
+      );
+
+      gsap.fromTo(
+        ".key-benefit-section-3-left-col",
+        { opacity: 0 },
+        {
+          opacity: 1,
+          duration: 0.6,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: ".key-benefit-section-3-left-col",
+            start: "top 60%",
+            toggleActions: "play none none none",
+          },
+        },
+      );
+
+      gsap.fromTo(
+        ".key-benefit-section-3-right-col",
+        { opacity: 0 },
+        {
+          opacity: 1,
+          duration: 0.6,
+          ease: "power2.out",
+          delay: 0.2,
+          scrollTrigger: {
+            trigger: ".key-benefit-section-3-right-col",
+            start: "top 60%",
+            toggleActions: "play none none none",
+          },
         },
       );
     },
@@ -42,17 +138,17 @@ const KeyBenefitSection3 = () => {
       className="relative my-[-5rem] overflow-hidden px-[3rem] py-[10rem] xl:px-[0rem]"
     >
       {/* Decorative stroke line */}
-      <div className="absolute inset-0 z-[1]">
+      <div ref={lineRef} className="absolute inset-0 z-[1]">
         <LineStroke31 className="absolute top-[2rem] left-[-103.9rem] w-full" />
       </div>
 
-      <div className="absolute inset-0 z-[1]">
+      <div ref={lineRef2} className="absolute inset-0 z-[1]">
         <LineStroke32 className="absolute top-[1rem] left-[40rem] w-full" />
       </div>
 
       <div className="relative z-[10] mx-auto max-w-[120rem]">
         <div className="flex flex-col items-center justify-between gap-[4rem] lg:flex-row">
-          <div className="flex w-full flex-col items-center text-center lg:w-[56.8rem] lg:items-start lg:text-left">
+          <div className="key-benefit-section-3-left-col flex w-full flex-col items-center text-center lg:w-[56.8rem] lg:items-start lg:text-left">
             <div ref={labelRef}>
               <SectionLabel2 text="Key Benefits" bgColor="bg-[#FF37B3]" />
             </div>
@@ -82,7 +178,7 @@ const KeyBenefitSection3 = () => {
             </ul>
           </div>
 
-          <div className="h-[25rem] w-full overflow-hidden rounded-[2rem] md:h-[52rem] lg:w-[58.5rem]">
+          <div className="key-benefit-section-3-right-col h-[25rem] w-full overflow-hidden rounded-[2rem] md:h-[52rem] lg:w-[58.5rem]">
             <Image
               src="/images/key-benefits-card-img-2.webp"
               alt="Image"

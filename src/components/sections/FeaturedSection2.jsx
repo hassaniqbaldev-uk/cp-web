@@ -24,6 +24,21 @@ const FeaturedSection2 = () => {
           repeatDelay: 0.5,
         },
       );
+
+      gsap.fromTo(
+        ".featured-section-2",
+        { opacity: 0 },
+        {
+          opacity: 1,
+          duration: 0.6,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: ".featured-section-2",
+            start: "top 60%",
+            toggleActions: "play none none none",
+          },
+        },
+      );
     },
     {
       scope: container,
@@ -32,7 +47,7 @@ const FeaturedSection2 = () => {
 
   return (
     <section ref={container} className="relative">
-      <div className="mx-auto flex max-w-[144rem] flex-col items-stretch overflow-hidden rounded-tl-[5rem] rounded-tr-[5rem] xl:flex-row">
+      <div className="featured-section-2 mx-auto flex max-w-[144rem] flex-col items-stretch overflow-hidden rounded-tl-[5rem] rounded-tr-[5rem] xl:flex-row">
         <div className="flex flex-col items-start bg-[#F7F0FE] px-[4rem] pt-[6.8rem] pb-[6.8rem] xl:w-[87.8rem] xl:pr-[7.1rem] xl:pb-[10rem] xl:pl-[11.9rem]">
           <div ref={labelRef}>
             <SectionLabel2

@@ -14,6 +14,8 @@ const OurProcessSection5 = () => {
 
   useGSAP(
     () => {
+      const isMobile = window.innerWidth < 1280;
+
       gsap.fromTo(
         labelRef.current,
         { rotate: "-2deg" },
@@ -26,6 +28,106 @@ const OurProcessSection5 = () => {
           repeatDelay: 0.5,
         },
       );
+
+      gsap.fromTo(
+        labelRef.current,
+        { rotate: "-2deg" },
+        {
+          rotation: "+=3",
+          duration: 0.15,
+          yoyo: true,
+          repeat: -1,
+          ease: "sine.inOut",
+          repeatDelay: 0.5,
+        },
+      );
+
+      gsap.fromTo(
+        labelRef.current,
+        { opacity: 0 },
+        {
+          opacity: 1,
+          duration: 0.6,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: labelRef.current,
+            start: "top 60%",
+            toggleActions: "play none none none",
+          },
+        },
+      );
+
+      gsap.fromTo(
+        ".our-process-section-5-heading",
+        { opacity: 0 },
+        {
+          opacity: 1,
+          duration: 0.6,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: ".our-process-section-5-heading",
+            start: "top 60%",
+            toggleActions: "play none none none",
+          },
+        },
+      );
+
+      gsap.fromTo(
+        ".our-process-section-5-desc",
+        { opacity: 0 },
+        {
+          opacity: 1,
+          duration: 0.6,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: ".our-process-section-5-desc",
+            start: "top 60%",
+            toggleActions: "play none none none",
+          },
+        },
+      );
+
+      if (!isMobile) {
+        gsap.fromTo(
+          ".our-process-section-5-cards",
+          {
+            opacity: 0,
+            y: 80,
+          },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.5,
+            stagger: {
+              each: 0.1,
+            },
+            scrollTrigger: {
+              trigger: ".our-process-section-5-cards",
+              start: "top 60%",
+              toggleActions: "play none none none",
+            },
+            ease: "power2.out",
+          },
+        );
+      }
+
+      if (isMobile) {
+        gsap.fromTo(
+          ".our-process-section-5-cards-slider",
+          { opacity: 0, x: 30 },
+          {
+            opacity: 1,
+            x: 0,
+            duration: 0.4,
+            ease: "power2.out",
+            scrollTrigger: {
+              trigger: ".our-process-section-5-cards-slider",
+              start: "top 60%",
+              toggleActions: "play none none none",
+            },
+          },
+        );
+      }
     },
     { scope: container },
   );
@@ -62,11 +164,11 @@ const OurProcessSection5 = () => {
             />
           </div>
 
-          <h4 className="mt-[2rem] mb-[.7rem] max-w-[103.1rem] text-center text-[3rem] leading-[4rem] font-bold tracking-[-0.03em] md:text-[6rem] md:leading-[7.4rem]">
-            Our Innovative Branding Process
+          <h4 className="our-process-section-5-heading mt-[2rem] mb-[.7rem] max-w-[103.1rem] text-center text-[3rem] leading-[4rem] font-bold tracking-[-0.03em] md:text-[6rem] md:leading-[7.4rem]">
+            Our Innovative Branding Process
           </h4>
 
-          <p className="max-w-[73rem] text-[1.8rem] leading-[2.6rem] font-normal">
+          <p className="our-process-section-5-desc max-w-[73rem] text-[1.8rem] leading-[2.6rem] font-normal">
             Enhance your online visibility with a high-performing website that
             captivates users, drives conversions, and provides quantifiable
             outcomes.
@@ -77,7 +179,7 @@ const OurProcessSection5 = () => {
           {ourProcessData.map((item, i) => (
             <div
               key={i}
-              className={`relative w-[22rem] rounded-[1.8rem] px-[.8rem] pb-[.8rem] ${item.rotation} ${item.top}`}
+              className={`our-process-section-5-cards relative w-[22rem] rounded-[1.8rem] px-[.8rem] pb-[.8rem] ${item.rotation} ${item.top}`}
               style={{
                 background:
                   "linear-gradient(301.75deg,rgba(255, 255, 255, 0.05) 1.41%,rgba(29, 29, 29, 0.05) 95.05%)",
@@ -119,7 +221,7 @@ const OurProcessSection5 = () => {
         </div>
       </div>
 
-      <div className="block w-full xl:hidden">
+      <div className="our-process-section-5-cards-slider block w-full xl:hidden">
         <OurProcessSlider5 />
       </div>
     </section>

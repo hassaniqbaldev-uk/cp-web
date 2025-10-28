@@ -21,6 +21,7 @@ const BrandingHeroSection = () => {
       if (isLoading) return;
 
       const linePath = lineRef.current?.querySelector("path");
+      const isMobile = window.innerWidth < 1280;
 
       // SVG Animation - COMPLETELY INDEPENDENT
       if (linePath) {
@@ -53,6 +54,84 @@ const BrandingHeroSection = () => {
           repeatDelay: 0.5,
         },
       );
+
+      const masterTl = gsap.timeline({ delay: 0.4 });
+
+      masterTl.fromTo(
+        labelRef.current,
+        { opacity: 0 },
+        {
+          opacity: 1,
+          duration: 0.5,
+          ease: "back.out(1.7)",
+        },
+        ">0.1",
+      );
+
+      masterTl.fromTo(
+        ".branding-hero-heading",
+        { opacity: 0, y: 20 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.5,
+          ease: "back.out(1.7)",
+        },
+        ">0.1",
+      );
+
+      masterTl.fromTo(
+        ".branding-hero-desc",
+        { opacity: 0, y: 20 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.5,
+          ease: "back.out(1.7)",
+        },
+        ">0.1",
+      );
+
+      masterTl.fromTo(
+        ".branding-hero-cta-btn",
+        { opacity: 0, y: 20 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.5,
+          ease: "back.out(1.7)",
+        },
+        ">0.1",
+      );
+
+      if (!isMobile) {
+        masterTl.fromTo(
+          ".branding-hero-card",
+          { opacity: 0, y: 20 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.5,
+            stagger: 0.2,
+            ease: "back.out(1.7)",
+          },
+          ">0.1",
+        );
+      }
+
+      if (isMobile) {
+        masterTl.fromTo(
+          ".branding-hero-card-slider",
+          { opacity: 0, y: 20 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.5,
+            ease: "back.out(1.7)",
+          },
+          ">0.1",
+        );
+      }
     },
     {
       scope: container,
@@ -76,7 +155,7 @@ const BrandingHeroSection = () => {
 
       <div className="relative z-[10] mx-auto max-w-[120rem]">
         <div className="mx-auto flex w-full max-w-[90rem] flex-col items-center text-center">
-          <div ref={labelRef}>
+          <div ref={labelRef} className="opacity-0">
             <SectionLabel2
               text="Our Services"
               bgColor="bg-[#FFC300]"
@@ -84,11 +163,11 @@ const BrandingHeroSection = () => {
             />
           </div>
 
-          <h1 className="mt-[2.9rem] text-[3rem] leading-[3rem] font-bold tracking-[-0.03em] text-white md:text-[4.5rem] md:leading-[5.5rem] lg:text-[6rem] lg:leading-[7rem] xl:text-[6.9rem] xl:leading-[8.3rem]">
+          <h1 className="branding-hero-heading mt-[2.9rem] text-[3rem] leading-[3rem] font-bold tracking-[-0.03em] text-white opacity-0 md:text-[4.5rem] md:leading-[5.5rem] lg:text-[6rem] lg:leading-[7rem] xl:text-[6.9rem] xl:leading-[8.3rem]">
             Branding & Logo Design
           </h1>
 
-          <p className="mt-[1.2rem] mb-[2.5rem] text-[1.6rem] leading-[2.4rem] font-normal text-white md:text-[1.8rem] md:leading-[2.6rem]">
+          <p className="branding-hero-desc mt-[1.2rem] mb-[2.5rem] text-[1.6rem] leading-[2.4rem] font-normal text-white opacity-0 md:text-[1.8rem] md:leading-[2.6rem]">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer
             mollis, libero eget volutpat porta, mi felis elementum leo, et
             aliquet orci felis sit amet orci. Donec varius justo eget orci
@@ -96,11 +175,13 @@ const BrandingHeroSection = () => {
             risus nec, dapibus ligula.
           </p>
 
-          <CommonBtn2 />
+          <div className="branding-hero-cta-btn opacity-0">
+            <CommonBtn2 />
+          </div>
         </div>
 
         <div className="mt-[6rem] hidden grid-cols-3 gap-[1.6rem] xl:grid">
-          <div className="flex flex-col gap-[1.6rem]">
+          <div className="branding-hero-card flex flex-col gap-[1.6rem] opacity-0">
             <div className="branding-hero-glass flex h-[17.5rem] flex-col gap-[5px] p-[3rem]">
               <h4 className="text-[2.6rem] leading-[3.2rem] font-semibold tracking-[-0.02em] text-[#FFE103]">
                 Logo Design
@@ -146,7 +227,7 @@ const BrandingHeroSection = () => {
             </div>
           </div>
 
-          <div className="flex flex-col gap-[1.6rem]">
+          <div className="branding-hero-card flex flex-col gap-[1.6rem] opacity-0">
             <div className="branding-hero-glass flex h-[32rem] items-center justify-center p-[3rem]">
               <Image
                 src="/images/branding-hero-card-img-3.webp"
@@ -192,7 +273,7 @@ const BrandingHeroSection = () => {
             </div>
           </div>
 
-          <div className="flex flex-col gap-[1.6rem]">
+          <div className="branding-hero-card flex flex-col gap-[1.6rem] opacity-0">
             <div className="branding-hero-glass flex h-[17.5rem] flex-col gap-[5px] p-[3rem]">
               <h4 className="text-[2.6rem] leading-[3.2rem] font-semibold tracking-[-0.02em] text-[#EE8D00]">
                 Creative Strategy
@@ -239,7 +320,7 @@ const BrandingHeroSection = () => {
           </div>
         </div>
 
-        <div className="mt-[6rem] block w-full xl:hidden">
+        <div className="branding-hero-card-slider mt-[6rem] block w-full opacity-0 xl:hidden">
           <BrandingHeroSlider />
         </div>
       </div>

@@ -34,7 +34,7 @@ const SmPostPage = () => {
           author="Emily Chen"
           projectType="E-Commerce Website"
           avatar="/images/ui-ux-feedback-avatar.png"
-          image="/images/sm-post-feedback-card-img.png"
+          image="/images/sm-post-feedback-card-img.webp"
         />
         <ContactSection />
       </div>

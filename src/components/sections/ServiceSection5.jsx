@@ -16,9 +16,34 @@ import { service5SlideData } from "@/constants/brandingPage";
 const ServiceSection5 = () => {
   const container = useRef();
   const labelRef = useRef();
+  const lineRef = useRef();
 
   useGSAP(
     () => {
+      if (lineRef.current) {
+        const path = lineRef.current.querySelector("path");
+        if (path) {
+          const length = path.getTotalLength();
+
+          gsap.set(path, {
+            strokeDasharray: length,
+            strokeDashoffset: length,
+          });
+
+          gsap.to(path, {
+            strokeDashoffset: 0,
+            duration: 2,
+            ease: "power2.inOut",
+            scrollTrigger: {
+              trigger: lineRef.current,
+              start: "top 80%",
+              end: "bottom 20%",
+              scrub: true,
+            },
+          });
+        }
+      }
+
       gsap.fromTo(
         labelRef.current,
         { rotate: "-2deg" },
@@ -29,6 +54,51 @@ const ServiceSection5 = () => {
           repeat: -1,
           ease: "sine.inOut",
           repeatDelay: 0.5,
+        },
+      );
+
+      gsap.fromTo(
+        labelRef.current,
+        { opacity: 0 },
+        {
+          opacity: 1,
+          duration: 0.6,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: labelRef.current,
+            start: "top 60%",
+            toggleActions: "play none none none",
+          },
+        },
+      );
+
+      gsap.fromTo(
+        ".service-section-5-heading",
+        { opacity: 0 },
+        {
+          opacity: 1,
+          duration: 0.6,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: ".service-section-5-heading",
+            start: "top 60%",
+            toggleActions: "play none none none",
+          },
+        },
+      );
+
+      gsap.fromTo(
+        ".service-section-5-slider",
+        { opacity: 0 },
+        {
+          opacity: 1,
+          duration: 0.6,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: ".service-section-5-slider",
+            start: "top 60%",
+            toggleActions: "play none none none",
+          },
         },
       );
     },
@@ -43,7 +113,7 @@ const ServiceSection5 = () => {
       className="service-sec-5 relative rounded-tl-[5rem] rounded-tr-[5rem] bg-[#F7F0FE] py-[8rem] xl:py-[9rem]"
     >
       {/* Decorative stroke line */}
-      <div className="absolute inset-0 z-[1]">
+      <div ref={lineRef} className="absolute inset-0 z-[1]">
         <LineStroke36 className="absolute top-[10rem] left-1/2 w-full -translate-x-1/2 md:top-[16.8rem]" />
       </div>
 
@@ -57,12 +127,12 @@ const ServiceSection5 = () => {
             />
           </div>
 
-          <h4 className="px-[3rem] text-center text-[4rem] leading-[5rem] font-bold tracking-[-0.03em] md:text-[6rem] md:leading-[7.4rem] xl:px-[0rem]">
+          <h4 className="service-section-5-heading px-[3rem] text-center text-[4rem] leading-[5rem] font-bold tracking-[-0.03em] md:text-[6rem] md:leading-[7.4rem] xl:px-[0rem]">
             Full-Stack Branding Services
           </h4>
         </div>
 
-        <div className="w-full">
+        <div className="service-section-5-slider w-full">
           <Swiper
             modules={[EffectCoverflow, Autoplay]}
             autoplay={{ delay: 3000, disableOnInteraction: false }}
