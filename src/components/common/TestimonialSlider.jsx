@@ -50,7 +50,7 @@ const TestimonialSlider = () => {
                   <img
                     src={item.authorImage}
                     alt={item.authorName}
-                    className="size-full object-contain object-center"
+                    className="size-full"
                   />
                 </div>
 
