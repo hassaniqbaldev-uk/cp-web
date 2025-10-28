@@ -28,11 +28,8 @@ const CtaSection1 = () => {
     ];
 
     const now = new Date();
-    const currentMonth = now.getMonth();
-
-    // Show next month for booking (more relevant for users)
-    const nextMonth = (currentMonth + 1) % 12;
-    return months[nextMonth];
+    const currentMonth = now.getMonth(); // 0 = January, 11 = December
+    return months[currentMonth]; // ✅ return current month, not next
   };
 
   const dynamicText = getDynamicMonth();
