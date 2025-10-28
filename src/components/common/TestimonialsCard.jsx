@@ -15,8 +15,10 @@ const TestimonialsCard = ({ review, authorImage, authorName, authorRole }) => {
 
       {/* Author Info */}
       <div className="flex items-center gap-[1.2rem] text-left">
-        <div className="relative size-[5.6rem] min-w-max overflow-hidden rounded-full">
-          <img src={authorImage} alt={authorName} className="size-full" />
+        <div className="min-w-max">
+          <div className="relative size-[5.6rem] overflow-hidden rounded-full">
+            <img src={authorImage} alt={authorName} className="size-full" />
+          </div>
         </div>
 
         <div className="flex flex-col">
