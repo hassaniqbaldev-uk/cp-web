@@ -121,7 +121,7 @@ export const keyBenefitTabData = [
   {
     id: "tab1",
     title: "Vivamus sed mi nulla malesuada.",
-    image: "/images/key-benefit-tab-img-1.png",
+    image: "/images/key-benefit-tab-img-1.webp",
     heading: "Vivamus sed mi nulla malesuada",
     description:
       "Crafting exceptional digital experiences your premier branding partner.",
@@ -134,7 +134,7 @@ export const keyBenefitTabData = [
   {
     id: "tab2",
     title: "Sed ut perspiciatis unde omnis iste.",
-    image: "/images/key-benefit-tab-img-2.png",
+    image: "/images/key-benefit-tab-img-1.webp",
     heading: "Sed ut perspiciatis unde omnis iste",
     description: "Building identities that connect and inspire globally.",
     list: [
@@ -146,7 +146,7 @@ export const keyBenefitTabData = [
   {
     id: "tab3",
     title: "Curabitur blandit tempus porttitor.",
-    image: "/images/key-benefit-tab-img-3.png",
+    image: "/images/key-benefit-tab-img-1.webp",
     heading: "Curabitur blandit tempus porttitor",
     description: "Innovating through design and technology synergy.",
     list: [
@@ -158,7 +158,7 @@ export const keyBenefitTabData = [
   {
     id: "tab4",
     title: "Curabitur blandit tempus porttitor.",
-    image: "/images/key-benefit-tab-img-3.png",
+    image: "/images/key-benefit-tab-img-1.webp",
     heading: "Curabitur blandit tempus porttitor",
     description: "Innovating through design and technology synergy.",
     list: [
@@ -170,7 +170,7 @@ export const keyBenefitTabData = [
   {
     id: "tab5",
     title: "Curabitur blandit tempus porttitor.",
-    image: "/images/key-benefit-tab-img-3.png",
+    image: "/images/key-benefit-tab-img-1.webp",
     heading: "Curabitur blandit tempus porttitor",
     description: "Innovating through design and technology synergy.",
     list: [

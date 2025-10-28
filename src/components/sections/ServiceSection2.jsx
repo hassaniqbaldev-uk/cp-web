@@ -116,16 +116,6 @@ const ServiceSection2 = () => {
             "url('/images/web-design-service-gradient-bg.png') no-repeat center center/cover",
         }}
       >
-        <div className="absolute inset-0 z-[1]">
-          <Image
-            src="/images/full-stack-wordpress-bg-img.png"
-            fill
-            className="size-full object-cover object-center xl:object-contain"
-            priority
-            alt="Bg Image"
-          />
-        </div>
-
         <div className="relative z-[10] mx-auto max-w-[144rem] overflow-hidden xl:pl-[12rem]">
           <div className="flex flex-col items-center justify-between gap-[4rem] xl:flex-row xl:items-start">
             <div className="service-section-2-left-col-card flex flex-col items-center gap-[2.2rem] text-center xl:w-[29rem] xl:items-start xl:text-left">

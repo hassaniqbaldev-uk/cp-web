@@ -143,22 +143,22 @@ const SmPostHeroSection = () => {
             </Swiper>
           </div>
         </div>
-
-        <ul className="mt-[8.6rem] hidden h-[7rem] items-center gap-[3rem] xl:flex 2xl:gap-[5rem]">
-          {logoPopupsData.map((item, idx) => (
-            <li key={idx} className="">
-              <LogoPopup
-                logo={item.logo}
-                popupImage={item.popupImage}
-                title={item.title}
-                href={item.href}
-                logoWidth={item.logoWidth}
-                logoHeight={item.logoHeight}
-              />
-            </li>
-          ))}
-        </ul>
       </div>
+
+      <ul className="relative z-[10] mx-auto mt-[8.6rem] hidden h-[7rem] max-w-[120rem] items-center gap-[3rem] xl:flex 2xl:gap-[5rem]">
+        {logoPopupsData.map((item, idx) => (
+          <li key={idx} className="">
+            <LogoPopup
+              logo={item.logo}
+              popupImage={item.popupImage}
+              title={item.title}
+              href={item.href}
+              logoWidth={item.logoWidth}
+              logoHeight={item.logoHeight}
+            />
+          </li>
+        ))}
+      </ul>
 
       {/* Mobile Logos */}
       <div className="relative z-[200] mt-[8.6rem] block w-full xl:hidden">

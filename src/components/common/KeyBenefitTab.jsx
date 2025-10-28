@@ -71,6 +71,7 @@ const KeyBenefitTab = () => {
                       height={370}
                       className="size-full"
                       alt={tab.heading}
+                      unoptimized
                     />
                   </div>
 
