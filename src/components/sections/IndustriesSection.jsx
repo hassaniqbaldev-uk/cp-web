@@ -10,10 +10,35 @@ import IndustriesSlider from "../common/IndustriesSlider";
 const IndustriesSection = ({ labelText, title, description, data = [] }) => {
   const container = useRef();
   const labelRef = useRef();
+  const lineRef = useRef();
 
   useGSAP(
     () => {
       const isMobile = window.innerWidth < 1280;
+
+      if (lineRef.current) {
+        const path = lineRef.current.querySelector("path");
+        if (path) {
+          const length = path.getTotalLength();
+
+          gsap.set(path, {
+            strokeDasharray: length,
+            strokeDashoffset: length,
+          });
+
+          gsap.to(path, {
+            strokeDashoffset: 0,
+            duration: 2,
+            ease: "power2.inOut",
+            scrollTrigger: {
+              trigger: lineRef.current,
+              start: "top 200%",
+              end: "bottom 20%",
+              scrub: true,
+            },
+          });
+        }
+      }
 
       gsap.fromTo(
         labelRef.current,
@@ -119,7 +144,7 @@ const IndustriesSection = ({ labelText, title, description, data = [] }) => {
       className="relative px-[3rem] pt-[8rem] xl:px-[0rem] xl:pt-[10rem]"
     >
       {/* Decorative stroke line */}
-      <div className="absolute inset-0 z-[1]">
+      <div ref={lineRef} className="absolute inset-0 z-[1]">
         <LineStroke31 className="absolute top-[30.5rem] left-[-103.9rem] w-full" />
       </div>
 

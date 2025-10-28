@@ -68,6 +68,7 @@ const FeedbackSection = ({
           opacity: 1,
           duration: 0.6,
           ease: "power2.out",
+          delay: 0.2,
           scrollTrigger: {
             trigger: ".feedback-right-col",
             start: "top 60%",

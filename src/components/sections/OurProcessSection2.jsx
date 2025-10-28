@@ -12,6 +12,8 @@ const OurProcessSection2 = () => {
 
   useGSAP(
     () => {
+      const isMobile = window.innerWidth < 1280;
+
       gsap.fromTo(
         labelRef.current,
         { rotate: "-2deg" },
@@ -24,6 +26,93 @@ const OurProcessSection2 = () => {
           repeatDelay: 0.5,
         },
       );
+
+      gsap.fromTo(
+        labelRef.current,
+        { opacity: 0 },
+        {
+          opacity: 1,
+          duration: 0.6,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: labelRef.current,
+            start: "top 60%",
+            toggleActions: "play none none none",
+          },
+        },
+      );
+
+      gsap.fromTo(
+        ".our-process-section-2-heading",
+        { opacity: 0 },
+        {
+          opacity: 1,
+          duration: 0.6,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: ".our-process-section-2-heading",
+            start: "top 60%",
+            toggleActions: "play none none none",
+          },
+        },
+      );
+
+      gsap.fromTo(
+        ".our-process-section-2-desc",
+        { opacity: 0 },
+        {
+          opacity: 1,
+          duration: 0.6,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: ".our-process-section-2-desc",
+            start: "top 60%",
+            toggleActions: "play none none none",
+          },
+        },
+      );
+
+      if (!isMobile) {
+        gsap.fromTo(
+          ".our-process-section-2-cards",
+          {
+            opacity: 0,
+            y: 80,
+          },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.5,
+            stagger: {
+              each: 0.1,
+            },
+            scrollTrigger: {
+              trigger: ".our-process-section-2-cards",
+              start: "top 60%",
+              toggleActions: "play none none none",
+            },
+            ease: "power2.out",
+          },
+        );
+      }
+
+      if (isMobile) {
+        gsap.fromTo(
+          ".our-process-section-2-cards-slider",
+          { opacity: 0, x: 30 },
+          {
+            opacity: 1,
+            x: 0,
+            duration: 0.4,
+            ease: "power2.out",
+            scrollTrigger: {
+              trigger: ".our-process-section-2-cards-slider",
+              start: "top 60%",
+              toggleActions: "play none none none",
+            },
+          },
+        );
+      }
     },
     { scope: container },
   );
@@ -59,11 +148,11 @@ const OurProcessSection2 = () => {
             />
           </div>
 
-          <h4 className="mt-[2rem] mb-[.7rem] max-w-[103.1rem] text-center text-[3rem] leading-[4rem] font-bold tracking-[-0.03em] text-white md:text-[6rem] md:leading-[7.4rem]">
+          <h4 className="our-process-section-2-heading mt-[2rem] mb-[.7rem] max-w-[103.1rem] text-center text-[3rem] leading-[4rem] font-bold tracking-[-0.03em] text-white md:text-[6rem] md:leading-[7.4rem]">
             Our Innovative WordPress Process
           </h4>
 
-          <p className="max-w-[73rem] text-[1.8rem] leading-[2.6rem] font-normal text-white">
+          <p className="our-process-section-2-desc max-w-[73rem] text-[1.8rem] leading-[2.6rem] font-normal text-white">
             Enhance your online visibility with a high-performing website that
             captivates users, drives conversions, and provides quantifiable
             outcomes.
@@ -74,7 +163,7 @@ const OurProcessSection2 = () => {
           {ourProcessData.map((item, i) => (
             <div
               key={i}
-              className={`relative w-[22rem] rounded-[1.8rem] px-[.8rem] pb-[.8rem] ${item.rotation} ${item.top}`}
+              className={`our-process-section-2-cards relative w-[22rem] rounded-[1.8rem] px-[.8rem] pb-[.8rem] ${item.rotation} ${item.top}`}
               style={{
                 background:
                   "linear-gradient(301.75deg, rgba(29, 29, 29, 0.1) 1.41%, rgba(255, 255, 255, 0.1) 95.05%)",
@@ -115,7 +204,7 @@ const OurProcessSection2 = () => {
           ))}
         </div>
 
-        <div className="block w-full xl:hidden">
+        <div className="our-process-section-2-cards-slider block w-full xl:hidden">
           <OurProcessSlider2 />
         </div>
       </div>

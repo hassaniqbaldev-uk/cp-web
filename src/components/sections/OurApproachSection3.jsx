@@ -13,9 +13,34 @@ import OurApproach3Slider from "../common/OurApproach3Slider";
 const OurApproachSection3 = () => {
   const labelRef = useRef();
   const container = useRef();
+  const lineRef = useRef();
 
   useGSAP(
     () => {
+      if (lineRef.current) {
+        const path = lineRef.current.querySelector("path");
+        if (path) {
+          const length = path.getTotalLength();
+
+          gsap.set(path, {
+            strokeDasharray: length,
+            strokeDashoffset: length,
+          });
+
+          gsap.to(path, {
+            strokeDashoffset: 0,
+            duration: 2,
+            ease: "power2.inOut",
+            scrollTrigger: {
+              trigger: lineRef.current,
+              start: "top 200%",
+              end: "bottom 20%",
+              scrub: true,
+            },
+          });
+        }
+      }
+
       gsap.fromTo(
         labelRef.current,
         { rotate: "-2deg" },
@@ -26,6 +51,76 @@ const OurApproachSection3 = () => {
           repeat: -1,
           ease: "sine.inOut",
           repeatDelay: 0.5,
+        },
+      );
+
+      gsap.fromTo(
+        labelRef.current,
+        { opacity: 0 },
+        {
+          opacity: 1,
+          duration: 0.6,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: labelRef.current,
+            start: "top 60%",
+            toggleActions: "play none none none",
+          },
+        },
+      );
+
+      gsap.fromTo(
+        ".our-approach-section-3-heading",
+        { opacity: 0 },
+        {
+          opacity: 1,
+          duration: 0.6,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: ".our-approach-section-3-heading",
+            start: "top 60%",
+            toggleActions: "play none none none",
+          },
+        },
+      );
+
+      gsap.fromTo(
+        ".our-approach-3-card",
+        { opacity: 0, y: 20 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.6,
+          ease: "power2.out",
+          stagger: {
+            each: 0.2,
+            from: "start",
+          },
+          scrollTrigger: {
+            trigger: ".our-approach-3-card",
+            start: "top 60%",
+            toggleActions: "play none none none",
+          },
+        },
+      );
+
+      gsap.fromTo(
+        ".our-approach-3-contact-card",
+        { opacity: 0, y: 20 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.6,
+          ease: "power2.out",
+          stagger: {
+            each: 0.2,
+            from: "start",
+          },
+          scrollTrigger: {
+            trigger: ".our-approach-3-contact-card",
+            start: "top 60%",
+            toggleActions: "play none none none",
+          },
         },
       );
     },
@@ -40,7 +135,7 @@ const OurApproachSection3 = () => {
       className="relative px-[3rem] py-[8rem] xl:px-[0rem] xl:py-[10rem]"
     >
       {/* Decorative stroke line */}
-      <div className="absolute inset-0 z-[1]">
+      <div ref={lineRef} className="absolute inset-0 z-[1]">
         <LineStroke31 className="absolute top-[-12rem] left-[-103.9rem] w-full" />
       </div>
 
@@ -58,7 +153,7 @@ const OurApproachSection3 = () => {
             />
           </div>
 
-          <h2 className="mt-[2.4rem] text-[3rem] leading-[4rem] font-semibold tracking-[-0.02em] text-[#070707] md:text-[5.2rem] md:leading-[6rem]">
+          <h2 className="our-approach-section-3-heading mt-[2.4rem] text-[3rem] leading-[4rem] font-semibold tracking-[-0.02em] text-[#070707] md:text-[5.2rem] md:leading-[6rem]">
             Creative branding agency based in{" "}
             <span className="text-[#FF37B3]">Manchester</span>
           </h2>
@@ -94,7 +189,7 @@ const OurApproachSection3 = () => {
         </div>
 
         <div className="mt-[3.8rem] grid w-full grid-cols-1 items-center gap-[3.3rem] text-center md:grid-cols-2 xl:grid-cols-3">
-          <div className="contact-details-bg !px-[2.2rem] !py-[5rem]">
+          <div className="contact-details-bg our-approach-3-contact-card !px-[2.2rem] !py-[5rem]">
             <Link
               href="tel:01618202667"
               className="text-[3.4rem] leading-[4.8rem] font-semibold tracking-[-0.02em] text-[#FFC300]"
@@ -103,7 +198,7 @@ const OurApproachSection3 = () => {
             </Link>
           </div>
 
-          <div className="contact-details-bg !px-[2.2rem] !py-[5rem]">
+          <div className="contact-details-bg our-approach-3-contact-card !px-[2.2rem] !py-[5rem]">
             <Link
               href="mailto:hello@cp.agency"
               className="text-[3.4rem] leading-[4.8rem] font-semibold tracking-[-0.02em] text-[#3078FF]"
@@ -112,7 +207,7 @@ const OurApproachSection3 = () => {
             </Link>
           </div>
 
-          <div className="contact-details-bg !px-[2.2rem] !py-[5rem] md:col-span-2 xl:col-span-1">
+          <div className="contact-details-bg our-approach-3-contact-card !px-[2.2rem] !py-[5rem] md:col-span-2 xl:col-span-1">
             <button
               data-cal-namespace="15min"
               data-cal-link="hassan-iqbal-mznzu9/15min"

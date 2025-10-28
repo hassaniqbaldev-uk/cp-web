@@ -10,9 +10,34 @@ import KeyBenefitTab from "../common/KeyBenefitTab";
 const KeyBenefitSection2 = () => {
   const labelRef = useRef();
   const container = useRef();
+  const lineRef = useRef();
 
   useGSAP(
     () => {
+      if (lineRef.current) {
+        const path = lineRef.current.querySelector("path");
+        if (path) {
+          const length = path.getTotalLength();
+
+          gsap.set(path, {
+            strokeDasharray: length,
+            strokeDashoffset: length,
+          });
+
+          gsap.to(path, {
+            strokeDashoffset: 0,
+            duration: 2,
+            ease: "power2.inOut",
+            scrollTrigger: {
+              trigger: lineRef.current,
+              start: "top 200%",
+              end: "bottom 20%",
+              scrub: true,
+            },
+          });
+        }
+      }
+
       gsap.fromTo(
         labelRef.current,
         { rotate: "-2deg" },
@@ -23,6 +48,51 @@ const KeyBenefitSection2 = () => {
           repeat: -1,
           ease: "sine.inOut",
           repeatDelay: 0.5,
+        },
+      );
+
+      gsap.fromTo(
+        labelRef.current,
+        { opacity: 0 },
+        {
+          opacity: 1,
+          duration: 0.6,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: labelRef.current,
+            start: "top 60%",
+            toggleActions: "play none none none",
+          },
+        },
+      );
+
+      gsap.fromTo(
+        ".key-benefit-section-2-heading",
+        { opacity: 0 },
+        {
+          opacity: 1,
+          duration: 0.6,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: ".key-benefit-section-2-heading",
+            start: "top 60%",
+            toggleActions: "play none none none",
+          },
+        },
+      );
+
+      gsap.fromTo(
+        ".key-benefit-section-2-tab",
+        { opacity: 0 },
+        {
+          opacity: 1,
+          duration: 0.6,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: ".key-benefit-section-2-tab",
+            start: "top 60%",
+            toggleActions: "play none none none",
+          },
         },
       );
     },
@@ -41,7 +111,7 @@ const KeyBenefitSection2 = () => {
       }}
     >
       {/* Decorative stroke line */}
-      <div className="absolute inset-0 z-[1]">
+      <div ref={lineRef} className="absolute inset-0 z-[1]">
         <LineStroke31 className="absolute top-[-6.8rem] left-[-103.9rem] w-full" />
       </div>
 
@@ -55,12 +125,12 @@ const KeyBenefitSection2 = () => {
             />
           </div>
 
-          <h2 className="mt-[2rem] w-full max-w-[53.8rem] text-[3rem] leading-[4rem] font-bold tracking-[-0.03em] text-white md:text-[5.6rem] md:leading-[6.4rem]">
+          <h2 className="key-benefit-section-2-heading mt-[2rem] w-full max-w-[53.8rem] text-[3rem] leading-[4rem] font-bold tracking-[-0.03em] text-white md:text-[5.6rem] md:leading-[6.4rem]">
             Benefits of Branding Design Services
           </h2>
         </div>
 
-        <div className="mt-[5rem]">
+        <div className="key-benefit-section-2-tab mt-[5rem]">
           <KeyBenefitTab />
         </div>
       </div>

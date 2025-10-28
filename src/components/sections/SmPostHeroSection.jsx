@@ -27,6 +27,7 @@ const SmPostHeroSection = () => {
       if (isLoading) return;
 
       const linePath = lineRef.current?.querySelector("path");
+      const isMobile = window.innerWidth < 1280;
 
       // SVG Animation - COMPLETELY INDEPENDENT
       if (linePath) {
@@ -59,6 +60,66 @@ const SmPostHeroSection = () => {
           repeatDelay: 0.5,
         },
       );
+
+      const masterTl = gsap.timeline({ delay: 0.4 });
+
+      masterTl.fromTo(
+        ".smpost-hero-left-col",
+        { opacity: 0, y: 20 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.5,
+          ease: "back.out(1.7)",
+        },
+        ">0.1",
+      );
+      masterTl.fromTo(
+        ".smpost-hero-right-col",
+        { opacity: 0, y: 20 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.5,
+          ease: "back.out(1.7)",
+        },
+        ">0.2",
+      );
+
+      if (!isMobile) {
+        masterTl.fromTo(
+          ".smpost-hero-logo",
+          {
+            opacity: 0,
+            y: 80,
+          },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.5,
+            stagger: {
+              each: 0.1,
+              from: "center",
+            },
+            ease: "power2.out",
+          },
+          ">0.05",
+        );
+      }
+
+      if (isMobile) {
+        masterTl.fromTo(
+          ".smpost-hero-logo-slider",
+          { opacity: 0, x: 30 },
+          {
+            opacity: 1,
+            x: 0,
+            duration: 0.4,
+            ease: "power2.out",
+          },
+          ">0.05",
+        );
+      }
     },
     {
       scope: container,
@@ -82,7 +143,7 @@ const SmPostHeroSection = () => {
 
       <div className="relative z-[10] mx-auto max-w-[144rem] overflow-hidden xl:pl-[12rem]">
         <div className="flex flex-col items-center gap-[3rem] xl:flex-row">
-          <div className="flex w-full flex-col items-center text-center xl:min-w-[58.5rem] xl:items-start xl:text-left">
+          <div className="smpost-hero-left-col flex w-full flex-col items-center text-center opacity-0 xl:min-w-[58.5rem] xl:items-start xl:text-left">
             <div ref={labelRef}>
               <SectionLabel2
                 text="Our Services"
@@ -106,7 +167,7 @@ const SmPostHeroSection = () => {
             <CommonBtn2 />
           </div>
 
-          <div className="w-full xl:min-w-[77rem]">
+          <div className="smpost-hero-right-col w-full opacity-0 xl:min-w-[77rem]">
             <Swiper
               className="mySwiper"
               modules={[Autoplay]}
@@ -147,7 +208,7 @@ const SmPostHeroSection = () => {
 
       <ul className="relative z-[10] mx-auto mt-[8.6rem] hidden h-[7rem] max-w-[120rem] items-center gap-[3rem] xl:flex 2xl:gap-[5rem]">
         {logoPopupsData.map((item, idx) => (
-          <li key={idx} className="">
+          <li key={idx} className="smpost-hero-logo opacity-0">
             <LogoPopup
               logo={item.logo}
               popupImage={item.popupImage}
@@ -161,7 +222,7 @@ const SmPostHeroSection = () => {
       </ul>
 
       {/* Mobile Logos */}
-      <div className="relative z-[200] mt-[8.6rem] block w-full xl:hidden">
+      <div className="smpost-hero-logo-slider relative z-[200] mt-[8.6rem] block w-full opacity-0 xl:hidden">
         <ClientLogoSlider />
       </div>
     </section>

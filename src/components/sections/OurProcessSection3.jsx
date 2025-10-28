@@ -24,6 +24,70 @@ const OurProcessSection3 = () => {
           repeatDelay: 0.5,
         },
       );
+
+      gsap.fromTo(
+        labelRef.current,
+        { opacity: 0 },
+        {
+          opacity: 1,
+          duration: 0.6,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: labelRef.current,
+            start: "top 60%",
+            toggleActions: "play none none none",
+          },
+        },
+      );
+
+      gsap.fromTo(
+        ".our-process-section-3-heading",
+        { opacity: 0 },
+        {
+          opacity: 1,
+          duration: 0.6,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: ".our-process-section-3-heading",
+            start: "top 60%",
+            toggleActions: "play none none none",
+          },
+        },
+      );
+
+      gsap.fromTo(
+        ".our-process-section-3-desc",
+        { opacity: 0 },
+        {
+          opacity: 1,
+          duration: 0.6,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: ".our-process-section-3-desc",
+            start: "top 60%",
+            toggleActions: "play none none none",
+          },
+        },
+      );
+
+      gsap.fromTo(
+        ".our-process-section-3-card",
+        { opacity: 0 },
+        {
+          opacity: 1,
+          duration: 0.6,
+          ease: "power2.out",
+          stagger: {
+            each: 0.2,
+            from: "start",
+          },
+          scrollTrigger: {
+            trigger: ".our-process-section-3-card",
+            start: "top 60%",
+            toggleActions: "play none none none",
+          },
+        },
+      );
     },
     { scope: container },
   );
@@ -51,11 +115,11 @@ const OurProcessSection3 = () => {
             />
           </div>
 
-          <h4 className="mt-[2rem] mb-[.7rem] max-w-[62.9rem] text-[3rem] leading-[4rem] font-bold tracking-[-0.03em] text-white md:text-[6rem] md:leading-[7.4rem]">
+          <h4 className="our-process-section-3-heading mt-[2rem] mb-[.7rem] max-w-[62.9rem] text-[3rem] leading-[4rem] font-bold tracking-[-0.03em] text-white md:text-[6rem] md:leading-[7.4rem]">
             Our Innovative Branding Process
           </h4>
 
-          <p className="max-w-[89.4rem] text-[1.8rem] leading-[2.6rem] font-normal text-white">
+          <p className="our-process-section-3-desc max-w-[89.4rem] text-[1.8rem] leading-[2.6rem] font-normal text-white">
             Enhance your online visibility with a high-performing website that
             captivates users, drives conversions, and provides quantifiable
             outcomes.
@@ -67,7 +131,7 @@ const OurProcessSection3 = () => {
             {ourProcessSteps.map((step) => (
               <div
                 key={step.id}
-                className="flex flex-col items-center text-center md:items-start md:text-left"
+                className="our-process-section-3-card flex flex-col items-center text-center md:items-start md:text-left"
               >
                 {/* Progress line + colored dot */}
                 <div className="relative w-full">
