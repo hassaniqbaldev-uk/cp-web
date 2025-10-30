@@ -1,3 +1,6 @@
+import CaseStudiesGridSection from "@/components/case-studies/CaseStudiesGridSection";
+import CaseStudiesIntroSection from "@/components/case-studies/CaseStudiesIntroSection";
+import CaseStudiesStatsSection from "@/components/case-studies/CaseStudiesStatsSection";
 import ContactSection from "@/components/sections/ContactSection";
 import OurWorkSection from "@/components/sections/OurWorkSection";
 import { fetchAPI, getStrapiMedia } from "@/lib/strapi";
@@ -40,6 +43,9 @@ const CaseStudiesPage = async () => {
   return (
     <>
       <OurWorkSection caseStudies={caseStudies} />
+      {/* <CaseStudiesIntroSection />
+      <CaseStudiesStatsSection />
+      <CaseStudiesGridSection /> */}
       <ContactSection />
     </>
   );

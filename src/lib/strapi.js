@@ -38,3 +38,76 @@ export function getStrapiMedia(media) {
 
   return url.startsWith("http") ? url : `${API_URL}${url}`;
 }
+
+/**
+ * Universal Strapi API fetch helper for Next.js (App Router)
+ * Supports populate, filters, sort, and pagination.
+ */
+
+// import qs from "qs";
+
+// export async function getCaseStudies(slug) {
+//   const baseUrl =
+//     process.env.NEXT_PUBLIC_STRAPI_API_URL ?? "http://localhost:1337";
+
+//   const path = "/api/case-studies";
+
+//   const url = new URL(path, baseUrl);
+
+//   url.search = qs.stringify({
+//     populate: {
+//       ThumbnailImage: {
+//         fields: ["alternativeText", "name", "url"],
+//       },
+//       Tags: {
+//         fields: ["Tag"],
+//       },
+//       Technologies: {
+//         populate: {
+//           Technology: {
+//             fields: ["alternativeText", "name", "url"],
+//           },
+//         },
+//       },
+//       // CaseStudyDetails: {
+//       //   on: {
+//       //     "case-study-details.case-study-hero-section": {
+//       //       populate: "*",
+//       //     },
+//       //   },
+//       // },
+//       CaseStudyDetails: {
+//         on: {
+//           "case-study-details.case-study-hero-section": {
+//             populate: {
+//               ToolsColumn: {
+//                 fields: ["alternativeText", "name", "url"],
+//               },
+//               BadgeImage: {
+//                 fields: ["alternativeText", "name", "url"],
+//               },
+//               FeaturedImage: {
+//                 fields: ["alternativeText", "name", "url"],
+//               },
+//             },
+//           },
+//         },
+//       },
+//     },
+//     filters: {
+//       Slug: {
+//         $eq: slug, // This is the slug for our team member
+//       },
+//     },
+//   });
+
+//   const res = await fetch(url);
+
+//   if (!res.ok) throw new Error("Failed to fetch Case Studies");
+
+//   const data = await res.json();
+
+//   console.log(data);
+
+//   return data;
+// }

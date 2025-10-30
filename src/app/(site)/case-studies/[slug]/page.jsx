@@ -1,6 +1,13 @@
+import CaseStudyApproachSection from "@/components/case-studies/CaseStudyApproachSection";
+import CaseStudyChallengeSection from "@/components/case-studies/CaseStudyChallengeSection";
+import CaseStudyHeroSection from "@/components/case-studies/CaseStudyHeroSection";
+import CaseStudyOverviewSection from "@/components/case-studies/CaseStudyOverviewSection";
+import CaseStudyResultsSection from "@/components/case-studies/CaseStudyResultsSection";
+import CaseStudySolutionSection from "@/components/case-studies/CaseStudySolutionSection";
 import CaseStudyDetailSection from "@/components/sections/CaseStudyDetailSection";
 import ContactSection from "@/components/sections/ContactSection";
-import { fetchAPI, getStrapiMedia } from "@/lib/strapi";
+import FeedbackSection from "@/components/sections/FeedbackSection";
+import { fetchAPI, getCaseStudies, getStrapiMedia } from "@/lib/strapi";
 
 export async function generateMetadata({ params }) {
   const { slug } = await params; // Add await here
@@ -30,6 +37,14 @@ export async function generateMetadata({ params }) {
 }
 
 const CaseStudyDetailPage = async ({ params }) => {
+  // const { slug } = await params;
+
+  // if (!slug) <p>No Case Study found</p>;
+
+  // const caseStudies = await getCaseStudies(slug);
+
+  // const caseStudy = caseStudies.data[0];
+
   const { slug } = await params; // Add await here
 
   // Fetch only the case study with this slug
@@ -374,7 +389,23 @@ const CaseStudyDetailPage = async ({ params }) => {
   return (
     <>
       <CaseStudyDetailSection caseStudy={caseStudy} />
-      <ContactSection />
+      {/* <CaseStudyHeroSection caseStudy={caseStudy} />
+      <CaseStudyOverviewSection />
+      <CaseStudyChallengeSection />
+      <CaseStudyApproachSection />
+      <CaseStudySolutionSection />
+      <CaseStudyResultsSection /> */}
+      <div className="overflow-hidden">
+        {/* <FeedbackSection
+          reverse
+          title="Client Feedback"
+          description="Creative Pixels transformed our digital presence. The old site didn't reflect the strength of our software, but now we have a platform that's fast, modern, and flexible. The process was smooth from start to finish, with clear communication and real attention to detail.Our team now has full control to update the site, and we've already seen positive feedback from clients who say the design feels sharp and professional. Most importantly, the website now matches the quality of the product we deliver. We couldn't be happier with the results."
+          projectType="E-Commerce Website"
+          avatar="/images/ui-ux-feedback-avatar.png"
+          image="/images/ui-ux-feedback-card-img.png"
+        /> */}
+        <ContactSection />
+      </div>
     </>
   );
 };

@@ -1,0 +1,100 @@
+import Image from "next/image";
+import CommonBtn3 from "../common/CommonBtn3";
+import SectionLabel2 from "../common/SectionLabel2";
+import SectionTitle from "../common/SectionTitle";
+import LineStroke23 from "@/assets/decorative-elements/line-stroke-23.svg";
+
+const CaseStudyHeroSection = ({ caseStudy }) => {
+  return (
+    <section className="relative pt-[20.6rem]">
+      {/* Decorative Elements */}
+      <div className="pointer-events-none absolute inset-0 z-[0] hidden overflow-hidden select-none xl:block">
+        <LineStroke23 className="absolute top-[5.5rem] right-[-8.8rem]" />
+
+        <div
+          className="absolute top-[14rem] right-[11.5rem] size-[17rem] rotate-[15deg] overflow-hidden rounded-full"
+          style={{ boxShadow: "4px 8px 8px 0px #32323233" }}
+        >
+          <img
+            src={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${caseStudy.CaseStudyDetails[0].BadgeImage.url}`}
+            alt={caseStudy.CaseStudyDetails[0].BadgeImage.alternativeText}
+            className="size-full"
+          />
+        </div>
+      </div>
+
+      <div className="mx-auto max-w-[120rem]">
+        <div className="flex flex-col items-start">
+          <div className="inline-flex rotate-[2deg]">
+            <SectionLabel2 text="Case Study" />
+          </div>
+
+          <div className="mt-[1.5rem] mb-[2.5rem] max-w-[100rem]">
+            <SectionTitle label={caseStudy.Title} />
+          </div>
+
+          <CommonBtn3
+            label="Visit Live Site"
+            href={caseStudy.CaseStudyDetails[0].VisitButtonLink}
+          />
+
+          <div className="my-[5rem] flex w-full justify-between">
+            <div className="flex flex-col items-center gap-[1.5rem] text-center xl:items-start xl:text-left">
+              <span className="inline-flex items-center justify-center rounded-[.4rem] bg-[#FFC300] px-[1.2rem] py-[.2rem] text-[1.6rem] leading-[2.4rem] font-medium text-white uppercase">
+                Industry
+              </span>
+
+              <span className="w-full max-w-[30.4rem] text-[1.8rem] leading-[2.6rem] font-normal">
+                {caseStudy.CaseStudyDetails[0].IndustryColumn}
+              </span>
+            </div>
+
+            <div className="h-[9.5rem] w-[1px] bg-[#000000]/20" />
+
+            <div className="flex flex-col items-center gap-[1.5rem] text-center xl:items-start xl:text-left">
+              <span className="inline-flex items-center justify-center rounded-[.4rem] bg-[#FF37B3] px-[1.2rem] py-[.2rem] text-[1.6rem] leading-[2.4rem] font-medium text-white uppercase">
+                Services
+              </span>
+
+              <span className="w-full max-w-[45rem] text-[1.8rem] leading-[2.6rem] font-normal">
+                {caseStudy.CaseStudyDetails[0].ServicesColumn}
+              </span>
+            </div>
+
+            <div className="h-[9.5rem] w-[1px] bg-[#000000]/20" />
+
+            <div className="flex flex-col items-center gap-[1.5rem] text-center xl:items-start xl:text-left">
+              <span className="inline-flex items-center justify-center rounded-[.4rem] bg-[#007BFF] px-[1.2rem] py-[.2rem] text-[1.6rem] leading-[2.4rem] font-medium text-white uppercase">
+                Tools Used
+              </span>
+
+              <ul className="flex h-[2.2rem] w-full max-w-[28rem] flex-wrap items-center gap-[3rem]">
+                {caseStudy.CaseStudyDetails[0].ToolsColumn.map((item) => (
+                  <li key={item.id} className="h-full">
+                    <img
+                      src={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${item.url}`}
+                      alt={item.alternativeText}
+                      className="size-full"
+                    />
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+
+          <div className="relative h-[71.6rem] w-full">
+            <Image
+              src={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${caseStudy.CaseStudyDetails[0].FeaturedImage.url}`}
+              alt={caseStudy.CaseStudyDetails[0].FeaturedImage.alternativeText}
+              fill
+              priority
+              className="size-full object-cover"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default CaseStudyHeroSection;

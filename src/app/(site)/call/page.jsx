@@ -26,7 +26,13 @@ const CallPage = () => {
 
   return (
     <>
-      <div className="hero-sec relative w-full rounded-br-[5rem] rounded-bl-[5rem] px-[3rem] pt-[14.1rem] pb-[44.7rem] xl:px-[0rem]">
+      <div
+        className="relative w-full rounded-br-[5rem] rounded-bl-[5rem] px-[3rem] pt-[14.1rem] pb-[44.7rem] xl:px-[0rem]"
+        style={{
+          background:
+            "url('/images/hero-bg-gradient.webp') no-repeat center center/cover",
+        }}
+      >
         {/* Decorative stroke line */}
         <div className="absolute inset-0 z-[1]">
           <LineStroke30 className="absolute top-[60rem] left-1/2 w-full -translate-x-1/2 xl:top-[52rem]" />

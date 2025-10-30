@@ -365,7 +365,7 @@ const OurWorkSection = ({ caseStudies }) => {
               <SubtractDarkIcon />
             </i>
             <i className="inline-flex size-[5.6rem] items-center justify-center rounded-full border border-[#141414] bg-[#141414]">
-              <DownArrowIcon />
+              <DownArrowIcon className="size-[1.8rem]" />
             </i>
           </button>
         )}
