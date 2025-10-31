@@ -56,7 +56,7 @@ const CaseStudyCardSlider = ({ caseStudies }) => {
 
               <div className="mb-[2rem] flex w-full flex-col items-center justify-between gap-[2rem] xl:flex-row">
                 <div className="flex flex-col items-center gap-[1.1rem] xl:flex-row">
-                  <span className="text-text-primary/60 text-[1.6rem] leading-[2.4rem] font-medium uppercase">
+                  <span className="text-text-primary/60 text-[1.4rem] leading-[2.4rem] font-medium uppercase">
                     TECHNOLOGY USED
                   </span>
 
@@ -70,7 +70,7 @@ const CaseStudyCardSlider = ({ caseStudies }) => {
                             tech.Technology.name ||
                             "Technology"
                           }
-                          className="size-full object-contain"
+                          className="h-[2.2rem]"
                         />
                       </li>
                     ))}
