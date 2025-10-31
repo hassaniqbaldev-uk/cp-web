@@ -19,6 +19,7 @@ const CaseStudyCard = ({ caseStudy }) => {
             priority
             className="size-full object-cover"
             alt={`${caseStudy.ThumbnailImage.alternativeText}`}
+            unoptimized
           />
         </div>
 

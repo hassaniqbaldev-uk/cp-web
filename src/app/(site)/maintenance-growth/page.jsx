@@ -9,36 +9,9 @@ import OurProcessSection4 from "@/components/sections/OurProcessSection4";
 import MaintenanceGrowthHeroSection from "@/components/sections/MaintenanceGrowthHeroSection";
 import OurApproachSection4 from "@/components/sections/OurApproachSection4";
 import ServiceSection4 from "@/components/sections/ServiceSection4";
+import CaseStudiesSliderSection from "@/components/case-studies/CaseStudiesSliderSection";
 
-const MaintenanceGrowthPage = async () => {
-  const response = await fetchAPI("/api/case-studies", {
-    populate: {
-      hero_image: true,
-      tags: true,
-      technologies: { populate: ["logo"] },
-    },
-    sort: ["publishedAt:desc"],
-  });
-
-  const caseStudies = (response.data || []).map((item) => {
-    return {
-      id: item.id,
-      title: item.title,
-      slug: item.slug,
-      description: item.excerpt, // use `excerpt` since JSON has no "description"
-      image: getStrapiMedia(item.hero_image),
-      tags: (item.tags || []).map((tag) => ({
-        id: tag.id,
-        name: tag.name,
-      })),
-      technologies: (item.technologies || []).map((tech) => ({
-        id: tech.id,
-        name: tech.name,
-        logo: getStrapiMedia(tech.logo),
-      })),
-    };
-  });
-
+const MaintenanceGrowthPage = () => {
   return (
     <>
       <MaintenanceGrowthHeroSection />
@@ -47,12 +20,8 @@ const MaintenanceGrowthPage = async () => {
         <ServiceSection4 />
       </div>
       <OurProcessSection4 />
-      <div className="relative pb-[8rem] xl:py-[9rem]">
-        <div className="absolute inset-0 z-[0]">
-          <LineStroke09 className="absolute top-[20rem] left-[-60rem] w-full xl:top-[20rem]" />
-        </div>
-
-        <CaseStudiesSection02 caseStudies={caseStudies} />
+      <div className="pb-[8rem]">
+        <CaseStudiesSliderSection />
       </div>
       <div className="overflow-hidden">
         <FeedbackSection

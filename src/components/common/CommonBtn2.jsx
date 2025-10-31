@@ -2,7 +2,7 @@
 import { getCalApi } from "@calcom/embed-react";
 import { useEffect } from "react";
 
-const CommonBtn2 = ({ text = "Get Free Consultation" }) => {
+const CommonBtn2 = ({ text = "Get a Free Consultation" }) => {
   useEffect(() => {
     (async function () {
       const cal = await getCalApi({ namespace: "15min" });

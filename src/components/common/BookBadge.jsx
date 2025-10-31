@@ -28,10 +28,10 @@ const BookBadge = () => {
     >
       {/* Pulsing dot */}
       <span className="relative">
-        <span className="absolute top-1/2 left-1/2 inline-flex size-[1.8rem] -translate-x-1/2 -translate-y-1/2 animate-ping rounded-full bg-[#31EE33] opacity-75"></span>
-        <span className="relative inline-flex size-[1rem] rounded-full bg-[#31EE33]"></span>
+        <span className="absolute top-1/2 left-1/2 inline-flex size-[1.8rem] -translate-x-1/2 -translate-y-1/2 animate-ping rounded-full bg-[#FFE400] opacity-75"></span>
+        <span className="relative inline-flex size-[1rem] rounded-full bg-[#FFE400]"></span>
       </span>
-      Book a free 15-min audit call
+      Limited November slots available
     </button>
   );
 };

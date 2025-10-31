@@ -129,6 +129,7 @@ const ContactForm = () => {
                 <SelectItem value="Maintenance & Growth">
                   Maintenance & Growth
                 </SelectItem>
+                <SelectItem value="Something else">Something else</SelectItem>
               </SelectContent>
             </Select>
           </fieldset>

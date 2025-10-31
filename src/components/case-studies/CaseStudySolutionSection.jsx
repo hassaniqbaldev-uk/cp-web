@@ -1,6 +1,7 @@
+import Image from "next/image";
 import Marquee from "react-fast-marquee";
 
-const CaseStudySolutionSection = () => {
+const CaseStudySolutionSection = ({ caseStudy }) => {
   return (
     <section
       style={{
@@ -9,32 +10,30 @@ const CaseStudySolutionSection = () => {
       }}
       className="py-[8rem]"
     >
-      <div className="mx-auto max-w-[120rem]">
-        <h4 className="text-[2.5rem] leading-[3.5rem] font-semibold tracking-[-0.02em] text-white md:text-[4rem] md:leading-[5rem] lg:text-[4.8rem] lg:leading-[6rem]">
-          The Solution
+      <div className="mx-auto max-w-[120rem] px-[3rem] xl:px-[0rem]">
+        <h4 className="text-center text-[4rem] leading-[5rem] font-semibold tracking-[-0.02em] text-white md:text-[4.8rem] md:leading-[6rem] xl:text-left">
+          {caseStudy.CaseStudyDetails[4].Title}
         </h4>
 
-        <p className="mt-[2rem] mb-[4rem] max-w-[110rem] text-[2rem] leading-[3.5rem] font-medium tracking-[-1px] text-white md:text-[2.6rem] md:leading-[4.4rem]">
-          The redesigned website balances bold branding with functionality.
-          Built in WordPress with Elementor, it gives the New Compass team full
-          control while ensuring consistency across pages. We introduced subtle
-          animations to add polish without slowing down performance. The design
-          showcases the complexity of their software in an accessible,
-          professional way - building trust with enterprise clients.
+        <p className="mt-[2rem] mb-[4rem] max-w-[110rem] text-center text-[2rem] leading-[3.5rem] font-medium tracking-[-1px] text-white md:text-[2.6rem] md:leading-[4.4rem] xl:text-left">
+          {caseStudy.CaseStudyDetails[4].Description}
         </p>
       </div>
 
       <div className="mt-[5rem]">
         <Marquee speed={40} gradient={false} pauseOnHover={true}>
-          {[
-            "caseStudy.imageColumn8",
-            "caseStudy.imageColumn9",
-            "caseStudy.imageColumn10",
-            "caseStudy.imageColumn11",
-            "caseStudy.imageColumn12",
-          ].map((item, idx) => (
-            <div key={idx} className="mx-[.7rem] flex-shrink-0">
-              <div className="relative inline-block h-[22rem] w-[30rem] overflow-hidden rounded-[2rem] bg-amber-300 md:h-[32.6rem] md:w-[47rem]"></div>
+          {caseStudy.CaseStudyDetails[4].SliderImages.map((item) => (
+            <div key={item.id} className="mx-[.7rem] flex-shrink-0">
+              <div className="relative inline-block h-[22rem] w-[30rem] overflow-hidden rounded-[2rem] md:h-[32.6rem] md:w-[47rem]">
+                <Image
+                  src={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${item.url}`}
+                  alt={item.alternativeText}
+                  fill
+                  priority
+                  className="size-full object-cover"
+                  unoptimized
+                />
+              </div>
             </div>
           ))}
         </Marquee>

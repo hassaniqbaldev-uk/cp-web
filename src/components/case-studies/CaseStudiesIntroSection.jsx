@@ -4,7 +4,7 @@ import SectionTitle from "@/components/common/SectionTitle";
 
 const CaseStudiesIntroSection = () => {
   return (
-    <section className="pt-[18rem] pb-[6.8rem] md:pt-[20.6rem]">
+    <section className="px-[3rem] pt-[18rem] pb-[6.8rem] md:pt-[20.6rem] xl:px-[0rem]">
       <div className="mx-auto max-w-[120rem]">
         <div className="flex flex-col items-center gap-[2rem] text-center xl:items-start xl:text-left">
           <div className="rotate-[2deg]">
@@ -16,7 +16,7 @@ const CaseStudiesIntroSection = () => {
           </div>
 
           <div className="flex w-full flex-col items-center justify-between gap-[2rem] xl:flex-row xl:gap-[0rem]">
-            <div className="max-w-[40rem]">
+            <div className="xl:max-w-[40rem]">
               <SectionTitle label="Real projects. Real results." />
             </div>
 

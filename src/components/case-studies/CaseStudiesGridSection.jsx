@@ -3,18 +3,19 @@ import SectionTitle from "../common/SectionTitle";
 import CaseStudyCard from "./CaseStudyCard";
 import DownArrowIcon from "@/assets/icons/down-arrow.svg";
 import SubtractDarkIcon from "@/assets/icons/subtract-dark.svg";
+import CaseStudyCardSlider from "./CaseStudyCardSlider";
 
 const CaseStudiesGridSection = async () => {
   const caseStudies = await getCaseStudies();
 
   return (
-    <section className="pt-[10rem]">
+    <section className="overflow-hidden px-[3rem] pt-[8rem] xl:px-[0rem] xl:pt-[10rem]">
       <div className="mx-auto max-w-[120rem]">
         <div className="mx-auto max-w-[82.6rem] text-center">
           <SectionTitle label="Trusted by business across the UK, US and Australia." />
         </div>
 
-        <div className="mt-[4rem]">
+        <div className="mt-[4rem] hidden xl:block">
           <div className="flex flex-col gap-[5rem]">
             {caseStudies.data.map((caseStudy) => (
               <div key={caseStudy.id}>
@@ -40,6 +41,10 @@ const CaseStudiesGridSection = async () => {
               </div>
             </i>
           </button>
+        </div>
+
+        <div className="mt-[4rem] block w-full xl:hidden">
+          <CaseStudyCardSlider caseStudies={caseStudies.data} />
         </div>
       </div>
     </section>

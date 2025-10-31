@@ -6,7 +6,7 @@ import LineStroke23 from "@/assets/decorative-elements/line-stroke-23.svg";
 
 const CaseStudyHeroSection = ({ caseStudy }) => {
   return (
-    <section className="relative pt-[20.6rem]">
+    <section className="relative px-[3rem] pt-[18rem] xl:px-[0rem] xl:pt-[20.6rem]">
       {/* Decorative Elements */}
       <div className="pointer-events-none absolute inset-0 z-[0] hidden overflow-hidden select-none xl:block">
         <LineStroke23 className="absolute top-[5.5rem] right-[-8.8rem]" />
@@ -24,7 +24,7 @@ const CaseStudyHeroSection = ({ caseStudy }) => {
       </div>
 
       <div className="mx-auto max-w-[120rem]">
-        <div className="flex flex-col items-start">
+        <div className="flex flex-col items-center xl:items-start">
           <div className="inline-flex rotate-[2deg]">
             <SectionLabel2 text="Case Study" />
           </div>
@@ -38,7 +38,7 @@ const CaseStudyHeroSection = ({ caseStudy }) => {
             href={caseStudy.CaseStudyDetails[0].VisitButtonLink}
           />
 
-          <div className="my-[5rem] flex w-full justify-between">
+          <div className="my-[5rem] flex w-full flex-col justify-between gap-[3rem] md:flex-row">
             <div className="flex flex-col items-center gap-[1.5rem] text-center xl:items-start xl:text-left">
               <span className="inline-flex items-center justify-center rounded-[.4rem] bg-[#FFC300] px-[1.2rem] py-[.2rem] text-[1.6rem] leading-[2.4rem] font-medium text-white uppercase">
                 Industry
@@ -49,7 +49,7 @@ const CaseStudyHeroSection = ({ caseStudy }) => {
               </span>
             </div>
 
-            <div className="h-[9.5rem] w-[1px] bg-[#000000]/20" />
+            <div className="hidden h-[9.5rem] w-[1px] bg-[#000000]/20 lg:block" />
 
             <div className="flex flex-col items-center gap-[1.5rem] text-center xl:items-start xl:text-left">
               <span className="inline-flex items-center justify-center rounded-[.4rem] bg-[#FF37B3] px-[1.2rem] py-[.2rem] text-[1.6rem] leading-[2.4rem] font-medium text-white uppercase">
@@ -61,14 +61,14 @@ const CaseStudyHeroSection = ({ caseStudy }) => {
               </span>
             </div>
 
-            <div className="h-[9.5rem] w-[1px] bg-[#000000]/20" />
+            <div className="hidden h-[9.5rem] w-[1px] bg-[#000000]/20 lg:block" />
 
             <div className="flex flex-col items-center gap-[1.5rem] text-center xl:items-start xl:text-left">
               <span className="inline-flex items-center justify-center rounded-[.4rem] bg-[#007BFF] px-[1.2rem] py-[.2rem] text-[1.6rem] leading-[2.4rem] font-medium text-white uppercase">
                 Tools Used
               </span>
 
-              <ul className="flex h-[2.2rem] w-full max-w-[28rem] flex-wrap items-center gap-[3rem]">
+              <ul className="flex h-[2.2rem] w-full max-w-[28rem] flex-wrap items-center justify-center gap-[2rem] xl:justify-start xl:gap-[3rem]">
                 {caseStudy.CaseStudyDetails[0].ToolsColumn.map((item) => (
                   <li key={item.id} className="h-full">
                     <img
@@ -82,13 +82,14 @@ const CaseStudyHeroSection = ({ caseStudy }) => {
             </div>
           </div>
 
-          <div className="relative h-[71.6rem] w-full">
+          <div className="relative h-[25rem] w-full md:h-[50rem] lg:h-[65rem] xl:h-[71.6rem]">
             <Image
               src={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${caseStudy.CaseStudyDetails[0].FeaturedImage.url}`}
               alt={caseStudy.CaseStudyDetails[0].FeaturedImage.alternativeText}
               fill
               priority
-              className="size-full object-cover"
+              className="size-full"
+              unoptimized
             />
           </div>
         </div>

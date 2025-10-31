@@ -30,14 +30,14 @@ const nextConfig = {
   images: {
     remotePatterns: [
       {
-        // protocol: "http",
-        // hostname: "localhost",
-        // port: "1337",
-        // pathname: "/uploads/**",
+        protocol: "http",
+        hostname: "localhost",
+        port: "1337",
+        pathname: "/uploads/**",
         // Setting For Deployment
-        protocol: "https",
-        hostname: "rational-friends-8cd01aa994.media.strapiapp.com",
-        pathname: "/**", // allow all paths
+        // protocol: "https",
+        // hostname: "rational-friends-8cd01aa994.media.strapiapp.com",
+        // pathname: "/**", // allow all paths
       },
     ],
     domains: ["localhost"], // 👈 allow local WP images
