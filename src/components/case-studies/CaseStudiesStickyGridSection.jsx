@@ -38,7 +38,7 @@ const CaseStudiesStickyGridSection = async () => {
           </div>
         </div>
 
-        <div className="mt-[4rem] block w-full xl:hidden">
+        <div className="mt-[4rem] block w-full overflow-hidden xl:hidden">
           <CaseStudyCardSlider caseStudies={caseStudies.data} />
         </div>
       </div>

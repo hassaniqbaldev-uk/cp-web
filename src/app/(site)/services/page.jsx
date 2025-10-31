@@ -12,7 +12,9 @@ const ServicesPage = () => {
   return (
     <>
       <OurServicesSection />
-      <CaseStudiesSliderSection />
+      <div className="overflow-hidden">
+        <CaseStudiesSliderSection />
+      </div>
       <ContactSection />
     </>
   );

@@ -36,7 +36,9 @@ const BrandingPage = () => {
           description="From websites to apps and dashboards, our Figma-first UI/UX design and development-ready workflows adapt to any industry."
           data={industriesData}
         />
-        <CaseStudiesSliderSection />
+        <div className="overflow-hidden">
+          <CaseStudiesSliderSection />
+        </div>
       </div>
 
       <ContactSection />

@@ -20,7 +20,7 @@ const MaintenanceGrowthPage = () => {
         <ServiceSection4 />
       </div>
       <OurProcessSection4 />
-      <div className="pb-[8rem]">
+      <div className="overflow-hidden pb-[8rem]">
         <CaseStudiesSliderSection />
       </div>
       <div className="overflow-hidden">

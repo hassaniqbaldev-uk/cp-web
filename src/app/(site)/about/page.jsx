@@ -24,7 +24,9 @@ const AboutPage = async () => {
         <AboutTestimonialsSection />
       </div>
       {/* <OurTeamSection /> */}
-      <CaseStudiesSliderSection />
+      <div className="overflow-hidden">
+        <CaseStudiesSliderSection />
+      </div>
       <ContactSection />
     </>
   );

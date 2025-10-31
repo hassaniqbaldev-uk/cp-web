@@ -26,7 +26,7 @@ const WpElementorPage = () => {
       <FeaturedSection />
       <WhatWeCanHelpSection2 />
       <OurProcessSection2 />
-      <div className="pb-[8rem]">
+      <div className="overflow-hidden pb-[8rem]">
         <CaseStudiesSliderSection />
       </div>
       <div className="overflow-hidden">

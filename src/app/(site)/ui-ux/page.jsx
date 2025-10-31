@@ -30,7 +30,7 @@ const UiUxPage = () => {
       </div>
       <KeyBenefitSection />
       <OurProcessSection />
-      <div className="pb-[8rem]">
+      <div className="overflow-hidden pb-[8rem]">
         <CaseStudiesSliderSection />
       </div>
       <div className="overflow-hidden">
