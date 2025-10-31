@@ -6,7 +6,7 @@ import LineStroke23 from "@/assets/decorative-elements/line-stroke-23.svg";
 
 const CaseStudyHeroSection = ({ caseStudy }) => {
   return (
-    <section className="relative px-[3rem] pt-[18rem] xl:px-[0rem] xl:pt-[20.6rem]">
+    <section className="relative px-[3rem] pt-[18rem] md:pb-[0rem] xl:px-[0rem]">
       {/* Decorative Elements */}
       <div className="pointer-events-none absolute inset-0 z-[0] hidden overflow-hidden select-none xl:block">
         <LineStroke23 className="absolute top-[5.5rem] right-[-8.8rem]" />
@@ -68,9 +68,9 @@ const CaseStudyHeroSection = ({ caseStudy }) => {
                 Tools Used
               </span>
 
-              <ul className="flex h-[2.2rem] w-full max-w-[28rem] flex-wrap items-center justify-center gap-[2rem] xl:justify-start xl:gap-[3rem]">
+              <ul className="flex w-full max-w-[28rem] flex-wrap items-center justify-center gap-[2rem] xl:justify-start xl:gap-[3rem]">
                 {caseStudy.CaseStudyDetails[0].ToolsColumn.map((item) => (
-                  <li key={item.id} className="h-full">
+                  <li key={item.id} className="h-[2.2rem]">
                     <img
                       src={`${item.url}`}
                       alt={item.alternativeText}

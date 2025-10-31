@@ -44,12 +44,12 @@ const CaseStudyCard = ({ caseStudy }) => {
             {caseStudy.ShortDescription}
           </p>
 
-          <div className="flex w-full flex-col items-center gap-[1.8rem] xl:items-start">
+          <div className="flex w-full flex-col gap-[1.8rem]">
             <span className="text-text-primary/60 text-[1.6rem] leading-[2.4rem] font-medium uppercase">
               TECHNOLOGY USED
             </span>
 
-            <ul className="flex w-full flex-wrap items-center justify-center gap-[3.3rem] border-y border-[#424242]/50 py-[1.8rem] md:flex-row lg:justify-start">
+            <ul className="flex w-full flex-wrap items-center gap-[3.3rem] border-y border-[#424242]/50 py-[1.8rem] md:flex-row">
               {caseStudy.Technologies.map((tech) => (
                 <li key={tech.id} className="h-[2.2rem]">
                   <img
