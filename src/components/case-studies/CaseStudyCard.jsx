@@ -49,7 +49,7 @@ const CaseStudyCard = ({ caseStudy }) => {
               TECHNOLOGY USED
             </span>
 
-            <ul className="flex w-full flex-wrap items-center justify-start gap-[3.3rem] border-y border-[#424242]/50 py-[1.8rem]">
+            <ul className="flex w-full items-center justify-start gap-[3.3rem] border-y border-[#424242]/50 py-[1.8rem]">
               {caseStudy.Technologies.map((tech) => (
                 <li key={tech.id} className="h-[2.2rem]">
                   <img
