@@ -164,7 +164,11 @@ const AgenciesHeroSection = () => {
   return (
     <section
       ref={container}
-      className="hero-sec relative w-full overflow-hidden rounded-br-[5rem] rounded-bl-[5rem] px-[3rem] pt-[12rem] pb-[5rem] xl:px-[0rem] xl:pt-[17.3rem] xl:pb-[9.6rem]"
+      className="relative w-full overflow-hidden rounded-br-[5rem] rounded-bl-[5rem] px-[3rem] pt-[12rem] pb-[5rem] xl:px-[0rem] xl:pt-[17.3rem] xl:pb-[9.6rem]"
+      style={{
+        background:
+          "url('/images/ui-ux-hero-bg-gradient.webp') no-repeat center center/cover",
+      }}
     >
       {/* Decorative stroke line */}
       <div ref={lineRef} className="absolute inset-0 z-[1] opacity-0">
