@@ -27,7 +27,7 @@ const CaseStudiesStickyGridSection = async () => {
 
         <div className="mt-20 hidden xl:block">
           <div className="flex flex-col gap-[5rem]">
-            {caseStudies.data.map((caseStudy) => (
+            {caseStudies.data.slice(0, 4).map((caseStudy) => (
               <div
                 key={caseStudy.id}
                 className="sticky top-[35rem] xl:top-[28rem]"
