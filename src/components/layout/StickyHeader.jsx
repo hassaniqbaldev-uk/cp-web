@@ -48,7 +48,7 @@ const StickyHeader = () => {
         isVisible ? "translate-y-0" : "-translate-y-full"
       }`}
     >
-      <div className="shadow-01 relative mx-auto flex w-full max-w-[120.329rem] items-center justify-between rounded-full bg-[#cbcbcb33] px-[2rem] py-[1rem] backdrop-blur-[24px]">
+      <div className="shadow-01 relative mx-auto flex w-full max-w-[120.329rem] items-center justify-between rounded-full bg-black/30 px-[2rem] py-[1rem] backdrop-blur-[10px]">
         <Link href="/" className="relative">
           <Image
             src="/images/sticky-header-logo.svg"
