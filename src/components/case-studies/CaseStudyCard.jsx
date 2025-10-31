@@ -55,7 +55,7 @@ const CaseStudyCard = ({ caseStudy }) => {
                   <img
                     src={`${tech.Technology.url}`}
                     alt={`${tech.Technology.alternativeText}`}
-                    className="size-full"
+                    className="size-full object-contain"
                   />
                 </li>
               ))}

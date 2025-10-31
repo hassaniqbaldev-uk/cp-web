@@ -70,7 +70,7 @@ const CaseStudyCardSlider = ({ caseStudies }) => {
                             tech.Technology.name ||
                             "Technology"
                           }
-                          className="size-full"
+                          className="size-full object-contain"
                         />
                       </li>
                     ))}

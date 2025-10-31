@@ -74,7 +74,7 @@ const CaseStudyHeroSection = ({ caseStudy }) => {
                     <img
                       src={`${item.url}`}
                       alt={item.alternativeText}
-                      className="size-full"
+                      className="size-full object-contain"
                     />
                   </li>
                 ))}
