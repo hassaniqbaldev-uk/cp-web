@@ -36,7 +36,7 @@ const nextConfig = {
         // pathname: "/uploads/**",
         // Setting For Deployment
         protocol: "https",
-        hostname: "abundant-whisper-98878ecc1a.strapiapp.com",
+        // hostname: "abundant-whisper-98878ecc1a.strapiapp.com",
         pathname: "/**", // allow all paths
       },
     ],
