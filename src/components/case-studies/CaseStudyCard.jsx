@@ -14,7 +14,7 @@ const CaseStudyCard = ({ caseStudy }) => {
           style={{ boxShadow: "0px 4px 24px 0px #1A1A1A80" }}
         >
           <Image
-            src={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${caseStudy.ThumbnailImage.url}`}
+            src={`${caseStudy.ThumbnailImage.url}`}
             fill
             priority
             className="size-full object-cover"
@@ -52,7 +52,7 @@ const CaseStudyCard = ({ caseStudy }) => {
               {caseStudy.Technologies.map((tech) => (
                 <li key={tech.id} className="h-[2.2rem]">
                   <img
-                    src={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${tech.Technology.url}`}
+                    src={`${tech.Technology.url}`}
                     alt={`${tech.Technology.alternativeText}`}
                     className="size-full"
                   />
