@@ -44,7 +44,7 @@ const CaseStudyCard = ({ caseStudy }) => {
             {caseStudy.ShortDescription}
           </p>
 
-          <div className="flex w-full flex-col gap-[1.8rem]">
+          <div className="flex w-full flex-col items-center gap-[1.8rem] xl:items-start">
             <span className="text-text-primary/60 text-[1.6rem] leading-[2.4rem] font-medium uppercase">
               TECHNOLOGY USED
             </span>
