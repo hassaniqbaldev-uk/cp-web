@@ -32,7 +32,7 @@ const CaseStudyOverviewSection = ({ caseStudy }) => {
         <div className="mt-[5rem] grid grid-cols-1 gap-[3.3rem] md:grid-cols-2 xl:mt-[9rem]">
           <div className="relative h-[30rem] w-full lg:h-[38rem] xl:h-[43.9rem]">
             <Image
-              src={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${caseStudy.CaseStudyDetails[1].GridImage1.url}`}
+              src={`${caseStudy.CaseStudyDetails[1].GridImage1.url}`}
               alt={caseStudy.CaseStudyDetails[1].GridImage1.alternativeText}
               fill
               priority
@@ -42,7 +42,7 @@ const CaseStudyOverviewSection = ({ caseStudy }) => {
           </div>
           <div className="relative h-[30rem] w-full lg:h-[38rem] xl:h-[43.9rem]">
             <Image
-              src={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${caseStudy.CaseStudyDetails[1].GridImage2.url}`}
+              src={`${caseStudy.CaseStudyDetails[1].GridImage2.url}`}
               alt={caseStudy.CaseStudyDetails[1].GridImage2.alternativeText}
               fill
               priority

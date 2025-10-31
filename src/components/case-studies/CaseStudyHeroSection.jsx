@@ -16,7 +16,7 @@ const CaseStudyHeroSection = ({ caseStudy }) => {
           style={{ boxShadow: "4px 8px 8px 0px #32323233" }}
         >
           <img
-            src={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${caseStudy.CaseStudyDetails[0].BadgeImage.url}`}
+            src={`${caseStudy.CaseStudyDetails[0].BadgeImage.url}`}
             alt={caseStudy.CaseStudyDetails[0].BadgeImage.alternativeText}
             className="size-full"
           />
@@ -72,7 +72,7 @@ const CaseStudyHeroSection = ({ caseStudy }) => {
                 {caseStudy.CaseStudyDetails[0].ToolsColumn.map((item) => (
                   <li key={item.id} className="h-full">
                     <img
-                      src={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${item.url}`}
+                      src={`${item.url}`}
                       alt={item.alternativeText}
                       className="size-full"
                     />
@@ -84,7 +84,7 @@ const CaseStudyHeroSection = ({ caseStudy }) => {
 
           <div className="relative h-[25rem] w-full md:h-[50rem] lg:h-[65rem] xl:h-[71.6rem]">
             <Image
-              src={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${caseStudy.CaseStudyDetails[0].FeaturedImage.url}`}
+              src={`${caseStudy.CaseStudyDetails[0].FeaturedImage.url}`}
               alt={caseStudy.CaseStudyDetails[0].FeaturedImage.alternativeText}
               fill
               priority

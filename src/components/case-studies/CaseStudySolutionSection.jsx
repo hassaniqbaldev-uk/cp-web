@@ -26,7 +26,7 @@ const CaseStudySolutionSection = ({ caseStudy }) => {
             <div key={item.id} className="mx-[.7rem] flex-shrink-0">
               <div className="relative inline-block h-[22rem] w-[30rem] overflow-hidden rounded-[2rem] md:h-[32.6rem] md:w-[47rem]">
                 <Image
-                  src={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${item.url}`}
+                  src={`${item.url}`}
                   alt={item.alternativeText}
                   fill
                   priority

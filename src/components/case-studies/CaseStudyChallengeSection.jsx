@@ -15,7 +15,7 @@ const CaseStudyChallengeSection = ({ caseStudy }) => {
             />
 
             <Image
-              src={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${caseStudy.CaseStudyDetails[2].GridImage1.url}`}
+              src={`${caseStudy.CaseStudyDetails[2].GridImage1.url}`}
               alt={caseStudy.CaseStudyDetails[2].GridImage1.alternativeText}
               fill
               priority
@@ -38,7 +38,7 @@ const CaseStudyChallengeSection = ({ caseStudy }) => {
             <div className="flex flex-col items-center justify-between gap-[3rem] lg:flex-row lg:items-end">
               <div className="relative h-[30rem] w-[27.6rem]">
                 <Image
-                  src={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${caseStudy.CaseStudyDetails[2].GridImage2.url}`}
+                  src={`${caseStudy.CaseStudyDetails[2].GridImage2.url}`}
                   alt={caseStudy.CaseStudyDetails[2].GridImage2.alternativeText}
                   fill
                   priority
@@ -50,7 +50,7 @@ const CaseStudyChallengeSection = ({ caseStudy }) => {
               <div className="flex w-full flex-col items-center justify-between gap-[1rem] md:w-[47rem] lg:items-start">
                 <div className="size-[6.6rem]">
                   <img
-                    src={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${caseStudy.CaseStudyDetails[2].GridImage3.url}`}
+                    src={`${caseStudy.CaseStudyDetails[2].GridImage3.url}`}
                     alt={
                       caseStudy.CaseStudyDetails[2].GridImage3.alternativeText
                     }

@@ -66,7 +66,7 @@ const CaseStudyResultsSection = ({ caseStudy }) => {
 
         <div className="relative h-[25rem] w-full overflow-hidden rounded-[2rem] md:h-[50rem] lg:h-[61.2rem]">
           <Image
-            src={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${caseStudy.CaseStudyDetails[5].MainImage.url}`}
+            src={`${caseStudy.CaseStudyDetails[5].MainImage.url}`}
             alt={caseStudy.CaseStudyDetails[5].MainImage.alternativeText}
             fill
             priority

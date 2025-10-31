@@ -8,7 +8,7 @@ const CaseStudyApproachSection = ({ caseStudy }) => {
           <div className="pointer-events-none absolute inset-0 z-0 select-none">
             <div className="absolute top-[-25.8rem] right-[2rem] hidden size-[51.5rem] rounded-full lg:block xl:right-[16.9rem]">
               <Image
-                src={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${caseStudy.CaseStudyDetails[3].CardImage1.url}`}
+                src={`${caseStudy.CaseStudyDetails[3].CardImage1.url}`}
                 alt={caseStudy.CaseStudyDetails[3].CardImage1.alternativeText}
                 fill
                 priority
@@ -18,7 +18,7 @@ const CaseStudyApproachSection = ({ caseStudy }) => {
             </div>
             <div className="absolute right-[-10rem] bottom-[-25.7rem] hidden size-[51.5rem] rounded-full lg:block xl:right-[0rem]">
               <Image
-                src={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${caseStudy.CaseStudyDetails[3].CardImage2.url}`}
+                src={`${caseStudy.CaseStudyDetails[3].CardImage2.url}`}
                 alt={caseStudy.CaseStudyDetails[3].CardImage2.alternativeText}
                 fill
                 priority

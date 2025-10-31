@@ -14,6 +14,7 @@ const CaseStudyCard = ({ caseStudy }) => {
           style={{ boxShadow: "0px 4px 24px 0px #1A1A1A80" }}
         >
           <Image
+            // src={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${caseStudy.ThumbnailImage.url}`}
             src={`${caseStudy.ThumbnailImage.url}`}
             fill
             priority
