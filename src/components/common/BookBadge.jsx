@@ -4,6 +4,29 @@ import { getCalApi } from "@calcom/embed-react";
 import { useEffect } from "react";
 
 const BookBadge = () => {
+  const getDynamicMonth = () => {
+    const months = [
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "November",
+      "December",
+    ];
+
+    const now = new Date();
+    const currentMonth = now.getMonth(); // 0 = January, 11 = December
+    return months[currentMonth]; // ✅ return current month, not next
+  };
+
+  const dynamicText = getDynamicMonth();
+
   useEffect(() => {
     (async function () {
       const cal = await getCalApi({ namespace: "15min" });
@@ -31,7 +54,7 @@ const BookBadge = () => {
         <span className="absolute top-1/2 left-1/2 inline-flex size-[1.8rem] -translate-x-1/2 -translate-y-1/2 animate-ping rounded-full bg-[#FFE400] opacity-75"></span>
         <span className="relative inline-flex size-[1rem] rounded-full bg-[#FFE400]"></span>
       </span>
-      Limited November slots available
+      Limited {dynamicText} slots available
     </button>
   );
 };

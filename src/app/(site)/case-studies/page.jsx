@@ -1,4 +1,4 @@
-import CaseStudiesGridSection from "@/components/case-studies/CaseStudiesGridSection";
+import CaseStudiesGridSectionWrapper from "@/components/case-studies/CaseStudiesGridSectionWrapper";
 import CaseStudiesIntroSection from "@/components/case-studies/CaseStudiesIntroSection";
 import CaseStudiesStatsSection from "@/components/case-studies/CaseStudiesStatsSection";
 import ContactSection from "@/components/sections/ContactSection";
@@ -14,7 +14,7 @@ const CaseStudiesPage = () => {
     <>
       <CaseStudiesIntroSection />
       <CaseStudiesStatsSection />
-      <CaseStudiesGridSection />
+      <CaseStudiesGridSectionWrapper />
       <ContactSection />
     </>
   );

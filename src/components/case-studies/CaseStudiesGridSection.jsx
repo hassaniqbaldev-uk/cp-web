@@ -1,12 +1,17 @@
-import { getCaseStudies } from "@/lib/strapi";
+"use client";
 import SectionTitle from "../common/SectionTitle";
 import CaseStudyCard from "./CaseStudyCard";
 import DownArrowIcon from "@/assets/icons/down-arrow.svg";
 import SubtractDarkIcon from "@/assets/icons/subtract-dark.svg";
 import CaseStudyCardSlider from "./CaseStudyCardSlider";
+import { useState } from "react";
 
-const CaseStudiesGridSection = async () => {
-  const caseStudies = await getCaseStudies();
+const CaseStudiesGridSection = ({ caseStudies }) => {
+  const [visibleCount, setVisibleCount] = useState(4);
+
+  const handleLoadMore = () => {
+    setVisibleCount((prev) => prev + 4);
+  };
 
   return (
     <section className="overflow-hidden px-[3rem] pt-[8rem] xl:px-[0rem] xl:pt-[10rem]">
@@ -16,31 +21,36 @@ const CaseStudiesGridSection = async () => {
         </div>
 
         <div className="mt-[4rem] hidden xl:block">
-          <div className="flex flex-col gap-[5rem]">
-            {caseStudies.data.map((caseStudy) => (
+          <div className="mb-[5rem] flex flex-col gap-[5rem]">
+            {caseStudies.data.slice(0, visibleCount).map((caseStudy) => (
               <div key={caseStudy.id}>
                 <CaseStudyCard caseStudy={caseStudy} />
               </div>
             ))}
           </div>
 
-          <button className="mt-[5rem] hidden w-full cursor-pointer items-center xl:inline-flex">
-            <span className="inline-flex h-[5.6rem] w-full items-center justify-center rounded-[6rem] bg-[#141414] px-[3rem] py-[1rem] text-[1.8rem] font-semibold text-white md:text-[2rem]">
-              Load More
-            </span>
+          {visibleCount < caseStudies.data.length && (
+            <button
+              onClick={handleLoadMore}
+              className="hidden w-full cursor-pointer items-center xl:inline-flex"
+            >
+              <span className="inline-flex h-[5.6rem] w-full items-center justify-center rounded-[6rem] bg-[#141414] px-[3rem] py-[1rem] text-[1.8rem] font-semibold text-white md:text-[2rem]">
+                Load More
+              </span>
 
-            <i className="-mx-[.4rem] min-w-max">
-              <div className="inline-flex size-[1.8rem] items-center justify-center">
-                <SubtractDarkIcon />
-              </div>
-            </i>
+              <i className="-mx-[.4rem] min-w-max">
+                <div className="inline-flex size-[1.8rem] items-center justify-center">
+                  <SubtractDarkIcon />
+                </div>
+              </i>
 
-            <i className="min-w-max">
-              <div className="inline-flex size-[5.6rem] items-center justify-center rounded-full bg-[#141414]">
-                <DownArrowIcon className="size-[1.8rem]" />
-              </div>
-            </i>
-          </button>
+              <i className="min-w-max">
+                <div className="inline-flex size-[5.6rem] items-center justify-center rounded-full bg-[#141414]">
+                  <DownArrowIcon className="size-[1.8rem]" />
+                </div>
+              </i>
+            </button>
+          )}
         </div>
 
         <div className="mt-[4rem] block w-full xl:hidden">

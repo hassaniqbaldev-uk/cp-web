@@ -123,7 +123,10 @@ export async function getCaseStudies(slug) {
     },
   });
 
-  const res = await fetch(url);
+  // 👇 Add ISR revalidation here
+  const res = await fetch(url, {
+    next: { revalidate: 120 }, // every 2 minutes, you can increase to 300 for 5min
+  });
 
   if (!res.ok) throw new Error("Failed to fetch Case Studies");
 
