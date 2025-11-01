@@ -1,14 +1,103 @@
+"use client";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
 import Image from "next/image";
 import Link from "next/link";
+import { useEffect, useRef } from "react";
 
 const CaseStudyCard = ({ caseStudy }) => {
+  const areaRef = useRef(null);
+  const cursorRef = useRef(null);
+
+  useGSAP(() => {
+    // Detect touch device or small screen
+    if (
+      window.matchMedia("(max-width: 1280px)").matches ||
+      "ontouchstart" in window
+    ) {
+      return; // ❌ Do nothing on mobile/tablet
+    }
+
+    const area = areaRef.current;
+    const cursor = cursorRef.current;
+    if (!area || !cursor) return;
+
+    // Initialize cursor
+    gsap.set(cursor, { opacity: 0, scale: 0.8 });
+
+    // Move cursor smoothly wherever the mouse is inside
+    const moveCursor = (e) => {
+      const rect = area.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+
+      gsap.to(cursor, {
+        x: x - 45,
+        y: y - 45,
+        duration: 0.25,
+        ease: "power3.out",
+      });
+    };
+
+    // Show cursor exactly where mouse enters
+    const showCursor = (e) => {
+      const rect = area.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+
+      gsap.set(cursor, { x: x - 45, y: y - 45 }); // position immediately
+      gsap.to(cursor, {
+        opacity: 1,
+        scale: 1,
+        duration: 0.25,
+        ease: "power2.out",
+      });
+    };
+
+    // Hide when leaving
+    const hideCursor = () => {
+      gsap.to(cursor, {
+        opacity: 0,
+        scale: 0.8,
+        duration: 0.25,
+        ease: "power2.in",
+      });
+    };
+
+    // Event listeners
+    area.addEventListener("mousemove", moveCursor);
+    area.addEventListener("mouseenter", showCursor);
+    area.addEventListener("mouseleave", hideCursor);
+
+    return () => {
+      area.removeEventListener("mousemove", moveCursor);
+      area.removeEventListener("mouseenter", showCursor);
+      area.removeEventListener("mouseleave", hideCursor);
+    };
+  });
+
   return (
     <>
       <Link
+        ref={areaRef}
         href={`/case-studies/${caseStudy.Slug}`}
-        className="case-study-card flex w-full items-center justify-between gap-[4rem] p-[4rem]"
+        className="case-study-card flex w-full cursor-none items-center justify-between gap-[4rem] p-[4rem]"
         style={{ boxShadow: "0px 4px 24px 0px #1A1A1A33" }}
       >
+        <div
+          ref={cursorRef}
+          className="custom-cursor pointer-events-none absolute top-0 left-0 z-50 size-[9rem] items-center justify-center rounded-full bg-black/50 p-[1rem] xl:flex"
+        >
+          {/* Gradient Layer */}
+          <div className="gradient-layer" />
+
+          <span className="cursor-text text-center text-[1.4rem] leading-tight font-medium text-white">
+            View Case
+            <br />
+            Study
+          </span>
+        </div>
+
         <div
           className="relative block h-[34.6rem] w-[48.8rem] overflow-hidden rounded-[1.4rem]"
           style={{ boxShadow: "0px 4px 24px 0px #1A1A1A80" }}

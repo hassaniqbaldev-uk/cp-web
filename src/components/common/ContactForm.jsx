@@ -10,7 +10,7 @@ import {
 } from "../ui/select";
 import ContactFormInput from "./ContactFormInput";
 import WaveHand from "./WaveHand";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import RightArrowIcon from "@/assets/icons/right-arrow-icon.svg";
 import { useGSAP } from "@gsap/react";
@@ -114,6 +114,14 @@ const ContactForm = () => {
       setLoading(false);
     }
   };
+
+  // Auto-clear status message after 30 seconds
+  useEffect(() => {
+    if (status) {
+      const timer = setTimeout(() => setStatus(""), 3000); // 30000 ms = 30 s
+      return () => clearTimeout(timer); // cleanup if component unmounts or status changes
+    }
+  }, [status]);
 
   return (
     <div className="contact-form-bg w-full">
@@ -255,4 +263,3 @@ const ContactForm = () => {
 };
 
 export default ContactForm;
-//
