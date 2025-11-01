@@ -12,7 +12,7 @@ const CaseStudyCard = ({ caseStudy }) => {
   useGSAP(() => {
     // Detect touch device or small screen
     if (
-      window.matchMedia("(max-width: 1280px)").matches ||
+      window.matchMedia("(max-width: 1370px)").matches ||
       "ontouchstart" in window
     ) {
       return; // ❌ Do nothing on mobile/tablet
