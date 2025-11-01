@@ -51,29 +51,65 @@ const ContactForm = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+  //   setLoading(true);
+  //   setStatus("");
+
+  //   console.log("Submitting formData:", formData);
+
+  //   try {
+  //     const res = await fetch("/api/contact", {
+  //       method: "POST",
+  //       headers: { "Content-Type": "application/json" },
+  //       body: JSON.stringify(formData),
+  //     });
+
+  //     const data = await res.json();
+  //     if (data.success) {
+  //       setStatus("✅ Your message has been sent!");
+  //       setFormData({ name: "", service: "", email: "", message: "" });
+  //     } else {
+  //       setStatus("❌ Failed to send. Try again later.");
+  //     }
+  //   } catch (err) {
+  //     setStatus("❌ Something went wrong.");
+  //   } finally {
+  //     setLoading(false);
+  //   }
+  // };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
     setStatus("");
 
-    console.log("Submitting formData:", formData);
-
     try {
+      // ✅ Step 1: Request reCAPTCHA token from Google
+      const token = await grecaptcha.execute(
+        process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY,
+        { action: "submit" },
+      );
+
+      // ✅ Step 2: Send form data + token to backend API
       const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({ ...formData, token }),
       });
 
+      // ✅ Step 3: Handle response
       const data = await res.json();
+
       if (data.success) {
         setStatus("✅ Your message has been sent!");
         setFormData({ name: "", service: "", email: "", message: "" });
       } else {
-        setStatus("❌ Failed to send. Try again later.");
+        setStatus("❌ Failed to send. Please try again later.");
       }
-    } catch (err) {
-      setStatus("❌ Something went wrong.");
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      setStatus("❌ Something went wrong. Try again.");
     } finally {
       setLoading(false);
     }
