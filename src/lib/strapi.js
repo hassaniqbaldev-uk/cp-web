@@ -16,20 +16,13 @@ export async function getCaseStudies(slug) {
       Tags: {
         fields: ["Tag"],
       },
-      Technologies: {
-        populate: {
-          Technology: {
-            fields: ["alternativeText", "name", "url"],
-          },
-        },
+      Tools: {
+        fields: ["alternativeText", "name", "url"],
       },
       CaseStudyDetails: {
         on: {
           "case-study-details.case-study-hero-section": {
             populate: {
-              ToolsColumn: {
-                fields: ["alternativeText", "name", "url"],
-              },
               BadgeImage: {
                 fields: ["alternativeText", "name", "url"],
               },
@@ -136,7 +129,7 @@ export async function getCaseStudies(slug) {
 
   const data = await res.json();
 
-  console.log(data);
+  // console.log(data);
 
   return data;
 }

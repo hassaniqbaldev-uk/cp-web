@@ -68,8 +68,8 @@ const CaseStudyHeroSection = ({ caseStudy }) => {
                 Tools Used
               </span>
 
-              <ul className="flex w-full max-w-[28rem] flex-wrap items-center justify-center gap-[2rem] xl:justify-start xl:gap-[3rem]">
-                {caseStudy.CaseStudyDetails[0].ToolsColumn.map((item) => (
+              <ul className="flex w-full max-w-[28rem] flex-wrap items-center justify-center gap-[1rem] xl:justify-start xl:gap-[2rem]">
+                {caseStudy.Tools.map((item) => (
                   <li key={item.id} className="h-[2.2rem]">
                     <img
                       src={`${item.url}`}

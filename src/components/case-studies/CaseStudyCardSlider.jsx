@@ -61,14 +61,12 @@ const CaseStudyCardSlider = ({ caseStudies }) => {
                   </span>
 
                   <ul className="flex items-center gap-[2rem]">
-                    {caseStudy.Technologies.slice(0, 2).map((tech) => (
+                    {caseStudy.Tools.slice(0, 2).map((tech) => (
                       <li key={tech.id} className="h-[2.2rem]">
                         <img
-                          src={`${tech.Technology.url}`}
+                          src={`${tech.url}`}
                           alt={
-                            tech.Technology.alternativeText ||
-                            tech.Technology.name ||
-                            "Technology"
+                            tech.alternativeText || tech.name || "Technology"
                           }
                           className="h-[2.2rem]"
                         />

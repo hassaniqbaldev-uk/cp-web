@@ -50,11 +50,11 @@ const CaseStudyCard = ({ caseStudy }) => {
             </span>
 
             <ul className="flex w-full items-center justify-start gap-[3.3rem] border-y border-[#424242]/50 py-[1.8rem]">
-              {caseStudy.Technologies.map((tech) => (
+              {caseStudy.Tools.slice(0, 4).map((tech) => (
                 <li key={tech.id} className="h-[2.2rem]">
                   <img
-                    src={`${tech.Technology.url}`}
-                    alt={`${tech.Technology.alternativeText}`}
+                    src={`${tech.url}`}
+                    alt={`${tech.alternativeText}`}
                     className="h-[2.2rem]"
                   />
                 </li>
