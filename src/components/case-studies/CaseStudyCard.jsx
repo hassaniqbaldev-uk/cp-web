@@ -86,7 +86,7 @@ const CaseStudyCard = ({ caseStudy }) => {
       >
         <div
           ref={cursorRef}
-          className="custom-cursor pointer-events-none absolute top-0 left-0 z-50 size-[9rem] items-center justify-center rounded-full bg-black/50 p-[1rem] xl:flex"
+          className="custom-cursor pointer-events-none absolute top-0 left-0 z-50 size-[9rem] items-center justify-center rounded-full bg-black/50 p-[1rem] opacity-0 xl:flex"
         >
           {/* Gradient Layer */}
           <div className="gradient-layer" />
