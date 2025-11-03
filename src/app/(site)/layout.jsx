@@ -50,7 +50,7 @@ export default function SiteLayout({ children }) {
 
         {/* Main content with fade-in effect */}
         <div>
-          <CustomCursor />
+          {/* <CustomCursor /> */}
           <ScrollToTop />
           <ReactLenis root options={{ autoRaf: false }} ref={lenisRef} />
           <Header />
