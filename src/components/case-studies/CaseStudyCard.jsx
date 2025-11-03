@@ -10,70 +10,78 @@ const CaseStudyCard = ({ caseStudy }) => {
   const cursorRef = useRef(null);
 
   useGSAP(() => {
-    // Detect touch device or small screen
-    if (
-      window.matchMedia("(max-width: 1370px)").matches ||
-      "ontouchstart" in window
-    ) {
-      return; // ❌ Do nothing on mobile/tablet
-    }
-
     const area = areaRef.current;
     const cursor = cursorRef.current;
     if (!area || !cursor) return;
 
-    // Initialize cursor
-    gsap.set(cursor, { opacity: 0, scale: 0.8 });
+    // 🧠 Skip on mobile/tablet or touch devices
+    if (
+      window.matchMedia("(max-width: 1370px)").matches ||
+      "ontouchstart" in window
+    ) {
+      return;
+    }
 
-    // Move cursor smoothly wherever the mouse is inside
-    const moveCursor = (e) => {
-      const rect = area.getBoundingClientRect();
-      const x = e.clientX - rect.left;
-      const y = e.clientY - rect.top;
+    const initCursor = () => {
+      // Set initial hidden state
+      gsap.set(cursor, { opacity: 0, scale: 0.8 });
 
-      gsap.to(cursor, {
-        x: x - 45,
-        y: y - 45,
-        duration: 0.25,
-        ease: "power3.out",
-      });
+      // Move cursor
+      const moveCursor = (e) => {
+        const rect = area.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+
+        gsap.to(cursor, {
+          x: x - 45,
+          y: y - 45,
+          duration: 0.25,
+          ease: "power3.out",
+        });
+      };
+
+      // Show cursor
+      const showCursor = (e) => {
+        const rect = area.getBoundingClientRect();
+        gsap.set(cursor, {
+          x: e.clientX - rect.left - 45,
+          y: e.clientY - rect.top - 45,
+        });
+        gsap.to(cursor, {
+          opacity: 1,
+          scale: 1,
+          duration: 0.25,
+          ease: "power2.out",
+        });
+      };
+
+      // Hide cursor
+      const hideCursor = () => {
+        gsap.to(cursor, {
+          opacity: 0,
+          scale: 0.8,
+          duration: 0.25,
+          ease: "power2.in",
+        });
+      };
+
+      // Attach events
+      area.addEventListener("mousemove", moveCursor);
+      area.addEventListener("mouseenter", showCursor);
+      area.addEventListener("mouseleave", hideCursor);
+
+      // Cleanup
+      return () => {
+        area.removeEventListener("mousemove", moveCursor);
+        area.removeEventListener("mouseenter", showCursor);
+        area.removeEventListener("mouseleave", hideCursor);
+      };
     };
 
-    // Show cursor exactly where mouse enters
-    const showCursor = (e) => {
-      const rect = area.getBoundingClientRect();
-      const x = e.clientX - rect.left;
-      const y = e.clientY - rect.top;
+    // 🕐 Delay GSAP init to ensure hydration + layout complete
+    const timer = setTimeout(initCursor, 300);
 
-      gsap.set(cursor, { x: x - 45, y: y - 45 }); // position immediately
-      gsap.to(cursor, {
-        opacity: 1,
-        scale: 1,
-        duration: 0.25,
-        ease: "power2.out",
-      });
-    };
-
-    // Hide when leaving
-    const hideCursor = () => {
-      gsap.to(cursor, {
-        opacity: 0,
-        scale: 0.8,
-        duration: 0.25,
-        ease: "power2.in",
-      });
-    };
-
-    // Event listeners
-    area.addEventListener("mousemove", moveCursor);
-    area.addEventListener("mouseenter", showCursor);
-    area.addEventListener("mouseleave", hideCursor);
-
-    return () => {
-      area.removeEventListener("mousemove", moveCursor);
-      area.removeEventListener("mouseenter", showCursor);
-      area.removeEventListener("mouseleave", hideCursor);
-    };
+    return () => clearTimeout(timer);
   });
 
   return (
