@@ -18,7 +18,7 @@ const AboutPage = async () => {
     <>
       <WhoWeAreSection />
       <WhyChooseUsSection />
-      <PitchDeckSection />
+      {/* <PitchDeckSection /> */}
       <div className="dark-gradient-bg">
         <OurStatsSection />
         <AboutTestimonialsSection />
