@@ -54,7 +54,7 @@ export default function SiteLayout({ children }) {
           <ScrollToTop />
           <ReactLenis root options={{ autoRaf: false }} ref={lenisRef} />
           <Header />
-          <StickyHeader />
+          {/* <StickyHeader /> */}
           {children}
           <Footer />
           <div className="hidden md:block">

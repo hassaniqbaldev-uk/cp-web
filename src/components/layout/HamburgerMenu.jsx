@@ -35,7 +35,7 @@ const HamburgerMenu = ({ isOpen, setIsOpen }) => {
   return (
     <>
       <div
-        className={`hamburger-menu fixed top-0 z-[100] flex h-screen w-full flex-col transition-all duration-300 ${isOpen ? "left-0" : "left-[200%]"}`}
+        className={`hamburger-menu fixed top-0 z-[999] flex h-screen w-full flex-col transition-all duration-300 ${isOpen ? "left-0" : "left-[200%]"}`}
       >
         <div className="flex items-center justify-between px-[2rem] py-[3rem] md:px-[4rem]">
           <Link
