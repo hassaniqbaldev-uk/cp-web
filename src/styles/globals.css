@@ -305,6 +305,12 @@ body {
   z-index: 100;
 }
 
+@media (max-width: 1370px) {
+  .custom-cursor {
+    display: none;
+  }
+}
+
 /* Header Gradient BG */
 
 .header-gradient-bg {
