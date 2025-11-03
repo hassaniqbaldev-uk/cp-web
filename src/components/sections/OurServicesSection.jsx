@@ -365,7 +365,7 @@ const OurServicesSection = () => {
               <div className="whitespace-nowrap">
                 <CommonBtn3
                   label="See how we helped Games Art Talent"
-                  href="/case-studies/games-art-brain"
+                  href="/case-studies/game-art-brain"
                   bgColor="#FFE400"
                   textColor="#070707"
                 />

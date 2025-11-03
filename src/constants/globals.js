@@ -98,7 +98,7 @@ export const logoPopupsData = [
   {
     logo: "/images/game-art-logo.png",
     popupImage: "/images/game-art-popup-img.webp",
-    href: "/case-studies/games-art-brain",
+    href: "/case-studies/game-art-brain",
   },
   {
     logo: "/images/new-compass-logo.png",

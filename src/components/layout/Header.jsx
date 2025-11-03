@@ -65,10 +65,23 @@ const Header = () => {
     },
   );
 
+  const noGradientPaths = [
+    "/",
+    "/agencies",
+    "/call",
+    "/ui-ux",
+    "/wp-elementor",
+    "/sm-post",
+    "/maintenance-growth",
+    "/branding",
+  ];
+
   return (
     <header
       ref={container}
-      className={`absolute top-0 left-0 z-[100] flex w-full items-center rounded-br-[2rem] rounded-bl-[2rem] px-[2rem] py-[3rem] opacity-0 md:px-[4rem] xl:px-[0rem] ${pathname === "/" || pathname === "/agencies" || pathname === "/call" || pathname === "/ui-ux" || pathname === "/wp-elementor" || pathname === "/sm-post" || pathname === "/maintenance-growth" || pathname === "/branding" ? "" : "header-gradient-bg"}`}
+      className={`absolute top-0 left-0 z-[100] flex w-full items-center rounded-br-[2rem] rounded-bl-[2rem] px-[2rem] py-[3rem] opacity-0 md:px-[4rem] xl:px-[0rem] ${
+        noGradientPaths.includes(pathname) ? "" : "header-gradient-bg"
+      }`}
     >
       <div className="relative mx-auto flex w-full max-w-[120.329rem] items-center justify-between overflow-hidden">
         <div className="header-logo">
