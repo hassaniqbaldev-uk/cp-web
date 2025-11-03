@@ -24,6 +24,7 @@ const CaseStudyCard = ({ caseStudy }) => {
       window.removeEventListener("mousemove", handleMouseMove);
     };
   });
+
   return (
     <>
       <div

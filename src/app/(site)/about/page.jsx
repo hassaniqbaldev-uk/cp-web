@@ -6,6 +6,7 @@ import PitchDeckSection from "@/components/sections/PitchDeckSection";
 import WhoWeAreSection from "@/components/sections/WhoWeAreSection";
 import WhyChooseUsSection from "@/components/sections/WhyChooseUsSection";
 import CaseStudiesSliderSection from "@/components/case-studies/CaseStudiesSliderSection";
+import CaseStudiesSliderSectionWrapper from "@/components/case-studies/CaseStudiesSliderSectionWrapper";
 
 export const metadata = {
   title: "About CreativePixels | Manchester Web Design & Branding Agency",
@@ -25,7 +26,7 @@ const AboutPage = async () => {
       </div>
       {/* <OurTeamSection /> */}
       <div className="overflow-hidden">
-        <CaseStudiesSliderSection />
+        <CaseStudiesSliderSectionWrapper />
       </div>
       <ContactSection />
     </>

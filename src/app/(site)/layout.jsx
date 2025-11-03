@@ -15,7 +15,6 @@ import ScrollToTop from "@/components/common/ScrollToTop";
 import Loader from "@/components/common/Loader";
 import { useLoadingStore } from "@/store/useLoadingStore";
 import Flip from "gsap/Flip";
-import CustomCursor from "@/components/common/CustomCursor";
 
 // Register the plugin globally
 gsap.registerPlugin(useGSAP, ScrollTrigger, SplitText, DrawSVGPlugin, Flip);
@@ -50,7 +49,6 @@ export default function SiteLayout({ children }) {
 
         {/* Main content with fade-in effect */}
         <div>
-          {/* <CustomCursor /> */}
           <ScrollToTop />
           <ReactLenis root options={{ autoRaf: false }} ref={lenisRef} />
           <Header />

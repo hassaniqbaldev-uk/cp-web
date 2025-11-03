@@ -4,10 +4,39 @@ import CaseStudyCard from "./CaseStudyCard";
 import DownArrowIcon from "@/assets/icons/down-arrow.svg";
 import SubtractDarkIcon from "@/assets/icons/subtract-dark.svg";
 import CaseStudyCardSlider from "./CaseStudyCardSlider";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const CaseStudiesGridSection = ({ caseStudies }) => {
   const [visibleCount, setVisibleCount] = useState(4);
+  const [data, setData] = useState(caseStudies?.data || []);
+  const [isOffline, setIsOffline] = useState(false);
+
+  useEffect(() => {
+    async function loadCaseStudies() {
+      try {
+        const res = await fetch("/api/strapi-proxy");
+        if (!res.ok) throw new Error("API not ok");
+
+        const json = await res.json();
+        if (json?.data?.length) {
+          setData(json.data);
+          localStorage.setItem("caseStudiesCache", JSON.stringify(json.data));
+          setIsOffline(false);
+        }
+      } catch (err) {
+        console.warn("⚠️ API failed, loading from cache:", err.message);
+        const cached = localStorage.getItem("caseStudiesCache");
+        if (cached) {
+          setData(JSON.parse(cached));
+          setIsOffline(true);
+        } else {
+          setIsOffline(true);
+        }
+      }
+    }
+
+    loadCaseStudies();
+  }, []);
 
   const handleLoadMore = () => {
     setVisibleCount((prev) => prev + 4);
@@ -20,16 +49,22 @@ const CaseStudiesGridSection = ({ caseStudies }) => {
           <SectionTitle label="Trusted by business across the UK, US and Australia." />
         </div>
 
+        {isOffline && (
+          <p className="mt-[2rem] text-center text-[1.6rem] text-gray-500">
+            You’re viewing cached data (offline mode)
+          </p>
+        )}
+
         <div className="mt-[4rem] hidden xl:block">
           <div className="mb-[5rem] flex flex-col gap-[5rem]">
-            {caseStudies.data.slice(0, visibleCount).map((caseStudy) => (
+            {data.slice(0, visibleCount).map((caseStudy) => (
               <div key={caseStudy.id}>
                 <CaseStudyCard caseStudy={caseStudy} />
               </div>
             ))}
           </div>
 
-          {visibleCount < caseStudies.data.length && (
+          {visibleCount < data.length && (
             <button
               onClick={handleLoadMore}
               className="hidden w-full cursor-pointer items-center xl:inline-flex"
@@ -54,7 +89,7 @@ const CaseStudiesGridSection = ({ caseStudies }) => {
         </div>
 
         <div className="mt-[4rem] block w-full xl:hidden">
-          <CaseStudyCardSlider caseStudies={caseStudies.data} />
+          <CaseStudyCardSlider caseStudies={data} />
         </div>
       </div>
     </section>

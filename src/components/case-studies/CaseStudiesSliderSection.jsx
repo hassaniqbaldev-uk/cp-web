@@ -1,12 +1,41 @@
-import { getCaseStudies } from "@/lib/strapi";
-import SectionTitle from "../common/SectionTitle";
+"use client";
 
+import SectionTitle from "../common/SectionTitle";
 import CaseStudyCardSlider from "./CaseStudyCardSlider";
 import SectionDescription from "../common/SectionDescription";
 import SectionLabel2 from "../common/SectionLabel2";
+import { useEffect, useState } from "react";
 
-const CaseStudiesSliderSection = async () => {
-  const caseStudies = await getCaseStudies();
+const CaseStudiesSliderSection = ({ caseStudies }) => {
+  const [data, setData] = useState(caseStudies?.data || []);
+  const [isOffline, setIsOffline] = useState(false);
+
+  useEffect(() => {
+    async function loadCaseStudies() {
+      try {
+        const res = await fetch("/api/strapi-proxy");
+        if (!res.ok) throw new Error("API not ok");
+
+        const json = await res.json();
+        if (json?.data?.length) {
+          setData(json.data);
+          localStorage.setItem("caseStudiesCache", JSON.stringify(json.data));
+          setIsOffline(false);
+        }
+      } catch (err) {
+        console.warn("⚠️ API failed, loading from cache:", err.message);
+        const cached = localStorage.getItem("caseStudiesCache");
+        if (cached) {
+          setData(JSON.parse(cached));
+          setIsOffline(true);
+        } else {
+          setIsOffline(true);
+        }
+      }
+    }
+
+    loadCaseStudies();
+  }, []);
 
   return (
     <section className="overflow-hidden px-[3rem] pt-[8rem] xl:px-[0rem]">
@@ -25,8 +54,14 @@ const CaseStudiesSliderSection = async () => {
           </div>
         </div>
 
+        {isOffline && (
+          <p className="mt-[2rem] text-center text-[1.6rem] text-gray-500">
+            You’re viewing cached data (offline mode)
+          </p>
+        )}
+
         <div className="mt-[4rem]">
-          <CaseStudyCardSlider caseStudies={caseStudies.data} />
+          <CaseStudyCardSlider caseStudies={data} />
         </div>
       </div>
     </section>

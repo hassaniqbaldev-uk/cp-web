@@ -1,4 +1,5 @@
 import CaseStudiesStickyGridSection from "@/components/case-studies/CaseStudiesStickyGridSection";
+import CaseStudiesStickyGridSectionWrapper from "@/components/case-studies/CaseStudiesStickyGridSectionWrapper";
 import CtaSection1 from "@/components/common/CtaSection1";
 import AboutSection from "@/components/sections/AboutSection";
 import ContactSection from "@/components/sections/ContactSection";
@@ -18,7 +19,8 @@ const HomePage = async () => {
       <HeroSection />
       <AboutSection />
       <WhatWeOfferSection />
-      <CaseStudiesStickyGridSection />
+      {/* <CaseStudiesStickyGridSection /> */}
+      <CaseStudiesStickyGridSectionWrapper />
       <div className="mx-auto max-w-[120rem] px-[2rem] pb-[8rem] xl:px-[0rem]">
         <CtaSection1 />
       </div>

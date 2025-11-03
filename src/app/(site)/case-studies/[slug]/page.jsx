@@ -1,56 +1,37 @@
-import CaseStudyApproachSection from "@/components/case-studies/CaseStudyApproachSection";
-import CaseStudyChallengeSection from "@/components/case-studies/CaseStudyChallengeSection";
-import CaseStudyHeroSection from "@/components/case-studies/CaseStudyHeroSection";
-import CaseStudyOverviewSection from "@/components/case-studies/CaseStudyOverviewSection";
-import CaseStudyResultsSection from "@/components/case-studies/CaseStudyResultsSection";
-import CaseStudySolutionSection from "@/components/case-studies/CaseStudySolutionSection";
-import ContactSection from "@/components/sections/ContactSection";
-import FeedbackSection from "@/components/sections/FeedbackSection";
 import { getCaseStudies } from "@/lib/strapi";
+import CaseStudyDetailWrapper from "@/components/case-studies/CaseStudyDetailWrapper";
 
-// ✅ Dynamic metadata
+// ✅ Dynamic metadata (still server-side, so SEO-safe)
 export async function generateMetadata({ params }) {
   const { slug } = params;
-  const caseStudies = await getCaseStudies(slug);
+  const caseStudies = await getCaseStudies(slug).catch(() => ({ data: [] }));
   const caseStudy = caseStudies?.data?.[0];
 
+  if (!caseStudy)
+    return {
+      title: "Case Study Not Found",
+      description: "Content unavailable.",
+    };
+
+  // Adjust indexes based on your structure
+  const seoSection = caseStudy?.CaseStudyDetails?.find(
+    (item) => item?.__component === "case-study-details.case-study-seo",
+  );
+
   return {
-    title: caseStudy.CaseStudyDetails[7].Title,
-    description: caseStudy.CaseStudyDetails[7].Description,
+    title: seoSection?.Title || caseStudy?.Title || "Case Study",
+    description:
+      seoSection?.Description || "Read more about our recent client projects.",
   };
 }
 
 const CaseStudyDetailPage = async ({ params }) => {
-  const { slug } = await params;
+  const { slug } = params;
 
-  if (!slug) <p>No Case Study found</p>;
+  const caseStudies = await getCaseStudies(slug).catch(() => ({ data: [] }));
+  const caseStudy = caseStudies?.data?.[0] || null;
 
-  const caseStudies = await getCaseStudies(slug);
-
-  const caseStudy = caseStudies.data[0];
-
-  return (
-    <>
-      <CaseStudyHeroSection caseStudy={caseStudy} />
-      <CaseStudyOverviewSection caseStudy={caseStudy} />
-      <CaseStudyChallengeSection caseStudy={caseStudy} />
-      <CaseStudyApproachSection caseStudy={caseStudy} />
-      <CaseStudySolutionSection caseStudy={caseStudy} />
-      <CaseStudyResultsSection caseStudy={caseStudy} />
-      <div className="overflow-hidden">
-        {/* <FeedbackSection
-          reverse
-          title="Client Feedback"
-          description={caseStudy.CaseStudyDetails[6].FeedbackMessage}
-          author={caseStudy.CaseStudyDetails[6].ClientDetails.ClientName}
-          projectType={caseStudy.CaseStudyDetails[6].ClientDetails.ProjectType}
-          avatar={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${caseStudy.CaseStudyDetails[6].ClientDetails.AvatarImage.url}`}
-          image={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${caseStudy.CaseStudyDetails[6].ProjectImage.url}`}
-        /> */}
-        <ContactSection />
-      </div>
-    </>
-  );
+  return <CaseStudyDetailWrapper slug={slug} caseStudy={caseStudy} />;
 };
 
 export default CaseStudyDetailPage;
