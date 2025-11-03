@@ -27,20 +27,32 @@ const nextConfig = {
 
     return config;
   },
+  // images: {
+  //   remotePatterns: [
+  //     {
+  //       // protocol: "http",
+  //       // hostname: "localhost",
+  //       // port: "1337",
+  //       // pathname: "/uploads/**",
+  //       // Setting For Deployment
+  //       protocol: "https",
+  //       hostname: "abundant-whisper-98878ecc1a.strapiapp.com",
+  //       pathname: "/**", // allow all paths
+  //     },
+  //   ],
+  //   domains: ["localhost"], // 👈 allow local WP images
+  // },
   images: {
     remotePatterns: [
       {
-        // protocol: "http",
-        // hostname: "localhost",
-        // port: "1337",
-        // pathname: "/uploads/**",
-        // Setting For Deployment
-        protocol: "https",
-        hostname: "abundant-whisper-98878ecc1a.strapiapp.com",
-        pathname: "/**", // allow all paths
+        protocol: process.env.NEXT_PUBLIC_STRAPI_API_URL.startsWith("https")
+          ? "https"
+          : "http",
+        hostname: new URL(process.env.NEXT_PUBLIC_STRAPI_API_URL).hostname,
+        pathname: "/**",
       },
     ],
-    domains: ["localhost"], // 👈 allow local WP images
+    domains: ["localhost"],
   },
 };
 

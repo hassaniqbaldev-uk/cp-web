@@ -123,14 +123,19 @@ export async function getCaseStudies(slug) {
     },
   });
 
-  // 👇 Add ISR revalidation here
+  const isDev = process.env.NODE_ENV === "development";
+
   const res = await fetch(url, {
-    next: { revalidate: 3600 }, // every 2 minutes, you can increase to 300 for 5min
+    ...(isDev
+      ? { cache: "no-store" } // always fresh in dev
+      : { next: { revalidate: 3600 } }), // ISR in prod
   });
 
   if (!res.ok) throw new Error("Failed to fetch Case Studies");
 
   const data = await res.json();
+
+  console.log(data);
 
   return data;
 }

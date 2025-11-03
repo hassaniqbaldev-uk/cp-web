@@ -1,4 +1,5 @@
 "use client";
+import { getStrapiMedia } from "@/lib/getStrapiMedia";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import Image from "next/image";
@@ -60,11 +61,14 @@ const CaseStudyCard = ({ caseStudy }) => {
         >
           <Image
             // src={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${caseStudy.ThumbnailImage.url}`}
-            src={`${caseStudy.ThumbnailImage.url}`}
+            // src={`${caseStudy.ThumbnailImage.url}`}
+            src={getStrapiMedia(caseStudy.ThumbnailImage?.url)}
             fill
             priority
             className="size-full object-cover"
-            alt={`${caseStudy.ThumbnailImage.alternativeText}`}
+            alt={
+              caseStudy.ThumbnailImage?.alternativeText || "Case study image"
+            }
             unoptimized
           />
         </div>
@@ -98,8 +102,10 @@ const CaseStudyCard = ({ caseStudy }) => {
               {caseStudy.Tools.slice(0, 4).map((tech) => (
                 <li key={tech.id} className="h-[2.2rem]">
                   <img
-                    src={`${tech.url}`}
-                    alt={`${tech.alternativeText}`}
+                    // src={`${tech.url}`}
+                    // alt={`${tech.alternativeText}`}
+                    src={getStrapiMedia(tech.url)}
+                    alt={tech.alternativeText || "Technology logo"}
                     className="h-[2.2rem]"
                   />
                 </li>
