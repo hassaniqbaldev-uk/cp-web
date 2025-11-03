@@ -306,7 +306,7 @@ body {
 }
 
 @media (max-width: 1370px) {
-  .custom-cursor {
+  #cursor {
     display: none;
   }
 }
