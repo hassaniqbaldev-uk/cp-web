@@ -1,3 +1,4 @@
+import { getStrapiMedia } from "@/lib/getStrapiMedia";
 import Image from "next/image";
 
 const CaseStudyApproachSection = ({ caseStudy }) => {
@@ -8,8 +9,13 @@ const CaseStudyApproachSection = ({ caseStudy }) => {
           <div className="pointer-events-none absolute inset-0 z-0 select-none">
             <div className="absolute top-[-25.8rem] right-[2rem] hidden size-[51.5rem] rounded-full lg:block xl:right-[16.9rem]">
               <Image
-                src={`${caseStudy.CaseStudyDetails[3].CardImage1.url}`}
-                alt={caseStudy.CaseStudyDetails[3].CardImage1.alternativeText}
+                src={getStrapiMedia(
+                  caseStudy.CaseStudyDetails[3].CardImage1?.url,
+                )}
+                alt={
+                  caseStudy.CaseStudyDetails[3].CardImage1.alternativeText ||
+                  "Card Image 1"
+                }
                 fill
                 priority
                 className="size-full object-cover"
@@ -18,8 +24,13 @@ const CaseStudyApproachSection = ({ caseStudy }) => {
             </div>
             <div className="absolute right-[-10rem] bottom-[-25.7rem] hidden size-[51.5rem] rounded-full lg:block xl:right-[0rem]">
               <Image
-                src={`${caseStudy.CaseStudyDetails[3].CardImage2.url}`}
-                alt={caseStudy.CaseStudyDetails[3].CardImage2.alternativeText}
+                src={getStrapiMedia(
+                  caseStudy.CaseStudyDetails[3].CardImage2?.url,
+                )}
+                alt={
+                  caseStudy.CaseStudyDetails[3].CardImage2.alternativeText ||
+                  "Card Image 2"
+                }
                 fill
                 priority
                 className="size-full object-cover"

@@ -60,8 +60,6 @@ const CaseStudyCard = ({ caseStudy }) => {
           style={{ boxShadow: "0px 4px 24px 0px #1A1A1A80" }}
         >
           <Image
-            // src={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${caseStudy.ThumbnailImage.url}`}
-            // src={`${caseStudy.ThumbnailImage.url}`}
             src={getStrapiMedia(caseStudy.ThumbnailImage?.url)}
             fill
             priority
@@ -102,8 +100,6 @@ const CaseStudyCard = ({ caseStudy }) => {
               {caseStudy.Tools.slice(0, 4).map((tech) => (
                 <li key={tech.id} className="h-[2.2rem]">
                   <img
-                    // src={`${tech.url}`}
-                    // alt={`${tech.alternativeText}`}
                     src={getStrapiMedia(tech.url)}
                     alt={tech.alternativeText || "Technology logo"}
                     className="h-[2.2rem]"

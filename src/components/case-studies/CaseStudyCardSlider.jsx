@@ -5,6 +5,7 @@ import "swiper/swiper-bundle.css";
 import { Navigation, Autoplay } from "swiper/modules";
 import Link from "next/link";
 import ContactArrowIcon from "@/assets/icons/contact-arrow.svg";
+import { getStrapiMedia } from "@/lib/getStrapiMedia";
 
 const CaseStudyCardSlider = ({ caseStudies }) => {
   return (
@@ -40,11 +41,14 @@ const CaseStudyCardSlider = ({ caseStudies }) => {
               style={{ boxShadow: "0px 4px 24px 0px #1A1A1A80" }}
             >
               <Image
-                src={`${caseStudy.ThumbnailImage.url}`}
+                src={getStrapiMedia(caseStudy.ThumbnailImage?.url)}
                 fill
                 priority
                 className="size-full object-cover"
-                alt={`${caseStudy.ThumbnailImage.alternativeText}`}
+                alt={
+                  caseStudy.ThumbnailImage?.alternativeText ||
+                  "Case study image"
+                }
                 unoptimized
               />
             </div>
@@ -64,10 +68,8 @@ const CaseStudyCardSlider = ({ caseStudies }) => {
                     {caseStudy.Tools.slice(0, 2).map((tech) => (
                       <li key={tech.id} className="h-[2.2rem]">
                         <img
-                          src={`${tech.url}`}
-                          alt={
-                            tech.alternativeText || tech.name || "Technology"
-                          }
+                          src={getStrapiMedia(tech.url)}
+                          alt={tech.alternativeText || "Technology logo"}
                           className="h-[2.2rem]"
                         />
                       </li>

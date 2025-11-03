@@ -2,6 +2,7 @@ import Link from "next/link";
 import PlayYellowIcon from "@/assets/icons/play-yellow-icon.svg";
 import SubtractDarkIcon from "@/assets/icons/subtract-dark.svg";
 import Image from "next/image";
+import { getStrapiMedia } from "@/lib/getStrapiMedia";
 
 const CaseStudyOverviewSection = ({ caseStudy }) => {
   return (
@@ -32,8 +33,13 @@ const CaseStudyOverviewSection = ({ caseStudy }) => {
         <div className="mt-[5rem] grid grid-cols-1 gap-[3.3rem] md:grid-cols-2 xl:mt-[9rem]">
           <div className="relative h-[30rem] w-full lg:h-[38rem] xl:h-[43.9rem]">
             <Image
-              src={`${caseStudy.CaseStudyDetails[1].GridImage1.url}`}
-              alt={caseStudy.CaseStudyDetails[1].GridImage1.alternativeText}
+              src={getStrapiMedia(
+                caseStudy.CaseStudyDetails[1].GridImage1?.url,
+              )}
+              alt={
+                caseStudy.CaseStudyDetails[1].GridImage1.alternativeText ||
+                "Grid Image 1"
+              }
               fill
               priority
               className="size-full"
@@ -42,7 +48,9 @@ const CaseStudyOverviewSection = ({ caseStudy }) => {
           </div>
           <div className="relative h-[30rem] w-full lg:h-[38rem] xl:h-[43.9rem]">
             <Image
-              src={`${caseStudy.CaseStudyDetails[1].GridImage2.url}`}
+              src={getStrapiMedia(
+                caseStudy.CaseStudyDetails[1].GridImage2?.url,
+              )}
               alt={caseStudy.CaseStudyDetails[1].GridImage2.alternativeText}
               fill
               priority

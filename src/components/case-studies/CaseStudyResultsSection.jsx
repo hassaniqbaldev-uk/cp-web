@@ -1,3 +1,4 @@
+import { getStrapiMedia } from "@/lib/getStrapiMedia";
 import Image from "next/image";
 
 const CaseStudyResultsSection = ({ caseStudy }) => {
@@ -66,8 +67,11 @@ const CaseStudyResultsSection = ({ caseStudy }) => {
 
         <div className="relative h-[25rem] w-full overflow-hidden rounded-[2rem] md:h-[50rem] lg:h-[61.2rem]">
           <Image
-            src={`${caseStudy.CaseStudyDetails[5].MainImage.url}`}
-            alt={caseStudy.CaseStudyDetails[5].MainImage.alternativeText}
+            src={getStrapiMedia(caseStudy.CaseStudyDetails[5].MainImage?.url)}
+            alt={
+              caseStudy.CaseStudyDetails[5].MainImage.alternativeText ||
+              "Main image"
+            }
             fill
             priority
             className="size-full"

@@ -3,6 +3,7 @@ import CommonBtn3 from "../common/CommonBtn3";
 import SectionLabel2 from "../common/SectionLabel2";
 import SectionTitle from "../common/SectionTitle";
 import LineStroke23 from "@/assets/decorative-elements/line-stroke-23.svg";
+import { getStrapiMedia } from "@/lib/getStrapiMedia";
 
 const CaseStudyHeroSection = ({ caseStudy }) => {
   return (
@@ -16,8 +17,11 @@ const CaseStudyHeroSection = ({ caseStudy }) => {
           style={{ boxShadow: "4px 8px 8px 0px #32323233" }}
         >
           <img
-            src={`${caseStudy.CaseStudyDetails[0].BadgeImage.url}`}
-            alt={caseStudy.CaseStudyDetails[0].BadgeImage.alternativeText}
+            src={getStrapiMedia(caseStudy.CaseStudyDetails[0].BadgeImage?.url)}
+            alt={
+              caseStudy.CaseStudyDetails[0].BadgeImage?.alternativeText ||
+              "Badge Image"
+            }
             className="size-full"
           />
         </div>
@@ -72,8 +76,8 @@ const CaseStudyHeroSection = ({ caseStudy }) => {
                 {caseStudy.Tools.map((item) => (
                   <li key={item.id} className="h-[2.2rem]">
                     <img
-                      src={`${item.url}`}
-                      alt={item.alternativeText}
+                      src={getStrapiMedia(item.url)}
+                      alt={item.alternativeText || "Technology logo"}
                       className="h-[2.2rem]"
                     />
                   </li>
@@ -84,8 +88,13 @@ const CaseStudyHeroSection = ({ caseStudy }) => {
 
           <div className="relative h-[25rem] w-full md:h-[50rem] lg:h-[65rem] xl:h-[71.6rem]">
             <Image
-              src={`${caseStudy.CaseStudyDetails[0].FeaturedImage.url}`}
-              alt={caseStudy.CaseStudyDetails[0].FeaturedImage.alternativeText}
+              src={getStrapiMedia(
+                caseStudy.CaseStudyDetails[0].FeaturedImage?.url,
+              )}
+              alt={
+                caseStudy.CaseStudyDetails[0].FeaturedImage.alternativeText ||
+                "Featured Image"
+              }
               fill
               priority
               className="size-full"

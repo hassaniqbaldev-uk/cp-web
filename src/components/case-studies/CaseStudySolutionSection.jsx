@@ -1,3 +1,4 @@
+import { getStrapiMedia } from "@/lib/getStrapiMedia";
 import Image from "next/image";
 import Marquee from "react-fast-marquee";
 
@@ -26,8 +27,8 @@ const CaseStudySolutionSection = ({ caseStudy }) => {
             <div key={item.id} className="mx-[.7rem] flex-shrink-0">
               <div className="relative inline-block h-[22rem] w-[30rem] overflow-hidden rounded-[2rem] md:h-[32.6rem] md:w-[47rem]">
                 <Image
-                  src={`${item.url}`}
-                  alt={item.alternativeText}
+                  src={getStrapiMedia(item.url)}
+                  alt={item.alternativeText || "Slide Image"}
                   fill
                   priority
                   className="size-full object-cover"

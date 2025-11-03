@@ -1,3 +1,4 @@
+import { getStrapiMedia } from "@/lib/getStrapiMedia";
 import Image from "next/image";
 
 const CaseStudyChallengeSection = ({ caseStudy }) => {
@@ -15,8 +16,13 @@ const CaseStudyChallengeSection = ({ caseStudy }) => {
             />
 
             <Image
-              src={`${caseStudy.CaseStudyDetails[2].GridImage1.url}`}
-              alt={caseStudy.CaseStudyDetails[2].GridImage1.alternativeText}
+              src={getStrapiMedia(
+                caseStudy.CaseStudyDetails[2].GridImage1?.url,
+              )}
+              alt={
+                caseStudy.CaseStudyDetails[2].GridImage1.alternativeText ||
+                "Grid image 1"
+              }
               fill
               priority
               className="size-full"
@@ -38,8 +44,13 @@ const CaseStudyChallengeSection = ({ caseStudy }) => {
             <div className="flex flex-col items-center justify-between gap-[3rem] lg:flex-row lg:items-end">
               <div className="relative h-[30rem] w-[27.6rem]">
                 <Image
-                  src={`${caseStudy.CaseStudyDetails[2].GridImage2.url}`}
-                  alt={caseStudy.CaseStudyDetails[2].GridImage2.alternativeText}
+                  src={getStrapiMedia(
+                    caseStudy.CaseStudyDetails[2].GridImage2?.url,
+                  )}
+                  alt={
+                    caseStudy.CaseStudyDetails[2].GridImage2.alternativeText ||
+                    "Grid Image 2"
+                  }
                   fill
                   priority
                   className="size-full object-cover"
@@ -50,9 +61,12 @@ const CaseStudyChallengeSection = ({ caseStudy }) => {
               <div className="flex w-full flex-col items-center justify-between gap-[1rem] md:w-[47rem] lg:items-start">
                 <div className="size-[6.6rem]">
                   <img
-                    src={`${caseStudy.CaseStudyDetails[2].GridImage3.url}`}
+                    src={getStrapiMedia(
+                      caseStudy.CaseStudyDetails[2].GridImage3?.url,
+                    )}
                     alt={
-                      caseStudy.CaseStudyDetails[2].GridImage3.alternativeText
+                      caseStudy.CaseStudyDetails[2].GridImage3
+                        .alternativeText || "Grid Image 3"
                     }
                     className="size-full"
                   />
