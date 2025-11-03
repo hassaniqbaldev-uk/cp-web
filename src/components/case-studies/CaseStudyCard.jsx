@@ -41,8 +41,14 @@ const CaseStudyCard = ({ caseStudy }) => {
       </div>
 
       <Link
-        onMouseEnter={() => gsap.to("#cursor", { opacity: 1, duration: 0.3 })}
-        onMouseLeave={() => gsap.to("#cursor", { opacity: 0, duration: 0.3 })}
+        onMouseEnter={() => {
+          gsap.to("#cursor", { opacity: 1, duration: 0.3 });
+          gsap.to(".cursor-text", { opacity: 1, duration: 0.3 }); // 🧠 add this line
+        }}
+        onMouseLeave={() => {
+          gsap.to("#cursor", { opacity: 0, duration: 0.3 });
+          gsap.to(".cursor-text", { opacity: 0, duration: 0.3 }); // and hide again
+        }}
         href={`/case-studies/${caseStudy.Slug}`}
         className="case-study-card flex w-full cursor-none items-center justify-between gap-[4rem] p-[4rem]"
         style={{ boxShadow: "0px 4px 24px 0px #1A1A1A33" }}
