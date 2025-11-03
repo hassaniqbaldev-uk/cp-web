@@ -49,12 +49,6 @@ const CaseStudiesGridSection = ({ caseStudies }) => {
           <SectionTitle label="Trusted by business across the UK, US and Australia." />
         </div>
 
-        {isOffline && (
-          <p className="mt-[2rem] text-center text-[1.6rem] text-gray-500">
-            You’re viewing cached data (offline mode)
-          </p>
-        )}
-
         <div className="mt-[4rem] hidden xl:block">
           <div className="mb-[5rem] flex flex-col gap-[5rem]">
             {data.slice(0, visibleCount).map((caseStudy) => (

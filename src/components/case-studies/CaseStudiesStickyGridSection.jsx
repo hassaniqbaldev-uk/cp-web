@@ -54,12 +54,6 @@ const CaseStudiesStickyGridSection = ({ caseStudies }) => {
           </div>
         </div>
 
-        {isOffline && (
-          <p className="mt-[2rem] text-center text-[1.6rem] text-gray-500">
-            You’re viewing cached data (offline mode)
-          </p>
-        )}
-
         <div className="mt-20 hidden xl:block">
           <div className="flex flex-col gap-[5rem]">
             {data.slice(0, 4).map((caseStudy) => (

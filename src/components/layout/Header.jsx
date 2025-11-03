@@ -20,6 +20,11 @@ const Header = () => {
   const container = useRef();
   const [isVisible, setIsVisible] = useState(false);
   const prevScrollY = useRef(0);
+  const [hasMounted, setHasMounted] = useState(false);
+
+  useEffect(() => {
+    setHasMounted(true);
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -106,7 +111,9 @@ const Header = () => {
     "/branding",
   ];
 
-  const currentPath = pathname || "/"; // fallback for undefined
+  const currentPath = pathname || "/";
+
+  if (!hasMounted) return null;
 
   return (
     <header>

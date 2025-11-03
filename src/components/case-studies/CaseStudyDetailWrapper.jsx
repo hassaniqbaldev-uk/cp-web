@@ -50,12 +50,6 @@ const CaseStudyDetailWrapper = ({ slug, caseStudy }) => {
 
   return (
     <>
-      {isOffline && (
-        <p className="mt-[1rem] text-center text-gray-500">
-          You’re viewing cached version (offline mode)
-        </p>
-      )}
-
       <CaseStudyHeroSection caseStudy={data} />
       <CaseStudyOverviewSection caseStudy={data} />
       <CaseStudyChallengeSection caseStudy={data} />

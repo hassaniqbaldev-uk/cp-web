@@ -8,7 +8,7 @@ const BlogPage = () => {
   return (
     <div className="relative">
       {/* Decorative stroke line */}
-      <div className="absolute inset-0 z-[0]">
+      <div className="pointer-events-none absolute inset-0 z-[0]">
         <LineStroke01 className="absolute top-[47.4rem] left-1/2 w-full -translate-x-1/2" />
       </div>
 
