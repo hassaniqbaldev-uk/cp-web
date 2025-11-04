@@ -39,17 +39,21 @@ export default function SiteLayout({ children }) {
         <div>
           <ReactLenis
             root
-            options={{
-              lerp: 0.06, // Smooth interpolation (0 = instant, 1 = no movement)
-              duration: 1.6, // Optional: sets fixed scroll duration (in seconds)
-              smoothTouch: true, // 👈 enables smooth scroll for touch devices
-              touchMultiplier: 1.5, // 👈 controls scroll sensitivity on touch (higher = faster)
-              gestureOrientation: "vertical", // ensures proper vertical scroll gestures
-              smoothWheel: true, // 👈 ensures smooth scroll for mouse wheel too
-              autoRaf: false, // we let GSAP’s ticker handle the raf
-            }}
             ref={lenisRef}
+            options={{
+              lerp: 0.06, // slightly higher = smoother easing (0.05–0.1 sweet spot)
+              duration: 1.5, // length of the easing (in seconds)
+              smoothWheel: true, // smooths mouse wheel input
+              smoothTouch: true, // enables touch inertia (MUST for mobile)
+              touchMultiplier: 2, // scroll distance multiplier for touch
+              wheelMultiplier: 1, // normal sensitivity for desktop
+              gestureOrientation: "vertical", // vertical swipe orientation
+              normalizeWheel: true, // ensures even scroll speed across devices
+              syncTouch: true, // smooths touch scroll updates to Lenis’ internal state
+              autoRaf: false, // we let GSAP ticker drive it (good for ScrollTrigger)
+            }}
           />
+
           <ScrollToTop />
           <Header />
           {children}
