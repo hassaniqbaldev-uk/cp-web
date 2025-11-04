@@ -56,7 +56,6 @@ body {
   line-height: 1.6;
   background-color: #ffffff;
   color: var(--color-text-primary);
-  -webkit-font-smoothing: antialiased;
 }
 
 .grecaptcha-badge {

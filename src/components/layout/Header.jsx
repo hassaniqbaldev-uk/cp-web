@@ -12,6 +12,7 @@ import ContactPopoverBtn from "../common/ContactPopoverBtn";
 import gsap from "gsap";
 import { useLoadingStore } from "@/store/useLoadingStore";
 import { useGSAP } from "@gsap/react";
+import { useLenis } from "lenis/react";
 
 const Header = () => {
   const pathname = usePathname();
@@ -21,6 +22,7 @@ const Header = () => {
   const [isVisible, setIsVisible] = useState(false);
   const prevScrollY = useRef(0);
   const [hasMounted, setHasMounted] = useState(false);
+  const lenis = useLenis();
 
   useEffect(() => {
     setHasMounted(true);
@@ -99,6 +101,28 @@ const Header = () => {
       dependencies: [isLoading],
     },
   );
+
+  // 🚫 Disable scroll when hamburger is open
+  useEffect(() => {
+    const html = document.documentElement;
+
+    if (isOpen) {
+      html.style.overflow = "hidden"; // lock scroll
+      html.style.height = "100%"; // optional: prevents iOS overscroll
+      lenis?.stop?.(); // ✅ optional chaining in case lenis not ready yet
+    } else {
+      html.style.overflow = "";
+      html.style.height = "";
+      lenis?.start?.();
+    }
+
+    // Cleanup (optional, but safe)
+    return () => {
+      html.style.overflow = "";
+      html.style.height = "";
+      lenis?.start?.();
+    };
+  }, [isOpen, lenis]);
 
   const noGradientPaths = [
     "/",

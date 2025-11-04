@@ -31,38 +31,36 @@ export default function SiteLayout({ children }) {
   }, []);
 
   return (
-    <html lang="en">
-      <body>
-        {/* Loader */}
-        {isLoading && <Loader onHidden={() => setIsLoading(false)} />}
+    <>
+      {/* Loader */}
+      {isLoading && <Loader onHidden={() => setIsLoading(false)} />}
 
-        <div>
-          <ReactLenis
-            root
-            ref={lenisRef}
-            options={{
-              lerp: 0.06, // slightly higher = smoother easing (0.05–0.1 sweet spot)
-              duration: 1.5, // length of the easing (in seconds)
-              smoothWheel: true, // smooths mouse wheel input
-              smoothTouch: true, // enables touch inertia (MUST for mobile)
-              touchMultiplier: 2, // scroll distance multiplier for touch
-              wheelMultiplier: 1, // normal sensitivity for desktop
-              gestureOrientation: "vertical", // vertical swipe orientation
-              normalizeWheel: true, // ensures even scroll speed across devices
-              syncTouch: true, // smooths touch scroll updates to Lenis’ internal state
-              autoRaf: false, // we let GSAP ticker drive it (good for ScrollTrigger)
-            }}
-          />
+      <div>
+        <ReactLenis
+          root
+          ref={lenisRef}
+          options={{
+            lerp: 0.06, // slightly higher = smoother easing (0.05–0.1 sweet spot)
+            duration: 1.5, // length of the easing (in seconds)
+            smoothWheel: true, // smooths mouse wheel input
+            smoothTouch: true, // enables touch inertia (MUST for mobile)
+            touchMultiplier: 2, // scroll distance multiplier for touch
+            wheelMultiplier: 1, // normal sensitivity for desktop
+            gestureOrientation: "vertical", // vertical swipe orientation
+            normalizeWheel: true, // ensures even scroll speed across devices
+            syncTouch: true, // smooths touch scroll updates to Lenis’ internal state
+            autoRaf: false, // we let GSAP ticker drive it (good for ScrollTrigger)
+          }}
+        />
 
-          <ScrollToTop />
-          <Header />
-          {children}
-          <Footer />
-          <div className="hidden md:block">
-            <BackToTopBtn />
-          </div>
+        <ScrollToTop />
+        <Header />
+        {children}
+        <Footer />
+        <div className="hidden md:block">
+          <BackToTopBtn />
         </div>
-      </body>
-    </html>
+      </div>
+    </>
   );
 }
