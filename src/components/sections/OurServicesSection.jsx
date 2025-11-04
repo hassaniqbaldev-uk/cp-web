@@ -21,6 +21,7 @@ import { SplitText } from "gsap/all";
 import CLetter2 from "@/assets/decorative-elements/c-letter-2";
 import { useLoadingStore } from "@/store/useLoadingStore";
 import { getCalApi } from "@calcom/embed-react";
+import DraggableMarqueeSlider from "../common/DraggableMarqueeSlider";
 
 const OurServicesSection = () => {
   const labelRef = useRef();
@@ -206,7 +207,10 @@ const OurServicesSection = () => {
         ref={cardRef}
         className="mt-[4.3rem] mb-[5rem] opacity-0 xl:mb-[8rem]"
       >
-        <OurServiesMarquee />
+        {/* <OurServiesMarquee /> */}
+        <div className="w-full">
+          <DraggableMarqueeSlider />
+        </div>
       </div>
 
       <div

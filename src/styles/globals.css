@@ -58,6 +58,10 @@ body {
   color: var(--color-text-primary);
 }
 
+.draggable-slider .swiper-wrapper {
+  transition-timing-function: linear !important;
+}
+
 .grecaptcha-badge {
   opacity: 0 !important;
   pointer-events: none !important;
