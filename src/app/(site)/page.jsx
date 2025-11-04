@@ -1,4 +1,3 @@
-import CaseStudiesStickyGridSection from "@/components/case-studies/CaseStudiesStickyGridSection";
 import CaseStudiesStickyGridSectionWrapper from "@/components/case-studies/CaseStudiesStickyGridSectionWrapper";
 import CtaSection1 from "@/components/common/CtaSection1";
 import AboutSection from "@/components/sections/AboutSection";

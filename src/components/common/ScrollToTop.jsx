@@ -1,42 +1,22 @@
-// components/ScrollToTop.js
 "use client";
-
-import { useEffect } from "react";
 import { usePathname } from "next/navigation";
+import { useLenis } from "lenis/react";
+import { useEffect } from "react";
 
 const ScrollToTop = () => {
   const pathname = usePathname();
+  const lenis = useLenis();
 
   useEffect(() => {
-    // Get the current URL hash
-    const hash = window.location.hash;
+    if (!lenis) return;
+    // Small timeout ensures page is rendered before scrolling
+    const timer = setTimeout(() => {
+      lenis.scrollTo(0, { lerp: 0.1 });
+    }, 100);
+    return () => clearTimeout(timer);
+  }, [pathname, lenis]);
 
-    if (hash) {
-      // There's an anchor link - wait for the page to load and scroll to the element
-      const elementId = hash.replace("#", "");
-
-      const scrollToElement = () => {
-        const element = document.getElementById(elementId);
-        if (element) {
-          element.scrollIntoView({
-            behavior: "smooth",
-            block: "start",
-          });
-        }
-      };
-
-      // Small delay to ensure the page content is loaded
-      setTimeout(scrollToElement, 100);
-    } else {
-      // No anchor link - scroll to top
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth",
-      });
-    }
-  }, [pathname]);
-
-  return null;
+  return null; // this component has no visible UI
 };
 
 export default ScrollToTop;
