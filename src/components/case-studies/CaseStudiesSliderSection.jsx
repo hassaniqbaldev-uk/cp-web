@@ -54,7 +54,7 @@ const CaseStudiesSliderSection = ({ caseStudies }) => {
           </div>
         </div>
 
-        <div className="mt-[4rem]">
+        <div className="mt-[4rem] w-full">
           <CaseStudyCardSlider caseStudies={data} />
         </div>
       </div>

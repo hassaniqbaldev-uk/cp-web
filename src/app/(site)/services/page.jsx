@@ -1,6 +1,6 @@
 import ContactSection from "@/components/sections/ContactSection";
 import OurServicesSection from "@/components/sections/OurServicesSection";
-import CaseStudiesSliderSection from "@/components/case-studies/CaseStudiesSliderSection";
+import CaseStudiesSliderSectionWrapper from "@/components/case-studies/CaseStudiesSliderSectionWrapper";
 
 export const metadata = {
   title: "Our Services | Web Design, WordPress Development & Branding",
@@ -13,7 +13,7 @@ const ServicesPage = () => {
     <>
       <OurServicesSection />
       <div className="overflow-hidden">
-        <CaseStudiesSliderSection />
+        <CaseStudiesSliderSectionWrapper />
       </div>
       <ContactSection />
     </>
