@@ -19,6 +19,7 @@ gsap.registerPlugin(useGSAP, ScrollTrigger, SplitText, DrawSVGPlugin, Flip);
 export default function SiteLayout({ children }) {
   const { isLoading, setIsLoading } = useLoadingStore();
   const lenisRef = useRef();
+  const lenis = useLenis();
 
   useEffect(() => {
     function update(time) {
@@ -29,6 +30,28 @@ export default function SiteLayout({ children }) {
 
     return () => gsap.ticker.remove(update);
   }, []);
+
+  // 🚫 Disable scroll when hamburger is open
+  useEffect(() => {
+    const html = document.documentElement;
+
+    if (isLoading) {
+      html.style.overflow = "hidden"; // lock scroll
+      html.style.height = "100%"; // optional: prevents iOS overscroll
+      lenis?.stop?.(); // ✅ optional chaining in case lenis not ready yet
+    } else {
+      html.style.overflow = "";
+      html.style.height = "";
+      lenis?.start?.();
+    }
+
+    // Cleanup (optional, but safe)
+    return () => {
+      html.style.overflow = "";
+      html.style.height = "";
+      lenis?.start?.();
+    };
+  }, [isLoading, lenis]);
 
   return (
     <>
