@@ -12,11 +12,14 @@ import { useGSAP } from "@gsap/react";
 import { SplitText } from "gsap/all";
 
 const HeroSection = () => {
+  const { isLoading } = useLoadingStore();
   const lineRef = useRef(null);
   const container = useRef();
 
   useGSAP(
     () => {
+      if (isLoading) return;
+
       const linePath = lineRef.current?.querySelector("path");
       const isMobile = window.innerWidth < 1280;
 
@@ -210,6 +213,7 @@ const HeroSection = () => {
     },
     {
       scope: container,
+      dependencies: [isLoading],
     },
   );
 

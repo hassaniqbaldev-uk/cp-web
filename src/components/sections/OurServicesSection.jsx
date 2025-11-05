@@ -35,8 +35,11 @@ const OurServicesSection = () => {
   const gridCardRef6 = useRef();
   const lineRef = useRef(null);
   const [showButton, setShowButton] = useState(false);
+  const { isLoading } = useLoadingStore(); // 👈 access global loader state
 
   useEffect(() => {
+    if (isLoading) return; // ⛔ don’t run until loader is done
+
     const splitHeading = new SplitText(headingRef.current, {
       type: "lines",
       linesClass: "line",
@@ -134,7 +137,7 @@ const OurServicesSection = () => {
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  });
+  }, [isLoading]);
 
   useEffect(() => {
     (async function () {
