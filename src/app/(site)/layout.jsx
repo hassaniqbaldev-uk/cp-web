@@ -9,12 +9,10 @@ import DrawSVGPlugin from "gsap/DrawSVGPlugin";
 import ScrollToTop from "@/components/common/ScrollToTop";
 import Loader from "@/components/common/Loader";
 import { useLoadingStore } from "@/store/useLoadingStore";
-import Flip from "gsap/Flip";
 import { ReactLenis, useLenis } from "lenis/react";
 import { useEffect, useRef } from "react";
 
-// Register the plugin globally
-gsap.registerPlugin(useGSAP, ScrollTrigger, SplitText, DrawSVGPlugin, Flip);
+gsap.registerPlugin(useGSAP, ScrollTrigger, SplitText, DrawSVGPlugin);
 
 export default function SiteLayout({ children }) {
   const { isLoading, setIsLoading } = useLoadingStore();
@@ -31,7 +29,6 @@ export default function SiteLayout({ children }) {
     return () => gsap.ticker.remove(update);
   }, []);
 
-  // 🚫 Disable scroll when hamburger is open
   useEffect(() => {
     const html = document.documentElement;
 

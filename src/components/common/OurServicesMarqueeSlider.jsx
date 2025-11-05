@@ -8,7 +8,7 @@ import { ourServicesCardData } from "@/constants/servicesPage";
 import Link from "next/link";
 import Image from "next/image";
 
-const DraggableMarqueeSlider = () => {
+const OurServicesMarqueeSlider = () => {
   const swiperRef = useRef(null);
   const startX = useRef(0);
 
@@ -69,4 +69,4 @@ const DraggableMarqueeSlider = () => {
   );
 };
 
-export default DraggableMarqueeSlider;
+export default OurServicesMarqueeSlider;

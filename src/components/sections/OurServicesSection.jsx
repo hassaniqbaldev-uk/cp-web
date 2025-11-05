@@ -1,6 +1,5 @@
 "use client";
 import Image from "next/image";
-import OurServiesMarquee from "../common/OurServicesMarquee";
 import Link from "next/link";
 import SectionLabel2 from "../common/SectionLabel2";
 import LineStroke10 from "@/assets/decorative-elements/line-stroke-10.svg";
@@ -21,7 +20,7 @@ import { SplitText } from "gsap/all";
 import CLetter2 from "@/assets/decorative-elements/c-letter-2";
 import { useLoadingStore } from "@/store/useLoadingStore";
 import { getCalApi } from "@calcom/embed-react";
-import DraggableMarqueeSlider from "../common/DraggableMarqueeSlider";
+import OurServicesMarqueeSlider from "../common/OurServicesMarqueeSlider";
 
 const OurServicesSection = () => {
   const labelRef = useRef();
@@ -207,9 +206,8 @@ const OurServicesSection = () => {
         ref={cardRef}
         className="mt-[4.3rem] mb-[5rem] opacity-0 xl:mb-[8rem]"
       >
-        {/* <OurServiesMarquee /> */}
         <div className="w-full">
-          <DraggableMarqueeSlider />
+          <OurServicesMarqueeSlider />
         </div>
       </div>
 

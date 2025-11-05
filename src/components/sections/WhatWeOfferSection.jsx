@@ -178,8 +178,40 @@ const WhatWeOfferSection = () => {
     { scope: container },
   );
 
+  useGSAP(() => {
+    const handleMouseMove = (event) => {
+      const { clientX, clientY } = event;
+
+      gsap.to("#cursor2", {
+        x: clientX - 90 / 2,
+        y: clientY - 90 / 2,
+        duration: 1,
+        delay: 0,
+        ease: "power4.out",
+      });
+    };
+
+    window.addEventListener("mousemove", handleMouseMove);
+
+    return () => {
+      window.removeEventListener("mousemove", handleMouseMove);
+    };
+  });
+
   return (
     <>
+      <div
+        id="cursor2"
+        className="custom-cursor pointer-events-none fixed top-0 left-0 z-50 size-[9rem] items-center justify-center rounded-full bg-black/50 p-[1rem] opacity-0 xl:flex"
+      >
+        {/* Gradient Layer */}
+        <div className="gradient-layer" />
+
+        <span className="cursor-text text-center text-[1.2rem] leading-tight font-medium text-white">
+          Learn More
+        </span>
+      </div>
+
       <section
         ref={container}
         className="relative pt-[5rem] pb-[5rem] xl:pt-[8rem] xl:pb-[10rem]"
@@ -188,19 +220,6 @@ const WhatWeOfferSection = () => {
             "url('/images/offer-bg-gradient.webp') no-repeat center center/cover",
         }}
       >
-        {/* Custom Cursor with Text Inside */}
-        <div
-          ref={cursorRef}
-          className="custom-cursor pointer-events-none fixed top-0 left-0 z-50 hidden items-center justify-center rounded-full bg-black/50 opacity-0 xl:flex"
-        >
-          {/* Gradient Layer */}
-          <div className="gradient-layer" />
-
-          <span className="cursor-text text-center text-[1.4rem] leading-tight font-medium text-white opacity-0">
-            Learn More
-          </span>
-        </div>
-
         {/* Decorative stroke line */}
         <div
           ref={lineRef}
@@ -221,6 +240,14 @@ const WhatWeOfferSection = () => {
           <div className="mx-auto grid w-full max-w-[132rem] grid-cols-1 justify-items-center gap-x-[6rem] gap-y-[25rem] lg:grid-cols-2 xl:grid-cols-3 xl:justify-items-normal">
             {/* Card 1 with yellow cursor */}
             <Link
+              onMouseEnter={() => {
+                gsap.to("#cursor2", { opacity: 1, duration: 0.3 });
+                gsap.to(".cursor-text", { opacity: 1, duration: 0.3 }); // 🧠 add this line
+              }}
+              onMouseLeave={() => {
+                gsap.to("#cursor2", { opacity: 0, duration: 0.3 });
+                gsap.to(".cursor-text", { opacity: 0, duration: 0.3 }); // and hide again
+              }}
               href="/services#website-development"
               className="offer-grid-card offer-grid-card-animate group flex h-[36.4rem] flex-col items-center text-center hover:!border-[#ffc300] hover:!bg-[#ffc300] xl:text-left"
             >
@@ -252,6 +279,14 @@ const WhatWeOfferSection = () => {
 
             {/* Card 2 with blue cursor */}
             <Link
+              onMouseEnter={() => {
+                gsap.to("#cursor2", { opacity: 1, duration: 0.3 });
+                gsap.to(".cursor-text", { opacity: 1, duration: 0.3 }); // 🧠 add this line
+              }}
+              onMouseLeave={() => {
+                gsap.to("#cursor2", { opacity: 0, duration: 0.3 });
+                gsap.to(".cursor-text", { opacity: 0, duration: 0.3 }); // and hide again
+              }}
               href="/services#design-branding"
               className="offer-grid-card group offer-grid-card-animate mb-[-5rem] flex h-[36.4rem] flex-col items-center text-center hover:!border-[#44B276] hover:!bg-[#44B276] md:mb-0 xl:text-left"
             >
@@ -283,6 +318,14 @@ const WhatWeOfferSection = () => {
 
             {/* Card 3 with red cursor*/}
             <Link
+              onMouseEnter={() => {
+                gsap.to("#cursor2", { opacity: 1, duration: 0.3 });
+                gsap.to(".cursor-text", { opacity: 1, duration: 0.3 }); // 🧠 add this line
+              }}
+              onMouseLeave={() => {
+                gsap.to("#cursor2", { opacity: 0, duration: 0.3 });
+                gsap.to(".cursor-text", { opacity: 0, duration: 0.3 }); // and hide again
+              }}
               href="/case-studies"
               className="offer-grid-card group offer-grid-card-animate flex h-[36.4rem] flex-col items-center text-center hover:!border-[#FF37B3] hover:!bg-[#FF37B3] lg:col-span-2 xl:col-span-1 xl:text-left"
             >
