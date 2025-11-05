@@ -10,7 +10,6 @@ import Link from "next/link";
 import { useGSAP } from "@gsap/react";
 
 const WhatWeOfferSection = () => {
-  const cursorRef = useRef(null);
   const labelRef = useRef();
   const container = useRef();
   const lineRef = useRef();
@@ -105,75 +104,6 @@ const WhatWeOfferSection = () => {
           },
         },
       );
-
-      const cursor = cursorRef.current;
-      if (!cursor) return;
-
-      const links = gsap.utils.toArray(".offer-grid-card");
-
-      let mouseX = 0;
-      let mouseY = 0;
-      let cursorX = 0;
-      let cursorY = 0;
-
-      const moveCursor = (e) => {
-        mouseX = e.clientX;
-        mouseY = e.clientY;
-      };
-
-      const updateCursor = () => {
-        cursorX = gsap.utils.interpolate(cursorX, mouseX, 0.1);
-        cursorY = gsap.utils.interpolate(cursorY, mouseY, 0.1);
-
-        gsap.set(cursor, {
-          x: cursorX - cursor.offsetWidth / 2,
-          y: cursorY - cursor.offsetHeight / 2,
-        });
-
-        requestAnimationFrame(updateCursor);
-      };
-
-      const handleMouseEnter = () => {
-        gsap.to(cursor, {
-          scale: 1,
-          opacity: 1,
-          width: "100px",
-          height: "100px",
-          duration: 0.3,
-          ease: "power2.out",
-        });
-
-        gsap.to(".cursor-text", { opacity: 1, delay: 0.1, duration: 0.2 });
-      };
-
-      const handleMouseLeave = () => {
-        gsap.to(cursor, {
-          scale: 1,
-          opacity: 0,
-          width: "20px",
-          height: "20px",
-          duration: 0.3,
-          ease: "power2.out",
-        });
-
-        gsap.to(".cursor-text", { opacity: 0, duration: 0.1 });
-      };
-
-      links.forEach((link) => {
-        link.addEventListener("mouseenter", handleMouseEnter);
-        link.addEventListener("mouseleave", handleMouseLeave);
-      });
-
-      window.addEventListener("mousemove", moveCursor);
-      updateCursor();
-
-      return () => {
-        links.forEach((link) => {
-          link.removeEventListener("mouseenter", handleMouseEnter);
-          link.removeEventListener("mouseleave", handleMouseLeave);
-        });
-        window.removeEventListener("mousemove", moveCursor);
-      };
     },
     { scope: container },
   );
