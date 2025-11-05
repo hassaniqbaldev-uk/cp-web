@@ -7,8 +7,6 @@ import Footer from "@/components/layout/Footer";
 import BackToTopBtn from "@/components/common/BackToTopBtn";
 import DrawSVGPlugin from "gsap/DrawSVGPlugin";
 import ScrollToTop from "@/components/common/ScrollToTop";
-import Loader from "@/components/common/Loader";
-import { useLoadingStore } from "@/store/useLoadingStore";
 import Flip from "gsap/Flip";
 import { ReactLenis, useLenis } from "lenis/react";
 import { useEffect, useRef } from "react";
@@ -17,7 +15,7 @@ import { useEffect, useRef } from "react";
 gsap.registerPlugin(useGSAP, ScrollTrigger, SplitText, DrawSVGPlugin, Flip);
 
 export default function SiteLayout({ children }) {
-  const { isLoading, setIsLoading } = useLoadingStore();
+  // const { isLoading, setIsLoading } = useLoadingStore();
   const lenisRef = useRef();
   const lenis = useLenis();
 
@@ -31,33 +29,30 @@ export default function SiteLayout({ children }) {
     return () => gsap.ticker.remove(update);
   }, []);
 
-  // 🚫 Disable scroll when hamburger is open
-  useEffect(() => {
-    const html = document.documentElement;
+  // 🚫 Disable scroll when loader is open
+  // useEffect(() => {
+  //   const html = document.documentElement;
 
-    if (isLoading) {
-      html.style.overflow = "hidden"; // lock scroll
-      html.style.height = "100%"; // optional: prevents iOS overscroll
-      lenis?.stop?.(); // ✅ optional chaining in case lenis not ready yet
-    } else {
-      html.style.overflow = "";
-      html.style.height = "";
-      lenis?.start?.();
-    }
+  //   if (isLoading) {
+  //     html.style.overflow = "hidden"; // lock scroll
+  //     html.style.height = "100%"; // optional: prevents iOS overscroll
+  //     lenis?.stop?.(); // ✅ optional chaining in case lenis not ready yet
+  //   } else {
+  //     html.style.overflow = "";
+  //     html.style.height = "";
+  //     lenis?.start?.();
+  //   }
 
-    // Cleanup (optional, but safe)
-    return () => {
-      html.style.overflow = "";
-      html.style.height = "";
-      lenis?.start?.();
-    };
-  }, [isLoading, lenis]);
+  //   // Cleanup (optional, but safe)
+  //   return () => {
+  //     html.style.overflow = "";
+  //     html.style.height = "";
+  //     lenis?.start?.();
+  //   };
+  // }, [isLoading, lenis]);
 
   return (
     <>
-      {/* Loader */}
-      {isLoading && <Loader onHidden={() => setIsLoading(false)} />}
-
       <div>
         <ReactLenis
           root

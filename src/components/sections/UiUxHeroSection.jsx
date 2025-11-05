@@ -17,15 +17,12 @@ import { heroSlideData } from "@/constants/uiUxPage";
 import Image from "next/image";
 
 const UiUxHeroSection = () => {
-  const { isLoading } = useLoadingStore();
   const lineRef = useRef(null);
   const container = useRef();
   const labelRef = useRef();
 
   useGSAP(
     () => {
-      if (isLoading) return;
-
       const linePath = lineRef.current?.querySelector("path");
       const isMobile = window.innerWidth < 1280;
 
@@ -123,7 +120,6 @@ const UiUxHeroSection = () => {
     },
     {
       scope: container,
-      dependencies: [isLoading],
     },
   );
 

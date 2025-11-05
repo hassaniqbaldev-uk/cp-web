@@ -18,11 +18,8 @@ const ContactUsSection = () => {
   const headingRef = useRef();
   const descRef = useRef();
   const gridCardRef = useRef();
-  const { isLoading } = useLoadingStore(); // 👈 access global loader state
 
   useEffect(() => {
-    if (isLoading) return; // ⛔ don’t run until loader is done
-
     // Wobble/shake animation
     gsap.to(labelRef.current, {
       rotation: "+=3", // Rotate 3 degrees back and forth
@@ -60,7 +57,7 @@ const ContactUsSection = () => {
           clearProps: "all",
         },
       );
-  }, [isLoading]);
+  });
 
   useEffect(() => {
     (async function () {

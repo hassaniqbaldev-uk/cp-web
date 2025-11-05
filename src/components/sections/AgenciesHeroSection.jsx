@@ -9,15 +9,11 @@ import { useGSAP } from "@gsap/react";
 import { SplitText } from "gsap/all";
 
 const AgenciesHeroSection = () => {
-  const { isLoading } = useLoadingStore();
   const lineRef = useRef(null);
   const container = useRef();
 
   useGSAP(
     () => {
-      // Early return for loading state
-      if (isLoading) return;
-
       const splitHeading = new SplitText(
         container.current.querySelector(".agencies-hero-heading"),
         {
@@ -157,7 +153,6 @@ const AgenciesHeroSection = () => {
     },
     {
       scope: container,
-      dependencies: [isLoading],
     },
   );
 
