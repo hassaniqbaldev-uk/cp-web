@@ -10,6 +10,7 @@ const CaseStudiesGridSection = ({ caseStudies }) => {
   const [visibleCount, setVisibleCount] = useState(4);
   const [data, setData] = useState(caseStudies?.data || []);
   const [isOffline, setIsOffline] = useState(false);
+  const [animating, setAnimating] = useState(false);
 
   useEffect(() => {
     async function loadCaseStudies() {
@@ -39,7 +40,11 @@ const CaseStudiesGridSection = ({ caseStudies }) => {
   }, []);
 
   const handleLoadMore = () => {
-    setVisibleCount((prev) => prev + 4);
+    setAnimating(true);
+    setTimeout(() => {
+      setVisibleCount((prev) => prev + 4);
+      setAnimating(false);
+    }, 200); // small delay for smoothness
   };
 
   return (
@@ -52,7 +57,10 @@ const CaseStudiesGridSection = ({ caseStudies }) => {
         <div className="mt-[4rem] hidden xl:block">
           <div className="mb-[5rem] flex flex-col gap-[5rem]">
             {data.slice(0, visibleCount).map((caseStudy) => (
-              <div key={caseStudy.id}>
+              <div
+                key={caseStudy.id}
+                className={`transition-all duration-500 ${animating ? "opacity-0" : "opacity-100"}`}
+              >
                 <CaseStudyCard caseStudy={caseStudy} />
               </div>
             ))}
@@ -91,4 +99,3 @@ const CaseStudiesGridSection = ({ caseStudies }) => {
 };
 
 export default CaseStudiesGridSection;
-//
