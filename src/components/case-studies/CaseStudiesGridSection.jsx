@@ -5,6 +5,8 @@ import DownArrowIcon from "@/assets/icons/down-arrow.svg";
 import SubtractDarkIcon from "@/assets/icons/subtract-dark.svg";
 import CaseStudyCardSlider from "./CaseStudyCardSlider";
 import { useEffect, useState } from "react";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
 
 const CaseStudiesGridSection = ({ caseStudies }) => {
   const [visibleCount, setVisibleCount] = useState(4);
@@ -80,7 +82,10 @@ const CaseStudiesGridSection = ({ caseStudies }) => {
         </div>
 
         <div className="mt-[4rem] hidden xl:block">
-          <div className="mb-[5rem] flex flex-col gap-[5rem]">
+          <div
+            ref={containerRef}
+            className="mb-[5rem] flex flex-col gap-[5rem]"
+          >
             {data.slice(0, visibleCount).map((caseStudy) => (
               <div key={caseStudy.id} className="case-card">
                 <CaseStudyCard caseStudy={caseStudy} />
