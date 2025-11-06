@@ -235,7 +235,9 @@ const Footer = () => {
             Trusted By
           </h5>
 
-          <ClientLogoSlider />
+          <div className="w-full">
+            <ClientLogoSlider />
+          </div>
         </div>
 
         <div className="relative z-[3] mx-auto flex max-w-[120rem] flex-col items-center justify-between gap-[2rem] px-[2rem] text-center lg:flex-row lg:gap-[0rem] lg:text-left xl:px-[0rem]">
