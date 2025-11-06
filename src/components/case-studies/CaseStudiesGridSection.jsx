@@ -5,15 +5,11 @@ import DownArrowIcon from "@/assets/icons/down-arrow.svg";
 import SubtractDarkIcon from "@/assets/icons/subtract-dark.svg";
 import CaseStudyCardSlider from "./CaseStudyCardSlider";
 import { useEffect, useState } from "react";
-import { useGSAP } from "@gsap/react";
-import gsap from "gsap";
 
 const CaseStudiesGridSection = ({ caseStudies }) => {
   const [visibleCount, setVisibleCount] = useState(4);
   const [data, setData] = useState(caseStudies?.data || []);
   const [isOffline, setIsOffline] = useState(false);
-  const containerRef = useRef(null);
-  const lastVisibleCount = useRef(visibleCount);
 
   useEffect(() => {
     async function loadCaseStudies() {
@@ -42,34 +38,6 @@ const CaseStudiesGridSection = ({ caseStudies }) => {
     loadCaseStudies();
   }, []);
 
-  // Animate new cards when visibleCount changes
-  useGSAP(
-    () => {
-      if (!containerRef.current) return;
-
-      const newItems = gsap.utils
-        .toArray(containerRef.current.querySelectorAll(".case-card"))
-        .slice(lastVisibleCount.current, visibleCount);
-
-      if (newItems.length) {
-        gsap.fromTo(
-          newItems,
-          { autoAlpha: 0, y: 50 },
-          {
-            autoAlpha: 1,
-            y: 0,
-            duration: 0.8,
-            stagger: 0.1,
-            ease: "power3.out",
-          },
-        );
-      }
-
-      lastVisibleCount.current = visibleCount;
-    },
-    { dependencies: [visibleCount] },
-  );
-
   const handleLoadMore = () => {
     setVisibleCount((prev) => prev + 4);
   };
@@ -82,12 +50,9 @@ const CaseStudiesGridSection = ({ caseStudies }) => {
         </div>
 
         <div className="mt-[4rem] hidden xl:block">
-          <div
-            ref={containerRef}
-            className="mb-[5rem] flex flex-col gap-[5rem]"
-          >
+          <div className="mb-[5rem] flex flex-col gap-[5rem]">
             {data.slice(0, visibleCount).map((caseStudy) => (
-              <div key={caseStudy.id} className="case-card">
+              <div key={caseStudy.id}>
                 <CaseStudyCard caseStudy={caseStudy} />
               </div>
             ))}
