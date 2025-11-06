@@ -5,7 +5,6 @@ import DownArrowIcon from "@/assets/icons/down-arrow.svg";
 import SubtractDarkIcon from "@/assets/icons/subtract-dark.svg";
 import CaseStudyCardSlider from "./CaseStudyCardSlider";
 import { useEffect, useState } from "react";
-import gsap from "gsap";
 
 const CaseStudiesGridSection = ({ caseStudies }) => {
   const [visibleCount, setVisibleCount] = useState(4);
@@ -40,17 +39,7 @@ const CaseStudiesGridSection = ({ caseStudies }) => {
   }, []);
 
   const handleLoadMore = () => {
-    const newVisible = visibleCount + 4;
-    setVisibleCount(newVisible);
-
-    // Animate the new cards after they render
-    setTimeout(() => {
-      gsap.fromTo(
-        ".case-study-card:nth-last-child(-n+4)", // targets last 4 new cards
-        { opacity: 0, y: 50 },
-        { opacity: 1, y: 0, duration: 0.8, stagger: 0.1, ease: "power3.out" },
-      );
-    }, 50);
+    setVisibleCount((prev) => prev + 4);
   };
 
   return (
@@ -63,7 +52,7 @@ const CaseStudiesGridSection = ({ caseStudies }) => {
         <div className="mt-[4rem] hidden xl:block">
           <div className="mb-[5rem] flex flex-col gap-[5rem]">
             {data.slice(0, visibleCount).map((caseStudy) => (
-              <div key={caseStudy.id} className="case-study-card">
+              <div key={caseStudy.id}>
                 <CaseStudyCard caseStudy={caseStudy} />
               </div>
             ))}
