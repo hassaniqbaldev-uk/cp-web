@@ -40,7 +40,7 @@ const CaseStudiesGridSection = ({ caseStudies }) => {
   }, []);
 
   const handleLoadMore = () => {
-    setVisibleCount((prev) => prev + 4);
+    const newVisible = visibleCount + 4;
     setVisibleCount(newVisible);
 
     // Animate the new cards after they render
