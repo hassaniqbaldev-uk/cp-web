@@ -18,7 +18,6 @@ const HomePage = async () => {
       <HeroSection />
       <AboutSection />
       <WhatWeOfferSection />
-      {/* <CaseStudiesStickyGridSection /> */}
       <CaseStudiesStickyGridSectionWrapper />
       <div className="mx-auto max-w-[120rem] px-[2rem] pb-[8rem] xl:px-[0rem]">
         <CtaSection1 />

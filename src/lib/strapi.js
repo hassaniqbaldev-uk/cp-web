@@ -128,7 +128,7 @@ export async function getCaseStudies(slug) {
   const res = await fetch(url, {
     ...(isDev
       ? { cache: "no-store" } // always fresh in dev
-      : { next: { revalidate: 3600 } }), // ISR in prod
+      : { next: { revalidate: 100 } }), // ISR in prod
   });
 
   if (!res.ok) throw new Error("Failed to fetch Case Studies");
