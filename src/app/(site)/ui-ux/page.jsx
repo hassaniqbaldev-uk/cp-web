@@ -1,4 +1,3 @@
-import CaseStudiesSection02 from "@/components/sections/CaseStudiesSection02";
 import KeyBenefitSection from "@/components/sections/KeyBenefitSection";
 import OurApproachSection from "@/components/sections/OurApproachSection";
 import OurProcessSection from "@/components/sections/OurProcessSection";

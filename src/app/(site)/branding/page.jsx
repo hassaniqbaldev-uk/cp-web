@@ -1,5 +1,4 @@
 import BrandingHeroSection from "@/components/sections/BrandingHeroSection";
-import CaseStudiesSection02 from "@/components/sections/CaseStudiesSection02";
 import FeaturedSection2 from "@/components/sections/FeaturedSection2";
 import FeedbackSection from "@/components/sections/FeedbackSection";
 import IndustriesSection from "@/components/sections/IndustriesSection";
