@@ -1,11 +1,5 @@
-import Header from "@/components/layout/Header";
-
 const TermsConditionPage = () => {
-  return (
-    <>
-      <Header />
-    </>
-  );
+  return <></>;
 };
 
 export default TermsConditionPage;

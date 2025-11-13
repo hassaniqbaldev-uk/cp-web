@@ -2,12 +2,10 @@ import TextMarquee from "@/components/common/TextMarquee";
 import CtaSection2 from "@/components/common/CtaSection2";
 import SectionLabel2 from "@/components/common/SectionLabel2";
 import SectionTitle from "@/components/common/SectionTitle";
-import Header from "@/components/layout/Header";
 
 const CookiesPolicyPage = () => {
   return (
     <>
-      <Header />
       <div className="pt-[18rem] pb-[5rem] xl:pt-[20rem] xl:pb-[10rem]">
         <div className="mx-auto max-w-[120rem] px-[3rem] xl:px-[0rem]">
           {/* Cookie Policy Header */}

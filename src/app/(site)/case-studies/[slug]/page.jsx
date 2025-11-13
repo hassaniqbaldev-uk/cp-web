@@ -1,6 +1,5 @@
 import { getCaseStudies } from "@/lib/strapi";
 import CaseStudyDetailWrapper from "@/components/case-studies/CaseStudyDetailWrapper";
-import Header from "@/components/layout/Header";
 
 // ✅ Dynamic metadata (still server-side, so SEO-safe)
 export async function generateMetadata({ params }) {
@@ -34,7 +33,6 @@ const CaseStudyDetailPage = async ({ params }) => {
 
   return (
     <>
-      <Header />
       <CaseStudyDetailWrapper slug={slug} caseStudy={caseStudy} />
     </>
   );

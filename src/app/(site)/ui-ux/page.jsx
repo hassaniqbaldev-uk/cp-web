@@ -10,7 +10,6 @@ import FeedbackSection from "@/components/sections/FeedbackSection";
 import IndustriesSection from "@/components/sections/IndustriesSection";
 import { industriesData } from "@/constants/uiUxPage";
 import CaseStudiesSliderSection from "@/components/case-studies/CaseStudiesSliderSection";
-import Header from "@/components/layout/Header";
 
 export const metadata = {
   title: "UI UX CreativePixels | Manchester Web Design & Branding Agency",
@@ -21,7 +20,6 @@ export const metadata = {
 const UiUxPage = () => {
   return (
     <>
-      <Header />
       <UiUxHeroSection />
       <OurApproachSection />
       <ServiceSection />

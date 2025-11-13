@@ -10,7 +10,6 @@ import { useEffect } from "react";
 import Loader from "@/components/common/Loader";
 import { useLoadingStore } from "@/store/useLoadingStore";
 import { useLenis } from "lenis/react";
-import Header from "@/components/layout/Header";
 
 let hasPlayedLoader = false; // survives route change
 
@@ -65,7 +64,6 @@ const HomePage = ({ caseStudies }) => {
       {/* Loader */}
       {isLoading && <Loader onHidden={() => setIsLoading(false)} />}
 
-      <Header />
       <HeroSection />
       <AboutSection />
       <WhatWeOfferSection />

@@ -7,12 +7,10 @@ import MaintenanceGrowthHeroSection from "@/components/sections/MaintenanceGrowt
 import OurApproachSection4 from "@/components/sections/OurApproachSection4";
 import ServiceSection4 from "@/components/sections/ServiceSection4";
 import CaseStudiesSliderSection from "@/components/case-studies/CaseStudiesSliderSection";
-import Header from "@/components/layout/Header";
 
 const MaintenanceGrowthPage = () => {
   return (
     <>
-      <Header />
       <MaintenanceGrowthHeroSection />
       <div className="overflow-hidden">
         <OurApproachSection4 />

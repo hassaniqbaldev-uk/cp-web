@@ -5,7 +5,6 @@ import RelatedArticlesSection from "@/components/sections/blog-post-sections/Rel
 import ShareSection from "@/components/sections/blog-post-sections/ShareSection";
 import ContactSection from "@/components/sections/ContactSection";
 import LineStroke01 from "@/assets/decorative-elements/line-stroke-01.svg";
-import Header from "@/components/layout/Header";
 
 const BlogPostPage = () => {
   return (
@@ -14,7 +13,6 @@ const BlogPostPage = () => {
       <div className="absolute inset-0 z-[0]">
         <LineStroke01 className="absolute top-[50rem] left-1/2 w-full -translate-x-1/2" />
       </div>
-      <Header />
       <HeaderSection />
       <FeaturedImageSection />
       <ContentSection />

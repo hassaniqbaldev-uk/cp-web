@@ -9,12 +9,10 @@ import {
   processingPolicyData,
   refrencesPolicyData,
 } from "@/constants/privacyPolicyPage";
-import Header from "@/components/layout/Header";
 
 const PrivacyPolicyPage = () => {
   return (
     <>
-      <Header />
       <section className="pt-[18rem] pb-[5rem] xl:pt-[20rem] xl:pb-[10rem]">
         <div className="mx-auto max-w-[120rem] px-[3rem] xl:px-[0rem]">
           <div className="flex flex-col items-center gap-[2rem] text-center xl:items-start xl:text-left">

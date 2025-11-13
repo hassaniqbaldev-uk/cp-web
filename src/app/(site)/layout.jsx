@@ -9,8 +9,7 @@ import DrawSVGPlugin from "gsap/DrawSVGPlugin";
 import ScrollToTop from "@/components/common/ScrollToTop";
 import { ReactLenis } from "lenis/react";
 import { useEffect, useRef } from "react";
-import PageTransition from "@/components/animations/PageTransition";
-import { usePathname } from "next/navigation";
+import { ViewTransitions } from "next-view-transitions";
 gsap.registerPlugin(useGSAP, ScrollTrigger, SplitText, DrawSVGPlugin);
 
 export default function SiteLayout({ children }) {
@@ -46,10 +45,11 @@ export default function SiteLayout({ children }) {
       />
 
       <ScrollToTop />
-
-      <div key={usePathname()}>{children}</div>
-
-      <Footer />
+      <ViewTransitions>
+        <Header />
+        <div>{children}</div>
+        <Footer />
+      </ViewTransitions>
       <div className="hidden md:block">
         <BackToTopBtn />
       </div>
