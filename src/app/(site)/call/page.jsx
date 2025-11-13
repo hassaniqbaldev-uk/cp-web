@@ -6,6 +6,7 @@ import LineStroke30 from "@/assets/decorative-elements/line-stroke-30.svg";
 import ContactForm from "@/components/common/ContactForm";
 import Cal, { getCalApi } from "@calcom/embed-react";
 import { useEffect } from "react";
+import Header from "@/components/layout/Header";
 
 const CallPage = () => {
   useEffect(() => {
@@ -26,6 +27,7 @@ const CallPage = () => {
 
   return (
     <>
+      <Header />
       <div
         className="relative w-full rounded-br-[5rem] rounded-bl-[5rem] px-[3rem] pt-[14.1rem] pb-[44.7rem] xl:px-[0rem]"
         style={{

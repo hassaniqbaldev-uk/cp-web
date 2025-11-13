@@ -6,7 +6,8 @@ import PitchDeckSection from "@/components/sections/PitchDeckSection";
 import WhoWeAreSection from "@/components/sections/WhoWeAreSection";
 import WhyChooseUsSection from "@/components/sections/WhyChooseUsSection";
 import CaseStudiesSliderSection from "@/components/case-studies/CaseStudiesSliderSection";
-import CaseStudiesSliderSectionWrapper from "@/components/case-studies/CaseStudiesSliderSectionWrapper";
+import CaseStudiesWrapper from "@/components/case-studies/CaseStudiesWrapper";
+import Header from "@/components/layout/Header";
 
 export const metadata = {
   title: "About CreativePixels | Manchester Web Design & Branding Agency",
@@ -14,9 +15,10 @@ export const metadata = {
     "Since 2014, CreativePixels has combined design, development, and strategy to deliver digital experiences that build trust and lasting growth. Based in Manchester, trusted worldwide.",
 };
 
-const AboutPage = async () => {
+const AboutPage = () => {
   return (
     <>
+      <Header />
       <WhoWeAreSection />
       <WhyChooseUsSection />
       {/* <PitchDeckSection /> */}
@@ -26,7 +28,11 @@ const AboutPage = async () => {
       </div>
       {/* <OurTeamSection /> */}
       <div className="overflow-hidden">
-        <CaseStudiesSliderSectionWrapper />
+        <CaseStudiesWrapper>
+          {(caseStudies) => (
+            <CaseStudiesSliderSection caseStudies={caseStudies} />
+          )}
+        </CaseStudiesWrapper>
       </div>
       <ContactSection />
     </>

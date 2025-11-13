@@ -1,6 +1,5 @@
 "use client";
 
-import { useLoadingStore } from "@/store/useLoadingStore";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { useRef } from "react";
@@ -17,15 +16,12 @@ import { logoPopupsData } from "@/constants/globals";
 import LogoPopup from "../common/LogoPopup";
 
 const SmPostHeroSection = () => {
-  const { isLoading } = useLoadingStore();
   const lineRef = useRef(null);
   const container = useRef();
   const labelRef = useRef();
 
   useGSAP(
     () => {
-      if (isLoading) return;
-
       const linePath = lineRef.current?.querySelector("path");
       const isMobile = window.innerWidth < 1280;
 
@@ -123,7 +119,7 @@ const SmPostHeroSection = () => {
     },
     {
       scope: container,
-      dependencies: [isLoading],
+      dependencies: [],
     },
   );
 

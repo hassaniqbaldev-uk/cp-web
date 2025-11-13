@@ -1,4 +1,5 @@
 import ContactUsSection from "@/components/sections/ContactUsSection";
+import Header from "@/components/layout/Header";
 
 export const metadata = {
   title: "Contact CreativePixels | Web Design & Branding Agency Manchester",
@@ -9,6 +10,7 @@ export const metadata = {
 const ContactPage = () => {
   return (
     <>
+      <Header />
       <ContactUsSection />
     </>
   );

@@ -1,7 +1,9 @@
-import CaseStudiesGridSectionWrapper from "@/components/case-studies/CaseStudiesGridSectionWrapper";
 import CaseStudiesIntroSection from "@/components/case-studies/CaseStudiesIntroSection";
 import CaseStudiesStatsSection from "@/components/case-studies/CaseStudiesStatsSection";
 import ContactSection from "@/components/sections/ContactSection";
+import CaseStudiesWrapper from "@/components/case-studies/CaseStudiesWrapper";
+import CaseStudiesGridSection from "@/components/case-studies/CaseStudiesGridSection";
+import Header from "@/components/layout/Header";
 
 export const metadata = {
   title: "Case Studies | CreativePixels Web Design & Branding Projects",
@@ -12,9 +14,12 @@ export const metadata = {
 const CaseStudiesPage = () => {
   return (
     <>
+      <Header />
       <CaseStudiesIntroSection />
       <CaseStudiesStatsSection />
-      <CaseStudiesGridSectionWrapper />
+      <CaseStudiesWrapper>
+        {(caseStudies) => <CaseStudiesGridSection caseStudies={caseStudies} />}
+      </CaseStudiesWrapper>
       <ContactSection />
     </>
   );

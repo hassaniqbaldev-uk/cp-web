@@ -5,6 +5,7 @@ import DifferenceSection from "@/components/sections/DifferenceSection";
 import GeneralQASection2 from "@/components/sections/GeneralQASection2";
 import ReviewSection from "@/components/sections/ReviewSection";
 import WorkingProcessSection from "@/components/sections/WorkingProcessSection";
+import Header from "@/components/layout/Header";
 
 export const metadata = {
   title: "Agencies CreativePixels | Web Design & Branding Agency Manchester",
@@ -15,6 +16,7 @@ export const metadata = {
 const AgenciesPage = () => {
   return (
     <>
+      <Header />
       <AgenciesHeroSection />
       <AnAgencySection />
       <DifferenceSection />

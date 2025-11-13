@@ -14,15 +14,12 @@ import { logoPopupsData } from "@/constants/globals";
 import LogoPopup from "../common/LogoPopup";
 
 const MaintenanceGrowthHeroSection = () => {
-  const { isLoading } = useLoadingStore();
   const lineRef = useRef(null);
   const container = useRef();
   const labelRef = useRef();
 
   useGSAP(
     () => {
-      if (isLoading) return;
-
       const linePath = lineRef.current?.querySelector("path");
 
       // SVG Animation - COMPLETELY INDEPENDENT
@@ -59,7 +56,7 @@ const MaintenanceGrowthHeroSection = () => {
     },
     {
       scope: container,
-      dependencies: [isLoading],
+      dependencies: [],
     },
   );
 

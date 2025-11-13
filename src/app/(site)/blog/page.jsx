@@ -3,6 +3,7 @@ import PageIntroSection from "@/components/sections/blog-sections/PageIntroSecti
 import RecentBlogsSection from "@/components/sections/blog-sections/RecentBlogsSection";
 import ContactSection from "@/components/sections/ContactSection";
 import LineStroke01 from "@/assets/decorative-elements/line-stroke-01.svg";
+import Header from "@/components/layout/Header";
 
 const BlogPage = () => {
   return (
@@ -12,6 +13,7 @@ const BlogPage = () => {
         <LineStroke01 className="absolute top-[47.4rem] left-1/2 w-full -translate-x-1/2" />
       </div>
 
+      <Header />
       <PageIntroSection />
       <FeaturedPostsSection />
       <RecentBlogsSection />

@@ -11,15 +11,12 @@ import Image from "next/image";
 import BrandingHeroSlider from "../common/BrandingHeroSlider";
 
 const BrandingHeroSection = () => {
-  const { isLoading } = useLoadingStore();
   const lineRef = useRef(null);
   const container = useRef();
   const labelRef = useRef();
 
   useGSAP(
     () => {
-      if (isLoading) return;
-
       const linePath = lineRef.current?.querySelector("path");
       const isMobile = window.innerWidth < 1280;
 
@@ -135,7 +132,7 @@ const BrandingHeroSection = () => {
     },
     {
       scope: container,
-      dependencies: [isLoading],
+      dependencies: [],
     },
   );
 

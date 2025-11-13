@@ -1,5 +1,4 @@
 "use client";
-import { useLoadingStore } from "@/store/useLoadingStore";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { useRef } from "react";
@@ -14,15 +13,12 @@ import "swiper/css";
 import "swiper/css/effect-coverflow"; // Add this
 
 const WpElementorHeroSection = () => {
-  const { isLoading } = useLoadingStore();
   const lineRef = useRef(null);
   const container = useRef();
   const labelRef = useRef();
 
   useGSAP(
     () => {
-      if (isLoading) return;
-
       const linePath = lineRef.current?.querySelector("path");
 
       // SVG Animation - COMPLETELY INDEPENDENT
@@ -120,7 +116,7 @@ const WpElementorHeroSection = () => {
     },
     {
       scope: container,
-      dependencies: [isLoading],
+      dependencies: [],
     },
   );
 

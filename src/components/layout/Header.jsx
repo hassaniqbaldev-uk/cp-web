@@ -17,7 +17,6 @@ import { useLenis } from "lenis/react";
 const Header = () => {
   const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
-  const { isLoading } = useLoadingStore();
   const container = useRef();
   const [isVisible, setIsVisible] = useState(false);
   const prevScrollY = useRef(0);
@@ -55,52 +54,6 @@ const Header = () => {
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-
-  useGSAP(
-    () => {
-      if (isLoading) return;
-
-      const isMobile = window.innerWidth < 1280;
-      const elements = isMobile
-        ? ".header-logo, .header-cta, .hamburger-button"
-        : ".header-logo, .header-nav, .header-cta, .hamburger-button";
-
-      const tl = gsap.timeline();
-
-      tl.to(container.current, {
-        opacity: 1,
-        duration: 0.6,
-        ease: "sine.out",
-      })
-
-        // Smooth curvy animation with bounce
-        .fromTo(
-          elements,
-          {
-            y: -60,
-            opacity: 0,
-            scale: 0.9, // Added scale for depth
-          },
-          {
-            y: 0,
-            opacity: 1,
-            scale: 1,
-            duration: 0.9,
-            stagger: {
-              each: 0.15, // Smoother stagger
-              from: "start", // Wave from left to right
-              grid: "auto", // Better distribution
-            },
-            ease: "back.out(1.4)", // Nice bounce curve
-          },
-          "-=0.3", // Overlap with container fade
-        );
-    },
-    {
-      scope: container,
-      dependencies: [isLoading],
-    },
-  );
 
   // 🚫 Disable scroll when hamburger is open
   useEffect(() => {
@@ -143,7 +96,7 @@ const Header = () => {
     <header>
       <div
         ref={container}
-        className={`absolute top-0 left-0 z-[100] flex w-full items-center rounded-br-[2rem] rounded-bl-[2rem] px-[2rem] py-[3rem] opacity-0 md:px-[4rem] xl:px-[0rem] ${
+        className={`absolute top-0 left-0 z-[100] flex w-full items-center rounded-br-[2rem] rounded-bl-[2rem] px-[2rem] py-[3rem] md:px-[4rem] xl:px-[0rem] ${
           noGradientPaths.includes(currentPath) ? "" : "header-gradient-bg"
         }`}
       >

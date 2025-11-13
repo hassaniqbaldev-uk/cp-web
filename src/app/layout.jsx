@@ -11,11 +11,11 @@ const onest = Onest({
 
 export const metadata = {
   title: {
-    default: "CreativePixels | Creative Design Agency Manchester",
+    default: "CreativePixels | Web Design, WordPress & Branding Agency",
     template: "%s",
   },
   description:
-    "We focus on being a design-driven creative agency through bespoke design and development, specialising in all things design and making businesses stand out.",
+    "CreativePixels is a Manchester-based creative agency delivering WordPress websites, branding, and digital solutions for clients across the UK, US & Australia.",
   icons: {
     icon: "/favicon/favicon.ico",
   },

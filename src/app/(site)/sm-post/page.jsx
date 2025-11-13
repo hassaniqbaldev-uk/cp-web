@@ -7,10 +7,12 @@ import OurProcessSection3 from "@/components/sections/OurProcessSection3";
 import SmPostHeroSection from "@/components/sections/SmPostHeroSection";
 import ServiceSection3 from "@/components/sections/ServiceSection3";
 import { industriesData } from "@/constants/smPostPage";
+import Header from "@/components/layout/Header";
 
 const SmPostPage = () => {
   return (
     <>
+      <Header />
       <SmPostHeroSection />
       <OurApproachSection3 />
       <KeyBenefitSection2 />

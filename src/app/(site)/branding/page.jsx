@@ -9,10 +9,12 @@ import WhatWeCanHelpSection3 from "@/components/sections/WhatWeCanHelpSection3";
 import { industriesData } from "@/constants/brandingPage";
 import ContactSection from "@/components/sections/ContactSection";
 import CaseStudiesSliderSection from "@/components/case-studies/CaseStudiesSliderSection";
+import Header from "@/components/layout/Header";
 
 const BrandingPage = () => {
   return (
     <>
+      <Header />
       <BrandingHeroSection />
       <KeyBenefitSection3 />
       <ServiceSection5 />

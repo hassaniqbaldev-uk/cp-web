@@ -9,6 +9,7 @@ import OurProcessSection2 from "@/components/sections/OurProcessSection2";
 import { industriesData } from "@/constants/wpElementorPage";
 import ServiceSection2 from "@/components/sections/ServiceSection2";
 import CaseStudiesSliderSection from "@/components/case-studies/CaseStudiesSliderSection";
+import Header from "@/components/layout/Header";
 
 export const metadata = {
   title:
@@ -20,6 +21,7 @@ export const metadata = {
 const WpElementorPage = () => {
   return (
     <>
+      <Header />
       <WpElementorHeroSection />
       <OurApproachSection2 />
       <ServiceSection2 />

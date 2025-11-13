@@ -1,6 +1,8 @@
 import ContactSection from "@/components/sections/ContactSection";
 import OurServicesSection from "@/components/sections/OurServicesSection";
-import CaseStudiesSliderSectionWrapper from "@/components/case-studies/CaseStudiesSliderSectionWrapper";
+import CaseStudiesWrapper from "@/components/case-studies/CaseStudiesWrapper";
+import CaseStudiesSliderSection from "@/components/case-studies/CaseStudiesSliderSection";
+import Header from "@/components/layout/Header";
 
 export const metadata = {
   title: "Our Services | Web Design, WordPress Development & Branding",
@@ -11,9 +13,14 @@ export const metadata = {
 const ServicesPage = () => {
   return (
     <>
+      <Header />
       <OurServicesSection />
       <div className="overflow-hidden">
-        <CaseStudiesSliderSectionWrapper />
+        <CaseStudiesWrapper>
+          {(caseStudies) => (
+            <CaseStudiesSliderSection caseStudies={caseStudies} />
+          )}
+        </CaseStudiesWrapper>
       </div>
       <ContactSection />
     </>
