@@ -46,9 +46,9 @@ export default function SiteLayout({ children }) {
       />
 
       <ScrollToTop />
-      <PageTransition>
-        <div key={usePathname()}>{children}</div>
-      </PageTransition>
+
+      <div key={usePathname()}>{children}</div>
+
       <Footer />
       <div className="hidden md:block">
         <BackToTopBtn />
