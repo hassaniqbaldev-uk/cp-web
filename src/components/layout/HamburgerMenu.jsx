@@ -44,12 +44,15 @@ const HamburgerMenu = ({ isOpen, setIsOpen }) => {
         <div className="flex items-center justify-between px-[2rem] py-[3rem] md:px-[4rem]">
           <a
             onClick={(e) => {
-              e.preventDefault(); // stop default link
-              setIsOpen(false); // close menu
+              e.preventDefault();
 
-              router.push("/", {
-                onTransitionReady: slideInOutTransition, // custom animation
-              });
+              setIsOpen(false); // close menu first
+
+              setTimeout(() => {
+                router.push("/", {
+                  onTransitionReady: slideInOutTransition,
+                });
+              }, 200); // delay = menu close duration
             }}
             href="/"
             className="relative overflow-hidden"
@@ -83,12 +86,15 @@ const HamburgerMenu = ({ isOpen, setIsOpen }) => {
             <div className="relative border-b border-white/20 pb-[1rem] md:px-[4rem]">
               <a
                 onClick={(e) => {
-                  e.preventDefault(); // stop default link
-                  setIsOpen(false); // close menu
+                  e.preventDefault();
 
-                  router.push("/", {
-                    onTransitionReady: slideInOutTransition, // custom animation
-                  });
+                  setIsOpen(false); // close menu first
+
+                  setTimeout(() => {
+                    router.push("/", {
+                      onTransitionReady: slideInOutTransition,
+                    });
+                  }, 200); // delay = menu close duration
                 }}
                 href="/"
                 className="relative flex text-[3rem] leading-[4rem] font-semibold capitalize before:absolute before:bottom-[-2.1rem] before:left-0 before:h-[2px] before:w-full before:origin-right before:scale-x-0 before:bg-gradient-to-r before:from-[#FFE400] before:to-[#FF37B3] before:transition-transform before:duration-300 hover:before:origin-left hover:before:scale-x-100 md:text-[4rem] md:leading-[5rem]"
@@ -100,12 +106,15 @@ const HamburgerMenu = ({ isOpen, setIsOpen }) => {
             <div className="relative border-b border-white/20 pb-[1rem] md:px-[4rem]">
               <a
                 onClick={(e) => {
-                  e.preventDefault(); // stop default link
-                  setIsOpen(false); // close menu
+                  e.preventDefault();
 
-                  router.push("/about", {
-                    onTransitionReady: slideInOutTransition, // custom animation
-                  });
+                  setIsOpen(false); // close menu first
+
+                  setTimeout(() => {
+                    router.push("/about", {
+                      onTransitionReady: slideInOutTransition,
+                    });
+                  }, 200); // delay = menu close duration
                 }}
                 href="/about"
                 className="relative flex text-[3rem] leading-[4rem] font-semibold capitalize before:absolute before:bottom-[-2.1rem] before:left-0 before:h-[2px] before:w-full before:origin-right before:scale-x-0 before:bg-gradient-to-r before:from-[#FFE400] before:to-[#FF37B3] before:transition-transform before:duration-300 hover:before:origin-left hover:before:scale-x-100 md:text-[4rem] md:leading-[5rem]"
@@ -117,12 +126,15 @@ const HamburgerMenu = ({ isOpen, setIsOpen }) => {
             <div className="relative border-b border-white/20 pb-[1rem] md:px-[4rem]">
               <a
                 onClick={(e) => {
-                  e.preventDefault(); // stop default link
-                  setIsOpen(false); // close menu
+                  e.preventDefault();
 
-                  router.push("/services", {
-                    onTransitionReady: slideInOutTransition, // custom animation
-                  });
+                  setIsOpen(false); // close menu first
+
+                  setTimeout(() => {
+                    router.push("/services", {
+                      onTransitionReady: slideInOutTransition,
+                    });
+                  }, 200); // delay = menu close duration
                 }}
                 href="/services"
                 className="relative flex text-[3rem] leading-[4rem] font-semibold capitalize before:absolute before:bottom-[-2.1rem] before:left-0 before:h-[2px] before:w-full before:origin-right before:scale-x-0 before:bg-gradient-to-r before:from-[#FFE400] before:to-[#FF37B3] before:transition-transform before:duration-300 hover:before:origin-left hover:before:scale-x-100 md:text-[4rem] md:leading-[5rem]"
@@ -134,12 +146,15 @@ const HamburgerMenu = ({ isOpen, setIsOpen }) => {
             <div className="relative border-b border-white/20 pb-[1rem] md:px-[4rem]">
               <a
                 onClick={(e) => {
-                  e.preventDefault(); // stop default link
-                  setIsOpen(false); // close menu
+                  e.preventDefault();
 
-                  router.push("/case-studies", {
-                    onTransitionReady: slideInOutTransition, // custom animation
-                  });
+                  setIsOpen(false); // close menu first
+
+                  setTimeout(() => {
+                    router.push("/case-studies", {
+                      onTransitionReady: slideInOutTransition,
+                    });
+                  }, 200); // delay = menu close duration
                 }}
                 href="/case-studies"
                 className="relative flex text-[3rem] leading-[4rem] font-semibold capitalize before:absolute before:bottom-[-2.1rem] before:left-0 before:h-[2px] before:w-full before:origin-right before:scale-x-0 before:bg-gradient-to-r before:from-[#FFE400] before:to-[#FF37B3] before:transition-transform before:duration-300 hover:before:origin-left hover:before:scale-x-100 md:text-[4rem] md:leading-[5rem]"
@@ -151,12 +166,15 @@ const HamburgerMenu = ({ isOpen, setIsOpen }) => {
             <div className="relative border-b border-white/20 pb-[1rem] md:px-[4rem]">
               <a
                 onClick={(e) => {
-                  e.preventDefault(); // stop default link
-                  setIsOpen(false); // close menu
+                  e.preventDefault();
 
-                  router.push("/contact", {
-                    onTransitionReady: slideInOutTransition, // custom animation
-                  });
+                  setIsOpen(false); // close menu first
+
+                  setTimeout(() => {
+                    router.push("/contact", {
+                      onTransitionReady: slideInOutTransition,
+                    });
+                  }, 200); // delay = menu close duration
                 }}
                 href="/contact"
                 className="relative flex text-[3rem] leading-[4rem] font-semibold capitalize before:absolute before:bottom-[-2.1rem] before:left-0 before:h-[2px] before:w-full before:origin-right before:scale-x-0 before:bg-gradient-to-r before:from-[#FFE400] before:to-[#FF37B3] before:transition-transform before:duration-300 hover:before:origin-left hover:before:scale-x-100 md:text-[4rem] md:leading-[5rem]"

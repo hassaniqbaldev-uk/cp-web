@@ -188,7 +188,17 @@ const Header = () => {
         }`}
       >
         <div className="shadow-01 relative mx-auto flex w-full max-w-[120.329rem] items-center justify-between rounded-full bg-black/30 px-[2rem] py-[1rem] backdrop-blur-[10px]">
-          <Link href="/" className="relative">
+          <a
+            onClick={(e) => {
+              e.preventDefault();
+
+              router.push("/", {
+                onTransitionReady: slideInOutTransition, // 🔥 GLOBAL ANIMATION
+              });
+            }}
+            href="/"
+            className="relative"
+          >
             <Image
               src="/images/sticky-header-logo.svg"
               alt="Brand Logo"
@@ -197,7 +207,7 @@ const Header = () => {
               fetchPriority="high"
               className="h-[6.6rem] w-[14rem] md:w-[17rem]"
             />
-          </Link>
+          </a>
 
           <div className="flex items-center justify-end gap-[2rem] xl:gap-[6rem]">
             <nav className="hidden items-center justify-center gap-[1rem] xl:flex">
