@@ -3,11 +3,13 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useTransitionRouter } from "next-view-transitions";
+import { useLoadingStore } from "@/store/useLoadingStore";
 
 const NavigationLink = ({ href, children }) => {
   const pathname = usePathname();
   const isActive = pathname === href;
   const router = useTransitionRouter();
+  const { setIsLoading } = useLoadingStore();
 
   const slideInOut = () => {
     // OLD VIEW slides out LEFT
@@ -37,6 +39,7 @@ const NavigationLink = ({ href, children }) => {
     <a
       onClick={(e) => {
         e.preventDefault();
+        setIsLoading(false); // IMPORTANT — prevent loader on internal nav
         router.push(href, {
           onTransitionReady: slideInOut,
         });

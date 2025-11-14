@@ -11,11 +11,23 @@ import Loader from "@/components/common/Loader";
 import { useLoadingStore } from "@/store/useLoadingStore";
 import { useLenis } from "lenis/react";
 
-let hasPlayedLoader = false; // survives route change
-
 const HomePage = ({ caseStudies }) => {
   const lenis = useLenis();
-  const { isLoading, setIsLoading } = useLoadingStore();
+  const { isLoading, setIsLoading, hasSeenLoader, setHasSeenLoader } =
+    useLoadingStore();
+
+  useEffect(() => {
+    // RUN LOADER ONLY IF:
+    // - user never saw loader before (per session)
+    // - AND it's a fresh visit or page refresh
+    const isReload = performance.navigation.type === 1; // 1 = reload
+    const isFreshEntry = document.referrer === ""; // direct entry
+
+    if (!hasSeenLoader && (isReload || isFreshEntry)) {
+      setIsLoading(true);
+      setHasSeenLoader(true);
+    }
+  }, [hasSeenLoader, setIsLoading, setHasSeenLoader]);
 
   useEffect(() => {
     const html = document.documentElement;
@@ -37,27 +49,6 @@ const HomePage = ({ caseStudies }) => {
       lenis?.start?.();
     };
   }, [isLoading, lenis]);
-
-  useEffect(() => {
-    // If loader already played in this session, never play again
-    if (hasPlayedLoader) {
-      setIsLoading(false);
-      return;
-    }
-
-    const navEntry = performance.getEntriesByType("navigation")[0];
-    const isReload =
-      performance.navigation.type === 1 || navEntry?.type === "reload";
-
-    if (isReload) {
-      setIsLoading(true); // Show loader
-    } else {
-      setIsLoading(false); // Skip loader
-    }
-
-    // Mark that loader has played
-    hasPlayedLoader = true;
-  }, [setIsLoading]);
 
   return (
     <>
