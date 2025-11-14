@@ -10,6 +10,7 @@ import FeedbackSection from "@/components/sections/FeedbackSection";
 import IndustriesSection from "@/components/sections/IndustriesSection";
 import { industriesData } from "@/constants/uiUxPage";
 import CaseStudiesSliderSection from "@/components/case-studies/CaseStudiesSliderSection";
+import CaseStudiesWrapper from "@/components/case-studies/CaseStudiesWrapper";
 
 export const metadata = {
   title: "UI UX CreativePixels | Manchester Web Design & Branding Agency",
@@ -30,7 +31,11 @@ const UiUxPage = () => {
       <KeyBenefitSection />
       <OurProcessSection />
       <div className="overflow-hidden pb-[8rem]">
-        <CaseStudiesSliderSection />
+        <CaseStudiesWrapper>
+          {(caseStudies) => (
+            <CaseStudiesSliderSection caseStudies={caseStudies} />
+          )}
+        </CaseStudiesWrapper>
       </div>
       <div className="overflow-hidden">
         <FeedbackSection

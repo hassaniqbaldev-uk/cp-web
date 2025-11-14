@@ -9,6 +9,7 @@ import OurProcessSection2 from "@/components/sections/OurProcessSection2";
 import { industriesData } from "@/constants/wpElementorPage";
 import ServiceSection2 from "@/components/sections/ServiceSection2";
 import CaseStudiesSliderSection from "@/components/case-studies/CaseStudiesSliderSection";
+import CaseStudiesWrapper from "@/components/case-studies/CaseStudiesWrapper";
 
 export const metadata = {
   title:
@@ -27,7 +28,11 @@ const WpElementorPage = () => {
       <WhatWeCanHelpSection2 />
       <OurProcessSection2 />
       <div className="overflow-hidden pb-[8rem]">
-        <CaseStudiesSliderSection />
+        <CaseStudiesWrapper>
+          {(caseStudies) => (
+            <CaseStudiesSliderSection caseStudies={caseStudies} />
+          )}
+        </CaseStudiesWrapper>
       </div>
       <div className="overflow-hidden">
         <FeedbackSection

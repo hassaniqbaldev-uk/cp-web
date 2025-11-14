@@ -9,6 +9,7 @@ import WhatWeCanHelpSection3 from "@/components/sections/WhatWeCanHelpSection3";
 import { industriesData } from "@/constants/brandingPage";
 import ContactSection from "@/components/sections/ContactSection";
 import CaseStudiesSliderSection from "@/components/case-studies/CaseStudiesSliderSection";
+import CaseStudiesWrapper from "@/components/case-studies/CaseStudiesWrapper";
 
 const BrandingPage = () => {
   return (
@@ -36,7 +37,11 @@ const BrandingPage = () => {
           data={industriesData}
         />
         <div className="overflow-hidden">
-          <CaseStudiesSliderSection />
+          <CaseStudiesWrapper>
+            {(caseStudies) => (
+              <CaseStudiesSliderSection caseStudies={caseStudies} />
+            )}
+          </CaseStudiesWrapper>
         </div>
       </div>
 
