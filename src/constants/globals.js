@@ -4,7 +4,36 @@ import LinkedinWhiteIcon from "@/assets/icons/linkedin-white-icon.svg";
 import ClickArrowYellow2Icon from "@/assets/icons/click-arrow-yellow-2.svg";
 import ClickArrowPink from "@/assets/icons/click-arrow-pink.svg";
 import ClickArrowGreen from "@/assets/icons/click-arrow-green.svg";
-import UkFlag from "@/assets/icons/uk-flag.svg";
+
+// Navigation Link Data
+
+export const navigationLinksData = [
+  {
+    id: 1,
+    href: "/",
+    label: "Home",
+  },
+  {
+    id: 2,
+    href: "/about",
+    label: "About",
+  },
+  {
+    id: 3,
+    href: "/services",
+    label: "Services",
+  },
+  {
+    id: 4,
+    href: "/case-studies",
+    label: "Case Studies",
+  },
+  {
+    id: 5,
+    href: "/contact",
+    label: "Contact",
+  },
+];
 
 // Offer Services Dropdown Tab
 

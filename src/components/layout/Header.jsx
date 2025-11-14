@@ -1,8 +1,5 @@
 "use client";
 import Image from "next/image";
-import Link from "next/link";
-import NavigationLink from "../common/NavigationLink";
-import NavigationDropdown from "../common/NavigationDropdown";
 import HamburgerMenu from "./HamburgerMenu";
 import { usePathname } from "next/navigation";
 import CommonBtn1 from "../common/CommonBtn1";
@@ -15,48 +12,38 @@ import { useGSAP } from "@gsap/react";
 import { useLenis } from "lenis/react";
 import { useTransitionRouter } from "next-view-transitions";
 import { slideInOutTransition } from "@/utils/pageTransition";
+import { navigationLinksData } from "@/constants/globals";
+import { cn } from "@/lib/utils";
 
 const Header = () => {
   const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
-  const container = useRef();
-  const [isVisible, setIsVisible] = useState(false);
-  const prevScrollY = useRef(0);
-  const [hasMounted, setHasMounted] = useState(false);
   const lenis = useLenis();
   const router = useTransitionRouter();
-
-  useEffect(() => {
-    setHasMounted(true);
-  }, []);
+  const [showHeader, setShowHeader] = useState(true);
+  const [lastScroll, setLastScroll] = useState(0);
+  const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      const currentScrollY = window.scrollY;
+      const currentScroll = window.scrollY;
 
-      // Always hide header when at top of page (scrollY <= 100)
-      if (currentScrollY <= 100) {
-        setIsVisible(false);
-        prevScrollY.current = currentScrollY;
-        return;
-      }
+      setIsScrolled(window.scrollY > 80);
 
-      // Only show/hide behavior when scrolled beyond 100px
-      if (currentScrollY > prevScrollY.current) {
-        // Scrolling down - hide header
-        setIsVisible(false);
+      if (currentScroll > lastScroll && currentScroll > 80) {
+        // scrolling down → hide header
+        setShowHeader(false);
       } else {
-        // Scrolling up - show header
-        setIsVisible(true);
+        // scrolling up → show header
+        setShowHeader(true);
       }
 
-      // Update previous scroll position
-      prevScrollY.current = currentScrollY;
+      setLastScroll(currentScroll);
     };
 
-    window.addEventListener("scroll", handleScroll, { passive: true });
+    window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [lastScroll]);
 
   // 🚫 Disable scroll when hamburger is open
   useEffect(() => {
@@ -91,103 +78,27 @@ const Header = () => {
     "/branding",
   ];
 
-  const currentPath = pathname || "/";
-
-  if (!hasMounted) return null;
-
   return (
     <header>
       <div
-        ref={container}
-        className={`absolute top-0 left-0 z-[100] flex w-full items-center rounded-br-[2rem] rounded-bl-[2rem] px-[2rem] py-[3rem] md:px-[4rem] xl:px-[0rem] ${
-          noGradientPaths.includes(currentPath) ? "" : "header-gradient-bg"
-        }`}
+        className={cn(
+          "fixed top-0 left-0 z-[100] flex w-full items-center rounded-br-[2rem] rounded-bl-[2rem] px-[2rem] py-[3rem] transition-transform duration-300 md:px-[4rem] xl:px-[0rem]",
+          isScrolled
+            ? ""
+            : noGradientPaths.includes(pathname)
+              ? ""
+              : "header-gradient-bg",
+          showHeader ? "translate-y-0" : "-translate-y-full",
+        )}
       >
-        <div className="relative mx-auto flex w-full max-w-[120.329rem] items-center justify-between overflow-hidden">
-          <div className="header-logo">
-            <a
-              onClick={(e) => {
-                e.preventDefault();
-
-                router.push("/", {
-                  onTransitionReady: slideInOutTransition, // 🔥 GLOBAL ANIMATION
-                });
-              }}
-              href="/"
-              className="relative flex"
-            >
-              <Image
-                src="/images/logo.svg"
-                alt="Brand Logo"
-                width={170}
-                height={66}
-                fetchPriority="high"
-                className="w-[14rem] md:w-[17rem]"
-              />
-            </a>
-          </div>
-
-          <div className="flex items-center justify-end gap-[2rem] xl:gap-[6rem]">
-            <nav className="hidden items-center justify-center gap-[1rem] xl:flex">
-              {/* Each child div will be staggered */}
-              <div className="header-nav">
-                <NavigationLink href="/">Home</NavigationLink>
-              </div>
-              <div className="header-nav">
-                <NavigationLink href="/about">About</NavigationLink>
-              </div>
-              {/* <div>
-              <NavigationDropdown />
-            </div> */}
-              <div className="header-nav">
-                <NavigationLink href="/services">Services</NavigationLink>
-              </div>
-              <div className="header-nav">
-                <NavigationLink href="/case-studies">
-                  Case Studies
-                </NavigationLink>
-              </div>
-              <div className="header-nav">
-                <NavigationLink href="/contact">Contact</NavigationLink>
-              </div>
-            </nav>
-
-            <div className="hidden items-center gap-[1rem] xl:flex">
-              <div className="header-cta">
-                <ContactPopoverBtn />
-              </div>
-
-              <div className="header-cta">
-                <CommonBtn1 />
-              </div>
-            </div>
-
-            {/* Contact Cta for Responsive */}
-            <div className="header-cta xl:hidden">
-              <ContactPopoverBtn />
-            </div>
-
-            {/* Hamburger Button */}
-            <div className="hamburger-button xl:hidden">
-              <button
-                aria-label="Open menu"
-                onClick={() => setIsOpen(true)}
-                className="inline-flex size-[4rem] items-center justify-center rounded-full border border-white"
-              >
-                <Menu aria-hidden="true" className="size-[2.3rem] text-white" />
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Sticky Header */}
-      <div
-        className={`fixed left-0 z-[998] w-full p-[1rem] transition-transform duration-300 md:p-[2rem] ${
-          isVisible ? "translate-y-0" : "-translate-y-full"
-        }`}
-      >
-        <div className="shadow-01 relative mx-auto flex w-full max-w-[120.329rem] items-center justify-between rounded-full bg-black/30 px-[2rem] py-[1rem] backdrop-blur-[10px]">
+        <div
+          className={cn(
+            "relative mx-auto flex w-full max-w-[120.329rem] items-center justify-between overflow-hidden",
+            isScrolled
+              ? "shadow-01 rounded-full bg-black/30 px-[2rem] py-[1rem] backdrop-blur-[10px]"
+              : "",
+          )}
+        >
           <a
             onClick={(e) => {
               e.preventDefault();
@@ -197,52 +108,158 @@ const Header = () => {
               });
             }}
             href="/"
-            className="relative"
+            className={cn("relative flex")}
           >
-            <Image
-              src="/images/sticky-header-logo.svg"
-              alt="Brand Logo"
-              width={170}
-              height={66}
-              fetchPriority="high"
-              className="h-[6.6rem] w-[14rem] md:w-[17rem]"
-            />
+            {isScrolled ? (
+              <Image
+                src="/images/sticky-header-logo.svg"
+                alt="Brand Logo"
+                width={170}
+                height={66}
+                fetchPriority="high"
+                className="h-[6.6rem] w-[14rem] md:w-[17rem]"
+              />
+            ) : (
+              <Image
+                src="/images/logo.svg"
+                alt="Brand Logo"
+                width={170}
+                height={66}
+                fetchPriority="high"
+                className={cn("w-[14rem] md:w-[17rem]")}
+              />
+            )}
           </a>
 
-          <div className="flex items-center justify-end gap-[2rem] xl:gap-[6rem]">
-            <nav className="hidden items-center justify-center gap-[1rem] xl:flex">
-              <NavigationLink href="/">Home</NavigationLink>
-              <NavigationLink href="/about">About </NavigationLink>
-              <NavigationLink href="/services">Services</NavigationLink>
-              {/* <NavigationDropdown /> */}
-              <NavigationLink href="/case-studies">Case Studies</NavigationLink>
-              <NavigationLink href="/contact">Contact</NavigationLink>
+          <div
+            className={cn(
+              "flex items-center justify-end gap-[2rem] xl:gap-[6rem]",
+            )}
+          >
+            <nav
+              className={cn(
+                "hidden items-center justify-center gap-[1rem] xl:flex",
+              )}
+            >
+              {navigationLinksData.map((item) => (
+                <a
+                  key={item.id}
+                  onClick={(e) => {
+                    e.preventDefault();
+
+                    router.push(item.href, {
+                      onTransitionReady: slideInOutTransition, // 🔥 GLOBAL ANIMATION
+                    });
+                  }}
+                  href={item.href}
+                  className={cn(
+                    "inline-flex h-[4.6rem] items-center justify-center rounded-[6rem] px-[1.6rem] py-[1.1rem] text-[1.6rem] leading-[2.4rem] font-medium transition-all duration-300",
+                    pathname === item.href
+                      ? "text-text-primary bg-white"
+                      : "navigation-link bg-white/15 text-white",
+                  )}
+                >
+                  {/* Gradient Layer */}
+                  <div className={cn("gradient-layer")} />
+
+                  {/* Text Layer */}
+                  {item.label}
+                </a>
+              ))}
             </nav>
 
-            <div className="hidden items-center gap-[1rem] overflow-hidden xl:flex">
+            <div className={cn("hidden items-center gap-[1rem] xl:flex")}>
               <ContactPopoverBtn />
 
-              {/* CTA Button */}
               <CommonBtn1 />
             </div>
 
             {/* Contact Cta for Responsive */}
-            <div className="xl:hidden">
+            <div className={cn("xl:hidden")}>
               <ContactPopoverBtn />
             </div>
 
             {/* Hamburger Button */}
-            <div className="xl:hidden">
+            <div className={cn("xl:hidden")}>
               <button
+                aria-label="Open menu"
                 onClick={() => setIsOpen(true)}
-                className="inline-flex size-[4rem] items-center justify-center rounded-full border border-white"
+                className={cn(
+                  "inline-flex size-[4rem] items-center justify-center rounded-full border border-white",
+                )}
               >
-                <Menu className="size-[2.3rem] text-white" />
+                <Menu
+                  aria-hidden="true"
+                  className={cn("size-[2.3rem] text-white")}
+                />
               </button>
             </div>
           </div>
         </div>
       </div>
+
+      {/* Sticky Header */}
+      {/*<div*/}
+      {/*  className={`fixed left-0 z-[998] w-full p-[1rem] transition-transform duration-300 md:p-[2rem] ${*/}
+      {/*    isVisible ? "translate-y-0" : "-translate-y-full"*/}
+      {/*  }`}*/}
+      {/*>*/}
+      {/*  <div className="shadow-01 relative mx-auto flex w-full max-w-[120.329rem] items-center justify-between rounded-full bg-black/30 px-[2rem] py-[1rem] backdrop-blur-[10px]">*/}
+      {/*    <a*/}
+      {/*      onClick={(e) => {*/}
+      {/*        e.preventDefault();*/}
+
+      {/*        router.push("/", {*/}
+      {/*          onTransitionReady: slideInOutTransition, // 🔥 GLOBAL ANIMATION*/}
+      {/*        });*/}
+      {/*      }}*/}
+      {/*      href="/"*/}
+      {/*      className="relative"*/}
+      {/*    >*/}
+      {/*      <Image*/}
+      {/*        src="/images/sticky-header-logo.svg"*/}
+      {/*        alt="Brand Logo"*/}
+      {/*        width={170}*/}
+      {/*        height={66}*/}
+      {/*        fetchPriority="high"*/}
+      {/*        className="h-[6.6rem] w-[14rem] md:w-[17rem]"*/}
+      {/*      />*/}
+      {/*    </a>*/}
+
+      {/*    <div className="flex items-center justify-end gap-[2rem] xl:gap-[6rem]">*/}
+      {/*      <nav className="hidden items-center justify-center gap-[1rem] xl:flex">*/}
+      {/*        <NavigationLink href="/">Home</NavigationLink>*/}
+      {/*        <NavigationLink href="/about">About </NavigationLink>*/}
+      {/*        <NavigationLink href="/services">Services</NavigationLink>*/}
+      {/*        /!* <NavigationDropdown /> *!/*/}
+      {/*        <NavigationLink href="/case-studies">Case Studies</NavigationLink>*/}
+      {/*        <NavigationLink href="/contact">Contact</NavigationLink>*/}
+      {/*      </nav>*/}
+
+      {/*      <div className="hidden items-center gap-[1rem] overflow-hidden xl:flex">*/}
+      {/*        <ContactPopoverBtn />*/}
+
+      {/*        /!* CTA Button *!/*/}
+      {/*        <CommonBtn1 />*/}
+      {/*      </div>*/}
+
+      {/*      /!* Contact Cta for Responsive *!/*/}
+      {/*      <div className="xl:hidden">*/}
+      {/*        <ContactPopoverBtn />*/}
+      {/*      </div>*/}
+
+      {/*      /!* Hamburger Button *!/*/}
+      {/*      <div className="xl:hidden">*/}
+      {/*        <button*/}
+      {/*          onClick={() => setIsOpen(true)}*/}
+      {/*          className="inline-flex size-[4rem] items-center justify-center rounded-full border border-white"*/}
+      {/*        >*/}
+      {/*          <Menu className="size-[2.3rem] text-white" />*/}
+      {/*        </button>*/}
+      {/*      </div>*/}
+      {/*    </div>*/}
+      {/*  </div>*/}
+      {/*</div>*/}
 
       {/* Hamburger Menu */}
       <div className="xl:hidden">
