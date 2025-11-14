@@ -66,7 +66,7 @@ const ServiceSlider2 = () => {
     >
       {fullStackWordpressSlides.map((item, idx) => (
         <SwiperSlide key={idx} className="!flex !items-center !justify-center">
-          <div className="size-full overflow-hidden rounded-[1.3rem]">
+          <div className="overflow-hidden rounded-[1.3rem]">
             <Image
               src={item.src}
               width={257}
