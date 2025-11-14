@@ -6,8 +6,12 @@ import Image from "next/image";
 import HamburgerAccordion from "../common/HamburgerAccordion";
 import ContactPopoverBtn from "../common/ContactPopoverBtn";
 import CommonBtn2 from "../common/CommonBtn2";
+import { useTransitionRouter } from "next-view-transitions";
+import { slideInOutTransition } from "@/utils/pageTransition";
 
 const HamburgerMenu = ({ isOpen, setIsOpen }) => {
+  const router = useTransitionRouter();
+
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflowY = "hidden";
@@ -38,8 +42,15 @@ const HamburgerMenu = ({ isOpen, setIsOpen }) => {
         className={`hamburger-menu fixed top-0 z-[999] flex h-screen w-full flex-col transition-all duration-300 ${isOpen ? "left-0" : "left-[200%]"}`}
       >
         <div className="flex items-center justify-between px-[2rem] py-[3rem] md:px-[4rem]">
-          <Link
-            onClick={() => setIsOpen(false)}
+          <a
+            onClick={(e) => {
+              e.preventDefault(); // stop default link
+              setIsOpen(false); // close menu
+
+              router.push("/", {
+                onTransitionReady: slideInOutTransition, // custom animation
+              });
+            }}
             href="/"
             className="relative overflow-hidden"
           >
@@ -51,7 +62,7 @@ const HamburgerMenu = ({ isOpen, setIsOpen }) => {
               fetchPriority="high"
               className="w-[14rem] md:w-[17rem]"
             />
-          </Link>
+          </a>
 
           <div className="flex items-center gap-[2rem]">
             {/* Contact Cta for Responsive */}
@@ -70,53 +81,88 @@ const HamburgerMenu = ({ isOpen, setIsOpen }) => {
         <div className="overflow-x-hidden overflow-y-auto">
           <nav className="flex flex-col gap-[1rem] text-white">
             <div className="relative border-b border-white/20 pb-[1rem] md:px-[4rem]">
-              <Link
+              <a
+                onClick={(e) => {
+                  e.preventDefault(); // stop default link
+                  setIsOpen(false); // close menu
+
+                  router.push("/", {
+                    onTransitionReady: slideInOutTransition, // custom animation
+                  });
+                }}
                 href="/"
-                onClick={() => setIsOpen(false)}
                 className="relative flex text-[3rem] leading-[4rem] font-semibold capitalize before:absolute before:bottom-[-2.1rem] before:left-0 before:h-[2px] before:w-full before:origin-right before:scale-x-0 before:bg-gradient-to-r before:from-[#FFE400] before:to-[#FF37B3] before:transition-transform before:duration-300 hover:before:origin-left hover:before:scale-x-100 md:text-[4rem] md:leading-[5rem]"
               >
                 <span className="px-[2rem]">Home</span>
-              </Link>
+              </a>
             </div>
 
             <div className="relative border-b border-white/20 pb-[1rem] md:px-[4rem]">
-              <Link
+              <a
+                onClick={(e) => {
+                  e.preventDefault(); // stop default link
+                  setIsOpen(false); // close menu
+
+                  router.push("/about", {
+                    onTransitionReady: slideInOutTransition, // custom animation
+                  });
+                }}
                 href="/about"
-                onClick={() => setIsOpen(false)}
                 className="relative flex text-[3rem] leading-[4rem] font-semibold capitalize before:absolute before:bottom-[-2.1rem] before:left-0 before:h-[2px] before:w-full before:origin-right before:scale-x-0 before:bg-gradient-to-r before:from-[#FFE400] before:to-[#FF37B3] before:transition-transform before:duration-300 hover:before:origin-left hover:before:scale-x-100 md:text-[4rem] md:leading-[5rem]"
               >
                 <span className="px-[2rem]">About</span>
-              </Link>
+              </a>
             </div>
 
             <div className="relative border-b border-white/20 pb-[1rem] md:px-[4rem]">
-              <Link
+              <a
+                onClick={(e) => {
+                  e.preventDefault(); // stop default link
+                  setIsOpen(false); // close menu
+
+                  router.push("/services", {
+                    onTransitionReady: slideInOutTransition, // custom animation
+                  });
+                }}
                 href="/services"
-                onClick={() => setIsOpen(false)}
                 className="relative flex text-[3rem] leading-[4rem] font-semibold capitalize before:absolute before:bottom-[-2.1rem] before:left-0 before:h-[2px] before:w-full before:origin-right before:scale-x-0 before:bg-gradient-to-r before:from-[#FFE400] before:to-[#FF37B3] before:transition-transform before:duration-300 hover:before:origin-left hover:before:scale-x-100 md:text-[4rem] md:leading-[5rem]"
               >
                 <span className="px-[2rem]">Services</span>
-              </Link>
+              </a>
             </div>
 
             <div className="relative border-b border-white/20 pb-[1rem] md:px-[4rem]">
-              <Link
+              <a
+                onClick={(e) => {
+                  e.preventDefault(); // stop default link
+                  setIsOpen(false); // close menu
+
+                  router.push("/case-studies", {
+                    onTransitionReady: slideInOutTransition, // custom animation
+                  });
+                }}
                 href="/case-studies"
-                onClick={() => setIsOpen(false)}
                 className="relative flex text-[3rem] leading-[4rem] font-semibold capitalize before:absolute before:bottom-[-2.1rem] before:left-0 before:h-[2px] before:w-full before:origin-right before:scale-x-0 before:bg-gradient-to-r before:from-[#FFE400] before:to-[#FF37B3] before:transition-transform before:duration-300 hover:before:origin-left hover:before:scale-x-100 md:text-[4rem] md:leading-[5rem]"
               >
                 <span className="px-[2rem]">Case Studies</span>
-              </Link>
+              </a>
             </div>
 
             <div className="relative border-b border-white/20 pb-[1rem] md:px-[4rem]">
-              <Link
+              <a
+                onClick={(e) => {
+                  e.preventDefault(); // stop default link
+                  setIsOpen(false); // close menu
+
+                  router.push("/contact", {
+                    onTransitionReady: slideInOutTransition, // custom animation
+                  });
+                }}
                 href="/contact"
-                onClick={() => setIsOpen(false)}
                 className="relative flex text-[3rem] leading-[4rem] font-semibold capitalize before:absolute before:bottom-[-2.1rem] before:left-0 before:h-[2px] before:w-full before:origin-right before:scale-x-0 before:bg-gradient-to-r before:from-[#FFE400] before:to-[#FF37B3] before:transition-transform before:duration-300 hover:before:origin-left hover:before:scale-x-100 md:text-[4rem] md:leading-[5rem]"
               >
                 <span className="px-[2rem]">Contact</span>
-              </Link>
+              </a>
             </div>
           </nav>
         </div>

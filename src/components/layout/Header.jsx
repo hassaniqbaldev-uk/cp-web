@@ -13,6 +13,8 @@ import gsap from "gsap";
 import { useLoadingStore } from "@/store/useLoadingStore";
 import { useGSAP } from "@gsap/react";
 import { useLenis } from "lenis/react";
+import { useTransitionRouter } from "next-view-transitions";
+import { slideInOutTransition } from "@/utils/pageTransition";
 
 const Header = () => {
   const pathname = usePathname();
@@ -22,6 +24,7 @@ const Header = () => {
   const prevScrollY = useRef(0);
   const [hasMounted, setHasMounted] = useState(false);
   const lenis = useLenis();
+  const router = useTransitionRouter();
 
   useEffect(() => {
     setHasMounted(true);
@@ -102,7 +105,17 @@ const Header = () => {
       >
         <div className="relative mx-auto flex w-full max-w-[120.329rem] items-center justify-between overflow-hidden">
           <div className="header-logo">
-            <Link href="/" className="relative flex">
+            <a
+              onClick={(e) => {
+                e.preventDefault();
+
+                router.push("/", {
+                  onTransitionReady: slideInOutTransition, // 🔥 GLOBAL ANIMATION
+                });
+              }}
+              href="/"
+              className="relative flex"
+            >
               <Image
                 src="/images/logo.svg"
                 alt="Brand Logo"
@@ -111,7 +124,7 @@ const Header = () => {
                 fetchPriority="high"
                 className="w-[14rem] md:w-[17rem]"
               />
-            </Link>
+            </a>
           </div>
 
           <div className="flex items-center justify-end gap-[2rem] xl:gap-[6rem]">

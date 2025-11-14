@@ -13,21 +13,7 @@ import { useLenis } from "lenis/react";
 
 const HomePage = ({ caseStudies }) => {
   const lenis = useLenis();
-  const { isLoading, setIsLoading, hasSeenLoader, setHasSeenLoader } =
-    useLoadingStore();
-
-  useEffect(() => {
-    // RUN LOADER ONLY IF:
-    // - user never saw loader before (per session)
-    // - AND it's a fresh visit or page refresh
-    const isReload = performance.navigation.type === 1; // 1 = reload
-    const isFreshEntry = document.referrer === ""; // direct entry
-
-    if (!hasSeenLoader && (isReload || isFreshEntry)) {
-      setIsLoading(true);
-      setHasSeenLoader(true);
-    }
-  }, [hasSeenLoader, setIsLoading, setHasSeenLoader]);
+  const { isLoading, setIsLoading } = useLoadingStore();
 
   useEffect(() => {
     const html = document.documentElement;

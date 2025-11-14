@@ -1,47 +1,45 @@
 "use client";
 
-import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useTransitionRouter } from "next-view-transitions";
-import { useLoadingStore } from "@/store/useLoadingStore";
+import { slideInOutTransition } from "@/utils/pageTransition";
 
 const NavigationLink = ({ href, children }) => {
   const pathname = usePathname();
   const isActive = pathname === href;
   const router = useTransitionRouter();
-  const { setIsLoading } = useLoadingStore();
 
-  const slideInOut = () => {
-    // OLD VIEW slides out LEFT
-    document.documentElement.animate(
-      [{ transform: "translateX(0)" }, { transform: "translateX(-35%)" }],
-      {
-        duration: 1500,
-        easing: "cubic-bezier(0.87, 0, 0.13, 1)",
-        fill: "forwards",
-        pseudoElement: "::view-transition-old(root)",
-      },
-    );
-
-    // NEW VIEW slides in from RIGHT
-    document.documentElement.animate(
-      [{ transform: "translateX(100%)" }, { transform: "translateX(0%)" }],
-      {
-        duration: 1500,
-        easing: "cubic-bezier(0.87, 0, 0.13, 1)",
-        fill: "forwards",
-        pseudoElement: "::view-transition-new(root)",
-      },
-    );
-  };
+  // const slideInOut = () => {
+  //   // OLD VIEW slides out LEFT
+  //   document.documentElement.animate(
+  //     [{ transform: "translateX(0)" }, { transform: "translateX(-35%)" }],
+  //     {
+  //       duration: 1500,
+  //       easing: "cubic-bezier(0.87, 0, 0.13, 1)",
+  //       fill: "forwards",
+  //       pseudoElement: "::view-transition-old(root)",
+  //     },
+  //   );
+  //
+  //   // NEW VIEW slides in from RIGHT
+  //   document.documentElement.animate(
+  //     [{ transform: "translateX(100%)" }, { transform: "translateX(0%)" }],
+  //     {
+  //       duration: 1500,
+  //       easing: "cubic-bezier(0.87, 0, 0.13, 1)",
+  //       fill: "forwards",
+  //       pseudoElement: "::view-transition-new(root)",
+  //     },
+  //   );
+  // };
 
   return (
     <a
       onClick={(e) => {
         e.preventDefault();
-        setIsLoading(false); // IMPORTANT — prevent loader on internal nav
+
         router.push(href, {
-          onTransitionReady: slideInOut,
+          onTransitionReady: slideInOutTransition, // 🔥 GLOBAL ANIMATION
         });
       }}
       href={href}
