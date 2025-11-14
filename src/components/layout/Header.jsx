@@ -23,6 +23,7 @@ const Header = () => {
   const [showHeader, setShowHeader] = useState(true);
   const [lastScroll, setLastScroll] = useState(0);
   const [isScrolled, setIsScrolled] = useState(false);
+  const rawPath = usePathname();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -78,6 +79,8 @@ const Header = () => {
     "/branding",
   ];
 
+  const normalizedPath = rawPath === "" ? "/" : rawPath;
+
   return (
     <header>
       <div
@@ -85,7 +88,7 @@ const Header = () => {
           "fixed top-0 left-0 z-[100] flex w-full items-center rounded-br-[2rem] rounded-bl-[2rem] px-[2rem] py-[3rem] transition-transform duration-300 md:px-[4rem] xl:px-[0rem]",
           isScrolled
             ? ""
-            : noGradientPaths.includes(pathname)
+            : noGradientPaths.includes(normalizedPath)
               ? ""
               : "header-gradient-bg",
           showHeader ? "translate-y-0" : "-translate-y-full",
