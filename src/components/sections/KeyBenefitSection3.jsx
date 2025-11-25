@@ -159,11 +159,11 @@ const KeyBenefitSection3 = () => {
 
             <ul className="flex flex-col gap-[1.2rem]">
               {[
-                "Vivamus sed mi eu nulla malesuada aliquet.",
-                "Vivamus sed mi eu nulla malesuada aliquet.",
-                "Vivamus sed mi eu nulla malesuada aliquet.",
-                "Vivamus sed mi eu nulla malesuada aliquet.",
-                "Vivamus sed mi eu nulla malesuada aliquet.",
+                "Builds a memorable and distinctive brand presence.",
+                "Creates trust and credibility with your audience.",
+                "Improves customer recognition across all touchpoints.",
+                "Strengthens your market positioning and competitiveness.",
+                "Increases perceived value and supports long-term growth.",
               ].map((item, idx) => (
                 <li
                   key={idx}

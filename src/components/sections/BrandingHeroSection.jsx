@@ -165,11 +165,9 @@ const BrandingHeroSection = () => {
           </h1>
 
           <p className="branding-hero-desc mt-[1.2rem] mb-[2.5rem] text-[1.6rem] leading-[2.4rem] font-normal text-white opacity-0 md:text-[1.8rem] md:leading-[2.6rem]">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer
-            mollis, libero eget volutpat porta, mi felis elementum leo, et
-            aliquet orci felis sit amet orci. Donec varius justo eget orci
-            laoreet, non bibendum justo cursus. Proin a nisi semper, ultrices
-            risus nec, dapibus ligula.
+            Build a brand that stands out. From strategy to visual identity, we
+            create powerful branding that connects with your audience and
+            elevates your business.
           </p>
 
           <div className="branding-hero-cta-btn opacity-0">

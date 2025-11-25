@@ -106,14 +106,14 @@ const OurApproachSection = () => {
             </div>
 
             <h2 className="mt-[2.4rem] text-[3rem] leading-[4rem] font-semibold tracking-[-0.02em] text-[#070707] md:text-[5.2rem] md:leading-[6rem]">
-              A practical design process that's clear and collaborative.
+              A refined design process that’s clear and collaborative.
             </h2>
 
             <p className="mt-[1.6rem] mb-[3.8rem] text-[1.8rem] leading-[2.8rem] font-medium text-[#070707] md:text-[2.2rem] md:leading-[3.2rem] xl:max-w-[44.2rem]">
-              We keep things simple: every UI/UX project starts with a
-              consultation call to understand your goals. From there, we design
-              in Figma and deliver websites, apps, and dashboards that are
-              modern, responsive, and ready to build.
+              We keep things focused: every UI/UX project begins with a
+              consultation to define your goals. From there, we design in Figma
+              and deliver websites, apps, and dashboards that are modern,
+              responsive, and ready to build.
             </p>
 
             <CommonBtn3 label="Book a 15-min free call" href="/contact" />

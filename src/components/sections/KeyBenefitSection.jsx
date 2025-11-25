@@ -127,9 +127,9 @@ const KeyBenefitSection = () => {
             </h2>
 
             <p className="mt-[2rem] mb-[4.7rem] w-full text-[1.8rem] leading-[2.8rem] font-medium text-[#070707] md:text-[2.2rem] md:leading-[3.2rem] lg:max-w-[54.2rem]">
-              Investing in professional UI/UX design isn't just about looks —
-              it’s about creating websites, apps, and dashboards that are easier
-              to use, faster to launch, and built to grow with your business.
+              Investing in professional UI/UX means creating websites, apps, and
+              dashboards that are easier to use, quicker to launch, and built to
+              scale with your business.
             </p>
 
             <CommonBtn3 label="Book a 15-min free call" href="/call" />

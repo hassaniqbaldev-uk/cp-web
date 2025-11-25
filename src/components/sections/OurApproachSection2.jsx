@@ -119,12 +119,11 @@ const OurApproachSection2 = () => {
             </h2>
 
             <p className="mt-[1.6rem] mb-[3.8rem] text-[1.6rem] leading-[2.6rem] font-medium text-[#070707] md:text-[2.2rem] md:leading-[3.2rem]">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus
-              laoreet enim ut sem egestas, in feugiat elit aliquam. Donec
-              tincidunt pellentesque turpis, vel rhoncus tellus cursus non.
-              Proin varius ipsum placerat risus laoreet, in euismod augue
-              viverra. Suspendisse vitae augue quis massa elementum congue.
-              Quisque blandit sem dolor, ullamcorper imperdiet eros.
+              We use Elementor to build flexible, high-performance WordPress
+              sites with clean layouts, consistent styling, and fast load
+              speeds. Every page is structured for easy editing, scalable
+              growth, and seamless integration with your tools — giving you a
+              site that’s simple to manage and built to last.
             </p>
 
             <CommonBtn3 label="Book a 15-min free call" href="/call" />

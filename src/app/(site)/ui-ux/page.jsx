@@ -50,7 +50,7 @@ const UiUxPage = () => {
         <IndustriesSection
           labelText="Industries"
           title="Design solutions built for every sector"
-          description="From websites to apps and dashboards, our Figma-first UI/UX design and development-ready workflows adapt to any industry."
+          description="From websites to apps and dashboards, our Figma-driven UI/UX workflows adapt to any industry with scalable, development-ready design."
           data={industriesData}
         />
         <ContactSection />

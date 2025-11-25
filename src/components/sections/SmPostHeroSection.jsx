@@ -153,11 +153,12 @@ const SmPostHeroSection = () => {
             </h1>
 
             <p className="mt-[1.2rem] mb-[2.5rem] max-w-[60rem] text-[1.6rem] leading-[2.4rem] font-normal text-white md:text-[1.8rem] md:leading-[2.6rem]">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer
-              mollis, libero eget volutpat porta, mi felis elementum leo, et
-              aliquet orci felis sit amet orci. Donec varius justo eget orci
-              laoreet, non bibendum justo cursus. Proin a nisi semper, ultrices
-              risus nec, dapibus ligula.
+              We create high-performing social media posts designed to boost
+              engagement, elevate your brand, and connect with your audience.
+              From striking visuals to clear messaging, every design is crafted
+              for impact, visibility, and meaningful interactions. Whether
+              you're growing a business or scaling a brand, our content delivers
+              real results and drives consistent growth across platforms.
             </p>
 
             <CommonBtn2 />

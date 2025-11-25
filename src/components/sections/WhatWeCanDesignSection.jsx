@@ -83,9 +83,7 @@ const WhatWeCanDesignSection = () => {
             </h2>
 
             <p className="mt-[1.6rem] mb-[3.8rem] max-w-[57.4rem] text-[1.8rem] leading-[2.8rem] font-medium text-[#070707] md:text-[2.2rem] md:leading-[3.2rem]">
-              From websites and eCommerce stores to apps and dashboards — we
-              design every interface in Figma, making it easy to collaborate,
-              iterate, and hand over to development without friction.
+             From websites and eCommerce platforms to apps and dashboards — we design every interface in Figma, ensuring smooth collaboration, rapid iteration, and seamless handoff to development.
             </p>
 
             <CommonBtn3

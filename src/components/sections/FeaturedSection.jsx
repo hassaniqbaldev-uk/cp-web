@@ -164,11 +164,10 @@ const FeaturedSection = () => {
         </h2>
 
         <p className="] featured-section-description mt-[1.6rem] text-[1.8rem] leading-[2.8rem] font-medium text-[#070707] md:text-[2.2rem] md:leading-[3.2rem]">
-          Flexible, supported by data, and designed for success—at all phases of
-          the funnel. libero eget volutpat porta, mi felis elementum leo, et
-          aliquet orci felis sit amet orci. Donec varius justo eget orci
-          laoreet, non bibendum justo cursus. libero eget volutpat porta, mi
-          felis elementum leo, et aliquet orci felis sit amet orci.
+          Flexible, data-led, and built for growth—our WordPress solutions are
+          designed to support every stage of your funnel. From performance to
+          scalability, we create sites that are fast, secure, and ready to
+          evolve with your business.
         </p>
 
         <div className="my-[4rem] grid grid-cols-1 gap-x-[1rem] gap-y-[1rem] md:grid-cols-2 xl:grid-cols-3 xl:gap-x-[10rem]">

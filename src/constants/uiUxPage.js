@@ -48,7 +48,7 @@ export const approachItems = [
     bgColor: "bg-[#FFC300]",
     title: "Consultation First",
     description:
-      "Every project starts with a call to define your needs and expectations.",
+      "Every project begins with a focused call to outline your objectives and expectations.",
     iconClass: "h-[4.4rem] w-[4.4rem]",
   },
   {
@@ -56,7 +56,7 @@ export const approachItems = [
     bgColor: "bg-[#FF8630]",
     title: "Figma-Driven Design",
     description:
-      "All designs are created in Figma, making feedback and collaboration seamless.",
+      "All interfaces are design in Figma, ensuring smooth collaboration and real-time feedback.",
     iconClass: "h-[4.4rem] w-[3rem]",
   },
   {
@@ -64,7 +64,7 @@ export const approachItems = [
     bgColor: "bg-[#3078FF]",
     title: "Performance-Optimized",
     description:
-      "Clean, responsive designs that focus on usability and conversions.",
+      "Clean, responsive layouts engineered for usability, speed, and conversions.",
     iconClass: "h-[4.4rem] w-[4.6rem]",
   },
   {
@@ -72,7 +72,7 @@ export const approachItems = [
     bgColor: "bg-[#F14A58]",
     title: "Built for Development",
     description:
-      "Our UI/UX work translates directly into websites, apps, and dashboards without friction.",
+      "Our UI/UX work translates seamlessly into websites, apps, and dashboards without friction.",
     iconClass: "h-[4rem] w-[4.6rem]",
   },
 ];
@@ -83,7 +83,7 @@ export const webDesignServiceCards = [
     image: "/images/web-design-service-card-img-1.png",
     title: "Website Strategy",
     description:
-      "Crafting exceptional digital experiences your premier web design and development partner",
+      "Building data-driven digital experiences with a clear plan for growth, conversion, and scalability.",
     bgColor: "bg-[#F14A58]",
   },
   {
@@ -91,7 +91,7 @@ export const webDesignServiceCards = [
     image: "/images/web-design-service-card-img-2.png", // Update with actual paths
     title: "Website Design",
     description:
-      "Creating intuitive and engaging user interfaces with seamless user experiences",
+      "Modern, responsive website interfaces crafted in Figma with clean layouts and development-ready structure.",
     bgColor: "bg-[#FFC300]",
   },
   {
@@ -99,7 +99,7 @@ export const webDesignServiceCards = [
     image: "/images/web-design-service-card-img-3.png", // Update with actual paths
     title: "Landing Page Design",
     description:
-      "Building responsive and high-performance websites with modern technologies",
+      "High-impact landing pages designed for clarity, speed, and conversion-focused user journeys.",
     bgColor: "bg-[#3078FF]",
   },
   {
@@ -107,7 +107,7 @@ export const webDesignServiceCards = [
     image: "/images/web-design-service-card-img-4.png", // Update with actual paths
     title: "Design Systems",
     description:
-      "Ongoing support and maintenance to keep your website running smoothly",
+      "Scalable, consistent UI libraries built with reusable components, structured styling, and development-ready guidelines.",
     bgColor: "bg-[#FF8630]",
   },
 ];
@@ -119,7 +119,7 @@ export const whatWeCanHelpData = [
     iconBg: "bg-[#FFC300]",
     title: "Web Design",
     description:
-      "Custom website designs tailored to your brand and goals — built in Figma for seamless developer handoff.",
+      "Custom website interfaces tailored to your brand — built in Figma for clean structure and seamless developer handoff.",
     iconWidth: "w-[2.6rem]",
   },
   {
@@ -128,7 +128,7 @@ export const whatWeCanHelpData = [
     iconBg: "bg-[#FF8630]",
     title: "eCommerce",
     description:
-      "Conversion-focused online stores that blend clean UX with performance-driven layouts.",
+      "Conversion-driven online stores with refined UX, optimized product flows, and performance-focused layouts.",
     iconWidth: "w-[2.4rem]",
   },
   {
@@ -137,7 +137,7 @@ export const whatWeCanHelpData = [
     iconBg: "bg-[#3078FF]",
     title: "App & Dashboard UI",
     description:
-      "Interfaces for mobile apps, SaaS products, and dashboards designed for clarity, speed, and user adoption.",
+      "Interfaces for mobile apps, SaaS tools, and dashboards designed for clarity, speed, and intuitive user adoption.",
     iconWidth: "w-[2.2rem]",
   },
   {
@@ -146,7 +146,7 @@ export const whatWeCanHelpData = [
     iconBg: "bg-[#F14A58]",
     title: "Responsive Design",
     description:
-      "Every design adapts perfectly across desktop, tablet, and mobile for a consistent experience.",
+      "Every layout adapts flawlessly across desktop, tablet, and mobile to deliver a consistent, polished experience.",
     iconWidth: "w-[2.5rem]",
   },
   {
@@ -155,7 +155,7 @@ export const whatWeCanHelpData = [
     iconBg: "bg-[#44B276]",
     title: "Prototyping in Figma",
     description:
-      "Clickable Figma prototypes so you can explore the design before development begins.",
+      "Interactive Figma prototypes that let you test user flows, validate ideas, and refine the experience before development.",
     iconWidth: "w-[2.6rem]",
   },
   {
@@ -164,7 +164,7 @@ export const whatWeCanHelpData = [
     iconBg: "bg-[#FFC300]",
     title: "Design Strategy",
     description:
-      "Consultation-led approach that aligns your UI/UX with business goals and future growth.",
+      "A consultation-led process that aligns your UI/UX direction with business goals, user needs, and long-term growth.",
     iconWidth: "w-[2.8rem]",
   },
 ];
@@ -174,19 +174,19 @@ export const keyBenefitCards = [
     id: 1,
     title: "Clearer User Journeys",
     description:
-      "Intuitive layouts that reduce friction and help visitors take action faster.",
+      "Intuitive layouts that remove friction and guide users to take action faster.",
   },
   {
     id: 2,
     title: "Higher Conversions",
     description:
-      "Designs shaped around your goals — whether that's more sales, sign-ups, or engagement.",
+      "Designs shaped around your goals — whether that’s more sales, sign-ups, or engagement.",
   },
   {
     id: 3,
     title: "Figma Collaboration",
     description:
-      "Work with us in real time using Figma for quick feedback and iterations.",
+      "Work with us in real time through Figma for rapid feedback and smooth iterations.",
   },
   {
     id: 4,
@@ -198,7 +198,7 @@ export const keyBenefitCards = [
     id: 5,
     title: "Future-Proofed",
     description:
-      "Responsive, scalable designs that adapt as your business evolves.",
+      "Responsive, scalable interfaces that adapt as your business grows.",
   },
 ];
 
@@ -207,7 +207,7 @@ export const ourProcessData = [
     step: "STEP #1",
     title: "Consultation & Planning",
     description:
-      "We start with a call to understand your goals, audience, and project scope. No guesswork, just clear direction from the start.",
+      "We start with a call to understand your goals, users, and project scope — giving you clear direction from day one.",
     topValue: "4rem",
     backgroundColor: "linear-gradient(270deg, #FFD900 0%, #EE7621 100%)",
   },
@@ -215,7 +215,7 @@ export const ourProcessData = [
     step: "STEP #2",
     title: "Concepts in Figma",
     description:
-      "We create clear wireframes and visual design concepts for early feedback and collaboration.",
+      "Initial layout concepts are created in Figma to align structure, flow, and visual direction early.",
     topValue: "7.2rem",
     backgroundColor: "linear-gradient(270deg, #FF37B3 0%, #FFD900 100%)",
   },
@@ -223,7 +223,7 @@ export const ourProcessData = [
     step: "STEP #3",
     title: "UI Design & Refinement",
     description:
-      "Your approved designs are built with pixel-perfect precision using modern, scalable code.",
+      "We refine the UI with polished visuals, improved interactions, and responsive layouts.",
     topValue: "7.2rem",
     backgroundColor: "linear-gradient(90deg, #FF37B3 0%, #F14A58 100%)",
   },
@@ -231,7 +231,7 @@ export const ourProcessData = [
     step: "STEP #4",
     title: "Development Handoff",
     description:
-      "We test everything thoroughly and apply refinements to ensure optimal performance.",
+      "Final design files, assets, and guidelines are delivered to your dev team for frictionless build-out.",
     topValue: "10.4rem",
     backgroundColor: "linear-gradient(90deg, #F14A58 0%, #3078FF 100%)",
   },
@@ -239,7 +239,7 @@ export const ourProcessData = [
     step: "STEP #5",
     title: "Review & Support",
     description:
-      "Your site goes live smoothly — and we’re there to support you afterward.",
+      "We assist with ongoing updates, reviews, and improvements as your product evolves.",
     topValue: "10.4rem",
     backgroundColor: "linear-gradient(90deg, #3078FF 0%, #44B276 100%)",
   },
@@ -250,30 +250,30 @@ export const industriesData = [
     icon: "/images/automotive-icon.svg",
     title: "Automotive",
     description:
-      "Engaging websites and digital tools that drive customer interest and streamline dealer or service operations.",
+      "Engaging websites and digital tools that enhance user interest and streamline dealership or service operations.",
   },
   {
     icon: "/images/financial-icon.svg",
     title: "Financial",
     description:
-      "Clear, trustworthy dashboards and client portals designed to simplify complex data and build user confidence.",
+      "Clear, secure dashboards and client portals built to simplify complex data and strengthen user trust.",
   },
   {
     icon: "/images/tech-elec-icon.svg",
     title: "Technology & Electronics",
     description:
-      "User-friendly product sites and SaaS interfaces that enhance customer experience and boost conversions.",
+      "User-focused product sites and SaaS interfaces that improve customer experience and increase conversions.",
   },
   {
     icon: "/images/healthcare-icon.svg",
     title: "Healthcare",
     description:
-      "Accessible, secure platforms that make it easier for patients and professionals to connect and manage information.",
+      "Accessible, compliant platforms that make it easier for patients and professionals to connect and manage information.",
   },
   {
     icon: "/images/non-profit-icon.svg",
     title: "Non-Profit",
     description:
-      "Impactful digital platforms that amplify causes, engage supporters, and drive measurable results.",
+      "Impactful digital experiences that amplify missions, engage supporters, and deliver measurable outcomes.",
   },
 ];

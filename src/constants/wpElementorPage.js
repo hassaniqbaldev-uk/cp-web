@@ -119,7 +119,7 @@ export const whatWeCanHelpData2 = [
     icon: AnalysticsDashIcon,
     title: "Analytics Dashboard",
     description:
-      "Bespoke web design perfect for your brand and target audience.",
+      "Custom WordPress dashboards built for clear reporting and real-time business insights.",
   },
   {
     id: 2,
@@ -128,7 +128,7 @@ export const whatWeCanHelpData2 = [
     icon: ThemeCustomizeIcon,
     title: "Theme Customisation",
     description:
-      "Bespoke web design perfect for your brand and target audience.",
+      "Tailored WordPress themes designed to match your brand and deliver a polished user experience.",
   },
   {
     id: 3,
@@ -136,7 +136,7 @@ export const whatWeCanHelpData2 = [
     icon: GpayIntegrateIcon,
     title: "GPay Integration",
     description:
-      "Bespoke web design perfect for your brand and target audience.",
+      "Seamless Google Pay setup for fast, secure, and hassle-free online payments.",
   },
   {
     id: 4,
@@ -144,7 +144,7 @@ export const whatWeCanHelpData2 = [
     icon: ApplepayIntegrateIcon,
     title: "Apple Pay Integration",
     description:
-      "Bespoke web design perfect for your brand and target audience.",
+      "Smooth Apple Pay integration to simplify checkout and increase mobile conversions.",
   },
   {
     id: 5,
@@ -152,7 +152,7 @@ export const whatWeCanHelpData2 = [
     icon: OptimizeCheckoutIcon,
     title: "Optimized Checkout",
     description:
-      "Bespoke web design perfect for your brand and target audience.",
+      "High-performance checkout flows designed to reduce friction and boost conversions.",
   },
   {
     id: 6,
@@ -160,7 +160,7 @@ export const whatWeCanHelpData2 = [
     icon: ThirdPartyIcon,
     title: "Third-party Apps",
     description:
-      "Bespoke web design perfect for your brand and target audience.",
+      "Reliable integrations that connect your site with tools, services, and business systems.",
   },
 ];
 
@@ -169,7 +169,7 @@ export const ourProcessData = [
     step: "Step 1",
     title: "Discovery & Strategy Planning",
     color: "#FF37B3",
-    desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    desc: "We clarify goals and gather insights to shape a focused project direction.",
     rotation: "rotate-[5deg]",
     top: "",
   },
@@ -177,7 +177,7 @@ export const ourProcessData = [
     step: "Step 2",
     title: "Wireframes & Concepts",
     color: "#EE8D00",
-    desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    desc: "We outline core layouts and page structure to align design and functionality.",
     rotation: "rotate-[-3deg]",
     top: "top-[7rem]",
   },
@@ -185,7 +185,7 @@ export const ourProcessData = [
     step: "Step 3",
     title: "UI Design & Visual Refinement",
     color: "#44B276",
-    desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    desc: "We craft clean, responsive interfaces with refined visuals and styling.",
     rotation: "rotate-[1deg]",
     top: "",
   },
@@ -193,7 +193,7 @@ export const ourProcessData = [
     step: "Step 4",
     title: "Development Preparation",
     color: "#3078FF",
-    desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    desc: "We organise assets and guidelines for a smooth, developer-ready handoff.",
     rotation: "rotate-[-7deg]",
     top: "top-[7rem]",
   },
@@ -201,7 +201,7 @@ export const ourProcessData = [
     step: "Step 5",
     title: "Testing & Validation",
     color: "#FF37B3",
-    desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    desc: "We review usability, performance, and consistency before final delivery.",
     rotation: "rotate-[5deg]",
     top: "",
   },
@@ -210,32 +210,32 @@ export const ourProcessData = [
 export const industriesData = [
   {
     icon: "/images/automotive-icon.svg",
-    title: "Car",
+    title: "Automotive",
     description:
-      "Engaging websites and digital tools that drive customer interest and streamline dealer or service operations.",
+      "Web solutions crafted to enhance customer engagement and streamline operations.",
   },
   {
     icon: "/images/financial-icon.svg",
     title: "Financial",
     description:
-      "Clear, trustworthy dashboards and client portals designed to simplify complex data and build user confidence.",
+      "Secure, reliable designs tailored to simplify data and build user trust.",
   },
   {
     icon: "/images/tech-elec-icon.svg",
-    title: "Technology & Electronics",
+    title: "Electronics",
     description:
-      "User-friendly product sites and SaaS interfaces that enhance customer experience and boost conversions.",
+      "Product-focused interfaces built for clarity, usability, and better conversions.",
   },
   {
     icon: "/images/healthcare-icon.svg",
     title: "Healthcare",
     description:
-      "Accessible, secure platforms that make it easier for patients and professionals to connect and manage information.",
+      "Accessible digital platforms that support patient needs and professional workflows.",
   },
   {
     icon: "/images/non-profit-icon.svg",
-    title: "Non-Profit",
+    title: "Agriculture",
     description:
-      "Impactful digital platforms that amplify causes, engage supporters, and drive measurable results.",
+      "Modern web tools designed to improve efficiency and connect growing businesses.",
   },
 ];

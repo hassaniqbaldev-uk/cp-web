@@ -10,31 +10,31 @@ export const industriesData = [
     icon: "/images/automotive-icon.svg",
     title: "Automotive",
     description:
-      "Engaging websites and digital tools that drive customer interest and streamline dealer or service operations.",
+      "Brand identities and visual systems that help automotive businesses build trust and stand out across every touchpoint.",
   },
   {
     icon: "/images/financial-icon.svg",
     title: "Financial",
     description:
-      "Clear, trustworthy dashboards and client portals designed to simplify complex data and build user confidence.",
+      "Clear, credible branding crafted to simplify complex services and strengthen customer confidence.",
   },
   {
     icon: "/images/tech-elec-icon.svg",
     title: "Technology & Electronics",
     description:
-      "User-friendly product sites and SaaS interfaces that enhance customer experience and boost conversions.",
+      "Modern, scalable brand identities designed for SaaS products, tech companies, and digital-driven businesses.",
   },
   {
     icon: "/images/healthcare-icon.svg",
     title: "Healthcare",
     description:
-      "Accessible, secure platforms that make it easier for patients and professionals to connect and manage information.",
+      "Professional, compliant, and patient-focused branding that builds reliability and enhances communication.",
   },
   {
     icon: "/images/non-profit-icon.svg",
     title: "Non-Profit",
     description:
-      "Impactful digital platforms that amplify causes, engage supporters, and drive measurable results.",
+      "Purpose-driven branding that amplifies your mission, engages supporters, and drives measurable impact.",
   },
 ];
 
@@ -43,34 +43,37 @@ export const whatWeCanHelpData3 = [
     icon: <BrandGuidlineIcon />,
     title: "Brand Guidelines",
     description:
-      "Bespoke web design perfect for your brand and target audience.",
+      "Bespoke brand rules designed to keep your visual identity clear and consistent.",
   },
   {
     icon: <AssetCreationIcon />,
     title: "Asset Creation",
-    description: "Web design perfect for your brand and target audience.",
+    description:
+      "Custom brand assets crafted for your audience and long-term brand growth.",
   },
   {
     icon: <TypographyIcon />,
     title: "Typography",
-    description: "Web design perfect for your brand and target audience.",
+    description:
+      "Font systems styled to strengthen clarity, personality, and brand recognition.",
   },
   {
     icon: <ColorPshycologyIcon />,
     title: "Color Psychology",
     description:
-      "Bespoke web design perfect for your brand and target audience.",
+      "Strategic color choices built to influence emotion and support brand messaging.  ",
   },
   {
     icon: <BrandPersonalityIcon />,
     title: "Brand Personality",
     description:
-      "Bespoke web design perfect for your brand and target audience.",
+      "Defined brand traits that shape how your audience sees and interacts with you.",
   },
   {
     icon: <CompetitorAnalysisIcon />,
     title: "Competitor Analysis",
-    description: "Web design perfect for your brand and target audience.",
+    description:
+      "Insightful brand research to help you stand out and outperform competitors.",
   },
 ];
 

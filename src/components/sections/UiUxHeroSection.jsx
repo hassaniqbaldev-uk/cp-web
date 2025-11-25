@@ -153,9 +153,9 @@ const UiUxHeroSection = () => {
             </h1>
 
             <p className="mt-[1.2rem] mb-[2.5rem] max-w-[60rem] text-[1.6rem] leading-[2.4rem] font-normal text-white md:text-[1.8rem] md:leading-[2.6rem]">
-              We design in Figma to create websites, apps, and dashboards that
-              are intuitive, responsive, and built to convert. From wireframes
-              to polished interfaces, every detail is crafted for clarity and
+              We design in Figma to deliver clean, high-performance interfaces
+              that are intuitive, responsive, and conversion-focused. From UX
+              structure to refined UI, every detail is built for clarity and
               results.
             </p>
 

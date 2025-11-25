@@ -149,11 +149,11 @@ const WpElementorHeroSection = () => {
           </h1>
 
           <p className="wp-elementor-hero-desc mt-[1.2rem] mb-[4rem] max-w-[90rem] text-[1.6rem] leading-[2.4rem] font-normal text-white opacity-0 md:text-[1.8rem] md:leading-[2.6rem]">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer
-            mollis, libero eget volutpat porta, mi felis elementum leo, et
-            aliquet orci felis sit amet orci. Donec varius justo eget orci
-            laoreet, non bibendum justo cursus. Proin a nisi semper, ultrices
-            risus nec, dapibus ligula.
+            We build high-performance WordPress websites using Elementor for
+            clean design, fast load times, and easy management. Every page is
+            crafted with scalable layouts, optimized structure, and a smooth
+            editing experience — giving you full control without relying on
+            code.
           </p>
 
           <div className="wp-elementor-hero-cta-btn opacity-0">
