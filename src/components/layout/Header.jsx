@@ -49,7 +49,7 @@ const Header = () => {
     const html = document.documentElement;
 
     if (isOpen) {
-      html.style.overflow = "hidden"; // lock scroll
+      html.style.overflow = "hidden"; 
       html.style.height = "100%"; // optional: prevents iOS overscroll
       lenis?.stop?.(); // ✅ optional chaining in case lenis not ready yet
     } else {
