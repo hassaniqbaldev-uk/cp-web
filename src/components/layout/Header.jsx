@@ -3,12 +3,9 @@ import Image from "next/image";
 import HamburgerMenu from "./HamburgerMenu";
 import { usePathname } from "next/navigation";
 import CommonBtn1 from "../common/CommonBtn1";
-import { useEffect, useRef, useState } from "react";
+import { useEffect,  useState } from "react";
 import { Menu } from "lucide-react";
 import ContactPopoverBtn from "../common/ContactPopoverBtn";
-import gsap from "gsap";
-import { useLoadingStore } from "@/store/useLoadingStore";
-import { useGSAP } from "@gsap/react";
 import { useLenis } from "lenis/react";
 import { useTransitionRouter } from "next-view-transitions";
 import { slideInOutTransition } from "@/utils/pageTransition";
@@ -36,10 +33,8 @@ const Header = () => {
       setIsScrolled(window.scrollY > 80);
 
       if (currentScroll > lastScroll && currentScroll > 80) {
-        // scrolling down → hide header
         setShowHeader(false);
       } else {
-        // scrolling up → show header
         setShowHeader(true);
       }
 
@@ -50,7 +45,6 @@ const Header = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, [lastScroll]);
 
-  // 🚫 Disable scroll when hamburger is open
   useEffect(() => {
     const html = document.documentElement;
 
