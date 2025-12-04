@@ -226,7 +226,7 @@ const HeroSection = () => {
           "url('/images/hero-bg-gradient.webp') no-repeat center center/cover",
       }}
     >
-      {/* Decorative stroke line */}
+      {/* Decorative stroke lin */}
       <div ref={lineRef} className="absolute inset-0 z-[1] opacity-0">
         <LineStroke01 className="absolute bottom-[2.058rem] left-1/2 w-full -translate-x-1/2" />
       </div>
