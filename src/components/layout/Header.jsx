@@ -3,7 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { navLinksData } from "@/constants/globals";
 import { usePathname } from "next/navigation";
-import BookCtaButton from "@/components/common/BookCTAButton";
+import BookCtaButton from "@/components/common/BookCtaButton";
 import {
   Popover,
   PopoverContent,
@@ -13,7 +13,7 @@ import { Button } from "@/components/ui/button";
 import { useEffect, useState } from "react";
 import { Menu } from "lucide-react";
 import HamburgerMenu from "./HamburgerMenu";
-import { useLenis } from 'lenis/react';
+import { useLenis } from "lenis/react";
 
 const Header = () => {
   const pathname = usePathname();
@@ -60,7 +60,7 @@ const Header = () => {
     const html = document.documentElement;
 
     if (hamburgerOpen) {
-      html.style.overflow = "hidden"; 
+      html.style.overflow = "hidden";
       html.style.height = "100%"; // optional: prevents iOS overscroll
       lenis?.stop?.(); // ✅ optional chaining in case lenis not ready yet
     } else {
@@ -91,7 +91,7 @@ const Header = () => {
   return (
     <>
       <header
-        className={`site-header px-[2rem] lg:px-[3rem] py-[3rem] ${
+        className={`site-header px-[2rem] py-[3rem] lg:px-[3rem] ${
           noGradientPaths.includes(pathname) ? "" : "gradient"
         }`}
       >
@@ -162,9 +162,7 @@ const Header = () => {
                 onClick={() => setHamburgerOpen(true)}
                 className="inline-flex size-[4rem] items-center justify-center rounded-full border border-white"
               >
-                <Menu
-                  className="size-[2.3rem] text-white"
-                />
+                <Menu className="size-[2.3rem] text-white" />
               </button>
             </div>
 
@@ -175,9 +173,12 @@ const Header = () => {
         </div>
       </header>
 
-       {/* Hamburger Menu */}
+      {/* Hamburger Menu */}
       <div className="xl:hidden">
-        <HamburgerMenu hamburgerOpen={hamburgerOpen} setHamburgerOpen={setHamburgerOpen} />
+        <HamburgerMenu
+          hamburgerOpen={hamburgerOpen}
+          setHamburgerOpen={setHamburgerOpen}
+        />
       </div>
     </>
   );
