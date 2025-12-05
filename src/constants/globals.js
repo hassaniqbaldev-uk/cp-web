@@ -30,6 +30,54 @@ export const navLinksData = [
   },
 ];
 
+// Client Logo Popup Data
+
+export const logoPopupData = [
+  {
+    logo: "assets/images/game-art-logo.png",
+    class: "h-[4.3rem]",
+    popupImage: "assets/images/game-art-popup-img.webp",
+    href: "/case-studies/game-art-brain",
+  },
+  {
+    logo: "assets/images/new-compass-logo.png",
+    class: "h-[3.1rem]",
+    popupImage: "assets/images/new-compass-popup-img.webp",
+    href: "/case-studies/new-compass",
+  },
+  {
+    logo: "assets/images/ayoa-logo.png",
+    class: "h-[3.9rem]",
+    popupImage: "assets/images/ayoa-popup-img.webp",
+    href: "/case-studies/ayoa",
+  },
+  {
+    logo: "assets/images/casa-logo.png",
+    class: "h-[7.1rem]",
+    popupImage: "assets/images/casa-popup-img.webp",
+    href: "/case-studies/casa-botanica-panama",
+  },
+
+  {
+    logo: "assets/images/alert-logo.png",
+    class: "h-[4rem]",
+    popupImage: "assets/images/alertforce-popup-img.webp",
+    href: "/case-studies/alert-force",
+  },
+  {
+    logo: "assets/images/fultons-logo.png",
+    class: "h-[2.5rem]",
+    popupImage: "assets/images/fultons-popup-img.webp",
+    href: "/case-studies/fulton-jewellery",
+  },
+  {
+    logo: "assets/images/unicef-logo.png",
+    class: "h-[4.2rem]",
+    popupImage: "assets/images/unicef-popup-img.webp",
+    href: "/case-studies/unicef",
+  },
+];
+
 // Offer Services Dropdown Tab
 
 export const offerServicesDropdownData = [

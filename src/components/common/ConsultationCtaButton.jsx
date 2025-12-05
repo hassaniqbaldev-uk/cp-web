@@ -26,7 +26,7 @@ const ConsultationCtaButton = () => {
         data-cal-config='{"layout":"month_view","theme":"dark"}'
         className="consultation-gradient-button inline-flex cursor-pointer items-center justify-center"
       >
-        <span className="text-span text-[1.8rem] font-semibold tracking-normal text-white md:text-[2rem]">
+        <span className="text-span text-[1.6rem] font-semibold tracking-normal text-white md:text-[2rem]">
           Get Free Consultation
         </span>
 

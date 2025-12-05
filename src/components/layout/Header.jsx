@@ -91,7 +91,7 @@ const Header = () => {
   return (
     <>
       <header
-        className={`site-header px-[2rem] py-[3rem] lg:px-[3rem] ${
+        className={`site-header px-[2rem] py-[2rem] lg:px-[3rem] lg:py-[3rem] ${
           noGradientPaths.includes(pathname) ? "" : "gradient"
         }`}
       >

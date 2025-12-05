@@ -7,13 +7,37 @@ import Footer from "@/components/layout/Footer";
 import BackToTopBtn from "@/components/common/BackToTopBtn";
 import DrawSVGPlugin from "gsap/DrawSVGPlugin";
 import ScrollToTop from "@/components/common/ScrollToTop";
-import { ReactLenis } from "lenis/react";
+import { ReactLenis, useLenis } from "lenis/react";
 import { useEffect, useRef } from "react";
-import { ViewTransitions } from "next-view-transitions";
+import { useLoadingStore } from "@/store/useLoadingStore";
+import Loader from "@/components/common/Loader";
 gsap.registerPlugin(useGSAP, ScrollTrigger, SplitText, DrawSVGPlugin);
 
 export default function SiteLayout({ children }) {
   const lenisRef = useRef();
+  const lenis = useLenis();
+  const { isLoading, setIsLoading } = useLoadingStore();
+
+  useEffect(() => {
+    const html = document.documentElement;
+
+    if (isLoading) {
+      html.style.overflow = "hidden"; // lock scroll
+      html.style.height = "100%"; // optional: prevents iOS overscroll
+      lenis?.stop?.(); // ✅ optional chaining in case lenis not ready yet
+    } else {
+      html.style.overflow = "";
+      html.style.height = "";
+      lenis?.start?.();
+    }
+
+    // Cleanup (optional, but safe)
+    return () => {
+      html.style.overflow = "";
+      html.style.height = "";
+      lenis?.start?.();
+    };
+  }, [isLoading, lenis]);
 
   useEffect(() => {
     function update(time) {
@@ -26,33 +50,35 @@ export default function SiteLayout({ children }) {
   }, []);
 
   return (
-    <div>
-      <ReactLenis
-        root
-        ref={lenisRef}
-        options={{
-          lerp: 0.06, // slightly higher = smoother easing (0.05–0.1 sweet spot)
-          duration: 1.5, // length of the easing (in seconds)
-          smoothWheel: true, // smooths mouse wheel input
-          smoothTouch: true, // enables touch inertia (MUST for mobile)
-          touchMultiplier: 2, // scroll distance multiplier for touch
-          wheelMultiplier: 1, // normal sensitivity for desktop
-          gestureOrientation: "vertical", // vertical swipe orientation
-          normalizeWheel: true, // ensures even scroll speed across devices
-          syncTouch: true, // smooths touch scroll updates to Lenis’ internal state
-          autoRaf: false, // we let GSAP ticker drive it (good for ScrollTrigger)
-        }}
-      />
+    <>
+      {/* Loader */}
+      {isLoading && <Loader onHidden={() => setIsLoading(false)} />}
 
-      <ScrollToTop />
-      <ViewTransitions>
+      <div>
+        <ReactLenis
+          root
+          ref={lenisRef}
+          options={{
+            lerp: 0.06, // slightly higher = smoother easing (0.05–0.1 sweet spot)
+            duration: 1.5, // length of the easing (in seconds)
+            smoothWheel: true, // smooths mouse wheel input
+            smoothTouch: true, // enables touch inertia (MUST for mobile)
+            touchMultiplier: 2, // scroll distance multiplier for touch
+            wheelMultiplier: 1, // normal sensitivity for desktop
+            gestureOrientation: "vertical", // vertical swipe orientation
+            normalizeWheel: true, // ensures even scroll speed across devices
+            syncTouch: true, // smooths touch scroll updates to Lenis’ internal state
+            autoRaf: false, // we let GSAP ticker drive it (good for ScrollTrigger)
+          }}
+        />
+        <ScrollToTop />
         <Header />
-        <div>{children}</div>
+        <main>{children}</main>
         <Footer />
-      </ViewTransitions>
-      <div className="hidden md:block">
-        <BackToTopBtn />
+        <div className="hidden md:block">
+          <BackToTopBtn />
+        </div>
       </div>
-    </div>
+    </>
   );
 }

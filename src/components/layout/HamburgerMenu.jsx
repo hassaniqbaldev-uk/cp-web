@@ -60,7 +60,7 @@ const HamburgerMenu = ({ hamburgerOpen, setHamburgerOpen }) => {
             />
           </Link>
 
-          <div className="flex items-center gap-[2rem]">
+          <div className="flex items-center gap-[1rem]">
             <Popover open={open} onOpenChange={setOpen}>
               <PopoverTrigger asChild>
                 <Button
@@ -115,6 +115,7 @@ const HamburgerMenu = ({ hamburgerOpen, setHamburgerOpen }) => {
               <Link
                 key={idx}
                 href={item.href}
+                onClick={() => setHamburgerOpen(false)}
                 className="flex border-t border-white/20 px-[2.5rem] py-[1.5rem] text-[3.4rem] leading-[4.8rem] font-semibold tracking-[-0.02em] text-white last:border-b"
               >
                 {item.text}
