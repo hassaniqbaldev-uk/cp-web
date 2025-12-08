@@ -57,7 +57,7 @@ const HeroSection = () => {
         wrapper.appendChild(line);
       });
 
-      // SVG Animation - COMPLETELY INDEPENDENT
+      // SVG Animation - COMPLETELY INDEPENDEN
       if (linePath) {
         gsap.to(lineRef.current, {
           opacity: 1,
