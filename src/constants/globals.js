@@ -7,31 +7,26 @@ import ClickArrowGreen from "@/assets/icons/click-arrow-green.svg";
 
 // Navigation Link Data
 
-export const navigationLinksData = [
+export const navLinksData = [
   {
-    id: 1,
     href: "/",
-    label: "Home",
+    text: "Home",
   },
   {
-    id: 2,
     href: "/about",
-    label: "About",
+    text: "About",
   },
   {
-    id: 3,
     href: "/services",
-    label: "Services",
+    text: "Services",
   },
   {
-    id: 4,
     href: "/case-studies",
-    label: "Case Studies",
+    text: "Case Studies",
   },
   {
-    id: 5,
     href: "/contact",
-    label: "Contact",
+    text: "Contact",
   },
 ];
 

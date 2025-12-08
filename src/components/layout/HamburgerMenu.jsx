@@ -1,19 +1,19 @@
 "use client";
 import { X } from "lucide-react";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import HamburgerAccordion from "../common/HamburgerAccordion";
-import ContactPopoverBtn from "../common/ContactPopoverBtn";
-import CommonBtn2 from "../common/CommonBtn2";
-import { useTransitionRouter } from "next-view-transitions";
-import { slideInOutTransition } from "@/utils/pageTransition";
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
+import { navLinksData } from "@/constants/globals";
+import ConsultationCtaButton from "../common/ConsultationCtaButton";
+import PhoneFill from "@/assets/icons/phone-fill.svg";
+import MeetIcon from "@/assets/icons/meet-icon.svg";
 
-const HamburgerMenu = ({ isOpen, setIsOpen }) => {
-  const router = useTransitionRouter();
+const HamburgerMenu = ({ hamburgerOpen, setHamburgerOpen }) => {
+  const [open, setOpen] = useState(false);
 
   useEffect(() => {
-    if (isOpen) {
+    if (hamburgerOpen) {
       document.body.style.overflowY = "hidden";
     } else {
       document.body.style.overflowY = "auto";
@@ -22,12 +22,12 @@ const HamburgerMenu = ({ isOpen, setIsOpen }) => {
     return () => {
       document.body.style.overflowY = "auto";
     };
-  }, [isOpen]);
+  }, [hamburgerOpen]);
 
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth > 1280) {
-        setIsOpen(false); // auto-close
+        setHamburgerOpen(false); // auto-close
       }
     };
 
@@ -39,41 +39,66 @@ const HamburgerMenu = ({ isOpen, setIsOpen }) => {
   return (
     <>
       <div
-        className={`hamburger-menu fixed top-0 z-[999] flex h-screen w-full flex-col transition-all duration-300 ${isOpen ? "left-0" : "left-[200%]"}`}
+        style={{
+          background:
+            "linear-gradient(301.75deg, rgba(29, 29, 29, 0.9) 1.41%, rgba(29, 29, 29, 0.9) 95.05%)",
+          backdropFilter: "blur(10px)",
+        }}
+        className={`fixed top-0 z-[999] flex h-screen w-full flex-col transition-all duration-300 ${hamburgerOpen ? "left-0" : "left-[200%]"}`}
       >
         <div className="flex items-center justify-between px-[2rem] py-[3rem] md:px-[4rem]">
-          <a
-            onClick={(e) => {
-              e.preventDefault();
-
-              setIsOpen(false); // close menu first
-
-              setTimeout(() => {
-                router.push("/", {
-                  onTransitionReady: slideInOutTransition,
-                });
-              }, 200); // delay = menu close duration
-            }}
-            href="/"
-            className="relative overflow-hidden"
-          >
+          <Link href="/" onClick={() => setHamburgerOpen(false)}>
             <Image
               src="/images/logo.svg"
-              alt="Brand Logo"
+              alt="Logo Image"
               width={170}
               height={66}
-              fetchPriority="high"
-              className="w-[14rem] md:w-[17rem]"
+              className="h-[6.6rem] w-[14rem] md:w-[17rem]"
             />
-          </a>
+          </Link>
 
-          <div className="flex items-center gap-[2rem]">
-            {/* Contact Cta for Responsive */}
-            <ContactPopoverBtn />
+          <div className="flex items-center gap-[1rem]">
+            <Popover open={open} onOpenChange={setOpen}>
+              <PopoverTrigger asChild>
+                <button
+                  onMouseEnter={() => setOpen(true)}
+                  className="relative inline-flex size-[4.6rem] items-center justify-center rounded-full border-none bg-[#32284A] shadow-none !ring-0 outline-none"
+                >
+                  <div className="outline-text absolute top-[2px] right-[2px] size-[.8rem] animate-pulse rounded-full bg-[#7EE972] outline-[3.5px]" />
+
+                  <PhoneFill />
+                </button>
+              </PopoverTrigger>
+              <PopoverContent
+                onMouseEnter={() => setOpen(true)}
+                onMouseLeave={() => setOpen(false)}
+                className="w-[20rem] border-none pt-[1rem] shadow-none outline-none"
+              >
+                <div className="header-popover-content flex flex-col overflow-hidden rounded-[2rem] bg-black">
+                  <Link
+                    href="tel:01618202667"
+                    className="flex items-center gap-[1rem] border-b border-white/20 p-[1.6rem] text-[1.6rem] leading-[2.4rem] tracking-normal text-white"
+                  >
+                    <PhoneFill />
+                    <span>Call Now</span>
+                  </Link>
+
+                  <button
+                    data-cal-namespace="15min"
+                    data-cal-link="hassan-iqbal-mznzu9/15min"
+                    data-cal-config='{"layout":"month_view","theme":"dark"}'
+                    className="flex cursor-pointer items-center gap-[1rem] border-none p-[1.6rem] text-[1.6rem] leading-[2.4rem] tracking-normal text-white outline-none"
+                  >
+                    <MeetIcon />
+                    <span>Schedule a call</span>
+                  </button>
+                </div>
+              </PopoverContent>
+            </Popover>
 
             <button
               aria-label="Close menu"
-              onClick={() => setIsOpen(false)}
+              onClick={() => setHamburgerOpen(false)}
               className="inline-flex size-[4rem] items-center justify-center rounded-full border border-[#ffffff]"
             >
               <X aria-hidden="true" className="size-[2.3rem] text-white" />
@@ -82,140 +107,39 @@ const HamburgerMenu = ({ isOpen, setIsOpen }) => {
         </div>
 
         <div className="overflow-x-hidden overflow-y-auto">
-          <nav className="flex flex-col gap-[1rem] text-white">
-            <div className="relative border-b border-white/20 pb-[1rem] md:px-[4rem]">
-              <a
-                onClick={(e) => {
-                  e.preventDefault();
-
-                  setIsOpen(false); // close menu first
-
-                  setTimeout(() => {
-                    router.push("/", {
-                      onTransitionReady: slideInOutTransition,
-                    });
-                  }, 200); // delay = menu close duration
-                }}
-                href="/"
-                className="relative flex text-[3rem] leading-[4rem] font-semibold capitalize before:absolute before:bottom-[-2.1rem] before:left-0 before:h-[2px] before:w-full before:origin-right before:scale-x-0 before:bg-gradient-to-r before:from-[#FFE400] before:to-[#FF37B3] before:transition-transform before:duration-300 hover:before:origin-left hover:before:scale-x-100 md:text-[4rem] md:leading-[5rem]"
+          <nav className="flex flex-col">
+            {navLinksData.map((item, idx) => (
+              <Link
+                key={idx}
+                href={item.href}
+                onClick={() => setHamburgerOpen(false)}
+                className="flex border-t border-white/20 px-[2.5rem] py-[1.5rem] text-[3.4rem] leading-[4.8rem] font-semibold tracking-[-0.02em] text-white last:border-b"
               >
-                <span className="px-[2rem]">Home</span>
-              </a>
-            </div>
-
-            <div className="relative border-b border-white/20 pb-[1rem] md:px-[4rem]">
-              <a
-                onClick={(e) => {
-                  e.preventDefault();
-
-                  setIsOpen(false); // close menu first
-
-                  setTimeout(() => {
-                    router.push("/about", {
-                      onTransitionReady: slideInOutTransition,
-                    });
-                  }, 200); // delay = menu close duration
-                }}
-                href="/about"
-                className="relative flex text-[3rem] leading-[4rem] font-semibold capitalize before:absolute before:bottom-[-2.1rem] before:left-0 before:h-[2px] before:w-full before:origin-right before:scale-x-0 before:bg-gradient-to-r before:from-[#FFE400] before:to-[#FF37B3] before:transition-transform before:duration-300 hover:before:origin-left hover:before:scale-x-100 md:text-[4rem] md:leading-[5rem]"
-              >
-                <span className="px-[2rem]">About</span>
-              </a>
-            </div>
-
-            <div className="relative border-b border-white/20 pb-[1rem] md:px-[4rem]">
-              <a
-                onClick={(e) => {
-                  e.preventDefault();
-
-                  setIsOpen(false); // close menu first
-
-                  setTimeout(() => {
-                    router.push("/services", {
-                      onTransitionReady: slideInOutTransition,
-                    });
-                  }, 200); // delay = menu close duration
-                }}
-                href="/services"
-                className="relative flex text-[3rem] leading-[4rem] font-semibold capitalize before:absolute before:bottom-[-2.1rem] before:left-0 before:h-[2px] before:w-full before:origin-right before:scale-x-0 before:bg-gradient-to-r before:from-[#FFE400] before:to-[#FF37B3] before:transition-transform before:duration-300 hover:before:origin-left hover:before:scale-x-100 md:text-[4rem] md:leading-[5rem]"
-              >
-                <span className="px-[2rem]">Services</span>
-              </a>
-            </div>
-
-            <div className="relative border-b border-white/20 pb-[1rem] md:px-[4rem]">
-              <a
-                onClick={(e) => {
-                  e.preventDefault();
-
-                  setIsOpen(false); // close menu first
-
-                  setTimeout(() => {
-                    router.push("/case-studies", {
-                      onTransitionReady: slideInOutTransition,
-                    });
-                  }, 200); // delay = menu close duration
-                }}
-                href="/case-studies"
-                className="relative flex text-[3rem] leading-[4rem] font-semibold capitalize before:absolute before:bottom-[-2.1rem] before:left-0 before:h-[2px] before:w-full before:origin-right before:scale-x-0 before:bg-gradient-to-r before:from-[#FFE400] before:to-[#FF37B3] before:transition-transform before:duration-300 hover:before:origin-left hover:before:scale-x-100 md:text-[4rem] md:leading-[5rem]"
-              >
-                <span className="px-[2rem]">Case Studies</span>
-              </a>
-            </div>
-
-            <div className="relative border-b border-white/20 pb-[1rem] md:px-[4rem]">
-              <a
-                onClick={(e) => {
-                  e.preventDefault();
-
-                  setIsOpen(false); // close menu first
-
-                  setTimeout(() => {
-                    router.push("/contact", {
-                      onTransitionReady: slideInOutTransition,
-                    });
-                  }, 200); // delay = menu close duration
-                }}
-                href="/contact"
-                className="relative flex text-[3rem] leading-[4rem] font-semibold capitalize before:absolute before:bottom-[-2.1rem] before:left-0 before:h-[2px] before:w-full before:origin-right before:scale-x-0 before:bg-gradient-to-r before:from-[#FFE400] before:to-[#FF37B3] before:transition-transform before:duration-300 hover:before:origin-left hover:before:scale-x-100 md:text-[4rem] md:leading-[5rem]"
-              >
-                <span className="px-[2rem]">Contact</span>
-              </a>
-            </div>
+                {item.text}
+              </Link>
+            ))}
           </nav>
         </div>
 
         <div className="flex flex-col gap-[2rem] pt-[2rem] pb-[4rem]">
           <div className="px-[2.5rem]">
-            <CommonBtn2 />
+            <ConsultationCtaButton />
           </div>
 
           <div className="flex flex-col gap-[2rem] px-[2.5rem] pt-[1rem]">
-            <div className="flex flex-col">
-              {/* <h5 className="text-[1.6rem] leading-[2.4rem] font-medium text-white">
-                GIVE US A CALL
-              </h5> */}
+            <Link
+              href="tel:01618202667"
+              className="inline-flex text-[3.4rem] leading-[4.8rem] font-semibold tracking-[-0.02em] text-[#FFC300]"
+            >
+              0161 820 2667
+            </Link>
 
-              <Link
-                href="tel:01618202667"
-                className="inline-flex text-[3.4rem] leading-[4.8rem] font-semibold tracking-[-0.02em] text-[#FFC300]"
-              >
-                0161 820 2667
-              </Link>
-            </div>
-
-            <div className="flex flex-col">
-              {/* <h5 className="text-[1.6rem] leading-[2.4rem] font-medium text-white">
-                EMAIL US
-              </h5> */}
-
-              <Link
-                href="mailto:hello@cp.agency"
-                className="inline-flex text-[3.4rem] leading-[4.8rem] font-semibold tracking-[-0.02em] text-[#FF37B3]"
-              >
-                hello@cp.agency
-              </Link>
-            </div>
+            <Link
+              href="mailto:hello@cp.agency"
+              className="inline-flex text-[3.4rem] leading-[4.8rem] font-semibold tracking-[-0.02em] text-[#FF37B3]"
+            >
+              hello@cp.agency
+            </Link>
           </div>
         </div>
       </div>
