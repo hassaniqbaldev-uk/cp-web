@@ -4,11 +4,7 @@ import Image from "next/image";
 import { navLinksData } from "@/constants/globals";
 import { usePathname } from "next/navigation";
 import BookCtaButton from "@/components/common/BookCtaButton";
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/ui/popover";
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { useEffect, useState } from "react";
 import { Menu } from "lucide-react";
 import HamburgerMenu from "./HamburgerMenu";
@@ -17,10 +13,12 @@ import PhoneFill from "@/assets/icons/phone-fill.svg";
 import MeetIcon from "@/assets/icons/meet-icon.svg";
 
 const Header = () => {
-  const pathname = usePathname();
   const [open, setOpen] = useState(false);
   const [hamburgerOpen, setHamburgerOpen] = useState(false);
   const lenis = useLenis();
+  const rawPath = usePathname() || "/";
+  const cleanPath = rawPath.split(/[?#]/)[0];
+  const pathname = cleanPath.replace(/\/$/, "") || "/";
 
   useEffect(() => {
     let lastScrollY = 0;
@@ -107,68 +105,70 @@ const Header = () => {
             />
           </Link>
 
-          <nav className="hidden items-center justify-center gap-[1rem] xl:flex">
-            {navLinksData.map((item, idx) => (
-              <Link
-                key={idx}
-                href={item.href}
-                className={`nav-link ${pathname === item.href ? "active" : ""}`}
-              >
-                {item.text}
-              </Link>
-            ))}
-          </nav>
-
-          <div className="flex items-center justify-end gap-[1rem]">
-            <Popover open={open} onOpenChange={setOpen}>
-              <PopoverTrigger asChild>
-                <button
-                  onMouseEnter={() => setOpen(true)}
-                  className="relative inline-flex size-[4.6rem] items-center justify-center rounded-full border-none bg-[#32284A] shadow-none !ring-0 outline-none"
+          <div className="flex items-center justify-end gap-[9rem]">
+            <nav className="hidden items-center justify-center gap-[1rem] xl:flex">
+              {navLinksData.map((item, idx) => (
+                <Link
+                  key={idx}
+                  href={item.href}
+                  className={`nav-link ${pathname === item.href ? "active" : ""}`}
                 >
-                  <div className="outline-text absolute top-[2px] right-[2px] size-[.8rem] animate-pulse rounded-full bg-[#7EE972] outline-[3.5px]" />
+                  {item.text}
+                </Link>
+              ))}
+            </nav>
 
-                  <PhoneFill />
-                </button>
-              </PopoverTrigger>
-              <PopoverContent
-                onMouseEnter={() => setOpen(true)}
-                onMouseLeave={() => setOpen(false)}
-                className="w-[20rem] border-none pt-[1rem] shadow-none outline-none"
-              >
-                <div className="header-popover-content flex flex-col overflow-hidden rounded-[2rem] bg-black">
-                  <Link
-                    href="tel:01618202667"
-                    className="flex items-center gap-[1rem] border-b border-white/20 p-[1.6rem] text-[1.6rem] leading-[2.4rem] tracking-normal text-white"
-                  >
-                    <PhoneFill />
-                    <span>Call Now</span>
-                  </Link>
-
+            <div className="flex items-center justify-end gap-[1rem]">
+              <Popover open={open} onOpenChange={setOpen}>
+                <PopoverTrigger asChild>
                   <button
-                    data-cal-namespace="15min"
-                    data-cal-link="hassan-iqbal-mznzu9/15min"
-                    data-cal-config='{"layout":"month_view","theme":"dark"}'
-                    className="flex cursor-pointer items-center gap-[1rem] border-none p-[1.6rem] text-[1.6rem] leading-[2.4rem] tracking-normal text-white outline-none"
+                    onMouseEnter={() => setOpen(true)}
+                    className="relative inline-flex size-[4.6rem] items-center justify-center rounded-full border-none bg-[#32284A] shadow-none !ring-0 outline-none"
                   >
-                    <MeetIcon />
-                    <span>Schedule a call</span>
+                    <div className="outline-text absolute top-[2px] right-[2px] size-[.8rem] animate-pulse rounded-full bg-[#7EE972] outline-[3.5px]" />
+
+                    <PhoneFill />
                   </button>
-                </div>
-              </PopoverContent>
-            </Popover>
+                </PopoverTrigger>
+                <PopoverContent
+                  onMouseEnter={() => setOpen(true)}
+                  onMouseLeave={() => setOpen(false)}
+                  className="w-[20rem] border-none pt-[1rem] shadow-none outline-none"
+                >
+                  <div className="header-popover-content flex flex-col overflow-hidden rounded-[2rem] bg-black">
+                    <Link
+                      href="tel:01618202667"
+                      className="flex items-center gap-[1rem] border-b border-white/20 p-[1.6rem] text-[1.6rem] leading-[2.4rem] tracking-normal text-white"
+                    >
+                      <PhoneFill />
+                      <span>Call Now</span>
+                    </Link>
 
-            <div className="xl:hidden">
-              <button
-                onClick={() => setHamburgerOpen(true)}
-                className="inline-flex size-[4rem] items-center justify-center rounded-full border border-white"
-              >
-                <Menu className="size-[2.3rem] text-white" />
-              </button>
-            </div>
+                    <button
+                      data-cal-namespace="15min"
+                      data-cal-link="hassan-iqbal-mznzu9/15min"
+                      data-cal-config='{"layout":"month_view","theme":"dark"}'
+                      className="flex cursor-pointer items-center gap-[1rem] border-none p-[1.6rem] text-[1.6rem] leading-[2.4rem] tracking-normal text-white outline-none"
+                    >
+                      <MeetIcon />
+                      <span>Schedule a call</span>
+                    </button>
+                  </div>
+                </PopoverContent>
+              </Popover>
 
-            <div className="hidden xl:block">
-              <BookCtaButton />
+              <div className="xl:hidden">
+                <button
+                  onClick={() => setHamburgerOpen(true)}
+                  className="inline-flex size-[4rem] items-center justify-center rounded-full border border-white"
+                >
+                  <Menu className="size-[2.3rem] text-white" />
+                </button>
+              </div>
+
+              <div className="hidden xl:block">
+                <BookCtaButton />
+              </div>
             </div>
           </div>
         </div>
