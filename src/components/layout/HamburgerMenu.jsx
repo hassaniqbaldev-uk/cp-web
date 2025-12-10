@@ -108,37 +108,35 @@ const HamburgerMenu = ({ hamburgerOpen, setHamburgerOpen }) => {
           </div>
         </div>
 
-        <div className="overflow-x-hidden overflow-y-auto">
-          <nav className="flex flex-col">
-            {navLinksData.map((item, idx) => (
-              <Link
-                key={idx}
-                href={item.href}
-                onClick={() => setHamburgerOpen(false)}
-                className="flex border-t border-white/20 px-[2.5rem] py-[1.5rem] text-[3.4rem] leading-[4.8rem] font-semibold tracking-[-0.02em] text-white last:border-b"
-              >
-                {item.text}
-              </Link>
-            ))}
-          </nav>
-        </div>
+        <nav className="flex flex-col">
+          {navLinksData.map((item, idx) => (
+            <Link
+              key={idx}
+              href={item.href}
+              onClick={() => setHamburgerOpen(false)}
+              className="flex border-t border-white/20 px-[2.5rem] py-[1.5rem] text-[3.4rem] leading-[4.8rem] font-semibold tracking-[-0.02em] text-white last:border-b"
+            >
+              {item.text}
+            </Link>
+          ))}
+        </nav>
 
-        <div className="flex flex-col gap-[2rem] pt-[2rem] pb-[4rem]">
+        <div className="flex flex-col gap-[1rem] pt-[2rem] pb-[4rem]">
           <div className="px-[2.5rem]">
             <ConsultationCtaButton text="Get Free Consultation" />
           </div>
 
-          <div className="flex flex-col gap-[2rem] px-[2.5rem] pt-[1rem]">
+          <div className="flex flex-col gap-[1rem] px-[2.5rem] pt-[1rem]">
             <Link
               href="tel:01618202667"
-              className="inline-flex text-[3.4rem] leading-[4.8rem] font-semibold tracking-[-0.02em] text-[#FFC300]"
+              className="inline-flex text-[3.4rem] leading-[4rem] font-semibold tracking-[-0.02em] text-[#FFC300]"
             >
               0161 820 2667
             </Link>
 
             <Link
               href="mailto:hello@cp.agency"
-              className="inline-flex text-[3.4rem] leading-[4.8rem] font-semibold tracking-[-0.02em] text-[#FF37B3]"
+              className="inline-flex text-[3.4rem] leading-[4rem] font-semibold tracking-[-0.02em] text-[#FF37B3]"
             >
               hello@cp.agency
             </Link>
