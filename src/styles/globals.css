@@ -288,7 +288,7 @@ body {
     transition-timing-function: linear !important;
 }
 
-/*Marquee*/
+/*Home Hero Marquee*/
 .home-hero-section .marquee {
     --gap: 1.6rem;
     position: relative;

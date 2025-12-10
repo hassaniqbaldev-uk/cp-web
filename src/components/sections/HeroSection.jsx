@@ -319,47 +319,49 @@ const HeroSection = () => {
               const [open, setOpen] = useState(false);
 
               return (
-                <Popover key={idx} open={open} onOpenChange={setOpen}>
-                  <PopoverTrigger
-                    onMouseEnter={() => setOpen(true)}
-                    onMouseLeave={() => setOpen(false)}
-                    className="cursor-pointer border-none opacity-70 shadow-none ring-0 outline-0 grayscale-100 transition-all duration-300 data-[state=open]:opacity-100 data-[state=open]:grayscale-0"
-                  >
-                    <img
-                      src={item.logo}
-                      alt="Logo Image"
-                      className={`${item.class}`}
-                    />
-                  </PopoverTrigger>
-                  <PopoverContent
-                    onMouseEnter={() => setOpen(true)}
-                    onMouseLeave={() => setOpen(false)}
-                    side="top"
-                    className="border-none pb-[1.6rem] shadow-none ring-0 outline-0"
-                  >
-                    <Tilt>
-                      <div className="flex w-[27rem] flex-col items-center gap-[2rem] overflow-hidden rounded-[1.6rem] bg-white pb-[2rem]">
-                        <div className="h-[19.4rem] w-full overflow-hidden rounded-br-[1.6rem] rounded-bl-[1.6rem]">
-                          <Image
-                            src={item.popupImage}
-                            alt="Popup Image"
-                            height={194}
-                            width={270}
-                            className="size-full object-cover object-top"
-                            unoptimized
-                          />
-                        </div>
+                <div key={idx} className="hero-logo opacity-0">
+                  <Popover open={open} onOpenChange={setOpen}>
+                    <PopoverTrigger
+                      onMouseEnter={() => setOpen(true)}
+                      onMouseLeave={() => setOpen(false)}
+                      className="cursor-pointer border-none opacity-70 shadow-none ring-0 outline-0 grayscale-100 transition-all duration-300 data-[state=open]:opacity-100 data-[state=open]:grayscale-0"
+                    >
+                      <img
+                        src={item.logo}
+                        alt="Logo Image"
+                        className={`${item.class}`}
+                      />
+                    </PopoverTrigger>
+                    <PopoverContent
+                      onMouseEnter={() => setOpen(true)}
+                      onMouseLeave={() => setOpen(false)}
+                      side="top"
+                      className="border-none pb-[1.6rem] shadow-none ring-0 outline-0"
+                    >
+                      <Tilt>
+                        <div className="flex w-[27rem] flex-col items-center gap-[2rem] overflow-hidden rounded-[1.6rem] bg-white pb-[2rem]">
+                          <div className="h-[19.4rem] w-full overflow-hidden rounded-br-[1.6rem] rounded-bl-[1.6rem]">
+                            <Image
+                              src={item.popupImage}
+                              alt="Popup Image"
+                              height={194}
+                              width={270}
+                              className="size-full object-cover object-top"
+                              unoptimized
+                            />
+                          </div>
 
-                        <ViewCaseStudyButton href={item.href} />
-                      </div>
-                    </Tilt>
-                  </PopoverContent>
-                </Popover>
+                          <ViewCaseStudyButton href={item.href} />
+                        </div>
+                      </Tilt>
+                    </PopoverContent>
+                  </Popover>
+                </div>
               );
             })}
           </div>
 
-          <div className="block w-full xl:hidden">
+          <div className="hero-logo-slider block w-full opacity-0 xl:hidden">
             <div className={`marquee ${paused ? "paused" : ""}`}>
               <div className="marquee__content">
                 {logoPopupData.map((item, idx) => {
