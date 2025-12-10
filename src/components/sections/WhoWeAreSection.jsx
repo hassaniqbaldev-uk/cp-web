@@ -41,7 +41,7 @@ const WhoWeAreSection = () => {
       );
     }
 
-    // Wobble/shake animation
+    // Wobble/shake animationn
     gsap.to(labelRef.current, {
       rotation: "+=3", // Rotate 3 degrees back and forth
       duration: 0.15, // Very short duration for quick wobble

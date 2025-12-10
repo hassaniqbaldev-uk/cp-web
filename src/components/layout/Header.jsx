@@ -1,55 +1,72 @@
 "use client";
+import Link from "next/link";
 import Image from "next/image";
-import HamburgerMenu from "./HamburgerMenu";
+import { navLinksData } from "@/constants/globals";
 import { usePathname } from "next/navigation";
-import CommonBtn1 from "../common/CommonBtn1";
-import { useEffect,  useState } from "react";
+import BookCtaButton from "@/components/common/BookCtaButton";
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
+import { useEffect, useState } from "react";
 import { Menu } from "lucide-react";
-import ContactPopoverBtn from "../common/ContactPopoverBtn";
+import HamburgerMenu from "./HamburgerMenu";
 import { useLenis } from "lenis/react";
-import { useTransitionRouter } from "next-view-transitions";
-import { slideInOutTransition } from "@/utils/pageTransition";
-import { navigationLinksData } from "@/constants/globals";
-import { cn } from "@/lib/utils";
+import PhoneFill from "@/assets/icons/phone-fill.svg";
+import MeetIcon from "@/assets/icons/meet-icon.svg";
 
 const Header = () => {
-  const pathname = usePathname();
-  const [isOpen, setIsOpen] = useState(false);
+  const [open, setOpen] = useState(false);
+  const [hamburgerOpen, setHamburgerOpen] = useState(false);
   const lenis = useLenis();
-  const router = useTransitionRouter();
-  const [showHeader, setShowHeader] = useState(true);
-  const [lastScroll, setLastScroll] = useState(0);
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [hasMounted, setHasMounted] = useState(false);
+  const rawPath = usePathname();
+
+  // When Next.js returns "" during SSR, fix it
+  const normalizedPath = !rawPath || rawPath.trim() === "" ? "/" : rawPath;
+
+  // Remove query/hash
+  const cleanPath = normalizedPath.split(/[?#]/)[0];
+
+  // Remove trailing slash, but not root
+  const pathname = cleanPath !== "/" ? cleanPath.replace(/\/$/, "") : "/";
 
   useEffect(() => {
-    setHasMounted(true);
-  }, []);
+    let lastScrollY = 0;
+    const header = document.querySelector("header");
+    let ticking = false;
 
-  useEffect(() => {
-    const handleScroll = () => {
+    const updateHeader = () => {
       const currentScroll = window.scrollY;
 
-      setIsScrolled(window.scrollY > 80);
-
-      if (currentScroll > lastScroll && currentScroll > 80) {
-        setShowHeader(false);
+      if (currentScroll > 50) {
+        header.classList.add("sticky-header");
       } else {
-        setShowHeader(true);
+        header.classList.remove("sticky-header");
       }
 
-      setLastScroll(currentScroll);
+      if (currentScroll > lastScrollY && currentScroll > 50) {
+        header.classList.add("active");
+      } else {
+        header.classList.remove("active");
+      }
+
+      lastScrollY = currentScroll;
+      ticking = false;
     };
 
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [lastScroll]);
+    const onScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(updateHeader);
+        ticking = true;
+      }
+    };
+    window.addEventListener("scroll", onScroll);
+
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   useEffect(() => {
     const html = document.documentElement;
 
-    if (isOpen) {
-      html.style.overflow = "hidden"; 
+    if (hamburgerOpen) {
+      html.style.overflow = "hidden";
       html.style.height = "100%"; // optional: prevents iOS overscroll
       lenis?.stop?.(); // ✅ optional chaining in case lenis not ready yet
     } else {
@@ -64,7 +81,7 @@ const Header = () => {
       html.style.height = "";
       lenis?.start?.();
     };
-  }, [isOpen, lenis]);
+  }, [hamburgerOpen, lenis]);
 
   const noGradientPaths = [
     "/",
@@ -77,199 +94,100 @@ const Header = () => {
     "/branding",
   ];
 
-  const currentPath = pathname || "/";
-
-  if (!hasMounted) return null;
-
   return (
-    <header>
-      <div
-        className={cn(
-          "fixed top-0 left-0 z-[100] flex w-full items-center rounded-br-[2rem] rounded-bl-[2rem] px-[2rem] py-[3rem] transition-transform duration-300 md:px-[4rem] xl:px-[0rem]",
-          isScrolled
-            ? ""
-            : noGradientPaths.includes(currentPath)
-              ? ""
-              : "header-gradient-bg",
-          showHeader ? "translate-y-0" : "-translate-y-full",
-        )}
+    <>
+      <header
+        className={`site-header px-[2rem] py-[2rem] lg:px-[3rem] lg:py-[3rem] ${
+          noGradientPaths.includes(pathname) ? "" : "gradient"
+        }`}
       >
-        <div
-          className={cn(
-            "relative mx-auto flex w-full max-w-[120.329rem] items-center justify-between overflow-hidden",
-            isScrolled
-              ? "shadow-01 rounded-full bg-black/30 px-[2rem] py-[1rem] backdrop-blur-[10px]"
-              : "",
-          )}
-        >
-          <a
-            onClick={(e) => {
-              e.preventDefault();
+        <div className="site-header-container relative z-[10] mx-auto flex max-w-[120rem] items-center justify-between transition-all duration-300">
+          <Link href="/">
+            <Image
+              src="/images/logo.svg"
+              alt="Logo Image"
+              width={170}
+              height={66}
+              className="h-[6.6rem] w-[14rem] md:w-[17rem]"
+            />
+          </Link>
 
-              router.push("/", {
-                onTransitionReady: slideInOutTransition, // 🔥 GLOBAL ANIMATION
-              });
-            }}
-            href="/"
-            className={cn("relative flex")}
-          >
-            {isScrolled ? (
-              <Image
-                src="/images/sticky-header-logo.svg"
-                alt="Brand Logo"
-                width={170}
-                height={66}
-                fetchPriority="high"
-                className="h-[6.6rem] w-[14rem] md:w-[17rem]"
-              />
-            ) : (
-              <Image
-                src="/images/logo.svg"
-                alt="Brand Logo"
-                width={170}
-                height={66}
-                fetchPriority="high"
-                className={cn("w-[14rem] md:w-[17rem]")}
-              />
-            )}
-          </a>
-
-          <div
-            className={cn(
-              "flex items-center justify-end gap-[2rem] xl:gap-[6rem]",
-            )}
-          >
-            <nav
-              className={cn(
-                "hidden items-center justify-center gap-[1rem] xl:flex",
-              )}
-            >
-              {navigationLinksData.map((item) => (
-                <a
-                  key={item.id}
-                  onClick={(e) => {
-                    e.preventDefault();
-
-                    router.push(item.href, {
-                      onTransitionReady: slideInOutTransition, // 🔥 GLOBAL ANIMATION
-                    });
-                  }}
+          <div className="flex items-center justify-end gap-[9rem]">
+            <nav className="hidden items-center justify-center gap-[1rem] xl:flex">
+              {navLinksData.map((item, idx) => (
+                <Link
+                  key={idx}
                   href={item.href}
-                  className={cn(
-                    "inline-flex h-[4.6rem] items-center justify-center rounded-[6rem] px-[1.6rem] py-[1.1rem] text-[1.6rem] leading-[2.4rem] font-medium transition-all duration-300",
-                    pathname === item.href
-                      ? "text-text-primary bg-white"
-                      : "navigation-link bg-white/15 text-white",
-                  )}
+                  className={`nav-link ${pathname === item.href ? "active" : ""}`}
                 >
-                  {/* Gradient Layer */}
-                  <div className={cn("gradient-layer")} />
-
-                  {/* Text Layer */}
-                  {item.label}
-                </a>
+                  {item.text}
+                </Link>
               ))}
             </nav>
 
-            <div className={cn("hidden items-center gap-[1rem] xl:flex")}>
-              <ContactPopoverBtn />
+            <div className="flex items-center justify-end gap-[1rem]">
+              <Popover open={open} onOpenChange={setOpen}>
+                <PopoverTrigger
+                  onMouseEnter={() => setOpen(true)}
+                  onMouseLeave={() => setOpen(false)}
+                  className="relative inline-flex size-[4.6rem] items-center justify-center rounded-full border-none bg-[#32284A] shadow-none !ring-0 outline-none"
+                >
+                  <div className="outline-text absolute top-[2px] right-[2px] size-[.8rem] animate-pulse rounded-full bg-[#7EE972] outline-[3.5px]" />
 
-              <CommonBtn1 />
-            </div>
+                  <PhoneFill />
+                </PopoverTrigger>
+                <PopoverContent
+                  onMouseEnter={() => setOpen(true)}
+                  onMouseLeave={() => setOpen(false)}
+                  className="w-[20rem] border-none pt-[1rem] shadow-none outline-none"
+                >
+                  <div className="header-popover-content flex flex-col overflow-hidden rounded-[2rem] bg-black">
+                    <Link
+                      href="tel:01618202667"
+                      className="flex items-center gap-[1rem] border-b border-white/20 p-[1.6rem] text-[1.6rem] leading-[2.4rem] tracking-normal text-white"
+                    >
+                      <PhoneFill />
+                      <span>Call Now</span>
+                    </Link>
 
-            {/* Contact Cta for Responsive */}
-            <div className={cn("xl:hidden")}>
-              <ContactPopoverBtn />
-            </div>
+                    <button
+                      data-cal-namespace="15min"
+                      data-cal-link="hassan-iqbal-mznzu9/15min"
+                      data-cal-config='{"layout":"month_view","theme":"dark"}'
+                      className="flex cursor-pointer items-center gap-[1rem] border-none p-[1.6rem] text-[1.6rem] leading-[2.4rem] tracking-normal text-white outline-none"
+                    >
+                      <MeetIcon />
+                      <span>Schedule a call</span>
+                    </button>
+                  </div>
+                </PopoverContent>
+              </Popover>
 
-            {/* Hamburger Button */}
-            <div className={cn("xl:hidden")}>
-              <button
-                aria-label="Open menu"
-                onClick={() => setIsOpen(true)}
-                className={cn(
-                  "inline-flex size-[4rem] items-center justify-center rounded-full border border-white",
-                )}
-              >
-                <Menu
-                  aria-hidden="true"
-                  className={cn("size-[2.3rem] text-white")}
-                />
-              </button>
+              <div className="xl:hidden">
+                <button
+                  onClick={() => setHamburgerOpen(true)}
+                  className="inline-flex size-[4rem] items-center justify-center rounded-full border border-white"
+                >
+                  <Menu className="size-[2.3rem] text-white" />
+                </button>
+              </div>
+
+              <div className="hidden xl:block">
+                <BookCtaButton />
+              </div>
             </div>
           </div>
         </div>
-      </div>
-
-      {/* Sticky Header */}
-      {/*<div*/}
-      {/*  className={`fixed left-0 z-[998] w-full p-[1rem] transition-transform duration-300 md:p-[2rem] ${*/}
-      {/*    isVisible ? "translate-y-0" : "-translate-y-full"*/}
-      {/*  }`}*/}
-      {/*>*/}
-      {/*  <div className="shadow-01 relative mx-auto flex w-full max-w-[120.329rem] items-center justify-between rounded-full bg-black/30 px-[2rem] py-[1rem] backdrop-blur-[10px]">*/}
-      {/*    <a*/}
-      {/*      onClick={(e) => {*/}
-      {/*        e.preventDefault();*/}
-
-      {/*        router.push("/", {*/}
-      {/*          onTransitionReady: slideInOutTransition, // 🔥 GLOBAL ANIMATION*/}
-      {/*        });*/}
-      {/*      }}*/}
-      {/*      href="/"*/}
-      {/*      className="relative"*/}
-      {/*    >*/}
-      {/*      <Image*/}
-      {/*        src="/images/sticky-header-logo.svg"*/}
-      {/*        alt="Brand Logo"*/}
-      {/*        width={170}*/}
-      {/*        height={66}*/}
-      {/*        fetchPriority="high"*/}
-      {/*        className="h-[6.6rem] w-[14rem] md:w-[17rem]"*/}
-      {/*      />*/}
-      {/*    </a>*/}
-
-      {/*    <div className="flex items-center justify-end gap-[2rem] xl:gap-[6rem]">*/}
-      {/*      <nav className="hidden items-center justify-center gap-[1rem] xl:flex">*/}
-      {/*        <NavigationLink href="/">Home</NavigationLink>*/}
-      {/*        <NavigationLink href="/about">About </NavigationLink>*/}
-      {/*        <NavigationLink href="/services">Services</NavigationLink>*/}
-      {/*        /!* <NavigationDropdown /> *!/*/}
-      {/*        <NavigationLink href="/case-studies">Case Studies</NavigationLink>*/}
-      {/*        <NavigationLink href="/contact">Contact</NavigationLink>*/}
-      {/*      </nav>*/}
-
-      {/*      <div className="hidden items-center gap-[1rem] overflow-hidden xl:flex">*/}
-      {/*        <ContactPopoverBtn />*/}
-
-      {/*        /!* CTA Button *!/*/}
-      {/*        <CommonBtn1 />*/}
-      {/*      </div>*/}
-
-      {/*      /!* Contact Cta for Responsive *!/*/}
-      {/*      <div className="xl:hidden">*/}
-      {/*        <ContactPopoverBtn />*/}
-      {/*      </div>*/}
-
-      {/*      /!* Hamburger Button *!/*/}
-      {/*      <div className="xl:hidden">*/}
-      {/*        <button*/}
-      {/*          onClick={() => setIsOpen(true)}*/}
-      {/*          className="inline-flex size-[4rem] items-center justify-center rounded-full border border-white"*/}
-      {/*        >*/}
-      {/*          <Menu className="size-[2.3rem] text-white" />*/}
-      {/*        </button>*/}
-      {/*      </div>*/}
-      {/*    </div>*/}
-      {/*  </div>*/}
-      {/*</div>*/}
+      </header>
 
       {/* Hamburger Menu */}
       <div className="xl:hidden">
-        <HamburgerMenu isOpen={isOpen} setIsOpen={setIsOpen} />
+        <HamburgerMenu
+          hamburgerOpen={hamburgerOpen}
+          setHamburgerOpen={setHamburgerOpen}
+        />
       </div>
-    </header>
+    </>
   );
 };
-
 export default Header;

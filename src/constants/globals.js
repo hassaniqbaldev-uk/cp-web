@@ -7,31 +7,74 @@ import ClickArrowGreen from "@/assets/icons/click-arrow-green.svg";
 
 // Navigation Link Data
 
-export const navigationLinksData = [
+export const navLinksData = [
   {
-    id: 1,
     href: "/",
-    label: "Home",
+    text: "Home",
   },
   {
-    id: 2,
     href: "/about",
-    label: "About",
+    text: "About",
   },
   {
-    id: 3,
     href: "/services",
-    label: "Services",
+    text: "Services",
   },
   {
-    id: 4,
     href: "/case-studies",
-    label: "Case Studies",
+    text: "Case Studies",
   },
   {
-    id: 5,
     href: "/contact",
-    label: "Contact",
+    text: "Contact",
+  },
+];
+
+// Client Logo Popup Data
+
+export const logoPopupData = [
+  {
+    logo: "images/game-art-logo.png",
+    class: "h-[4.3rem]",
+    popupImage: "images/game-art-popup-img.webp",
+    href: "/case-studies/game-art-brain",
+  },
+  {
+    logo: "images/new-compass-logo.png",
+    class: "h-[3.1rem]",
+    popupImage: "images/new-compass-popup-img.webp",
+    href: "/case-studies/new-compass",
+  },
+  {
+    logo: "images/ayoa-logo.png",
+    class: "h-[3.9rem]",
+    popupImage: "images/ayoa-popup-img.webp",
+    href: "/case-studies/ayoa",
+  },
+  {
+    logo: "images/casa-logo.png",
+    class: "h-[7.1rem]",
+    popupImage: "images/casa-popup-img.webp",
+    href: "/case-studies/casa-botanica-panama",
+  },
+
+  {
+    logo: "images/alert-logo.png",
+    class: "h-[4rem]",
+    popupImage: "images/alertforce-popup-img.webp",
+    href: "/case-studies/alert-force",
+  },
+  {
+    logo: "images/fultons-logo.png",
+    class: "h-[2.5rem]",
+    popupImage: "images/fultons-popup-img.webp",
+    href: "/case-studies/fulton-jewellery",
+  },
+  {
+    logo: "images/unicef-logo.png",
+    class: "h-[4.2rem]",
+    popupImage: "images/unicef-popup-img.webp",
+    href: "/case-studies/unicef",
   },
 ];
 

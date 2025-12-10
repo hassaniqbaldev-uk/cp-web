@@ -1,16 +1,16 @@
 "use client";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
-import { useRef } from "react";
+import React, { useRef } from "react";
 import LineStroke01 from "@/assets/decorative-elements/line-stroke-01.svg";
 import SectionLabel2 from "../common/SectionLabel2";
-import CommonBtn2 from "../common/CommonBtn2";
 import Image from "next/image";
 import { wpElementorHeroSlides } from "@/constants/wpElementorPage";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, EffectCoverflow } from "swiper/modules"; // Add this
 import "swiper/css";
-import "swiper/css/effect-coverflow"; // Add this
+import "swiper/css/effect-coverflow";
+import ConsultationCtaButton from "@/components/common/ConsultationCtaButton"; // Add this
 
 const WpElementorHeroSection = () => {
   const lineRef = useRef(null);
@@ -157,7 +157,7 @@ const WpElementorHeroSection = () => {
           </p>
 
           <div className="wp-elementor-hero-cta-btn opacity-0">
-            <CommonBtn2 />
+            <ConsultationCtaButton text="Get Free Consultation" />
           </div>
         </div>
       </div>

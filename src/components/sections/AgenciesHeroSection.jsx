@@ -2,10 +2,10 @@
 
 import LineStroke01 from "@/assets/decorative-elements/line-stroke-01.svg";
 import gsap from "gsap";
-import { useRef } from "react";
-import CommonBtn2 from "../common/CommonBtn2";
+import React, { useRef } from "react";
 import { useGSAP } from "@gsap/react";
 import { SplitText } from "gsap/all";
+import ConsultationCtaButton from "@/components/common/ConsultationCtaButton";
 
 const AgenciesHeroSection = () => {
   const lineRef = useRef(null);
@@ -186,7 +186,7 @@ const AgenciesHeroSection = () => {
           </p>
 
           <div className="agencies-hero-cta flex justify-center opacity-0 xl:justify-start">
-            <CommonBtn2 text="See how we can help you" />
+            <ConsultationCtaButton text="See how we can help you" />
           </div>
         </div>
 

@@ -1,14 +1,13 @@
 "use client";
 
-import { useLoadingStore } from "@/store/useLoadingStore";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
-import { useRef } from "react";
+import React, { useRef } from "react";
 import LineStroke01 from "@/assets/decorative-elements/line-stroke-01.svg";
 import SectionLabel2 from "../common/SectionLabel2";
-import CommonBtn2 from "../common/CommonBtn2";
 import Image from "next/image";
 import BrandingHeroSlider from "../common/BrandingHeroSlider";
+import ConsultationCtaButton from "@/components/common/ConsultationCtaButton";
 
 const BrandingHeroSection = () => {
   const lineRef = useRef(null);
@@ -171,7 +170,7 @@ const BrandingHeroSection = () => {
           </p>
 
           <div className="branding-hero-cta-btn opacity-0">
-            <CommonBtn2 />
+            <ConsultationCtaButton text="Get Free Consultation" />
           </div>
         </div>
 

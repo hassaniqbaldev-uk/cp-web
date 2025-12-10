@@ -1,17 +1,16 @@
 "use client";
 
-import { useLoadingStore } from "@/store/useLoadingStore";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
-import { useRef } from "react";
+import React, { useRef } from "react";
 import LineStroke01 from "@/assets/decorative-elements/line-stroke-01.svg";
 import SectionLabel2 from "../common/SectionLabel2";
-import CommonBtn2 from "../common/CommonBtn2";
 import "swiper/css";
 import Image from "next/image";
 import ClientLogoSlider from "../common/ClientLogoSlider";
 import { logoPopupsData } from "@/constants/globals";
 import LogoPopup from "../common/LogoPopup";
+import ConsultationCtaButton from "@/components/common/ConsultationCtaButton";
 
 const MaintenanceGrowthHeroSection = () => {
   const lineRef = useRef(null);
@@ -97,7 +96,7 @@ const MaintenanceGrowthHeroSection = () => {
               risus nec, dapibus ligula.
             </p>
 
-            <CommonBtn2 />
+            <ConsultationCtaButton text="Get Free Consultation" />
           </div>
 
           <div className="w-full xl:w-[45.4rem]">
