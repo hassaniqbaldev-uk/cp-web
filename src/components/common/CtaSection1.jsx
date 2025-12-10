@@ -1,13 +1,12 @@
 "use client";
 import Image from "next/image";
-import SectionLabel from "./SectionLabel";
-import Link from "next/link";
 import CommonBtn3 from "./CommonBtn3";
 import WaveHand from "./WaveHand";
 import FlashIcon from "@/assets/icons/3d-flash-icon.svg";
-import { useEffect, useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
-import CommonBtn2 from "./CommonBtn2";
+import ConsultationCtaButton from "@/components/common/ConsultationCtaButton";
+import BlinkBadge2 from "@/components/common/BlinkBadge2";
 
 const CtaSection1 = () => {
   const containerRef = useRef();
@@ -28,10 +27,9 @@ const CtaSection1 = () => {
     ];
 
     const now = new Date();
-    const currentMonth = now.getMonth(); // 0 = January, 11 = December
-    return months[currentMonth]; // ✅ return current month, not next
+    const currentMonth = now.getMonth();
+    return months[currentMonth];
   };
-
   const dynamicText = getDynamicMonth();
 
   useEffect(() => {
@@ -54,20 +52,7 @@ const CtaSection1 = () => {
     >
       <div className="relative z-[1] flex flex-col items-center justify-between gap-[5.3rem] lg:flex-row">
         <div className="flex w-full flex-col items-center text-center lg:w-auto lg:items-start lg:text-left">
-          <div
-            className={`inline-flex h-[4rem] items-center justify-center gap-[1rem] rounded-[.8rem] border-[0.5px] border-dashed border-white/50 px-[2rem] py-[1rem] text-[1.4rem] leading-[2.2rem] font-medium text-white md:h-[4.4rem] md:min-w-[18.3rem] md:text-[1.6rem] md:leading-[2.4rem]`}
-          >
-            {/* Pulsing dot */}
-            <span className="relative">
-              <span
-                className={`absolute top-1/2 left-1/2 inline-flex size-[1.8rem] -translate-x-1/2 -translate-y-1/2 animate-ping rounded-full bg-[#FFE400] opacity-75`}
-              ></span>
-              <span
-                className={`relative inline-flex size-[1rem] rounded-full bg-[#FFE400]`}
-              ></span>
-            </span>
-            Book now for {dynamicText} slots
-          </div>
+          <BlinkBadge2 text={`Book now for ${dynamicText} Slots`} />
 
           <h3 className="mt-[2rem] mb-[3rem] max-w-[50rem] text-[3rem] leading-[4rem] font-semibold tracking-[-0.02em] text-white md:text-[4rem] md:leading-[5rem] xl:max-w-[60rem] xl:text-[4.8rem] xl:leading-[6rem]">
             Let’s design, build, and grow your next big project.
@@ -79,21 +64,7 @@ const CtaSection1 = () => {
           </p>
 
           <div className="mt-[4rem] flex flex-col items-center gap-[.531rem] md:flex-row">
-            {/* <Link
-              href="/contact"
-              className="relative inline-flex h-[6.4rem] items-center gap-[1rem] px-[3rem] py-[1.223rem] text-[1.6rem] font-semibold text-white md:text-[2rem]"
-            >
-              <div className="contact-btn-gradient absolute inset-0 rounded-[6rem]"></div>
-
-              <span className="relative z-10 text-white">Get in Touch</span>
-              <Image
-                src="/images/user-avatar.png"
-                alt="User Avatar"
-                width={107.69}
-                height={39.54}
-              />
-            </Link> */}
-            <CommonBtn2 />
+            <ConsultationCtaButton text="Get Free Consultation" />
 
             <i className="relative flex items-center justify-center text-[4rem]">
               <WaveHand />

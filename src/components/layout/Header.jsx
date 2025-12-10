@@ -16,9 +16,16 @@ const Header = () => {
   const [open, setOpen] = useState(false);
   const [hamburgerOpen, setHamburgerOpen] = useState(false);
   const lenis = useLenis();
-  const rawPath = usePathname() || "/";
-  const cleanPath = rawPath.split(/[?#]/)[0];
-  const pathname = cleanPath.replace(/\/$/, "") || "/";
+  const rawPath = usePathname();
+
+  // When Next.js returns "" during SSR, fix it
+  const normalizedPath = !rawPath || rawPath.trim() === "" ? "/" : rawPath;
+
+  // Remove query/hash
+  const cleanPath = normalizedPath.split(/[?#]/)[0];
+
+  // Remove trailing slash, but not root
+  const pathname = cleanPath !== "/" ? cleanPath.replace(/\/$/, "") : "/";
 
   useEffect(() => {
     let lastScrollY = 0;
@@ -120,15 +127,14 @@ const Header = () => {
 
             <div className="flex items-center justify-end gap-[1rem]">
               <Popover open={open} onOpenChange={setOpen}>
-                <PopoverTrigger asChild>
-                  <button
-                    onMouseEnter={() => setOpen(true)}
-                    className="relative inline-flex size-[4.6rem] items-center justify-center rounded-full border-none bg-[#32284A] shadow-none !ring-0 outline-none"
-                  >
-                    <div className="outline-text absolute top-[2px] right-[2px] size-[.8rem] animate-pulse rounded-full bg-[#7EE972] outline-[3.5px]" />
+                <PopoverTrigger
+                  onMouseEnter={() => setOpen(true)}
+                  onMouseLeave={() => setOpen(false)}
+                  className="relative inline-flex size-[4.6rem] items-center justify-center rounded-full border-none bg-[#32284A] shadow-none !ring-0 outline-none"
+                >
+                  <div className="outline-text absolute top-[2px] right-[2px] size-[.8rem] animate-pulse rounded-full bg-[#7EE972] outline-[3.5px]" />
 
-                    <PhoneFill />
-                  </button>
+                  <PhoneFill />
                 </PopoverTrigger>
                 <PopoverContent
                   onMouseEnter={() => setOpen(true)}

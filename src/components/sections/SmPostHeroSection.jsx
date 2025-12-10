@@ -2,10 +2,9 @@
 
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
-import { useRef } from "react";
+import React, { useRef } from "react";
 import LineStroke01 from "@/assets/decorative-elements/line-stroke-01.svg";
 import SectionLabel2 from "../common/SectionLabel2";
-import CommonBtn2 from "../common/CommonBtn2";
 import { heroSlideData } from "@/constants/smPostPage";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
@@ -14,6 +13,7 @@ import Image from "next/image";
 import ClientLogoSlider from "../common/ClientLogoSlider";
 import { logoPopupsData } from "@/constants/globals";
 import LogoPopup from "../common/LogoPopup";
+import ConsultationCtaButton from "@/components/common/ConsultationCtaButton";
 
 const SmPostHeroSection = () => {
   const lineRef = useRef(null);
@@ -161,7 +161,7 @@ const SmPostHeroSection = () => {
               real results and drives consistent growth across platforms.
             </p>
 
-            <CommonBtn2 />
+            <ConsultationCtaButton text="Get Free Consultation" />
           </div>
 
           <div className="smpost-hero-right-col w-full opacity-0 xl:min-w-[77rem]">

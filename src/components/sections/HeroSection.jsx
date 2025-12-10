@@ -1,20 +1,62 @@
 "use client";
-import BookBadge from "../common/BookBadge";
-import LogoPopup from "../common/LogoPopup";
 import LineStroke01 from "@/assets/decorative-elements/line-stroke-01.svg";
-import CommonBtn2 from "../common/CommonBtn2";
-import ClientLogoSlider from "../common/ClientLogoSlider";
-import { logoPopupsData } from "@/constants/globals";
-import { useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { useLoadingStore } from "@/store/useLoadingStore";
 import { useGSAP } from "@gsap/react";
 import { SplitText } from "gsap/all";
+import ConsultationCtaButton from "@/components/common/ConsultationCtaButton";
+import BlinkBadge from "@/components/common/BlinkBadge";
+import { getCalApi } from "@calcom/embed-react";
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
+import Tilt from "react-parallax-tilt";
+import { logoPopupData } from "@/constants/globals";
+import ViewCaseStudyButton from "@/components/common/ViewCaseStudyButton";
+import Image from "next/image";
+import "swiper/css";
 
 const HeroSection = () => {
+  const [openIndex, setOpenIndex] = useState(null);
+  const [paused, setPaused] = useState(false);
   const { isLoading } = useLoadingStore();
   const lineRef = useRef(null);
   const container = useRef();
+  const getDynamicMonth = () => {
+    const months = [
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "November",
+      "December",
+    ];
+
+    const now = new Date();
+    const currentMonth = now.getMonth();
+    return months[currentMonth];
+  };
+  const dynamicText = getDynamicMonth();
+
+  useEffect(() => {
+    (async function () {
+      const cal = await getCalApi({ namespace: "15min" });
+      cal("ui", {
+        theme: "dark",
+        cssVarsPerTheme: {
+          light: { "cal-brand": "#292929" },
+          dark: { "cal-brand": "#FF37B3" },
+        },
+        hideEventTypeDetails: false,
+        layout: "month_view",
+      });
+    })();
+  }, []);
 
   useGSAP(
     () => {
@@ -220,7 +262,7 @@ const HeroSection = () => {
   return (
     <section
       ref={container}
-      className="relative w-full overflow-hidden rounded-br-[5rem] rounded-bl-[5rem] px-[3rem] pt-[17.2rem] pb-[3.3rem] xl:px-[0rem]"
+      className="home-hero-section relative w-full overflow-hidden rounded-br-[5rem] rounded-bl-[5rem] px-[3rem] pt-[17.2rem] pb-[3.3rem] xl:px-[0rem]"
       style={{
         background:
           "url('/images/hero-bg-gradient.webp') no-repeat center center/cover",
@@ -235,7 +277,14 @@ const HeroSection = () => {
         {/* Main content */}
         <div className="flex w-full max-w-[106.5rem] flex-col items-center gap-[2rem] text-center md:gap-[2.7rem]">
           <div className="book-badge opacity-0">
-            <BookBadge />
+            <button
+              data-cal-namespace="15min"
+              data-cal-link="hassan-iqbal-mznzu9/15min"
+              data-cal-config='{"layout":"month_view","theme":"dark"}'
+              className="cursor-pointer"
+            >
+              <BlinkBadge text={`Limited ${dynamicText} Slots Available`} />
+            </button>
           </div>
 
           <h1 className="hero-heading w-full text-[2rem] leading-[3rem] font-semibold tracking-[-0.03em] text-white opacity-0 md:text-[4.5rem] md:leading-[5.5rem] md:font-bold lg:text-[6rem] lg:leading-[7rem] xl:text-[6.9rem] xl:leading-[8.3rem]">
@@ -255,35 +304,190 @@ const HeroSection = () => {
           </h5>
 
           <div className="hero-cta opacity-0">
-            <CommonBtn2 />
+            <ConsultationCtaButton text="Get a Free Consultation" />
           </div>
         </div>
 
         {/* Logos */}
-        <div className="flex max-w-[120rem] flex-col items-center gap-[4rem] px-[3rem] text-center 2xl:max-w-[136rem] 2xl:px-[0rem]">
-          <h3 className="hero-logo-heading text-[1.2rem] leading-[2.2rem] font-normal text-white opacity-0 md:text-[1.8rem] md:leading-[2.6rem]">
+        <div className="flex max-w-[120rem] flex-col items-center gap-[2rem] px-[3rem] text-center md:gap-[4rem] 2xl:max-w-[136rem] 2xl:px-[0rem]">
+          <span className="hero-logo-heading text-[1.2rem] leading-[2.2rem] font-normal text-white opacity-0 md:text-[1.8rem] md:leading-[2.6rem]">
             Trusted by brands in the UK, US & Australia
-          </h3>
+          </span>
 
-          <ul className="hidden h-[7rem] items-center gap-[3rem] xl:flex 2xl:gap-[5rem]">
-            {logoPopupsData.map((item, idx) => (
-              <li key={idx} className="hero-logo opacity-0">
-                <LogoPopup
-                  logo={item.logo}
-                  popupImage={item.popupImage}
-                  title={item.title}
-                  href={item.href}
-                  logoWidth={item.logoWidth}
-                  logoHeight={item.logoHeight}
-                />
-              </li>
-            ))}
-          </ul>
-        </div>
+          <div className="hidden items-center gap-[4.5rem] xl:flex">
+            {logoPopupData.map((item, idx) => {
+              const [open, setOpen] = useState(false);
 
-        {/* Mobile Logos */}
-        <div className="hero-logo-slider relative z-[200] block w-full opacity-0 xl:hidden">
-          <ClientLogoSlider />
+              return (
+                <Popover key={idx} open={open} onOpenChange={setOpen}>
+                  <PopoverTrigger
+                    onMouseEnter={() => setOpen(true)}
+                    onMouseLeave={() => setOpen(false)}
+                    className="cursor-pointer border-none opacity-70 shadow-none ring-0 outline-0 grayscale-100 transition-all duration-300 data-[state=open]:opacity-100 data-[state=open]:grayscale-0"
+                  >
+                    <img
+                      src={item.logo}
+                      alt="Logo Image"
+                      className={`${item.class}`}
+                    />
+                  </PopoverTrigger>
+                  <PopoverContent
+                    onMouseEnter={() => setOpen(true)}
+                    onMouseLeave={() => setOpen(false)}
+                    side="top"
+                    className="border-none pb-[1.6rem] shadow-none ring-0 outline-0"
+                  >
+                    <Tilt>
+                      <div className="flex w-[27rem] flex-col items-center gap-[2rem] overflow-hidden rounded-[1.6rem] bg-white pb-[2rem]">
+                        <div className="h-[19.4rem] w-full overflow-hidden rounded-br-[1.6rem] rounded-bl-[1.6rem]">
+                          <Image
+                            src={item.popupImage}
+                            alt="Popup Image"
+                            height={194}
+                            width={270}
+                            className="size-full object-cover object-top"
+                            unoptimized
+                          />
+                        </div>
+
+                        <ViewCaseStudyButton href={item.href} />
+                      </div>
+                    </Tilt>
+                  </PopoverContent>
+                </Popover>
+              );
+            })}
+          </div>
+
+          <div className="block w-full xl:hidden">
+            <div className={`marquee ${paused ? "paused" : ""}`}>
+              <div className="marquee__content">
+                {logoPopupData.map((item, idx) => {
+                  return (
+                    <div key={idx} className="marquee__item">
+                      <Popover
+                        open={openIndex === idx}
+                        onOpenChange={(isOpen) => {
+                          setOpenIndex(isOpen ? idx : null);
+                          setPaused(isOpen);
+                        }}
+                      >
+                        <PopoverTrigger
+                          onMouseEnter={() => {
+                            setOpenIndex(idx);
+                            setPaused(true);
+                          }}
+                          onMouseLeave={() => {
+                            setOpenIndex(null);
+                            setPaused(false);
+                          }}
+                          className="cursor-pointer border-none opacity-70 shadow-none ring-0 outline-0 grayscale-100 transition-all duration-300 data-[state=open]:opacity-100 data-[state=open]:grayscale-0"
+                        >
+                          <img
+                            src={item.logo}
+                            alt="Logo Image"
+                            className={`${item.class}`}
+                          />
+                        </PopoverTrigger>
+                        <PopoverContent
+                          onMouseEnter={() => {
+                            setOpenIndex(idx);
+                            setPaused(true);
+                          }}
+                          onMouseLeave={() => {
+                            setOpenIndex(null);
+                            setPaused(false);
+                          }}
+                          side="top"
+                          className="border-none pb-[1.6rem] shadow-none ring-0 outline-0"
+                        >
+                          <Tilt>
+                            <div className="flex w-[27rem] flex-col items-center gap-[2rem] overflow-hidden rounded-[1.6rem] bg-white pb-[2rem]">
+                              <div className="h-[19.4rem] w-full overflow-hidden rounded-br-[1.6rem] rounded-bl-[1.6rem]">
+                                <Image
+                                  src={item.popupImage}
+                                  alt="Popup Image"
+                                  height={194}
+                                  width={270}
+                                  className="size-full object-cover object-top"
+                                  unoptimized
+                                />
+                              </div>
+
+                              <ViewCaseStudyButton href={item.href} />
+                            </div>
+                          </Tilt>
+                        </PopoverContent>
+                      </Popover>
+                    </div>
+                  );
+                })}
+              </div>
+
+              <div className="marquee__content" aria-hidden="true">
+                {logoPopupData.map((item, idx) => {
+                  return (
+                    <div key={idx} className="marquee__item">
+                      <Popover
+                        open={openIndex === `dup-${idx}`}
+                        onOpenChange={(isOpen) => {
+                          setOpenIndex(isOpen ? `dup-${idx}` : null);
+                          setPaused(isOpen);
+                        }}
+                      >
+                        <PopoverTrigger
+                          onMouseEnter={() => {
+                            setOpenIndex(`dup-${idx}`);
+                            setPaused(true);
+                          }}
+                          onMouseLeave={() => {
+                            setOpenIndex(null);
+                            setPaused(false);
+                          }}
+                          className="cursor-pointer border-none opacity-70 shadow-none ring-0 outline-0 grayscale-100 transition-all duration-300 data-[state=open]:opacity-100 data-[state=open]:grayscale-0"
+                        >
+                          <img
+                            src={item.logo}
+                            alt="Logo Image"
+                            className={`${item.class}`}
+                          />
+                        </PopoverTrigger>
+                        <PopoverContent
+                          onMouseEnter={() => {
+                            setOpenIndex(idx);
+                            setPaused(true);
+                          }}
+                          onMouseLeave={() => {
+                            setOpenIndex(null);
+                            setPaused(false);
+                          }}
+                          side="top"
+                          className="border-none pb-[1.6rem] shadow-none ring-0 outline-0"
+                        >
+                          <Tilt>
+                            <div className="flex w-[27rem] flex-col items-center gap-[2rem] overflow-hidden rounded-[1.6rem] bg-white pb-[2rem]">
+                              <div className="h-[19.4rem] w-full overflow-hidden rounded-br-[1.6rem] rounded-bl-[1.6rem]">
+                                <Image
+                                  src={item.popupImage}
+                                  alt="Popup Image"
+                                  height={194}
+                                  width={270}
+                                  className="size-full object-cover object-top"
+                                  unoptimized
+                                />
+                              </div>
+
+                              <ViewCaseStudyButton href={item.href} />
+                            </div>
+                          </Tilt>
+                        </PopoverContent>
+                      </Popover>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>

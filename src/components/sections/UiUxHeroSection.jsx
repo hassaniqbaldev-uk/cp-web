@@ -1,10 +1,9 @@
 "use client";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
-import { useRef } from "react";
+import React, { useRef } from "react";
 import LineStroke01 from "@/assets/decorative-elements/line-stroke-01.svg";
 import SectionLabel2 from "../common/SectionLabel2";
-import CommonBtn2 from "../common/CommonBtn2";
 import { logoPopupsData } from "@/constants/globals";
 import LogoPopup from "../common/LogoPopup";
 import ClientLogoSlider from "../common/ClientLogoSlider";
@@ -14,6 +13,7 @@ import { Autoplay, EffectFade } from "swiper/modules";
 import "swiper/css/effect-fade";
 import { heroSlideData } from "@/constants/uiUxPage";
 import Image from "next/image";
+import ConsultationCtaButton from "@/components/common/ConsultationCtaButton";
 
 const UiUxHeroSection = () => {
   const lineRef = useRef(null);
@@ -159,7 +159,7 @@ const UiUxHeroSection = () => {
               results.
             </p>
 
-            <CommonBtn2 />
+            <ConsultationCtaButton text="Get Free Consultation" />
           </div>
 
           <div

@@ -45,6 +45,7 @@
     --container-1xl: 138rem;
 }
 
+
 html {
     font-size: 62.5%;
 }
@@ -125,6 +126,20 @@ body {
     text-align: center;
     overflow: hidden;
     position: relative;
+}
+
+@media (max-width: 425px) {
+    .consultation-gradient-button .text-span {
+        height: 5rem;
+        padding: 1rem 2rem;
+        border-radius: 6rem;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        overflow: hidden;
+        position: relative;
+    }
 }
 
 .consultation-gradient-button .text-span::before {
@@ -268,36 +283,63 @@ body {
     transform: translateY(-100%);
 }
 
-/*Page Transition Animation*/
-
-::view-transition-old(root),
-::view-transition-new(root) {
-    animation: none !important;
-}
-
-::view-transition-group(root) {
-    z-index: auto !important;
-}
-
-::view-transition-image-pair(root) {
-    isolation: isolate;
-    will-change: transform, opacity, clip-path;
-    z-index: 1;
-}
-
-::view-transition-new(root) {
-    z-index: 1000;
-    animation: none !important;
-}
-
-::view-transition-old(root) {
-    z-index: 1;
-    animation: none !important;
-}
 
 .draggable-slider .swiper-wrapper {
     transition-timing-function: linear !important;
 }
+
+/*Marquee*/
+.home-hero-section .marquee {
+    --gap: 1.6rem;
+    position: relative;
+    display: flex;
+    overflow: hidden;
+    user-select: none;
+    gap: var(--gap);
+    mask-image: linear-gradient(
+            to right,
+            rgba(0, 0, 0, 0) 0%,
+            rgb(0, 0, 0) 12.5%,
+            rgb(0, 0, 0) 87.5%,
+            rgba(0, 0, 0, 0) 100%
+    );
+}
+
+.home-hero-section .marquee__content {
+    flex-shrink: 0;
+    display: flex;
+    justify-content: space-around;
+    gap: var(--gap);
+    min-width: 100%;
+    animation: scroll 20s linear infinite;
+}
+
+.home-hero-section .marquee.paused .marquee__content {
+    animation-play-state: paused;
+}
+
+
+.home-hero-section .marquee__content > * {
+    flex: 0 0 auto;
+    margin: 2px;
+    padding-inline: 2rem;
+}
+
+.home-hero-section .marquee__item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@keyframes scroll {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(calc(-100% - var(--gap)));
+    }
+}
+
 
 .grecaptcha-badge {
     opacity: 0 !important;
@@ -305,78 +347,6 @@ body {
     visibility: hidden !important;
 }
 
-/* Common Button 2 */
-
-.common-btn-2 {
-    position: relative;
-    height: 5rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 6rem;
-    padding: 0rem 2rem;
-    font-weight: 600;
-    font-size: 1.4rem;
-    color: white;
-    overflow: hidden;
-    z-index: 1;
-}
-
-@media (min-width: 768px) {
-    .common-btn-2 {
-        position: relative;
-        height: 5rem;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border-radius: 6rem;
-        padding: 0rem 3rem;
-        font-weight: 600;
-        font-size: 2rem;
-        color: white;
-        overflow: hidden;
-        z-index: 1;
-    }
-}
-
-.common-btn-2 .gradient-layer {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(90deg, #ffe400 0%, #ff37b3 100%);
-    -webkit-mask: linear-gradient(#000 0 0) content-box,
-    linear-gradient(#000 0 0);
-    -webkit-mask-composite: xor;
-    mask-composite: exclude;
-    padding: 2px; /* border thickness */
-    border-radius: 6rem;
-    z-index: 1;
-}
-
-/* Fill Layer (hidden by default) */
-.common-btn-2 .fill-layer {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(90deg, #ffe400 0%, #ff37b3 100%);
-    border-radius: 6rem;
-    width: 0; /* start with 0 width */
-    transition: width 0.5s ease;
-    z-index: 0;
-}
-
-/* On hover, expand the fill from left to right */
-.common-btn-2-parent:hover .fill-layer {
-    width: 100%;
-}
-
-.common-btn-avatar-2 {
-    position: relative;
-    width: 5rem;
-    height: 5rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 1;
-}
 
 /* Contact Button Gradient */
 
@@ -510,6 +480,8 @@ body {
           rgb(0, 0, 0) 87.5%,
           rgba(0, 0, 0, 0) 100%
         ); */
+
+
 }
 
 .client-logo-slider .swiper-slide {

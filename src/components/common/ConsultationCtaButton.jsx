@@ -2,7 +2,7 @@
 import { useEffect } from "react";
 import { getCalApi } from "@calcom/embed-react";
 
-const ConsultationCtaButton = () => {
+const ConsultationCtaButton = ({ text }) => {
   useEffect(() => {
     (async function () {
       const cal = await getCalApi({ namespace: "15min" });
@@ -27,7 +27,7 @@ const ConsultationCtaButton = () => {
         className="consultation-gradient-button inline-flex cursor-pointer items-center justify-center"
       >
         <span className="text-span text-[1.6rem] font-semibold tracking-normal text-white md:text-[2rem]">
-          Get Free Consultation
+          {text}
         </span>
 
         <svg

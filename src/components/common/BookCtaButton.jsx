@@ -1,7 +1,7 @@
 "use client";
 import { useEffect } from "react";
 import { getCalApi } from "@calcom/embed-react";
-import PhoneFill from "@/assets/icons/phone-fill.svg";
+import WhiteArrow from "@/assets/icons/white-arrow.svg";
 
 const BookCtaButton = () => {
   useEffect(() => {
@@ -44,7 +44,7 @@ const BookCtaButton = () => {
         </svg>
 
         <i className="arrow-icon">
-          <PhoneFill />
+          <WhiteArrow />
         </i>
       </button>
     </>

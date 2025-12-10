@@ -3,7 +3,11 @@ import { X } from "lucide-react";
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
 import { navLinksData } from "@/constants/globals";
 import ConsultationCtaButton from "../common/ConsultationCtaButton";
 import PhoneFill from "@/assets/icons/phone-fill.svg";
@@ -59,15 +63,13 @@ const HamburgerMenu = ({ hamburgerOpen, setHamburgerOpen }) => {
 
           <div className="flex items-center gap-[1rem]">
             <Popover open={open} onOpenChange={setOpen}>
-              <PopoverTrigger asChild>
-                <button
-                  onMouseEnter={() => setOpen(true)}
-                  className="relative inline-flex size-[4.6rem] items-center justify-center rounded-full border-none bg-[#32284A] shadow-none !ring-0 outline-none"
-                >
-                  <div className="outline-text absolute top-[2px] right-[2px] size-[.8rem] animate-pulse rounded-full bg-[#7EE972] outline-[3.5px]" />
+              <PopoverTrigger
+                onMouseEnter={() => setOpen(true)}
+                className="relative inline-flex size-[4.6rem] items-center justify-center rounded-full border-none bg-[#32284A] shadow-none !ring-0 outline-none"
+              >
+                <div className="outline-text absolute top-[2px] right-[2px] size-[.8rem] animate-pulse rounded-full bg-[#7EE972] outline-[3.5px]" />
 
-                  <PhoneFill />
-                </button>
+                <PhoneFill />
               </PopoverTrigger>
               <PopoverContent
                 onMouseEnter={() => setOpen(true)}
@@ -123,7 +125,7 @@ const HamburgerMenu = ({ hamburgerOpen, setHamburgerOpen }) => {
 
         <div className="flex flex-col gap-[2rem] pt-[2rem] pb-[4rem]">
           <div className="px-[2.5rem]">
-            <ConsultationCtaButton />
+            <ConsultationCtaButton text="Get Free Consultation" />
           </div>
 
           <div className="flex flex-col gap-[2rem] px-[2.5rem] pt-[1rem]">
