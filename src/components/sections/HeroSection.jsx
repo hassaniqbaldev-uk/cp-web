@@ -262,7 +262,7 @@ const HeroSection = () => {
   return (
     <section
       ref={container}
-      className="home-hero-section relative w-full overflow-hidden rounded-br-[5rem] rounded-bl-[5rem] px-[3rem] pt-[17.2rem] pb-[3.3rem] xl:px-[0rem]"
+      className="home-hero-section relative w-full overflow-hidden rounded-br-[3rem] rounded-bl-[3rem] px-[3rem] pt-[15rem] pb-[3.3rem] md:rounded-br-[5rem] md:rounded-bl-[5rem] md:pt-[17.2rem] xl:px-[0rem]"
       style={{
         background:
           "url('/images/hero-bg-gradient.webp') no-repeat center center/cover",

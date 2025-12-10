@@ -35,44 +35,44 @@ export const navLinksData = [
 export const logoPopupData = [
   {
     logo: "images/game-art-logo.png",
-    class: "h-[4.3rem]",
+    class: "h-[3rem] md:h-[4.3rem]",
     popupImage: "images/game-art-popup-img.webp",
     href: "/case-studies/game-art-brain",
   },
   {
     logo: "images/new-compass-logo.png",
-    class: "h-[3.1rem]",
+    class: "h-[3rem] md:h-[3.1rem]",
     popupImage: "images/new-compass-popup-img.webp",
     href: "/case-studies/new-compass",
   },
   {
     logo: "images/ayoa-logo.png",
-    class: "h-[3.9rem]",
+    class: "h-[3rem] md:h-[3.9rem]",
     popupImage: "images/ayoa-popup-img.webp",
     href: "/case-studies/ayoa",
   },
   {
     logo: "images/casa-logo.png",
-    class: "h-[7.1rem]",
+    class: "h-[6rem] md:h-[7.1rem]",
     popupImage: "images/casa-popup-img.webp",
     href: "/case-studies/casa-botanica-panama",
   },
 
   {
     logo: "images/alert-logo.png",
-    class: "h-[4rem]",
+    class: "h-[3rem] md:h-[4rem]",
     popupImage: "images/alertforce-popup-img.webp",
     href: "/case-studies/alert-force",
   },
   {
     logo: "images/fultons-logo.png",
-    class: "h-[2.5rem]",
+    class: "h-[2rem] md:h-[2.5rem]",
     popupImage: "images/fultons-popup-img.webp",
     href: "/case-studies/fulton-jewellery",
   },
   {
     logo: "images/unicef-logo.png",
-    class: "h-[4.2rem]",
+    class: "h-[3rem] md:h-[4.2rem]",
     popupImage: "images/unicef-popup-img.webp",
     href: "/case-studies/unicef",
   },

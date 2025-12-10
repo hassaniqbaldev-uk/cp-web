@@ -3,7 +3,11 @@ import Link from "next/link";
 import Image from "next/image";
 import { navLinksData } from "@/constants/globals";
 import BookCtaButton from "@/components/common/BookCtaButton";
-import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
 import { useEffect, useState } from "react";
 import { Menu } from "lucide-react";
 import HamburgerMenu from "./HamburgerMenu";

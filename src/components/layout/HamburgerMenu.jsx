@@ -50,7 +50,7 @@ const HamburgerMenu = ({ hamburgerOpen, setHamburgerOpen }) => {
         }}
         className={`fixed top-0 z-[999] flex h-screen w-full flex-col transition-all duration-300 ${hamburgerOpen ? "left-0" : "left-[200%]"}`}
       >
-        <div className="flex items-center justify-between px-[2rem] py-[3rem] md:px-[4rem]">
+        <div className="flex items-center justify-between px-[2rem] py-[2rem] md:px-[4rem]">
           <Link href="/" onClick={() => setHamburgerOpen(false)}>
             <Image
               src="/images/logo.svg"
@@ -114,7 +114,7 @@ const HamburgerMenu = ({ hamburgerOpen, setHamburgerOpen }) => {
               key={idx}
               href={item.href}
               onClick={() => setHamburgerOpen(false)}
-              className="flex border-t border-white/20 px-[2.5rem] py-[1.5rem] text-[3.4rem] leading-[4.8rem] font-semibold tracking-[-0.02em] text-white last:border-b"
+              className="flex border-t border-white/20 px-[2.5rem] py-[1rem] text-[3.4rem] leading-[4rem] font-semibold tracking-[-0.02em] text-white last:border-b"
             >
               {item.text}
             </Link>
