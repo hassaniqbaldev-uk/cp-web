@@ -13,15 +13,12 @@ import MeetIcon from "@/assets/icons/meet-icon.svg";
 import { usePathname } from "next/navigation";
 
 const Header = () => {
-  const pathname = usePathname();
   const [open, setOpen] = useState(false);
   const [hamburgerOpen, setHamburgerOpen] = useState(false);
   const lenis = useLenis();
-  const [hasMounted, setHasMounted] = useState(false);
-
-  useEffect(() => {
-    setHasMounted(true);
-  }, []);
+  const raw = usePathname() || "/";
+  const normalizedPath = raw.trim() === "" ? "/" : raw;
+  const pathname = normalizedPath;
 
   useEffect(() => {
     let lastScrollY = 0;
@@ -90,15 +87,11 @@ const Header = () => {
     "/branding",
   ];
 
-  const currentPath = pathname || "/";
-
-  if (!hasMounted) return null;
-
   return (
     <>
       <header
         className={`site-header px-[2rem] py-[2rem] lg:px-[3rem] lg:py-[3rem] ${
-          noGradientPaths.includes(currentPath) ? "" : "gradient"
+          noGradientPaths.includes(pathname) ? "" : "gradient"
         }`}
       >
         <div className="site-header-container relative z-[10] mx-auto flex max-w-[120rem] items-center justify-between transition-all duration-300">
