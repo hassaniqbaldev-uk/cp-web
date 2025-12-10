@@ -5,39 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a0fec96b-8541-4c09-a6de-94fbb1839011" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/cp-web.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/casa-logo.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/consultation-cta-avatar.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/icons/white-arrow.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/common/BlinkBadge.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/common/BlinkBadge2.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/common/BookCtaButton.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/common/ConsultationCtaButton.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/common/ViewCaseStudyButton.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vscode/settings.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/logo.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/logo.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/common/BookBadge.jsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/common/CommonBtn1.jsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/common/CommonBtn2.jsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/common/CtaSection1.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/CtaSection1.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/layout/HamburgerMenu.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/layout/HamburgerMenu.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/layout/Header.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/layout/Header.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/sections/AgenciesHeroSection.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/sections/AgenciesHeroSection.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/sections/BrandingHeroSection.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/sections/BrandingHeroSection.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/sections/HeroSection.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/sections/HeroSection.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/sections/MaintenanceGrowthHeroSection.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/sections/MaintenanceGrowthHeroSection.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/sections/SmPostHeroSection.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/sections/SmPostHeroSection.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/sections/UiUxHeroSection.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/sections/UiUxHeroSection.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/sections/WhoWeAreSection.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/sections/WhoWeAreSection.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/sections/WpElementorHeroSection.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/sections/WpElementorHeroSection.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ui/popover.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ui/popover.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/constants/globals.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/constants/globals.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/styles/globals.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/globals.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -85,7 +54,7 @@
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
     "RunOnceActivity.typescript.service.memoryLimit.init": "true",
-    "git-widget-placeholder": "Merging main",
+    "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
     "js.debugger.nextJs.config.created.client": "true",
     "js.debugger.nextJs.config.created.server": "true",
@@ -145,6 +114,15 @@
       <workItem from="1765365621198" duration="97000" />
       <workItem from="1765365728435" duration="374000" />
     </task>
+    <task id="LOCAL-00001">
+      <option name="closed" value="true" />
+      <created>1765366538528</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1765366538528</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

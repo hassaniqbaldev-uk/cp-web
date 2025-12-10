@@ -2,7 +2,6 @@
 import Link from "next/link";
 import Image from "next/image";
 import { navLinksData } from "@/constants/globals";
-import { usePathname } from "next/navigation";
 import BookCtaButton from "@/components/common/BookCtaButton";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { useEffect, useState } from "react";
@@ -11,21 +10,18 @@ import HamburgerMenu from "./HamburgerMenu";
 import { useLenis } from "lenis/react";
 import PhoneFill from "@/assets/icons/phone-fill.svg";
 import MeetIcon from "@/assets/icons/meet-icon.svg";
+import { usePathname } from "next/navigation";
 
 const Header = () => {
+  const pathname = usePathname();
   const [open, setOpen] = useState(false);
   const [hamburgerOpen, setHamburgerOpen] = useState(false);
   const lenis = useLenis();
-  const rawPath = usePathname();
+  const [hasMounted, setHasMounted] = useState(false);
 
-  // When Next.js returns "" during SSR, fix it
-  const normalizedPath = !rawPath || rawPath.trim() === "" ? "/" : rawPath;
-
-  // Remove query/hash
-  const cleanPath = normalizedPath.split(/[?#]/)[0];
-
-  // Remove trailing slash, but not root
-  const pathname = cleanPath !== "/" ? cleanPath.replace(/\/$/, "") : "/";
+  useEffect(() => {
+    setHasMounted(true);
+  }, []);
 
   useEffect(() => {
     let lastScrollY = 0;
@@ -94,11 +90,15 @@ const Header = () => {
     "/branding",
   ];
 
+  const currentPath = pathname || "/";
+
+  if (!hasMounted) return null;
+
   return (
     <>
       <header
         className={`site-header px-[2rem] py-[2rem] lg:px-[3rem] lg:py-[3rem] ${
-          noGradientPaths.includes(pathname) ? "" : "gradient"
+          noGradientPaths.includes(currentPath) ? "" : "gradient"
         }`}
       >
         <div className="site-header-container relative z-[10] mx-auto flex max-w-[120rem] items-center justify-between transition-all duration-300">
