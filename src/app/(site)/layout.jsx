@@ -10,6 +10,7 @@ import ScrollToTop from "@/components/common/ScrollToTop";
 import { ReactLenis } from "lenis/react";
 import { useEffect, useRef } from "react";
 import { ViewTransitions } from "next-view-transitions";
+
 gsap.registerPlugin(useGSAP, ScrollTrigger, SplitText, DrawSVGPlugin);
 
 export default function SiteLayout({ children }) {
@@ -33,13 +34,6 @@ export default function SiteLayout({ children }) {
         options={{
           lerp: 0.06, // slightly higher = smoother easing (0.05–0.1 sweet spot)
           duration: 1.5, // length of the easing (in seconds)
-          smoothWheel: true, // smooths mouse wheel input
-          smoothTouch: true, // enables touch inertia (MUST for mobile)
-          touchMultiplier: 2, // scroll distance multiplier for touch
-          wheelMultiplier: 1, // normal sensitivity for desktop
-          gestureOrientation: "vertical", // vertical swipe orientation
-          normalizeWheel: true, // ensures even scroll speed across devices
-          syncTouch: true, // smooths touch scroll updates to Lenis’ internal state
           autoRaf: false, // we let GSAP ticker drive it (good for ScrollTrigger)
         }}
       />

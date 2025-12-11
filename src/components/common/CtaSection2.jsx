@@ -1,15 +1,13 @@
 "use client";
 
-import Image from "next/image";
-import SectionLabel from "./SectionLabel";
-import CommonBtn3 from "./CommonBtn3";
 import FlashIcon from "@/assets/icons/3d-flash-icon.svg";
 import ContactArrowIcon from "@/assets/icons/contact-arrow.svg";
-import { useEffect, useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
 import RightArrowIcon from "@/assets/icons/right-arrow-icon.svg";
 import { getCalApi } from "@calcom/embed-react";
 import { useGSAP } from "@gsap/react";
+import BlinkBadge2 from "@/components/common/BlinkBadge2";
 
 const CtaSection2 = () => {
   const containerRef = useRef();
@@ -53,7 +51,7 @@ const CtaSection2 = () => {
 
       <div className="relative z-[1] flex flex-col items-center gap-[8rem] text-center lg:flex-row lg:items-start lg:gap-[3.4rem] lg:text-left">
         <div className="flex flex-col items-center lg:items-start">
-          <SectionLabel text="Contact us Today" />
+          <BlinkBadge2 text="Contact us Today" />
 
           <h3 className="mt-[2rem] max-w-[70rem] text-[3.2rem] leading-[4rem] font-semibold tracking-[-0.02em] text-white md:text-[4.8rem] md:leading-[6rem]">
             Just 15 minutes to find out if we’re the right fit for your project.

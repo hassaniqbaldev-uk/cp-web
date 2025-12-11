@@ -6,6 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="a0fec96b-8541-4c09-a6de-94fbb1839011" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(site)/cookies-policy/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(site)/cookies-policy/page.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(site)/layout.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(site)/layout.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(site)/privacy-policy/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(site)/privacy-policy/page.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/common/CtaSection2.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/CtaSection2.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/layout/Header.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/layout/Header.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -67,7 +71,8 @@
     "prettierjs.PrettierConfiguration.Package": "C:\\Users\\tahab\\Desktop\\cp-web\\node_modules\\prettier",
     "rearrange.code.on.save": "true",
     "run.code.analysis.last.selected.profile": "pProject Default",
-    "settings.editor.selected.configurable": "Settings.JavaScript"
+    "settings.editor.selected.configurable": "Settings.JavaScript",
+    "ts.external.directory.path": "C:\\Program Files\\JetBrains\\WebStorm 2025.2.5\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external"
   }
 }]]></component>
   <component name="RecentsManager">
@@ -113,7 +118,7 @@
       <workItem from="1765348772589" duration="13866000" />
       <workItem from="1765365621198" duration="97000" />
       <workItem from="1765365728435" duration="374000" />
-      <workItem from="1765432729750" duration="1023000" />
+      <workItem from="1765432729750" duration="3483000" />
     </task>
     <task id="LOCAL-00001">
       <option name="closed" value="true" />
