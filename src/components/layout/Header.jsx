@@ -3,11 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { navLinksData } from "@/constants/globals";
 import BookCtaButton from "@/components/common/BookCtaButton";
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/ui/popover";
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { useEffect, useState } from "react";
 import { Menu } from "lucide-react";
 import HamburgerMenu from "./HamburgerMenu";
@@ -20,9 +16,12 @@ const Header = () => {
   const [open, setOpen] = useState(false);
   const [hamburgerOpen, setHamburgerOpen] = useState(false);
   const lenis = useLenis();
-  const raw = usePathname() || "/";
-  const normalizedPath = raw.trim() === "" ? "/" : raw;
-  const pathname = normalizedPath;
+  const pathname = usePathname();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   useEffect(() => {
     let lastScrollY = 0;
@@ -95,7 +94,7 @@ const Header = () => {
     <>
       <header
         className={`site-header px-[2rem] py-[2rem] lg:px-[3rem] lg:py-[3rem] ${
-          noGradientPaths.includes(pathname) ? "" : "gradient"
+          mounted && !noGradientPaths.includes(pathname) ? "gradient" : ""
         }`}
       >
         <div className="site-header-container relative z-[10] mx-auto flex max-w-[120rem] items-center justify-between transition-all duration-300">
