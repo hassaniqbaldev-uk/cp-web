@@ -14,9 +14,12 @@
 /coverage
 
 # next.js
-/.idea/
 /.next/
 /out/
+
+# JetBrains IDE
+.idea/
+
 
 # production
 /build
