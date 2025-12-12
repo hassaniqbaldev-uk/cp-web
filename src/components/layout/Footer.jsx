@@ -6,11 +6,7 @@ import LogoPopup from "../common/LogoPopup";
 import LineStroke06 from "@/assets/decorative-elements/line-stroke-06.svg";
 import FooterAccordion from "../common/FooterAccordion";
 import ClientLogoSlider from "../common/ClientLogoSlider";
-import {
-  footerLinksCardData,
-  logoPopupsData,
-  socialLinks,
-} from "@/constants/globals";
+import { footerLinksCardData, logoPopupsData, socialLinks } from "@/constants/globals";
 import { useRef } from "react";
 import gsap from "gsap";
 import CLetter2 from "@/assets/decorative-elements/c-letter-2";
@@ -85,7 +81,7 @@ const Footer = () => {
               </Link>
 
               <h5 className="text-[2rem] leading-[2.8rem] font-semibold tracking-[-0.02em] text-white md:max-w-[45rem] md:text-[2.6rem] md:leading-[3.2rem]">
-                UseSpace, Paddock Street, Manchester, M12 6PN
+                Bartle House, Oxford Court, Manchester, M2 3WQ
               </h5>
             </div>
 
@@ -185,7 +181,7 @@ const Footer = () => {
                   Address
                 </span>{" "}
                 <span className="max-w-[30rem] text-[1.8rem] leading-[2.6rem] font-normal text-white">
-                  UseSpace, Paddock Street, Manchester, M12 6PN
+                  Bartle House, Oxford Court, Manchester, M2 3WQ
                 </span>
               </li>
             </ul>
