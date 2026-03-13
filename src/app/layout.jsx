@@ -20,20 +20,25 @@ export const metadata = {
   // ------------------------
   // OPEN GRAPH
   // ------------------------
+  // openGraph: {
+  //   title: "CreativePixels | Web Design, WordPress & Branding Agency",
+  //   description:
+  //     "CreativePixels is a Manchester-based creative agency delivering WordPress websites, branding, and digital solutions for clients across the UK, US & Australia.",
+  //   url: "https://creativepixels.agency",
+  //   siteName: "CreativePixels",
+  //   images: [
+  //     {
+  //       url: "/images/og-image-assets/og-image.jpg",
+  //       width: 1200,
+  //       height: 630,
+  //       alt: "CreativePixels - Web Design, WordPress & Branding Agency",
+  //     },
+  //   ],
+  //   locale: "en_GB",
+  //   type: "website",
+  // },
   openGraph: {
-    title: "CreativePixels | Web Design, WordPress & Branding Agency",
-    description:
-      "CreativePixels is a Manchester-based creative agency delivering WordPress websites, branding, and digital solutions for clients across the UK, US & Australia.",
-    url: "https://creativepixels.agency",
     siteName: "CreativePixels",
-    images: [
-      {
-        url: "/images/og-image-assets/og-image.jpg",
-        width: 1200,
-        height: 630,
-        alt: "CreativePixels - Web Design, WordPress & Branding Agency",
-      },
-    ],
     locale: "en_GB",
     type: "website",
   },
@@ -41,12 +46,15 @@ export const metadata = {
   // ------------------------
   // TWITTER / X
   // ------------------------
+  // twitter: {
+  //   card: "summary_large_image",
+  //   title: "CreativePixels | Web Design, WordPress & Branding Agency",
+  //   description:
+  //     "CreativePixels is a Manchester-based creative agency delivering WordPress websites, branding, and digital solutions for clients across the UK, US & Australia.",
+  //   images: ["/images/og-image-assets/og-image.jpg"],
+  // },
   twitter: {
     card: "summary_large_image",
-    title: "CreativePixels | Web Design, WordPress & Branding Agency",
-    description:
-      "CreativePixels is a Manchester-based creative agency delivering WordPress websites, branding, and digital solutions for clients across the UK, US & Australia.",
-    images: ["/images/og-image-assets/og-image.jpg"],
   },
 
   // ------------------------
