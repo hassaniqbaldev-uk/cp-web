@@ -92,11 +92,11 @@ export default function RootLayout({ children }) {
         />
         {/* End Google Tag Manager */}
 
-        <Script
+        {/* <Script
           src="https://cdn.feedbucket.app/assets/feedbucket.js"
           strategy="afterInteractive"
           data-feedbucket="3rHNb3lcgqe226C8ghh5"
-        />
+        /> */}
       </body>
     </html>
   );
