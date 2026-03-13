@@ -22,7 +22,7 @@ export async function generateMetadata() {
       siteName: "CreativePixels",
       images: [
         {
-          url: ogImage,
+          url: "/images/og-image-assets/og-image.jpg",
           width: 1200,
           height: 630,
           alt: `${title} | CreativePixels`,
