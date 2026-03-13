@@ -14,8 +14,8 @@ export async function generateMetadata() {
     title,
     description,
     openGraph: {
-      title,
-      description,
+      title: title,
+      description: description,
       url: "https://creativepixels.agency/about",
       siteName: "CreativePixels",
       images: [
@@ -31,8 +31,8 @@ export async function generateMetadata() {
     },
     twitter: {
       card: "summary_large_image",
-      title,
-      description,
+      title: title,
+      description: description,
       images: ["/images/og-image-assets/og-image.jpg"],
     },
   };
