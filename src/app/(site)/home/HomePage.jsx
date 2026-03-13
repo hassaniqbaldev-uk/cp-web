@@ -13,6 +13,39 @@ import Contact from "@/components/sections/contact/Contact";
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 
+export async function generateMetadata() {
+  const title = "CreativePixels | Web Design, WordPress & Branding Agency";
+  const description =
+    "CreativePixels is a Manchester-based creative agency delivering WordPress websites, branding, and digital solutions for clients across the UK, US & Australia.";
+
+  return {
+    title,
+    description,
+    openGraph: {
+      title,
+      description,
+      url: "https://creativepixels.agency/",
+      siteName: "CreativePixels",
+      images: [
+        {
+          url: "/images/og-image-assets/og-image.jpg",
+          width: 1200,
+          height: 630,
+          alt: title,
+        },
+      ],
+      locale: "en_GB",
+      type: "website",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: ["/images/og-image-assets/og-image.jpg"],
+    },
+  };
+}
+
 const CONTENT_VARIANTS = {
   hidden: {
     opacity: 0,
