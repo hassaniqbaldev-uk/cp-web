@@ -10,9 +10,9 @@ const SitePage = async () => {
   ]);
 
   return (
-    <>
+    <div>
       <HomePage caseStudies={caseStudies} />
-    </>
+    </div>
   );
 };
 export default SitePage;
