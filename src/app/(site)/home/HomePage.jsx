@@ -1,10 +1,5 @@
 "use client";
 
-export const metadata = {
-  title: "",
-  description: "",
-};
-
 import HomeHeader from "@/components/layout/HomeHeader";
 import HomeHero from "@/components/sections/hero/HomeHero";
 import Expertise from "@/components/sections/expertise/Expertise";

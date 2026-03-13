@@ -10,13 +10,11 @@ export async function generateMetadata() {
   const description =
     "Learn about CreativePixels — our story, values, and the team behind your next project. A Manchester-based agency built on creativity and results.";
 
-  const ogImage = `/api/og?title=${encodeURIComponent(title)}&description=${encodeURIComponent(description)}`;
-
   return {
     title,
     description,
     openGraph: {
-      title: `${title} | CreativePixels`,
+      title,
       description,
       url: "https://creativepixels.agency/about",
       siteName: "CreativePixels",
@@ -25,7 +23,7 @@ export async function generateMetadata() {
           url: "/images/og-image-assets/og-image.jpg",
           width: 1200,
           height: 630,
-          alt: `${title} | CreativePixels`,
+          alt: title,
         },
       ],
       locale: "en_GB",
@@ -33,9 +31,9 @@ export async function generateMetadata() {
     },
     twitter: {
       card: "summary_large_image",
-      title: `${title} | CreativePixels`,
+      title,
       description,
-      images: [ogImage],
+      images: ["/images/og-image-assets/og-image.jpg"],
     },
   };
 }
