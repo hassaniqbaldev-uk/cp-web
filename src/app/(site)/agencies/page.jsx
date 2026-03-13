@@ -1,8 +1,35 @@
-export const metadata = {
-  title: "White Label for Agencies",
-  description:
-    "CreativePixels offers white label web design and development for agencies. Scale your output without hiring — we work under your brand.",
-};
+export async function generateMetadata() {
+  const title = "White Label for Agencies";
+  const description =
+    "CreativePixels offers white label web design and development for agencies. Scale your output without hiring — we work under your brand.";
+
+  return {
+    title,
+    description,
+    openGraph: {
+      title: title,
+      description: description,
+      url: "https://creativepixels.agency/agencies",
+      siteName: "CreativePixels",
+      images: [
+        {
+          url: "/images/og-image-assets/og-image.jpg",
+          width: 1200,
+          height: 630,
+          alt: title,
+        },
+      ],
+      locale: "en_GB",
+      type: "website",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: title,
+      description: description,
+      images: ["/images/og-image-assets/og-image.jpg"],
+    },
+  };
+}
 
 import ClientReview from "@/components/sections/client-review/ClientReview";
 import Difference from "@/components/sections/difference/Difference";

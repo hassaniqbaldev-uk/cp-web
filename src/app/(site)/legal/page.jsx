@@ -1,8 +1,35 @@
-export const metadata = {
-  title: "Legal Hub",
-  description:
-    "Explore CreativePixels services — web design, WordPress development, branding, SEO, and ongoing support. Everything you need to grow online.",
-};
+export async function generateMetadata() {
+  const title = "Legal Hub";
+  const description =
+    "Access CreativePixels legal documents, policies, and client resources — all in one place.";
+
+  return {
+    title,
+    description,
+    openGraph: {
+      title: title,
+      description: description,
+      url: "https://creativepixels.agency/legal",
+      siteName: "CreativePixels",
+      images: [
+        {
+          url: "/images/og-image-assets/og-image.jpg",
+          width: 1200,
+          height: 630,
+          alt: title,
+        },
+      ],
+      locale: "en_GB",
+      type: "website",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: title,
+      description: description,
+      images: ["/images/og-image-assets/og-image.jpg"],
+    },
+  };
+}
 
 import Cta3 from "@/components/sections/cta/Cta3";
 import LegalHero from "@/components/sections/hero/LegalHero";

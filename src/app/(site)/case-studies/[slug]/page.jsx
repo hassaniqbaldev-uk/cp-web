@@ -22,9 +22,34 @@ export async function generateMetadata({ params }) {
 
   if (!caseStudy) return {};
 
+  const title = caseStudy.seo?.metaTitle || caseStudy.title;
+  const description = caseStudy.seo?.metaDescription || "";
+
   return {
-    title: caseStudy.seo?.metaTitle || caseStudy.title,
-    description: caseStudy.seo?.metaDescription || "",
+    title,
+    description,
+    openGraph: {
+      title: title,
+      description: description,
+      url: `https://creativepixels.agency/case-studies/${slug}`,
+      siteName: "CreativePixels",
+      images: [
+        {
+          url: "/images/og-image-assets/og-image.jpg",
+          width: 1200,
+          height: 630,
+          alt: title,
+        },
+      ],
+      locale: "en_GB",
+      type: "website",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: title,
+      description: description,
+      images: ["/images/og-image-assets/og-image.jpg"],
+    },
   };
 }
 

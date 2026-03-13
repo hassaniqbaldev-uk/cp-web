@@ -1,8 +1,35 @@
-export const metadata = {
-  title: "Services",
-  description:
-    "Explore CreativePixels services — web design, WordPress development, branding, SEO, and ongoing support. Everything you need to grow online.",
-};
+export async function generateMetadata() {
+  const title = "Services";
+  const description =
+    "Explore CreativePixels services — web design, WordPress development, branding, SEO, and ongoing support. Everything you need to grow online.";
+
+  return {
+    title,
+    description,
+    openGraph: {
+      title: title,
+      description: description,
+      url: "https://creativepixels.agency/services",
+      siteName: "CreativePixels",
+      images: [
+        {
+          url: "/images/og-image-assets/og-image.jpg",
+          width: 1200,
+          height: 630,
+          alt: title,
+        },
+      ],
+      locale: "en_GB",
+      type: "website",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: title,
+      description: description,
+      images: ["/images/og-image-assets/og-image.jpg"],
+    },
+  };
+}
 
 import Contact from "@/components/sections/contact/Contact";
 import Cta from "@/components/sections/cta/Cta";
