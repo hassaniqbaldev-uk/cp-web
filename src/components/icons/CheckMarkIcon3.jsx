@@ -1,0 +1,19 @@
+const CheckMarkIcon3 = ({ width = "12", height = "9", fillColor }) => {
+  return (
+    <>
+      <svg
+        width={width}
+        height={height}
+        viewBox="0 0 12 9"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M12 0.946309L3.77143 9L0 5.30872L0.966857 4.36242L3.77143 7.10067L11.0331 0L12 0.946309Z"
+          fill={fillColor}
+        />
+      </svg>
+    </>
+  );
+};
+export default CheckMarkIcon3;
