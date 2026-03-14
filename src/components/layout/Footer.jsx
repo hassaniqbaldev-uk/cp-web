@@ -776,7 +776,7 @@ const Footer = () => {
                     <li className="h-[24px] w-[1px] bg-white md:h-[32px]" />
 
                     <li>
-                      <Link href="">
+                      <Link href="https://monthlydesigns.com">
                         <Image
                           src={MonthlyIcon}
                           width={137}

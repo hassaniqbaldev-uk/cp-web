@@ -8,7 +8,7 @@ import { MotionEffect } from "@/components/effects/motion-effect";
 const OurApproach = ({ caseStudy }) => {
   return (
     <>
-      <section className="px-[2rem] pt-[0rem] pb-[5rem] xl:px-[0rem] xl:pt-[10rem] xl:pb-[10rem]">
+      <section className="px-[2rem] pb-[5rem] xl:px-[0rem] xl:pb-[10rem]">
         <MotionEffect
           slide={{ direction: "down" }}
           fade
