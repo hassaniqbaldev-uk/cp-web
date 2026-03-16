@@ -50,7 +50,7 @@ const Blog = ({ blogs }) => {
     <>
       <section className="bg-[#F0F6FF] px-[2rem] py-[5rem] xl:px-[0rem] xl:py-[10rem]">
         <div className="container">
-          <div className="hidden grid-cols-2 gap-[3.3rem] xl:grid">
+          <div className="hidden grid-cols-2 gap-[3.3rem] md:grid">
             {blogs.map((item, idx) => (
               <MotionEffect
                 key={idx}
@@ -81,7 +81,7 @@ const Blog = ({ blogs }) => {
             delay={0.4}
             transition={{ type: "tween", duration: 1.0, ease: "easeOut" }}
           >
-            <div className="grid w-full grid-cols-1 gap-[4rem] md:grid-cols-2 xl:hidden">
+            <div className="block w-full md:hidden">
               {blogs.map((item, idx) => (
                 <div key={idx} className="sticky top-[9rem]">
                   <BlogCard

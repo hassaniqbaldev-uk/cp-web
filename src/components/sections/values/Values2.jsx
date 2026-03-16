@@ -12,25 +12,25 @@ import { MotionEffect } from "@/components/effects/motion-effect";
 
 export const valuesCards = [
   {
-    title: "Human First",
+    title: "People Over Output",
     description:
-      "We don't do burnout. We believe rested, happy people do the best work. 4-day work week trials and flexible hours.",
+      "Great work comes from people who actually enjoy what they do. We keep things lean, collaborative, and free from the nonsense that drains good teams. No micromanagement. No politics. Just good people doing meaningful work.",
     icon: GroupIcon,
     color: "#FF37B3",
     boxShadow: "4px 12px 30px 0px #FF37B31C",
   },
   {
-    title: "Mastery Focused",
+    title: "Invested in Your Growth",
     description:
-      "We pay for your books, courses, and conferences. If you aren't growing, neither are we.",
+      "We take craft seriously here. Whether it's a course, a conference, or a book you've had your eye on, we back it. The better you get, the better our work gets. Simple as that.",
     icon: CupIcon,
     color: "#EE8D00",
     boxShadow: "4px 12px 30px 0px #EE76211C",
   },
   {
-    title: "Remote Friendly",
+    title: "Work Without Boundaries",
     description:
-      "HQ is in Manchester, but our team is global. Work from where you feel most productive.",
+      "Our home is Manchester. Our team is wherever the best people are. We focus on outcomes, not office hours. If you do good work, we trust you to decide where and how you do it.",
     icon: FriendsIcon,
     color: "#3078FF",
     boxShadow: "4px 12px 30px 0px #3078FF1C",
