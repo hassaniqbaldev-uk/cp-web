@@ -12,6 +12,14 @@ export const LEGAL_LIST_QUERY = `
 }
 `;
 
+// Sitemap query — used in sitemap.js
+export const LEGAL_SITEMAP_QUERY = `
+*[_type == "legalPage" && defined(slug.current)]{
+  "slug": slug.current,
+  _updatedAt
+}
+`;
+
 // Detail query — used on /legal/[slug] to render the full document
 export const LEGAL_DETAIL_QUERY = `
 *[_type == "legalPage" && slug.current == $slug][0] {
