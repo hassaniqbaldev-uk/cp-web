@@ -56,7 +56,7 @@ const FeaturedCaseStudies = ({
           <div className="flex items-start gap-[2rem] xl:gap-[3.3rem]">
             <div className="sticky top-[12rem] left-0 hidden w-[28rem] flex-col gap-[2rem] lg:flex">
               {/* Sticky Filter Tab */}
-              <div className="rounded-[2rem] border border-[#625c70]/50 bg-white py-[3.5rem] backdrop-blur-[10px]">
+              <div className="no-scrollbar h-[50rem] overflow-y-scroll rounded-[2rem] border border-[#625c70]/50 bg-white py-[3.5rem] backdrop-blur-[10px]">
                 <Accordion type="single" defaultValue="item-1" collapsible>
                   <AccordionItem value="item-1">
                     <AccordionTrigger className="group flex w-full items-center justify-between gap-[1rem] px-[4rem] text-[1.8rem] leading-[4rem] font-bold tracking-[-0.02em] text-[#312749] uppercase">
