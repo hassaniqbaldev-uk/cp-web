@@ -75,7 +75,7 @@ const FeaturedCaseStudies = ({
                                 ? `/case-studies?industry=${activeIndustry}`
                                 : "/case-studies"
                             }
-                            scroll={false}
+                            // scroll={false}
                             className={`relative block w-full px-[4rem] text-left text-[1.6rem] leading-[3.6rem] transition-all duration-200 ${
                               !activeService
                                 ? "font-bold text-[#FF37B3]"
@@ -102,7 +102,7 @@ const FeaturedCaseStudies = ({
                                     ? `&industry=${activeIndustry}`
                                     : ""
                                 }`}
-                                scroll={false}
+                                // scroll={false}
                                 className={`relative block w-full px-[4rem] text-left text-[1.6rem] leading-[3.6rem] transition-all duration-200 ${
                                   isActive
                                     ? "font-bold text-[#FF37B3]"
@@ -142,7 +142,7 @@ const FeaturedCaseStudies = ({
                                 ? `/case-studies?service=${activeService}`
                                 : "/case-studies"
                             }
-                            scroll={false}
+                            // scroll={false}
                             className={`relative block w-full px-[4rem] text-left text-[1.6rem] leading-[3.6rem] transition-all duration-200 ${
                               !activeIndustry
                                 ? "font-bold text-[#FF37B3]"
@@ -169,7 +169,7 @@ const FeaturedCaseStudies = ({
                                     ? `&service=${activeService}`
                                     : ""
                                 }`}
-                                scroll={false}
+                                // scroll={false}
                                 className={`relative block w-full px-[4rem] text-left text-[1.6rem] leading-[3.6rem] transition-all duration-200 ${
                                   isActive
                                     ? "font-bold text-[#FF37B3]"
@@ -195,7 +195,7 @@ const FeaturedCaseStudies = ({
                   <div className="px-[4rem] pt-[2rem]">
                     <Link
                       href="/case-studies"
-                      scroll={false}
+                      // scroll={false}
                       className="inline-flex h-[5rem] w-full items-center justify-center rounded-[7rem] bg-[#312749] px-[3rem] py-[1rem] text-[1.8rem] font-semibold text-white"
                     >
                       Clear Filters

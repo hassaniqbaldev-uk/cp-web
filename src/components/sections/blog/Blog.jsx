@@ -81,46 +81,20 @@ const Blog = ({ blogs }) => {
             delay={0.4}
             transition={{ type: "tween", duration: 1.0, ease: "easeOut" }}
           >
-            <div className="block w-full xl:hidden">
-              <Swiper
-                pagination={{ clickable: true }}
-                modules={[Pagination, Autoplay]}
-                loop={true}
-                autoplay={{
-                  delay: 2500,
-                  disableOnInteraction: false,
-                }}
-                slidesPerView={1}
-                spaceBetween={0}
-                breakpoints={{
-                  767: {
-                    slidesPerView: 2,
-                    spaceBetween: 0,
-                  },
-                  1024: {
-                    slidesPerView: 3,
-                    spaceBetween: 0,
-                  },
-                }}
-                className="mySwiper"
-              >
-                {blogs.map((item, idx) => (
-                  <SwiperSlide
-                    key={idx}
-                    className="!flex !h-auto !items-center !justify-center px-[1rem] pb-[5rem]"
-                  >
-                    <BlogCard
-                      readTime={item.readTime}
-                      publishedDate={item.publishedAt}
-                      category={item.category}
-                      img={item.coverImage.asset.url}
-                      title={item.title}
-                      excerpt={item.excerpt}
-                      link={`/blog/${item.slug.current}`}
-                    />
-                  </SwiperSlide>
-                ))}
-              </Swiper>
+            <div className="grid w-full grid-cols-1 gap-[4rem] md:grid-cols-2 xl:hidden">
+              {blogs.map((item, idx) => (
+                <div key={idx} className="sticky top-[9rem]">
+                  <BlogCard
+                    readTime={item.readTime}
+                    publishedDate={item.publishedAt}
+                    category={item.category}
+                    img={item.coverImage.asset.url}
+                    title={item.title}
+                    excerpt={item.excerpt}
+                    link={`/blog/${item.slug.current}`}
+                  />
+                </div>
+              ))}
             </div>
           </MotionEffect>
         </div>
