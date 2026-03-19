@@ -6,15 +6,19 @@ import "swiper/css";
 import Image from "next/image";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import CardImg1 from "@/assets/images/hero/about-hero-slide-img-1.png";
-import CardImg2 from "@/assets/images/hero/about-hero-slide-img-1.png";
-import CardImg3 from "@/assets/images/hero/about-hero-slide-img-1.png";
-import CardImg4 from "@/assets/images/hero/about-hero-slide-img-1.png";
+import CardImg2 from "@/assets/images/hero/about-hero-slide-img-2.png";
+import CardImg3 from "@/assets/images/hero/about-hero-slide-img-3.png";
+import CardImg4 from "@/assets/images/hero/about-hero-slide-img-4.png";
+import CardImg5 from "@/assets/images/hero/about-hero-slide-img-5.png";
+import CardImg6 from "@/assets/images/hero/about-hero-slide-img-6.png";
 
 const slides = [
-  { id: 1, img: CardImg1, alt: "About Hero" },
-  { id: 2, img: CardImg2, alt: "Home Hero" },
-  { id: 3, img: CardImg3, alt: "How We Work" },
-  { id: 4, img: CardImg4, alt: "Partner With Us" },
+  { id: 1, img: CardImg1, alt: "About Hero Slide Image" },
+  { id: 2, img: CardImg2, alt: "About Hero Slide Image" },
+  { id: 3, img: CardImg3, alt: "About Hero Slide Image" },
+  { id: 4, img: CardImg4, alt: "About Hero Slide Image" },
+  { id: 5, img: CardImg5, alt: "About Hero Slide Image" },
+  { id: 6, img: CardImg6, alt: "About Hero Slide Image" },
 ];
 
 const AboutHeroSlider = () => {

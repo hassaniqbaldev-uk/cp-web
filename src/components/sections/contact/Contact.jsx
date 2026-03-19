@@ -21,19 +21,40 @@ const Contact = () => {
       <div className="container">
         <div className="flex flex-col items-center gap-[4rem] xl:flex-row xl:items-start">
           <div className="flex w-[30rem] flex-col items-center text-center md:w-[56.3rem] xl:items-start xl:text-left">
-            <MotionEffect slide={{ direction: "down" }} fade zoom inView delay={0.1} transition={{ type: "tween", duration: 0.8, ease: "easeOut" }}>
+            <MotionEffect
+              slide={{ direction: "down" }}
+              fade
+              zoom
+              inView
+              delay={0.1}
+              transition={{ type: "tween", duration: 0.8, ease: "easeOut" }}
+            >
               <div>
                 <SectionLabel text="Book a call" textColor="#FF37B3" />
               </div>
             </MotionEffect>
 
-            <MotionEffect slide={{ direction: "down" }} fade zoom inView delay={0.25} transition={{ type: "tween", duration: 0.8, ease: "easeOut" }}>
+            <MotionEffect
+              slide={{ direction: "down" }}
+              fade
+              zoom
+              inView
+              delay={0.25}
+              transition={{ type: "tween", duration: 0.8, ease: "easeOut" }}
+            >
               <div className="mt-[1rem] mb-[2rem]">
                 <SectionTitle text="Unlock your brand's hidden potential." />
               </div>
             </MotionEffect>
 
-            <MotionEffect slide={{ direction: "down" }} fade zoom inView delay={0.4} transition={{ type: "tween", duration: 0.8, ease: "easeOut" }}>
+            <MotionEffect
+              slide={{ direction: "down" }}
+              fade
+              zoom
+              inView
+              delay={0.4}
+              transition={{ type: "tween", duration: 0.8, ease: "easeOut" }}
+            >
               <div>
                 <SectionDescription text="Stop guessing. Let's build a roadmap to scale your digital presence with a custom strategy." />
               </div>
@@ -59,7 +80,7 @@ const Contact = () => {
 
                 <ul className="grid grid-cols-1 gap-x-[5rem] gap-y-[.6rem] md:grid-cols-2 md:gap-y-[1.2rem]">
                   {[
-                    "Review current position",
+                    "UI Review",
                     "Competitor Intel",
                     "Competitor Intel",
                     "Growth Opportunities",

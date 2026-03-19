@@ -30,9 +30,15 @@ export async function POST(req) {
     // 4️⃣ Send email to your team
     await transporter.sendMail({
       from: process.env.SMTP_FROM,
-      to: "hassan@cp.agency, afzal@cp.agency, ahsan@cp.agency",
+      to: "hello@cp.agency, haziqbaluk@gmail.com",
       subject: `New Free Audit Request from ${name || email}`,
-      html: getAuditEmailTemplate(name, email, websiteUrl, service, primaryGoal),
+      html: getAuditEmailTemplate(
+        name,
+        email,
+        websiteUrl,
+        service,
+        primaryGoal,
+      ),
     });
 
     // 5️⃣ Send thank-you email to the customer
@@ -40,7 +46,12 @@ export async function POST(req) {
       from: process.env.SMTP_FROM,
       to: email,
       subject: `Thanks for requesting a free audit${service ? ` for ${service}` : ""}`,
-      html: getCustomerEmailTemplate(name, email, service || "Website Audit", primaryGoal || ""),
+      html: getCustomerEmailTemplate(
+        name,
+        email,
+        service || "Website Audit",
+        primaryGoal || "",
+      ),
     });
 
     // 6️⃣ Done
