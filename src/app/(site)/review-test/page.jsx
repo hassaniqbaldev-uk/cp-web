@@ -24,7 +24,7 @@ const CONTENT_VARIANTS = {
   },
 };
 
-const HomePage = ({ caseStudies }) => {
+const ReviewTest = () => {
   const [transition, setTransition] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
 
@@ -94,12 +94,11 @@ const HomePage = ({ caseStudies }) => {
       <Services />
       <Established />
       <Process />
-      <Work caseStudies={caseStudies} />
       <section className="overflow-hidden px-[2rem] pb-[5rem] xl:px-[0rem] xl:pb-[10rem]">
         <Cta />
       </section>
       <section className="bg-[#ffd900]/13 px-[2rem] py-[5rem] xl:px-[0rem] xl:py-[10rem]">
-        <Testimonials />
+        <TestingTestimonials />
       </section>
       <section className="px-[2rem] py-[5rem] xl:px-[0rem] xl:py-[10rem]">
         <Contact />
@@ -108,4 +107,4 @@ const HomePage = ({ caseStudies }) => {
   );
 };
 
-export default HomePage;
+export default ReviewTest;
