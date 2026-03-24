@@ -46,8 +46,8 @@ const HomeHero = () => {
         <motion.div
           className="pointer-events-none fixed top-0 left-0 z-[100] hidden items-center justify-center opacity-0 xl:flex"
           animate={{
-            x: mouse.x - 27,
-            y: mouse.y - 27,
+            x: mouse.x - 5,
+            y: mouse.y - 11,
             scale: isHovered ? 1 : 0,
             opacity: isHovered ? 1 : 0,
           }}
@@ -175,7 +175,7 @@ const HomeHero = () => {
                   onMouseLeave={() => {
                     setIsHovered(false);
                   }}
-                  className="relative z-[5] flex h-[26.9rem] w-[28.7rem] cursor-none items-center justify-center md:h-[41.5rem] md:w-[42.4rem]"
+                  className="relative z-[5] flex h-[26.9rem] cursor-none w-[28.7rem]  items-center justify-center md:h-[41.5rem] md:w-[42.4rem]"
                 >
                   <Image
                     src={HomeHeroCardImg}

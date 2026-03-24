@@ -63,7 +63,7 @@ const Services = () => {
               transition={{ type: "tween", duration: 0.8, ease: "easeOut" }}
             >
               <div className="max-w-[25rem] md:max-w-[85rem]">
-                <SectionDescription text="From strategy to launch to long-term growth—we're with you every step." />
+                <SectionDescription text="From strategy to launch to long-term growth we're with you every step." />
               </div>
             </MotionEffect>
           </div>

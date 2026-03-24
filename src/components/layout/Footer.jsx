@@ -75,7 +75,7 @@ const Footer = () => {
             <div className="flex flex-col items-center gap-[3rem] text-center md:gap-[4rem]">
               <h3 className="max-w-[89.6rem] text-[3rem] leading-[4rem] font-bold tracking-[-0.02em] text-white md:text-[3.4rem] md:leading-[4.8rem]">
                 Book a free{" "}
-                <span className="text-[#FF37B3]">15-minute call</span> – no hard
+                <span className="text-[#FF37B3]">15-minute call</span> no hard
                 sell, just a chance to see if working together makes sense.
               </h3>
 

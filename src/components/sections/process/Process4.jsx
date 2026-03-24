@@ -40,7 +40,7 @@ export const steps = [
     id: "04",
     title: "Seamless Integration",
     description:
-      "We plug into your systems — from project management tools to communication channels — so our work feels like part of your own in-house team.",
+      "We plug into your systems from project management tools to communication channels so our work feels like part of your own in-house team.",
     icon: MonitorIcon,
   },
   {

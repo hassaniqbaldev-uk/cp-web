@@ -54,7 +54,7 @@ const Cta = () => {
 
               <div className="mt-[1.8rem] mb-[2.4rem] md:mt-[2rem] md:mb-[4rem]">
                 <SectionDescription
-                  text="Book a free 15-minute call – no hard sell, just a chance to see if working together makes sense."
+                  text="Book a free 15-minute call no hard sell, just a chance to see if working together makes sense."
                   textColor="#ffffff"
                 />
               </div>
