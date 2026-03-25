@@ -1,0 +1,341 @@
+"use client";
+import React, { useEffect, useRef, useState } from "react";
+
+const JobApplicationForm = ({
+  jobTitle = "UI/UX Product Designer",
+  onClose,
+}) => {
+  // States
+  const [fullName, setFullName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [message, setMessage] = useState("");
+  const [portfolio, setPortfolio] = useState("");
+  const [resumeFile, setResumeFile] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [status, setStatus] = useState("");
+  const [dragOver, setDragOver] = useState(false);
+
+  //   Ref
+  const fileInputRef = useRef(null);
+
+  //   Handlers
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+
+    if (name === "fullName") setFullName(value);
+    if (name === "email") setEmail(value);
+    if (name === "phone") setPhone(value);
+    if (name === "message") setMessage(value);
+    if (name === "portfolio") setPortfolio(value);
+  };
+
+  const handleFile = (file) => {
+    if (!file) return;
+
+    const allowedTypes = [
+      "application/pdf",
+      "application/msword",
+      "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+    ];
+
+    if (!allowedTypes.includes(file.type)) {
+      alert("Only .pdf, .doc, .docx files are allowed.");
+      return;
+    }
+
+    if (file.size > 5 * 1024 * 1024) {
+      alert("File size must be under 5MB.");
+      return;
+    }
+
+    setResumeFile(file);
+  };
+
+  const handleDrop = (e) => {
+    e.preventDefault();
+    setDragOver(false);
+    const file = e.dataTransfer.files[0];
+    handleFile(file);
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    if (!resumeFile) {
+      alert("Please upload your resume.");
+      return;
+    }
+
+    setLoading(true);
+    setStatus("");
+
+    try {
+      const formData = new FormData();
+      formData.append("fullName", fullName);
+      formData.append("email", email);
+      formData.append("phone", phone);
+      formData.append("message", message);
+      formData.append("portfolio", portfolio);
+      formData.append("resume", resumeFile);
+      formData.append("jobTitle", jobTitle);
+
+      const res = await fetch("/api/job-application", {
+        method: "POST",
+        body: formData,
+      });
+
+      const data = await res.json();
+
+      if (data.success) {
+        setStatus("✅ Application submitted successfully!");
+
+        if (data.success) {
+          setStatus("✅ Application submitted successfully!");
+
+          // reset all fields
+          setFullName("");
+          setEmail("");
+          setPhone("");
+          setMessage("");
+          setPortfolio("");
+          setResumeFile(null);
+        }
+      } else {
+        setStatus("❌ Failed to submit. Please try again.");
+      }
+    } catch (error) {
+      setStatus("❌ Something went wrong. Try again.");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleSaveDraft = () => {
+    const draft = {
+      fullName,
+      email,
+      phone,
+      message,
+      portfolio,
+    };
+
+    localStorage.setItem("jobApplicationDraft", JSON.stringify(draft));
+    setStatus("✅ Draft saved!");
+  };
+
+  useEffect(() => {
+    if (status) {
+      const timer = setTimeout(() => setStatus(""), 3000);
+      return () => clearTimeout(timer);
+    }
+  }, [status]);
+
+  return (
+    <div
+      style={{ boxShadow: "13px 13px 40px 0px #00000014" }}
+      className="flex max-h-[95vh] w-[95%] flex-col overflow-y-auto rounded-[2rem] border-t-8 border-[#EE8D00] bg-white p-[2rem] md:w-[80rem] md:p-[3.8rem]"
+    >
+      {/* Header */}
+      <div className="flex w-full items-start justify-between border-b border-[#D6D6D6] pb-[2.5rem]">
+        <h4 className="text-[2rem] leading-[2.6rem] font-bold tracking-[-0.02em] text-[#312749] md:text-[2.6rem] md:leading-[3rem]">
+          {jobTitle}
+        </h4>
+        <button
+          onClick={onClose}
+          className="flex h-[3.2rem] w-[3.2rem] flex-shrink-0 items-center justify-center rounded-full border border-[#E4E3E8] text-[#625C70] transition-colors hover:bg-[#f5f5f5]"
+          aria-label="Close"
+        >
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+            <path
+              d="M13 1L1 13M1 1l12 12"
+              stroke="currentColor"
+              strokeWidth="1.8"
+              strokeLinecap="round"
+            />
+          </svg>
+        </button>
+      </div>
+
+      <form onSubmit={handleSubmit}>
+        {/* Fields */}
+        <div className="mt-[2.5rem] mb-[3rem] flex w-full flex-col items-start gap-[2.5rem]">
+          {/* Full Name */}
+          <fieldset className="w-full">
+            <label className="text-[1.6rem] leading-[3rem] font-bold tracking-[-0.02em] text-[#312749]">
+              Full name <span className="text-[#F14A58]">*</span>
+            </label>
+            <div className="h-[5.2rem] w-full rounded-[1.6rem] border border-[#E5E7EB] bg-[#F9FAFB]">
+              <input
+                className="h-full w-full bg-transparent p-[1.5rem] text-[1.5rem] outline-0"
+                onChange={handleChange}
+                value={fullName}
+                name="fullName"
+                type="text"
+                placeholder="Jane Doe"
+              />
+            </div>
+          </fieldset>
+
+          {/* Email + Phone */}
+          <div className="grid w-full grid-cols-1 gap-[1.5rem] md:grid-cols-2">
+            <fieldset className="w-full">
+              <label className="text-[1.6rem] leading-[3rem] font-bold tracking-[-0.02em] text-[#312749]">
+                Email <span className="text-[#F14A58]">*</span>
+              </label>
+              <div className="h-[5.2rem] w-full rounded-[1.6rem] border border-[#E5E7EB] bg-[#F9FAFB]">
+                <input
+                  className="h-full w-full bg-transparent p-[1.5rem] text-[1.5rem] outline-0"
+                  onChange={handleChange}
+                  value={email}
+                  name="email"
+                  type="email"
+                  placeholder="jane@example.com"
+                />
+              </div>
+            </fieldset>
+
+            <fieldset className="w-full">
+              <label className="text-[1.6rem] leading-[3rem] font-bold tracking-[-0.02em] text-[#312749]">
+                Phone number
+              </label>
+              <div className="flex h-[5.2rem] w-full items-center overflow-hidden rounded-[1.6rem] border border-[#E5E7EB] bg-[#F9FAFB]">
+                <input
+                  className="h-full w-full bg-transparent p-[1.5rem] text-[1.5rem] outline-0"
+                  onChange={handleChange}
+                  value={phone}
+                  name="phone"
+                  type="tel"
+                />
+              </div>
+            </fieldset>
+          </div>
+
+          {/* Upload Resume */}
+          <fieldset className="w-full">
+            <label className="text-[1.6rem] leading-[3rem] font-bold tracking-[-0.02em] text-[#312749]">
+              Upload resume <span className="text-[#F14A58]">*</span>
+            </label>
+            <div
+              onDrop={handleDrop}
+              onDragOver={(e) => {
+                e.preventDefault();
+                setDragOver(true);
+              }}
+              onDragLeave={() => setDragOver(false)}
+              onClick={() => fileInputRef.current.click()}
+              className={`flex w-full cursor-pointer flex-col items-center justify-center gap-[1rem] rounded-[1.6rem] border-2 border-dashed bg-[#F9FAFB] px-[2rem] py-[2.5rem] transition-colors hover:border-[#EE8D00] md:py-[3rem] ${dragOver ? "border-[#EE8D00]" : "border-[#E5E7EB]"}`}
+            >
+              <svg
+                width="36"
+                height="36"
+                viewBox="0 0 36 36"
+                fill="none"
+                className="text-[#625C70]"
+              >
+                <path
+                  d="M18 24V12M18 12l-5 5M18 12l5 5"
+                  stroke="currentColor"
+                  strokeWidth="1.8"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+                <path
+                  d="M6 26a6 6 0 01-.17-11.99A9 9 0 0124.6 10.4 6 6 0 0130 16.5"
+                  stroke="currentColor"
+                  strokeWidth="1.8"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+              {resumeFile ? (
+                <p className="text-[1.4rem] font-medium text-[#312749]">
+                  {resumeFile.name}
+                </p>
+              ) : (
+                <>
+                  <p className="text-center text-[1.4rem] text-[#312749]">
+                    Drag and drop your file, or{" "}
+                    <span className="font-semibold underline">click here.</span>
+                  </p>
+                  <p className="text-[1.2rem] text-[#9b97a6]">
+                    .pdf, .doc, .docx | Max 5MB
+                  </p>
+                </>
+              )}
+
+              <input
+                type="file"
+                ref={fileInputRef}
+                accept=".pdf,.doc,.docx"
+                onChange={(e) => handleFile(e.target.files[0])}
+                onClick={(e) => e.stopPropagation()}
+                className="hidden"
+              />
+            </div>
+          </fieldset>
+
+          {/* Message/Cover Letter */}
+          <fieldset className="w-full">
+            <label className="text-[1.6rem] leading-[3rem] font-bold tracking-[-0.02em] text-[#312749]">
+              Message/Cover Letter
+            </label>
+            <div className="w-full overflow-hidden rounded-[1.6rem] border border-[#E5E7EB] bg-[#F9FAFB]">
+              <textarea
+                className="h-[12.8rem] w-full resize-none bg-transparent p-[1.5rem] text-[1.5rem] outline-0"
+                rows={4}
+                name="message"
+                value={message}
+                onChange={handleChange}
+                placeholder="Tell us about yourself..."
+              />
+            </div>
+          </fieldset>
+
+          {/* Portfolio */}
+          <fieldset className="w-full">
+            <label className="text-[1.6rem] leading-[3rem] font-bold tracking-[-0.02em] text-[#312749]">
+              Portfolio
+            </label>
+            <div className="flex h-[5.2rem] w-full items-center overflow-hidden rounded-[1.6rem] border border-[#E5E7EB] bg-[#F9FAFB]">
+              <span className="flex h-full items-center border-r border-[#E5E7EB] px-[1.4rem] text-[1.4rem] text-[#9b97a6] select-none">
+                https://
+              </span>
+              <input
+                className="h-full w-full bg-transparent px-[1.2rem] text-[1.5rem] outline-0"
+                name="portfolio"
+                value={portfolio}
+                onChange={handleChange}
+                type="text"
+                placeholder="yourportfolio.com"
+              />
+            </div>
+          </fieldset>
+        </div>
+
+        {/* Buttons */}
+        <div className="flex flex-col gap-[1rem] md:flex-row md:items-center md:justify-end md:gap-[1.2rem]">
+          <button
+            type="button"
+            onClick={handleSaveDraft}
+            className="w-full rounded-[7rem] border border-[#E5E7EB] px-[2rem] py-[1.2rem] text-[1.4rem] font-semibold text-[#312749] transition-colors hover:bg-[#f5f5f5] md:w-auto md:py-[1rem]"
+          >
+            Save draft
+          </button>
+          <button
+            type="submit"
+            disabled={loading}
+            className="w-full rounded-[7rem] bg-[#EE8D00] px-[3rem] py-[1.2rem] text-[1.4rem] font-semibold text-white transition-colors hover:bg-[#d47e00] md:w-auto md:py-[1rem]"
+          >
+            {loading ? "Submitting..." : "Submit"}
+          </button>
+        </div>
+        {status && (
+          <p className="mt-[1rem] text-center text-[1.4rem]">{status}</p>
+        )}
+      </form>
+    </div>
+  );
+};
+
+export default JobApplicationForm;

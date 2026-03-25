@@ -8,10 +8,25 @@ import BriefcaseIcon from "@/assets/icons/ui/breifcase-icon.svg";
 import LocationIcon from "@/assets/icons/ui/location-icon.svg";
 import TimelineIcon from "@/components/icons/TimelineIcon";
 import { MotionEffect } from "@/components/effects/motion-effect";
+import JobApplicationForm from "@/components/ui/JobApplicationForm";
+import { useState } from "react";
+import SecondaryButton from "@/components/ui/SecondaryButton";
 
 const Opportunities = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  const [selectedTitle, setSelectedTitle] = useState("");
+
   return (
     <>
+      {/* Job Application Form */}
+      <div
+        className={`fixed inset-0 z-[999] flex items-center justify-center backdrop-blur-[10px] transition-all duration-300 ${isOpen ? "pointer-events-auto visible opacity-100" : "pointer-events-none invisible opacity-0"}`}
+      >
+        <JobApplicationForm
+          jobTitle={selectedTitle}
+          onClose={() => setIsOpen(false)}
+        />
+      </div>
       <section className="px-[2rem] pb-[5rem] xl:px-[0rem] xl:pb-[10rem]">
         <div className="container">
           <div className="flex flex-col items-center xl:items-start">
@@ -112,11 +127,14 @@ const Opportunities = () => {
                       </div>
 
                       <div>
-                        <PrimaryButton
+                        <SecondaryButton
                           text="Apply Now"
                           textColor="#FFFFFF"
                           bGcolor="#FF37B3"
-                          href={item.href}
+                          onClick={() => {
+                            setSelectedTitle(item.title);
+                            setIsOpen(true);
+                          }}
                         />
                       </div>
                     </div>

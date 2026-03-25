@@ -1,23 +1,37 @@
 export const OPPORTUNITIES_DATA = [
-  // {
-  //   title: "Senior React Developer",
-  //   department: "Engineering",
-  //   timing: "Full-time",
-  //   location: "Remote / Manchester",
-  //   href: "",
-  // },
-  // {
-  //   title: "Digital Strategist",
-  //   department: "Strategy",
-  //   timing: "Full-time",
-  //   location: "Manchester",
-  //   href: "",
-  // },
-  // {
-  //   title: "UI/UX Designer",
-  //   department: "Design",
-  //   timing: "Full-time",
-  //   location: "Remote",
-  //   href: "",
-  // },
+  {
+    title: "Social Media Manager / Executive",
+    department: "Marketing",
+    timing: "Full-time",
+    location: "On-site",
+    href: "",
+  },
+  {
+    title: "WordPress Developer (Bricks / Gutenberg)",
+    department: "Engineering",
+    timing: "Intern / Junior",
+    location: "On-site",
+    href: "",
+  },
+  {
+    title: "PPC Specialist",
+    department: "Marketing",
+    timing: "Contractor / Part-time",
+    location: "On-site",
+    href: "",
+  },
+  {
+    title: "UI/UX Designer",
+    department: "Design",
+    timing: "Mid / Senior",
+    location: "On-site",
+    href: "",
+  },
+  {
+    title: "Graphic Designer",
+    department: "Design",
+    timing: "Mid / Senior",
+    location: "On-site",
+    href: "",
+  },
 ];

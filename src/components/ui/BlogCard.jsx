@@ -38,7 +38,7 @@ const BlogCard = ({
                 <Image src={CalenderIcon} width={12} height={14} alt="Icon" />
               </i>
               <span className="text-[1.1rem] leading-[2.4rem] font-bold tracking-normal text-[#625C70] xl:text-[1.4rem]">
-                {new Date(publishedDate).toLocaleDateString()}
+                {new Date(publishedDate).toLocaleDateString("en-GB")}
               </span>
             </div>
 

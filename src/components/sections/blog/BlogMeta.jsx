@@ -56,7 +56,7 @@ const BlogMeta = ({ post }) => {
                   </h5>
 
                   <span className="text-[1.6rem] leading-[1.6rem] font-normal tracking-normal text-[#625C70]">
-                    {new Date(post.publishedAt).toLocaleDateString()}
+                    {new Date(post.publishedAt).toLocaleDateString("en-GB")}
                   </span>
                 </div>
               </div>
