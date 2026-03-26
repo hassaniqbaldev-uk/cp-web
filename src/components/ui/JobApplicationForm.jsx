@@ -109,6 +109,7 @@ const JobApplicationForm = ({
         setIsSubmitted(true);
 
         // reset all fields
+        localStorage.removeItem(`jobApplicationDraft_${jobTitle}`);
         setFullName("");
         setEmail("");
         setPhone("");
@@ -134,7 +135,10 @@ const JobApplicationForm = ({
       portfolio,
     };
 
-    localStorage.setItem("jobApplicationDraft", JSON.stringify(draft));
+    localStorage.setItem(
+      `jobApplicationDraft_${jobTitle}`,
+      JSON.stringify(draft),
+    );
     setStatus("✅ Draft saved!");
   };
 
@@ -165,8 +169,38 @@ const JobApplicationForm = ({
       newErrors.resume = "Please upload your resume";
     }
 
+    // Portfolio (optional — only validate if filled)
+    if (portfolio.trim() && !/^[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/.test(portfolio)) {
+      newErrors.portfolio = "Please enter a valid URL";
+    }
+
     return newErrors;
   };
+
+  useEffect(() => {
+    const saved = localStorage.getItem(`jobAppli
+  cationDraft_${jobTitle}`);
+    if (saved) {
+      const draft = JSON.parse(saved);
+      setFullName(draft.fullName || "");
+      setEmail(draft.email || "");
+      setPhone(draft.phone || "");
+      setMessage(draft.message || "");
+      setPortfolio(draft.portfolio || "");
+    }
+  }, [jobTitle]);
+
+  useEffect(() => {
+    const saved = localStorage.getItem("jobApplicationDraft");
+    if (saved) {
+      const draft = JSON.parse(saved);
+      setFullName(draft.fullName || "");
+      setEmail(draft.email || "");
+      setPhone(draft.phone || "");
+      setMessage(draft.message || "");
+      setPortfolio(draft.portfolio || "");
+    }
+  }, []);
 
   useEffect(() => {
     if (status) {
@@ -179,6 +213,7 @@ const JobApplicationForm = ({
     if (isSubmitted) {
       const timer = setTimeout(() => {
         setIsSubmitted(false);
+        setErrors({});
         onClose();
       }, 3000);
 
@@ -198,7 +233,10 @@ const JobApplicationForm = ({
             {jobTitle}
           </h4>
           <button
-            onClick={onClose}
+            onClick={() => {
+              setErrors({});
+              onClose();
+            }}
             className="flex h-[3.2rem] w-[3.2rem] flex-shrink-0 items-center justify-center rounded-full border border-[#E4E3E8] text-[#625C70] transition-colors hover:bg-[#f5f5f5]"
             aria-label="Close"
           >
@@ -414,6 +452,9 @@ const JobApplicationForm = ({
               {loading ? "Submitting..." : "Submit"}
             </button>
           </div>
+          {status && (
+            <p className="mb-[1rem] text-center text-[1.4rem]">{status}</p>
+          )}
         </form>
 
         {/* Thank You Message */}
