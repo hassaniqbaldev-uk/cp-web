@@ -44,7 +44,7 @@ export async function POST(req) {
     await transporter.sendMail({
       from: process.env.SMTP_FROM,
       // to: "join@cp.agency",
-      to: "taha.b@cp.agency",
+      to: "join@cp.agency",
       subject: `New Job Application from ${fullName}`,
       html: getJobApplicationEmailTemplate(
         fullName,

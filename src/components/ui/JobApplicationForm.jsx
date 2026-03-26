@@ -16,6 +16,7 @@ const JobApplicationForm = ({
   const [status, setStatus] = useState("");
   const [dragOver, setDragOver] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [errors, setErrors] = useState({});
 
   //   Ref
   const fileInputRef = useRef(null);
@@ -29,6 +30,14 @@ const JobApplicationForm = ({
     if (name === "phone") setPhone(value);
     if (name === "message") setMessage(value);
     if (name === "portfolio") setPortfolio(value);
+
+    // Clear error for this field when user starts typing
+    if (errors[name]) {
+      setErrors((prev) => ({
+        ...prev,
+        [name]: "",
+      }));
+    }
   };
 
   const handleFile = (file) => {
@@ -41,16 +50,23 @@ const JobApplicationForm = ({
     ];
 
     if (!allowedTypes.includes(file.type)) {
-      alert("Only .pdf, .doc, .docx files are allowed.");
+      setErrors((prev) => ({
+        ...prev,
+        resume: "Only .pdf, .doc, .docx files are allowed",
+      }));
       return;
     }
 
     if (file.size > 5 * 1024 * 1024) {
-      alert("File size must be under 5MB.");
+      setErrors((prev) => ({ ...prev, resume: "File size must be under 5MB" }));
       return;
     }
 
     setResumeFile(file);
+
+    if (errors.resume) {
+      setErrors((prev) => ({ ...prev, resume: "" }));
+    }
   };
 
   const handleDrop = (e) => {
@@ -63,8 +79,9 @@ const JobApplicationForm = ({
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!resumeFile) {
-      alert("Please upload your resume.");
+    const newErrors = validate();
+    if (Object.keys(newErrors).length > 0) {
+      setErrors(newErrors);
       return;
     }
 
@@ -119,6 +136,36 @@ const JobApplicationForm = ({
 
     localStorage.setItem("jobApplicationDraft", JSON.stringify(draft));
     setStatus("✅ Draft saved!");
+  };
+
+  const validate = () => {
+    const newErrors = {};
+
+    // Full Name
+    if (!fullName.trim()) {
+      newErrors.fullName = "Full name is required";
+    } else if (fullName.trim().length < 3) {
+      newErrors.fullName = "Name must be at least 3 characters";
+    }
+
+    // Email
+    if (!email.trim()) {
+      newErrors.email = "Email is required";
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      newErrors.email = "Please enter a valid email";
+    }
+
+    // Phone (optional — only validate if filled)
+    if (phone.trim() && !/^[0-9+\-\s()]{7,15}$/.test(phone)) {
+      newErrors.phone = "Please enter a valid phone number";
+    }
+
+    // Resume
+    if (!resumeFile) {
+      newErrors.resume = "Please upload your resume";
+    }
+
+    return newErrors;
   };
 
   useEffect(() => {
@@ -185,6 +232,11 @@ const JobApplicationForm = ({
                   placeholder="Jane Doe"
                 />
               </div>
+              {errors.fullName && (
+                <p className="mt-[0.5rem] text-[1.3rem] text-[#F14A58]">
+                  {errors.fullName}
+                </p>
+              )}
             </fieldset>
 
             {/* Email + Phone */}
@@ -203,6 +255,11 @@ const JobApplicationForm = ({
                     placeholder="jane@example.com"
                   />
                 </div>
+                {errors.email && (
+                  <p className="mt-[0.5rem] text-[1.3rem] text-[#F14A58]">
+                    {errors.email}
+                  </p>
+                )}
               </fieldset>
 
               <fieldset className="w-full">
@@ -218,6 +275,11 @@ const JobApplicationForm = ({
                     type="tel"
                   />
                 </div>
+                {errors.phone && (
+                  <p className="mt-[0.5rem] text-[1.3rem] text-[#F14A58]">
+                    {errors.phone}
+                  </p>
+                )}
               </fieldset>
             </div>
 
@@ -285,6 +347,11 @@ const JobApplicationForm = ({
                   className="hidden"
                 />
               </div>
+              {errors.resume && (
+                <p className="mt-[0.5rem] text-[1.3rem] text-[#F14A58]">
+                  {errors.resume}
+                </p>
+              )}
             </fieldset>
 
             {/* Message/Cover Letter */}
@@ -322,6 +389,11 @@ const JobApplicationForm = ({
                   placeholder="yourportfolio.com"
                 />
               </div>
+              {errors.portfolio && (
+                <p className="mt-[0.5rem] text-[1.3rem] text-[#F14A58]">
+                  {errors.portfolio}
+                </p>
+              )}
             </fieldset>
           </div>
 
