@@ -61,7 +61,7 @@ const Values2 = () => {
                     boxShadow: hovered === idx ? item.boxShadow : "",
                     borderColor: hovered === idx ? item.color : "#F1F0F3",
                   }}
-                  className="flex w-full flex-col items-start justify-center rounded-[3rem] border bg-white px-[3rem] pt-[3.1rem] pb-[2.8rem] text-left backdrop-blur-[10px] transition-all duration-200"
+                  className="flex h-full w-full flex-col items-start justify-center rounded-[3rem] border bg-white px-[3rem] pt-[3.1rem] pb-[2.8rem] text-left backdrop-blur-[10px] transition-all duration-200"
                 >
                   <div className="relative size-[6.3rem]">
                     <div className="absolute top-0 left-0 z-[1] inline-flex size-[5.8rem] items-center justify-center rounded-[1.3rem] border border-white/20 bg-white/35 backdrop-blur-[10px]">

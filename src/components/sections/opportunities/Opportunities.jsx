@@ -108,7 +108,7 @@ const Opportunities = () => {
                             </span>
                           </li>
 
-                          <li className="inline-flex items-center gap-[8px]">
+                          {/* <li className="inline-flex items-center gap-[8px]">
                             <i>
                               <Image
                                 src={LocationIcon}
@@ -122,7 +122,7 @@ const Opportunities = () => {
                             <span className="text-[1.4rem] leading-[2.4rem] font-normal tracking-normal text-[#625C70] md:text-[1.6rem]">
                               {item.location}
                             </span>
-                          </li>
+                          </li> */}
                         </ul>
                       </div>
 
