@@ -109,13 +109,13 @@ const JobApplicationForm = ({
         setIsSubmitted(true);
 
         // reset all fields
-        localStorage.removeItem(`jobApplicationDraft_${jobTitle}`);
         setFullName("");
         setEmail("");
         setPhone("");
         setMessage("");
         setPortfolio("");
         setResumeFile(null);
+        localStorage.removeItem(`jobApplicationDraft_${jobTitle}`);
       } else {
         setStatus("❌ Failed to submit. Please try again.");
       }
@@ -178,8 +178,7 @@ const JobApplicationForm = ({
   };
 
   useEffect(() => {
-    const saved = localStorage.getItem(`jobAppli
-  cationDraft_${jobTitle}`);
+    const saved = localStorage.getItem(`jobApplicationDraft_${jobTitle}`);
     if (saved) {
       const draft = JSON.parse(saved);
       setFullName(draft.fullName || "");
@@ -189,18 +188,6 @@ const JobApplicationForm = ({
       setPortfolio(draft.portfolio || "");
     }
   }, [jobTitle]);
-
-  useEffect(() => {
-    const saved = localStorage.getItem("jobApplicationDraft");
-    if (saved) {
-      const draft = JSON.parse(saved);
-      setFullName(draft.fullName || "");
-      setEmail(draft.email || "");
-      setPhone(draft.phone || "");
-      setMessage(draft.message || "");
-      setPortfolio(draft.portfolio || "");
-    }
-  }, []);
 
   useEffect(() => {
     if (status) {
@@ -435,6 +422,11 @@ const JobApplicationForm = ({
             </fieldset>
           </div>
 
+          {/* Status Message */}
+          {status && (
+            <p className="mb-[1rem] text-center text-[1.4rem]">{status}</p>
+          )}
+
           {/* Buttons */}
           <div className="flex flex-col gap-[1rem] md:flex-row md:items-center md:justify-end md:gap-[1.2rem]">
             <button
@@ -452,9 +444,6 @@ const JobApplicationForm = ({
               {loading ? "Submitting..." : "Submit"}
             </button>
           </div>
-          {status && (
-            <p className="mb-[1rem] text-center text-[1.4rem]">{status}</p>
-          )}
         </form>
 
         {/* Thank You Message */}
