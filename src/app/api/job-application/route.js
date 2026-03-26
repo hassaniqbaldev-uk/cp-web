@@ -43,7 +43,8 @@ export async function POST(req) {
     // 5. Send email to your team with resume attached
     await transporter.sendMail({
       from: process.env.SMTP_FROM,
-      to: "join@cp.agency",
+      // to: "join@cp.agency",
+      to: "taha.b@cp.agency",
       subject: `New Job Application from ${fullName}`,
       html: getJobApplicationEmailTemplate(
         fullName,

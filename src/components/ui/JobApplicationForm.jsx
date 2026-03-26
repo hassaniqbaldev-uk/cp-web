@@ -15,6 +15,7 @@ const JobApplicationForm = ({
   const [loading, setLoading] = useState(false);
   const [status, setStatus] = useState("");
   const [dragOver, setDragOver] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
 
   //   Ref
   const fileInputRef = useRef(null);
@@ -88,19 +89,15 @@ const JobApplicationForm = ({
       const data = await res.json();
 
       if (data.success) {
-        setStatus("✅ Application submitted successfully!");
+        setIsSubmitted(true);
 
-        if (data.success) {
-          setStatus("✅ Application submitted successfully!");
-
-          // reset all fields
-          setFullName("");
-          setEmail("");
-          setPhone("");
-          setMessage("");
-          setPortfolio("");
-          setResumeFile(null);
-        }
+        // reset all fields
+        setFullName("");
+        setEmail("");
+        setPhone("");
+        setMessage("");
+        setPortfolio("");
+        setResumeFile(null);
       } else {
         setStatus("❌ Failed to submit. Please try again.");
       }
@@ -131,210 +128,249 @@ const JobApplicationForm = ({
     }
   }, [status]);
 
+  useEffect(() => {
+    if (isSubmitted) {
+      const timer = setTimeout(() => {
+        setIsSubmitted(false);
+        onClose();
+      }, 3000);
+
+      return () => clearTimeout(timer);
+    }
+  }, [isSubmitted]);
+
   return (
-    <div
-      style={{ boxShadow: "13px 13px 40px 0px #00000014" }}
-      className="flex max-h-[95vh] w-[95%] flex-col overflow-y-auto rounded-[2rem] border-t-8 border-[#EE8D00] bg-white p-[2rem] md:w-[80rem] md:p-[3.8rem]"
-    >
-      {/* Header */}
-      <div className="flex w-full items-start justify-between border-b border-[#D6D6D6] pb-[2.5rem]">
-        <h4 className="text-[2rem] leading-[2.6rem] font-bold tracking-[-0.02em] text-[#312749] md:text-[2.6rem] md:leading-[3rem]">
-          {jobTitle}
-        </h4>
-        <button
-          onClick={onClose}
-          className="flex h-[3.2rem] w-[3.2rem] flex-shrink-0 items-center justify-center rounded-full border border-[#E4E3E8] text-[#625C70] transition-colors hover:bg-[#f5f5f5]"
-          aria-label="Close"
-        >
-          <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-            <path
-              d="M13 1L1 13M1 1l12 12"
-              stroke="currentColor"
-              strokeWidth="1.8"
-              strokeLinecap="round"
-            />
-          </svg>
-        </button>
-      </div>
-
-      <form onSubmit={handleSubmit}>
-        {/* Fields */}
-        <div className="mt-[2.5rem] mb-[3rem] flex w-full flex-col items-start gap-[2.5rem]">
-          {/* Full Name */}
-          <fieldset className="w-full">
-            <label className="text-[1.6rem] leading-[3rem] font-bold tracking-[-0.02em] text-[#312749]">
-              Full name <span className="text-[#F14A58]">*</span>
-            </label>
-            <div className="h-[5.2rem] w-full rounded-[1.6rem] border border-[#E5E7EB] bg-[#F9FAFB]">
-              <input
-                className="h-full w-full bg-transparent p-[1.5rem] text-[1.5rem] outline-0"
-                onChange={handleChange}
-                value={fullName}
-                name="fullName"
-                type="text"
-                placeholder="Jane Doe"
+    <>
+      <div
+        style={{ boxShadow: "13px 13px 40px 0px #00000014" }}
+        className={`relative flex max-h-[95vh] w-[95%] flex-col rounded-[2rem] border-t-8 border-[#EE8D00] bg-white p-[2rem] md:w-[80rem] md:p-[3.8rem] ${isSubmitted ? "pointer-events-none overflow-y-hidden" : "pointer-events-auto overflow-y-auto"}`}
+      >
+        {/* Header */}
+        <div className="flex w-full items-start justify-between border-b border-[#D6D6D6] pb-[2.5rem]">
+          <h4 className="text-[2rem] leading-[2.6rem] font-bold tracking-[-0.02em] text-[#312749] md:text-[2.6rem] md:leading-[3rem]">
+            {jobTitle}
+          </h4>
+          <button
+            onClick={onClose}
+            className="flex h-[3.2rem] w-[3.2rem] flex-shrink-0 items-center justify-center rounded-full border border-[#E4E3E8] text-[#625C70] transition-colors hover:bg-[#f5f5f5]"
+            aria-label="Close"
+          >
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+              <path
+                d="M13 1L1 13M1 1l12 12"
+                stroke="currentColor"
+                strokeWidth="1.8"
+                strokeLinecap="round"
               />
-            </div>
-          </fieldset>
+            </svg>
+          </button>
+        </div>
 
-          {/* Email + Phone */}
-          <div className="grid w-full grid-cols-1 gap-[1.5rem] md:grid-cols-2">
+        {/* Main */}
+        <form onSubmit={handleSubmit}>
+          {/* Fields */}
+          <div className="mt-[2.5rem] mb-[3rem] flex w-full flex-col items-start gap-[2.5rem]">
+            {/* Full Name */}
             <fieldset className="w-full">
               <label className="text-[1.6rem] leading-[3rem] font-bold tracking-[-0.02em] text-[#312749]">
-                Email <span className="text-[#F14A58]">*</span>
+                Full name <span className="text-[#F14A58]">*</span>
               </label>
               <div className="h-[5.2rem] w-full rounded-[1.6rem] border border-[#E5E7EB] bg-[#F9FAFB]">
                 <input
                   className="h-full w-full bg-transparent p-[1.5rem] text-[1.5rem] outline-0"
                   onChange={handleChange}
-                  value={email}
-                  name="email"
-                  type="email"
-                  placeholder="jane@example.com"
+                  value={fullName}
+                  name="fullName"
+                  type="text"
+                  placeholder="Jane Doe"
                 />
               </div>
             </fieldset>
 
+            {/* Email + Phone */}
+            <div className="grid w-full grid-cols-1 gap-[1.5rem] md:grid-cols-2">
+              <fieldset className="w-full">
+                <label className="text-[1.6rem] leading-[3rem] font-bold tracking-[-0.02em] text-[#312749]">
+                  Email <span className="text-[#F14A58]">*</span>
+                </label>
+                <div className="h-[5.2rem] w-full rounded-[1.6rem] border border-[#E5E7EB] bg-[#F9FAFB]">
+                  <input
+                    className="h-full w-full bg-transparent p-[1.5rem] text-[1.5rem] outline-0"
+                    onChange={handleChange}
+                    value={email}
+                    name="email"
+                    type="email"
+                    placeholder="jane@example.com"
+                  />
+                </div>
+              </fieldset>
+
+              <fieldset className="w-full">
+                <label className="text-[1.6rem] leading-[3rem] font-bold tracking-[-0.02em] text-[#312749]">
+                  Phone number
+                </label>
+                <div className="flex h-[5.2rem] w-full items-center overflow-hidden rounded-[1.6rem] border border-[#E5E7EB] bg-[#F9FAFB]">
+                  <input
+                    className="h-full w-full bg-transparent p-[1.5rem] text-[1.5rem] outline-0"
+                    onChange={handleChange}
+                    value={phone}
+                    name="phone"
+                    type="tel"
+                  />
+                </div>
+              </fieldset>
+            </div>
+
+            {/* Upload Resume */}
             <fieldset className="w-full">
               <label className="text-[1.6rem] leading-[3rem] font-bold tracking-[-0.02em] text-[#312749]">
-                Phone number
+                Upload resume <span className="text-[#F14A58]">*</span>
+              </label>
+              <div
+                onDrop={handleDrop}
+                onDragOver={(e) => {
+                  e.preventDefault();
+                  setDragOver(true);
+                }}
+                onDragLeave={() => setDragOver(false)}
+                onClick={() => fileInputRef.current.click()}
+                className={`flex w-full cursor-pointer flex-col items-center justify-center gap-[1rem] rounded-[1.6rem] border-2 border-dashed bg-[#F9FAFB] px-[2rem] py-[2.5rem] transition-colors hover:border-[#EE8D00] md:py-[3rem] ${dragOver ? "border-[#EE8D00]" : "border-[#E5E7EB]"}`}
+              >
+                <svg
+                  width="36"
+                  height="36"
+                  viewBox="0 0 36 36"
+                  fill="none"
+                  className="text-[#625C70]"
+                >
+                  <path
+                    d="M18 24V12M18 12l-5 5M18 12l5 5"
+                    stroke="currentColor"
+                    strokeWidth="1.8"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                  <path
+                    d="M6 26a6 6 0 01-.17-11.99A9 9 0 0124.6 10.4 6 6 0 0130 16.5"
+                    stroke="currentColor"
+                    strokeWidth="1.8"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+                {resumeFile ? (
+                  <p className="text-[1.4rem] font-medium text-[#312749]">
+                    {resumeFile.name}
+                  </p>
+                ) : (
+                  <>
+                    <p className="text-center text-[1.4rem] text-[#312749]">
+                      Drag and drop your file, or{" "}
+                      <span className="font-semibold underline">
+                        click here.
+                      </span>
+                    </p>
+                    <p className="text-[1.2rem] text-[#9b97a6]">
+                      .pdf, .doc, .docx | Max 5MB
+                    </p>
+                  </>
+                )}
+
+                <input
+                  type="file"
+                  ref={fileInputRef}
+                  accept=".pdf,.doc,.docx"
+                  onChange={(e) => handleFile(e.target.files[0])}
+                  onClick={(e) => e.stopPropagation()}
+                  className="hidden"
+                />
+              </div>
+            </fieldset>
+
+            {/* Message/Cover Letter */}
+            <fieldset className="w-full">
+              <label className="text-[1.6rem] leading-[3rem] font-bold tracking-[-0.02em] text-[#312749]">
+                Message/Cover Letter
+              </label>
+              <div className="w-full overflow-hidden rounded-[1.6rem] border border-[#E5E7EB] bg-[#F9FAFB]">
+                <textarea
+                  className="h-[12.8rem] w-full resize-none bg-transparent p-[1.5rem] text-[1.5rem] outline-0"
+                  rows={4}
+                  name="message"
+                  value={message}
+                  onChange={handleChange}
+                  placeholder="Tell us about yourself..."
+                />
+              </div>
+            </fieldset>
+
+            {/* Portfolio */}
+            <fieldset className="w-full">
+              <label className="text-[1.6rem] leading-[3rem] font-bold tracking-[-0.02em] text-[#312749]">
+                Portfolio
               </label>
               <div className="flex h-[5.2rem] w-full items-center overflow-hidden rounded-[1.6rem] border border-[#E5E7EB] bg-[#F9FAFB]">
+                <span className="flex h-full items-center border-r border-[#E5E7EB] px-[1.4rem] text-[1.4rem] text-[#9b97a6] select-none">
+                  https://
+                </span>
                 <input
-                  className="h-full w-full bg-transparent p-[1.5rem] text-[1.5rem] outline-0"
+                  className="h-full w-full bg-transparent px-[1.2rem] text-[1.5rem] outline-0"
+                  name="portfolio"
+                  value={portfolio}
                   onChange={handleChange}
-                  value={phone}
-                  name="phone"
-                  type="tel"
+                  type="text"
+                  placeholder="yourportfolio.com"
                 />
               </div>
             </fieldset>
           </div>
 
-          {/* Upload Resume */}
-          <fieldset className="w-full">
-            <label className="text-[1.6rem] leading-[3rem] font-bold tracking-[-0.02em] text-[#312749]">
-              Upload resume <span className="text-[#F14A58]">*</span>
-            </label>
-            <div
-              onDrop={handleDrop}
-              onDragOver={(e) => {
-                e.preventDefault();
-                setDragOver(true);
-              }}
-              onDragLeave={() => setDragOver(false)}
-              onClick={() => fileInputRef.current.click()}
-              className={`flex w-full cursor-pointer flex-col items-center justify-center gap-[1rem] rounded-[1.6rem] border-2 border-dashed bg-[#F9FAFB] px-[2rem] py-[2.5rem] transition-colors hover:border-[#EE8D00] md:py-[3rem] ${dragOver ? "border-[#EE8D00]" : "border-[#E5E7EB]"}`}
+          {/* Buttons */}
+          <div className="flex flex-col gap-[1rem] md:flex-row md:items-center md:justify-end md:gap-[1.2rem]">
+            <button
+              type="button"
+              onClick={handleSaveDraft}
+              className="w-full rounded-[7rem] border border-[#E5E7EB] px-[2rem] py-[1.2rem] text-[1.4rem] font-semibold text-[#312749] transition-colors hover:bg-[#f5f5f5] md:w-auto md:py-[1rem]"
             >
-              <svg
-                width="36"
-                height="36"
-                viewBox="0 0 36 36"
-                fill="none"
-                className="text-[#625C70]"
-              >
-                <path
-                  d="M18 24V12M18 12l-5 5M18 12l5 5"
-                  stroke="currentColor"
-                  strokeWidth="1.8"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-                <path
-                  d="M6 26a6 6 0 01-.17-11.99A9 9 0 0124.6 10.4 6 6 0 0130 16.5"
-                  stroke="currentColor"
-                  strokeWidth="1.8"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-              {resumeFile ? (
-                <p className="text-[1.4rem] font-medium text-[#312749]">
-                  {resumeFile.name}
-                </p>
-              ) : (
-                <>
-                  <p className="text-center text-[1.4rem] text-[#312749]">
-                    Drag and drop your file, or{" "}
-                    <span className="font-semibold underline">click here.</span>
-                  </p>
-                  <p className="text-[1.2rem] text-[#9b97a6]">
-                    .pdf, .doc, .docx | Max 5MB
-                  </p>
-                </>
-              )}
+              Save draft
+            </button>
+            <button
+              type="submit"
+              disabled={loading}
+              className="w-full rounded-[7rem] bg-[#EE8D00] px-[3rem] py-[1.2rem] text-[1.4rem] font-semibold text-white transition-colors hover:bg-[#d47e00] md:w-auto md:py-[1rem]"
+            >
+              {loading ? "Submitting..." : "Submit"}
+            </button>
+          </div>
+        </form>
 
-              <input
-                type="file"
-                ref={fileInputRef}
-                accept=".pdf,.doc,.docx"
-                onChange={(e) => handleFile(e.target.files[0])}
-                onClick={(e) => e.stopPropagation()}
-                className="hidden"
+        {/* Thank You Message */}
+        <div
+          className={`absolute top-1/2 left-1/2 flex w-[80%] -translate-1/2 flex-col items-center justify-center rounded-[2rem] border border-[#e9e9e9] bg-white py-[6rem] text-center transition-all duration-200 ${isSubmitted ? "pointer-events-auto visible opacity-100" : "pointer-events-none invisible opacity-0"}`}
+        >
+          <div className="mb-[2rem] flex h-[7rem] w-[7rem] items-center justify-center rounded-full bg-[#EE8D00]/10">
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="none">
+              <path
+                d="M20 6L9 17l-5-5"
+                stroke="#EE8D00"
+                strokeWidth="2.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
               />
-            </div>
-          </fieldset>
+            </svg>
+          </div>
 
-          {/* Message/Cover Letter */}
-          <fieldset className="w-full">
-            <label className="text-[1.6rem] leading-[3rem] font-bold tracking-[-0.02em] text-[#312749]">
-              Message/Cover Letter
-            </label>
-            <div className="w-full overflow-hidden rounded-[1.6rem] border border-[#E5E7EB] bg-[#F9FAFB]">
-              <textarea
-                className="h-[12.8rem] w-full resize-none bg-transparent p-[1.5rem] text-[1.5rem] outline-0"
-                rows={4}
-                name="message"
-                value={message}
-                onChange={handleChange}
-                placeholder="Tell us about yourself..."
-              />
-            </div>
-          </fieldset>
+          <h3 className="text-[2.4rem] font-bold tracking-[-0.02em] text-[#312749]">
+            Thank You!
+          </h3>
 
-          {/* Portfolio */}
-          <fieldset className="w-full">
-            <label className="text-[1.6rem] leading-[3rem] font-bold tracking-[-0.02em] text-[#312749]">
-              Portfolio
-            </label>
-            <div className="flex h-[5.2rem] w-full items-center overflow-hidden rounded-[1.6rem] border border-[#E5E7EB] bg-[#F9FAFB]">
-              <span className="flex h-full items-center border-r border-[#E5E7EB] px-[1.4rem] text-[1.4rem] text-[#9b97a6] select-none">
-                https://
-              </span>
-              <input
-                className="h-full w-full bg-transparent px-[1.2rem] text-[1.5rem] outline-0"
-                name="portfolio"
-                value={portfolio}
-                onChange={handleChange}
-                type="text"
-                placeholder="yourportfolio.com"
-              />
-            </div>
-          </fieldset>
+          <p className="mt-[1rem] max-w-[40rem] text-[1.6rem] leading-[2.4rem] text-[#625C70]">
+            Your application has been submitted successfully. We&apos;ll review
+            it and get back to you soon.
+          </p>
         </div>
-
-        {/* Buttons */}
-        <div className="flex flex-col gap-[1rem] md:flex-row md:items-center md:justify-end md:gap-[1.2rem]">
-          <button
-            type="button"
-            onClick={handleSaveDraft}
-            className="w-full rounded-[7rem] border border-[#E5E7EB] px-[2rem] py-[1.2rem] text-[1.4rem] font-semibold text-[#312749] transition-colors hover:bg-[#f5f5f5] md:w-auto md:py-[1rem]"
-          >
-            Save draft
-          </button>
-          <button
-            type="submit"
-            disabled={loading}
-            className="w-full rounded-[7rem] bg-[#EE8D00] px-[3rem] py-[1.2rem] text-[1.4rem] font-semibold text-white transition-colors hover:bg-[#d47e00] md:w-auto md:py-[1rem]"
-          >
-            {loading ? "Submitting..." : "Submit"}
-          </button>
-        </div>
-        {status && (
-          <p className="mt-[1rem] text-center text-[1.4rem]">{status}</p>
-        )}
-      </form>
-    </div>
+      </div>
+    </>
   );
 };
 

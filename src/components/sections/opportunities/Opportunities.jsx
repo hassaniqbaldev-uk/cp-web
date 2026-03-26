@@ -9,12 +9,24 @@ import LocationIcon from "@/assets/icons/ui/location-icon.svg";
 import TimelineIcon from "@/components/icons/TimelineIcon";
 import { MotionEffect } from "@/components/effects/motion-effect";
 import JobApplicationForm from "@/components/ui/JobApplicationForm";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import SecondaryButton from "@/components/ui/SecondaryButton";
 
 const Opportunities = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedTitle, setSelectedTitle] = useState("");
+
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isOpen]);
 
   return (
     <>
