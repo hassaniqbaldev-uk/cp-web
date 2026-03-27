@@ -1,3 +1,5 @@
+import AnimatePresenceWrapper from "@/components/effects/AnimatePresenceWrapper";
+import PageTransition from "@/components/effects/PageTransition";
 import "@/styles/globals.css";
 import { Onest } from "next/font/google";
 import Script from "next/script";
@@ -82,7 +84,9 @@ export default function RootLayout({ children }) {
         </noscript>
         {/* End Google Tag Manager (noscript) */}
 
-        {children}
+        <AnimatePresenceWrapper>
+          <PageTransition>{children}</PageTransition>
+        </AnimatePresenceWrapper>
 
         {/* Google Recaptcha - disabled for now, will add in future */}
 

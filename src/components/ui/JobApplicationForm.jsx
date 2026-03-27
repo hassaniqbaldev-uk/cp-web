@@ -212,7 +212,7 @@ const JobApplicationForm = ({
     <>
       <div
         style={{ boxShadow: "13px 13px 40px 0px #00000014" }}
-        className={`relative flex max-h-[95vh] w-[95%] flex-col rounded-[2rem] border-t-8 border-[#EE8D00] bg-white p-[2rem] md:w-[80rem] md:p-[3.8rem] ${isSubmitted ? "pointer-events-none overflow-y-hidden" : "pointer-events-auto overflow-y-auto"}`}
+        className={`no-scrollbar relative flex max-h-[95vh] w-[95%] flex-col rounded-[2rem] border-t-8 border-[#EE8D00] bg-white p-[2rem] md:w-[80rem] md:p-[3.8rem] ${isSubmitted ? "pointer-events-none overflow-y-hidden" : "pointer-events-auto overflow-y-auto"}`}
       >
         {/* Header */}
         <div className="flex w-full items-start justify-between border-b border-[#D6D6D6] pb-[2.5rem]">
