@@ -115,7 +115,7 @@ const JobApplicationForm = ({
         setMessage("");
         setPortfolio("");
         setResumeFile(null);
-        localStorage.removeItem(`jobApplicationDraft_${jobTitle}`);
+        // localStorage.removeItem(`jobApplicationDraft_${jobTitle}`);
       } else {
         setStatus("❌ Failed to submit. Please try again.");
       }
@@ -126,21 +126,21 @@ const JobApplicationForm = ({
     }
   };
 
-  const handleSaveDraft = () => {
-    const draft = {
-      fullName,
-      email,
-      phone,
-      message,
-      portfolio,
-    };
+  // const handleSaveDraft = () => {
+  //   const draft = {
+  //     fullName,
+  //     email,
+  //     phone,
+  //     message,
+  //     portfolio,
+  //   };
 
-    localStorage.setItem(
-      `jobApplicationDraft_${jobTitle}`,
-      JSON.stringify(draft),
-    );
-    setStatus("✅ Draft saved!");
-  };
+  //   localStorage.setItem(
+  //     `jobApplicationDraft_${jobTitle}`,
+  //     JSON.stringify(draft),
+  //   );
+  //   setStatus("✅ Draft saved!");
+  // };
 
   const validate = () => {
     const newErrors = {};
@@ -177,17 +177,17 @@ const JobApplicationForm = ({
     return newErrors;
   };
 
-  useEffect(() => {
-    const saved = localStorage.getItem(`jobApplicationDraft_${jobTitle}`);
-    if (saved) {
-      const draft = JSON.parse(saved);
-      setFullName(draft.fullName || "");
-      setEmail(draft.email || "");
-      setPhone(draft.phone || "");
-      setMessage(draft.message || "");
-      setPortfolio(draft.portfolio || "");
-    }
-  }, [jobTitle]);
+  // useEffect(() => {
+  //   const saved = localStorage.getItem(`jobApplicationDraft_${jobTitle}`);
+  //   if (saved) {
+  //     const draft = JSON.parse(saved);
+  //     setFullName(draft.fullName || "");
+  //     setEmail(draft.email || "");
+  //     setPhone(draft.phone || "");
+  //     setMessage(draft.message || "");
+  //     setPortfolio(draft.portfolio || "");
+  //   }
+  // }, [jobTitle]);
 
   useEffect(() => {
     if (status) {
@@ -429,13 +429,13 @@ const JobApplicationForm = ({
 
           {/* Buttons */}
           <div className="flex flex-col gap-[1rem] md:flex-row md:items-center md:justify-end md:gap-[1.2rem]">
-            <button
+            {/* <button
               type="button"
               onClick={handleSaveDraft}
               className="w-full rounded-[7rem] border border-[#E5E7EB] px-[2rem] py-[1.2rem] text-[1.4rem] font-semibold text-[#312749] transition-colors hover:bg-[#f5f5f5] md:w-auto md:py-[1rem]"
             >
               Save draft
-            </button>
+            </button> */}
             <button
               type="submit"
               disabled={loading}
