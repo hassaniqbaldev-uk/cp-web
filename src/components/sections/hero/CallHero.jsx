@@ -64,17 +64,19 @@ const CallHero = () => {
           <div className="flex flex-col items-center gap-[4rem]">
             <div className="flex flex-col items-center text-center">
               <MotionEffect
-                slide={{ direction: "down" }} transition={{ type: "spring", stiffness: 120, damping: 20 }}
+                slide={{ direction: "down" }}
+                transition={{ type: "spring", stiffness: 120, damping: 20 }}
                 fade
                 zoom
               >
                 <h1 className="mb-[2rem] text-[3rem] leading-[3.7rem] font-bold tracking-[-0.03em] text-white md:text-[7rem] md:leading-[8.5rem]">
-                  Book a call with Hassan
+                  Book a quick call with us
                 </h1>
               </MotionEffect>
 
               <MotionEffect
-                slide={{ direction: "down" }} transition={{ type: "spring", stiffness: 120, damping: 20 }}
+                slide={{ direction: "down" }}
+                transition={{ type: "spring", stiffness: 120, damping: 20 }}
                 fade
                 zoom
                 delay={0.15}
@@ -89,7 +91,8 @@ const CallHero = () => {
             </div>
 
             <MotionEffect
-              slide={{ direction: "down" }} transition={{ type: "spring", stiffness: 120, damping: 20 }}
+              slide={{ direction: "down" }}
+              transition={{ type: "spring", stiffness: 120, damping: 20 }}
               fade
               delay={0.3}
               className="w-full"
