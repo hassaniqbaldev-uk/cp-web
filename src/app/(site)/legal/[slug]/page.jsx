@@ -10,8 +10,17 @@ import React, { cache } from "react";
 
 const options = { next: { revalidate: 30 } };
 
+// const getLegal = cache(async (slug) => {
+//   return legalClient.fetch(LEGAL_DETAIL_QUERY, { slug }, options);
+// });
+
 const getLegal = cache(async (slug) => {
-  return legalClient.fetch(LEGAL_DETAIL_QUERY, { slug }, options);
+  try {
+    return await legalClient.fetch(LEGAL_DETAIL_QUERY, { slug }, options);
+  } catch (error) {
+    console.error("Failed to fetch leagal detail:", error);
+    return null;
+  }
 });
 
 export async function generateMetadata({ params }) {

@@ -12,8 +12,21 @@ import { cache } from "react";
 
 const options = { next: { revalidate: 30 } };
 
+// const getSolutions = cache(async (slug) => {
+//   return solutionsClient.fetch(SOLUTIONS_DETAIL_QUERY, { slug }, options);
+// });
+
 const getSolutions = cache(async (slug) => {
-  return solutionsClient.fetch(SOLUTIONS_DETAIL_QUERY, { slug }, options);
+  try {
+    return await solutionsClient.fetch(
+      SOLUTIONS_DETAIL_QUERY,
+      { slug },
+      options,
+    );
+  } catch (error) {
+    console.error("Failed to fetch solution detail:", error);
+    return null;
+  }
 });
 
 export async function generateMetadata({ params }) {
@@ -57,11 +70,13 @@ const SolutionsDetailPage = async (props) => {
   const params = await props.params;
   const slug = params.slug;
 
-  const solution = await solutionsClient.fetch(
-    SOLUTIONS_DETAIL_QUERY,
-    { slug },
-    options,
-  );
+  // const solution = await solutionsClient.fetch(
+  //   SOLUTIONS_DETAIL_QUERY,
+  //   { slug },
+  //   options,
+  // );
+
+  const solution = await getSolutions(slug);
 
   if (!solution) {
     notFound();

@@ -39,8 +39,19 @@ import { blogClient } from "@/sanity/sanity.blog";
 export const revalidate = 30; // Next.js ISR
 
 const BlogPage = async () => {
-  const hero = await blogClient.fetch(BLOG_HERO_QUERY);
-  const blogs = await blogClient.fetch(BLOG_LIST_QUERY);
+  // const hero = await blogClient.fetch(BLOG_HERO_QUERY);
+  // const blogs = await blogClient.fetch(BLOG_LIST_QUERY);
+  let hero = null;
+  let blogs = [];
+
+  try {
+    [hero, blogs] = await Promise.all([
+      blogClient.fetch(BLOG_HERO_QUERY),
+      blogClient.fetch(BLOG_LIST_QUERY),
+    ]);
+  } catch (error) {
+    console.error("Failed to fetch blog data:", error);
+  }
 
   return (
     <>

@@ -13,13 +13,30 @@ const SITE_URL = "https://creativepixels.agency/";
 
 export default async function sitemap() {
   // Fetch everything in parallel (fast + scalable)
-  const [blogs, caseStudies, services, solutions, legalPages] = await Promise.all([
-    blogClient.fetch(BLOG_SITEMAP_QUERY),
-    caseStudiesClient.fetch(CASE_STUDY_SITEMAP_QUERY),
-    servicesClient.fetch(SERVICES_SITEMAP_QUERY),
-    solutionsClient.fetch(SOLUTIONS_SITEMAP_QUERY),
-    legalClient.fetch(LEGAL_SITEMAP_QUERY),
-  ]);
+  // const [blogs, caseStudies, services, solutions, legalPages] = await Promise.all([
+  //   blogClient.fetch(BLOG_SITEMAP_QUERY),
+  //   caseStudiesClient.fetch(CASE_STUDY_SITEMAP_QUERY),
+  //   servicesClient.fetch(SERVICES_SITEMAP_QUERY),
+  //   solutionsClient.fetch(SOLUTIONS_SITEMAP_QUERY),
+  //   legalClient.fetch(LEGAL_SITEMAP_QUERY),
+  // ]);
+  let blogs = [];
+  let caseStudies = [];
+  let services = [];
+  let solutions = [];
+  let legalPages = [];
+
+  try {
+    [blogs, caseStudies, services, solutions, legalPages] = await Promise.all([
+      blogClient.fetch(BLOG_SITEMAP_QUERY),
+      caseStudiesClient.fetch(CASE_STUDY_SITEMAP_QUERY),
+      servicesClient.fetch(SERVICES_SITEMAP_QUERY),
+      solutionsClient.fetch(SOLUTIONS_SITEMAP_QUERY),
+      legalClient.fetch(LEGAL_SITEMAP_QUERY),
+    ]);
+  } catch (error) {
+    console.error("Failed to fetch sitemap data:", error);
+  }
 
   return [
     // 🟢 Static pages

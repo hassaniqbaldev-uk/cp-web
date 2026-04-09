@@ -12,8 +12,21 @@ import { cache } from "react";
 
 const options = { next: { revalidate: 30 } };
 
+// const getCaseStudy = cache(async (slug) => {
+//   return caseStudiesClient.fetch(caseStudiesDetailQuery, { slug }, options);
+// });
+
 const getCaseStudy = cache(async (slug) => {
-  return caseStudiesClient.fetch(caseStudiesDetailQuery, { slug }, options);
+  try {
+    return await caseStudiesClient.fetch(
+      caseStudiesDetailQuery,
+      { slug },
+      options,
+    );
+  } catch (error) {
+    console.error("Failed to fetch case study detail:", error);
+    return null;
+  }
 });
 
 export async function generateMetadata({ params }) {

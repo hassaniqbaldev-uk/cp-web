@@ -42,7 +42,14 @@ import { legalClient } from "@/sanity/sanity.legal";
 export const revalidate = 30; // Next.js ISR
 
 const LegalPage = async () => {
-  const legal = await legalClient.fetch(LEGAL_LIST_QUERY);
+  // const legal = await legalClient.fetch(LEGAL_LIST_QUERY);
+  let legal = [];
+
+  try {
+    legal = await legalClient.fetch(LEGAL_LIST_QUERY);
+  } catch (error) {
+    console.error("Failed to fetch legal data:", error);
+  }
 
   const clientResources = legal.filter(
     (l) => l.category === "client-resources",

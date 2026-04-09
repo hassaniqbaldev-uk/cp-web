@@ -15,8 +15,17 @@ import { cache } from "react";
 
 const options = { next: { revalidate: 30 } };
 
+// const getServices = cache(async (slug) => {
+//   return servicesClient.fetch(SERVICES_DETAIL_QUERY, { slug }, options);
+// });
+
 const getServices = cache(async (slug) => {
-  return servicesClient.fetch(SERVICES_DETAIL_QUERY, { slug }, options);
+  try {
+    return await servicesClient.fetch(SERVICES_DETAIL_QUERY, { slug }, options);
+  } catch (error) {
+    console.error("Failed to fetch service detail:", error);
+    return null;
+  }
 });
 
 export async function generateMetadata({ params }) {
@@ -60,11 +69,13 @@ const ServicesDetailPage = async (props) => {
   const params = await props.params;
   const slug = params.slug;
 
-  const service = await servicesClient.fetch(
-    SERVICES_DETAIL_QUERY,
-    { slug },
-    options,
-  );
+  // const service = await servicesClient.fetch(
+  //   SERVICES_DETAIL_QUERY,
+  //   { slug },
+  //   options,
+  // );
+
+  const service = await getServices(slug);
 
   if (!service) {
     notFound();

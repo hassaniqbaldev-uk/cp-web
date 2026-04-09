@@ -51,15 +51,33 @@ const CaseStudiesPage = async (props) => {
   const service = searchParams?.service ?? null;
   const industry = searchParams?.industry ?? null;
 
-  const [caseStudies, services, industries] = await Promise.all([
-    caseStudiesClient.fetch(
-      caseStudiesFilteredQuery,
-      { service, industry },
-      options,
-    ),
-    caseStudiesClient.fetch(servicesQuery, {}, options),
-    caseStudiesClient.fetch(industriesQuery, {}, options),
-  ]);
+  let caseStudies = [];
+  let services = [];
+  let industries = [];
+
+  // const [caseStudies, services, industries] = await Promise.all([
+  //   caseStudiesClient.fetch(
+  //     caseStudiesFilteredQuery,
+  //     { service, industry },
+  //     options,
+  //   ),
+  //   caseStudiesClient.fetch(servicesQuery, {}, options),
+  //   caseStudiesClient.fetch(industriesQuery, {}, options),
+  // ]);
+
+  try {
+    [caseStudies, services, industries] = await Promise.all([
+      caseStudiesClient.fetch(
+        caseStudiesFilteredQuery,
+        { service, industry },
+        options,
+      ),
+      caseStudiesClient.fetch(servicesQuery, {}, options),
+      caseStudiesClient.fetch(industriesQuery, {}, options),
+    ]);
+  } catch (error) {
+    console.error("Failed to fetch case studies data:", error);
+  }
 
   return (
     <>

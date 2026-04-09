@@ -38,9 +38,19 @@ export async function generateMetadata() {
 }
 
 const SitePage = async () => {
-  const [caseStudies] = await Promise.all([
-    caseStudiesClient.fetch(caseStudiesListingQuery, options),
-  ]);
+  let caseStudies = [];
+  // const [caseStudies] = await Promise.all([
+  //   caseStudiesClient.fetch(caseStudiesListingQuery, options),
+  // ]);
+
+  try {
+    caseStudies = await caseStudiesClient.fetch(
+      caseStudiesListingQuery,
+      options,
+    );
+  } catch (error) {
+    console.error("Failed to fetch case studies data:", error);
+  }
 
   return (
     <>

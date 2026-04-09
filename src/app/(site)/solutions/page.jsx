@@ -48,7 +48,14 @@ import { solutionsClient } from "@/sanity/sanity.solutions";
 export const revalidate = 30; // Next.js ISR
 
 const SolutionsPage = async () => {
-  const solutions = await solutionsClient.fetch(SOLUTIONS_QUERY);
+  // const solutions = await solutionsClient.fetch(SOLUTIONS_QUERY);
+  let solutions = [];
+
+  try {
+    solutions = await solutionsClient.fetch(SOLUTIONS_QUERY);
+  } catch (error) {
+    console.error("Failed to fetch solutions data:", error);
+  }
 
   const industrySolutions = solutions.filter((s) => s.category === "industry");
   const goalSolutions = solutions.filter((s) => s.category === "goal");

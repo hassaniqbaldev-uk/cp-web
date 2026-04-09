@@ -10,8 +10,17 @@ import { cache } from "react";
 
 const options = { next: { revalidate: 30 } };
 
+// const getBlog = cache(async (slug) => {
+//   return blogClient.fetch(BLOG_DETAIL_QUERY, { slug }, options);
+// });
+
 const getBlog = cache(async (slug) => {
-  return blogClient.fetch(BLOG_DETAIL_QUERY, { slug }, options);
+  try {
+    return await blogClient.fetch(BLOG_DETAIL_QUERY, { slug }, options);
+  } catch (error) {
+    console.error("Failed to fetch blog detail:", error);
+    return null;
+  }
 });
 
 export async function generateMetadata({ params }) {
@@ -55,8 +64,17 @@ const BlogDetailPage = async (props) => {
   const params = await props.params;
   const slug = params.slug;
 
-  const post = await blogClient.fetch(BLOG_DETAIL_QUERY, { slug }, options);
-  const blogs = await blogClient.fetch(BLOG_LIST_QUERY);
+  const post = await getBlog(slug);
+  let blogs = [];
+
+  // const post = await blogClient.fetch(BLOG_DETAIL_QUERY, { slug }, options);
+  // const blogs = await blogClient.fetch(BLOG_LIST_QUERY);
+
+  try {
+    blogs = await blogClient.fetch(BLOG_LIST_QUERY);
+  } catch (error) {
+    console.error("Failed to fetch blog list:", error);
+  }
 
   if (!post) {
     notFound();

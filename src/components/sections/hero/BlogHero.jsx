@@ -12,6 +12,8 @@ import HomeHeroLogoShape2 from "@/components/decorative-elements/HomeHeroLogoSha
 import { MotionEffect } from "@/components/effects/motion-effect";
 
 const BlogHero = ({ hero }) => {
+  if (!hero) return null;
+
   return (
     <>
       <section className="relative w-full overflow-hidden px-[2rem] pt-[10rem] pb-[5rem] md:pt-[19.2rem] xl:px-[0rem] xl:pb-[10rem]">
@@ -27,7 +29,8 @@ const BlogHero = ({ hero }) => {
         <div className="relative z-[10] container">
           <div className="flex flex-col items-center text-center">
             <MotionEffect
-              slide={{ direction: "down" }} transition={{ type: "spring", stiffness: 120, damping: 20 }}
+              slide={{ direction: "down" }}
+              transition={{ type: "spring", stiffness: 120, damping: 20 }}
               fade
               zoom
             >
@@ -37,7 +40,8 @@ const BlogHero = ({ hero }) => {
             </MotionEffect>
 
             <MotionEffect
-              slide={{ direction: "down" }} transition={{ type: "spring", stiffness: 120, damping: 20 }}
+              slide={{ direction: "down" }}
+              transition={{ type: "spring", stiffness: 120, damping: 20 }}
               fade
               zoom
               delay={0.15}
@@ -51,7 +55,8 @@ const BlogHero = ({ hero }) => {
             </MotionEffect>
 
             <MotionEffect
-              slide={{ direction: "down" }} transition={{ type: "spring", stiffness: 120, damping: 20 }}
+              slide={{ direction: "down" }}
+              transition={{ type: "spring", stiffness: 120, damping: 20 }}
               fade
               zoom
               delay={0.3}
@@ -67,7 +72,8 @@ const BlogHero = ({ hero }) => {
           </div>
 
           <MotionEffect
-            slide={{ direction: "down" }} transition={{ type: "spring", stiffness: 120, damping: 20 }}
+            slide={{ direction: "down" }}
+            transition={{ type: "spring", stiffness: 120, damping: 20 }}
             fade
             delay={0.45}
           >
