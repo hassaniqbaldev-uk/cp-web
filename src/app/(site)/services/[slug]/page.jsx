@@ -8,7 +8,10 @@ import PartnerWithUs2 from "@/components/sections/partner-with-us/PartnerWithUs2
 import ProjectShowcase from "@/components/sections/project-showcase/ProjectShowcase";
 import DynamicQuestions from "@/components/sections/questions/DynamicQuestions";
 import Testimonials from "@/components/sections/testimonials/Testimonials";
-import { SERVICES_DETAIL_QUERY } from "@/sanity/queries.services";
+import {
+  SERVICES_DETAIL_QUERY,
+  SERVICES_SITEMAP_QUERY,
+} from "@/sanity/queries.services";
 import { servicesClient } from "@/sanity/sanity.services";
 import { notFound } from "next/navigation";
 import { cache } from "react";
@@ -63,6 +66,16 @@ export async function generateMetadata({ params }) {
       images: ["/images/og-image-assets/og-image.jpg"],
     },
   };
+}
+
+export async function generateStaticParams() {
+  try {
+    const services = await servicesClient.fetch(SERVICES_SITEMAP_QUERY);
+    return services.map((item) => ({ slug: item.slug }));
+  } catch (error) {
+    console.error("Failed to fetch services static params:", error);
+    return [];
+  }
 }
 
 const ServicesDetailPage = async (props) => {

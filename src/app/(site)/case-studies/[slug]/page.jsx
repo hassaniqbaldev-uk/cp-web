@@ -5,7 +5,10 @@ import OurApproach from "@/components/sections/our-approach/OurApproach";
 import TheChallenge from "@/components/sections/the-challenge/TheChallenge";
 import TheSolution from "@/components/sections/the-solution/TheSolution";
 import CustomCode from "@/components/sections/custom-code/CustomCode";
-import { caseStudiesDetailQuery } from "@/sanity/queries.caseStudies";
+import {
+  CASE_STUDY_SITEMAP_QUERY,
+  caseStudiesDetailQuery,
+} from "@/sanity/queries.caseStudies";
 import { caseStudiesClient } from "@/sanity/sanity.caseStudies";
 import { notFound } from "next/navigation";
 import { cache } from "react";
@@ -64,6 +67,16 @@ export async function generateMetadata({ params }) {
       images: ["/images/og-image-assets/og-image.jpg"],
     },
   };
+}
+
+export async function generateStaticParams() {
+  try {
+    const caseStudies = await caseStudiesClient.fetch(CASE_STUDY_SITEMAP_QUERY);
+    return caseStudies.map((item) => ({ slug: item.slug }));
+  } catch (error) {
+    console.error("Failed to fetch case study static params:", error);
+    return [];
+  }
 }
 
 const CaseStudiesDetailPage = async (props) => {

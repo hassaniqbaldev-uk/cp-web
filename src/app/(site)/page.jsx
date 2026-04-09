@@ -46,6 +46,7 @@ const SitePage = async () => {
   try {
     caseStudies = await caseStudiesClient.fetch(
       caseStudiesListingQuery,
+      {},
       options,
     );
   } catch (error) {

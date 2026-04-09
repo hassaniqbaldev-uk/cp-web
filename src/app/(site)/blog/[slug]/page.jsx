@@ -3,7 +3,11 @@ import BlogMeta from "@/components/sections/blog/BlogMeta";
 import BlogShare from "@/components/sections/blog/BlogShare";
 import RelatedBlogs from "@/components/sections/blog/RelatedBlogs";
 import BlogDetailHero from "@/components/sections/hero/BlogDetailHero";
-import { BLOG_DETAIL_QUERY, BLOG_LIST_QUERY } from "@/sanity/queries.blog";
+import {
+  BLOG_DETAIL_QUERY,
+  BLOG_LIST_QUERY,
+  BLOG_SITEMAP_QUERY,
+} from "@/sanity/queries.blog";
 import { blogClient } from "@/sanity/sanity.blog";
 import { notFound } from "next/navigation";
 import { cache } from "react";
@@ -58,6 +62,16 @@ export async function generateMetadata({ params }) {
       images: ["/images/og-image-assets/og-image.jpg"],
     },
   };
+}
+
+export async function generateStaticParams() {
+  try {
+    const blogs = await blogClient.fetch(BLOG_SITEMAP_QUERY);
+    return blogs.map((blog) => ({ slug: blog.slug }));
+  } catch (error) {
+    console.error("Failed to fetch blog static params:", error);
+    return [];
+  }
 }
 
 const BlogDetailPage = async (props) => {

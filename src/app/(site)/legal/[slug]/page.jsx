@@ -1,5 +1,8 @@
 import { urlFor } from "@/sanity/legal.image";
-import { LEGAL_DETAIL_QUERY } from "@/sanity/queries.legal";
+import {
+  LEGAL_DETAIL_QUERY,
+  LEGAL_SITEMAP_QUERY,
+} from "@/sanity/queries.legal";
 import { legalClient } from "@/sanity/sanity.legal";
 import { PortableText } from "@portabletext/react";
 import { ArrowLeft } from "lucide-react";
@@ -58,6 +61,16 @@ export async function generateMetadata({ params }) {
       images: ["/images/og-image-assets/og-image.jpg"],
     },
   };
+}
+
+export async function generateStaticParams() {
+  try {
+    const legalPages = await legalClient.fetch(LEGAL_SITEMAP_QUERY);
+    return legalPages.map((item) => ({ slug: item.slug }));
+  } catch (error) {
+    console.error("Failed to fetch legal static params:", error);
+    return [];
+  }
 }
 
 const portableTextComponents = {

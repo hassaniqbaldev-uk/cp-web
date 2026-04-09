@@ -5,7 +5,10 @@ import Methodology from "@/components/sections/methodology/Methodology";
 import PartnerWithUs2 from "@/components/sections/partner-with-us/PartnerWithUs2";
 import DynamicQuestions from "@/components/sections/questions/DynamicQuestions";
 import Testimonials from "@/components/sections/testimonials/Testimonials";
-import { SOLUTIONS_DETAIL_QUERY } from "@/sanity/queries.solutions";
+import {
+  SOLUTIONS_DETAIL_QUERY,
+  SOLUTIONS_SITEMAP_QUERY,
+} from "@/sanity/queries.solutions";
 import { solutionsClient } from "@/sanity/sanity.solutions";
 import { notFound } from "next/navigation";
 import { cache } from "react";
@@ -64,6 +67,16 @@ export async function generateMetadata({ params }) {
       images: ["/images/og-image-assets/og-image.jpg"],
     },
   };
+}
+
+export async function generateStaticParams() {
+  try {
+    const solutions = await solutionsClient.fetch(SOLUTIONS_SITEMAP_QUERY);
+    return solutions.map((item) => ({ slug: item.slug }));
+  } catch (error) {
+    console.error("Failed to fetch solutions static params:", error);
+    return [];
+  }
 }
 
 const SolutionsDetailPage = async (props) => {
