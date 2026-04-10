@@ -1,6 +1,11 @@
 import ImacIcon from "@/assets/icons/ui/imac-icon.svg";
 import PaintIcon from "@/assets/icons/ui/paint-icon.svg";
 import UpsideIcon from "@/assets/icons/ui/upside-arrow-icon.svg";
+import WordpressIcon from "@/assets/icons/ui/wordpress-icon.svg";
+import LandingPageIcon from "@/assets/icons/ui/landing-page-icon.svg";
+import WooCommerceIcon from "@/assets/icons/ui/woocommerce-icon.svg";
+import SpeedSecurityIcon from "@/assets/icons/ui/speed-security-icon.svg";
+import MaintenanceSupportIcon from "@/assets/icons/ui/maintenance-support-icon.svg";
 
 export const SERVICES_CARD = [
   {
@@ -56,5 +61,68 @@ export const SERVICES_CARD = [
     linkText: "Explore Growth Services",
     color: "#3078FF",
     boxShadow: "4px 12px 30px 0px #3078FF1C",
+  },
+];
+
+export const LP_SERVICES_CARD = [
+  {
+    icon: WordpressIcon,
+    iconWidth: 30,
+    iconHeight: 30,
+    title: "Custom WordPress",
+    description:
+      "Unique sites for your brand – tailored to your goals and audience to make a strong online impact.",
+    link: "/services/#design-build",
+    linkText: "Explore Service",
+    color: "#3078FF",
+    boxShadow: "4px 12px 30px 0px #3078FF1C",
+  },
+  {
+    icon: LandingPageIcon,
+    iconWidth: 30,
+    iconHeight: 30,
+    title: "Landing Page Design",
+    description:
+      "Optimized to capture leads – designed to engage visitors and convert them into customers.",
+    link: "/services/#design-build",
+    linkText: "Explore Service",
+    color: "#EE7621",
+    boxShadow: "4px 12px 30px 0px #EE76211C",
+  },
+  {
+    icon: WooCommerceIcon,
+    iconWidth: 30,
+    iconHeight: 30,
+    title: "WooCommerce Integration",
+    description:
+      "Full-featured online stores – seamless shopping experience with payments and product management.",
+    link: "/services/#growth-2",
+    linkText: "Explore Service",
+    color: "#FF37B3",
+    boxShadow: "4px 12px 30px 0px #FF37B31C",
+  },
+  {
+    icon: SpeedSecurityIcon,
+    iconWidth: 30,
+    iconHeight: 30,
+    title: "Speed & Security",
+    description:
+      "Fast loading, secure browsing – ensuring smooth performance and protecting your website data.",
+    link: "/services/#growth-2",
+    linkText: "Explore Service",
+    color: "#44B276",
+    boxShadow: "4px 12px 30px 0px #44B2761C",
+  },
+  {
+    icon: MaintenanceSupportIcon,
+    iconWidth: 30,
+    iconHeight: 30,
+    title: "Maintenance & Support",
+    description:
+      "Keep your site running smoothly – updates, backups, and ongoing assistance for hassle-free management.",
+    link: "/services/#growth-2",
+    linkText: "Explore Service",
+    color: "#BF00B4",
+    boxShadow: "4px 12px 30px 0px #BF00B41C",
   },
 ];

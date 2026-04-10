@@ -219,3 +219,38 @@ export const PROCESS_3_CARD = [
     boxShadow: "5px 5px 44px 0px #F14A582E",
   },
 ];
+
+export const LP_PROCESS_CARD = [
+  {
+    step: "1",
+    title: "Free Audit",
+    description:
+      "We analyze your current website, identify performance issues, and highlight key opportunities to improve user experience & lead generation.",
+    color: "#ED910C",
+    boxShadow: "5px 5px 44px 0px #ED910CCC",
+  },
+  {
+    step: "2",
+    title: "Strategy & Design",
+    description:
+      "We create a clear strategy and design a visually engaging, user-friendly layout that aligns with your brand and business goals.",
+    color: "#3078FF",
+    boxShadow: "5px 5px 44px 0px #3078FFCC",
+  },
+  {
+    step: "3",
+    title: "Development & Launch",
+    description:
+      "Our team builds a fast, secure, and fully responsive WordPress website, ensuring everything works perfectly before going live.",
+    color: "#BF00B4",
+    boxShadow: "5px 5px 44px 0px #BF00B4CC",
+  },
+  {
+    step: "4",
+    title: "On going support",
+    description:
+      "We provide continuous support, updates, and performance improvements to keep your website running smoothly & growing over time.",
+    color: "#44B276",
+    boxShadow: "5px 5px 44px 0px #44B276CC",
+  },
+];

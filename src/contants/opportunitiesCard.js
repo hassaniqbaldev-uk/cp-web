@@ -1,8 +1,8 @@
 export const OPPORTUNITIES_DATA = [
   {
-    title: "Social Media Manager / Executive",
-    department: "Marketing",
-    timing: "Full-time",
+    title: "Social Media Graphic Designer / Animator",
+    department: "Design",
+    timing: "Mid / Senior",
     location: "On-site",
     href: "",
   },
@@ -22,13 +22,6 @@ export const OPPORTUNITIES_DATA = [
   },
   {
     title: "UI/UX Designer",
-    department: "Design",
-    timing: "Mid / Senior",
-    location: "On-site",
-    href: "",
-  },
-  {
-    title: "Graphic Designer",
     department: "Design",
     timing: "Mid / Senior",
     location: "On-site",

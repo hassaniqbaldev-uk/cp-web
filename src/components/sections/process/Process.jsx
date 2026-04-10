@@ -103,7 +103,7 @@ const Process = () => {
                 delay={0.4 + idx * 0.15}
                 transition={{ type: "tween", duration: 1.0, ease: "easeOut" }}
               >
-                <div className="flex flex-col items-center gap-[3.8rem]">
+                <div className="flex h-full flex-col items-center gap-[3.8rem]">
                   <div className="relative flex w-full justify-center">
                     <hr className="absolute top-1/2 z-[0] w-full -translate-y-1/2 border-t border-white/30" />
 
@@ -118,11 +118,11 @@ const Process = () => {
                     </div>
                   </div>
 
-                  <div className="process-card flex flex-col justify-center gap-[3.5rem]">
-                    <div className="flex flex-col items-start px-[2.8rem] text-left">
+                  <div className="process-card flex flex-col items-start justify-center gap-[3.5rem] py-[3rem]">
+                    <div className="flex h-full flex-col items-start px-[2.8rem] text-left">
                       <h5
                         style={{ color: item.color }}
-                        className="mt-[12px] mb-[8px] text-[1.8rem] leading-[2.6rem] font-bold"
+                        className="mb-[8px] text-[1.8rem] leading-[2.6rem] font-bold"
                       >
                         {item.title}
                       </h5>
@@ -176,7 +176,7 @@ const Process = () => {
                   >
                     <div
                       key={item.step}
-                      className="flex flex-col items-center gap-[3.8rem]"
+                      className="flex h-full flex-col items-center gap-[3.8rem]"
                     >
                       <div className="process-card flex flex-col justify-center gap-[3.5rem]">
                         <div
@@ -189,7 +189,7 @@ const Process = () => {
                           0{item.step}
                         </div>
 
-                        <div className="flex flex-col items-start px-[2.8rem] text-left">
+                        <div className="flex h-full flex-col items-start px-[2.8rem] py-[3rem] text-left">
                           <h5
                             style={{ color: item.color }}
                             className="mt-[12px] mb-[8px] text-[1.8rem] leading-[2.6rem] font-bold"
