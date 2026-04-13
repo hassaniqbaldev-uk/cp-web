@@ -30,14 +30,14 @@ const WordpressPage = async () => {
   return (
     <>
       <LpHero caseStudies={caseStudies} />
-      <LpProblemSection />
-      <LpWhySection />
-      <LpProcessSection />
-      <LpServicesSection />
-      <LpResultSection />
-      <LpTestimonialSection />
-      <LpAuditSection />
-      <LpCtaSection />
+      {/* <LpProblemSection /> */}
+      {/* <LpWhySection /> */}
+      {/* <LpProcessSection /> */}
+      {/* <LpServicesSection /> */}
+      {/* <LpResultSection /> */}
+      {/* <LpTestimonialSection /> */}
+      {/* <LpAuditSection /> */}
+      {/* <LpCtaSection /> */}
     </>
   );
 };

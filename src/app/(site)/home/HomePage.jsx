@@ -13,6 +13,8 @@ import Contact from "@/components/sections/contact/Contact";
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import TestingTestimonials from "@/components/sections/testimonials/TestingTestimonials";
+import Image from "next/image";
+import HeroBg from "@/assets/images/backgrounds/audit-hero-bg.webp";
 
 const CONTENT_VARIANTS = {
   hidden: {
@@ -101,7 +103,16 @@ const HomePage = ({ caseStudies }) => {
       <section className="bg-[#ffd900]/13 px-[2rem] py-[5rem] xl:px-[0rem] xl:py-[10rem]">
         <Testimonials />
       </section>
-      <section className="px-[2rem] py-[5rem] xl:px-[0rem] xl:py-[10rem]">
+      <section className="relative px-[2rem] py-[5rem] xl:px-[0rem] xl:py-[10rem]">
+        {/*Background Image*/}
+        <Image
+          src={HeroBg}
+          alt="Background Image"
+          fill
+          priority
+          className="pointer-events-none absolute inset-0 z-[1] object-cover select-none"
+        />
+
         <Contact />
       </section>
     </>

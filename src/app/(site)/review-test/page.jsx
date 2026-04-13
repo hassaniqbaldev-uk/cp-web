@@ -55,6 +55,10 @@ const ReviewTest = () => {
 
   return (
     <>
+      <head>
+        <meta name="robots" content="noindex, nofollow" />
+      </head>
+
       <div className="relative flex min-h-screen flex-col justify-center">
         <div
           style={{

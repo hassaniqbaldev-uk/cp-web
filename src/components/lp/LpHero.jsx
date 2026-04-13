@@ -19,7 +19,7 @@ import "swiper/css";
 const LpHero = ({ caseStudies }) => {
   return (
     <section>
-      <div className="relative h-[90rem] w-full overflow-hidden px-[2rem] xl:px-[0rem]">
+      <div className="relative h-[65rem] w-full overflow-hidden px-[2rem] md:h-[80rem] xl:h-[90rem] xl:px-[0rem]">
         {/*Background Image*/}
         <Image
           src={HeroBg}
@@ -34,7 +34,7 @@ const LpHero = ({ caseStudies }) => {
           <HomeHeroLogoShape1 className="absolute top-[70px] left-[-10px] h-[8rem] w-[4rem] rotate-[25deg] md:top-[150px] md:h-[18.4rem] md:w-[9.1rem] xl:top-[80px]" />
         </div>
 
-        <div className="absolute top-0 right-0 z-[3] h-[90rem] w-[87rem]">
+        <div className="absolute top-0 right-0 z-[3] hidden h-[90rem] w-[87rem] xl:block">
           <Image
             src={LpHeroCardImg}
             width={870}
@@ -46,12 +46,12 @@ const LpHero = ({ caseStudies }) => {
             width={164}
             height={179}
             alt="Card Image"
-            className="absolute bottom-[10rem] left-[25rem]"
+            className="absolute bottom-[5rem] left-[30rem]"
           />
         </div>
 
         <div className="relative z-[10] container">
-          <div className="flex w-[66rem] flex-col items-start pt-[23.5rem] text-left">
+          <div className="flex w-full flex-col items-center pt-[18rem] text-center xl:w-[66rem] xl:items-start xl:pt-[23.5rem] xl:text-left">
             <MotionEffect
               slide={{ direction: "down" }}
               transition={{ type: "spring", stiffness: 120, damping: 20 }}
@@ -98,7 +98,7 @@ const LpHero = ({ caseStudies }) => {
               zoom
               delay={0.4}
             >
-              <div className="flex gap-[2.6rem]">
+              <div className="flex flex-col items-center gap-[2.6rem] md:flex-row">
                 <Link
                   href="/audit"
                   className="gradient-button inline-flex cursor-pointer items-center justify-center"
@@ -129,7 +129,7 @@ const LpHero = ({ caseStudies }) => {
                 </Link>
 
                 <div className="flex flex-col">
-                  <div className="flex items-center gap-[.3rem]">
+                  <div className="flex items-center justify-center gap-[.3rem] md:justify-start">
                     <StarIcon height="21" width="21" color="#FFE400" />
                     <StarIcon height="21" width="21" color="#FFE400" />
                     <StarIcon height="21" width="21" color="#FFE400" />
@@ -149,13 +149,27 @@ const LpHero = ({ caseStudies }) => {
 
       <div className="relative z-[20] mt-[-3rem]">
         <Swiper
-          spaceBetween={20}
-          slidesPerView={4}
+          spaceBetween={12}
+          slidesPerView={1.2}
           centeredSlides={true}
           loop={true}
           autoplay={{
             delay: 2500,
             disableOnInteraction: false,
+          }}
+          breakpoints={{
+            768: {
+              slidesPerView: 2,
+              spaceBetween: 15,
+            },
+            1025: {
+              slidesPerView: 3.5,
+              spaceBetween: 15,
+            },
+            1400: {
+              slidesPerView: 4,
+              spaceBetween: 20,
+            },
           }}
           modules={[Autoplay]}
           className="mySwiper"

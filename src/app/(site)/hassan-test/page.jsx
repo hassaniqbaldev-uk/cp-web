@@ -1,5 +1,9 @@
 import React from "react";
 
+export const metadata = {
+  robots: { index: false, follow: false },
+};
+
 const HassanTestPage = () => {
   return (
     <div className="bg-[#FAF9F8] py-[10rem]">
