@@ -35,9 +35,9 @@ const WordpressPage = async () => {
       <LpProcessSection />
       <LpServicesSection />
       <LpResultSection />
-      {/* <LpTestimonialSection /> */}
-      {/* <LpAuditSection /> */}
-      {/* <LpCtaSection /> */}
+      <LpTestimonialSection />
+      <LpAuditSection />
+      <LpCtaSection />
     </>
   );
 };

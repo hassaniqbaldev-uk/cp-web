@@ -5,8 +5,8 @@ import CheckMarkIcon from "../icons/CheckMarkIcon";
 
 const LpCtaSection = () => {
   return (
-    <section className="pb-[10rem]">
-      <div className="relative container overflow-hidden rounded-[3rem] px-[7rem] py-[6rem]">
+    <section className="px-[2rem] pb-[5rem] xl:px-[0rem] xl:pb-[10rem]">
+      <div className="relative container overflow-hidden rounded-[3rem] px-[2rem] py-[3rem] md:px-[7rem] md:py-[6rem]">
         {/*Background Image*/}
         <Image
           src={LandingCtaBg}
@@ -16,8 +16,8 @@ const LpCtaSection = () => {
           className="pointer-events-none absolute inset-0 z-[1] rounded-[3rem] object-cover select-none"
         />
 
-        <div className="relative z-[10] flex justify-between gap-[4rem]">
-          <div className="w-[52rem]">
+        <div className="relative z-[10] flex flex-col justify-between gap-[4rem] lg:flex-row">
+          <div className="w-full lg:w-[52rem]">
             <h2 className="mb-[3.8rem] text-[3rem] leading-[3.7rem] font-bold tracking-[-0.02em] text-[#312749] md:text-[4.8rem] md:leading-[5.2rem]">
               No Risk. No Obligation.{" "}
               <span className="bg-gradient-pink-orange bg-clip-text text-transparent">
@@ -35,7 +35,7 @@ const LpCtaSection = () => {
             </div>
           </div>
 
-          <div className="flex w-[45rem] flex-col gap-[1.6rem]">
+          <div className="flex w-full flex-col gap-[1.6rem] lg:w-[45rem]">
             {[
               "No upfront payments required",
               "Full transparency throughout the project",
@@ -45,9 +45,9 @@ const LpCtaSection = () => {
                 key={idx}
                 className="flex gap-[1.5rem] border-b border-[#98989866] pb-[1.6rem]"
               >
-                <div className="relative top-[.7rem] min-w-max">
+                <i className="relative top-[.7rem] min-w-max">
                   <CheckMarkIcon color="#FF37B3" />
-                </div>{" "}
+                </i>{" "}
                 <span className="text-[2rem] leading-[3.2rem] font-semibold tracking-normal text-[#312749]">
                   {item}
                 </span>
