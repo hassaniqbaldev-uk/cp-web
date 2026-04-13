@@ -10,7 +10,7 @@ import AboutHeroLogoShape1 from "../decorative-elements/AboutHeroLogoShape1";
 
 const LpWhySection = () => {
   return (
-    <section className="relative w-full px-[2rem] py-[8rem] xl:px-[0rem]">
+    <section className="relative w-full px-[2rem] py-[5rem] xl:px-[0rem] xl:py-[10rem]">
       {/*Background Image*/}
       <Image
         src={HeroBg}
@@ -26,11 +26,11 @@ const LpWhySection = () => {
       </div>
 
       <div className="pointer-events-none absolute inset-0 z-[2] select-none">
-        <AboutHeroLogoShape1 className="pointer-events-none absolute top-[0rem] left-[25rem] h-[8rem] w-[4rem] rotate-[35deg] opacity-50 select-none md:left-[10rem] md:h-[22.5rem] md:w-[11.2rem]" />
+        <AboutHeroLogoShape1 className="pointer-events-none absolute top-[80rem] left-[1rem] h-[8rem] w-[4rem] rotate-[35deg] opacity-50 select-none md:top-[0rem] md:left-[-4rem] md:h-[22.5rem] md:w-[11.2rem]" />
       </div>
 
-      <div className="relative z-[10] container flex items-center justify-between gap-[5rem]">
-        <div className="flex w-[63rem] flex-col">
+      <div className="relative z-[10] container flex flex-col items-center justify-between gap-[5rem] xl:flex-row">
+        <div className="flex flex-col md:w-[63rem]">
           <div>
             <SectionLabel text="Why choose us" textColor="#3078FF" />
           </div>
@@ -42,7 +42,7 @@ const LpWhySection = () => {
             </span>
           </h2>
 
-          <h4 className="text-[2.6rem] leading-[3.4rem] font-semibold tracking-[-0.02em] text-[#312749]">
+          <h4 className="text-[2.2rem] leading-[3rem] font-semibold tracking-[-0.02em] text-[#312749] md:text-[2.6rem] md:leading-[3.4rem]">
             We specialize in WordPress web design that is:
           </h4>
 
@@ -54,7 +54,9 @@ const LpWhySection = () => {
               "Customizable & Scalable: Easy to manage & grow with your business",
             ].map((item, idx) => (
               <li key={idx} className="flex items-center gap-[1.2rem]">
-                <CheckMarkIcon color="#EE7621" height="15" width="15" />
+                <i className="min-w-max">
+                  <CheckMarkIcon color="#EE7621" height="15" width="15" />
+                </i>
 
                 <span className="text-[1.8rem] font-medium tracking-[2rem] tracking-normal text-[#312749]">
                   {item}
@@ -63,7 +65,7 @@ const LpWhySection = () => {
             ))}
           </ul>
 
-          <h4 className="mb-[5rem] max-w-[63rem] text-[2.6rem] leading-[3.4rem] font-semibold tracking-[-0.02em] text-[#312749]">
+          <h4 className="mb-[5rem] max-w-[63rem] text-[2.2rem] leading-[3rem] font-semibold tracking-[-0.02em] text-[#312749] md:text-[2.6rem] md:leading-[3.4rem]">
             With years of experience and hundreds of successful projects, we
             know how to deliver websites that actually perform.
           </h4>
@@ -77,7 +79,7 @@ const LpWhySection = () => {
           </div>
         </div>
 
-        <div className="h-[53rem] w-[49rem]">
+        <div className="w-[25rem] md:w-[35rem] xl:h-[53rem] xl:w-[49rem]">
           <Image
             src={CpLogo}
             width={490}

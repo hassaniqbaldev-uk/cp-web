@@ -43,215 +43,165 @@ const LpServicesSection = () => {
 
         <div className="relative z-[10] container">
           <div className="flex flex-col items-center text-center">
-            <MotionEffect
-              slide={{
-                direction: "down",
-              }}
-              fade
-              zoom
-              inView
-              delay={0.1}
-              transition={{ type: "tween", duration: 0.8, ease: "easeOut" }}
-            >
-              <div>
-                <SectionLabel text="our services" textColor="#FF37B3" />
-              </div>
-            </MotionEffect>
+            <div>
+              <SectionLabel text="our services" textColor="#FF37B3" />
+            </div>
 
-            <MotionEffect
-              slide={{
-                direction: "down",
-              }}
-              fade
-              zoom
-              inView
-              delay={0.25}
-              transition={{ type: "tween", duration: 0.8, ease: "easeOut" }}
-            >
-              <div className="mt-[.5rem] mb-[1.4rem]">
-                <SectionTitle
-                  text="Our WordPress Web Design Services"
-                  textColor="#ffffff"
-                />
-              </div>
-            </MotionEffect>
+            <div className="mt-[.5rem] mb-[1.4rem]">
+              <SectionTitle
+                text="Our WordPress Web Design Services"
+                textColor="#ffffff"
+              />
+            </div>
 
-            <MotionEffect
-              slide={{
-                direction: "down",
-              }}
-              fade
-              zoom
-              inView
-              delay={0.4}
-              transition={{ type: "tween", duration: 0.8, ease: "easeOut" }}
-            >
-              <div>
-                <SectionDescription
-                  text="We provide a complete suite of WordPress services tailored to help your business succeed online:"
-                  textColor="#ffffff"
-                />
-              </div>
-            </MotionEffect>
+            <div>
+              <SectionDescription
+                text="We provide a complete suite of WordPress services tailored to help your business succeed online:"
+                textColor="#ffffff"
+              />
+            </div>
           </div>
 
           <div className="mt-[5rem] hidden grid-cols-3 gap-[2rem] xl:grid">
             {LP_SERVICES_CARD.map((item, idx) => (
-              <MotionEffect
+              <div
                 key={idx}
-                slide={{ direction: "down" }}
-                fade
-                inView
-                delay={0.4 + idx * 0.15}
-                transition={{ type: "tween", duration: 1.0, ease: "easeOut" }}
+                onMouseEnter={() => setHovered(idx)}
+                onMouseLeave={() => setHovered(null)}
+                style={{
+                  boxShadow: hovered === idx ? item.boxShadow : "",
+                  borderColor: item.color,
+                }}
+                className="flex h-full w-full flex-col items-start justify-between rounded-[3rem] border bg-white px-[3rem] pt-[3.1rem] pb-[2.8rem] text-left transition-all duration-300"
               >
-                <div
-                  onMouseEnter={() => setHovered(idx)}
-                  onMouseLeave={() => setHovered(null)}
-                  style={{
-                    boxShadow: hovered === idx ? item.boxShadow : "",
-                    borderColor: item.color,
-                  }}
-                  className="flex h-full w-full flex-col items-start justify-between rounded-[3rem] border bg-white px-[3rem] pt-[3.1rem] pb-[2.8rem] text-left transition-all duration-300"
-                >
-                  <div>
-                    <div className="relative size-[6.3rem]">
-                      <div className="absolute top-0 left-0 z-[1] inline-flex size-[5.8rem] items-center justify-center rounded-[1.3rem] border border-white/20 bg-white/35 backdrop-blur-[10px]">
-                        <i>
-                          <Image
-                            src={item.icon}
-                            alt="Icon"
-                            width={item.iconWidth}
-                            height={item.iconHeight}
-                            unoptimized
-                          />
-                        </i>
-                      </div>
-                      <div
-                        style={{
-                          background: item.color,
-                        }}
-                        className="absolute right-0 bottom-0 z-[0] size-[5.8rem] rounded-[1.3rem]"
-                      />
+                <div>
+                  <div className="relative size-[6.3rem]">
+                    <div className="absolute top-0 left-0 z-[1] inline-flex size-[5.8rem] items-center justify-center rounded-[1.3rem] border border-white/20 bg-white/35 backdrop-blur-[10px]">
+                      <i>
+                        <Image
+                          src={item.icon}
+                          alt="Icon"
+                          width={item.iconWidth}
+                          height={item.iconHeight}
+                          unoptimized
+                        />
+                      </i>
                     </div>
-
-                    <h3 className="mt-[3rem] text-[2.6rem] font-semibold tracking-[-0.02em] text-[#312749]">
-                      {item.title}
-                    </h3>
-
-                    <p className="mt-[1rem] mb-[3.5rem] text-[1.6rem] leading-[2.4rem] font-normal text-[#625C70]">
-                      {item.description}
-                    </p>
+                    <div
+                      style={{
+                        background: item.color,
+                      }}
+                      className="absolute right-0 bottom-0 z-[0] size-[5.8rem] rounded-[1.3rem]"
+                    />
                   </div>
 
-                  <Link
-                    href={item.link}
-                    style={{
-                      color: item.color,
-                    }}
-                    className="group inline-flex items-center gap-[.8rem] text-[1.6rem] leading-[1.4rem] font-semibold tracking-normal"
-                  >
-                    {item.linkText}{" "}
-                    <i className="transition-all duration-200 group-hover:-rotate-45">
-                      <RightArrowIcon color={item.color} />
-                    </i>
-                  </Link>
+                  <h3 className="mt-[3rem] text-[2.6rem] font-semibold tracking-[-0.02em] text-[#312749]">
+                    {item.title}
+                  </h3>
+
+                  <p className="mt-[1rem] mb-[3.5rem] text-[1.6rem] leading-[2.4rem] font-normal text-[#625C70]">
+                    {item.description}
+                  </p>
                 </div>
-              </MotionEffect>
+
+                <Link
+                  href={item.link}
+                  style={{
+                    color: item.color,
+                  }}
+                  className="group inline-flex items-center gap-[.8rem] text-[1.6rem] leading-[1.4rem] font-semibold tracking-normal"
+                >
+                  {item.linkText}{" "}
+                  <i className="transition-all duration-200 group-hover:-rotate-45">
+                    <RightArrowIcon color={item.color} />
+                  </i>
+                </Link>
+              </div>
             ))}
           </div>
 
           {/* Responsive */}
-          <MotionEffect
-            slide={{ direction: "down" }}
-            fade
-            inView
-            delay={0.6}
-            transition={{ type: "tween", duration: 0.8, ease: "easeOut" }}
-            className="w-full"
-          >
-            <div className="mt-[3rem] block w-full xl:hidden">
-              <Swiper
-                pagination={{ clickable: true }}
-                modules={[Pagination, Autoplay]}
-                loop={true}
-                autoplay={{
-                  delay: 2500,
-                  disableOnInteraction: false,
-                }}
-                slidesPerView={1}
-                spaceBetween={0}
-                breakpoints={{
-                  767: {
-                    slidesPerView: 2,
-                    spaceBetween: 0,
-                  },
-                  1024: {
-                    slidesPerView: 3,
-                    spaceBetween: 0,
-                  },
-                }}
-                className="mySwiper"
-              >
-                {LP_SERVICES_CARD.map((item, idx) => (
-                  <SwiperSlide
-                    key={idx}
-                    className="!flex !h-auto !justify-center px-[1rem] pb-[5rem]"
+          <div className="mt-[3rem] block w-full xl:hidden">
+            <Swiper
+              pagination={{ clickable: true }}
+              modules={[Pagination, Autoplay]}
+              loop={true}
+              autoplay={{
+                delay: 2500,
+                disableOnInteraction: false,
+              }}
+              slidesPerView={1}
+              spaceBetween={0}
+              breakpoints={{
+                767: {
+                  slidesPerView: 2,
+                  spaceBetween: 0,
+                },
+                1024: {
+                  slidesPerView: 3,
+                  spaceBetween: 0,
+                },
+              }}
+              className="mySwiper"
+            >
+              {LP_SERVICES_CARD.map((item, idx) => (
+                <SwiperSlide
+                  key={idx}
+                  className="!flex !h-auto !justify-center px-[1rem] pb-[5rem]"
+                >
+                  <div
+                    style={{
+                      borderColor: item.color,
+                    }}
+                    className="flex h-full w-full flex-col items-start justify-between rounded-[3rem] border bg-white px-[3rem] pt-[3.1rem] pb-[2.8rem] text-left transition-all duration-300"
                   >
-                    <div
-                      style={{
-                        borderColor: item.color,
-                      }}
-                      className="flex h-full w-full flex-col items-start justify-between rounded-[3rem] border bg-white px-[3rem] pt-[3.1rem] pb-[2.8rem] text-left transition-all duration-300"
-                    >
-                      <div>
-                        <div className="relative size-[6.3rem]">
-                          <div className="absolute top-0 left-0 z-[1] inline-flex size-[5.8rem] items-center justify-center rounded-[1.3rem] border border-white/20 bg-white/35 backdrop-blur-[10px]">
-                            <i>
-                              <Image
-                                src={item.icon}
-                                alt="Icon"
-                                width={item.iconWidth}
-                                height={item.iconHeight}
-                                unoptimized
-                              />
-                            </i>
-                          </div>
-                          <div
-                            style={{
-                              background: item.color,
-                            }}
-                            className="absolute right-0 bottom-0 z-[0] size-[5.8rem] rounded-[1.3rem]"
-                          />
+                    <div>
+                      <div className="relative size-[6.3rem]">
+                        <div className="absolute top-0 left-0 z-[1] inline-flex size-[5.8rem] items-center justify-center rounded-[1.3rem] border border-white/20 bg-white/35 backdrop-blur-[10px]">
+                          <i>
+                            <Image
+                              src={item.icon}
+                              alt="Icon"
+                              width={item.iconWidth}
+                              height={item.iconHeight}
+                              unoptimized
+                            />
+                          </i>
                         </div>
-
-                        <h3 className="mt-[2.5rem] text-[1.8rem] font-semibold tracking-[-0.02em] text-[#312749]">
-                          {item.title}
-                        </h3>
-
-                        <p className="mt-[1rem] mb-[2.5rem] text-[1.4rem] leading-[2.4rem] font-normal text-[#625C70]">
-                          {item.description}
-                        </p>
+                        <div
+                          style={{
+                            background: item.color,
+                          }}
+                          className="absolute right-0 bottom-0 z-[0] size-[5.8rem] rounded-[1.3rem]"
+                        />
                       </div>
 
-                      <Link
-                        href={item.link}
-                        style={{
-                          color: item.color,
-                        }}
-                        className="group inline-flex items-center gap-[.8rem] text-[1.6rem] leading-[1.4rem] font-semibold tracking-normal"
-                      >
-                        {item.linkText}{" "}
-                        <i className="transition-all duration-200 group-hover:-rotate-45">
-                          <RightArrowIcon color={item.color} />
-                        </i>
-                      </Link>
+                      <h3 className="mt-[2.5rem] text-[1.8rem] font-semibold tracking-[-0.02em] text-[#312749]">
+                        {item.title}
+                      </h3>
+
+                      <p className="mt-[1rem] mb-[2.5rem] text-[1.4rem] leading-[2.4rem] font-normal text-[#625C70]">
+                        {item.description}
+                      </p>
                     </div>
-                  </SwiperSlide>
-                ))}
-              </Swiper>
-            </div>
-          </MotionEffect>
+
+                    <Link
+                      href={item.link}
+                      style={{
+                        color: item.color,
+                      }}
+                      className="group inline-flex items-center gap-[.8rem] text-[1.6rem] leading-[1.4rem] font-semibold tracking-normal"
+                    >
+                      {item.linkText}{" "}
+                      <i className="transition-all duration-200 group-hover:-rotate-45">
+                        <RightArrowIcon color={item.color} />
+                      </i>
+                    </Link>
+                  </div>
+                </SwiperSlide>
+              ))}
+            </Swiper>
+          </div>
         </div>
       </section>
     </>

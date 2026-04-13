@@ -52,97 +52,66 @@ const LpHero = ({ caseStudies }) => {
 
         <div className="relative z-[10] container">
           <div className="flex w-full flex-col items-center pt-[18rem] text-center xl:w-[66rem] xl:items-start xl:pt-[23.5rem] xl:text-left">
-            <MotionEffect
-              slide={{ direction: "down" }}
-              transition={{ type: "spring", stiffness: 120, damping: 20 }}
-              fade
-              zoom
-            >
-              <SectionLabel text="Wordpress" textColor="#FF37B3" />
-            </MotionEffect>
+            <SectionLabel text="Wordpress" textColor="#FF37B3" />
 
-            <MotionEffect
-              slide={{ direction: "down" }}
-              transition={{ type: "spring", stiffness: 120, damping: 20 }}
-              fade
-              zoom
-              delay={0.15}
-            >
-              <h1 className="mt-[1.5rem] mb-[2.5rem] max-w-[56.8rem] text-[3rem] leading-[3.7rem] font-bold tracking-[-0.03em] text-white md:text-[7rem] md:leading-[8rem]">
-                <span className="block">Tired of a Website That</span>
-                <span className="bg-gradient-yellow-orange block bg-clip-text text-transparent">
-                  Doesn’t Convert?
-                </span>
-              </h1>
-            </MotionEffect>
+            <h1 className="mt-[1.5rem] mb-[2.5rem] max-w-[56.8rem] text-[3rem] leading-[3.7rem] font-bold tracking-[-0.03em] text-white md:text-[7rem] md:leading-[8rem]">
+              <span className="block">Tired of a Website That</span>
+              <span className="bg-gradient-yellow-orange block bg-clip-text text-transparent">
+                Doesn’t Convert?
+              </span>
+            </h1>
 
-            <MotionEffect
-              slide={{ direction: "down" }}
-              transition={{ type: "spring", stiffness: 120, damping: 20 }}
-              fade
-              zoom
-              delay={0.3}
-            >
-              <div className="mb-[4.2rem] max-w-[59.4rem]">
-                <SectionDescription
-                  text="Your website is your first impression. We design WordPress sites that look professional, load fast, and turn visitors into customers."
-                  textColor="#FFFFFF"
-                />
-              </div>
-            </MotionEffect>
+            <div className="mb-[4.2rem] max-w-[59.4rem]">
+              <SectionDescription
+                text="Your website is your first impression. We design WordPress sites that look professional, load fast, and turn visitors into customers."
+                textColor="#FFFFFF"
+              />
+            </div>
 
-            <MotionEffect
-              slide={{ direction: "down" }}
-              transition={{ type: "spring", stiffness: 120, damping: 20 }}
-              fade
-              zoom
-              delay={0.4}
-            >
-              <div className="flex flex-col items-center gap-[2.6rem] md:flex-row">
-                <Link
-                  href="/audit"
-                  className="gradient-button inline-flex cursor-pointer items-center justify-center"
-                >
-                  <div className="text-span">
-                    <span className="relative z-[10]">
-                      Get Your Free WordPress Audit
-                    </span>
-                  </div>
-
-                  <svg
-                    width="16"
-                    height="18"
-                    viewBox="0 0 16 18"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="relative mr-[-4px] ml-[-2px]"
-                  >
-                    <path
-                      d="M0.0732422 0C1.45666 2.39049 4.0394 4 7 4C9.9606 4 12.5433 2.39049 13.9268 0H16V18H13.9268C12.5433 15.6095 9.9606 14 7 14C4.0394 14 1.45666 15.6095 0.0732422 18H0V0H0.0732422Z"
-                      fill="#FF37B3"
-                    />
-                  </svg>
-
-                  <div className="relative inline-flex size-[4rem] items-center justify-center rounded-full bg-[#FF37B3] md:size-[5rem]">
-                    <RightArrowIcon color="#ffffff" width="14" height="14" />
-                  </div>
-                </Link>
-
-                <div className="flex flex-col">
-                  <div className="flex items-center justify-center gap-[.3rem] md:justify-start">
-                    <StarIcon height="21" width="21" color="#FFE400" />
-                    <StarIcon height="21" width="21" color="#FFE400" />
-                    <StarIcon height="21" width="21" color="#FFE400" />
-                    <StarIcon height="21" width="21" color="#FFE400" />
-                    <StarIcon height="21" width="21" color="#FFE400" />
-                  </div>
-
-                  <span className="text-[2rem] leading-[3.2rem] font-bold tracking-normal text-white">
-                    4.9/5 from 47+ Clients
+            <div className="flex flex-col items-center gap-[2.6rem] md:flex-row">
+              <Link
+                href="/audit"
+                className="gradient-button inline-flex cursor-pointer items-center justify-center"
+              >
+                <div className="text-span">
+                  <span className="relative z-[10]">
+                    Get Your Free WordPress Audit
                   </span>
                 </div>
+
+                <svg
+                  width="16"
+                  height="18"
+                  viewBox="0 0 16 18"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="relative mr-[-4px] ml-[-2px]"
+                >
+                  <path
+                    d="M0.0732422 0C1.45666 2.39049 4.0394 4 7 4C9.9606 4 12.5433 2.39049 13.9268 0H16V18H13.9268C12.5433 15.6095 9.9606 14 7 14C4.0394 14 1.45666 15.6095 0.0732422 18H0V0H0.0732422Z"
+                    fill="#FF37B3"
+                  />
+                </svg>
+
+                <div className="relative inline-flex size-[4rem] items-center justify-center rounded-full bg-[#FF37B3] md:size-[5rem]">
+                  <RightArrowIcon color="#ffffff" width="14" height="14" />
+                </div>
+              </Link>
+
+              <div className="flex flex-col">
+                <div className="flex items-center justify-center gap-[.3rem] md:justify-start">
+                  <StarIcon height="21" width="21" color="#FFE400" />
+                  <StarIcon height="21" width="21" color="#FFE400" />
+                  <StarIcon height="21" width="21" color="#FFE400" />
+                  <StarIcon height="21" width="21" color="#FFE400" />
+                  <StarIcon height="21" width="21" color="#FFE400" />
+                </div>
+
+                <span className="text-[2rem] leading-[3.2rem] font-bold tracking-normal text-white">
+                  4.9/5 from 47+ Clients
+                </span>
               </div>
-            </MotionEffect>
+            </div>
           </div>
         </div>
       </div>
