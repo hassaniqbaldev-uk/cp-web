@@ -169,11 +169,11 @@ const LpHero = ({ caseStudies }) => {
 
                 <div className="flex items-center justify-between gap-[2rem] px-[1rem]">
                   <div className="flex flex-col items-start text-left">
-                    <h4 className="text-[2.5rem] leading-[3.6rem] font-bold tracking-[-0.02em] text-[#312749]">
+                    <h4 className="line-clamp-1 text-[2.5rem] leading-[3.4rem] font-bold tracking-[-0.02em] text-[#312749]">
                       {caseStudy.title}
                     </h4>
 
-                    <span className="text-[1.4rem] leading-[1.9rem] font-semibold text-[#625C70] xl:text-[1.6rem] xl:leading-[2.6rem]">
+                    <span className="line-clamp-2 text-[1.4rem] leading-[1.9rem] font-semibold text-[#625C70] xl:text-[1.6rem] xl:leading-[2.6rem]">
                       {caseStudy.excerpt}
                     </span>
                   </div>
