@@ -162,7 +162,7 @@ const LpHero = ({ caseStudies }) => {
                     alt={caseStudy.title || "Case Study Thumbnail Image"}
                     width={429}
                     height={289}
-                    className="w-full object-cover object-left"
+                    className="h-full w-full object-cover object-left"
                     unoptimized
                   />
                 </div>
