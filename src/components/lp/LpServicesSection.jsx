@@ -135,7 +135,7 @@ const LpServicesSection = () => {
                     </p>
                   </div>
 
-                  <Link
+                  <a
                     href={item.link}
                     style={{
                       color: item.color,
@@ -146,7 +146,7 @@ const LpServicesSection = () => {
                     <i className="transition-all duration-200 group-hover:-rotate-45">
                       <RightArrowIcon color={item.color} />
                     </i>
-                  </Link>
+                  </a>
                 </div>
               </MotionEffect>
             ))}
