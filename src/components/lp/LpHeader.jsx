@@ -5,7 +5,7 @@ import Logo from "../decorative-elements/Logo";
 import RightArrowIcon from "../icons/RightArrowIcon";
 import SecondaryButton from "../ui/SecondaryButton";
 import PhoneIcon from "../icons/PhoneIcon";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { getCalApi } from "@calcom/embed-react";
 import Image from "next/image";
 import HamburgerIcon from "@/assets/icons/ui/hamburger-icon.svg";
@@ -29,20 +29,27 @@ const LpHeader = () => {
     hover: { y: "0%" },
   };
 
-  useEffect(() => {
-    (async function () {
-      const cal = await getCalApi({ namespace: "15min" });
-      cal("ui", {
-        theme: "dark",
-        cssVarsPerTheme: {
-          light: { "cal-brand": "#292929" },
-          dark: { "cal-brand": "#FF37B3" },
-        },
-        hideEventTypeDetails: false,
-        layout: "month_view",
-      });
-    })();
-  }, []);
+  const initCal = async () => {
+    const cal = await getCalApi({ namespace: "15min" });
+    cal("ui", {
+      theme: "dark",
+      cssVarsPerTheme: {
+        light: { "cal-brand": "#292929" },
+        dark: { "cal-brand": "#FF37B3" },
+      },
+      hideEventTypeDetails: false,
+      layout: "month_view",
+    });
+  };
+
+  const calInitialized = useRef(false);
+
+  const handleBookingClick = async () => {
+    if (!calInitialized.current) {
+      await initCal();
+      calInitialized.current = true;
+    }
+  };
 
   return (
     <>
@@ -73,9 +80,9 @@ const LpHeader = () => {
             <div className="hidden items-center justify-between gap-[2rem] rounded-[3.8rem] bg-white/18 px-[2.6rem] py-[1.5rem] backdrop-blur-[10px] xl:flex">
               <div className="min-w-max">
                 <SecondaryButton
+                  onClick={handleBookingClick}
                   data-cal-namespace="15min"
                   data-cal-link="hassan-iqbal-mznzu9/15min"
-                  data-cal-config='{"layout":"month_view","theme":"dark"}'
                   text="Book Free Consultation"
                   bGcolor="#ffffff"
                   textColor="#000000"
@@ -160,9 +167,9 @@ const LpHeader = () => {
                   className="inline-flex"
                 >
                   <button
+                    onClick={handleBookingClick}
                     data-cal-namespace="15min"
                     data-cal-link="hassan-iqbal-mznzu9/15min"
-                    data-cal-config='{"layout":"month_view","theme":"dark"}'
                     className="inline-flex items-center justify-center"
                   >
                     {/* TEXT PILL */}
