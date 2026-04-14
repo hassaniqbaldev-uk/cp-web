@@ -223,25 +223,24 @@ export const PROCESS_3_CARD = [
 export const LP_PROCESS_CARD = [
   {
     step: "1",
-    title: "Free Audit",
-    description:
-      "We analyze your current website, identify performance issues, and highlight key opportunities to improve user experience & lead generation.",
+    title: "Audit & Strategy",
+    description: "We analyze your current website, traffic, and goals.",
     color: "#ED910C",
     boxShadow: "5px 5px 44px 0px #ED910CCC",
   },
   {
     step: "2",
-    title: "Strategy & Design",
+    title: "Design & Build",
     description:
-      "We create a clear strategy and design a visually engaging, user-friendly layout that aligns with your brand and business goals.",
+      "We create a conversion-focused WordPress experience tailored to your business.",
     color: "#3078FF",
     boxShadow: "5px 5px 44px 0px #3078FFCC",
   },
   {
     step: "3",
-    title: "Development & Launch",
+    title: "Optimize & Launch",
     description:
-      "Our team builds a fast, secure, and fully responsive WordPress website, ensuring everything works perfectly before going live.",
+      " We refine performance, improve speed, and launch a site built to convert.",
     color: "#BF00B4",
     boxShadow: "5px 5px 44px 0px #BF00B4CC",
   },

@@ -11,12 +11,90 @@ import StarIcon from "../icons/StarIcon";
 import LpHeroCardImg from "@/assets/images/cards/lp-wordpress-hero-img.png";
 import CpLogo from "@/assets/images/cards/3d-cp-logo.png";
 import TiltArrowIcon from "../icons/TiltArrowIcon";
-import { urlFor } from "@/sanity/caseStudies.image";
+import NdifoImg from "@/assets/images/cards/ndifo.png";
+import SmokeyImg from "@/assets/images/cards/smokey-carter.png";
+import IvyDukeImg from "@/assets/images/cards/ivy-duke.png";
+import GameArtImg from "@/assets/images/cards/game-art.png";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
 import "swiper/css";
 
-const LpHero = ({ caseStudies }) => {
+const projects = [
+  {
+    id: "1",
+    slug: "https://www.ndifosafari.com/",
+    title: "Ndifo Safari",
+    excerpt: "Escape into the safari",
+    thumbnailImage: NdifoImg,
+    iconBg: "#58937F",
+    iconColor: "#FFFFFF",
+  },
+  {
+    id: "2",
+    slug: "https://thesmokeycarter.com",
+    title: "Smokey Carter",
+    excerpt: "Saucey eCommerce",
+    thumbnailImage: SmokeyImg,
+    iconBg: "#FA5D27",
+    iconColor: "#FFFFFF",
+  },
+  {
+    id: "3",
+    slug: "https://ivyandduke.co.uk",
+    title: "Ivy & Duke",
+    excerpt: "Ecommerce Website Design",
+    thumbnailImage: IvyDukeImg,
+    iconBg: "#8B9266",
+    iconColor: "#FFFFFF",
+  },
+  {
+    id: "4",
+    slug: "https://www.gameartbrain.com/",
+    title: "Ivy & Duke",
+    excerpt: "Ecommerce Website Design",
+    thumbnailImage: GameArtImg,
+    iconBg: "#536A56",
+    iconColor: "#FFFFFF",
+  },
+  {
+    id: "5",
+    slug: "https://www.ndifosafari.com/",
+    title: "Ndifo Safari",
+    excerpt: "Escape into the safari",
+    thumbnailImage: NdifoImg,
+    iconBg: "#58937F",
+    iconColor: "#FFFFFF",
+  },
+  {
+    id: "6",
+    slug: "https://thesmokeycarter.com",
+    title: "Smokey Carter",
+    excerpt: "Saucey eCommerce",
+    thumbnailImage: SmokeyImg,
+    iconBg: "#FA5D27",
+    iconColor: "#FFFFFF",
+  },
+  {
+    id: "7",
+    slug: "https://ivyandduke.co.uk",
+    title: "Ivy & Duke",
+    excerpt: "Ecommerce Website Design",
+    thumbnailImage: IvyDukeImg,
+    iconBg: "#8B9266",
+    iconColor: "#FFFFFF",
+  },
+  {
+    id: "8",
+    slug: "https://www.gameartbrain.com/",
+    title: "Ivy & Duke",
+    excerpt: "Ecommerce Website Design",
+    thumbnailImage: GameArtImg,
+    iconBg: "#536A56",
+    iconColor: "#FFFFFF",
+  },
+];
+
+const LpHero = () => {
   return (
     <section>
       <div className="relative h-[65rem] w-full overflow-hidden px-[2rem] md:h-[80rem] xl:h-[90rem] xl:px-[0rem]">
@@ -34,7 +112,7 @@ const LpHero = ({ caseStudies }) => {
           <HomeHeroLogoShape1 className="absolute top-[100px] left-[-10px] h-[8rem] w-[4rem] rotate-[25deg] md:top-[150px] md:h-[18.4rem] md:w-[9.1rem] xl:top-[80px]" />
         </div>
 
-        <div className="absolute top-0 right-0 z-[3] hidden h-[90rem] w-[87rem] xl:block">
+        <div className="absolute top-0 right-[-10rem] z-[3] hidden h-[90rem] w-[87rem] xl:block">
           <MotionEffect
             slide={{ direction: "right" }}
             transition={{ type: "spring", stiffness: 120, damping: 20 }}
@@ -65,7 +143,7 @@ const LpHero = ({ caseStudies }) => {
         </div>
 
         <div className="relative z-[10] container">
-          <div className="flex w-full flex-col items-center pt-[18rem] text-center xl:w-[66rem] xl:items-start xl:pt-[23.5rem] xl:text-left">
+          <div className="flex w-full flex-col items-center pt-[16rem] text-center md:pt-[18rem] xl:w-[66rem] xl:items-start xl:pt-[23.5rem] xl:text-left">
             <MotionEffect
               slide={{ direction: "down" }}
               transition={{ type: "spring", stiffness: 120, damping: 20 }}
@@ -84,10 +162,12 @@ const LpHero = ({ caseStudies }) => {
               zoom
               delay={0.15}
             >
-              <h1 className="mt-[1.5rem] mb-[2.5rem] max-w-[56.8rem] text-[3rem] leading-[3.7rem] font-bold tracking-[-0.03em] text-white md:text-[7rem] md:leading-[8rem]">
-                <span className="block">Tired of a Website That</span>
+              <h1 className="mt-[1.5rem] mb-[2.5rem] max-w-[75rem] text-[3rem] leading-[3.7rem] font-bold tracking-[-0.03em] text-white md:text-[7rem] md:leading-[8rem]">
+                <span className="block">
+                  High-Converting WordPress Websites
+                </span>
                 <span className="bg-gradient-yellow-orange block bg-clip-text text-transparent">
-                  Doesn’t Convert?
+                  Built for Paid Traffic
                 </span>
               </h1>
             </MotionEffect>
@@ -99,9 +179,9 @@ const LpHero = ({ caseStudies }) => {
               zoom
               delay={0.3}
             >
-              <div className="mb-[4.2rem] max-w-[59.4rem]">
+              <div className="mb-[2rem] max-w-[59.4rem] md:mb-[4.2rem]">
                 <SectionDescription
-                  text="Your website is your first impression. We design WordPress sites that look professional, load fast, and turn visitors into customers."
+                  text=" Turn your ad clicks into real leads and customers. We design WordPress websites optimized for conversions, speed, and performance."
                   textColor="#FFFFFF"
                 />
               </div>
@@ -114,13 +194,13 @@ const LpHero = ({ caseStudies }) => {
               delay={0.45}
             >
               <div className="flex flex-col items-center gap-[2.6rem] md:flex-row">
-                <Link
-                  href="/audit"
+                <a
+                  href="#audit"
                   className="gradient-button inline-flex cursor-pointer items-center justify-center"
                 >
                   <div className="text-span">
                     <span className="relative z-[10]">
-                      Get Your Free WordPress Audit
+                      Get Your Free Website Audit
                     </span>
                   </div>
 
@@ -141,7 +221,7 @@ const LpHero = ({ caseStudies }) => {
                   <div className="relative inline-flex size-[4rem] items-center justify-center rounded-full bg-[#FF37B3] md:size-[5rem]">
                     <RightArrowIcon color="#ffffff" width="14" height="14" />
                   </div>
-                </Link>
+                </a>
 
                 <div className="flex flex-col">
                   <div className="flex items-center justify-center gap-[.3rem] md:justify-start">
@@ -195,23 +275,19 @@ const LpHero = ({ caseStudies }) => {
             modules={[Autoplay]}
             className="mySwiper"
           >
-            {caseStudies.map((caseStudy) => (
-              <SwiperSlide key={caseStudy._id} className="!h-auto pb-[8rem]">
+            {projects.map((project, idx) => (
+              <SwiperSlide key={idx} className="!h-auto pb-[8rem]">
                 <Link
                   style={{
                     boxShadow: "7.69px 6.59px 40.64px 0px #0000000F",
                   }}
-                  href={`/case-studies/${caseStudy.slug}`}
+                  href={project.slug}
                   className="flex h-full w-full flex-col gap-[2.7rem] rounded-[3rem] bg-white px-[1.5rem] pt-[1.5rem] pb-[3rem]"
                 >
                   <div className="flex h-[25rem] w-full overflow-hidden rounded-[1.7rem] xl:h-[28.9rem]">
                     <Image
-                      src={urlFor(caseStudy.thumbnailImage)
-                        ?.width(429)
-                        .height(289)
-                        .fit("crop")
-                        .url()}
-                      alt={caseStudy.title || "Case Study Thumbnail Image"}
+                      src={project.thumbnailImage}
+                      alt={project.title || "Case Study Thumbnail Image"}
                       width={429}
                       height={289}
                       className="h-full w-full object-cover object-left"
@@ -222,21 +298,21 @@ const LpHero = ({ caseStudies }) => {
                   <div className="flex items-center justify-between gap-[2rem] px-[1rem]">
                     <div className="flex flex-col items-start text-left">
                       <h4 className="line-clamp-1 text-[2.5rem] leading-[3.4rem] font-bold tracking-[-0.02em] text-[#312749]">
-                        {caseStudy.title}
+                        {project.title}
                       </h4>
 
                       <span className="line-clamp-2 text-[1.4rem] leading-[1.9rem] font-semibold text-[#625C70] xl:text-[1.6rem] xl:leading-[2.6rem]">
-                        {caseStudy.excerpt}
+                        {project.excerpt}
                       </span>
                     </div>
 
                     <i
                       className="inline-flex size-[4.6rem] min-w-[4.6rem] items-center justify-center rounded-full xl:size-[5rem] xl:min-w-[5rem]"
                       style={{
-                        background: caseStudy.iconBg,
+                        background: project.iconBg,
                       }}
                     >
-                      <TiltArrowIcon color={caseStudy.iconColor} />
+                      <TiltArrowIcon color={project.iconColor} />
                     </i>
                   </div>
                 </Link>

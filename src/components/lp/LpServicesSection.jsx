@@ -64,7 +64,7 @@ const LpServicesSection = () => {
             >
               <div className="mt-[.5rem] mb-[1.4rem]">
                 <SectionTitle
-                  text="Our WordPress Web Design Services"
+                  text="WordPress Services Built for Results"
                   textColor="#ffffff"
                 />
               </div>

@@ -70,8 +70,7 @@ export const LP_SERVICES_CARD = [
     iconWidth: 30,
     iconHeight: 30,
     title: "Custom WordPress",
-    description:
-      "Unique sites for your brand – tailored to your goals and audience to make a strong online impact.",
+    description: "Custom WordPress Website Design focused on conversions",
     link: "/services/#design-build",
     linkText: "Explore Service",
     color: "#3078FF",
@@ -82,8 +81,7 @@ export const LP_SERVICES_CARD = [
     iconWidth: 30,
     iconHeight: 30,
     title: "Landing Page Design",
-    description:
-      "Optimized to capture leads – designed to engage visitors and convert them into customers.",
+    description: "High-Converting Landing Pages for PPC campaigns",
     link: "/services/#design-build",
     linkText: "Explore Service",
     color: "#EE7621",
@@ -94,8 +92,7 @@ export const LP_SERVICES_CARD = [
     iconWidth: 30,
     iconHeight: 30,
     title: "WooCommerce Integration",
-    description:
-      "Full-featured online stores – seamless shopping experience with payments and product management.",
+    description: "WooCommerce Development for scalable sales",
     link: "/services/#growth-2",
     linkText: "Explore Service",
     color: "#FF37B3",
@@ -106,8 +103,7 @@ export const LP_SERVICES_CARD = [
     iconWidth: 30,
     iconHeight: 30,
     title: "Speed & Security",
-    description:
-      "Fast loading, secure browsing – ensuring smooth performance and protecting your website data.",
+    description: "Speed Optimization to reduce bounce and improve performance",
     link: "/services/#growth-2",
     linkText: "Explore Service",
     color: "#44B276",
@@ -118,8 +114,7 @@ export const LP_SERVICES_CARD = [
     iconWidth: 30,
     iconHeight: 30,
     title: "Maintenance & Support",
-    description:
-      "Keep your site running smoothly – updates, backups, and ongoing assistance for hassle-free management.",
+    description: "SEO Setup to support long-term growth",
     link: "/services/#growth-2",
     linkText: "Explore Service",
     color: "#BF00B4",

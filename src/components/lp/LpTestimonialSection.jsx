@@ -20,29 +20,19 @@ const testimonials = [
   {
     name: "James Wilson",
     role: "CEO, TechFlow",
-    text: `The team at Creative Pixels made our WordPress site faster, more
-    secure, and conversion-ready. They guided us through the entire
-    process, from audit to launch, making it easy to understand
-    every step. Thanks to their expertise...`,
+    text: `“CreativePixels helped us turn our website into a consistent lead generator. The difference was immediate.”`,
     avatar: TestimonialAvatar2,
   },
   {
     name: "Emma K.",
     role: "Business Owner",
-    text: `"Creative Pixels completely redesigned our WordPress
-    website, and the results were amazing. Our leads doubled within
-    just a few months! The team understood our brand, implemented a
-    sleek, modern design, and optimized the site for mobile and
-    speed....`,
+    text: `“Our conversions improved significantly after launch. Our ad spend finally feels worth it.”`,
     avatar: TestimonialAvatar2,
   },
   {
     name: "Simon Hobbs",
     role: "Owner, Precise Print",
-    text: `Working with Creative Pixels was a game-changer. They
-    transformed our outdated WordPress site into a modern,
-    user-friendly, and SEO-optimized platform. The process was
-    seamless, and the results speak for themselves...`,
+    text: `“Professional, fast, and focused on results. Exactly what we needed.”`,
     avatar: TestimonialAvatar2,
   },
 ];
@@ -72,7 +62,7 @@ const LpTestimonialSection = () => {
             transition={{ type: "tween", duration: 0.8, ease: "easeOut" }}
           >
             <div className="mt-[10px] mb-[18px] md:mt-[5px] md:mb-[14px]">
-              <SectionTitle text="Built with Pixels. Backed by people." />
+              <SectionTitle text=" Trusted by Businesses That Want Results" />
             </div>
           </MotionEffect>
 

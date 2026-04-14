@@ -123,6 +123,7 @@ const LpWhySection = () => {
                 text="Start Your WordPress Project"
                 bGcolor="#312749"
                 textColor="#ffffff"
+                href="#audit"
               />
             </div>
           </MotionEffect>

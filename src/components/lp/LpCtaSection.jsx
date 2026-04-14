@@ -26,10 +26,10 @@ const LpCtaSection = () => {
 
           <div className="relative z-[10] flex flex-col justify-between gap-[4rem] lg:flex-row">
             <div className="w-full lg:w-[52rem]">
-              <h2 className="mb-[3.8rem] text-[3rem] leading-[3.7rem] font-bold tracking-[-0.02em] text-[#312749] md:text-[4.8rem] md:leading-[5.2rem]">
-                No Risk. No Obligation.{" "}
-                <span className="bg-gradient-pink-orange bg-clip-text text-transparent">
-                  Just Results.
+              <h2 className="mb-[3.8rem] text-[3rem] leading-[3.7rem] font-bold tracking-[-0.02em] text-[#312749] md:text-[4.8rem] md:leading-[6rem]">
+                No Risk.
+                <span className="bg-gradient-pink-orange block bg-clip-text text-transparent">
+                  No Obligation.
                 </span>
               </h2>
 
@@ -38,16 +38,16 @@ const LpCtaSection = () => {
                   text="Start Your Risk-Free Audit"
                   textColor="#FFFFFF"
                   bGcolor="#312749"
-                  href=""
+                  href="#audit"
                 />
               </div>
             </div>
 
             <div className="flex w-full flex-col gap-[1.6rem] lg:w-[45rem]">
               {[
-                "No upfront payments required",
-                "Full transparency throughout the project",
-                "You only pay when satisfied with your new WordPress website",
+                "Free consultation",
+                "No pressure to commit",
+                "Clear next steps tailored to your business",
               ].map((item, idx) => (
                 <div
                   key={idx}

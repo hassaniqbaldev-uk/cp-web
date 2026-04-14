@@ -36,7 +36,7 @@ const LpProblemSection = () => {
           transition={{ type: "tween", duration: 0.8, ease: "easeOut" }}
         >
           <div>
-            <SectionTitle text="Is Your WordPress Website Underperforming?" />
+            <SectionTitle text=" You’re Paying for Traffic — But Your Website Isn’t Converting" />
           </div>
         </MotionEffect>
       </div>
@@ -62,16 +62,16 @@ const LpProblemSection = () => {
 
           <div className="w-full lg:w-[53rem]">
             <h4 className="text-[2.2rem] leading-[2.6rem] font-semibold tracking-[-0.02em] text-[#312749] md:text-[2.6rem] md:leading-[2.8rem]">
-              Many businesses struggle with WordPress websites that don&apos;t
-              deliver results. Common issues include:
+              Every click costs you money. But if your website isn’t built to
+              convert, you’re losing potential customers every day.
             </h4>
 
             <ul className="my-[2.5rem] flex flex-col gap-[.8rem]">
               {[
-                "Slow loading speeds that turn visitors away",
-                "Outdated or cluttered themes that harm your brand image",
-                "No clear lead generation paths",
-                "Poor mobile experience causing lost opportunities",
+                "Don’t guide users to take action",
+                "Load too slowly and increase drop-offs",
+                "Fail on mobile devices",
+                "Lack clear messaging and structure",
               ].map((item, idx) => (
                 <li key={idx} className="flex items-center gap-[1.2rem]">
                   <i className="min-w-max">
@@ -86,14 +86,14 @@ const LpProblemSection = () => {
             </ul>
 
             <p className="mb-[4.5rem] text-[1.6rem] leading-[2.5rem] font-medium tracking-normal text-[#312749]">
-              If your website has any of these issues, it&apos;s time for a
-              professional redesign that focuses on performance and results.
+              This isn’t a traffic issue — it’s a conversion issue
             </p>
 
             <PrimaryButton
-              text="See How We Can Help"
+              text="Request Your Free Audit"
               bGcolor="#FF37B3"
               textColor="#ffffff"
+              href="#audit"
             />
           </div>
         </div>

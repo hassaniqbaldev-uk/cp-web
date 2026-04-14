@@ -22,9 +22,9 @@ const LpProcessSection = () => {
           >
             <h2 className="text-[3rem] leading-[3.7rem] font-bold tracking-[-0.02em] text-[#312749] md:text-[7rem] md:leading-[7.5rem]">
               <span className="bg-gradient-pink-orange bg-clip-text text-transparent">
-                How We Work
+                A Simple,
               </span>{" "}
-              <span className="block">From Audit to Launch</span>
+              <span className="block"> Proven Process</span>
             </h2>
           </MotionEffect>
 
@@ -180,7 +180,7 @@ const LpProcessSection = () => {
         >
           <div className="mt-[6rem] flex justify-center">
             <PrimaryButton
-              href=""
+              href="#audit"
               text="Schedule Your Free Audit"
               bGcolor="#FF37B3"
               textColor="#FFFFFF"
