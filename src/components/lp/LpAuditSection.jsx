@@ -50,7 +50,7 @@ const LpAuditSection = () => {
             >
               <div className="max-w-[58.5rem]">
                 <SectionDescription
-                  text="We’ll show you exactly what’s stopping your website from converting — and how to fix it."
+                  text="We’ll show you exactly what’s stopping your website from converting  and how to fix it."
                   textColor="#625C70"
                 />
               </div>

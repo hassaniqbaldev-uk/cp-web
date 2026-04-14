@@ -162,7 +162,7 @@ const LpHero = () => {
               zoom
               delay={0.15}
             >
-              <h1 className="mt-[1.5rem] mb-[2.5rem] max-w-[75rem] text-[3rem] leading-[3.7rem] font-bold tracking-[-0.03em] text-white md:text-[7rem] md:leading-[8rem]">
+              <h1 className="mt-[1.5rem] mb-[2.5rem] max-w-[75rem] text-[3rem] leading-[3.7rem] font-bold tracking-[-0.03em] text-white md:text-[6.5rem] md:leading-[8rem]">
                 <span className="block">
                   High-Converting WordPress Websites
                 </span>

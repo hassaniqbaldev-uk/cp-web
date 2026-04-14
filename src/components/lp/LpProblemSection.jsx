@@ -35,8 +35,8 @@ const LpProblemSection = () => {
           delay={0.25}
           transition={{ type: "tween", duration: 0.8, ease: "easeOut" }}
         >
-          <div>
-            <SectionTitle text=" You’re Paying for Traffic — But Your Website Isn’t Converting" />
+          <div className="max-w-[90rem]">
+            <SectionTitle text=" You’re Paying for Traffic But Your Website Isn’t Converting" />
           </div>
         </MotionEffect>
       </div>
@@ -86,7 +86,7 @@ const LpProblemSection = () => {
             </ul>
 
             <p className="mb-[4.5rem] text-[1.6rem] leading-[2.5rem] font-medium tracking-normal text-[#312749]">
-              This isn’t a traffic issue — it’s a conversion issue
+              This isn’t a traffic issue it’s a conversion issue
             </p>
 
             <PrimaryButton

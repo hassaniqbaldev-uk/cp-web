@@ -25,7 +25,7 @@ const LpResultSection = () => {
             </h2>
 
             <p className="text-[2rem] leading-[2.5rem] font-normal tracking-normal text-[#312749]">
-              Our focus is simple — improve how your website performs:
+              Our focus is simple improve how your website performs:
             </p>
           </div>
 
