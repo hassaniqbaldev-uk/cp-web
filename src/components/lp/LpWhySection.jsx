@@ -31,20 +31,44 @@ const LpWhySection = () => {
 
       <div className="relative z-[10] container flex flex-col items-center justify-between gap-[5rem] xl:flex-row">
         <div className="flex flex-col md:w-[63rem]">
-          <div>
-            <SectionLabel text="Why choose us" textColor="#3078FF" />
-          </div>
+          <MotionEffect
+            slide={{ direction: "down" }}
+            fade
+            inView
+            delay={0.1}
+            transition={{ type: "tween", duration: 0.8, ease: "easeOut" }}
+          >
+            <div>
+              <SectionLabel text="Why choose us" textColor="#3078FF" />
+            </div>
+          </MotionEffect>
 
-          <h2 className="mt-[1.5rem] mb-[2.5rem] max-w-[50rem] text-[3rem] leading-[3.7rem] font-bold tracking-[-0.02em] text-[#312749] md:text-[4.8rem] md:leading-[6rem]">
-            <span>Why Choose Creative Pixels for</span>{" "}
-            <span className="bg-gradient-pink-orange bg-clip-text text-transparent">
-              WordPress?
-            </span>
-          </h2>
+          <MotionEffect
+            slide={{ direction: "down" }}
+            fade
+            inView
+            delay={0.25}
+            transition={{ type: "tween", duration: 0.8, ease: "easeOut" }}
+          >
+            <h2 className="mt-[1.5rem] mb-[2.5rem] max-w-[50rem] text-[3rem] leading-[3.7rem] font-bold tracking-[-0.02em] text-[#312749] md:text-[4.8rem] md:leading-[6rem]">
+              <span>Why Choose Creative Pixels for</span>{" "}
+              <span className="bg-gradient-pink-orange bg-clip-text text-transparent">
+                WordPress?
+              </span>
+            </h2>
+          </MotionEffect>
 
-          <h4 className="text-[2.2rem] leading-[3rem] font-semibold tracking-[-0.02em] text-[#312749] md:text-[2.6rem] md:leading-[3.4rem]">
-            We specialize in WordPress web design that is:
-          </h4>
+          <MotionEffect
+            slide={{ direction: "down" }}
+            fade
+            inView
+            delay={0.4}
+            transition={{ type: "tween", duration: 0.8, ease: "easeOut" }}
+          >
+            <h4 className="text-[2.2rem] leading-[3rem] font-semibold tracking-[-0.02em] text-[#312749] md:text-[2.6rem] md:leading-[3.4rem]">
+              We specialize in WordPress web design that is:
+            </h4>
+          </MotionEffect>
 
           <ul className="my-[3rem] flex flex-col gap-[.8rem]">
             {[
@@ -53,41 +77,74 @@ const LpWhySection = () => {
               "SEO-Friendly: Optimized to rank higher on search engines",
               "Customizable & Scalable: Easy to manage & grow with your business",
             ].map((item, idx) => (
-              <li key={idx} className="flex items-center gap-[1.2rem]">
-                <i className="min-w-max">
-                  <CheckMarkIcon color="#EE7621" height="15" width="15" />
-                </i>
+              <MotionEffect
+                key={idx}
+                slide={{ direction: "down" }}
+                fade
+                inView
+                delay={0.45 + idx * 0.15}
+                transition={{ type: "tween", duration: 0.6, ease: "easeOut" }}
+              >
+                <li className="flex items-center gap-[1.2rem]">
+                  <i className="min-w-max">
+                    <CheckMarkIcon color="#EE7621" height="15" width="15" />
+                  </i>
 
-                <span className="text-[1.8rem] font-medium tracking-[2rem] tracking-normal text-[#312749]">
-                  {item}
-                </span>
-              </li>
+                  <span className="text-[1.8rem] font-medium tracking-[2rem] tracking-normal text-[#312749]">
+                    {item}
+                  </span>
+                </li>
+              </MotionEffect>
             ))}
           </ul>
 
-          <h4 className="mb-[5rem] max-w-[63rem] text-[2.2rem] leading-[3rem] font-semibold tracking-[-0.02em] text-[#312749] md:text-[2.6rem] md:leading-[3.4rem]">
-            With years of experience and hundreds of successful projects, we
-            know how to deliver websites that actually perform.
-          </h4>
+          <MotionEffect
+            slide={{ direction: "down" }}
+            fade
+            inView
+            delay={0.5}
+            transition={{ type: "tween", duration: 0.8, ease: "easeOut" }}
+          >
+            <h4 className="mb-[5rem] max-w-[63rem] text-[2.2rem] leading-[3rem] font-semibold tracking-[-0.02em] text-[#312749] md:text-[2.6rem] md:leading-[3.4rem]">
+              With years of experience and hundreds of successful projects, we
+              know how to deliver websites that actually perform.
+            </h4>
+          </MotionEffect>
 
-          <div>
-            <PrimaryButton
-              text="Start Your WordPress Project"
-              bGcolor="#312749"
-              textColor="#ffffff"
+          <MotionEffect
+            slide={{ direction: "down" }}
+            fade
+            inView
+            delay={0.55}
+            transition={{ type: "tween", duration: 0.8, ease: "easeOut" }}
+          >
+            <div>
+              <PrimaryButton
+                text="Start Your WordPress Project"
+                bGcolor="#312749"
+                textColor="#ffffff"
+              />
+            </div>
+          </MotionEffect>
+        </div>
+
+        <MotionEffect
+          slide={{ direction: "down" }}
+          fade
+          inView
+          delay={0.6}
+          transition={{ type: "tween", duration: 0.8, ease: "easeOut" }}
+        >
+          <div className="w-[25rem] md:w-[35rem] xl:h-[53rem] xl:w-[49rem]">
+            <Image
+              src={CpLogo}
+              width={490}
+              height={530}
+              alt="Card Image"
+              className="h-full w-full"
             />
           </div>
-        </div>
-
-        <div className="w-[25rem] md:w-[35rem] xl:h-[53rem] xl:w-[49rem]">
-          <Image
-            src={CpLogo}
-            width={490}
-            height={530}
-            alt="Card Image"
-            className="h-full w-full"
-          />
-        </div>
+        </MotionEffect>
       </div>
     </section>
   );

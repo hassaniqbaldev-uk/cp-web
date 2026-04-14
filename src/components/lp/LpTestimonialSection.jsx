@@ -16,357 +16,347 @@ import "swiper/css";
 import "swiper/css/pagination";
 import { MotionEffect } from "@/components/effects/motion-effect";
 
+const testimonials = [
+  {
+    name: "James Wilson",
+    role: "CEO, TechFlow",
+    text: `The team at Creative Pixels made our WordPress site faster, more
+    secure, and conversion-ready. They guided us through the entire
+    process, from audit to launch, making it easy to understand
+    every step. Thanks to their expertise...`,
+    avatar: TestimonialAvatar2,
+  },
+  {
+    name: "Emma K.",
+    role: "Business Owner",
+    text: `"Creative Pixels completely redesigned our WordPress
+    website, and the results were amazing. Our leads doubled within
+    just a few months! The team understood our brand, implemented a
+    sleek, modern design, and optimized the site for mobile and
+    speed....`,
+    avatar: TestimonialAvatar2,
+  },
+  {
+    name: "Simon Hobbs",
+    role: "Owner, Precise Print",
+    text: `Working with Creative Pixels was a game-changer. They
+    transformed our outdated WordPress site into a modern,
+    user-friendly, and SEO-optimized platform. The process was
+    seamless, and the results speak for themselves...`,
+    avatar: TestimonialAvatar2,
+  },
+];
+
 const LpTestimonialSection = () => {
   return (
     <section className="bg-[#ED910C1A] px-[2rem] py-[5rem] xl:px-[0rem] xl:py-[10rem]">
       <div className="container">
         <div className="flex flex-col items-center text-center">
-          <div>
-            <SectionLabel text="Testimonials" textColor="#3078FF" />
-          </div>
+          <MotionEffect
+            slide={{ direction: "down" }}
+            fade
+            inView
+            delay={0.1}
+            transition={{ type: "tween", duration: 0.8, ease: "easeOut" }}
+          >
+            <div>
+              <SectionLabel text="Testimonials" textColor="#3078FF" />
+            </div>
+          </MotionEffect>
 
-          <div className="mt-[10px] mb-[18px] md:mt-[5px] md:mb-[14px]">
-            <SectionTitle text="Built with Pixels. Backed by people." />
-          </div>
+          <MotionEffect
+            slide={{ direction: "down" }}
+            fade
+            inView
+            delay={0.25}
+            transition={{ type: "tween", duration: 0.8, ease: "easeOut" }}
+          >
+            <div className="mt-[10px] mb-[18px] md:mt-[5px] md:mb-[14px]">
+              <SectionTitle text="Built with Pixels. Backed by people." />
+            </div>
+          </MotionEffect>
 
-          <div className="flex items-center justify-center gap-[1.2rem]">
-            <ul className="flex items-center gap-[3px]">
-              {Array.from({ length: 5 }).map((_, index) => (
-                <li key={index}>
-                  <StarIcon color="#FF37B3" className="size-[1.5rem]" />
-                </li>
-              ))}
-            </ul>
+          <MotionEffect
+            slide={{ direction: "down" }}
+            fade
+            inView
+            delay={0.4}
+            transition={{ type: "tween", duration: 0.8, ease: "easeOut" }}
+          >
+            <div className="flex items-center justify-center gap-[1.2rem]">
+              <ul className="flex items-center gap-[3px]">
+                {Array.from({ length: 5 }).map((_, index) => (
+                  <li key={index}>
+                    <StarIcon color="#FF37B3" className="size-[1.5rem]" />
+                  </li>
+                ))}
+              </ul>
 
-            <span className="text-[1.4rem] leading-[3.2rem] font-bold text-[#625C70] md:text-[2rem]">
-              4.9/5 from 47+ Clients
-            </span>
-          </div>
+              <span className="text-[1.4rem] leading-[3.2rem] font-bold text-[#625C70] md:text-[2rem]">
+                4.9/5 from 47+ Clients
+              </span>
+            </div>
+          </MotionEffect>
         </div>
 
         <div className="my-[5rem] hidden grid-cols-3 gap-[1.3rem] xl:grid">
-          <div className="flex w-full flex-col justify-between gap-[3rem] rounded-[2rem] border border-[#E4E3E8] bg-white px-[3rem] py-[4rem] backdrop-blur-[10px]">
-            <div className="flex flex-col items-start gap-[2rem] text-left">
-              <ul className="flex items-center gap-[2px]">
-                {Array.from({ length: 5 }).map((_, index) => (
-                  <li key={index}>
-                    <StarIcon color="#FFBF00" height="20" width="20" />
-                  </li>
-                ))}
-              </ul>
+          {testimonials.map((item, idx) => (
+            <MotionEffect
+              key={idx}
+              slide={{ direction: "down" }}
+              fade
+              inView
+              delay={0.45 + idx * 0.15}
+              transition={{ type: "tween", duration: 0.6, ease: "easeOut" }}
+            >
+              <div className="flex h-full w-full flex-col justify-between gap-[3rem] rounded-[2rem] border border-[#E4E3E8] bg-white px-[3rem] py-[4rem] backdrop-blur-[10px]">
+                <div className="flex flex-col items-start gap-[2rem] text-left">
+                  <ul className="flex items-center gap-[2px]">
+                    {Array.from({ length: 5 }).map((_, index) => (
+                      <li key={index}>
+                        <StarIcon color="#FFBF00" height="20" width="20" />
+                      </li>
+                    ))}
+                  </ul>
 
-              <p className="text-[1.6rem] leading-[2.4rem] font-medium tracking-normal text-[#625C70]">
-                The team at Creative Pixels made our WordPress site faster, more
-                secure, and conversion-ready. They guided us through the entire
-                process, from audit to launch, making it easy to understand
-                every step. Thanks to their expertise...
-              </p>
-            </div>
+                  <p className="text-[1.6rem] leading-[2.4rem] font-medium text-[#625C70]">
+                    {item.text}
+                  </p>
+                </div>
 
-            <div className="flex items-center gap-[1rem]">
-              <div className="flex overflow-hidden rounded-full">
-                <Image
-                  src={TestimonialAvatar2}
-                  alt="Avatar Image"
-                  width={56}
-                  height={56}
-                  unoptimized
-                />
+                <div className="flex items-center gap-[1rem]">
+                  <div className="flex overflow-hidden rounded-full">
+                    <Image
+                      src={item.avatar}
+                      alt="Avatar Image"
+                      width={56}
+                      height={56}
+                      unoptimized
+                    />
+                  </div>
+
+                  <div className="flex flex-col items-start text-left">
+                    <h6 className="text-[1.8rem] font-semibold text-[#312749]">
+                      {item.name}
+                    </h6>
+
+                    <span className="text-[1.6rem] font-medium text-[#625C70]">
+                      {item.role}
+                    </span>
+                  </div>
+                </div>
               </div>
-
-              <div className="flex flex-col items-start text-left">
-                <h6 className="text-[1.8rem] leading-[2.4rem] font-semibold tracking-normal text-[#312749]">
-                  James Wilson
-                </h6>
-
-                <span className="text-[1.6rem] leading-[2.4rem] font-medium tracking-normal text-[#625C70]">
-                  CEO, TechFlow
-                </span>
-              </div>
-            </div>
-          </div>
-
-          <div className="flex w-full flex-col justify-between gap-[3rem] rounded-[2rem] border border-[#E4E3E8] bg-white px-[3rem] py-[4rem] backdrop-blur-[10px]">
-            <div className="flex flex-col items-start gap-[2rem] text-left">
-              <ul className="flex items-center gap-[2px]">
-                {Array.from({ length: 5 }).map((_, index) => (
-                  <li key={index}>
-                    <StarIcon color="#FFBF00" height="20" width="20" />
-                  </li>
-                ))}
-              </ul>
-
-              <p className="text-[1.6rem] leading-[2.4rem] font-medium tracking-normal text-[#625C70]">
-                &quot;Creative Pixels completely redesigned our WordPress
-                website, and the results were amazing. Our leads doubled within
-                just a few months! The team understood our brand, implemented a
-                sleek, modern design, and optimized the site for mobile and
-                speed....
-              </p>
-            </div>
-
-            <div className="flex items-center gap-[1rem]">
-              <div className="flex overflow-hidden rounded-full">
-                <Image
-                  src={TestimonialAvatar2}
-                  alt="Avatar Image"
-                  width={56}
-                  height={56}
-                  unoptimized
-                />
-              </div>
-
-              <div className="flex flex-col items-start text-left">
-                <h6 className="text-[1.8rem] leading-[2.4rem] font-semibold tracking-normal text-[#312749]">
-                  Emma K.
-                </h6>
-
-                <span className="text-[1.6rem] leading-[2.4rem] font-medium tracking-normal text-[#625C70]">
-                  Business Owner
-                </span>
-              </div>
-            </div>
-          </div>
-
-          <div className="flex w-full flex-col justify-between gap-[3rem] rounded-[2rem] border border-[#E4E3E8] bg-white px-[3rem] py-[4rem] backdrop-blur-[10px]">
-            <div className="flex flex-col items-start gap-[2rem] text-left">
-              <ul className="flex items-center gap-[2px]">
-                {Array.from({ length: 5 }).map((_, index) => (
-                  <li key={index}>
-                    <StarIcon color="#FFBF00" height="20" width="20" />
-                  </li>
-                ))}
-              </ul>
-
-              <p className="text-[1.6rem] leading-[2.4rem] font-medium tracking-normal text-[#625C70]">
-                Working with Creative Pixels was a game-changer. They
-                transformed our outdated WordPress site into a modern,
-                user-friendly, and SEO-optimized platform. The process was
-                seamless, and the results speak for themselves...
-              </p>
-            </div>
-
-            <div className="flex items-center gap-[1rem]">
-              <div className="flex overflow-hidden rounded-full">
-                <Image
-                  src={TestimonialAvatar2}
-                  alt="Avatar Image"
-                  width={56}
-                  height={56}
-                  unoptimized
-                />
-              </div>
-
-              <div className="flex flex-col items-start text-left">
-                <h6 className="text-[1.8rem] leading-[2.4rem] font-semibold tracking-normal text-[#312749]">
-                  Simon Hobbs
-                </h6>
-
-                <span className="text-[1.6rem] leading-[2.4rem] font-medium tracking-normal text-[#625C70]">
-                  Owner, Precise Print
-                </span>
-              </div>
-            </div>
-          </div>
+            </MotionEffect>
+          ))}
         </div>
 
         {/* Responsive */}
-        <div className="my-[3rem] block w-full xl:hidden">
-          <Swiper
-            pagination={{ clickable: true }}
-            modules={[Pagination, Autoplay]}
-            loop={true}
-            autoplay={{
-              delay: 2500,
-              disableOnInteraction: false,
-            }}
-            slidesPerView={1}
-            spaceBetween={0}
-            breakpoints={{
-              767: {
-                slidesPerView: 2,
-                spaceBetween: 0,
-              },
-              1024: {
-                slidesPerView: 3,
-                spaceBetween: 0,
-              },
-            }}
-            className="mySwiper"
-          >
-            <SwiperSlide className="!flex !h-auto !justify-center px-[1rem] pb-[5rem]">
-              <div className="flex w-full flex-col justify-between gap-[1.5rem] rounded-[2rem] border border-[#E4E3E8] bg-white px-[1.5rem] py-[2.3rem] backdrop-blur-[10px]">
-                <div className="flex flex-col items-start gap-[1.5rem] text-left">
-                  <ul className="flex items-center gap-[2px]">
-                    {Array.from({ length: 5 }).map((_, index) => (
-                      <li key={index}>
-                        <StarIcon color="#FFBF00" height="14" width="14" />
-                      </li>
-                    ))}
-                  </ul>
+        <MotionEffect
+          slide={{ direction: "down" }}
+          fade
+          inView
+          delay={0.5}
+          transition={{ type: "tween", duration: 0.6, ease: "easeOut" }}
+        >
+          <div className="my-[3rem] block w-full xl:hidden">
+            <Swiper
+              pagination={{ clickable: true }}
+              modules={[Pagination, Autoplay]}
+              loop={true}
+              autoplay={{
+                delay: 2500,
+                disableOnInteraction: false,
+              }}
+              slidesPerView={1}
+              spaceBetween={0}
+              breakpoints={{
+                767: {
+                  slidesPerView: 2,
+                  spaceBetween: 0,
+                },
+                1024: {
+                  slidesPerView: 3,
+                  spaceBetween: 0,
+                },
+              }}
+              className="mySwiper"
+            >
+              <SwiperSlide className="!flex !h-auto !justify-center px-[1rem] pb-[5rem]">
+                <div className="flex w-full flex-col justify-between gap-[1.5rem] rounded-[2rem] border border-[#E4E3E8] bg-white px-[1.5rem] py-[2.3rem] backdrop-blur-[10px]">
+                  <div className="flex flex-col items-start gap-[1.5rem] text-left">
+                    <ul className="flex items-center gap-[2px]">
+                      {Array.from({ length: 5 }).map((_, index) => (
+                        <li key={index}>
+                          <StarIcon color="#FFBF00" height="14" width="14" />
+                        </li>
+                      ))}
+                    </ul>
 
-                  <p className="text-[1.4rem] leading-[2.1rem] font-medium tracking-normal text-[#625C70]">
-                    I would highly recommend Hassan, he was excellent throughout
-                    the process of designing and developing our new website.
-                  </p>
-                </div>
-
-                <div className="flex items-center gap-[1rem]">
-                  <div className="flex overflow-hidden rounded-full">
-                    <Image
-                      src={TestimonialAvatar2}
-                      alt="Avatar Image"
-                      width={40}
-                      height={40}
-                      unoptimized
-                    />
+                    <p className="text-[1.4rem] leading-[2.1rem] font-medium tracking-normal text-[#625C70]">
+                      I would highly recommend Hassan, he was excellent
+                      throughout the process of designing and developing our new
+                      website.
+                    </p>
                   </div>
 
-                  <div className="flex flex-col items-start text-left">
-                    <h6 className="text-[1.2rem] leading-[1.8rem] font-semibold tracking-normal text-[#312749]">
-                      James Brien
-                    </h6>
+                  <div className="flex items-center gap-[1rem]">
+                    <div className="flex overflow-hidden rounded-full">
+                      <Image
+                        src={TestimonialAvatar2}
+                        alt="Avatar Image"
+                        width={40}
+                        height={40}
+                        unoptimized
+                      />
+                    </div>
 
-                    <span className="text-[1.1rem] leading-[1.7rem] font-medium tracking-normal text-[#625C70]">
-                      Ayoa
-                    </span>
+                    <div className="flex flex-col items-start text-left">
+                      <h6 className="text-[1.2rem] leading-[1.8rem] font-semibold tracking-normal text-[#312749]">
+                        James Brien
+                      </h6>
+
+                      <span className="text-[1.1rem] leading-[1.7rem] font-medium tracking-normal text-[#625C70]">
+                        Ayoa
+                      </span>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </SwiperSlide>
+              </SwiperSlide>
 
-            <SwiperSlide className="!flex !h-auto !justify-center px-[1rem] pb-[5rem]">
-              <div className="flex w-full flex-col justify-between gap-[1.5rem] rounded-[2rem] border border-[#E4E3E8] bg-white px-[1.5rem] py-[2.3rem] backdrop-blur-[10px]">
-                <div className="flex flex-col items-start gap-[1.5rem] text-left">
-                  <ul className="flex items-center gap-[2px]">
-                    {Array.from({ length: 5 }).map((_, index) => (
-                      <li key={index}>
-                        <StarIcon color="#FFBF00" height="14" width="14" />
-                      </li>
-                    ))}
-                  </ul>
+              <SwiperSlide className="!flex !h-auto !justify-center px-[1rem] pb-[5rem]">
+                <div className="flex w-full flex-col justify-between gap-[1.5rem] rounded-[2rem] border border-[#E4E3E8] bg-white px-[1.5rem] py-[2.3rem] backdrop-blur-[10px]">
+                  <div className="flex flex-col items-start gap-[1.5rem] text-left">
+                    <ul className="flex items-center gap-[2px]">
+                      {Array.from({ length: 5 }).map((_, index) => (
+                        <li key={index}>
+                          <StarIcon color="#FFBF00" height="14" width="14" />
+                        </li>
+                      ))}
+                    </ul>
 
-                  <p className="text-[1.4rem] leading-[2.1rem] font-medium tracking-normal text-[#625C70]">
-                    The new webpage Hassan created for Game Art Brain is a
-                    game-changer for our brand. He developed a signature style
-                    that is both unique and perfectly aligned with our identity,
-                    completely revitalizing our online presence. His work is
-                    meticulous, handling a huge number of images and complex
-                    layouts with an artist&apos;s touch.
-                  </p>
-                </div>
-
-                <div className="flex items-center gap-[1rem]">
-                  <div className="flex overflow-hidden rounded-full">
-                    <Image
-                      src={TestimonialAvatar4}
-                      alt="Avatar Image"
-                      width={40}
-                      height={40}
-                      unoptimized
-                    />
+                    <p className="text-[1.4rem] leading-[2.1rem] font-medium tracking-normal text-[#625C70]">
+                      The new webpage Hassan created for Game Art Brain is a
+                      game-changer for our brand. He developed a signature style
+                      that is both unique and perfectly aligned with our
+                      identity, completely revitalizing our online presence. His
+                      work is meticulous, handling a huge number of images and
+                      complex layouts with an artist&apos;s touch.
+                    </p>
                   </div>
 
-                  <div className="flex flex-col items-start text-left">
-                    <h6 className="text-[1.2rem] leading-[1.8rem] font-semibold tracking-normal text-[#312749]">
-                      Ahmed Omar
-                    </h6>
+                  <div className="flex items-center gap-[1rem]">
+                    <div className="flex overflow-hidden rounded-full">
+                      <Image
+                        src={TestimonialAvatar4}
+                        alt="Avatar Image"
+                        width={40}
+                        height={40}
+                        unoptimized
+                      />
+                    </div>
 
-                    <span className="text-[1.1rem] leading-[1.7rem] font-medium tracking-normal text-[#625C70]">
-                      GameArtBrain
-                    </span>
+                    <div className="flex flex-col items-start text-left">
+                      <h6 className="text-[1.2rem] leading-[1.8rem] font-semibold tracking-normal text-[#312749]">
+                        Ahmed Omar
+                      </h6>
+
+                      <span className="text-[1.1rem] leading-[1.7rem] font-medium tracking-normal text-[#625C70]">
+                        GameArtBrain
+                      </span>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </SwiperSlide>
+              </SwiperSlide>
 
-            <SwiperSlide className="!flex !h-auto !justify-center px-[1rem] pb-[5rem]">
-              <div className="flex w-full flex-col justify-between gap-[1.5rem] rounded-[2rem] border border-[#E4E3E8] bg-white px-[1.5rem] py-[2.3rem] backdrop-blur-[10px]">
-                <div className="flex flex-col items-start gap-[1.5rem] text-left">
-                  <ul className="flex items-center gap-[2px]">
-                    {Array.from({ length: 5 }).map((_, index) => (
-                      <li key={index}>
-                        <StarIcon color="#FFBF00" height="14" width="14" />
-                      </li>
-                    ))}
-                  </ul>
+              <SwiperSlide className="!flex !h-auto !justify-center px-[1rem] pb-[5rem]">
+                <div className="flex w-full flex-col justify-between gap-[1.5rem] rounded-[2rem] border border-[#E4E3E8] bg-white px-[1.5rem] py-[2.3rem] backdrop-blur-[10px]">
+                  <div className="flex flex-col items-start gap-[1.5rem] text-left">
+                    <ul className="flex items-center gap-[2px]">
+                      {Array.from({ length: 5 }).map((_, index) => (
+                        <li key={index}>
+                          <StarIcon color="#FFBF00" height="14" width="14" />
+                        </li>
+                      ))}
+                    </ul>
 
-                  <p className="text-[1.4rem] leading-[2.1rem] font-medium tracking-normal text-[#625C70]">
-                    I would highly recommend Hassan, he was excellent throughout
-                    the process of designing and developing our new website.
-                  </p>
-                </div>
-
-                <div className="flex items-center gap-[1rem]">
-                  <div className="flex overflow-hidden rounded-full">
-                    <Image
-                      src={TestimonialAvatar2}
-                      alt="Avatar Image"
-                      width={40}
-                      height={40}
-                      unoptimized
-                    />
+                    <p className="text-[1.4rem] leading-[2.1rem] font-medium tracking-normal text-[#625C70]">
+                      I would highly recommend Hassan, he was excellent
+                      throughout the process of designing and developing our new
+                      website.
+                    </p>
                   </div>
 
-                  <div className="flex flex-col items-start text-left">
-                    <h6 className="text-[1.2rem] leading-[1.8rem] font-semibold tracking-normal text-[#312749]">
-                      James Brien
-                    </h6>
+                  <div className="flex items-center gap-[1rem]">
+                    <div className="flex overflow-hidden rounded-full">
+                      <Image
+                        src={TestimonialAvatar2}
+                        alt="Avatar Image"
+                        width={40}
+                        height={40}
+                        unoptimized
+                      />
+                    </div>
 
-                    <span className="text-[1.1rem] leading-[1.7rem] font-medium tracking-normal text-[#625C70]">
-                      Ayoa
-                    </span>
+                    <div className="flex flex-col items-start text-left">
+                      <h6 className="text-[1.2rem] leading-[1.8rem] font-semibold tracking-normal text-[#312749]">
+                        James Brien
+                      </h6>
+
+                      <span className="text-[1.1rem] leading-[1.7rem] font-medium tracking-normal text-[#625C70]">
+                        Ayoa
+                      </span>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </SwiperSlide>
+              </SwiperSlide>
 
-            <SwiperSlide className="!flex !h-auto !justify-center px-[1rem] pb-[5rem]">
-              <div className="flex w-full flex-col justify-between gap-[1.5rem] rounded-[2rem] border border-[#E4E3E8] bg-white px-[1.5rem] py-[2.3rem] backdrop-blur-[10px]">
-                <div className="flex flex-col items-start gap-[1.5rem] text-left">
-                  <ul className="flex items-center gap-[2px]">
-                    {Array.from({ length: 5 }).map((_, index) => (
-                      <li key={index}>
-                        <StarIcon color="#FFBF00" height="14" width="14" />
-                      </li>
-                    ))}
-                  </ul>
+              <SwiperSlide className="!flex !h-auto !justify-center px-[1rem] pb-[5rem]">
+                <div className="flex w-full flex-col justify-between gap-[1.5rem] rounded-[2rem] border border-[#E4E3E8] bg-white px-[1.5rem] py-[2.3rem] backdrop-blur-[10px]">
+                  <div className="flex flex-col items-start gap-[1.5rem] text-left">
+                    <ul className="flex items-center gap-[2px]">
+                      {Array.from({ length: 5 }).map((_, index) => (
+                        <li key={index}>
+                          <StarIcon color="#FFBF00" height="14" width="14" />
+                        </li>
+                      ))}
+                    </ul>
 
-                  <p className="text-[1.4rem] leading-[2.1rem] font-medium tracking-normal text-[#625C70]">
-                    The new webpage Hassan created for Game Art Brain is a
-                    game-changer for our brand. He developed a signature style
-                    that is both unique and perfectly aligned with our identity,
-                    completely revitalizing our online presence. His work is
-                    meticulous, handling a huge number of images and complex
-                    layouts with an artist&apos;s touch.
-                  </p>
-                </div>
-
-                <div className="flex items-center gap-[1rem]">
-                  <div className="flex overflow-hidden rounded-full">
-                    <Image
-                      src={TestimonialAvatar4}
-                      alt="Avatar Image"
-                      width={40}
-                      height={40}
-                      unoptimized
-                    />
+                    <p className="text-[1.4rem] leading-[2.1rem] font-medium tracking-normal text-[#625C70]">
+                      The new webpage Hassan created for Game Art Brain is a
+                      game-changer for our brand. He developed a signature style
+                      that is both unique and perfectly aligned with our
+                      identity, completely revitalizing our online presence. His
+                      work is meticulous, handling a huge number of images and
+                      complex layouts with an artist&apos;s touch.
+                    </p>
                   </div>
 
-                  <div className="flex flex-col items-start text-left">
-                    <h6 className="text-[1.2rem] leading-[1.8rem] font-semibold tracking-normal text-[#312749]">
-                      Ahmed Omar
-                    </h6>
+                  <div className="flex items-center gap-[1rem]">
+                    <div className="flex overflow-hidden rounded-full">
+                      <Image
+                        src={TestimonialAvatar4}
+                        alt="Avatar Image"
+                        width={40}
+                        height={40}
+                        unoptimized
+                      />
+                    </div>
 
-                    <span className="text-[1.1rem] leading-[1.7rem] font-medium tracking-normal text-[#625C70]">
-                      GameArtBrain
-                    </span>
+                    <div className="flex flex-col items-start text-left">
+                      <h6 className="text-[1.2rem] leading-[1.8rem] font-semibold tracking-normal text-[#312749]">
+                        Ahmed Omar
+                      </h6>
+
+                      <span className="text-[1.1rem] leading-[1.7rem] font-medium tracking-normal text-[#625C70]">
+                        GameArtBrain
+                      </span>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </SwiperSlide>
-          </Swiper>
-        </div>
+              </SwiperSlide>
+            </Swiper>
+          </div>
+        </MotionEffect>
       </div>
     </section>
   );
