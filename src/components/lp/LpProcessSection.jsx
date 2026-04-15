@@ -73,7 +73,7 @@ const LpProcessSection = () => {
                   }}
                   className="lp-process-card flex flex-col justify-center gap-[3.5rem] border py-[3rem]"
                 >
-                  <div className="flex h-full flex-col items-start px-[2.8rem] text-left">
+                  <div className="flex h-full flex-col items-center px-[2.8rem] text-center">
                     <h5
                       style={{ color: item.color }}
                       className="mb-[8px] text-[1.8rem] leading-[2.6rem] font-bold"
@@ -151,7 +151,7 @@ const LpProcessSection = () => {
                       }}
                       className="lp-process-card flex flex-col justify-center gap-[3.5rem] border py-[3rem]"
                     >
-                      <div className="flex h-full flex-col items-start px-[2.8rem] text-left">
+                      <div className="flex h-full flex-col items-center px-[2.8rem] text-center">
                         <h5
                           style={{ color: item.color }}
                           className="mb-[8px] text-[1.8rem] leading-[2.6rem] font-bold"

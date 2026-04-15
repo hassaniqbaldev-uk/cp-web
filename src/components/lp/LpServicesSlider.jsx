@@ -3,11 +3,13 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
-import Link from "next/link";
 import RightArrowIcon from "../icons/RightArrowIcon";
 import Image from "next/image";
+import useServiceStore from "@/store/useServiceStore";
 
 const LpServicesSlider = ({ LP_SERVICES_CARD }) => {
+  const { setSelectedService } = useServiceStore();
+
   return (
     <>
       <Swiper
@@ -72,8 +74,13 @@ const LpServicesSlider = ({ LP_SERVICES_CARD }) => {
                 </p>
               </div>
 
-              <Link
-                href={item.link}
+              <button
+                onClick={() => {
+                  setSelectedService(item.value);
+                  document
+                    .getElementById("audit")
+                    ?.scrollIntoView({ behavior: "smooth" });
+                }}
                 style={{
                   color: item.color,
                 }}
@@ -83,7 +90,7 @@ const LpServicesSlider = ({ LP_SERVICES_CARD }) => {
                 <i className="transition-all duration-200 group-hover:-rotate-45">
                   <RightArrowIcon color={item.color} />
                 </i>
-              </Link>
+              </button>
             </div>
           </SwiperSlide>
         ))}

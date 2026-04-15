@@ -31,32 +31,34 @@ const LpWhySection = () => {
 
       <div className="relative z-[10] container flex flex-col items-center justify-between gap-[5rem] xl:flex-row">
         <div className="flex flex-col md:w-[63rem]">
-          <MotionEffect
-            slide={{ direction: "down" }}
-            fade
-            inView
-            delay={0.1}
-            transition={{ type: "tween", duration: 0.8, ease: "easeOut" }}
-          >
-            <div>
-              <SectionLabel text="Why choose us" textColor="#3078FF" />
-            </div>
-          </MotionEffect>
+          <div className="flex flex-col items-center text-center xl:items-start xl:text-left">
+            <MotionEffect
+              slide={{ direction: "down" }}
+              fade
+              inView
+              delay={0.1}
+              transition={{ type: "tween", duration: 0.8, ease: "easeOut" }}
+            >
+              <div>
+                <SectionLabel text="Why choose us" textColor="#3078FF" />
+              </div>
+            </MotionEffect>
 
-          <MotionEffect
-            slide={{ direction: "down" }}
-            fade
-            inView
-            delay={0.25}
-            transition={{ type: "tween", duration: 0.8, ease: "easeOut" }}
-          >
-            <h2 className="mt-[1.5rem] mb-[2.5rem] max-w-[50rem] text-[3rem] leading-[3.7rem] font-bold tracking-[-0.02em] text-[#312749] md:text-[4.8rem] md:leading-[6rem]">
-              <span>Why Choose Creative Pixels for</span>{" "}
-              <span className="bg-gradient-pink-orange bg-clip-text text-transparent">
-                WordPress?
-              </span>
-            </h2>
-          </MotionEffect>
+            <MotionEffect
+              slide={{ direction: "down" }}
+              fade
+              inView
+              delay={0.25}
+              transition={{ type: "tween", duration: 0.8, ease: "easeOut" }}
+            >
+              <h2 className="mt-[1.5rem] mb-[2.5rem] max-w-[50rem] text-[3rem] leading-[3.7rem] font-bold tracking-[-0.02em] text-[#312749] md:text-[4.8rem] md:leading-[6rem]">
+                <span>Why Choose Creative Pixels for</span>{" "}
+                <span className="bg-gradient-pink-orange bg-clip-text text-transparent">
+                  WordPress?
+                </span>
+              </h2>
+            </MotionEffect>
+          </div>
 
           <MotionEffect
             slide={{ direction: "down" }}

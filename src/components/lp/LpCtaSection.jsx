@@ -25,7 +25,7 @@ const LpCtaSection = () => {
           />
 
           <div className="relative z-[10] flex flex-col justify-between gap-[4rem] lg:flex-row">
-            <div className="w-full lg:w-[52rem]">
+            <div className="w-full text-center lg:w-[52rem] lg:text-left">
               <h2 className="mb-[3.8rem] text-[3rem] leading-[3.7rem] font-bold tracking-[-0.02em] text-[#312749] md:text-[4.8rem] md:leading-[6rem]">
                 No Risk.
                 <span className="bg-gradient-pink-orange block bg-clip-text text-transparent">
