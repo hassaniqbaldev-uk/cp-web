@@ -11,6 +11,8 @@ import ClientReviewBg from "@/assets/images/backgrounds/client-review-bg.webp";
 import AboutHeroLogoShape1 from "../decorative-elements/AboutHeroLogoShape1";
 import ContactHeroLogoShape1 from "../decorative-elements/ContactHeroLogoShape1";
 import dynamic from "next/dynamic";
+import Link from "next/link";
+import useServiceStore from "@/store/useServiceStore";
 
 const LpServicesSlider = dynamic(() => import("./LpServicesSlider"), {
   ssr: false,
@@ -19,6 +21,7 @@ const LpServicesSlider = dynamic(() => import("./LpServicesSlider"), {
 
 const LpServicesSection = () => {
   const [hovered, setHovered] = useState(null);
+  const { setSelectedService } = useServiceStore();
 
   return (
     <>
@@ -133,8 +136,13 @@ const LpServicesSection = () => {
                     </p>
                   </div>
 
-                  <a
-                    href={item.link}
+                  <button
+                    onClick={() => {
+                      setSelectedService(item.value);
+                      document
+                        .getElementById("audit")
+                        ?.scrollIntoView({ behavior: "smooth" });
+                    }}
                     style={{
                       color: item.color,
                     }}
@@ -144,7 +152,7 @@ const LpServicesSection = () => {
                     <i className="transition-all duration-200 group-hover:-rotate-45">
                       <RightArrowIcon color={item.color} />
                     </i>
-                  </a>
+                  </button>
                 </div>
               </MotionEffect>
             ))}

@@ -16,12 +16,6 @@ export default function SiteLayout({ children }) {
         </AnimatePresenceWrapper>
       </main>
       <Footer />
-
-      {/* <Script
-        src="https://cdn.feedbucket.app/assets/feedbucket.js"
-        strategy="afterInteractive"
-        data-feedbucket="3rHNb3lcgqe226C8ghh5"
-      /> */}
     </>
   );
 }

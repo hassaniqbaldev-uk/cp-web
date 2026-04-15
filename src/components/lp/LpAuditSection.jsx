@@ -1,9 +1,10 @@
-import React from "react";
+import React, { Suspense } from "react";
 import { MotionEffect } from "../effects/motion-effect";
 import SectionLabel from "../ui/SectionLabel";
 import Image from "next/image";
 import AuditForm from "../ui/AuditForm";
 import SectionDescription from "../ui/SectionDescription";
+import LpAuditForm from "./LpAuditForm";
 
 const LpAuditSection = () => {
   return (
@@ -13,7 +14,7 @@ const LpAuditSection = () => {
     >
       <div className="relative z-[10] container">
         <div className="flex flex-col items-center justify-center gap-[4rem] xl:flex-row">
-          <div className="flex w-full flex-col items-center text-center md:w-[63rem] xl:items-start xl:text-left">
+          <div className="flex w-full flex-col items-center text-center md:w-[54rem] xl:items-start xl:text-left">
             <MotionEffect
               slide={{ direction: "down" }}
               fade
@@ -33,7 +34,7 @@ const LpAuditSection = () => {
               delay={0.25}
               transition={{ type: "tween", duration: 0.8, ease: "easeOut" }}
             >
-              <h2 className="mt-[1.3rem] mb-[2rem] text-[3rem] leading-[3.7rem] font-bold tracking-[-0.03em] text-[#312749] md:text-[7rem] md:leading-[8.5rem]">
+              <h2 className="mt-[1.3rem] mb-[2rem] text-[3rem] leading-[3.7rem] font-bold tracking-[-0.03em] text-[#312749] md:text-[4.8rem] md:leading-[6rem]">
                 Get Your Free{" "}
                 <span className="bg-gradient-pink-orange bg-clip-text text-transparent">
                   WordPress Website Audit
@@ -76,9 +77,9 @@ const LpAuditSection = () => {
             delay={0.5}
             transition={{ type: "tween", duration: 0.8, ease: "easeOut" }}
           >
-            <div>
-              <AuditForm />
-            </div>
+            <Suspense fallback={null}>
+              <LpAuditForm />
+            </Suspense>
           </MotionEffect>
         </div>
       </div>

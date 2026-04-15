@@ -1,7 +1,7 @@
 import Image from "next/image";
 import LpProplemCardImg from "@/assets/images/cards/lp-problem-card-img.png";
 import CheckMarkIcon from "../icons/CheckMarkIcon";
-import PrimaryButton from "../ui/LpPrimaryButton";
+import PrimaryButton from "./LpPrimaryButton";
 import { MotionEffect } from "../effects/motion-effect";
 import SectionLabel from "../ui/SectionLabel";
 import SectionTitle from "../ui/SectionTitle";

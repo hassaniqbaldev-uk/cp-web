@@ -1,6 +1,6 @@
 import LandingCtaBg from "@/assets/images/backgrounds/landing-cta-bg.png";
 import Image from "next/image";
-import PrimaryButton from "../ui/LpPrimaryButton";
+import PrimaryButton from "./LpPrimaryButton";
 import CheckMarkIcon from "../icons/CheckMarkIcon";
 import { MotionEffect } from "../effects/motion-effect";
 

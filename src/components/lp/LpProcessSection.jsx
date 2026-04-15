@@ -2,7 +2,7 @@
 import { LP_PROCESS_CARD } from "@/contants";
 import { MotionEffect } from "../effects/motion-effect";
 import SectionDescription from "../ui/SectionDescription";
-import PrimaryButton from "../ui/LpPrimaryButton";
+import PrimaryButton from "./LpPrimaryButton";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination } from "swiper/modules";
 import "swiper/css";

@@ -4,7 +4,7 @@ import HeroBg from "@/assets/images/backgrounds/audit-hero-bg.webp";
 import { MotionEffect } from "../effects/motion-effect";
 import SectionLabel from "../ui/SectionLabel";
 import CheckMarkIcon from "../icons/CheckMarkIcon";
-import PrimaryButton from "../ui/LpPrimaryButton";
+import PrimaryButton from "./LpPrimaryButton";
 import ServicesLogoShape from "../decorative-elements/ServicesLogoShape";
 import AboutHeroLogoShape1 from "../decorative-elements/AboutHeroLogoShape1";
 

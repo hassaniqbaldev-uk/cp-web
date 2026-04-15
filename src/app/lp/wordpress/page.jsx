@@ -14,9 +14,6 @@ const options = { next: { revalidate: 30 } };
 
 const WordpressPage = async () => {
   let caseStudies = [];
-  // const [caseStudies] = await Promise.all([
-  //   caseStudiesClient.fetch(caseStudiesListingQuery, options),
-  // ]);
 
   try {
     caseStudies = await caseStudiesClient.fetch(
