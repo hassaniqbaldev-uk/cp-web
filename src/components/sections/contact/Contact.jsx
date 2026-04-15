@@ -80,10 +80,10 @@ const Contact = () => {
 
                 <ul className="grid grid-cols-1 gap-x-[5rem] gap-y-[.6rem] md:grid-cols-2 md:gap-y-[1.2rem]">
                   {[
-                    "UI Review",
-                    "Competitor Intel",
-                    "Competitor Intel",
-                    "Growth Opportunities",
+                    "SEO Missed Opportunities",
+                    "Site Speed Analysis",
+                    "Competitor Benchmarking",
+                    "Conversion Roadmap",
                   ].map((item, idx) => (
                     <li key={idx} className="flex items-center gap-[1.2rem]">
                       <i className="inline-flex size-[2.4rem] items-center justify-center rounded-full bg-[#44b276]/20">

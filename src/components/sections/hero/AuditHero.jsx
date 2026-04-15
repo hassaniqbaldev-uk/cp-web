@@ -38,7 +38,8 @@ const AuditHero = () => {
           <div className="flex flex-col items-center justify-center gap-[4rem] xl:flex-row">
             <div className="flex w-full flex-col items-center text-center md:w-[63rem] xl:items-start xl:text-left">
               <MotionEffect
-                slide={{ direction: "down" }} transition={{ type: "spring", stiffness: 120, damping: 20 }}
+                slide={{ direction: "down" }}
+                transition={{ type: "spring", stiffness: 120, damping: 20 }}
                 fade
                 zoom
               >
@@ -49,7 +50,8 @@ const AuditHero = () => {
               </MotionEffect>
 
               <MotionEffect
-                slide={{ direction: "down" }} transition={{ type: "spring", stiffness: 120, damping: 20 }}
+                slide={{ direction: "down" }}
+                transition={{ type: "spring", stiffness: 120, damping: 20 }}
                 fade
                 zoom
                 delay={0.15}
@@ -63,7 +65,8 @@ const AuditHero = () => {
               </MotionEffect>
 
               <MotionEffect
-                slide={{ direction: "down" }} transition={{ type: "spring", stiffness: 120, damping: 20 }}
+                slide={{ direction: "down" }}
+                transition={{ type: "spring", stiffness: 120, damping: 20 }}
                 fade
                 zoom
                 delay={0.3}
@@ -77,7 +80,8 @@ const AuditHero = () => {
               </MotionEffect>
 
               <MotionEffect
-                slide={{ direction: "down" }} transition={{ type: "spring", stiffness: 120, damping: 20 }}
+                slide={{ direction: "down" }}
+                transition={{ type: "spring", stiffness: 120, damping: 20 }}
                 fade
                 delay={0.45}
               >
@@ -127,7 +131,8 @@ const AuditHero = () => {
               </MotionEffect>
 
               <MotionEffect
-                slide={{ direction: "down" }} transition={{ type: "spring", stiffness: 120, damping: 20 }}
+                slide={{ direction: "down" }}
+                transition={{ type: "spring", stiffness: 120, damping: 20 }}
                 fade
                 delay={0.6}
               >
@@ -149,7 +154,8 @@ const AuditHero = () => {
             </div>
 
             <MotionEffect
-              slide={{ direction: "down" }} transition={{ type: "spring", stiffness: 120, damping: 20 }}
+              slide={{ direction: "down" }}
+              transition={{ type: "spring", stiffness: 120, damping: 20 }}
               fade
               delay={0.45}
             >
