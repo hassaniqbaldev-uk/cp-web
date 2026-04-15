@@ -52,7 +52,6 @@ const LpHeroSlider = ({ projects }) => {
                   width={429}
                   height={289}
                   className="h-full w-full object-cover object-left"
-                  unoptimized
                 />
               </div>
 
