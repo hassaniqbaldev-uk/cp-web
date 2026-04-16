@@ -8,11 +8,11 @@ import HomeHeroLogoShape1 from "@/components/decorative-elements/HomeHeroLogoSha
 import HomeHeroLogoShape2 from "@/components/decorative-elements/HomeHeroLogoShape2";
 import ContactHeroLogoShape1 from "@/components/decorative-elements/ContactHeroLogoShape1";
 import { useEffect } from "react";
-import { getCalApi } from "@calcom/embed-react";
 
 const LegalHero = () => {
   useEffect(() => {
     (async function () {
+      const { getCalApi } = await import("@calcom/embed-react");
       const cal = await getCalApi({ namespace: "15min" });
       cal("ui", {
         theme: "dark",
@@ -55,7 +55,8 @@ const LegalHero = () => {
         <div className="relative z-[10] container">
           <div className="flex flex-col items-center text-center">
             <MotionEffect
-              slide={{ direction: "down" }} transition={{ type: "spring", stiffness: 120, damping: 20 }}
+              slide={{ direction: "down" }}
+              transition={{ type: "spring", stiffness: 120, damping: 20 }}
               fade
               zoom
             >
@@ -65,7 +66,8 @@ const LegalHero = () => {
             </MotionEffect>
 
             <MotionEffect
-              slide={{ direction: "down" }} transition={{ type: "spring", stiffness: 120, damping: 20 }}
+              slide={{ direction: "down" }}
+              transition={{ type: "spring", stiffness: 120, damping: 20 }}
               fade
               zoom
               delay={0.15}
@@ -76,7 +78,8 @@ const LegalHero = () => {
             </MotionEffect>
 
             <MotionEffect
-              slide={{ direction: "down" }} transition={{ type: "spring", stiffness: 120, damping: 20 }}
+              slide={{ direction: "down" }}
+              transition={{ type: "spring", stiffness: 120, damping: 20 }}
               fade
               delay={0.3}
             >

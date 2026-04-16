@@ -1,7 +1,7 @@
 "use client";
+
 import SectionLabel from "@/components/ui/SectionLabel";
 import SectionTitle from "@/components/ui/SectionTitle";
-import React from "react";
 import StarIcon from "@/components/icons/StarIcon";
 import TestimonialAvatar1 from "@/assets/icons/ui/testimonial-avatar-1.svg";
 import TestimonialAvatar2 from "@/assets/svgs/ayoa-testimonial-avatar.svg";
@@ -9,11 +9,16 @@ import TestimonialAvatar3 from "@/assets/icons/ui/testimonial-avatar-3.svg";
 import TestimonialAvatar4 from "@/assets/svgs/game-art-testimonial-avatar.svg";
 import TestimonialCardImg from "@/assets/images/cards/testimonial-card-img.webp";
 import Image from "next/image";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay, Pagination } from "swiper/modules";
-import "swiper/css";
-import "swiper/css/pagination";
 import { MotionEffect } from "@/components/effects/motion-effect";
+import dynamic from "next/dynamic";
+
+const Testimonials2Slider = dynamic(
+  () => import("@/components/ui/Testimonials2Slider"),
+  {
+    ssr: false,
+    loading: () => <div className="h-[37.2rem]" />, // placeholder height to prevent layout shift
+  },
+);
 
 const featuredTestimonial = {
   image: TestimonialCardImg,
@@ -245,73 +250,7 @@ const Testimonials2 = () => {
           className="w-full"
         >
           <div className="my-[3rem] block w-full xl:hidden">
-            <Swiper
-              pagination={{ clickable: true }}
-              modules={[Pagination, Autoplay]}
-              loop={true}
-              autoplay={{
-                delay: 2500,
-                disableOnInteraction: false,
-              }}
-              slidesPerView={1}
-              spaceBetween={0}
-              breakpoints={{
-                767: {
-                  slidesPerView: 2,
-                  spaceBetween: 0,
-                },
-                1024: {
-                  slidesPerView: 3,
-                  spaceBetween: 0,
-                },
-              }}
-              className="mySwiper"
-            >
-              {testimonials.map((testimonial, index) => (
-                <SwiperSlide
-                  key={index}
-                  className="!flex !h-auto !justify-center px-[1rem] pb-[5rem]"
-                >
-                  <div className="flex w-full flex-col justify-between gap-[1.5rem] rounded-[2rem] border border-[#E4E3E8] bg-white px-[1.5rem] py-[2.3rem] backdrop-blur-[10px]">
-                    <div className="flex flex-col items-start gap-[1.5rem] text-left">
-                      <ul className="flex items-center gap-[2px]">
-                        {Array.from({ length: 5 }).map((_, i) => (
-                          <li key={i}>
-                            <StarIcon color="#FFBF00" height="14" width="14" />
-                          </li>
-                        ))}
-                      </ul>
-
-                      <p className="text-[1.4rem] leading-[2.1rem] font-medium tracking-normal text-[#625C70]">
-                        {testimonial.quote}
-                      </p>
-                    </div>
-
-                    <div className="flex items-center gap-[1rem]">
-                      <div className="flex overflow-hidden rounded-full">
-                        <Image
-                          src={testimonial.avatar}
-                          alt="Avatar Image"
-                          width={40}
-                          height={40}
-                          unoptimized
-                        />
-                      </div>
-
-                      <div className="flex flex-col items-start text-left">
-                        <h6 className="text-[1.2rem] leading-[1.8rem] font-semibold tracking-normal text-[#312749]">
-                          {testimonial.name}
-                        </h6>
-
-                        <span className="text-[1.1rem] leading-[1.7rem] font-medium tracking-normal text-[#625C70]">
-                          {testimonial.role}
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                </SwiperSlide>
-              ))}
-            </Swiper>
+            <Testimonials2Slider testimonials={testimonials} />
           </div>
         </MotionEffect>
       </div>

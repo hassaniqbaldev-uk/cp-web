@@ -10,11 +10,48 @@ import TestimonialAvatar4 from "@/assets/svgs/game-art-testimonial-avatar.svg";
 import TestimonialCardImg from "@/assets/images/cards/testimonial-card-img.webp";
 import Image from "next/image";
 import PrimaryButton from "@/components/ui/PrimaryButton";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay, Pagination } from "swiper/modules";
-import "swiper/css";
-import "swiper/css/pagination";
 import { MotionEffect } from "@/components/effects/motion-effect";
+import dynamic from "next/dynamic";
+
+const TestimonialsSlider = dynamic(
+  () => import("@/components/ui/TestimonialsSlider"),
+  {
+    ssr: false,
+    loading: () => <div className="h-[37.6rem]" />, // placeholder height to prevent layout shift
+  },
+);
+
+const testimonials = [
+  {
+    rating: 5,
+    text: "CreativePixels' expertise on our programme materials was invaluable. Together, we raised over £478,000 to protect children in danger.",
+    name: "Special Events Coordinator",
+    company: "Coordinator, UNICEF UK",
+    image: TestimonialCardImg,
+    avatar: TestimonialAvatar1,
+  },
+  {
+    rating: 5,
+    text: "I would highly recommend Hassan, he was excellent throughout the process of designing and developing our new website.",
+    name: "James Brien",
+    company: "Ayoa",
+    avatar: TestimonialAvatar2,
+  },
+  {
+    rating: 5,
+    text: "My new site is significantly faster and easier to navigate. We've seen a 30% increase in inquiries since launch.",
+    name: "Simon Hobbs",
+    company: "Owner, Precise Print",
+    avatar: TestimonialAvatar3,
+  },
+  {
+    rating: 5,
+    text: "The new webpage Hassan created for Game Art Brain is a game-changer for our brand. He developed a signature style that is both unique and perfectly aligned with our identity, completely revitalizing our online presence. His work is meticulous, handling a huge number of images and complex layouts with an artist's touch.",
+    name: "Ahmed Omar",
+    company: "GameArtBrain",
+    avatar: TestimonialAvatar4,
+  },
+];
 
 const Testimonials = () => {
   return (
@@ -270,115 +307,7 @@ const Testimonials = () => {
           className="w-full"
         >
           <div className="my-[3rem] block w-full xl:hidden">
-            <Swiper
-              pagination={{ clickable: true }}
-              modules={[Pagination, Autoplay]}
-              loop={true}
-              autoplay={{
-                delay: 2500,
-                disableOnInteraction: false,
-              }}
-              slidesPerView={1}
-              spaceBetween={0}
-              breakpoints={{
-                767: {
-                  slidesPerView: 2,
-                  spaceBetween: 0,
-                },
-                1024: {
-                  slidesPerView: 3,
-                  spaceBetween: 0,
-                },
-              }}
-              className="mySwiper"
-            >
-              <SwiperSlide className="!flex !h-auto !justify-center px-[1rem] pb-[5rem]">
-                <div className="flex w-full flex-col justify-between gap-[1.5rem] rounded-[2rem] border border-[#E4E3E8] bg-white px-[1.5rem] py-[2.3rem] backdrop-blur-[10px]">
-                  <div className="flex flex-col items-start gap-[1.5rem] text-left">
-                    <ul className="flex items-center gap-[2px]">
-                      {Array.from({ length: 5 }).map((_, index) => (
-                        <li key={index}>
-                          <StarIcon color="#FFBF00" height="14" width="14" />
-                        </li>
-                      ))}
-                    </ul>
-
-                    <p className="text-[1.4rem] leading-[2.1rem] font-medium tracking-normal text-[#625C70]">
-                      I would highly recommend Hassan, he was excellent
-                      throughout the process of designing and developing our new
-                      website.
-                    </p>
-                  </div>
-
-                  <div className="flex items-center gap-[1rem]">
-                    <div className="flex overflow-hidden rounded-full">
-                      <Image
-                        src={TestimonialAvatar2}
-                        alt="Avatar Image"
-                        width={40}
-                        height={40}
-                        unoptimized
-                      />
-                    </div>
-
-                    <div className="flex flex-col items-start text-left">
-                      <h6 className="text-[1.2rem] leading-[1.8rem] font-semibold tracking-normal text-[#312749]">
-                        James Brien
-                      </h6>
-
-                      <span className="text-[1.1rem] leading-[1.7rem] font-medium tracking-normal text-[#625C70]">
-                        Ayoa
-                      </span>
-                    </div>
-                  </div>
-                </div>
-              </SwiperSlide>
-
-              <SwiperSlide className="!flex !h-auto !justify-center px-[1rem] pb-[5rem]">
-                <div className="flex w-full flex-col justify-between gap-[1.5rem] rounded-[2rem] border border-[#E4E3E8] bg-white px-[1.5rem] py-[2.3rem] backdrop-blur-[10px]">
-                  <div className="flex flex-col items-start gap-[1.5rem] text-left">
-                    <ul className="flex items-center gap-[2px]">
-                      {Array.from({ length: 5 }).map((_, index) => (
-                        <li key={index}>
-                          <StarIcon color="#FFBF00" height="14" width="14" />
-                        </li>
-                      ))}
-                    </ul>
-
-                    <p className="text-[1.4rem] leading-[2.1rem] font-medium tracking-normal text-[#625C70]">
-                      The new webpage Hassan created for Game Art Brain is a
-                      game-changer for our brand. He developed a signature style
-                      that is both unique and perfectly aligned with our
-                      identity, completely revitalizing our online presence. His
-                      work is meticulous, handling a huge number of images and
-                      complex layouts with an artist&apos;s touch.
-                    </p>
-                  </div>
-
-                  <div className="flex items-center gap-[1rem]">
-                    <div className="flex overflow-hidden rounded-full">
-                      <Image
-                        src={TestimonialAvatar4}
-                        alt="Avatar Image"
-                        width={40}
-                        height={40}
-                        unoptimized
-                      />
-                    </div>
-
-                    <div className="flex flex-col items-start text-left">
-                      <h6 className="text-[1.2rem] leading-[1.8rem] font-semibold tracking-normal text-[#312749]">
-                        Ahmed Omar
-                      </h6>
-
-                      <span className="text-[1.1rem] leading-[1.7rem] font-medium tracking-normal text-[#625C70]">
-                        GameArtBrain
-                      </span>
-                    </div>
-                  </div>
-                </div>
-              </SwiperSlide>
-            </Swiper>
+            <TestimonialsSlider testimonials={testimonials} />
           </div>
         </MotionEffect>
 

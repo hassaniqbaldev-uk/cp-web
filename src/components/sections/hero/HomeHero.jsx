@@ -14,7 +14,6 @@ import SectionDescription from "@/components/ui/SectionDescription";
 import { motion } from "framer-motion";
 import HomeHeroLogoShape1 from "@/components/decorative-elements/HomeHeroLogoShape1";
 import { useEffect, useState } from "react";
-import { getCalApi } from "@calcom/embed-react";
 import Counter from "@/components/ui/Counter";
 import useMousePosition from "@/utils/useMousePosition";
 import Cursor from "@/assets/svgs/you-cursor.svg";
@@ -27,6 +26,7 @@ const HomeHero = () => {
 
   useEffect(() => {
     (async function () {
+      const { getCalApi } = await import("@calcom/embed-react");
       const cal = await getCalApi({ namespace: "15min" });
       cal("ui", {
         theme: "dark",
@@ -175,7 +175,7 @@ const HomeHero = () => {
                   onMouseLeave={() => {
                     setIsHovered(false);
                   }}
-                  className="relative z-[5] flex h-[26.9rem] cursor-none w-[28.7rem]  items-center justify-center md:h-[41.5rem] md:w-[42.4rem]"
+                  className="relative z-[5] flex h-[26.9rem] w-[28.7rem] cursor-none items-center justify-center md:h-[41.5rem] md:w-[42.4rem]"
                 >
                   <Image
                     src={HomeHeroCardImg}

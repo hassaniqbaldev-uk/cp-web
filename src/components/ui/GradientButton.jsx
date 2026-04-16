@@ -1,13 +1,12 @@
 "use client";
 import { useEffect } from "react";
-import { getCalApi } from "@calcom/embed-react";
 import Image from "next/image";
 import HassanAvatar from "@/assets/icons/ui/hassan-avatar.png";
-import { motion } from "framer-motion";
 
 const GradientButton = ({ text = "Book with Hassan" }) => {
   useEffect(() => {
     (async function () {
+      const { getCalApi } = await import("@calcom/embed-react");
       const cal = await getCalApi({ namespace: "15min" });
       cal("ui", {
         theme: "dark",

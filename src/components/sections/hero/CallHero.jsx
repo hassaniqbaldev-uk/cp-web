@@ -1,27 +1,24 @@
 "use client";
 import Image from "next/image";
 import HeroBg from "@/assets/images/backgrounds/contact-hero-bg.webp";
-import SectionLabel from "@/components/ui/SectionLabel";
-import HeadphoneIcon from "@/assets/icons/ui/headphone-icon.svg";
-import EmailIcon from "@/assets/icons/ui/email-icon.svg";
-import TimelineIcon from "@/assets/icons/ui/timeline-icon.svg";
-import Link from "next/link";
 import SectionDescription from "@/components/ui/SectionDescription";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay, Pagination } from "swiper/modules";
-import "swiper/css";
-import "swiper/css/pagination";
 import { MotionEffect } from "@/components/effects/motion-effect";
 import HomeHeroLogoShape1 from "@/components/decorative-elements/HomeHeroLogoShape1";
 import HomeHeroLogoShape2 from "@/components/decorative-elements/HomeHeroLogoShape2";
 import ContactHeroLogoShape1 from "@/components/decorative-elements/ContactHeroLogoShape1";
-import Cal, { getCalApi } from "@calcom/embed-react";
 import { useEffect } from "react";
+import dynamic from "next/dynamic";
+
+const Cal = dynamic(
+  () => import("@calcom/embed-react").then((mod) => mod.default),
+  { ssr: false },
+);
 
 const CallHero = () => {
   useEffect(() => {
     (async function () {
-      const cal = await getCalApi({ namespace: "cwh" });
+      const { getCalApi } = await import("@calcom/embed-react");
+      const cal = await getCalApi({ namespace: "15min" });
       cal("ui", {
         theme: "dark",
         cssVarsPerTheme: {
@@ -30,7 +27,6 @@ const CallHero = () => {
         },
         hideEventTypeDetails: false,
         layout: "month_view",
-        hideBranding: true, // This hides the Cal.com branding
       });
     })();
   }, []);

@@ -6,16 +6,15 @@ import SectionDescription from "@/components/ui/SectionDescription";
 import CheckMarkIcon2 from "@/components/icons/CheckMarkIcon2";
 import PrimaryButton from "@/components/ui/PrimaryButton";
 import { MotionEffect } from "@/components/effects/motion-effect";
-import Link from "next/link";
 import HomeHeroLogoShape1 from "@/components/decorative-elements/HomeHeroLogoShape1";
 import HomeHeroLogoShape2 from "@/components/decorative-elements/HomeHeroLogoShape2";
 import ContactHeroLogoShape1 from "@/components/decorative-elements/ContactHeroLogoShape1";
 import { useEffect } from "react";
-import { getCalApi } from "@calcom/embed-react";
 
 const ServicesHero = () => {
   useEffect(() => {
     (async function () {
+      const { getCalApi } = await import("@calcom/embed-react");
       const cal = await getCalApi({ namespace: "15min" });
       cal("ui", {
         theme: "dark",
@@ -58,7 +57,8 @@ const ServicesHero = () => {
         <div className="relative z-[10] container">
           <div className="flex flex-col items-center text-center">
             <MotionEffect
-              slide={{ direction: "down" }} transition={{ type: "spring", stiffness: 120, damping: 20 }}
+              slide={{ direction: "down" }}
+              transition={{ type: "spring", stiffness: 120, damping: 20 }}
               fade
               zoom
             >
@@ -68,7 +68,8 @@ const ServicesHero = () => {
             </MotionEffect>
 
             <MotionEffect
-              slide={{ direction: "down" }} transition={{ type: "spring", stiffness: 120, damping: 20 }}
+              slide={{ direction: "down" }}
+              transition={{ type: "spring", stiffness: 120, damping: 20 }}
               fade
               zoom
               delay={0.15}
@@ -79,7 +80,8 @@ const ServicesHero = () => {
             </MotionEffect>
 
             <MotionEffect
-              slide={{ direction: "down" }} transition={{ type: "spring", stiffness: 120, damping: 20 }}
+              slide={{ direction: "down" }}
+              transition={{ type: "spring", stiffness: 120, damping: 20 }}
               fade
               delay={0.3}
             >
@@ -92,7 +94,8 @@ const ServicesHero = () => {
             </MotionEffect>
 
             <MotionEffect
-              slide={{ direction: "down" }} transition={{ type: "spring", stiffness: 120, damping: 20 }}
+              slide={{ direction: "down" }}
+              transition={{ type: "spring", stiffness: 120, damping: 20 }}
               fade
               delay={0.45}
             >
@@ -108,7 +111,8 @@ const ServicesHero = () => {
             </MotionEffect>
 
             <MotionEffect
-              slide={{ direction: "down" }} transition={{ type: "spring", stiffness: 120, damping: 20 }}
+              slide={{ direction: "down" }}
+              transition={{ type: "spring", stiffness: 120, damping: 20 }}
               fade
               delay={0.6}
             >

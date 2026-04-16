@@ -9,12 +9,12 @@ import ContactHeroLogoShape1 from "@/components/decorative-elements/ContactHeroL
 import Logo from "@/components/decorative-elements/Logo";
 import SecondaryButton from "@/components/ui/SecondaryButton";
 import { useEffect } from "react";
-import { getCalApi } from "@calcom/embed-react";
 import { MotionEffect } from "@/components/effects/motion-effect";
 
 const AgenciesHero = () => {
   useEffect(() => {
     (async function () {
+      const { getCalApi } = await import("@calcom/embed-react");
       const cal = await getCalApi({ namespace: "15min" });
       cal("ui", {
         theme: "dark",
@@ -58,7 +58,8 @@ const AgenciesHero = () => {
           <div className="flex flex-col items-center justify-between gap-[4rem] xl:flex-row">
             <div className="flex w-full flex-col items-center justify-center gap-[3rem] text-center md:w-[60rem] xl:items-start xl:text-left">
               <MotionEffect
-                slide={{ direction: "down" }} transition={{ type: "spring", stiffness: 120, damping: 20 }}
+                slide={{ direction: "down" }}
+                transition={{ type: "spring", stiffness: 120, damping: 20 }}
                 fade
                 zoom
               >
@@ -71,7 +72,8 @@ const AgenciesHero = () => {
               </MotionEffect>
 
               <MotionEffect
-                slide={{ direction: "down" }} transition={{ type: "spring", stiffness: 120, damping: 20 }}
+                slide={{ direction: "down" }}
+                transition={{ type: "spring", stiffness: 120, damping: 20 }}
                 fade
                 delay={0.15}
               >
@@ -82,7 +84,8 @@ const AgenciesHero = () => {
               </MotionEffect>
 
               <MotionEffect
-                slide={{ direction: "down" }} transition={{ type: "spring", stiffness: 120, damping: 20 }}
+                slide={{ direction: "down" }}
+                transition={{ type: "spring", stiffness: 120, damping: 20 }}
                 fade
                 delay={0.3}
               >
@@ -96,7 +99,8 @@ const AgenciesHero = () => {
             </div>
 
             <MotionEffect
-              slide={{ direction: "down" }} transition={{ type: "spring", stiffness: 120, damping: 20 }}
+              slide={{ direction: "down" }}
+              transition={{ type: "spring", stiffness: 120, damping: 20 }}
               fade
               delay={0.45}
               className="h-[25rem] w-full md:h-[35rem] md:w-[52rem]"

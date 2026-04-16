@@ -9,7 +9,6 @@ import SolutionsDropdown from "../ui/SolutionsDropdown";
 import AboutDropdown from "../ui/AboutDropdown";
 import { motion } from "framer-motion";
 import SecondaryButton from "../ui/SecondaryButton";
-import { getCalApi } from "@calcom/embed-react";
 import LoaderLogo from "../decorative-elements/LoaderLogo";
 
 const HomeHeader = ({ transition }) => {
@@ -80,6 +79,7 @@ const HomeHeader = ({ transition }) => {
 
   useEffect(() => {
     (async function () {
+      const { getCalApi } = await import("@calcom/embed-react");
       const cal = await getCalApi({ namespace: "15min" });
       cal("ui", {
         theme: "dark",

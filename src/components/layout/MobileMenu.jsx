@@ -32,7 +32,6 @@ import {
 import PrimaryButton from "../ui/PrimaryButton";
 import { useMenuStore } from "@/store/mobileMenuStore";
 import { useEffect } from "react";
-import { getCalApi } from "@calcom/embed-react";
 
 const MobileMenu = () => {
   const { isOpen, closeMenu } = useMenuStore();
@@ -51,6 +50,7 @@ const MobileMenu = () => {
 
   useEffect(() => {
     (async function () {
+      const { getCalApi } = await import("@calcom/embed-react");
       const cal = await getCalApi({ namespace: "15min" });
       cal("ui", {
         theme: "dark",

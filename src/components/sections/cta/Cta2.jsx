@@ -1,8 +1,6 @@
 "use client";
 
 import { useEffect } from "react";
-import { getCalApi } from "@calcom/embed-react";
-
 import SectionTitle from "@/components/ui/SectionTitle";
 import SectionDescription from "@/components/ui/SectionDescription";
 import SecondaryButton from "@/components/ui/SecondaryButton";
@@ -16,6 +14,7 @@ const Cta2 = ({
 }) => {
   useEffect(() => {
     (async function () {
+      const { getCalApi } = await import("@calcom/embed-react");
       const cal = await getCalApi({ namespace: "15min" });
       cal("ui", {
         theme: "dark",
@@ -30,7 +29,13 @@ const Cta2 = ({
   }, []);
 
   return (
-    <MotionEffect slide={{ direction: "down" }} fade inView delay={0.1} transition={{ type: "tween", duration: 1.0, ease: "easeOut" }}>
+    <MotionEffect
+      slide={{ direction: "down" }}
+      fade
+      inView
+      delay={0.1}
+      transition={{ type: "tween", duration: 1.0, ease: "easeOut" }}
+    >
       <div className="relative container rounded-[3rem] border border-[#d7d7d7] bg-[#EC9122] px-[2rem] py-[5.5rem] md:px-[6rem]">
         <div className="pointer-events-none absolute top-[-3rem] right-[-2rem] z-[2] select-none xl:right-[6rem]">
           <Cta2BgStroke />

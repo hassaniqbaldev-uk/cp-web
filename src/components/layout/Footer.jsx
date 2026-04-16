@@ -10,10 +10,8 @@ import HostingIcon from "@/assets/svgs/footer-hosting-logo.svg";
 import WpFixedIcon from "@/assets/svgs/footer-wp-fixed-logo.svg";
 import MonthlyIcon from "@/assets/svgs/footer-monthly-logo.svg";
 import Image from "next/image";
-import PrimaryButton from "../ui/PrimaryButton";
 import Link from "next/link";
 import {
-  CLIENT_LOGO,
   DESIGN_SERVICE_NAV,
   FOOTER_CARD,
   GOAL_SOLUTION_NAV,
@@ -32,12 +30,12 @@ import FooterBgStroke from "../decorative-elements/FooterBgStroke";
 import ChevronDownIcon from "../icons/ChevronDownIcon";
 import Marquee from "react-fast-marquee";
 import { useEffect } from "react";
-import { getCalApi } from "@calcom/embed-react";
 import SecondaryButton from "../ui/SecondaryButton";
 
 const Footer = () => {
   useEffect(() => {
     (async function () {
+      const { getCalApi } = await import("@calcom/embed-react");
       const cal = await getCalApi({ namespace: "15min" });
       cal("ui", {
         theme: "dark",

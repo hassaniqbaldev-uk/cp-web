@@ -3,20 +3,18 @@ import Image from "next/image";
 import HeroBg from "@/assets/images/backgrounds/audit-hero-bg.webp";
 import SectionLabel from "@/components/ui/SectionLabel";
 import SectionDescription from "@/components/ui/SectionDescription";
-import CheckMarkIcon2 from "@/components/icons/CheckMarkIcon2";
 import PrimaryButton from "@/components/ui/PrimaryButton";
 import { motion } from "framer-motion";
 import { MotionEffect } from "@/components/effects/motion-effect";
-import Link from "next/link";
 import HomeHeroLogoShape1 from "@/components/decorative-elements/HomeHeroLogoShape1";
 import HomeHeroLogoShape2 from "@/components/decorative-elements/HomeHeroLogoShape2";
 import ContactHeroLogoShape1 from "@/components/decorative-elements/ContactHeroLogoShape1";
 import { useEffect } from "react";
-import { getCalApi } from "@calcom/embed-react";
 
 const TestimonialsHero = () => {
   useEffect(() => {
     (async function () {
+      const { getCalApi } = await import("@calcom/embed-react");
       const cal = await getCalApi({ namespace: "15min" });
       cal("ui", {
         theme: "dark",
@@ -58,17 +56,35 @@ const TestimonialsHero = () => {
 
         <div className="relative z-[10] container">
           <div className="flex flex-col items-center text-center">
-            <MotionEffect slide={{ direction: "down" }} transition={{ type: "spring", stiffness: 120, damping: 20 }} fade zoom>
-              <div><SectionLabel text="TESTIMONIALS" textColor="#FF37B3" /></div>
+            <MotionEffect
+              slide={{ direction: "down" }}
+              transition={{ type: "spring", stiffness: 120, damping: 20 }}
+              fade
+              zoom
+            >
+              <div>
+                <SectionLabel text="TESTIMONIALS" textColor="#FF37B3" />
+              </div>
             </MotionEffect>
 
-            <MotionEffect slide={{ direction: "down" }} transition={{ type: "spring", stiffness: 120, damping: 20 }} fade zoom delay={0.15}>
+            <MotionEffect
+              slide={{ direction: "down" }}
+              transition={{ type: "spring", stiffness: 120, damping: 20 }}
+              fade
+              zoom
+              delay={0.15}
+            >
               <h1 className="mt-[1.5rem] mb-[2.5rem] max-w-[89rem] text-[3rem] leading-[3.7rem] font-bold tracking-[-0.03em] text-[#312749] md:text-[7rem] md:leading-[8rem]">
                 Let&apos;s simplify your growth strategy.
               </h1>
             </MotionEffect>
 
-            <MotionEffect slide={{ direction: "down" }} transition={{ type: "spring", stiffness: 120, damping: 20 }} fade delay={0.3}>
+            <MotionEffect
+              slide={{ direction: "down" }}
+              transition={{ type: "spring", stiffness: 120, damping: 20 }}
+              fade
+              delay={0.3}
+            >
               <div className="max-w-[76rem]">
                 <SectionDescription
                   text="No high-pressure sales tactics. Just a friendly chat with Hassan to see if we're a good fit to help you scale."
@@ -77,45 +93,50 @@ const TestimonialsHero = () => {
               </div>
             </MotionEffect>
 
-            <MotionEffect slide={{ direction: "down" }} transition={{ type: "spring", stiffness: 120, damping: 20 }} fade delay={0.45}>
+            <MotionEffect
+              slide={{ direction: "down" }}
+              transition={{ type: "spring", stiffness: 120, damping: 20 }}
+              fade
+              delay={0.45}
+            >
               <div className="mt-[4rem] flex flex-wrap items-center justify-center gap-[1.8rem]">
-              <PrimaryButton
-                text="See Case Studies"
-                textColor="#FFFFFF"
-                bGcolor="#312749"
-                href="/case-studies"
-              />
+                <PrimaryButton
+                  text="See Case Studies"
+                  textColor="#FFFFFF"
+                  bGcolor="#312749"
+                  href="/case-studies"
+                />
 
-              <motion.button
-                data-cal-namespace="15min"
-                data-cal-link="hassan-iqbal-mznzu9/15min"
-                data-cal-config='{"layout":"month_view","theme":"dark"}'
-                initial="initial"
-                whileHover="hover"
-                className="relative inline-flex h-[4rem] items-center justify-center overflow-hidden rounded-[60px] border-2 border-[#312749]/40 px-[30px] py-[8px] text-center text-[1.4rem] font-semibold tracking-normal text-[#312749] md:h-[5rem] md:text-[1.8rem]"
-              >
-                <motion.span
-                  variants={{
-                    initial: { y: "0%" },
-                    hover: { y: "-130%" },
-                  }}
-                  transition={{ duration: 0.2, ease: "easeOut" }}
-                  className="block"
+                <motion.button
+                  data-cal-namespace="15min"
+                  data-cal-link="hassan-iqbal-mznzu9/15min"
+                  data-cal-config='{"layout":"month_view","theme":"dark"}'
+                  initial="initial"
+                  whileHover="hover"
+                  className="relative inline-flex h-[4rem] items-center justify-center overflow-hidden rounded-[60px] border-2 border-[#312749]/40 px-[30px] py-[8px] text-center text-[1.4rem] font-semibold tracking-normal text-[#312749] md:h-[5rem] md:text-[1.8rem]"
                 >
-                  Book a Strategy Call
-                </motion.span>
-                <motion.span
-                  variants={{
-                    initial: { y: "100%" },
-                    hover: { y: "0%" },
-                  }}
-                  transition={{ duration: 0.2, ease: "easeOut" }}
-                  className="absolute inset-0 flex items-center justify-center"
-                >
-                  Book a Strategy Call
-                </motion.span>
-              </motion.button>
-            </div>
+                  <motion.span
+                    variants={{
+                      initial: { y: "0%" },
+                      hover: { y: "-130%" },
+                    }}
+                    transition={{ duration: 0.2, ease: "easeOut" }}
+                    className="block"
+                  >
+                    Book a Strategy Call
+                  </motion.span>
+                  <motion.span
+                    variants={{
+                      initial: { y: "100%" },
+                      hover: { y: "0%" },
+                    }}
+                    transition={{ duration: 0.2, ease: "easeOut" }}
+                    className="absolute inset-0 flex items-center justify-center"
+                  >
+                    Book a Strategy Call
+                  </motion.span>
+                </motion.button>
+              </div>
             </MotionEffect>
           </div>
         </div>
