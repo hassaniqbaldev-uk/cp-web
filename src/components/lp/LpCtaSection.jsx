@@ -45,9 +45,10 @@ const LpCtaSection = () => {
 
             <div className="flex w-full flex-col gap-[1.6rem] lg:w-[45rem]">
               {[
-                "Free consultation",
-                "No pressure to commit",
-                "Clear next steps tailored to your business",
+                "No commitment",
+                "No tech jargon",
+                "No surprise invoices",
+                "We'll tell you exactly what's wrong before we charge you anything",
               ].map((item, idx) => (
                 <div
                   key={idx}

@@ -15,6 +15,7 @@ import { motion } from "framer-motion";
 import TestingTestimonials from "@/components/sections/testimonials/TestingTestimonials";
 import Image from "next/image";
 import HeroBg from "@/assets/images/backgrounds/audit-hero-bg.webp";
+import LightFeatureCard1 from "@/components/ui/LightFeatureCard1";
 
 const CONTENT_VARIANTS = {
   hidden: {

@@ -45,7 +45,6 @@ import { servicesClient } from "@/sanity/sanity.services";
 export const revalidate = 30; // Next.js ISR
 
 const ServicesPage = async () => {
-  // const services = await servicesClient.fetch(SERVICES_QUERY);
   let services = [];
 
   try {

@@ -12,11 +12,14 @@ import AboutHeroLogoShape2 from "@/assets/svgs/about-hero-logo-shape-2.svg";
 import { useState } from "react";
 import { MotionEffect } from "@/components/effects/motion-effect";
 import dynamic from "next/dynamic";
+import LightFeatureCard1 from "@/components/ui/LightFeatureCard1";
 
-const SupportSlider = dynamic(() => import("@/components/ui/SupportSlider"), {
-  ssr: false,
-  loading: () => <div className="h-[55rem] md:h-[52rem]" />, // placeholder height to prevent layout shift
-});
+const LightFeatureCardSlider1 = dynamic(
+  () => import("@/components/ui/LightFeatureCardSlider1"),
+  {
+    ssr: false,
+  },
+);
 
 export const themeColors = {
   primary: {
@@ -87,10 +90,20 @@ export const supportData = [
 export const themeColorList = Object.values(themeColors);
 
 const Support = ({ services = [] }) => {
-  const [hovered, setHovered] = useState(null);
-
   const getThemeColor = (index) =>
     themeColorList[index % themeColorList.length];
+
+  const slideData = services.map((item, idx) => {
+    const theme = getThemeColor(idx);
+    return {
+      icon: item.icon.asset.url,
+      title: item.title,
+      description: item.excerpt,
+      link: `/services/${item.slug.current}`,
+      linkText: "Explore Service",
+      color: theme.color,
+    };
+  });
 
   return (
     <>
@@ -146,50 +159,15 @@ const Support = ({ services = [] }) => {
                       ease: "easeOut",
                     }}
                   >
-                    <div
-                      onMouseEnter={() => setHovered(idx)}
-                      onMouseLeave={() => setHovered(null)}
-                      style={{
-                        borderColor: theme.color,
-                        boxShadow: hovered === idx ? theme.shadow : "",
-                      }}
-                      className="flex w-full flex-col rounded-[3rem] border px-[3rem] pt-[3.1rem] pb-[2.8rem] transition-all duration-300"
-                    >
-                      {/* Icon */}
-                      <div className="relative size-[6.3rem]">
-                        <div className="absolute top-0 left-0 z-[1] inline-flex size-[5.8rem] items-center justify-center rounded-[1.3rem] border border-white/20 bg-white/35 backdrop-blur-[10px]">
-                          <Image
-                            src={item.icon.asset.url}
-                            alt={item.title}
-                            width={30}
-                            height={30}
-                            unoptimized
-                          />
-                        </div>
-
-                        <div
-                          className="absolute right-0 bottom-0 z-[0] size-[5.8rem] rounded-[1.3rem]"
-                          style={{ backgroundColor: theme.color }}
-                        />
-                      </div>
-
-                      <h3 className="mt-[3rem] text-[2.6rem] font-semibold text-[#312749]">
-                        {item.title}
-                      </h3>
-
-                      <p className="mt-[1rem] mb-[3.5rem] text-[1.6rem] text-[#625C70]">
-                        {item.excerpt}
-                      </p>
-
-                      <Link
-                        href={`/services/${item.slug.current}`}
-                        className="inline-flex items-center gap-[.8rem] text-[1.6rem] font-semibold"
-                        style={{ color: theme.color }}
-                      >
-                        Explore Service
-                        <RightArrowIcon color={theme.color} />
-                      </Link>
-                    </div>
+                    <LightFeatureCard1
+                      icon={item.icon.asset.url}
+                      title={item.title}
+                      description={item.excerpt}
+                      link={`/services/${item.slug.current}`}
+                      linkText="Explore Service"
+                      color={theme.color}
+                      hoverShadow={theme.shadow}
+                    />
                   </MotionEffect>
                 );
               })}
@@ -205,10 +183,7 @@ const Support = ({ services = [] }) => {
               className="w-full"
             >
               <div className="block w-full xl:hidden">
-                <SupportSlider
-                  services={services}
-                  getThemeColor={getThemeColor}
-                />
+                <LightFeatureCardSlider1 slideData={slideData} />
               </div>
             </MotionEffect>
           </div>

@@ -163,12 +163,10 @@ const LpHero = () => {
               zoom
               delay={0.15}
             >
-              <h1 className="mt-[1.5rem] mb-[2.5rem] max-w-[75rem] text-[3rem] leading-[3.7rem] font-bold tracking-[-0.03em] text-white md:text-[6.5rem] md:leading-[8rem]">
-                <span className="block">
-                  High-Converting WordPress Websites
-                </span>
+              <h1 className="mt-[1.5rem] mb-[2.5rem] max-w-[75rem] text-[3rem] leading-[3.7rem] font-bold tracking-[-0.03em] text-white md:text-[6rem] md:leading-[7rem]">
+                <span className="block">Tired of a Website</span>
                 <span className="bg-gradient-yellow-orange block bg-clip-text text-transparent">
-                  Built for Paid Traffic
+                  That Doesn’t Convert?
                 </span>
               </h1>
             </MotionEffect>
@@ -180,9 +178,9 @@ const LpHero = () => {
               zoom
               delay={0.3}
             >
-              <div className="mb-[2rem] max-w-[59.4rem] md:mb-[4.2rem]">
+              <div className="mb-[2rem] max-w-[70rem] md:mb-[4.2rem]">
                 <SectionDescription
-                  text=" Turn your ad clicks into real leads and customers. We design WordPress websites optimized for conversions, speed, and performance."
+                  text="Your website is your first impression. We design WordPress sites that look professional, load fast, and turn visitors into customers."
                   textColor="#FFFFFF"
                 />
               </div>
@@ -201,7 +199,7 @@ const LpHero = () => {
                 >
                   <div className="text-span">
                     <span className="relative z-[10]">
-                      Get Your Free Website Audit
+                      Get Your Free WordPress Audit
                     </span>
                   </div>
 

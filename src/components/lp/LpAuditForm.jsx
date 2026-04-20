@@ -121,7 +121,7 @@ const LpAuditForm = () => {
             </div>
           </fieldset>
 
-          <fieldset className="w-full">
+          <fieldset className="w-full min-w-0">
             <label
               htmlFor="help"
               className="text-[1.6rem] leading-[3rem] font-bold tracking-[-0.02em] text-[#312749]"

@@ -5,85 +5,16 @@ import ServicesLogoShape from "@/assets/svgs/services-logo-shape.svg";
 import SectionLabel from "@/components/ui/SectionLabel";
 import SectionTitle from "@/components/ui/SectionTitle";
 import SectionDescription from "@/components/ui/SectionDescription";
-import { useState } from "react";
-import WebDesignIcon from "@/assets/icons/ui/web-design-icon.svg";
-import AnalysisIcon from "@/assets/icons/ui/analysis-icon.svg";
-import IdentityIcon from "@/assets/icons/ui/identity-icon.svg";
-import NavUiIcon from "@/assets/icons/ui/nav-ui-icon.svg";
-import PaperIcon from "@/assets/icons/ui/paper-icon.svg";
-import ShapeIcon from "@/assets/icons/ui/shape-icon.svg";
-import CheckMarkIcon from "@/components/icons/CheckMarkIcon";
 import { MotionEffect } from "@/components/effects/motion-effect";
 import dynamic from "next/dynamic";
+import LightFeatureCard2 from "@/components/ui/LightFeatureCard2";
 
-const Expertise3Slider = dynamic(
-  () => import("@/components/ui/Expertise3Slider"),
+const LightFeatureCardSlider2 = dynamic(
+  () => import("@/components/ui/LightFeatureCardSlider2"),
   {
     ssr: false,
-    loading: () => <div className="h-[54rem] md:h-[50rem] lg:h-[54rem]" />, // placeholder height to prevent layout shift
   },
 );
-
-export const expertiseData = [
-  {
-    icon: WebDesignIcon,
-    iconWidth: 35,
-    iconHeight: 35,
-    title: "Visual Identity",
-    description:
-      "The core visual elements of your brand. We create distinct, memorable logos and visual systems.",
-    listItem: ["Logo Design", "Color Palettes", "Typography Selection"],
-  },
-  {
-    icon: AnalysisIcon,
-    iconWidth: 30,
-    iconHeight: 30,
-    title: "Brand Strategy",
-    description:
-      "Defining who you are, who you serve, and why it matters. We build the strategic foundation.",
-    listItem: [
-      "Brand Archetypes",
-      "Positioning Statement",
-      "Competitor Analysis",
-    ],
-  },
-  {
-    icon: IdentityIcon,
-    iconWidth: 30,
-    iconHeight: 30,
-    title: "Verbal Identity",
-    description:
-      "It's not just what you say, but how you say it. We define your brand's voice and tone.",
-    listItem: ["Tone of Voice", "Tagline Development", "Messaging Framework"],
-  },
-  {
-    icon: NavUiIcon,
-    iconWidth: 30,
-    iconHeight: 30,
-    title: "Brand Guidelines",
-    description:
-      "A comprehensive manual ensuring your team and partners use the brand correctly every time.",
-    listItem: ["Logo Usage", "Digital Guidelines", "Print Guidelines"],
-  },
-  {
-    icon: PaperIcon,
-    iconWidth: 30,
-    iconHeight: 30,
-    title: "Collateral Design",
-    description:
-      "Applying your new brand to the real world, from business cards to slide decks.",
-    listItem: ["Stationery", "Social Media Kits", "Pitch Decks"],
-  },
-  {
-    icon: ShapeIcon,
-    iconWidth: 30,
-    iconHeight: 30,
-    title: "Rebranding",
-    description:
-      "Carefully evolving an existing brand to stay relevant without alienating loyal customers.",
-    listItem: ["Brand Audit", "Evolution Strategy", "Launch Planning"],
-  },
-];
 
 export const themeColors = {
   primary: {
@@ -115,10 +46,19 @@ export const themeColors = {
 export const themeColorList = Object.values(themeColors);
 
 const Expertise3 = ({ service }) => {
-  const [hovered, setHovered] = useState(null);
-
   const getThemeColor = (index) =>
     themeColorList[index % themeColorList.length];
+
+  const slideData = service.card.map((item, idx) => {
+    const theme = getThemeColor(idx);
+    return {
+      icon: item.icon.asset.url,
+      title: item.title,
+      description: item.description,
+      listItem: item.listItem?.map((list) => list.label),
+      color: theme.color,
+    };
+  });
 
   return (
     <>
@@ -175,7 +115,7 @@ const Expertise3 = ({ service }) => {
             >
               <div className="max-w-[74rem]">
                 <SectionDescription
-                  text="Deep expertise across the entire ecosystem. We don't just 'install themes' — we engineer solutions."
+                  text="Deep expertise across the entire ecosystem. We don't just 'install themes' we engineer solutions."
                   textColor="#625C70"
                 />
               </div>
@@ -196,62 +136,14 @@ const Expertise3 = ({ service }) => {
                   delay={0.4 + idx * 0.15}
                   transition={{ type: "tween", duration: 1.0, ease: "easeOut" }}
                 >
-                  <div
-                    onMouseEnter={() => setHovered(idx)}
-                    onMouseLeave={() => setHovered(null)}
-                    style={{
-                      borderColor: theme.color,
-                      boxShadow: hovered === idx ? theme.shadow : "",
-                    }}
-                    className="flex h-full w-full flex-col rounded-[3rem] border bg-white px-[3rem] pt-[3.1rem] pb-[2.8rem] transition-all duration-300"
-                  >
-                    {/* Icon */}
-                    <div className="relative size-[6.3rem]">
-                      <div className="absolute top-0 left-0 z-[1] inline-flex size-[5.8rem] items-center justify-center rounded-[1.3rem] border border-white/20 bg-white/35 backdrop-blur-[10px]">
-                        <Image
-                          src={item.icon.asset.url}
-                          alt="Icon"
-                          width={35}
-                          height={35}
-                          unoptimized
-                        />
-                      </div>
-
-                      <div
-                        className="absolute right-0 bottom-0 z-[0] size-[5.8rem] rounded-[1.3rem]"
-                        style={{ backgroundColor: theme.color }}
-                      />
-                    </div>
-
-                    <h3 className="mt-[3rem] mb-[1rem] text-[2.6rem] font-semibold text-[#312749]">
-                      {item.title}
-                    </h3>
-
-                    <p className="text-[1.6rem] text-[#625C70]">
-                      {item.description}
-                    </p>
-
-                    {Array.isArray(item.listItem) &&
-                      item.listItem.length > 0 && (
-                        <>
-                          <hr className="my-[2rem] w-full border-t border-[#E4E3E8]" />
-
-                          <ul className="flex flex-col items-start">
-                            {item.listItem.map((list, idx) => (
-                              <li
-                                key={idx}
-                                className="inline-flex items-center gap-[1.3rem] text-[1.6rem] leading-[2.8rem] tracking-normal text-[#625C70]"
-                              >
-                                <i>
-                                  <CheckMarkIcon color={theme.color} />
-                                </i>
-                                <span>{list.label}</span>
-                              </li>
-                            ))}
-                          </ul>
-                        </>
-                      )}
-                  </div>
+                  <LightFeatureCard2
+                    icon={item.icon.asset.url}
+                    title={item.title}
+                    description={item.description}
+                    points={item.listItem?.map((list) => list.label)}
+                    color={theme.color}
+                    hoverShadow={theme.shadow}
+                  />
                 </MotionEffect>
               );
             })}
@@ -267,10 +159,7 @@ const Expertise3 = ({ service }) => {
             className="w-full"
           >
             <div className="mt-[5rem] block w-full xl:hidden">
-              <Expertise3Slider
-                service={service}
-                getThemeColor={getThemeColor}
-              />
+              <LightFeatureCardSlider2 slideData={slideData} />
             </div>
           </MotionEffect>
         </div>

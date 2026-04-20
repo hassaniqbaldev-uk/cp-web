@@ -5,13 +5,11 @@ import SectionDescription from "@/components/ui/SectionDescription";
 import Image from "next/image";
 import RightArrowIcon from "@/components/icons/RightArrowIcon";
 import { LP_SERVICES_CARD } from "@/contants";
-import { useState } from "react";
 import { MotionEffect } from "@/components/effects/motion-effect";
 import ClientReviewBg from "@/assets/images/backgrounds/client-review-bg.webp";
 import AboutHeroLogoShape1 from "../decorative-elements/AboutHeroLogoShape1";
 import ContactHeroLogoShape1 from "../decorative-elements/ContactHeroLogoShape1";
 import dynamic from "next/dynamic";
-import Link from "next/link";
 import useServiceStore from "@/store/useServiceStore";
 
 const LpServicesSlider = dynamic(() => import("./LpServicesSlider"), {
@@ -20,7 +18,6 @@ const LpServicesSlider = dynamic(() => import("./LpServicesSlider"), {
 });
 
 const LpServicesSection = () => {
-  const [hovered, setHovered] = useState(null);
   const { setSelectedService } = useServiceStore();
 
   return (
@@ -66,7 +63,7 @@ const LpServicesSection = () => {
             >
               <div className="mt-[.5rem] mb-[1.4rem]">
                 <SectionTitle
-                  text="WordPress Services Built for Results"
+                  text="Our WordPress Web Design Services"
                   textColor="#ffffff"
                 />
               </div>
@@ -81,7 +78,7 @@ const LpServicesSection = () => {
             >
               <div>
                 <SectionDescription
-                  text="We provide a complete suite of WordPress services tailored to help your business succeed online:"
+                  text="We provide a complete suite of WordPress services tailored to fix your problems and help your business succeed online."
                   textColor="#ffffff"
                 />
               </div>
@@ -99,43 +96,41 @@ const LpServicesSection = () => {
                 transition={{ type: "tween", duration: 0.6, ease: "easeOut" }}
               >
                 <div
-                  onMouseEnter={() => setHovered(idx)}
-                  onMouseLeave={() => setHovered(null)}
                   style={{
-                    boxShadow: hovered === idx ? item.boxShadow : "",
-                    borderColor: item.color,
+                    boxShadow: item.boxShadow,
+                    border: `1px solid ${item.color}`,
                   }}
-                  className="flex h-full w-full flex-col items-start justify-between rounded-[3rem] border bg-white px-[3rem] pt-[3.1rem] pb-[2.8rem] text-left transition-all duration-300"
+                  className="flex h-full w-full flex-col justify-between gap-[4rem] rounded-[3rem] bg-white p-[3rem] transition-all duration-200"
                 >
-                  <div>
-                    <div className="relative size-[6.3rem]">
-                      <div className="absolute top-0 left-0 z-[1] inline-flex size-[5.8rem] items-center justify-center rounded-[1.3rem] border border-white/20 bg-white/35 backdrop-blur-[10px]">
-                        <i>
-                          <Image
-                            src={item.icon}
-                            alt="Icon"
-                            width={item.iconWidth}
-                            height={item.iconHeight}
-                          />
-                        </i>
+                  {/* Head */}
+                  <div className="flex flex-col items-start text-left">
+                    <i className="relative h-[6.3rem] w-[6.3rem] rounded-[1.5rem]">
+                      <div className="absolute top-0 left-0 z-[1] inline-flex h-[5.8rem] w-[5.8rem] items-center justify-center rounded-[1.3rem] border-white/20 bg-white/35 backdrop-blur-[1rem]">
+                        <img
+                          src={item.icon}
+                          className="h-[3rem] w-[3rem]"
+                          alt="Icon"
+                        />
                       </div>
+
                       <div
                         style={{
                           background: item.color,
                         }}
-                        className="absolute right-0 bottom-0 z-[0] size-[5.8rem] rounded-[1.3rem]"
+                        className="absolute right-0 bottom-0 z-[0] h-[5.8rem] w-[5.8rem] rounded-[1.5rem]"
                       />
-                    </div>
+                    </i>
 
-                    <h3 className="mt-[3rem] text-[2.6rem] font-semibold tracking-[-0.02em] text-[#312749]">
+                    <h4 className="mt-[3rem] text-[2.4rem] leading-[2.8rem] font-semibold tracking-[-0.02em] text-[#312749] xl:text-[2.6rem] xl:leading-[3rem]">
                       {item.title}
-                    </h3>
+                    </h4>
 
-                    <p className="mt-[1rem] mb-[3.5rem] text-[1.6rem] leading-[2.4rem] font-normal text-[#625C70]">
+                    <p className="mt-[1rem] text-[1.6rem] leading-[2.4rem] font-normal text-[#625C70]">
                       {item.description}
                     </p>
                   </div>
 
+                  {/* Footer */}
                   <button
                     onClick={() => {
                       setSelectedService(item.value);
@@ -146,10 +141,10 @@ const LpServicesSection = () => {
                     style={{
                       color: item.color,
                     }}
-                    className="group inline-flex items-center gap-[.8rem] text-[1.6rem] leading-[1.4rem] font-semibold tracking-normal"
+                    className="group inline-flex gap-[.8rem] text-[1.6rem] leading-[2rem] font-semibold tracking-normal"
                   >
                     {item.linkText}{" "}
-                    <i className="transition-all duration-200 group-hover:-rotate-45">
+                    <i className="relative top-[.5rem] left-[0rem] transition-all duration-200 group-hover:left-[.5rem]">
                       <RightArrowIcon color={item.color} />
                     </i>
                   </button>
@@ -166,7 +161,7 @@ const LpServicesSection = () => {
             delay={0.5}
             transition={{ type: "tween", duration: 0.6, ease: "easeOut" }}
           >
-            <div className="mt-[3rem] block w-full xl:hidden">
+            <div className="mt-[5rem] block w-full xl:hidden">
               <LpServicesSlider LP_SERVICES_CARD={LP_SERVICES_CARD} />
             </div>
           </MotionEffect>

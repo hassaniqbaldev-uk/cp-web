@@ -22,9 +22,9 @@ const LpProcessSection = () => {
           >
             <h2 className="text-[3rem] leading-[3.7rem] font-bold tracking-[-0.02em] text-[#312749] md:text-[7rem] md:leading-[7.5rem]">
               <span className="bg-gradient-pink-orange bg-clip-text text-transparent">
-                A Simple,
+                Getting Started
               </span>{" "}
-              <span className="block"> Proven Process</span>
+              <span className="block">Is Simple</span>
             </h2>
           </MotionEffect>
 

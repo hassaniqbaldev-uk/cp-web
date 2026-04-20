@@ -7,9 +7,13 @@ import SecondaryButton from "../ui/SecondaryButton";
 import PhoneIcon from "../icons/PhoneIcon";
 import { motion } from "framer-motion";
 import { MotionEffect } from "../effects/motion-effect";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 const LpHeader = () => {
+  const [isSticky, setIsSticky] = useState(false);
+  const [isHidden, setIsHidden] = useState(false);
+  const [lastScrollY, setLastScrollY] = useState(0);
+
   const slideUp = {
     initial: { y: "0%" },
     hover: { y: "-130%" },
@@ -36,8 +40,32 @@ const LpHeader = () => {
     })();
   }, []);
 
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+
+      // sticky after 50px
+      setIsSticky(currentScrollY > 50);
+
+      // hide on scroll down, show on scroll up
+      if (currentScrollY > lastScrollY && currentScrollY > 100) {
+        setIsHidden(true);
+      } else {
+        setIsHidden(false);
+      }
+
+      setLastScrollY(currentScrollY);
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [lastScrollY]);
+
   return (
-    <>
+    <div
+      className={`fixed top-0 left-0 z-[500] w-full transition-all duration-200 ease-out ${isHidden ? "-translate-y-full" : "translate-y-0"}`}
+    >
       {/* Sticky Contact */}
       <Link
         href="tel:01618202667"
@@ -46,27 +74,31 @@ const LpHeader = () => {
         Call Us: 0161 820 2667
       </Link>
 
-      <header className="absolute top-[6rem] left-0 z-[500] w-full px-[2rem] md:top-[4rem] xl:px-[0rem]">
+      <header className="w-full px-[2rem] pt-[6rem] md:pt-[4rem] xl:px-[0rem]">
         <MotionEffect
           slide={{ direction: "down" }}
           transition={{ type: "spring", stiffness: 120, damping: 20 }}
           fade
           zoom
         >
-          <div className="container flex w-full items-center justify-between gap-[4rem]">
+          <div
+            className={`container flex w-full items-center justify-between gap-[4rem] transition-all duration-200 ease-out ${isSticky ? "rounded-[20rem] bg-[white] px-[1rem] py-[1rem] shadow-[4px_8px_36px_0px_#0000001f] md:px-[2rem] xl:px-[3rem]" : " bg-[transparent] px-[0rem] py-[0rem] shadow-none"}`}
+          >
             <div>
               <Logo
                 width="230"
                 height="90"
-                className="logo h-[4rem] w-auto fill-white md:h-[6rem] xl:h-[9rem]"
+                className={`logo h-[4rem] w-auto transition-all duration-200 ease-out md:h-[6rem] xl:h-[9rem] ${isSticky ? "fill-black" : "fill-white"}`}
               />
             </div>
 
-            <div className="hidden items-center justify-between gap-[2rem] rounded-[3.8rem] bg-white/18 px-[2.6rem] py-[1.5rem] backdrop-blur-[10px] xl:flex">
+            <div
+              className={`hidden items-center justify-between gap-[2rem] rounded-[3.8rem] bg-white/18 backdrop-blur-[10px] transition-all duration-200 ease-out xl:flex ${isSticky ? "px-[0rem] py-[0rem]" : "px-[2.6rem] py-[1.5rem]"}`}
+            >
               <div className="min-w-max">
                 <SecondaryButton
                   text="Book Free Consultation"
-                  bGcolor="#ffffff"
+                  bGcolor="#ffd900"
                   textColor="#000000"
                   data-cal-namespace="15min"
                   data-cal-link="hassan-iqbal-mznzu9/15min"
@@ -158,7 +190,7 @@ const LpHeader = () => {
                     className="inline-flex items-center justify-center"
                   >
                     {/* TEXT PILL */}
-                    <span className="relative inline-flex h-[3.5rem] items-center justify-center overflow-hidden rounded-[7rem] bg-[#ffffff] px-[2rem] text-[1.2rem] font-semibold text-[#000000] md:h-[4rem] md:px-[2.4rem] md:text-[1.4rem] md:font-bold">
+                    <span className="relative inline-flex h-[3.5rem] items-center justify-center overflow-hidden rounded-[7rem] bg-[#ffd900] px-[1.2rem] text-[1.2rem] font-semibold text-[#000000] md:h-[4rem] md:px-[2.4rem] md:text-[1.4rem] md:font-bold">
                       <motion.span
                         variants={slideUp}
                         transition={{ duration: 0.2, ease: "easeOut" }}
@@ -187,12 +219,12 @@ const LpHeader = () => {
                     >
                       <path
                         d="M1.5752 0C2.62647 1.81667 4.58995 3.04004 6.83984 3.04004C9.08953 3.03987 11.0523 1.81654 12.1035 0H13.6787V13.6787H12.1035C11.0523 11.8621 9.08956 10.6388 6.83984 10.6387C4.58992 10.6387 2.62646 11.862 1.5752 13.6787H0V0H1.5752Z"
-                        fill="#ffffff"
+                        fill="#ffd900"
                       />
                     </svg>
 
                     {/* ARROW CIRCLE */}
-                    <span className="relative hidden size-[4rem] items-center justify-center overflow-hidden rounded-full bg-[#ffffff] md:inline-flex">
+                    <span className="relative hidden size-[4rem] items-center justify-center overflow-hidden rounded-full bg-[#ffd900] md:inline-flex">
                       {/* Arrow out */}
                       <motion.span
                         variants={slideUp}
@@ -286,7 +318,7 @@ const LpHeader = () => {
           </div>
         </MotionEffect>
       </header>
-    </>
+    </div>
   );
 };
 

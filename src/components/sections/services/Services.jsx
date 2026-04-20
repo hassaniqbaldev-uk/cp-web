@@ -3,24 +3,20 @@
 import SectionLabel from "@/components/ui/SectionLabel";
 import SectionTitle from "@/components/ui/SectionTitle";
 import SectionDescription from "@/components/ui/SectionDescription";
-import Image from "next/image";
 import { SERVICES_CARD } from "@/contants";
-import Link from "next/link";
-import RightArrowIcon from "@/components/icons/RightArrowIcon";
-import { useState } from "react";
-import CheckMarkIcon from "@/components/icons/CheckMarkIcon";
 import ServicesLogoShape from "@/components/decorative-elements/ServicesLogoShape";
 import { MotionEffect } from "@/components/effects/motion-effect";
 import dynamic from "next/dynamic";
+import LightFeatureCard2 from "@/components/ui/LightFeatureCard2";
 
-const ServicesSlider = dynamic(() => import("@/components/ui/ServicesSlider"), {
-  ssr: false,
-  loading: () => <div className="h-[51.2rem] md:h-[49.4rem] lg:h-[56rem]" />, // placeholder height to prevent layout shift
-});
+const LightFeatureCardSlider2 = dynamic(
+  () => import("@/components/ui/LightFeatureCardSlider2"),
+  {
+    ssr: false,
+  },
+);
 
 const Services = () => {
-  const [hovered, setHovered] = useState(null);
-
   return (
     <>
       <section className="relative overflow-hidden bg-[#F0F6FF] px-[2rem] py-[5rem] xl:px-[0rem] xl:py-[10rem]">
@@ -81,73 +77,16 @@ const Services = () => {
                 delay={0.4 + idx * 0.15}
                 transition={{ type: "tween", duration: 1.0, ease: "easeOut" }}
               >
-                <div
-                  onMouseEnter={() => setHovered(idx)}
-                  onMouseLeave={() => setHovered(null)}
-                  style={{
-                    borderColor: hovered === idx ? item.color : "transparent",
-                    boxShadow: hovered === idx ? item.boxShadow : "",
-                  }}
-                  className="flex w-full flex-col items-start justify-between rounded-[3rem] border bg-white px-[3rem] pt-[3.1rem] pb-[2.8rem] text-left backdrop-blur-[10px] transition-all duration-200"
-                >
-                  <div className="relative size-[6.3rem]">
-                    <div className="absolute top-0 left-0 z-[1] inline-flex size-[5.8rem] items-center justify-center rounded-[1.3rem] border border-white/20 bg-white/35 backdrop-blur-[10px]">
-                      <i>
-                        <Image
-                          src={item.icon}
-                          alt="Icon"
-                          width={item.iconWidth}
-                          height={item.iconHeight}
-                          unoptimized
-                        />
-                      </i>
-                    </div>
-                    <div
-                      style={{
-                        background: item.color,
-                      }}
-                      className="absolute right-0 bottom-0 z-[0] size-[5.8rem] rounded-[1.3rem]"
-                    />
-                  </div>
-
-                  <div>
-                    <h3 className="mt-[3rem] mb-[1rem] text-[2.6rem] font-semibold tracking-[-0.02em] text-[#312749]">
-                      {item.title}
-                    </h3>
-
-                    <p className="text-[1.6rem] leading-[2.4rem] font-normal text-[#625C70]">
-                      {item.description}
-                    </p>
-
-                    <ul className="mt-[1.5rem] mb-[5.3rem] flex flex-col items-start">
-                      {item.listItem.map((list, idx) => (
-                        <li
-                          key={idx}
-                          className="inline-flex items-center gap-[1.3rem] text-[1.6rem] leading-[2.8rem] tracking-normal text-[#625C70]"
-                        >
-                          <i>
-                            <CheckMarkIcon color={item.color} />
-                          </i>
-
-                          <span>{list}</span>
-                        </li>
-                      ))}
-                    </ul>
-
-                    <Link
-                      href={item.link}
-                      style={{
-                        color: item.color,
-                      }}
-                      className="group inline-flex items-center gap-[.8rem] text-[1.6rem] leading-[1.4rem] font-semibold tracking-normal"
-                    >
-                      {item.linkText}{" "}
-                      <i className="transition-all duration-200 group-hover:-rotate-45">
-                        <RightArrowIcon color={item.color} />
-                      </i>
-                    </Link>
-                  </div>
-                </div>
+                <LightFeatureCard2
+                  title={item.title}
+                  description={item.description}
+                  hoverShadow={item.boxShadow}
+                  color={item.color}
+                  link={item.link}
+                  linkText={item.linkText}
+                  points={item.listItem}
+                  icon={item.icon}
+                />
               </MotionEffect>
             ))}
           </div>
@@ -161,8 +100,8 @@ const Services = () => {
             transition={{ type: "tween", duration: 0.8, ease: "easeOut" }}
             className="w-full"
           >
-            <div className="mt-[3rem] block w-full xl:hidden">
-              <ServicesSlider SERVICES_CARD={SERVICES_CARD} />
+            <div className="mt-[5rem] block w-full xl:hidden">
+              <LightFeatureCardSlider2 slideData={SERVICES_CARD} />
             </div>
           </MotionEffect>
         </div>

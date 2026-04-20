@@ -1,17 +1,6 @@
-import ImacIcon from "@/assets/icons/ui/imac-icon.svg";
-import PaintIcon from "@/assets/icons/ui/paint-icon.svg";
-import UpsideIcon from "@/assets/icons/ui/upside-arrow-icon.svg";
-import WordpressIcon from "@/assets/icons/ui/wordpress-icon.svg";
-import LandingPageIcon from "@/assets/icons/ui/landing-page-icon.svg";
-import WooCommerceIcon from "@/assets/icons/ui/woocommerce-icon.svg";
-import SpeedSecurityIcon from "@/assets/icons/ui/speed-security-icon.svg";
-import MaintenanceSupportIcon from "@/assets/icons/ui/maintenance-support-icon.svg";
-
 export const SERVICES_CARD = [
   {
-    icon: ImacIcon,
-    iconWidth: 30,
-    iconHeight: 30,
+    icon: "/icons/imac-icon.svg",
     title: "Websites & Platforms",
     description:
       "Custom websites built on WordPress, WooCommerce, Shopify, Webflow, and headless React.",
@@ -27,9 +16,7 @@ export const SERVICES_CARD = [
     boxShadow: "4px 12px 30px 0px #F14A581C",
   },
   {
-    icon: PaintIcon,
-    iconWidth: 30,
-    iconHeight: 30,
+    icon: "/icons/paint-icon.svg",
     title: "Branding & Identity",
     description:
       "Stand out with visual identities that resonate. Logos, brand guidelines, and design systems.",
@@ -45,9 +32,7 @@ export const SERVICES_CARD = [
     boxShadow: "4px 12px 30px 0px #44B2761C",
   },
   {
-    icon: UpsideIcon,
-    iconWidth: 28,
-    iconHeight: 17,
+    icon: "/icons/upside-arrow-icon.svg",
     title: "Growth & Support",
     description:
       "Your website is never 'done.' We provide ongoing SEO, CRO, maintenance, and strategic growth.",
@@ -66,62 +51,68 @@ export const SERVICES_CARD = [
 
 export const LP_SERVICES_CARD = [
   {
-    icon: WordpressIcon,
-    iconWidth: 30,
-    iconHeight: 30,
-    value: "custom-wordpress",
-    title: "Custom WordPress",
-    description: "Custom WordPress Website Design focused on conversions",
+    icon: "/icons/wordpress-icon.svg",
+    value: "wordpress-fixes-emergency-repairs",
+    title: "WordPress Fixes & Emergency Repairs",
+    description:
+      "Broken pages, plugin conflicts, white screens, and failed updates — we diagnose the problem and get your site back up fast.",
     link: "#audit",
-    linkText: "Get your Audit",
+    linkText: "Explore Service",
     color: "#3078FF",
     boxShadow: "4px 12px 30px 0px #3078FF1C",
   },
   {
-    icon: LandingPageIcon,
-    iconWidth: 30,
-    iconHeight: 30,
-    value: "landing-page-design",
-    title: "Landing Page Design",
-    description: "High-Converting Landing Pages for PPC campaigns",
+    icon: "/icons/landing-page-icon.svg",
+    value: "custom-wordpress-website-design",
+    title: "Custom WordPress Website Design",
+    description:
+      "Unique websites built for your brand — tailored to your goals and audience to make a strong, lasting online impact.",
     link: "#audit",
-    linkText: "Get your Audit",
+    linkText: "Explore Service",
     color: "#EE7621",
     boxShadow: "4px 12px 30px 0px #EE76211C",
   },
   {
-    icon: WooCommerceIcon,
-    iconWidth: 30,
-    iconHeight: 30,
+    icon: "/icons/woocommerce-icon.svg",
     value: "woocommerce-integration",
     title: "WooCommerce Integration",
-    description: "WooCommerce Development for scalable sales",
+    description:
+      "Full-featured online stores with a seamless shopping experience, including payments, product management, and ongoing support.",
     link: "#audit",
-    linkText: "Get your Audit",
+    linkText: "Explore Service",
     color: "#FF37B3",
     boxShadow: "4px 12px 30px 0px #FF37B31C",
   },
   {
-    icon: SpeedSecurityIcon,
-    iconWidth: 30,
-    iconHeight: 30,
-    value: "speed-and-security",
-    title: "Speed & Security",
-    description: "Speed Optimization to reduce bounce and improve performance",
+    icon: "/icons/speed-security-icon.svg",
+    value: "speed-optimisation-hack-recovery",
+    title: "Speed Optimisation & Hack Recovery",
+    description:
+      "Slow or hacked? We make your site fast, clean it up if compromised, and secure it so it stays protected.",
     link: "#audit",
-    linkText: "Get your Audit",
+    linkText: "Explore Service",
     color: "#44B276",
     boxShadow: "4px 12px 30px 0px #44B2761C",
   },
   {
-    icon: MaintenanceSupportIcon,
-    iconWidth: 30,
-    iconHeight: 30,
-    value: "maintenance-and-support",
-    title: "Maintenance & Support",
-    description: "SEO Setup to support long-term growth",
+    icon: "/icons/maintenance-support-icon.svg",
+    value: "wordpress-redesign-refresh",
+    title: "WordPress Redesign & Refresh",
+    description:
+      "Outdated look holding you back? We modernise your site's design without losing your existing content or rankings.",
     link: "#audit",
-    linkText: "Get your Audit",
+    linkText: "Explore Service",
+    color: "#BF00B4",
+    boxShadow: "4px 12px 30px 0px #BF00B41C",
+  },
+  {
+    icon: "/icons/maintenance-support-icon.svg",
+    value: "maintenance-support",
+    title: "Maintenance & Support",
+    description:
+      "Keep your site running smoothly with regular updates, backups, security checks, and ongoing assistance for hassle-free management.",
+    link: "#audit",
+    linkText: "Explore Service",
     color: "#BF00B4",
     boxShadow: "4px 12px 30px 0px #BF00B41C",
   },

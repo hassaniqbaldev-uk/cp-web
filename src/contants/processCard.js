@@ -223,32 +223,33 @@ export const PROCESS_3_CARD = [
 export const LP_PROCESS_CARD = [
   {
     step: "1",
-    title: "Audit & Strategy",
-    description: "We analyze your current website, traffic, and goals.",
+    title: "Tell Us What's Wrong (or What You Need)",
+    description:
+      "Book a free call or fill in the form with no tech knowledge required.",
     color: "#ED910C",
     boxShadow: "5px 5px 44px 0px #ED910CCC",
   },
   {
     step: "2",
-    title: "Design & Build",
+    title: "We Review Your Site",
     description:
-      "We create a conversion-focused WordPress experience tailored to your business.",
+      "We take a look, diagnose the issues, and give you a clear plan and honest quote.",
     color: "#3078FF",
     boxShadow: "5px 5px 44px 0px #3078FFCC",
   },
   {
     step: "3",
-    title: "Optimize & Launch",
+    title: "We Fix or Build Fast ",
     description:
-      " We refine performance, improve speed, and launch a site built to convert.",
+      "Most fixes are completed within 24–72 hours. New sites launch in 2–4 weeks.",
     color: "#BF00B4",
     boxShadow: "5px 5px 44px 0px #BF00B4CC",
   },
   {
     step: "4",
-    title: "On going support",
+    title: "You Get a Website That Works",
     description:
-      "We provide continuous support, updates, and performance improvements to keep your website running smoothly & growing over time.",
+      "Clean, Fast, Secure and you'll know exactly how to manage it going forward.",
     color: "#44B276",
     boxShadow: "5px 5px 44px 0px #44B276CC",
   },

@@ -36,7 +36,7 @@ const LpProblemSection = () => {
           transition={{ type: "tween", duration: 0.8, ease: "easeOut" }}
         >
           <div className="max-w-[90rem]">
-            <SectionTitle text=" You’re Paying for Traffic But Your Website Isn’t Converting" />
+            <SectionTitle text="Sound Familiar?" />
           </div>
         </MotionEffect>
       </div>
@@ -62,23 +62,23 @@ const LpProblemSection = () => {
 
           <div className="w-full lg:w-[53rem]">
             <h4 className="text-[2.2rem] leading-[2.6rem] font-semibold tracking-[-0.02em] text-[#312749] md:text-[2.6rem] md:leading-[2.8rem]">
-              Every click costs you money. But if your website isn’t built to
-              convert, you’re losing potential customers every day.
+              You&apos;re not alone. Thousands of business owners deal with
+              these WordPress headaches every day:
             </h4>
 
             <ul className="my-[2.5rem] flex flex-col gap-[.8rem]">
               {[
-                "Don’t guide users to take action",
-                "Load too slowly and increase drop-offs",
-                "Fail on mobile devices",
-                "Lack clear messaging and structure",
+                "Your website is slow and visitors leave before it loads",
+                "Pages are broken, plugins conflict, or things just stop working",
+                "You built it yourself (or had someone cheap do it) and now it's a mess",
+                "You've lost access, been hacked, or something went wrong after an update",
               ].map((item, idx) => (
                 <li key={idx} className="flex items-center gap-[1.2rem]">
                   <i className="min-w-max">
                     <CheckMarkIcon color="#EE7621" height="15" width="15" />
                   </i>
 
-                  <span className="text-[1.8rem] font-medium tracking-[2rem] tracking-normal text-[#312749]">
+                  <span className="text-[1.6rem] leading-[2rem] font-medium tracking-[2rem] tracking-normal text-[#312749]">
                     {item}
                   </span>
                 </li>
@@ -86,7 +86,8 @@ const LpProblemSection = () => {
             </ul>
 
             <p className="mb-[4.5rem] text-[1.6rem] leading-[2.5rem] font-medium tracking-normal text-[#312749]">
-              This isn’t a traffic issue it’s a conversion issue
+              If your website has any of these issues, it’s time for a
+              professional redesign that focuses on performance and results.
             </p>
 
             <PrimaryButton

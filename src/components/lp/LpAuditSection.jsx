@@ -1,8 +1,6 @@
 import React, { Suspense } from "react";
 import { MotionEffect } from "../effects/motion-effect";
 import SectionLabel from "../ui/SectionLabel";
-import Image from "next/image";
-import AuditForm from "../ui/AuditForm";
 import SectionDescription from "../ui/SectionDescription";
 import LpAuditForm from "./LpAuditForm";
 
@@ -76,6 +74,7 @@ const LpAuditSection = () => {
             inView
             delay={0.5}
             transition={{ type: "tween", duration: 0.8, ease: "easeOut" }}
+            className="w-full md:w-[59.5rem]"
           >
             <Suspense fallback={null}>
               <LpAuditForm />
