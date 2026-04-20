@@ -690,12 +690,6 @@ const Footer = () => {
                         alt={item.alt}
                       />
                     </div>
-
-                    {/* <div className="absolute inset-0 flex items-center justify-center bg-white opacity-0 transition-all duration-200 group-hover:opacity-100">
-                      <span className="text-[1.8rem] font-bold tracking-normal text-black">
-                        80+ Reviews
-                      </span>
-                    </div> */}
                   </li>
                 ))}
               </ul>
@@ -723,12 +717,6 @@ const Footer = () => {
                           className={`${item.sizes}`}
                         />
                       </div>
-
-                      {/* <div className="absolute inset-0 flex items-center justify-center bg-white opacity-0 transition-all duration-200 group-hover:opacity-100">
-                        <span className="text-[1.8rem] font-bold tracking-normal text-black">
-                          80+ Reviews
-                        </span>
-                      </div> */}
                     </div>
                   ))}
                 </Marquee>

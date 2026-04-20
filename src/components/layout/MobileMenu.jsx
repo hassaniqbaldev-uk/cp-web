@@ -432,16 +432,6 @@ const MobileMenu = () => {
               </Link>
             </li>
 
-            {/* <li className="w-full border-b border-[#818181]/30 pb-[1.2rem]">
-              <Link
-                onClick={closeMenu}
-                href=""
-                className="inline-flex items-start justify-start text-left text-[2.2rem] leading-[2.4rem] font-extrabold tracking-normal text-[#312749]"
-              >
-                Pricing
-              </Link>
-            </li> */}
-
             <li className="w-full">
               <Accordion type="single" collapsible>
                 <AccordionItem value="item-1">

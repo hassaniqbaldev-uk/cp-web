@@ -131,8 +131,6 @@ const Questions = ({ data = questionsData }) => {
                     </AccordionItem>
                   </MotionEffect>
                 ))}
-
-                {/* <hr className="mx-auto my-[1.5rem] w-full border-t-2 border-[#F1F1F3]" /> */}
               </Accordion>
             </div>
           </div>

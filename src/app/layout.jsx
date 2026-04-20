@@ -17,42 +17,12 @@ export const metadata = {
     "CreativePixels is a Manchester-based creative agency delivering WordPress websites, branding, and digital solutions for clients across the UK, US & Australia.",
   metadataBase: new URL("https://creativepixels.agency"),
 
-  // ------------------------
-  // OPEN GRAPH
-  // ------------------------
-  // openGraph: {
-  //   title: "CreativePixels | Web Design, WordPress & Branding Agency",
-  //   description:
-  //     "CreativePixels is a Manchester-based creative agency delivering WordPress websites, branding, and digital solutions for clients across the UK, US & Australia.",
-  //   url: "https://creativepixels.agency",
-  //   siteName: "CreativePixels",
-  //   images: [
-  //     {
-  //       url: "/images/og-image-assets/og-image.jpg",
-  //       width: 1200,
-  //       height: 630,
-  //       alt: "CreativePixels - Web Design, WordPress & Branding Agency",
-  //     },
-  //   ],
-  //   locale: "en_GB",
-  //   type: "website",
-  // },
   openGraph: {
     siteName: "CreativePixels",
     locale: "en_GB",
     type: "website",
   },
 
-  // ------------------------
-  // TWITTER / X
-  // ------------------------
-  // twitter: {
-  //   card: "summary_large_image",
-  //   title: "CreativePixels | Web Design, WordPress & Branding Agency",
-  //   description:
-  //     "CreativePixels is a Manchester-based creative agency delivering WordPress websites, branding, and digital solutions for clients across the UK, US & Australia.",
-  //   images: ["/images/og-image-assets/og-image.jpg"],
-  // },
   twitter: {
     card: "summary_large_image",
   },
@@ -84,8 +54,6 @@ export default function RootLayout({ children }) {
 
         {children}
 
-        {/* Google Recaptcha - disabled for now, will add in future */}
-
         {/* Google Tag Manager */}
         <Script
           id="gtm-script"
@@ -99,12 +67,6 @@ export default function RootLayout({ children }) {
           }}
         />
         {/* End Google Tag Manager */}
-
-        {/* <Script
-          src="https://cdn.feedbucket.app/assets/feedbucket.js"
-          strategy="afterInteractive"
-          data-feedbucket="3rHNb3lcgqe226C8ghh5"
-        /> */}
       </body>
     </html>
   );

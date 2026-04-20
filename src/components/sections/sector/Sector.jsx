@@ -132,10 +132,6 @@ const Sector = ({ solutions = [] }) => {
               className="w-full"
             >
               <div className="block w-full xl:hidden">
-                {/* <SectorSlider
-                  solutions={solutions}
-                  getThemeColor={getThemeColor}
-                /> */}
                 <LightFeatureCardSlider1 slideData={slideData} />
               </div>
             </MotionEffect>

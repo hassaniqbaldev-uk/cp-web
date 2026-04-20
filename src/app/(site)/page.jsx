@@ -39,9 +39,6 @@ export async function generateMetadata() {
 
 const SitePage = async () => {
   let caseStudies = [];
-  // const [caseStudies] = await Promise.all([
-  //   caseStudiesClient.fetch(caseStudiesListingQuery, options),
-  // ]);
 
   try {
     caseStudies = await caseStudiesClient.fetch(

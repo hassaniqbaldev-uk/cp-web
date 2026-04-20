@@ -55,16 +55,6 @@ const CaseStudiesPage = async (props) => {
   let services = [];
   let industries = [];
 
-  // const [caseStudies, services, industries] = await Promise.all([
-  //   caseStudiesClient.fetch(
-  //     caseStudiesFilteredQuery,
-  //     { service, industry },
-  //     options,
-  //   ),
-  //   caseStudiesClient.fetch(servicesQuery, {}, options),
-  //   caseStudiesClient.fetch(industriesQuery, {}, options),
-  // ]);
-
   try {
     [caseStudies, services, industries] = await Promise.all([
       caseStudiesClient.fetch(

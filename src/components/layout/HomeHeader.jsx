@@ -170,10 +170,6 @@ const HomeHeader = ({ transition }) => {
                 Blog
               </Link>
 
-              {/* <Link href="" className="nav-link" onClick={closeAllDropdowns}>
-                Pricing
-              </Link> */}
-
               <AboutDropdown
                 className="nav-link"
                 isOpen={isAboutOpen}

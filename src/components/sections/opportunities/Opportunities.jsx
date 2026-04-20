@@ -1,11 +1,9 @@
 "use client";
-import PrimaryButton from "@/components/ui/PrimaryButton";
 import SectionLabel from "@/components/ui/SectionLabel";
 import SectionTitle from "@/components/ui/SectionTitle";
 import { OPPORTUNITIES_DATA } from "@/contants";
 import Image from "next/image";
 import BriefcaseIcon from "@/assets/icons/ui/breifcase-icon.svg";
-import LocationIcon from "@/assets/icons/ui/location-icon.svg";
 import TimelineIcon from "@/components/icons/TimelineIcon";
 import { MotionEffect } from "@/components/effects/motion-effect";
 import JobApplicationForm from "@/components/ui/JobApplicationForm";
@@ -119,22 +117,6 @@ const Opportunities = () => {
                               {item.timing}
                             </span>
                           </li>
-
-                          {/* <li className="inline-flex items-center gap-[8px]">
-                            <i>
-                              <Image
-                                src={LocationIcon}
-                                width={14}
-                                height={16}
-                                alt="Icon"
-                                unoptimized
-                              />
-                            </i>
-
-                            <span className="text-[1.4rem] leading-[2.4rem] font-normal tracking-normal text-[#625C70] md:text-[1.6rem]">
-                              {item.location}
-                            </span>
-                          </li> */}
                         </ul>
                       </div>
 
