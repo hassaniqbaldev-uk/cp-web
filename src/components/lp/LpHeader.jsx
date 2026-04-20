@@ -82,13 +82,13 @@ const LpHeader = () => {
           zoom
         >
           <div
-            className={`container flex w-full items-center justify-between gap-[4rem] transition-all duration-200 ease-out ${isSticky ? "rounded-[20rem] bg-[white] px-[1rem] py-[1rem] shadow-[4px_8px_36px_0px_#0000001f] md:px-[2rem] xl:px-[3rem]" : " bg-[transparent] px-[0rem] py-[0rem] shadow-none"}`}
+            className={`container flex w-full items-center justify-between gap-[4rem] transition-all duration-200 ease-out ${isSticky ? "rounded-[20rem] bg-[white] px-[1rem] py-[1rem] shadow-[4px_8px_36px_0px_#0000001f] md:px-[2rem]" : " bg-[transparent] px-[0rem] py-[0rem] shadow-none"}`}
           >
             <div>
               <Logo
                 width="230"
                 height="90"
-                className={`logo h-[4rem] w-auto transition-all duration-200 ease-out md:h-[6rem] xl:h-[9rem] ${isSticky ? "fill-black" : "fill-white"}`}
+                className={`logo h-[4rem] w-auto transition-all duration-200 ease-out ${isSticky ? "fill-black md:h-[5rem] xl:h-[7rem]" : " fill-white md:h-[6rem] xl:h-[9rem]"}`}
               />
             </div>
 
