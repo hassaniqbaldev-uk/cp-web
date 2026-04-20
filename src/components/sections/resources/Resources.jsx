@@ -1,23 +1,32 @@
 "use client";
 
-import RightArrowIcon from "@/components/icons/RightArrowIcon";
 import SectionTitle from "@/components/ui/SectionTitle";
 import Image from "next/image";
-import Link from "next/link";
 import ProcessBg from "@/assets/images/backgrounds/process-bg.webp";
 import { MotionEffect } from "@/components/effects/motion-effect";
 import SectionDescription from "@/components/ui/SectionDescription";
 import dynamic from "next/dynamic";
+import GlassFeatureCard from "@/components/ui/GlassFeatureCard";
 
-const ResourcesSlider = dynamic(
-  () => import("@/components/ui/ResourcesSlider"),
+const GlassFeatureCardSlider = dynamic(
+  () => import("@/components/ui/GlassFeatureCardSlider"),
   {
     ssr: false,
-    loading: () => <div className="h-[55rem]" />, // placeholder height to prevent layout shift
   },
 );
 
 const Resources = ({ legal = [] }) => {
+  const slideData = legal.map((item, idx) => {
+    return {
+      id: idx,
+      icon: item.icon.asset.url,
+      title: item.title,
+      description: item.excerpt,
+      link: `/legal/${item.slug.current}`,
+      linkText: "More Details",
+      color: item.color,
+    };
+  });
   return (
     <>
       <section className="relative px-[2rem] py-[5rem] xl:px-[0rem] xl:py-[10rem]">
@@ -78,42 +87,14 @@ const Resources = ({ legal = [] }) => {
                       ease: "easeOut",
                     }}
                   >
-                    <div className="client-resources-card">
-                      <div className="flex h-full flex-col items-start justify-between p-[3rem] text-left">
-                        <div className="flex flex-col items-start">
-                          <i
-                            style={{
-                              background: item.color,
-                            }}
-                            className="inline-flex size-[5.8rem] min-h-[5.8rem] min-w-max items-center justify-center rounded-[1.5rem]"
-                          >
-                            <Image
-                              src={item.icon.asset.url}
-                              alt={item.title}
-                              width={30}
-                              height={30}
-                              unoptimized
-                            />
-                          </i>
-
-                          <h4 className="mt-[2rem] text-[2.6rem] font-semibold tracking-[-0.02em] text-white">
-                            {item.title}
-                          </h4>
-
-                          <p className="mt-[1rem] mb-[3rem] text-[1.6rem] leading-[2.4rem] font-normal tracking-normal text-white">
-                            {item.excerpt}
-                          </p>
-                        </div>
-
-                        <Link
-                          href={`/legal/${item.slug.current}`}
-                          className="relative z-[10] inline-flex items-center gap-[.8rem] text-[1.6rem] font-semibold text-white"
-                        >
-                          More Details
-                          <RightArrowIcon color="#ffffff" />
-                        </Link>
-                      </div>
-                    </div>
+                    <GlassFeatureCard
+                      icon={item.icon.asset.url}
+                      title={item.title}
+                      description={item.excerpt}
+                      color={item.color}
+                      link={`/legal/${item.slug.current}`}
+                      linkText="More Details"
+                    />
                   </MotionEffect>
                 );
               })}
@@ -129,7 +110,7 @@ const Resources = ({ legal = [] }) => {
               className="w-full"
             >
               <div className="block w-full xl:hidden">
-                <ResourcesSlider legal={legal} />
+                <GlassFeatureCardSlider slideData={slideData} />
               </div>
             </MotionEffect>
           </div>

@@ -21,8 +21,17 @@ import SlowIcon from "@/assets/icons/ui/slow-icon.svg";
 import HardIcon from "@/assets/icons/ui/hard-icon.svg";
 import LessIcon from "@/assets/icons/ui/less-icon.svg";
 import WeakerIcon from "@/assets/icons/ui/weaker-icon.svg";
-import DifferenceSlider from "@/components/ui/DifferenceSlider";
-import DifferenceSlider2 from "@/components/ui/DifferenceSlider2";
+import dynamic from "next/dynamic";
+
+const DifferenceSlider = dynamic(
+  () => import("@/components/ui/DifferenceSlider"),
+  { ssr: false },
+);
+
+const DifferenceSlider2 = dynamic(
+  () => import("@/components/ui/DifferenceSlider2"),
+  { ssr: false },
+);
 
 export const withDifferenceData = [
   {

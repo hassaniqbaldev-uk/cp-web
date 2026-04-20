@@ -15,10 +15,6 @@ import { cache } from "react";
 
 const options = { next: { revalidate: 30 } };
 
-// const getSolutions = cache(async (slug) => {
-//   return solutionsClient.fetch(SOLUTIONS_DETAIL_QUERY, { slug }, options);
-// });
-
 const getSolutions = cache(async (slug) => {
   try {
     return await solutionsClient.fetch(
@@ -82,12 +78,6 @@ export async function generateStaticParams() {
 const SolutionsDetailPage = async (props) => {
   const params = await props.params;
   const slug = params.slug;
-
-  // const solution = await solutionsClient.fetch(
-  //   SOLUTIONS_DETAIL_QUERY,
-  //   { slug },
-  //   options,
-  // );
 
   const solution = await getSolutions(slug);
 

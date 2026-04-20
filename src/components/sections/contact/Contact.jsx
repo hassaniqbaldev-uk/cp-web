@@ -78,7 +78,7 @@ const Contact = () => {
                   </h4>
                 </div>
 
-                <ul className="grid grid-cols-1 gap-x-[5rem] gap-y-[.6rem] md:grid-cols-2 md:gap-y-[1.2rem]">
+                <ul className="grid grid-cols-1 gap-x-[3rem] gap-y-[.6rem] md:grid-cols-2 md:gap-y-[1.2rem]">
                   {[
                     "SEO Missed Opportunities",
                     "Site Speed Analysis",

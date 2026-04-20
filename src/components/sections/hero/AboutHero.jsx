@@ -7,7 +7,12 @@ import HomeHeroLogoShape1 from "@/components/decorative-elements/HomeHeroLogoSha
 import ContactHeroLogoShape1 from "@/components/decorative-elements/ContactHeroLogoShape1";
 import AboutHeroLogoShape1 from "@/components/decorative-elements/AboutHeroLogoShape1";
 import { MotionEffect } from "@/components/effects/motion-effect";
-import AboutHeroSlider from "@/components/ui/AboutHeroSlider";
+import dynamic from "next/dynamic";
+
+const AboutHeroSlider = dynamic(
+  () => import("@/components/ui/AboutHeroSlider"),
+  { ssr: false },
+);
 
 const AboutHero = () => {
   return (

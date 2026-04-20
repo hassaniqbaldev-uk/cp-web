@@ -1,19 +1,17 @@
 "use client";
-import RightArrowIcon from "@/components/icons/RightArrowIcon";
 import SectionTitle from "@/components/ui/SectionTitle";
 import Image from "next/image";
-import Link from "next/link";
-import MagnifyingGlassIcon3 from "@/assets/icons/ui/magnifying-glass-icon-3.svg";
-import MegaphoneIcon from "@/assets/icons/ui/megaphone-icon.svg";
-import BoostIcon from "@/assets/icons/ui/boost-icon.svg";
-import EmailIcon2 from "@/assets/icons/ui/email-icon-2.svg";
-import DataAnalysticsIcon from "@/assets/icons/ui/data-analytics-icon.svg";
 import ProcessBg from "@/assets/images/backgrounds/process-bg.webp";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay, Pagination } from "swiper/modules";
-import "swiper/css";
-import "swiper/css/pagination";
 import { MotionEffect } from "@/components/effects/motion-effect";
+import GlassFeatureCard from "@/components/ui/GlassFeatureCard";
+import dynamic from "next/dynamic";
+
+const GlassFeatureCardSlider = dynamic(
+  () => import("@/components/ui/GlassFeatureCardSlider"),
+  {
+    ssr: false,
+  },
+);
 
 export const themeColors = {
   primary: {
@@ -38,54 +36,24 @@ export const themeColors = {
   },
 };
 
-export const growthData = [
-  {
-    icon: MagnifyingGlassIcon3,
-    iconWidth: 30,
-    iconHeight: 30,
-    title: "SEO",
-    description: "Rank higher on Google",
-    link: "",
-  },
-  {
-    icon: MegaphoneIcon,
-    iconWidth: 30,
-    iconHeight: 30,
-    title: "PPC",
-    description: "Google & Social Ads",
-    link: "",
-  },
-  {
-    icon: BoostIcon,
-    iconWidth: 30,
-    iconHeight: 30,
-    title: "CRO",
-    description: "Boost conversion rates",
-    link: "",
-  },
-  {
-    icon: EmailIcon2,
-    iconWidth: 30,
-    iconHeight: 30,
-    title: "Email",
-    description: "Automated flows",
-    link: "",
-  },
-  {
-    icon: DataAnalysticsIcon,
-    iconWidth: 30,
-    iconHeight: 30,
-    title: "Analytics",
-    description: "Data & tracking",
-    link: "",
-  },
-];
-
 export const themeColorList = Object.values(themeColors);
 
 const Growth2 = ({ services = [] }) => {
   const getThemeColor = (index) =>
     themeColorList[index % themeColorList.length];
+
+  const slideData = services.map((item, idx) => {
+    const theme = getThemeColor(idx);
+    return {
+      icon: item.icon.asset.url,
+      title: item.title,
+      description: item.excerpt,
+      link: `/services/${item.slug.current}`,
+      linkText: "Explore Service",
+      color: theme.color,
+      shadow: theme.shadow,
+    };
+  });
 
   return (
     <>
@@ -139,43 +107,15 @@ const Growth2 = ({ services = [] }) => {
                       ease: "easeOut",
                     }}
                   >
-                    <div className="growth-2-card">
-                      <div className="flex h-full flex-col items-start justify-between p-[3rem] text-left">
-                        <div>
-                          <i
-                            style={{
-                              boxShadow: theme.shadow,
-                              background: theme.color,
-                            }}
-                            className="inline-flex size-[5.8rem] min-w-max items-center justify-center rounded-[1.5rem]"
-                          >
-                            <Image
-                              src={item.icon.asset.url}
-                              alt={item.title}
-                              width={30}
-                              height={30}
-                              unoptimized
-                            />
-                          </i>
-
-                          <h4 className="mt-[2rem] text-[2.6rem] font-semibold tracking-[-0.02em] text-white">
-                            {item.title}
-                          </h4>
-
-                          <p className="mt-[1rem] mb-[3rem] text-[1.6rem] leading-[2.4rem] font-normal tracking-normal text-white">
-                            {item.excerpt}
-                          </p>
-                        </div>
-
-                        <Link
-                          href={`/services/${item.slug.current}`}
-                          className="relative z-[10] inline-flex items-center gap-[.8rem] text-[1.6rem] font-semibold text-white"
-                        >
-                          Explore Service
-                          <RightArrowIcon color="#ffffff" />
-                        </Link>
-                      </div>
-                    </div>
+                    <GlassFeatureCard
+                      icon={item.icon.asset.url}
+                      title={item.title}
+                      description={item.excerpt}
+                      color={theme.color}
+                      shadow={theme.shadow}
+                      link={`/services/${item.slug.current}`}
+                      linkText="Explore Service"
+                    />
                   </MotionEffect>
                 );
               })}
@@ -191,75 +131,7 @@ const Growth2 = ({ services = [] }) => {
               className="w-full"
             >
               <div className="block w-full xl:hidden">
-                <Swiper
-                  pagination={{ clickable: true }}
-                  modules={[Pagination, Autoplay]}
-                  loop={true}
-                  autoplay={{
-                    delay: 2500,
-                    disableOnInteraction: false,
-                  }}
-                  slidesPerView={1}
-                  spaceBetween={0}
-                  breakpoints={{
-                    767: {
-                      slidesPerView: 2,
-                      spaceBetween: 0,
-                    },
-                    1024: {
-                      slidesPerView: 3,
-                      spaceBetween: 0,
-                    },
-                  }}
-                  className="mySwiper"
-                >
-                  {services.map((item, idx) => {
-                    const theme = getThemeColor(idx);
-                    return (
-                      <SwiperSlide
-                        key={idx}
-                        className="!flex !h-auto !items-center !justify-center px-[1rem] pt-[1rem] pb-[10rem]"
-                      >
-                        <div className="growth-2-card">
-                          <div className="flex h-full flex-col items-start justify-between p-[3rem] text-left">
-                            <div>
-                              <i
-                                style={{
-                                  background: theme.color,
-                                }}
-                                className="inline-flex size-[5.8rem] min-w-max items-center justify-center rounded-[1.5rem]"
-                              >
-                                <Image
-                                  src={item.icon.asset.url}
-                                  alt={item.title}
-                                  width={30}
-                                  height={30}
-                                  unoptimized
-                                />
-                              </i>
-
-                              <h4 className="mt-[2rem] text-[2.6rem] font-semibold tracking-[-0.02em] text-white">
-                                {item.title}
-                              </h4>
-
-                              <p className="mt-[1rem] mb-[3rem] text-[1.6rem] leading-[2.4rem] font-normal tracking-normal text-white">
-                                {item.excerpt}
-                              </p>
-                            </div>
-
-                            <Link
-                              href={`/services/${item.slug.current}`}
-                              className="relative z-[10] inline-flex items-center gap-[.8rem] text-[1.6rem] font-semibold text-white"
-                            >
-                              Explore Service
-                              <RightArrowIcon color="#ffffff" />
-                            </Link>
-                          </div>
-                        </div>
-                      </SwiperSlide>
-                    );
-                  })}
-                </Swiper>
+                <GlassFeatureCardSlider slideData={slideData} />
               </div>
             </MotionEffect>
           </div>

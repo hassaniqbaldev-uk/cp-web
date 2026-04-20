@@ -6,12 +6,12 @@ import SectionLabel from "@/components/ui/SectionLabel";
 import SectionDescription from "@/components/ui/SectionDescription";
 import { MotionEffect } from "@/components/effects/motion-effect";
 import dynamic from "next/dynamic";
+import GlassFeatureCard from "@/components/ui/GlassFeatureCard";
 
-const PartnerWithUs2Slider = dynamic(
-  () => import("@/components/ui/PartnerWithUs2Slider"),
+const GlassFeatureCardSlider = dynamic(
+  () => import("@/components/ui/GlassFeatureCardSlider"),
   {
     ssr: false,
-    loading: () => <div className="h-[38.5rem]" />, // placeholder height to prevent layout shift
   },
 );
 
@@ -35,6 +35,17 @@ export const themeColorList = Object.values(themeColors);
 const PartnerWithUs2 = ({ service }) => {
   const getThemeColor = (index) =>
     themeColorList[index % themeColorList.length];
+
+  const slideData = service.card.map((item, idx) => {
+    const theme = getThemeColor(idx);
+    return {
+      title: item.title,
+      description: item.description,
+      color: theme.color,
+      shadow: theme.shadow,
+      number: idx + 1,
+    };
+  });
 
   return (
     <>
@@ -115,27 +126,13 @@ const PartnerWithUs2 = ({ service }) => {
                       ease: "easeOut",
                     }}
                   >
-                    <div className="partner-with-us-2-card">
-                      <div className="flex h-full flex-col items-start p-[3rem] text-left">
-                        <div
-                          style={{
-                            boxShadow: theme.shadow,
-                            background: theme.color,
-                          }}
-                          className="inline-flex size-[4.8rem] min-w-max items-center justify-center rounded-[1rem] text-[2.6rem] font-semibold tracking-[-0.02em] text-white"
-                        >
-                          {idx + 1}
-                        </div>
-
-                        <h4 className="mt-[2rem] text-[2.6rem] leading-[3rem] font-semibold tracking-[-0.02em] text-white">
-                          {item.title}
-                        </h4>
-
-                        <p className="mt-[1rem] mb-[3rem] text-[1.6rem] leading-[2.4rem] font-normal tracking-normal text-white">
-                          {item.description}
-                        </p>
-                      </div>
-                    </div>
+                    <GlassFeatureCard
+                      title={item.title}
+                      description={item.description}
+                      color={theme.color}
+                      shadow={theme.shadow}
+                      number={idx + 1}
+                    />
                   </MotionEffect>
                 );
               })}
@@ -151,10 +148,7 @@ const PartnerWithUs2 = ({ service }) => {
               className="w-full"
             >
               <div className="block w-full xl:hidden">
-                <PartnerWithUs2Slider
-                  service={service}
-                  getThemeColor={getThemeColor}
-                />
+                <GlassFeatureCardSlider slideData={slideData} />
               </div>
             </MotionEffect>
           </div>

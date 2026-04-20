@@ -1,11 +1,7 @@
 "use client";
-import RightArrowIcon from "@/components/icons/RightArrowIcon";
 import SectionTitle from "@/components/ui/SectionTitle";
 import Image from "next/image";
-import Link from "next/link";
 import AboutHeroLogoShape2 from "@/assets/svgs/about-hero-logo-shape-2.svg";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay, Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
 import { MotionEffect } from "@/components/effects/motion-effect";
