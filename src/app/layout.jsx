@@ -11,7 +11,7 @@ const onest = Onest({
 export const metadata = {
   title: {
     default: "CreativePixels | Web Design, WordPress & Branding Agency",
-    template: "%s | CreativePixels",
+    template: "%s",
   },
   description:
     "CreativePixels is a Manchester-based creative agency delivering WordPress websites, branding, and digital solutions for clients across the UK, US & Australia.",

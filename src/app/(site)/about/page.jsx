@@ -6,9 +6,9 @@ import Testimonials from "@/components/sections/testimonials/Testimonials";
 import Values from "@/components/sections/values/Values";
 
 export async function generateMetadata() {
-  const title = "About Us";
+  const title = "About CreativePixels | Manchester Digital Agency That Cares";
   const description =
-    "Learn about CreativePixels — our story, values, and the team behind your next project. A Manchester-based agency built on creativity and results.";
+    "Manchester digital agency for web design, WordPress & growth-focused solutions. Learn how we work & book your free strategy call with CreativePixels today!";
 
   return {
     title,

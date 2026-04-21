@@ -1,7 +1,7 @@
 export async function generateMetadata() {
-  const title = "Careers";
+  const title = "Digital Agency Careers | Join Our Remote-First Team Today";
   const description =
-    "Join the CreativePixels team. Explore open roles and opportunities to work with a creative agency that does things differently.";
+    "Explore career opportunities at CreativePixels in design, engineering & marketing. Grow your skills with real projects and apply online today with us!";
 
   return {
     title,

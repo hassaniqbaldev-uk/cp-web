@@ -1,7 +1,7 @@
 export async function generateMetadata() {
-  const title = "Contact Us";
+  const title = "Contact Digital Agency | Book Free Strategy Call Today";
   const description =
-    "Get in touch with CreativePixels. Tell us about your project and let's build something great together.";
+    "Discuss your project, request a quote or book a free strategy call to start your website journey. Speak with experts & grow online with CreativePixels.";
 
   return {
     title,

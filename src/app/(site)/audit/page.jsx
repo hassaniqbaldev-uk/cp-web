@@ -1,7 +1,7 @@
 export async function generateMetadata() {
-  const title = "Free Website Audit";
+  const title = "Free Website Audit & Conversion Review | Claim Yours Now";
   const description =
-    "Get a free website audit from CreativePixels. We'll analyse your site's performance, SEO, and design and show you exactly what to improve.";
+    "Get a free website audit covering UX, SEO, speed and conversions with a custom video report. Claim your free audit from CreativePixels online today now!";
 
   return {
     title,

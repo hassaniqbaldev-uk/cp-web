@@ -1,7 +1,7 @@
 export async function generateMetadata() {
-  const title = "Legal Hub";
+  const title = "Website Legal Policies | Terms, Privacy & Compliance Hub";
   const description =
-    "Access CreativePixels legal documents, policies, and client resources — all in one place.";
+    "Website legal policies, privacy terms, cookies & compliance resources in one place for full transparency. View key documents with confidence at CreativePixels.";
 
   return {
     title,

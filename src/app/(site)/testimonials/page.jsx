@@ -1,7 +1,7 @@
 export async function generateMetadata() {
-  const title = "Client Testimonials";
+  const title = "Client Testimonials Web Design Agency | Real Results";
   const description =
-    "See what clients say about working with CreativePixels. Real feedback from businesses across the UK, US, and Australia.";
+    "Discover client testimonials from web design, branding & SEO projects with real results & feedback. See success stories & book a free call with CreativePixels.";
 
   return {
     title,

@@ -1,7 +1,7 @@
 export async function generateMetadata() {
-  const title = "Solutions";
+  const title = "Digital Solutions | Tailored Strategies for Real Growth";
   const description =
-    "Find the right solution for your business with CreativePixels. From industry-specific websites to goal-driven digital strategies.";
+    "Explore tailored digital solutions by sector—from lead growth to automation. Book a free strategy call with CreativePixels & plan smarter growth online today!";
 
   return {
     title,

@@ -1,7 +1,7 @@
 export async function generateMetadata() {
-  const title = "Blog";
+  const title = "Digital Strategy Blog | Actionable Insights for Growth";
   const description =
-    "Insights, tips, and guides from the CreativePixels team on web design, WordPress, branding, and growing your business online.";
+    "Digital strategy insights on web, SEO, CRO & branding to grow your business online. Read practical tips, improve results & get clarity with CreativePixels.";
 
   return {
     title,
