@@ -98,7 +98,7 @@ const LpHeroSlider = dynamic(() => import("./LpHeroSlider"), {
 const LpHero = () => {
   return (
     <section>
-      <div className="relative h-[65rem] w-full overflow-hidden px-[2rem] md:h-[80rem] xl:h-[90rem] xl:px-[0rem]">
+      <div className="relative h-[65rem] w-full overflow-hidden px-[2rem] md:h-[80rem] xl:h-[80rem] xl:px-[0rem]">
         {/*Background Image*/}
         <Image
           src={HeroBg}
@@ -138,7 +138,7 @@ const LpHero = () => {
               width={164}
               height={179}
               alt="Card Image"
-              className="absolute bottom-[5rem] left-[30rem]"
+              className="absolute bottom-[15rem] left-[20rem]"
             />
           </MotionEffect>
         </div>
