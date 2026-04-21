@@ -13,10 +13,6 @@ import React, { cache } from "react";
 
 const options = { next: { revalidate: 30 } };
 
-// const getLegal = cache(async (slug) => {
-//   return legalClient.fetch(LEGAL_DETAIL_QUERY, { slug }, options);
-// });
-
 const getLegal = cache(async (slug) => {
   try {
     return await legalClient.fetch(LEGAL_DETAIL_QUERY, { slug }, options);
@@ -45,7 +41,7 @@ export async function generateMetadata({ params }) {
       siteName: "CreativePixels",
       images: [
         {
-          url: "/images/og-image-assets/og-image.jpg",
+          url: "/images/og-image-assets/og-image-compressed.jpg",
           width: 1200,
           height: 630,
           alt: title,
@@ -58,7 +54,7 @@ export async function generateMetadata({ params }) {
       card: "summary_large_image",
       title: title,
       description: description,
-      images: ["/images/og-image-assets/og-image.jpg"],
+      images: ["/images/og-image-assets/og-image-compressed.jpg"],
     },
   };
 }

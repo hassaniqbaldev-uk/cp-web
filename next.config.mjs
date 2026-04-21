@@ -2,6 +2,7 @@
 const nextConfig = {
   reactCompiler: true,
   images: {
+    formats: ["image/avif", "image/webp"],
     remotePatterns: [
       {
         protocol: "https",
@@ -10,15 +11,6 @@ const nextConfig = {
       },
     ],
   },
-  // async redirects() {
-  //   return [
-  //     {
-  //       source: "/cookies-policy",
-  //       destination: "/cookie-policy",
-  //       permanent: true,
-  //     },
-  //   ];
-  // },
 };
 
 export default nextConfig;

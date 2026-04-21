@@ -20,7 +20,7 @@ export async function generateMetadata() {
       siteName: "CreativePixels",
       images: [
         {
-          url: "/images/og-image-assets/og-image.jpg",
+          url: "/images/og-image-assets/og-image-compressed.jpg",
           width: 1200,
           height: 630,
           alt: title,
@@ -33,7 +33,7 @@ export async function generateMetadata() {
       card: "summary_large_image",
       title: title,
       description: description,
-      images: ["/images/og-image-assets/og-image.jpg"],
+      images: ["/images/og-image-assets/og-image-compressed.jpg"],
     },
   };
 }
