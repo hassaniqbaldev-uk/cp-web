@@ -37,11 +37,10 @@ const LpHeroSlider = ({ projects }) => {
       >
         {projects.map((project, idx) => (
           <SwiperSlide key={idx} className="!h-auto pb-[8rem]">
-            <Link
+            <div
               style={{
                 boxShadow: "7.69px 6.59px 40.64px 0px #0000000F",
               }}
-              href={project.slug}
               target="_blank"
               className="flex h-full w-full flex-col gap-[2.7rem] rounded-[3rem] bg-white px-[1.5rem] pt-[1.5rem] pb-[3rem]"
             >
@@ -65,17 +64,8 @@ const LpHeroSlider = ({ projects }) => {
                     {project.excerpt}
                   </span>
                 </div>
-
-                <i
-                  className="inline-flex size-[4.6rem] min-w-[4.6rem] items-center justify-center rounded-full xl:size-[5rem] xl:min-w-[5rem]"
-                  style={{
-                    background: project.iconBg,
-                  }}
-                >
-                  <TiltArrowIcon color={project.iconColor} />
-                </i>
               </div>
-            </Link>
+            </div>
           </SwiperSlide>
         ))}
       </Swiper>

@@ -5,9 +5,9 @@ import HomePage from "./home/HomePage";
 const options = { next: { revalidate: 30 } };
 
 export async function generateMetadata() {
-  const title = "CreativePixels | Web Design, WordPress & Branding Agency";
+  const title = "Web Design Agency for Growth-Focused Brands | Free Audit";
   const description =
-    "CreativePixels is a Manchester-based creative agency delivering WordPress websites, branding, and digital solutions for clients across the UK, US & Australia.";
+    "Elevate your brand with CreativePixels. We craft high-converting websites & powerful growth systems for ambitious businesses. Claim your free strategy call now.";
 
   return {
     title,

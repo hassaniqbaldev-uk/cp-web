@@ -55,7 +55,7 @@ export const LP_SERVICES_CARD = [
     value: "wordpress-fixes-emergency-repairs",
     title: "WordPress Fixes & Emergency Repairs",
     description:
-      "Broken pages, plugin conflicts, white screens, and failed updates — we diagnose the problem and get your site back up fast.",
+      "Broken pages, plugin conflicts, white screens, and failed updates we diagnose the problem and get your site back up fast.",
     link: "#audit",
     linkText: "Explore Service",
     color: "#3078FF",
@@ -66,7 +66,7 @@ export const LP_SERVICES_CARD = [
     value: "custom-wordpress-website-design",
     title: "Custom WordPress Website Design",
     description:
-      "Unique websites built for your brand — tailored to your goals and audience to make a strong, lasting online impact.",
+      "Unique websites built for your brand tailored to your goals and audience to make a strong, lasting online impact.",
     link: "#audit",
     linkText: "Explore Service",
     color: "#EE7621",

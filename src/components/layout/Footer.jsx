@@ -724,7 +724,8 @@ const Footer = () => {
 
               <div className="mt-[4rem] flex flex-col items-center justify-between gap-[2rem] text-center xl:flex-row xl:text-left">
                 <p className="text-[1.6rem] leading-[2.6rem] font-semibold tracking-normal text-white md:text-[1.8rem]">
-                  2026 © CP Agency Ltd. Trading as CreativePixels.
+                  2026 © CP Agency Ltd. <br className="block md:hidden" />{" "}
+                  Trading as CreativePixels.
                 </p>
 
                 <div className="flex flex-col items-center justify-end gap-[1rem] md:gap-[3.2rem] xl:flex-row">

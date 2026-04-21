@@ -18,72 +18,64 @@ import dynamic from "next/dynamic";
 const projects = [
   {
     id: "1",
-    slug: "https://www.ndifosafari.com/",
     title: "Ndifo Safari",
-    excerpt: "Escape into the safari",
+    excerpt: "Luxury safari website redesigned.",
     thumbnailImage: NdifoImg,
     iconBg: "#58937F",
     iconColor: "#FFFFFF",
   },
   {
     id: "2",
-    slug: "https://thesmokeycarter.com",
     title: "Smokey Carter",
-    excerpt: "Saucey eCommerce",
+    excerpt: "Award-winning BBQ brand redesign.",
     thumbnailImage: SmokeyImg,
     iconBg: "#FA5D27",
     iconColor: "#FFFFFF",
   },
   {
     id: "3",
-    slug: "https://ivyandduke.co.uk",
     title: "Ivy & Duke",
-    excerpt: "Ecommerce Website Design",
+    excerpt: "Luxury safari website redesigned.",
     thumbnailImage: IvyDukeImg,
     iconBg: "#8B9266",
     iconColor: "#FFFFFF",
   },
   {
     id: "4",
-    slug: "https://www.gameartbrain.com/",
-    title: "Ivy & Duke",
-    excerpt: "Ecommerce Website Design",
+    title: "Game Art Brain",
+    excerpt: "Website for a global gaming art outsourcing studio.",
     thumbnailImage: GameArtImg,
     iconBg: "#536A56",
     iconColor: "#FFFFFF",
   },
   {
     id: "5",
-    slug: "https://www.ndifosafari.com/",
     title: "Ndifo Safari",
-    excerpt: "Escape into the safari",
+    excerpt: "Luxury safari website redesigned.",
     thumbnailImage: NdifoImg,
     iconBg: "#58937F",
     iconColor: "#FFFFFF",
   },
   {
     id: "6",
-    slug: "https://thesmokeycarter.com",
     title: "Smokey Carter",
-    excerpt: "Saucey eCommerce",
+    excerpt: "Award-winning BBQ brand redesign.",
     thumbnailImage: SmokeyImg,
     iconBg: "#FA5D27",
     iconColor: "#FFFFFF",
   },
   {
     id: "7",
-    slug: "https://ivyandduke.co.uk",
     title: "Ivy & Duke",
-    excerpt: "Ecommerce Website Design",
+    excerpt: "Luxury safari website redesigned.",
     thumbnailImage: IvyDukeImg,
     iconBg: "#8B9266",
     iconColor: "#FFFFFF",
   },
   {
     id: "8",
-    slug: "https://www.gameartbrain.com/",
-    title: "Ivy & Duke",
-    excerpt: "Ecommerce Website Design",
+    title: "Game Art Brain",
+    excerpt: "Website for a global gaming art outsourcing studio.",
     thumbnailImage: GameArtImg,
     iconBg: "#536A56",
     iconColor: "#FFFFFF",
@@ -98,7 +90,7 @@ const LpHeroSlider = dynamic(() => import("./LpHeroSlider"), {
 const LpHero = () => {
   return (
     <section>
-      <div className="relative h-[65rem] w-full overflow-hidden px-[2rem] md:h-[80rem] xl:h-[80rem] xl:px-[0rem]">
+      <div className="relative h-[60rem] w-full overflow-hidden px-[2rem] md:h-[65rem] xl:h-[80rem] xl:px-[0rem]">
         {/*Background Image*/}
         <Image
           src={HeroBg}
