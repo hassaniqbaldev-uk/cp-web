@@ -1,48 +1,5 @@
 // emails/contact-template.js
 export const getCustomerEmailTemplate = (name, service, email, message) => {
-  // Define different bottom cards for different services
-  const getBottomCard = (serviceType) => {
-    const cards = {
-      "custom-wordpress": {
-        image: "...",
-        link: "...",
-        alt: "Custom WordPress",
-      },
-      "landing-page-design": {
-        image: "...",
-        link: "...",
-        alt: "Landing Page Design",
-      },
-      "woocommerce-integration": {
-        image: "...",
-        link: "...",
-        alt: "WooCommerce Integration",
-      },
-      "speed-security": {
-        image: "...",
-        link: "...",
-        alt: "Speed & Security",
-      },
-      "maintenance-support": {
-        image: "...",
-        link: "...",
-        alt: "Maintenance & Support",
-      },
-    };
-
-    // Default card if service not found
-    return (
-      cards[serviceType] || {
-        image:
-          "https://creativepixels.agency/images/email-template-assets/default-card.png",
-        link: "https://creativepixels.agency/services",
-        alt: "CreativePixels Case Studies",
-      }
-    );
-  };
-
-  const bottomCard = getBottomCard(service);
-
   return `
 <!doctype html>
 <html>
@@ -349,7 +306,7 @@ export const getCustomerEmailTemplate = (name, service, email, message) => {
           <p class="msg-text">
             Hi ${name || "there"}, <br /> <br />
             Thank you for getting in touch with CreativePixels. We've received your message and one of our team will be back to you within 1 business day to discuss the next steps.<br /><br />
-            
+
             Here's a quick summary of what you submitted: <br /> <br />
 
             • Name: ${name} <br />
