@@ -11,46 +11,13 @@ import {
 } from "@/components/ui/accordion";
 import { MotionEffect } from "@/components/effects/motion-effect";
 
-export const questionsData = [
-  {
-    question: "Are you okay with signing NDAs?",
-    answer:
-      "Yes. We are happy to sign NDAs and ensure complete confidentiality for all client projects.",
-  },
-  {
-    question: "What is your typical working process?",
-    answer:
-      "Absolutely. All work is delivered under your brand name and email domain with no external attribution.",
-  },
-  {
-    question: "Do you only work with WordPress?",
-    answer:
-      "We collaborate via Slack, email, or your preferred project management tool for seamless communication.",
-  },
-  {
-    question:
-      "Can you work directly with our clients using our own email addresses?",
-    answer:
-      "Turnaround times vary by scope, but we typically deliver 2x faster than in-house teams.",
-  },
-  {
-    question: "Can you help with agency growth strategy?",
-    answer:
-      "Yes. You can scale capacity instantly based on client demand without long-term commitments.",
-  },
-  {
-    question: "Do you work with agencies outside the UK?",
-    answer:
-      "Yes. We offer long-term maintenance and support to ensure your projects remain up to date.",
-  },
-  {
-    question: "How quickly can you start on a new project?",
-    answer:
-      "Yes. We offer long-term maintenance and support to ensure your projects remain up to date.",
-  },
-];
-
-const Questions = ({ data = questionsData }) => {
+const Questions = ({
+  data = [],
+  title = "Common Questions",
+  description = "Everything you need to know about partner with us.",
+  linkText = "",
+  link = "",
+}) => {
   return (
     <>
       <section className="px-[2rem] py-[5rem] xl:px-[0rem] xl:py-[10rem]">
@@ -65,7 +32,7 @@ const Questions = ({ data = questionsData }) => {
                 delay={0.1}
                 transition={{ type: "tween", duration: 0.8, ease: "easeOut" }}
               >
-                <SectionTitle text="Common Questions" textColor="#312749" />
+                {title && <SectionTitle text={title} textColor="#312749" />}
               </MotionEffect>
 
               <MotionEffect
@@ -77,10 +44,12 @@ const Questions = ({ data = questionsData }) => {
                 transition={{ type: "tween", duration: 0.8, ease: "easeOut" }}
               >
                 <div className="mt-[1rem] mb-[3rem]">
-                  <SectionDescription
-                    text="Everything you need to know about partnering with us."
-                    textColor="#625C70"
-                  />
+                  {description && (
+                    <SectionDescription
+                      text={description}
+                      textColor="#625C70"
+                    />
+                  )}
                 </div>
               </MotionEffect>
 
@@ -91,12 +60,14 @@ const Questions = ({ data = questionsData }) => {
                 delay={0.4}
                 transition={{ type: "tween", duration: 1.0, ease: "easeOut" }}
               >
-                <PrimaryButton
-                  text="Have More Questions?"
-                  textColor="#FFFFFF"
-                  bGcolor="#FF37B3"
-                  href="/contact"
-                />
+                {link && linkText && (
+                  <PrimaryButton
+                    text={linkText}
+                    textColor="#FFFFFF"
+                    bGcolor="#FF37B3"
+                    href={link}
+                  />
+                )}
               </MotionEffect>
             </div>
 

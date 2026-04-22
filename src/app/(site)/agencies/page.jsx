@@ -106,7 +106,11 @@ const AgenciesPage = () => {
       <Process4 />
       <ClientReview />
       <div className="bg-[#ED910C0D]">
-        <Questions data={questionsData} />
+        <Questions
+          data={questionsData}
+          link="/contact"
+          linkText="Have More Questions?"
+        />
       </div>
     </>
   );
