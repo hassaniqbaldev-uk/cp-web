@@ -13,6 +13,12 @@ import NdifoImg from "@/assets/images/cards/ndifo.png";
 import SmokeyImg from "@/assets/images/cards/smokey-carter.png";
 import IvyDukeImg from "@/assets/images/cards/ivy-duke.png";
 import GameArtImg from "@/assets/images/cards/game-art.png";
+import AyoaImg from "@/assets/images/cards/ayoa.png";
+import CasaImg from "@/assets/images/cards/casa.png";
+import LittleAstroImg from "@/assets/images/cards/little-astro.png";
+import NewCompassImg from "@/assets/images/cards/new-compass.png";
+import TeleqoTechImg from "@/assets/images/cards/teleqo-tech.png";
+import AlertForceImg from "@/assets/images/cards/alert-force.png";
 import dynamic from "next/dynamic";
 
 const projects = [
@@ -21,64 +27,66 @@ const projects = [
     title: "Ndifo Safari",
     excerpt: "Luxury safari website redesigned.",
     thumbnailImage: NdifoImg,
-    iconBg: "#58937F",
-    iconColor: "#FFFFFF",
   },
   {
     id: "2",
     title: "Smokey Carter",
     excerpt: "Award-winning BBQ brand redesign.",
     thumbnailImage: SmokeyImg,
-    iconBg: "#FA5D27",
-    iconColor: "#FFFFFF",
   },
   {
     id: "3",
     title: "Ivy & Duke",
     excerpt: "Luxury safari website redesigned.",
     thumbnailImage: IvyDukeImg,
-    iconBg: "#8B9266",
-    iconColor: "#FFFFFF",
   },
   {
     id: "4",
     title: "Game Art Brain",
     excerpt: "Website for a global gaming art outsourcing studio.",
     thumbnailImage: GameArtImg,
-    iconBg: "#536A56",
-    iconColor: "#FFFFFF",
   },
   {
     id: "5",
-    title: "Ndifo Safari",
-    excerpt: "Luxury safari website redesigned.",
-    thumbnailImage: NdifoImg,
-    iconBg: "#58937F",
-    iconColor: "#FFFFFF",
+    title: "Little Astronauts",
+    excerpt:
+      "Two websites supporting a Hull soft play venue from launch to full rebuild.",
+    thumbnailImage: LittleAstroImg,
   },
   {
     id: "6",
-    title: "Smokey Carter",
-    excerpt: "Award-winning BBQ brand redesign.",
-    thumbnailImage: SmokeyImg,
-    iconBg: "#FA5D27",
-    iconColor: "#FFFFFF",
+    title: "Ayoa",
+    excerpt:
+      "Full website redesign for one of the UK's leading AI-powered mind mapping and productivity tools.",
+    thumbnailImage: AyoaImg,
   },
   {
     id: "7",
-    title: "Ivy & Duke",
-    excerpt: "Luxury safari website redesigned.",
-    thumbnailImage: IvyDukeImg,
-    iconBg: "#8B9266",
-    iconColor: "#FFFFFF",
+    title: "AlertForce",
+    excerpt:
+      "Redevelopment for Australia's leading WHS and OHS compliance training provider.",
+    thumbnailImage: AlertForceImg,
   },
   {
     id: "8",
-    title: "Game Art Brain",
-    excerpt: "Website for a global gaming art outsourcing studio.",
-    thumbnailImage: GameArtImg,
-    iconBg: "#536A56",
-    iconColor: "#FFFFFF",
+    title: "Casa Botanica Panama",
+    excerpt:
+      "Bringing a luxury villa brand to life on WordPress, migrated from Squarespace.",
+    thumbnailImage: CasaImg,
+  },
+  {
+    id: "9",
+    title: "Teleqo Tech",
+    excerpt:
+      "Website redesign and SEO for a US enterprise mobile mapping and geospatial intelligence company.",
+    thumbnailImage: TeleqoTechImg,
+  },
+  {
+    id: "10",
+    title: "New Compass",
+    excerpt:
+      "Redesign, SEO and ongoing maintenance for a US-based cloud LiDAR mapping software company.",
+    thumbnailImage: NewCompassImg,
   },
 ];
 

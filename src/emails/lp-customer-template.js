@@ -305,7 +305,7 @@ export const getCustomerEmailTemplate = (name, service, email, message) => {
         <div class="container">
           <p class="msg-text">
             Hi ${name || "there"}, <br /> <br />
-            Thank you for getting in touch with CreativePixels. We've received your message and one of our team will be back to you within 1 business day to discuss the next steps.<br /><br />
+            Thank you for getting in touch with <strong>CreativePixels</strong>. We've received your message and one of our team will be back to you within 1 business day to discuss the next steps.<br /><br />
 
             Here's a quick summary of what you submitted: <br /> <br />
 
