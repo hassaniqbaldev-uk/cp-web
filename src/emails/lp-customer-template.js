@@ -346,52 +346,31 @@ export const getCustomerEmailTemplate = (name, service, email, message) => {
       <!--  Content  -->
       <div class="content">
         <div class="container">
-          <h2 class="msg-heading">
-            Thanks for reaching out about <span>"${service || "Website Development"}"</span>
-          </h2>
-
           <p class="msg-text">
-            Hi ${name || "there"}, <br />
-            Thank you for contacting
-            <strong>CreativePixels Agency</strong> we've received your request
-            for <strong>${service || "Website Development"}</strong>, and our team will get back
-            to you shortly to discuss the next steps. <br />
-            <br />
+            Hi ${name || "there"}, <br /> <br />
+            Thank you for getting in touch with CreativePixels. We've received your message and one of our team will be back to you within 1 business day to discuss the next steps.<br /><br />
+            
+            Here's a quick summary of what you submitted: <br /> <br />
 
-            ${message ? `You mentioned: "${message}"<br /><br />` : ""}
-
-            We're excited to learn more about your goals and see how we can help
-            bring your ideas to life. Whether it's crafting a standout brand,
-            developing a high-performing website, or maintaining and optimising
-            your current one — our team is here to make it happen. <br />
-            <br />
-
-            Want to skip the wait? You can book a quick discovery call with our
-            experts and get tailored recommendations for your project.
+            • Name: ${name} <br />
+            • Service requested: ${service} <br />
+            • Your message: ${message}
           </p>
 
-          <a href="https://creativepixels.agency/call" class="group">
-            <div class="button-container">
-              <span class="button-text">Schedule a Quick Call</span>
-            </div>
-          </a>
-
           <p class="msg-text">
-            You can also learn more about our recent work and process here:
-            <a href="https://creativepixels.agency">www.creativepixels.agency</a>
-            <br />
-            <br />
+            While you wait, feel free to take a look at our recent work to get a feel for how we work and what we deliver:
+            <a href="https://creativepixels.agency">www.creativepixels.agency</a> <br /><br />
 
-            Check out this relevant case study for <strong>${service || "your project"}</strong>:
+            Want to speak to someone sooner? You can book a free 15-minute discovery call at a time that suits you: <br /><br />
+
+            We look forward to learning more about your project. <br /><br />
+
+            Best regards, <br />
+            CreativePixels Team <br />  
+            hello@creativepixels.agency <br />  
+            <a href="https://creativepixels.agency">www.creativepixels.agency</a>  
           </p>
 
-          <!-- Dynamic Bottom Card -->
-          <a href="${bottomCard.link}" class="bottom-card">
-            <img
-              src="${bottomCard.image}"
-              alt="${bottomCard.alt}"
-            />
-          </a>
 
           <div class="bottom-grid">
             <div class="grid-column">
@@ -450,11 +429,11 @@ export const getCustomerEmailTemplate = (name, service, email, message) => {
         <h5>This email was sent to ${email} by CreativePixels Team.</h5>
 
         <div class="footer-links">
-          <a href="https://creativepixels.agency/privacy-policy"
+          <a href="https://creativepixels.agency/legal/privacy-policy"
             >Privacy Policy</a
           >
           <div></div>
-          <a href="https://creativepixels.agency/cookies-policy"
+          <a href="https://creativepixels.agency/legal/cookies-policy"
             >Cookies Policy</a
           >
         </div>

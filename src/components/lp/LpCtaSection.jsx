@@ -6,7 +6,7 @@ import { MotionEffect } from "../effects/motion-effect";
 
 const LpCtaSection = () => {
   return (
-    <section className="px-[2rem] pb-[5rem] xl:px-[0rem] xl:pb-[10rem]">
+    <section className="px-[2rem] xl:px-[0rem]">
       <MotionEffect
         slide={{ direction: "down" }}
         fade
