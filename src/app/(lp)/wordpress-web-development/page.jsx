@@ -9,6 +9,15 @@ import LpTestimonialSection from "@/components/lp/LpTestimonialSection";
 import LpWhySection from "@/components/lp/LpWhySection";
 import Questions from "@/components/sections/questions/Questions";
 
+export const metadata = {
+  title: "WordPress Web Development | Get Your Free WordPress Audit",
+  description:
+    "CreativePixels offers WordPress web development services with custom builds, fast performance, SEO-ready setup & easy CMS control. Claim your free audit today.",
+  alternates: {
+    canonical: "/wordpress-web-development",
+  },
+};
+
 export const questionsData = [
   {
     question: "How long does a WordPress project take?",
@@ -57,7 +66,7 @@ export const questionsData = [
   },
 ];
 
-const WordpressPage = () => {
+const WordpressWebDevelopmentPage = () => {
   return (
     <>
       <LpHero />
@@ -78,4 +87,4 @@ const WordpressPage = () => {
   );
 };
 
-export default WordpressPage;
+export default WordpressWebDevelopmentPage;

@@ -12,47 +12,32 @@ const LpProcessSection = () => {
   return (
     <section className="px-[2rem] py-[5rem] xl:px-[0rem] xl:py-[10rem]">
       <div className="container">
-        <div className="flex flex-col items-center gap-[2rem] text-center xl:mb-[7rem]">
-          <MotionEffect
-            slide={{ direction: "down" }}
-            fade
-            inView
-            delay={0.25}
-            transition={{ type: "tween", duration: 0.8, ease: "easeOut" }}
-          >
+        <MotionEffect
+          slide={{ direction: "down" }}
+          fade
+          inView
+          transition={{ type: "tween", duration: 0.6, ease: "easeOut" }}
+        >
+          <div className="flex flex-col items-center gap-[2rem] text-center xl:mb-[7rem]">
             <h2 className="text-[3rem] leading-[3.7rem] font-bold tracking-[-0.02em] text-[#312749] md:text-[7rem] md:leading-[7.5rem]">
               <span className="bg-gradient-pink-orange bg-clip-text text-transparent">
                 Getting Started
               </span>{" "}
               <span className="block">Is Simple</span>
             </h2>
-          </MotionEffect>
 
-          <MotionEffect
-            slide={{ direction: "down" }}
-            fade
-            inView
-            delay={0.4}
-            transition={{ type: "tween", duration: 0.8, ease: "easeOut" }}
-          >
             <SectionDescription
               text="Our WordPress web design process is simple, transparent, and results-driven:"
               textColor="#625C70"
             />
-          </MotionEffect>
-        </div>
+          </div>
 
-        <div className="hidden grid-cols-4 xl:grid">
-          {LP_PROCESS_CARD.map((item, idx) => (
-            <MotionEffect
-              key={item.step}
-              slide={{ direction: "down" }}
-              fade
-              inView
-              delay={0.45 + idx * 0.15}
-              transition={{ type: "tween", duration: 0.6, ease: "easeOut" }}
-            >
-              <div className="flex h-full flex-col items-center gap-[3.8rem]">
+          <div className="hidden grid-cols-4 xl:grid">
+            {LP_PROCESS_CARD.map((item, idx) => (
+              <div
+                key={idx}
+                className="flex h-full flex-col items-center gap-[3.8rem]"
+              >
                 <div className="relative flex w-full justify-center">
                   <hr className="absolute top-1/2 z-[0] w-full -translate-y-1/2 border-t border-black/30" />
 
@@ -87,18 +72,10 @@ const LpProcessSection = () => {
                   </div>
                 </div>
               </div>
-            </MotionEffect>
-          ))}
-        </div>
+            ))}
+          </div>
 
-        {/* Responsive */}
-        <MotionEffect
-          slide={{ direction: "down" }}
-          fade
-          inView
-          delay={0.5}
-          transition={{ type: "tween", duration: 0.6, ease: "easeOut" }}
-        >
+          {/* Responsive */}
           <div className="block w-full xl:hidden">
             <Swiper
               pagination={{ clickable: true }}
@@ -169,15 +146,7 @@ const LpProcessSection = () => {
               ))}
             </Swiper>
           </div>
-        </MotionEffect>
 
-        <MotionEffect
-          slide={{ direction: "down" }}
-          fade
-          inView
-          delay={0.55}
-          transition={{ type: "tween", duration: 0.6, ease: "easeOut" }}
-        >
           <div className="mt-[6rem] flex justify-center">
             <PrimaryButton
               href="#audit"

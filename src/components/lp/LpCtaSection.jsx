@@ -11,8 +11,7 @@ const LpCtaSection = () => {
         slide={{ direction: "down" }}
         fade
         inView
-        delay={0.2}
-        transition={{ type: "tween", duration: 0.8, ease: "easeOut" }}
+        transition={{ type: "tween", duration: 0.6, ease: "easeOut" }}
       >
         <div className="relative container overflow-hidden rounded-[3rem] px-[2rem] py-[3rem] md:px-[7rem] md:py-[6rem]">
           {/*Background Image*/}

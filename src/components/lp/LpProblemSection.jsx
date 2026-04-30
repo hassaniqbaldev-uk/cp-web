@@ -9,46 +9,24 @@ import SectionTitle from "../ui/SectionTitle";
 const LpProblemSection = () => {
   return (
     <section className="px-[2rem] pb-[5rem] xl:px-[0rem] xl:pb-[10rem]">
-      <div className="flex flex-col items-center gap-[1.3rem] text-center">
-        <MotionEffect
-          slide={{
-            direction: "down",
-          }}
-          fade
-          zoom
-          inView
-          delay={0.1}
-          transition={{ type: "tween", duration: 0.8, ease: "easeOut" }}
-        >
+      <MotionEffect
+        slide={{
+          direction: "down",
+        }}
+        fade
+        inView
+        transition={{ type: "tween", duration: 0.6, ease: "easeOut" }}
+      >
+        <div className="flex flex-col items-center gap-[1.3rem] text-center">
           <div>
             <SectionLabel text="problems you’re facing" textColor="#3078FF" />
           </div>
-        </MotionEffect>
 
-        <MotionEffect
-          slide={{
-            direction: "down",
-          }}
-          fade
-          zoom
-          inView
-          delay={0.25}
-          transition={{ type: "tween", duration: 0.8, ease: "easeOut" }}
-        >
           <div className="max-w-[90rem]">
             <SectionTitle text="Sound Familiar?" />
           </div>
-        </MotionEffect>
-      </div>
+        </div>
 
-      <MotionEffect
-        slide={{ direction: "down" }}
-        fade
-        inView
-        delay={0.6}
-        transition={{ type: "tween", duration: 0.8, ease: "easeOut" }}
-        className="w-full"
-      >
         <div className="container mt-[5rem] flex flex-col items-start justify-between gap-[4rem] rounded-[3rem] border border-[#EE7621] bg-[#FDF4E7] px-[2rem] py-[3rem] md:pr-[3rem] md:pl-[3rem] lg:flex-row lg:items-center lg:pr-[5rem]">
           <div className="w-full overflow-hidden rounded-[2rem] md:h-[46rem] lg:w-[54rem]">
             <Image

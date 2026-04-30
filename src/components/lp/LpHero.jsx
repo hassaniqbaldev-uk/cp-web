@@ -126,13 +126,7 @@ const LpHero = () => {
               height={900}
               alt="Card Image"
             />
-          </MotionEffect>
-          <MotionEffect
-            slide={{ direction: "right" }}
-            transition={{ type: "spring", stiffness: 120, damping: 20 }}
-            fade
-            delay={0.6}
-          >
+
             <Image
               src={CpLogo}
               width={164}
@@ -154,44 +148,21 @@ const LpHero = () => {
               <div>
                 <SectionLabel text="Wordpress" textColor="#FF37B3" />
               </div>
-            </MotionEffect>
 
-            <MotionEffect
-              slide={{ direction: "down" }}
-              transition={{ type: "spring", stiffness: 120, damping: 20 }}
-              fade
-              zoom
-              delay={0.15}
-            >
               <h1 className="mt-[1.5rem] mb-[2.5rem] max-w-[75rem] text-[3rem] leading-[3.7rem] font-bold tracking-[-0.03em] text-white md:text-[6rem] md:leading-[7rem]">
                 <span className="block">Tired of a Website</span>
                 <span className="bg-gradient-yellow-orange block bg-clip-text text-transparent">
                   That Doesn’t Convert?
                 </span>
               </h1>
-            </MotionEffect>
 
-            <MotionEffect
-              slide={{ direction: "down" }}
-              transition={{ type: "spring", stiffness: 120, damping: 20 }}
-              fade
-              zoom
-              delay={0.3}
-            >
               <div className="mb-[2rem] max-w-[70rem] md:mb-[4.2rem]">
                 <SectionDescription
-                  text="Your website is your first impression. We design WordPress sites that look professional, load fast, and turn visitors into customers."
+                  text="Your website is your first impression. Our WordPress web development services create professional, fast-loading sites that turn visitors into customers."
                   textColor="#FFFFFF"
                 />
               </div>
-            </MotionEffect>
 
-            <MotionEffect
-              slide={{ direction: "down" }}
-              transition={{ type: "spring", stiffness: 120, damping: 20 }}
-              fade
-              delay={0.45}
-            >
               <div className="flex flex-col items-center gap-[2.6rem] md:flex-row">
                 <a
                   href="#audit"
@@ -246,7 +217,7 @@ const LpHero = () => {
           slide={{ direction: "down" }}
           transition={{ type: "spring", stiffness: 120, damping: 20 }}
           fade
-          delay={0.8}
+          delay={0.6}
         >
           <LpHeroSlider projects={projects} />
         </MotionEffect>

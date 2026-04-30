@@ -13,6 +13,9 @@ export async function generateMetadata() {
   return {
     title,
     description,
+    alternates: {
+      canonical: "/about", // <-- the route's own URL
+    },
     openGraph: {
       title: title,
       description: description,

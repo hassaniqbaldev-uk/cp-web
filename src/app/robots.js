@@ -4,12 +4,7 @@ export default function robots() {
       {
         userAgent: "*",
         allow: "/",
-        disallow: [
-          "/hassan-test",
-          "/review-test",
-          "/testing-testimonials",
-          "/lp/",
-        ],
+        disallow: ["/hassan-test", "/review-test", "/testing-testimonials"],
       },
     ],
     sitemap: "https://creativepixels.agency/sitemap.xml",

@@ -9,6 +9,9 @@ export async function generateMetadata() {
     openGraph: {
       title: title,
       description: description,
+      alternates: {
+        canonical: "/call", // <-- the route's own URL
+      },
       url: "https://creativepixels.agency/call",
       siteName: "CreativePixels",
       images: [

@@ -43,38 +43,21 @@ const LpTestimonialSection = () => {
   return (
     <section className="bg-[#ED910C1A] px-[2rem] py-[5rem] xl:px-[0rem] xl:py-[10rem]">
       <div className="container">
-        <div className="flex flex-col items-center text-center">
-          <MotionEffect
-            slide={{ direction: "down" }}
-            fade
-            inView
-            delay={0.1}
-            transition={{ type: "tween", duration: 0.8, ease: "easeOut" }}
-          >
+        <MotionEffect
+          slide={{ direction: "down" }}
+          fade
+          inView
+          transition={{ type: "tween", duration: 0.6, ease: "easeOut" }}
+        >
+          <div className="flex flex-col items-center text-center">
             <div>
               <SectionLabel text="Testimonials" textColor="#3078FF" />
             </div>
-          </MotionEffect>
 
-          <MotionEffect
-            slide={{ direction: "down" }}
-            fade
-            inView
-            delay={0.25}
-            transition={{ type: "tween", duration: 0.8, ease: "easeOut" }}
-          >
             <div className="mt-[10px] mb-[18px] md:mt-[5px] md:mb-[14px]">
               <SectionTitle text=" Trusted by Businesses That Want Results" />
             </div>
-          </MotionEffect>
 
-          <MotionEffect
-            slide={{ direction: "down" }}
-            fade
-            inView
-            delay={0.4}
-            transition={{ type: "tween", duration: 0.8, ease: "easeOut" }}
-          >
             <div className="flex items-center justify-center gap-[1.2rem]">
               <ul className="flex items-center gap-[3px]">
                 {Array.from({ length: 5 }).map((_, index) => (
@@ -88,20 +71,14 @@ const LpTestimonialSection = () => {
                 4.9/5 from 47+ Clients
               </span>
             </div>
-          </MotionEffect>
-        </div>
+          </div>
 
-        <div className="my-[5rem] hidden grid-cols-3 gap-[1.3rem] xl:grid">
-          {testimonials.map((item, idx) => (
-            <MotionEffect
-              key={idx}
-              slide={{ direction: "down" }}
-              fade
-              inView
-              delay={0.45 + idx * 0.15}
-              transition={{ type: "tween", duration: 0.6, ease: "easeOut" }}
-            >
-              <div className="flex h-full w-full flex-col justify-between gap-[3rem] rounded-[2rem] border border-[#E4E3E8] bg-white px-[3rem] py-[4rem] backdrop-blur-[10px]">
+          <div className="my-[5rem] hidden grid-cols-3 gap-[1.3rem] xl:grid">
+            {testimonials.map((item, idx) => (
+              <div
+                key={idx}
+                className="flex h-full w-full flex-col justify-between gap-[3rem] rounded-[2rem] border border-[#E4E3E8] bg-white px-[3rem] py-[4rem] backdrop-blur-[10px]"
+              >
                 <div className="flex flex-col items-start gap-[2rem] text-left">
                   <ul className="flex items-center gap-[2px]">
                     {Array.from({ length: 5 }).map((_, index) => (
@@ -137,18 +114,10 @@ const LpTestimonialSection = () => {
                   </div>
                 </div>
               </div>
-            </MotionEffect>
-          ))}
-        </div>
+            ))}
+          </div>
 
-        {/* Responsive */}
-        <MotionEffect
-          slide={{ direction: "down" }}
-          fade
-          inView
-          delay={0.5}
-          transition={{ type: "tween", duration: 0.6, ease: "easeOut" }}
-        >
+          {/* Responsive */}
           <div className="my-[3rem] block w-full xl:hidden">
             <LpTestimonialSlider testimonials={testimonials} />
           </div>

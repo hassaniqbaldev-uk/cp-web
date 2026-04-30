@@ -6,6 +6,9 @@ export async function generateMetadata() {
   return {
     title,
     description,
+    alternates: {
+      canonical: "/blog", // <-- the route's own URL
+    },
     openGraph: {
       title: title,
       description: description,

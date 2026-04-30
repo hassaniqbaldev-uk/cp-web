@@ -41,61 +41,36 @@ const LpServicesSection = () => {
         </div>
 
         <div className="relative z-[10] container">
-          <div className="flex flex-col items-center text-center">
-            <MotionEffect
-              slide={{ direction: "down" }}
-              fade
-              inView
-              delay={0.1}
-              transition={{ type: "tween", duration: 0.8, ease: "easeOut" }}
-            >
+          <MotionEffect
+            slide={{ direction: "down" }}
+            fade
+            inView
+            transition={{ type: "tween", duration: 0.6, ease: "easeOut" }}
+          >
+            <div className="flex flex-col items-center text-center">
               <div>
                 <SectionLabel text="our services" textColor="#FF37B3" />
               </div>
-            </MotionEffect>
 
-            <MotionEffect
-              slide={{ direction: "down" }}
-              fade
-              inView
-              delay={0.25}
-              transition={{ type: "tween", duration: 0.8, ease: "easeOut" }}
-            >
               <div className="mt-[.5rem] mb-[1.4rem]">
                 <SectionTitle
                   text="Our WordPress Web Design Services"
                   textColor="#ffffff"
                 />
               </div>
-            </MotionEffect>
 
-            <MotionEffect
-              slide={{ direction: "down" }}
-              fade
-              inView
-              delay={0.4}
-              transition={{ type: "tween", duration: 0.8, ease: "easeOut" }}
-            >
               <div>
                 <SectionDescription
                   text="We provide a complete suite of WordPress services tailored to fix your problems and help your business succeed online."
                   textColor="#ffffff"
                 />
               </div>
-            </MotionEffect>
-          </div>
+            </div>
 
-          <div className="mt-[5rem] hidden grid-cols-3 gap-[2rem] xl:grid">
-            {LP_SERVICES_CARD.map((item, idx) => (
-              <MotionEffect
-                key={idx}
-                slide={{ direction: "down" }}
-                fade
-                inView
-                delay={0.45 + idx * 0.15}
-                transition={{ type: "tween", duration: 0.6, ease: "easeOut" }}
-              >
+            <div className="mt-[5rem] hidden grid-cols-3 gap-[2rem] xl:grid">
+              {LP_SERVICES_CARD.map((item, idx) => (
                 <div
+                  key={idx}
                   style={{
                     boxShadow: item.boxShadow,
                     border: `1px solid ${item.color}`,
@@ -149,18 +124,10 @@ const LpServicesSection = () => {
                     </i>
                   </button>
                 </div>
-              </MotionEffect>
-            ))}
-          </div>
+              ))}
+            </div>
 
-          {/* Responsive */}
-          <MotionEffect
-            slide={{ direction: "down" }}
-            fade
-            inView
-            delay={0.5}
-            transition={{ type: "tween", duration: 0.6, ease: "easeOut" }}
-          >
+            {/* Responsive */}
             <div className="mt-[5rem] block w-full xl:hidden">
               <LpServicesSlider LP_SERVICES_CARD={LP_SERVICES_CARD} />
             </div>
