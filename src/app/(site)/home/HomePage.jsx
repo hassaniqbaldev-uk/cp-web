@@ -57,6 +57,8 @@ const HomePage = ({ caseStudies }) => {
   return (
     <>
       <div className="relative flex min-h-screen flex-col justify-center">
+        <HomeHeader transition={transition} />
+
         <div
           style={{
             position: "absolute",
@@ -75,10 +77,7 @@ const HomePage = ({ caseStudies }) => {
               "radial-gradient(ellipse 40% 45% at 95% 15%, rgba(30, 60, 180, 0.2) 0%, transparent 55%)",
             ].join(", "),
           }}
-          className="absolute inset-0"
         />
-
-        <HomeHeader transition={transition} />
 
         {transition && (
           <motion.div

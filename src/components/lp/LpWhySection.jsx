@@ -78,12 +78,14 @@ const LpWhySection = () => {
               know how to deliver websites that actually perform.
             </h4>
 
-            <PrimaryButton
-              text="Start Your WordPress Project"
-              bGcolor="#312749"
-              textColor="#ffffff"
-              href="#audit"
-            />
+            <div>
+              <PrimaryButton
+                text="Start Your WordPress Project"
+                bGcolor="#312749"
+                textColor="#ffffff"
+                href="#audit"
+              />
+            </div>
           </div>
         </MotionEffect>
 
