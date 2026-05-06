@@ -111,13 +111,6 @@ const Header = () => {
     })();
   }, []);
 
-  const hiddenHeaderPaths = ["/"];
-  const isHeaderHidden = hiddenHeaderPaths.some(
-    (path) => pathname === path || pathname.startsWith(`${path}/`),
-  );
-
-  if (isHeaderHidden) return null;
-
   return (
     <>
       <motion.header
