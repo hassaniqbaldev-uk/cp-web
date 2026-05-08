@@ -37,7 +37,11 @@ const Opportunities = () => {
           onClose={() => setIsOpen(false)}
         />
       </div>
-      <section className="px-[2rem] pb-[5rem] xl:px-[0rem] xl:pb-[10rem]">
+
+      <section
+        id="open-roles"
+        className="px-[2rem] pb-[5rem] xl:px-[0rem] xl:pb-[10rem]"
+      >
         <div className="container">
           <div className="flex flex-col items-center xl:items-start">
             <MotionEffect

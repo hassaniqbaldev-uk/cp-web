@@ -1,15 +1,22 @@
 export const OPPORTUNITIES_DATA = [
   {
+    title: "Paid Media Lead (Google Ads & Meta Ads)",
+    department: "Marketing",
+    timing: "Full-Time",
+    location: "On-site",
+    href: "",
+  },
+  {
     title: "Social Media Graphic Designer / Animator",
     department: "Design",
-    timing: "Mid / Senior",
+    timing: "Full-Time",
     location: "On-site",
     href: "",
   },
   {
     title: "WordPress Developer (Bricks / Gutenberg)",
     department: "Engineering",
-    timing: "Intern / Junior",
+    timing: "Full-Time",
     location: "On-site",
     href: "",
   },
@@ -23,7 +30,7 @@ export const OPPORTUNITIES_DATA = [
   {
     title: "UI/UX Designer",
     department: "Design",
-    timing: "Mid / Senior",
+    timing: "Full-Time",
     location: "On-site",
     href: "",
   },
