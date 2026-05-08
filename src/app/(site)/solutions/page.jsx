@@ -42,7 +42,7 @@ import Sector from "@/components/sections/sector/Sector";
 import { SOLUTIONS_QUERY } from "@/sanity/queries.solutions";
 import { solutionsClient } from "@/sanity/sanity.solutions";
 
-export const revalidate = 30; // Next.js ISR
+export const revalidate = 3600; // Next.js ISR
 
 const SolutionsPage = async () => {
   let solutions = [];

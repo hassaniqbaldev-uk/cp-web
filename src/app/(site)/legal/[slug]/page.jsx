@@ -11,7 +11,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import React, { cache } from "react";
 
-const options = { next: { revalidate: 30 } };
+const options = { next: { revalidate: 3600 } };
 
 const getLegal = cache(async (slug) => {
   try {

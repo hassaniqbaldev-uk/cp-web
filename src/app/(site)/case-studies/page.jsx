@@ -45,7 +45,7 @@ import {
 } from "@/sanity/queries.caseStudies";
 import { caseStudiesClient } from "@/sanity/sanity.caseStudies";
 
-const options = { next: { revalidate: 30 } };
+const options = { next: { revalidate: 3600 } };
 
 const CaseStudiesPage = async (props) => {
   const searchParams = await props.searchParams;

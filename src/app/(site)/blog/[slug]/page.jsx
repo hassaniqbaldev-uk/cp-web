@@ -11,7 +11,7 @@ import { blogClient } from "@/sanity/sanity.blog";
 import { notFound } from "next/navigation";
 import { cache } from "react";
 
-const options = { next: { revalidate: 30 } };
+const options = { next: { revalidate: 3600 } };
 
 const getBlog = cache(async (slug) => {
   try {

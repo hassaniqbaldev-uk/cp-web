@@ -13,11 +13,7 @@ import { caseStudiesClient } from "@/sanity/sanity.caseStudies";
 import { notFound } from "next/navigation";
 import { cache } from "react";
 
-const options = { next: { revalidate: 30 } };
-
-// const getCaseStudy = cache(async (slug) => {
-//   return caseStudiesClient.fetch(caseStudiesDetailQuery, { slug }, options);
-// });
+const options = { next: { revalidate: 3600 } };
 
 const getCaseStudy = cache(async (slug) => {
   try {

@@ -39,7 +39,7 @@ import BlogHero from "@/components/sections/hero/BlogHero";
 import { BLOG_HERO_QUERY, BLOG_LIST_QUERY } from "@/sanity/queries.blog";
 import { blogClient } from "@/sanity/sanity.blog";
 
-export const revalidate = 30; // Next.js ISR
+export const revalidate = 3600; // Next.js ISR
 
 const BlogPage = async () => {
   // const hero = await blogClient.fetch(BLOG_HERO_QUERY);

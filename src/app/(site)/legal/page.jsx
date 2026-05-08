@@ -40,7 +40,7 @@ import Resources from "@/components/sections/resources/Resources";
 import { LEGAL_LIST_QUERY } from "@/sanity/queries.legal";
 import { legalClient } from "@/sanity/sanity.legal";
 
-export const revalidate = 30; // Next.js ISR
+export const revalidate = 3600; // Next.js ISR
 
 const LegalPage = async () => {
   let legal = [];

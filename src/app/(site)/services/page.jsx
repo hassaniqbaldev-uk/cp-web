@@ -45,7 +45,7 @@ import Testimonials from "@/components/sections/testimonials/Testimonials";
 import { SERVICES_QUERY } from "@/sanity/queries.services";
 import { servicesClient } from "@/sanity/sanity.services";
 
-export const revalidate = 30; // Next.js ISR
+export const revalidate = 3600; // Next.js ISR
 
 const ServicesPage = async () => {
   let services = [];

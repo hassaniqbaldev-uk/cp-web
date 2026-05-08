@@ -2,7 +2,7 @@ import { caseStudiesListingQuery } from "@/sanity/queries.caseStudies";
 import { caseStudiesClient } from "@/sanity/sanity.caseStudies";
 import HomePage from "./home/HomePage";
 
-const options = { next: { revalidate: 30 } };
+const options = { next: { revalidate: 3600 } };
 
 export async function generateMetadata() {
   const title = "Web Design Agency for Growth-Focused Brands | Free Audit";
