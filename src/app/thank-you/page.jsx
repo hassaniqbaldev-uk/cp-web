@@ -16,7 +16,7 @@ const nextSteps = [
   "You receive a full conversion audit with clear, actionable fixes",
 ];
 
-const ThanksPage = () => {
+const ThankYouPage = () => {
   return (
     <main className="flex min-h-screen items-center justify-center px-[2rem] py-[6rem] xl:px-[0rem]">
       <div className="container">
@@ -79,4 +79,4 @@ const ThanksPage = () => {
   );
 };
 
-export default ThanksPage;
+export default ThankYouPage;
