@@ -6,7 +6,7 @@ import StarIcon from "@/components/icons/StarIcon";
 import TestimonialAvatar1 from "@/assets/icons/ui/testimonial-avatar-1.svg";
 import TestimonialAvatar2 from "@/assets/svgs/ayoa-testimonial-avatar.svg";
 import TestimonialAvatar3 from "@/assets/icons/ui/testimonial-avatar-3.svg";
-import TestimonialAvatar4 from "@/assets/svgs/game-art-testimonial-avatar.svg";
+import TestimonialAvatar4 from "@/assets/icons/ui/testimonial-avatar-4.svg";
 import TestimonialCardImg from "@/assets/images/cards/testimonial-card-img.webp";
 import Image from "next/image";
 import PrimaryButton from "@/components/ui/PrimaryButton";
@@ -15,28 +15,33 @@ import dynamic from "next/dynamic";
 
 const testimonials = [
   {
-    name: "James Wilson",
-    role: "CEO, TechFlow",
-    text: `“CreativePixels helped us turn our website into a consistent lead generator. The difference was immediate.”`,
-    avatar: TestimonialAvatar2,
+    name: "Ben",
+    role: "Little Astro",
+    text: `“Fantastic! One of the best! Hassan and his team are really very talented and built an outstanding website”`,
+    avatar: TestimonialAvatar1,
   },
   {
-    name: "Emma K.",
-    role: "Business Owner",
-    text: `“Our conversions improved significantly after launch. Our ad spend finally feels worth it.”`,
-    avatar: TestimonialAvatar2,
+    name: "Sandra",
+    role: "Homecare",
+    text: `“It was a pleasure working with CreativePixels on designing our brand new website. I highly recommend his service.”`,
+    avatar: TestimonialAvatar3,
   },
   {
-    name: "Simon Hobbs",
-    role: "Owner, Precise Print",
-    text: `“Professional, fast, and focused on results. Exactly what we needed.”`,
+    name: "Alex",
+    role: "Loop",
+    text: `“CreativePixels did an incredible job helping us to create branding material from scratch. They were extremely flexible, and exceeded our expectations.”`,
+    avatar: TestimonialAvatar4,
+  },
+  {
+    name: "James Brian",
+    role: "AYOA",
+    text: `“I would highly recommend CreativePixels, they were excellent throughout the process of designing and developing our new website.”`,
     avatar: TestimonialAvatar2,
   },
 ];
 
 const LpTestimonialSlider = dynamic(() => import("./LpTestimonialSlider"), {
   ssr: false,
-  loading: () => <div className="h-[24.5rem]" />, // placeholder to prevent layout shift
 });
 
 const LpTestimonialSection = () => {
