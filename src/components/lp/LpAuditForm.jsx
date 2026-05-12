@@ -11,10 +11,11 @@ import {
 import { LP_SERVICES_CARD } from "@/contants";
 import useServiceStore from "@/store/useServiceStore";
 import { useEffect, useRef, useState } from "react";
+import { useRouter } from "next/navigation";
 
 const LpAuditForm = () => {
   const { selectedService, setSelectedService } = useServiceStore();
-  const [resetKey, setResetKey] = useState(0);
+  const router = useRouter();
   const formRef = useRef();
 
   const serviceName =
@@ -62,21 +63,15 @@ const LpAuditForm = () => {
       const data = await res.json();
 
       if (data.success) {
-        setStatus("✅ Your audit request has been submitted!");
-        setFormData({
-          name: "",
-          email: "",
-          message: "",
-        });
-        setSelectedService(""); // reset the dropdown too
-        setResetKey((prev) => prev + 1); // force Select to remount
-      } else {
-        setStatus("❌ Failed to submit. Please try again later.");
+        router.push("/thanks");
+        return;
       }
+
+      setStatus("❌ Failed to submit. Please try again later.");
+      setLoading(false);
     } catch (error) {
       console.error("Error submitting form:", error);
       setStatus("❌ Something went wrong. Try again.");
-    } finally {
       setLoading(false);
     }
   };
@@ -130,7 +125,6 @@ const LpAuditForm = () => {
             </label>
 
             <Select
-              key={resetKey}
               value={selectedService || undefined}
               onValueChange={setSelectedService}
             >
