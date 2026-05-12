@@ -318,14 +318,22 @@ export const getCustomerEmailTemplate = (name, service, email, message) => {
             While you wait, feel free to take a look at our recent work to get a feel for how we work and what we deliver:
             <a href="https://creativepixels.agency">www.creativepixels.agency</a> <br /><br />
 
-            Want to speak to someone sooner? You can book a free 15-minute discovery call at a time that suits you: <br /><br />
+            Want to speak to someone sooner? You can book a free 15-minute discovery call at a time that suits you:
+          </p>
 
+          <a href="https://creativepixels.agency/call" class="group">
+            <div class="button-container">
+              <span class="button-text">Book A Discovery Call</span>
+            </div>
+          </a>
+
+          <p class="msg-text">
             We look forward to learning more about your project. <br /><br />
 
             Best regards, <br />
-            CreativePixels Team <br />  
-            hello@creativepixels.agency <br />  
-            <a href="https://creativepixels.agency">www.creativepixels.agency</a>  
+            CreativePixels Team <br />
+            hello@creativepixels.agency <br />
+            <a href="https://creativepixels.agency">www.creativepixels.agency</a>
           </p>
 
 

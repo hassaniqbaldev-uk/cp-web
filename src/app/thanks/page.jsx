@@ -1,4 +1,3 @@
-import Link from "next/link";
 import CheckMarkIcon from "@/components/icons/CheckMarkIcon";
 import LpPrimaryButton from "@/components/lp/LpPrimaryButton";
 import SectionLabel from "@/components/ui/SectionLabel";
@@ -12,7 +11,7 @@ export const metadata = {
 };
 
 const nextSteps = [
-  "Request logged — confirmation sent to your email",
+  "Request logged confirmation sent to your email",
   "Our experts review your site & goals within 2–3 business days",
   "You receive a full conversion audit with clear, actionable fixes",
 ];
@@ -43,7 +42,7 @@ const ThanksPage = () => {
 
           <div className="max-w-[60rem]">
             <SectionDescription
-              text="We've received your details and our team is already lining things up. You'll get a full conversion audit back within 2–3 business days — no fluff, just clear fixes."
+              text="We've received your details and our team is already lining things up. You'll get a full conversion audit back within 2–3 business days  no fluff, just clear fixes."
               textColor="#625C70"
             />
           </div>
@@ -73,13 +72,6 @@ const ThanksPage = () => {
               textColor="#ffffff"
               href="/wordpress-web-development"
             />
-
-            <Link
-              href="/case-studies"
-              className="text-[1.6rem] font-semibold tracking-normal text-[#312749] underline underline-offset-4 hover:text-[#FF37B3]"
-            >
-              Or explore our case studies
-            </Link>
           </div>
         </div>
       </div>
