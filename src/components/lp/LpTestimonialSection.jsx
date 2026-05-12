@@ -7,6 +7,8 @@ import TestimonialAvatar1 from "@/assets/icons/ui/testimonial-avatar-1.svg";
 import TestimonialAvatar2 from "@/assets/svgs/ayoa-testimonial-avatar.svg";
 import TestimonialAvatar3 from "@/assets/icons/ui/testimonial-avatar-3.svg";
 import TestimonialAvatar4 from "@/assets/icons/ui/testimonial-avatar-4.svg";
+import TestimonialAvatar5 from "@/assets/icons/ui/testimonial-avatar-5.svg";
+import TestimonialAvatar6 from "@/assets/icons/ui/testimonial-avatar-6.svg";
 import TestimonialCardImg from "@/assets/images/cards/testimonial-card-img.webp";
 import Image from "next/image";
 import PrimaryButton from "@/components/ui/PrimaryButton";
@@ -37,6 +39,18 @@ const testimonials = [
     role: "AYOA",
     text: `“I would highly recommend CreativePixels, they were excellent throughout the process of designing and developing our new website.”`,
     avatar: TestimonialAvatar2,
+  },
+  {
+    name: "JAnthony",
+    role: "Express-conveyancing.",
+    text: `“CreativePixels have been exceptional. They followed a less than ideal brief so well and came up with an end result of exactly what we had in mind. Highly recommended, and we will be continuing to use CreativePixels for our ongoing projects.”`,
+    avatar: TestimonialAvatar5,
+  },
+  {
+    name: "Tim",
+    role: "PolyMax",
+    text: `“We couldn't be happier with the work CreativePixels produced, they took our brief and elevated it to the next level. They were great to work with, and delivered everything on time. I am very happy to recommend CreativePixels.”`,
+    avatar: TestimonialAvatar6,
   },
 ];
 
