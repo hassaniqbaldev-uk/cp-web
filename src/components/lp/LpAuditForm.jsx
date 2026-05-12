@@ -63,7 +63,7 @@ const LpAuditForm = () => {
       const data = await res.json();
 
       if (data.success) {
-        router.push("/thanks");
+        router.push("/thank-you");
         return;
       }
 
