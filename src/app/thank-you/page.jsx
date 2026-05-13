@@ -26,29 +26,29 @@ const ThankYouPage = () => {
             <CheckMarkIcon color="#ffffff" width="40" height="40" />
           </div>
 
-          <div>
+          {/* <div>
             <SectionLabel
               text="Confirmation sent to your email"
               textColor="#3078FF"
             />
-          </div>
+          </div> */}
 
           <h1 className="mt-[1.5rem] mb-[2rem] text-[3rem] leading-[3.7rem] font-bold tracking-[-0.03em] text-[#312749] md:text-[4.8rem] md:leading-[6rem]">
-            Your Audit Is{" "}
+            Thanks for your{" "}
             <span className="bg-gradient-pink-orange bg-clip-text text-transparent">
-              In The Queue
+              enquiry
             </span>
           </h1>
 
           <div className="max-w-[60rem]">
             <SectionDescription
-              text="We've received your details and our team is already lining things up. You'll get a full conversion audit back within 2–3 business days  no fluff, just clear fixes."
+              text="We've received your details and our team will review what you have sent and come back to you shortly."
               textColor="#625C70"
             />
           </div>
 
           {/* What happens next */}
-          <div className="mt-[5rem] flex w-full max-w-[64rem] flex-col gap-[1.6rem]">
+          {/* <div className="mt-[5rem] flex w-full max-w-[64rem] flex-col gap-[1.6rem]">
             {nextSteps.map((item, idx) => (
               <div
                 key={idx}
@@ -62,12 +62,12 @@ const ThankYouPage = () => {
                 </span>
               </div>
             ))}
-          </div>
+          </div> */}
 
           {/* CTAs */}
           <div className="mt-[5rem] flex flex-col items-center gap-[2.4rem] md:flex-row">
             <LpPrimaryButton
-              text="Back To Landing Page"
+              text="Go Back"
               bGcolor="#FF37B3"
               textColor="#ffffff"
               href="/wordpress-web-development"

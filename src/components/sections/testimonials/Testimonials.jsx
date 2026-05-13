@@ -15,6 +15,7 @@ import LoopAvatar from "@/assets/svgs/loop-avatar.svg";
 import PolymaxAvatar from "@/assets/svgs/polymax-avatar.svg";
 import SafetyRacAvatar from "@/assets/svgs/safety-rac-avatar.svg";
 import LittleAstroTestimonialImg from "@/assets/images/cards/little-astro-testimonial-image.png";
+import AlertForceTestimonialImg from "@/assets/images/cards/alert-force-testimonial-image.png";
 import Image from "next/image";
 import PrimaryButton from "@/components/ui/PrimaryButton";
 import { MotionEffect } from "@/components/effects/motion-effect";
@@ -173,13 +174,13 @@ const Testimonials = () => {
           <div className="my-[5rem] hidden grid-cols-3 gap-[1.3rem] xl:grid">
             {/* Card 1 — row-span-2 */}
             <div className="row-span-2 flex h-full w-full flex-col items-center gap-[2rem] rounded-[2rem] border border-[#E4E3E8] bg-white px-[3rem] pt-[3rem] pb-[4.1rem] backdrop-blur-[10px]">
-              <div className="flex h-[25rem] w-full overflow-hidden rounded-[1.2rem]">
+              <div className="flex h-[20rem] w-full overflow-hidden rounded-[1.2rem]">
                 <Image
-                  src={LittleAstroTestimonialImg}
+                  src={AlertForceTestimonialImg}
                   alt="Card Image"
                   width={319}
                   height={319}
-                  className="size-full object-cover object-top"
+                  className="size-full object-cover object-top-left"
                   unoptimized
                 />
               </div>
@@ -195,15 +196,19 @@ const Testimonials = () => {
                   </ul>
 
                   <p className="text-[1.8rem] leading-[2.4rem] font-medium tracking-normal text-[#625C70]">
-                    Fantastic! One of the best! Hassan and his team are really
-                    very talented and built an outstanding website
+                    &quot;CreativePixels are a real professional and an absolute
+                    pleasure to work with. Great guiding advice, exceeded my
+                    expectations and overall an absolute treasure and asset for
+                    our business. Thank you, we truly appreciate all of your
+                    contributions and we look forward to continuing to work
+                    together,&quot;
                   </p>
                 </div>
 
                 <div className="flex items-center gap-[1.2rem]">
                   <div className="flex overflow-hidden rounded-full">
                     <Image
-                      src={LittleAstroAvatar}
+                      src={AlertforceAvatar}
                       alt="Avatar Image"
                       width={56}
                       height={56}
@@ -213,11 +218,11 @@ const Testimonials = () => {
 
                   <div className="flex flex-col items-start text-left">
                     <h6 className="text-[1.8rem] leading-[2.6rem] font-semibold tracking-normal text-[#312749]">
-                      Ben
+                      Brendan Torazzi
                     </h6>
 
                     <span className="text-[1.6rem] leading-[2.4rem] font-medium tracking-normal text-[#625C70]">
-                      Little Astro
+                      Alertforce
                     </span>
                   </div>
                 </div>
@@ -276,6 +281,46 @@ const Testimonials = () => {
                 </ul>
 
                 <p className="text-[1.8rem] leading-[2.4rem] font-medium tracking-normal text-[#625C70]">
+                  Fantastic! One of the best! Hassan and his team are really
+                  very talented and built an outstanding website
+                </p>
+              </div>
+
+              <div className="flex items-center gap-[1.2rem]">
+                <div className="flex overflow-hidden rounded-full">
+                  <Image
+                    src={LittleAstroAvatar}
+                    alt="Avatar Image"
+                    width={56}
+                    height={56}
+                    unoptimized
+                  />
+                </div>
+
+                <div className="flex flex-col items-start text-left">
+                  <h6 className="text-[1.8rem] leading-[2.6rem] font-semibold tracking-normal text-[#312749]">
+                    Ben
+                  </h6>
+
+                  <span className="text-[1.6rem] leading-[2.4rem] font-medium tracking-normal text-[#625C70]">
+                    Little Astro
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            {/* Card 4 — col-span-2 */}
+            <div className="col-span-2 flex h-[31.5rem] w-full flex-col justify-between rounded-[2rem] border border-[#E4E3E8] bg-white px-[3rem] py-[4.1rem] backdrop-blur-[10px]">
+              <div className="flex flex-col items-start gap-[1.9rem] text-left">
+                <ul className="flex items-center gap-[3px]">
+                  {Array.from({ length: 5 }).map((_, index) => (
+                    <li key={index}>
+                      <StarIcon color="#FFBF00" height="20" width="20" />
+                    </li>
+                  ))}
+                </ul>
+
+                <p className="text-[1.8rem] leading-[2.4rem] font-medium tracking-normal text-[#625C70]">
                   CreativePixels did an incredible job helping us to create
                   branding material from scratch. They were extremely flexible,
                   and exceeded our expectations.
@@ -300,50 +345,6 @@ const Testimonials = () => {
 
                   <span className="text-[1.6rem] leading-[2.4rem] font-medium tracking-normal text-[#625C70]">
                     Loop
-                  </span>
-                </div>
-              </div>
-            </div>
-
-            {/* Card 4 — col-span-2 */}
-            <div className="col-span-2 flex h-[31.5rem] w-full flex-col justify-between rounded-[2rem] border border-[#E4E3E8] bg-white px-[3rem] py-[4.1rem] backdrop-blur-[10px]">
-              <div className="flex flex-col items-start gap-[1.9rem] text-left">
-                <ul className="flex items-center gap-[3px]">
-                  {Array.from({ length: 5 }).map((_, index) => (
-                    <li key={index}>
-                      <StarIcon color="#FFBF00" height="20" width="20" />
-                    </li>
-                  ))}
-                </ul>
-
-                <p className="text-[1.8rem] leading-[2.4rem] font-medium tracking-normal text-[#625C70]">
-                  &quot;CreativePixels are a real professional and an absolute
-                  pleasure to work with. Great guiding advice, exceeded my
-                  expectations and overall an absolute treasure and asset for
-                  our business. Thank you, we truly appreciate all of your
-                  contributions and we look forward to continuing to work
-                  together,&quot;
-                </p>
-              </div>
-
-              <div className="flex items-center gap-[1.2rem]">
-                <div className="flex overflow-hidden rounded-full">
-                  <Image
-                    src={AlertforceAvatar}
-                    alt="Avatar Image"
-                    width={56}
-                    height={56}
-                    unoptimized
-                  />
-                </div>
-
-                <div className="flex flex-col items-start text-left">
-                  <h6 className="text-[1.8rem] leading-[2.6rem] font-semibold tracking-normal text-[#312749]">
-                    Brendan Torazzi
-                  </h6>
-
-                  <span className="text-[1.6rem] leading-[2.4rem] font-medium tracking-normal text-[#625C70]">
-                    Alertforce
                   </span>
                 </div>
               </div>

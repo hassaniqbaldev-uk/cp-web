@@ -15,8 +15,7 @@ import HomecareAvatar from "@/assets/svgs/homecare-avatar.svg";
 import LoopAvatar from "@/assets/svgs/loop-avatar.svg";
 import PolymaxAvatar from "@/assets/svgs/polymax-avatar.svg";
 import SafetyRacAvatar from "@/assets/svgs/safety-rac-avatar.svg";
-import TestimonialCardImg from "@/assets/images/cards/testimonial-card-img.webp";
-import LittleAstroTestimonialImg from "@/assets/images/cards/little-astro-testimonial-image.png";
+import AlertForceTestimonialImg from "@/assets/images/cards/alert-force-testimonial-image.png";
 import Image from "next/image";
 import { MotionEffect } from "@/components/effects/motion-effect";
 import dynamic from "next/dynamic";
@@ -29,36 +28,15 @@ const Testimonials2Slider = dynamic(
 );
 
 const featuredTestimonial = {
-  image: LittleAstroTestimonialImg,
+  image: AlertForceTestimonialImg,
   quote:
-    "Fantastic! One of the best! Hassan and his team are really very talented and built an outstanding website",
-  name: "Ben",
-  role: "Little Astro",
-  avatar: LittleAstroAvatar,
+    "CreativePixels are a real professional and an absolute pleasure to work with. Great guiding advice, exceeded my expectations and overall an absolute treasure and asset for our business. Thank you, we truly appreciate all of your contributions and we look forward to continuing to work together,",
+  name: "Brendan Torazzi",
+  role: "Alertforce",
+  avatar: AlertforceAvatar,
 };
 
 const testimonials = [
-  {
-    rating: 5,
-    text: "I had the pleasure of working with CreativePixels on the development of my health and safety consultancy website, and I couldn’t be more pleased with the outcome. CreativePixels developed the site in WordPress, and from start to finish, the team were incredibly helpful, friendly, and professional. They took the time to understand my needs and provided valuable insights that helped bring the vision of my website to life. Their attention to detail and dedication to making sure everything was perfect really stood out. I highly recommend CreativePixels for anyone looking for a talented and approachable web design team!",
-    name: "Abdul",
-    company: "Safety Rac",
-    avatar: SafetyRacAvatar,
-  },
-  {
-    rating: 5,
-    text: "CreativePixels have been exceptional. They followed a less than ideal brief so well and came up with an end result of exactly what we had in mind. Highly recommended, and we will be continuing to use CreativePixels for our ongoing projects.",
-    name: "Anthony",
-    company: "Express-conveyancing.",
-    avatar: ExpressAvatar,
-  },
-  {
-    rating: 5,
-    text: "We couldn't be happier with the work CreativePixels produced, they took our brief and elevated it to the next level. They were great to work with, and delivered everything on time. I am very happy to recommend CreativePixels.",
-    name: "Tim",
-    company: "PolyMax",
-    avatar: PolymaxAvatar,
-  },
   {
     rating: 5,
     text: "Fantastic! One of the best! Hassan and his team are really very talented and built an outstanding website",
@@ -82,6 +60,41 @@ const testimonials = [
   },
   {
     rating: 5,
+    text: "I would highly recommend CreativePixels, they were excellent throughout the process of designing and developing our new website.",
+    name: "James Brian",
+    company: "AYOA",
+    avatar: AyoaAvatar,
+  },
+  {
+    rating: 5,
+    text: "CreativePixels have been exceptional. They followed a less than ideal brief so well and came up with an end result of exactly what we had in mind. Highly recommended, and we will be continuing to use CreativePixels for our ongoing projects.",
+    name: "Anthony",
+    company: "Express-conveyancing.",
+    avatar: ExpressAvatar,
+  },
+  {
+    rating: 5,
+    text: "We couldn't be happier with the work CreativePixels produced, they took our brief and elevated it to the next level. They were great to work with, and delivered everything on time. I am very happy to recommend CreativePixels.",
+    name: "Tim",
+    company: "PolyMax",
+    avatar: PolymaxAvatar,
+  },
+  {
+    rating: 5,
+    text: "CreativePixels are a real professional and an absolute pleasure to work with. Great guiding advice, exceeded my expectations and overall an absolute treasure and asset for our business. Thank you, we truly appreciate all of your contributions and we look forward to continuing to work together,",
+    name: "Brendan Torazzi",
+    company: "Alertforce",
+    avatar: AlertforceAvatar,
+  },
+  {
+    rating: 5,
+    text: "I had the pleasure of working with CreativePixels on the development of my health and safety consultancy website, and I couldn’t be more pleased with the outcome. CreativePixels developed the site in WordPress, and from start to finish, the team were incredibly helpful, friendly, and professional. They took the time to understand my needs and provided valuable insights that helped bring the vision of my website to life. Their attention to detail and dedication to making sure everything was perfect really stood out. I highly recommend CreativePixels for anyone looking for a talented and approachable web design team!",
+    name: "Abdul",
+    company: "Safety Rac",
+    avatar: SafetyRacAvatar,
+  },
+  {
+    rating: 5,
     text: "CreativePixels were fantastic to work with. Nothing ever felt like too much trouble, and the team went above and beyond to keep the project moving. They delivered the website on time and within budget, while also helping create missing content where needed to keep everything on schedule. We would absolutely work with CreativePixels again and are continuing to use their services for ongoing maintenance and SEO support.",
     name: "Scott Burkhardt",
     company: "Casabotanica",
@@ -93,20 +106,6 @@ const testimonials = [
     name: "Gareth",
     company: "3dcad visuals",
     avatar: CadVisualsAvatar,
-  },
-  {
-    rating: 5,
-    text: "I would highly recommend CreativePixels, they were excellent throughout the process of designing and developing our new website.",
-    name: "James Brian",
-    company: "AYOA",
-    avatar: AyoaAvatar,
-  },
-  {
-    rating: 5,
-    text: "CreativePixels are a real professional and an absolute pleasure to work with. Great guiding advice, exceeded my expectations and overall an absolute treasure and asset for our business. Thank you, we truly appreciate all of your contributions and we look forward to continuing to work together,",
-    name: "Brendan Torazzi",
-    company: "Alertforce",
-    avatar: AlertforceAvatar,
   },
   {
     rating: 5,
@@ -189,13 +188,13 @@ const Testimonials2 = () => {
             {/* Featured Testimonial - Left Column (row-span-2) */}
             <div className="row-span-2 flex h-full w-full flex-col items-start justify-between gap-[4rem] rounded-[2rem] border border-[#E4E3E8] bg-white px-[3rem] pt-[3rem] pb-[4.1rem] backdrop-blur-[10px]">
               <div className="flex flex-col gap-[2rem]">
-                <div className="flex h-[25rem] w-full overflow-hidden rounded-[1.2rem]">
+                <div className="flex h-[20rem] w-full overflow-hidden rounded-[1.2rem]">
                   <Image
                     src={featuredTestimonial.image}
                     alt="Card Image"
                     width={319}
                     height={319}
-                    className="size-full object-cover object-top"
+                    className="size-full object-cover object-top-left"
                     unoptimized
                   />
                 </div>

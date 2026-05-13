@@ -48,7 +48,7 @@ const Testimonials2Slider = ({ testimonials }) => {
                 </ul>
 
                 <p className="text-[1.4rem] leading-[2.1rem] font-medium tracking-normal text-[#625C70]">
-                  {testimonial.quote}
+                  {testimonial.text}
                 </p>
               </div>
 
