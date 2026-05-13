@@ -3,11 +3,18 @@ import SectionLabel from "@/components/ui/SectionLabel";
 import SectionTitle from "@/components/ui/SectionTitle";
 import React from "react";
 import StarIcon from "@/components/icons/StarIcon";
-import TestimonialAvatar1 from "@/assets/icons/ui/testimonial-avatar-1.svg";
-import TestimonialAvatar2 from "@/assets/svgs/ayoa-testimonial-avatar.svg";
-import TestimonialAvatar3 from "@/assets/icons/ui/testimonial-avatar-3.svg";
-import TestimonialAvatar4 from "@/assets/svgs/game-art-testimonial-avatar.svg";
-import TestimonialCardImg from "@/assets/images/cards/testimonial-card-img.webp";
+import LittleAstroAvatar from "@/assets/svgs/little-astro-avatar.svg";
+import CadVisualsAvatar from "@/assets/svgs/3dcad-visuals-avatar.svg";
+import AlertforceAvatar from "@/assets/svgs/alertforce-avatar.svg";
+import AyoaAvatar from "@/assets/svgs/ayoa-avatar.svg";
+import CasabotanicaAvatar from "@/assets/svgs/casabotanica-avatar.svg";
+import ExpressAvatar from "@/assets/svgs/express-conveyancing-avatar.svg";
+import GameArtAvatar from "@/assets/svgs/game-art-brain-avatar.svg";
+import HomecareAvatar from "@/assets/svgs/homecare-avatar.svg";
+import LoopAvatar from "@/assets/svgs/loop-avatar.svg";
+import PolymaxAvatar from "@/assets/svgs/polymax-avatar.svg";
+import SafetyRacAvatar from "@/assets/svgs/safety-rac-avatar.svg";
+import LittleAstroTestimonialImg from "@/assets/images/cards/little-astro-testimonial-image.png";
 import Image from "next/image";
 import PrimaryButton from "@/components/ui/PrimaryButton";
 import { MotionEffect } from "@/components/effects/motion-effect";
@@ -17,39 +24,86 @@ const TestimonialsSlider = dynamic(
   () => import("@/components/ui/TestimonialsSlider"),
   {
     ssr: false,
-    loading: () => <div className="h-[37.6rem]" />, // placeholder height to prevent layout shift
   },
 );
 
 const testimonials = [
   {
     rating: 5,
-    text: "CreativePixels' expertise on our programme materials was invaluable. Together, we raised over £478,000 to protect children in danger.",
-    name: "Special Events Coordinator",
-    company: "Coordinator, UNICEF UK",
-    image: TestimonialCardImg,
-    avatar: TestimonialAvatar1,
+    text: "I had the pleasure of working with CreativePixels on the development of my health and safety consultancy website, and I couldn’t be more pleased with the outcome. CreativePixels developed the site in WordPress, and from start to finish, the team were incredibly helpful, friendly, and professional. They took the time to understand my needs and provided valuable insights that helped bring the vision of my website to life. Their attention to detail and dedication to making sure everything was perfect really stood out. I highly recommend CreativePixels for anyone looking for a talented and approachable web design team!",
+    name: "Abdul",
+    company: "Safety Rac",
+    avatar: SafetyRacAvatar,
   },
   {
     rating: 5,
-    text: "I would highly recommend Hassan, he was excellent throughout the process of designing and developing our new website.",
-    name: "James Brien",
-    company: "Ayoa",
-    avatar: TestimonialAvatar2,
+    text: "CreativePixels have been exceptional. They followed a less than ideal brief so well and came up with an end result of exactly what we had in mind. Highly recommended, and we will be continuing to use CreativePixels for our ongoing projects.",
+    name: "Anthony",
+    company: "Express-conveyancing.",
+    avatar: ExpressAvatar,
   },
   {
     rating: 5,
-    text: "My new site is significantly faster and easier to navigate. We've seen a 30% increase in inquiries since launch.",
-    name: "Simon Hobbs",
-    company: "Owner, Precise Print",
-    avatar: TestimonialAvatar3,
+    text: "We couldn't be happier with the work CreativePixels produced, they took our brief and elevated it to the next level. They were great to work with, and delivered everything on time. I am very happy to recommend CreativePixels.",
+    name: "Tim",
+    company: "PolyMax",
+    avatar: PolymaxAvatar,
   },
   {
     rating: 5,
-    text: "The new webpage Hassan created for Game Art Brain is a game-changer for our brand. He developed a signature style that is both unique and perfectly aligned with our identity, completely revitalizing our online presence. His work is meticulous, handling a huge number of images and complex layouts with an artist's touch.",
+    text: "Fantastic! One of the best! Hassan and his team are really very talented and built an outstanding website",
+    name: "Ben",
+    company: "Little Astro",
+    avatar: LittleAstroAvatar,
+  },
+  {
+    rating: 5,
+    text: "It was a pleasure working with CreativePixels on designing our brand new website. I highly recommend his service.",
+    name: "Sandra",
+    company: "Homecare",
+    avatar: HomecareAvatar,
+  },
+  {
+    rating: 5,
+    text: "CreativePixels did an incredible job helping us to create branding material from scratch. They were extremely flexible, and exceeded our expectations.",
+    name: "Alex",
+    company: "Loop",
+    avatar: LoopAvatar,
+  },
+  {
+    rating: 5,
+    text: "CreativePixels were fantastic to work with. Nothing ever felt like too much trouble, and the team went above and beyond to keep the project moving. They delivered the website on time and within budget, while also helping create missing content where needed to keep everything on schedule. We would absolutely work with CreativePixels again and are continuing to use their services for ongoing maintenance and SEO support.",
+    name: "Scott Burkhardt",
+    company: "Casabotanica",
+    avatar: CasabotanicaAvatar,
+  },
+  {
+    rating: 5,
+    text: "CreativePixels are the best website developers I have ever worked with! That is saying a lot as I have had circa 10 websites built in the last 7 years, with many different developers. Their design skills are amazing and they gave me better ideas than my own for the new website they built. They listen well to a brief and give honest feedback and improvements. The site they produced for our company is truly stunning! We got a new enquiry the day it went live! That has never happened before. CreativePixels are the best :). Highly recommend.",
+    name: "Gareth",
+    company: "3dcad visuals",
+    avatar: CadVisualsAvatar,
+  },
+  {
+    rating: 5,
+    text: "I would highly recommend CreativePixels, they were excellent throughout the process of designing and developing our new website.",
+    name: "James Brian",
+    company: "AYOA",
+    avatar: AyoaAvatar,
+  },
+  {
+    rating: 5,
+    text: "CreativePixels are a real professional and an absolute pleasure to work with. Great guiding advice, exceeded my expectations and overall an absolute treasure and asset for our business. Thank you, we truly appreciate all of your contributions and we look forward to continuing to work together,",
+    name: "Brendan Torazzi",
+    company: "Alertforce",
+    avatar: AlertforceAvatar,
+  },
+  {
+    rating: 5,
+    text: "The new webpage CreativePixels created for Game Art Brain is a game-changer for our brand. CreativePixels developed a signature style that is both unique and perfectly aligned with our identity, completely revitalizing our online presence. Their work is meticulous, handling a huge number of images and complex layouts with an artist's touch. Throughout the process, the communication was exceptional and their ability to translate our feedback into a stunning reality was incredible. CreativePixels is a true design professional who delivers visionary results.",
     name: "Ahmed Omar",
-    company: "GameArtBrain",
-    avatar: TestimonialAvatar4,
+    company: "Game Art Brain",
+    avatar: GameArtAvatar,
   },
 ];
 
@@ -119,12 +173,13 @@ const Testimonials = () => {
           <div className="my-[5rem] hidden grid-cols-3 gap-[1.3rem] xl:grid">
             {/* Card 1 — row-span-2 */}
             <div className="row-span-2 flex h-full w-full flex-col items-center gap-[2rem] rounded-[2rem] border border-[#E4E3E8] bg-white px-[3rem] pt-[3rem] pb-[4.1rem] backdrop-blur-[10px]">
-              <div className="flex overflow-hidden rounded-[1.2rem]">
+              <div className="flex h-[25rem] w-full overflow-hidden rounded-[1.2rem]">
                 <Image
-                  src={TestimonialCardImg}
+                  src={LittleAstroTestimonialImg}
                   alt="Card Image"
                   width={319}
                   height={319}
+                  className="size-full object-cover object-top"
                   unoptimized
                 />
               </div>
@@ -140,16 +195,15 @@ const Testimonials = () => {
                   </ul>
 
                   <p className="text-[1.8rem] leading-[2.4rem] font-medium tracking-normal text-[#625C70]">
-                    &quot;CreativePixels&apos; expertise on our programme
-                    materials was invaluable. Together, we raised over £478,000
-                    to protect children in danger.&quot;
+                    Fantastic! One of the best! Hassan and his team are really
+                    very talented and built an outstanding website
                   </p>
                 </div>
 
                 <div className="flex items-center gap-[1.2rem]">
                   <div className="flex overflow-hidden rounded-full">
                     <Image
-                      src={TestimonialAvatar1}
+                      src={LittleAstroAvatar}
                       alt="Avatar Image"
                       width={56}
                       height={56}
@@ -159,11 +213,11 @@ const Testimonials = () => {
 
                   <div className="flex flex-col items-start text-left">
                     <h6 className="text-[1.8rem] leading-[2.6rem] font-semibold tracking-normal text-[#312749]">
-                      Special Events Coordinator
+                      Ben
                     </h6>
 
                     <span className="text-[1.6rem] leading-[2.4rem] font-medium tracking-normal text-[#625C70]">
-                      Coordinator, UNICEF UK
+                      Little Astro
                     </span>
                   </div>
                 </div>
@@ -182,15 +236,15 @@ const Testimonials = () => {
                 </ul>
 
                 <p className="text-[1.8rem] leading-[2.4rem] font-medium tracking-normal text-[#625C70]">
-                  I would highly recommend Hassan, he was excellent throughout
-                  the process of designing and developing our new website.
+                  It was a pleasure working with CreativePixels on designing our
+                  brand new website. I highly recommend his service.
                 </p>
               </div>
 
               <div className="flex items-center gap-[1.2rem]">
                 <div className="flex overflow-hidden rounded-full">
                   <Image
-                    src={TestimonialAvatar2}
+                    src={HomecareAvatar}
                     alt="Avatar Image"
                     width={56}
                     height={56}
@@ -200,11 +254,11 @@ const Testimonials = () => {
 
                 <div className="flex flex-col items-start text-left">
                   <h6 className="text-[1.8rem] leading-[2.6rem] font-semibold tracking-normal text-[#312749]">
-                    James Brien
+                    Sandra
                   </h6>
 
                   <span className="text-[1.6rem] leading-[2.4rem] font-medium tracking-normal text-[#625C70]">
-                    Ayoa
+                    Homecare
                   </span>
                 </div>
               </div>
@@ -222,16 +276,16 @@ const Testimonials = () => {
                 </ul>
 
                 <p className="text-[1.8rem] leading-[2.4rem] font-medium tracking-normal text-[#625C70]">
-                  &quot;My new site is significantly faster and easier to
-                  navigate. We&apos;ve seen a 30% increase in inquiries since
-                  launch.&quot;
+                  CreativePixels did an incredible job helping us to create
+                  branding material from scratch. They were extremely flexible,
+                  and exceeded our expectations.
                 </p>
               </div>
 
               <div className="flex items-center gap-[1.2rem]">
                 <div className="flex overflow-hidden rounded-full">
                   <Image
-                    src={TestimonialAvatar3}
+                    src={LoopAvatar}
                     alt="Avatar Image"
                     width={56}
                     height={56}
@@ -241,11 +295,11 @@ const Testimonials = () => {
 
                 <div className="flex flex-col items-start text-left">
                   <h6 className="text-[1.8rem] leading-[2.6rem] font-semibold tracking-normal text-[#312749]">
-                    Simon Hobbs
+                    Alex
                   </h6>
 
                   <span className="text-[1.6rem] leading-[2.4rem] font-medium tracking-normal text-[#625C70]">
-                    Owner, Precise Print
+                    Loop
                   </span>
                 </div>
               </div>
@@ -263,19 +317,19 @@ const Testimonials = () => {
                 </ul>
 
                 <p className="text-[1.8rem] leading-[2.4rem] font-medium tracking-normal text-[#625C70]">
-                  The new webpage Hassan created for Game Art Brain is a
-                  game-changer for our brand. He developed a signature style
-                  that is both unique and perfectly aligned with our identity,
-                  completely revitalizing our online presence. His work is
-                  meticulous, handling a huge number of images and complex
-                  layouts with an artist&apos;s touch.
+                  &quot;CreativePixels are a real professional and an absolute
+                  pleasure to work with. Great guiding advice, exceeded my
+                  expectations and overall an absolute treasure and asset for
+                  our business. Thank you, we truly appreciate all of your
+                  contributions and we look forward to continuing to work
+                  together,&quot;
                 </p>
               </div>
 
               <div className="flex items-center gap-[1.2rem]">
                 <div className="flex overflow-hidden rounded-full">
                   <Image
-                    src={TestimonialAvatar4}
+                    src={AlertforceAvatar}
                     alt="Avatar Image"
                     width={56}
                     height={56}
@@ -285,11 +339,11 @@ const Testimonials = () => {
 
                 <div className="flex flex-col items-start text-left">
                   <h6 className="text-[1.8rem] leading-[2.6rem] font-semibold tracking-normal text-[#312749]">
-                    Ahmed Omar
+                    Brendan Torazzi
                   </h6>
 
                   <span className="text-[1.6rem] leading-[2.4rem] font-medium tracking-normal text-[#625C70]">
-                    GameArtBrain
+                    Alertforce
                   </span>
                 </div>
               </div>

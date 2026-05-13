@@ -3,15 +3,18 @@ import SectionLabel from "@/components/ui/SectionLabel";
 import SectionTitle from "@/components/ui/SectionTitle";
 import React from "react";
 import StarIcon from "@/components/icons/StarIcon";
-import TestimonialAvatar1 from "@/assets/icons/ui/testimonial-avatar-1.svg";
-import TestimonialAvatar2 from "@/assets/svgs/ayoa-testimonial-avatar.svg";
-import TestimonialAvatar3 from "@/assets/icons/ui/testimonial-avatar-3.svg";
-import TestimonialAvatar4 from "@/assets/icons/ui/testimonial-avatar-4.svg";
-import TestimonialAvatar5 from "@/assets/icons/ui/testimonial-avatar-5.svg";
-import TestimonialAvatar6 from "@/assets/icons/ui/testimonial-avatar-6.svg";
-import TestimonialCardImg from "@/assets/images/cards/testimonial-card-img.webp";
+import LittleAstroAvatar from "@/assets/svgs/little-astro-avatar.svg";
+import CadVisualsAvatar from "@/assets/svgs/3dcad-visuals-avatar.svg";
+import AlterforceAvatar from "@/assets/svgs/alertforce-avatar.svg";
+import AyoaAvatar from "@/assets/svgs/ayoa-avatar.svg";
+import CasabotanicaAvatar from "@/assets/svgs/casabotanica-avatar.svg";
+import ExpressAvatar from "@/assets/svgs/express-conveyancing-avatar.svg";
+import GameArtAvatar from "@/assets/svgs/game-art-brain-avatar.svg";
+import HomecareAvatar from "@/assets/svgs/homecare-avatar.svg";
+import LoopAvatar from "@/assets/svgs/loop-avatar.svg";
+import PolymaxAvatar from "@/assets/svgs/polymax-avatar.svg";
+import SafetyRacAvatar from "@/assets/svgs/safety-rac-avatar.svg";
 import Image from "next/image";
-import PrimaryButton from "@/components/ui/PrimaryButton";
 import { MotionEffect } from "@/components/effects/motion-effect";
 import dynamic from "next/dynamic";
 
@@ -20,37 +23,37 @@ const testimonials = [
     name: "Ben",
     role: "Little Astro",
     text: `“Fantastic! One of the best! Hassan and his team are really very talented and built an outstanding website”`,
-    avatar: TestimonialAvatar1,
+    avatar: LittleAstroAvatar,
   },
   {
     name: "Sandra",
     role: "Homecare",
     text: `“It was a pleasure working with CreativePixels on designing our brand new website. I highly recommend his service.”`,
-    avatar: TestimonialAvatar3,
+    avatar: HomecareAvatar,
   },
   {
     name: "Alex",
     role: "Loop",
     text: `“CreativePixels did an incredible job helping us to create branding material from scratch. They were extremely flexible, and exceeded our expectations.”`,
-    avatar: TestimonialAvatar4,
+    avatar: LoopAvatar,
   },
   {
     name: "James Brian",
     role: "AYOA",
     text: `“I would highly recommend CreativePixels, they were excellent throughout the process of designing and developing our new website.”`,
-    avatar: TestimonialAvatar2,
+    avatar: AyoaAvatar,
   },
   {
     name: "JAnthony",
     role: "Express-conveyancing.",
     text: `“CreativePixels have been exceptional. They followed a less than ideal brief so well and came up with an end result of exactly what we had in mind. Highly recommended, and we will be continuing to use CreativePixels for our ongoing projects.”`,
-    avatar: TestimonialAvatar5,
+    avatar: ExpressAvatar,
   },
   {
     name: "Tim",
     role: "PolyMax",
     text: `“We couldn't be happier with the work CreativePixels produced, they took our brief and elevated it to the next level. They were great to work with, and delivered everything on time. I am very happy to recommend CreativePixels.”`,
-    avatar: TestimonialAvatar6,
+    avatar: PolymaxAvatar,
   },
 ];
 
