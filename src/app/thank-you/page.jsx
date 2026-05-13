@@ -1,7 +1,7 @@
 import CheckMarkIcon from "@/components/icons/CheckMarkIcon";
 import LpPrimaryButton from "@/components/lp/LpPrimaryButton";
-import SectionLabel from "@/components/ui/SectionLabel";
 import SectionDescription from "@/components/ui/SectionDescription";
+import Link from "next/link";
 
 export const metadata = {
   title: "Thanks — Your Audit Request Is In",
@@ -19,6 +19,7 @@ const nextSteps = [
 const ThankYouPage = async ({ searchParams }) => {
   const params = await searchParams;
   const returnUrl = params?.return || "/";
+  const isFromLp = params?.source === "lp";
 
   return (
     <main className="flex min-h-screen items-center justify-center px-[2rem] py-[6rem] xl:px-[0rem]">
@@ -28,13 +29,6 @@ const ThankYouPage = async ({ searchParams }) => {
           <div className="bg-gradient-pink-orange mb-[3rem] inline-flex size-[8rem] items-center justify-center rounded-full md:size-[10rem]">
             <CheckMarkIcon color="#ffffff" width="40" height="40" />
           </div>
-
-          {/* <div>
-            <SectionLabel
-              text="Confirmation sent to your email"
-              textColor="#3078FF"
-            />
-          </div> */}
 
           <h1 className="mt-[1.5rem] mb-[2rem] text-[3rem] leading-[3.7rem] font-bold tracking-[-0.03em] text-[#312749] md:text-[4.8rem] md:leading-[6rem]">
             Thanks for your{" "}
@@ -50,23 +44,6 @@ const ThankYouPage = async ({ searchParams }) => {
             />
           </div>
 
-          {/* What happens next */}
-          {/* <div className="mt-[5rem] flex w-full max-w-[64rem] flex-col gap-[1.6rem]">
-            {nextSteps.map((item, idx) => (
-              <div
-                key={idx}
-                className="flex items-start gap-[1.5rem] border-b border-[#98989866] pb-[1.6rem] text-left"
-              >
-                <i className="relative top-[.6rem] min-w-max">
-                  <CheckMarkIcon color="#FF37B3" />
-                </i>
-                <span className="text-[1.6rem] leading-[2.6rem] font-semibold tracking-normal text-[#312749] md:text-[1.8rem] md:leading-[3rem]">
-                  {item}
-                </span>
-              </div>
-            ))}
-          </div> */}
-
           {/* CTAs */}
           <div className="mt-[5rem] flex flex-col items-center gap-[2.4rem] md:flex-row">
             <LpPrimaryButton
@@ -75,6 +52,12 @@ const ThankYouPage = async ({ searchParams }) => {
               textColor="#ffffff"
               href={returnUrl}
             />
+
+            {!isFromLp && (
+              <Link href="/case-studies" className="text-[1.8rem] font-medium">
+                View our case studies
+              </Link>
+            )}
           </div>
         </div>
       </div>
