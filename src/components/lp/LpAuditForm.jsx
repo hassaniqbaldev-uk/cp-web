@@ -11,11 +11,12 @@ import {
 import { LP_SERVICES_CARD } from "@/contants";
 import useServiceStore from "@/store/useServiceStore";
 import { useEffect, useRef, useState } from "react";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 
 const LpAuditForm = () => {
   const { selectedService, setSelectedService } = useServiceStore();
   const router = useRouter();
+  const pathname = usePathname();
   const formRef = useRef();
 
   const serviceName =
@@ -63,7 +64,7 @@ const LpAuditForm = () => {
       const data = await res.json();
 
       if (data.success) {
-        router.push("/thank-you");
+        router.push(`/thank-you?return=${pathname}`);
         return;
       }
 

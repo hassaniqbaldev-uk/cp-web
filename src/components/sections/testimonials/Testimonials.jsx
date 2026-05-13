@@ -108,6 +108,37 @@ const testimonials = [
   },
 ];
 
+const responsiveTestimonials = [
+  {
+    rating: 5,
+    text: "Fantastic! One of the best! Hassan and his team are really very talented and built an outstanding website",
+    name: "Ben",
+    company: "Little Astro",
+    avatar: LittleAstroAvatar,
+  },
+  {
+    rating: 5,
+    text: "It was a pleasure working with CreativePixels on designing our brand new website. I highly recommend his service.",
+    name: "Sandra",
+    company: "Homecare",
+    avatar: HomecareAvatar,
+  },
+  {
+    rating: 5,
+    text: "CreativePixels did an incredible job helping us to create branding material from scratch. They were extremely flexible, and exceeded our expectations.",
+    name: "Alex",
+    company: "Loop",
+    avatar: LoopAvatar,
+  },
+  {
+    rating: 5,
+    text: "I would highly recommend CreativePixels, they were excellent throughout the process of designing and developing our new website.",
+    name: "James Brian",
+    company: "AYOA",
+    avatar: AyoaAvatar,
+  },
+];
+
 const Testimonials = () => {
   return (
     <>
@@ -201,7 +232,7 @@ const Testimonials = () => {
                     expectations and overall an absolute treasure and asset for
                     our business. Thank you, we truly appreciate all of your
                     contributions and we look forward to continuing to work
-                    together,&quot;
+                    together.&quot;
                   </p>
                 </div>
 
@@ -282,7 +313,7 @@ const Testimonials = () => {
 
                 <p className="text-[1.8rem] leading-[2.4rem] font-medium tracking-normal text-[#625C70]">
                   Fantastic! One of the best! Hassan and his team are really
-                  very talented and built an outstanding website
+                  very talented and built an outstanding website.
                 </p>
               </div>
 
@@ -362,7 +393,7 @@ const Testimonials = () => {
           className="w-full"
         >
           <div className="my-[3rem] block w-full xl:hidden">
-            <TestimonialsSlider testimonials={testimonials} />
+            <TestimonialsSlider testimonials={responsiveTestimonials} />
           </div>
         </MotionEffect>
 

@@ -8,10 +8,13 @@ import {
 } from "@/components/ui/select";
 import RightArrowIcon from "@/components/icons/RightArrowIcon";
 import { useEffect, useRef, useState } from "react";
+import { usePathname, useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 
 const AuditForm = () => {
   const formRef = useRef();
+  const router = useRouter();
+  const pathname = usePathname();
 
   const [formData, setFormData] = useState({
     websiteUrl: "",
@@ -48,17 +51,11 @@ const AuditForm = () => {
       const data = await res.json();
 
       if (data.success) {
-        setStatus("✅ Your audit request has been submitted!");
-        setFormData({
-          websiteUrl: "",
-          email: "",
-          name: "",
-          service: "",
-          primaryGoal: "",
-        });
-      } else {
-        setStatus("❌ Failed to submit. Please try again later.");
+        router.push(`/thank-you?return=${pathname}`);
+        return;
       }
+
+      setStatus("❌ Failed to submit. Please try again later.");
     } catch (error) {
       console.error("Error submitting form:", error);
       setStatus("❌ Something went wrong. Try again.");
@@ -295,9 +292,7 @@ const AuditForm = () => {
           </i>
         </motion.button>
 
-        {status && (
-          <p className="text-[1.4rem] font-medium">{status}</p>
-        )}
+        {status && <p className="text-[1.4rem] font-medium">{status}</p>}
       </div>
     </form>
   );

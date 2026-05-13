@@ -16,7 +16,10 @@ const nextSteps = [
   "You receive a full conversion audit with clear, actionable fixes",
 ];
 
-const ThankYouPage = () => {
+const ThankYouPage = async ({ searchParams }) => {
+  const params = await searchParams;
+  const returnUrl = params?.return || "/";
+
   return (
     <main className="flex min-h-screen items-center justify-center px-[2rem] py-[6rem] xl:px-[0rem]">
       <div className="container">
@@ -70,7 +73,7 @@ const ThankYouPage = () => {
               text="Go Back"
               bGcolor="#FF37B3"
               textColor="#ffffff"
-              href="/wordpress-web-development"
+              href={returnUrl}
             />
           </div>
         </div>
