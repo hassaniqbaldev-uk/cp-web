@@ -30,8 +30,8 @@ export async function POST(req) {
     // 4️⃣ Send email to your team
     await transporter.sendMail({
       from: process.env.SMTP_FROM,
-      // to: "hello@cp.agency, afzal@cp.agency",
-      to: "taha.b@cp.agency",
+      to: "hello@cp.agency, afzal@cp.agency",
+      // to: "taha.b@cp.agency",
       subject: `New Free Audit Request from ${name || email}`,
       html: getAuditEmailTemplate(
         name,
