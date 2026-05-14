@@ -10,14 +10,12 @@ import {
 } from "@/components/ui/select";
 import { LP_SERVICES_CARD } from "@/contants";
 import useServiceStore from "@/store/useServiceStore";
-import { useEffect, useRef, useState } from "react";
-import { usePathname, useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 
 const LpAuditForm = () => {
   const { selectedService, setSelectedService } = useServiceStore();
   const router = useRouter();
-  const pathname = usePathname();
-  const formRef = useRef();
 
   const serviceName =
     LP_SERVICES_CARD.find((item) => item.value === selectedService)?.title ||
@@ -64,7 +62,7 @@ const LpAuditForm = () => {
       const data = await res.json();
 
       if (data.success) {
-        router.push(`/thank-you?return=${pathname}&source=lp`);
+        router.push("/thank-you");
         return;
       }
 
@@ -86,12 +84,11 @@ const LpAuditForm = () => {
 
   return (
     <form
-      ref={formRef}
       onSubmit={handleSubmit}
       style={{
         boxShadow: "13px 13px 40px 0px #00000014",
       }}
-      className="flex w-full flex-col items-center justify-center overflow-hidden rounded-[2rem] border-t-8 border-[#FF37B3] bg-white px-[3rem] py-[4rem] md:w-[59.5rem]"
+      className="flex w-full flex-col items-center justify-center overflow-hidden rounded-[2rem] border-t-8 border-[#FF37B3] bg-white px-[3rem] py-[4rem]"
     >
       {/* Main */}
       <div className="mb-[2rem] flex w-full flex-col items-start gap-[2.5rem]">
@@ -169,15 +166,15 @@ const LpAuditForm = () => {
             htmlFor="message"
             className="text-[1.6rem] leading-[3rem] font-bold tracking-[-0.02em] text-[#312749]"
           >
-            And message <span className="text-[#F14A58]">*</span>
+            Anything else
           </label>
 
-          <div className="h-[13rem] w-full rounded-[1.6rem] border border-[#E5E7EB] bg-[#F9FAFB]">
-            <textarea
+          <div className="h-[5.2rem] w-full rounded-[1.6rem] border border-[#E5E7EB] bg-[#F9FAFB]">
+            <input
               id="message"
+              type="text"
               name="message"
-              className="h-full w-full resize-none bg-[transparent] p-[1.5rem] outline-0"
-              placeholder="Enter your message"
+              className="h-full w-full bg-[transparent] p-[1.5rem] outline-0"
               value={formData.message}
               onChange={handleChange}
             />

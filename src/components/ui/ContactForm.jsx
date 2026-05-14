@@ -8,14 +8,9 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { useEffect, useRef, useState } from "react";
-import { usePathname, useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 
 const ContactForm = () => {
-  const formRef = useRef();
-  const router = useRouter();
-  const pathname = usePathname();
-
   const [formData, setFormData] = useState({
     name: "",
     service: "",
@@ -50,7 +45,8 @@ const ContactForm = () => {
       const data = await res.json();
 
       if (data.success) {
-        router.push(`/thank-you?return=${pathname}`);
+        setStatus("✅ Thanks! We'll be in touch shortly.");
+        setFormData({ name: "", service: "", email: "", message: "" });
         return;
       }
       setStatus("❌ Failed to send. Please try again later.");
@@ -72,7 +68,6 @@ const ContactForm = () => {
 
   return (
     <form
-      ref={formRef}
       onSubmit={handleSubmit}
       style={{
         boxShadow: "13px 13px 40px 0px #00000014",

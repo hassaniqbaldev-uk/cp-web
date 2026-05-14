@@ -20,6 +20,8 @@ import NewCompassImg from "@/assets/images/cards/new-compass.png";
 import TeleqoTechImg from "@/assets/images/cards/teleqo-tech.png";
 import AlertForceImg from "@/assets/images/cards/alert-force.png";
 import dynamic from "next/dynamic";
+import { Suspense } from "react";
+import LpAuditForm from "./LpAuditForm";
 
 const projects = [
   {
@@ -92,13 +94,12 @@ const projects = [
 
 const LpHeroSlider = dynamic(() => import("./LpHeroSlider"), {
   ssr: false,
-  loading: () => <div className="h-[47.4rem] md:h-[45.5rem] xl:h-[50rem]" />, // placeholder to prevent layout shift
 });
 
 const LpHero = () => {
   return (
     <section>
-      <div className="relative h-[60rem] w-full overflow-hidden px-[2rem] md:h-[65rem] xl:h-[80rem] xl:px-[0rem]">
+      <div className="relative w-full overflow-hidden px-[2rem] xl:px-[0rem]">
         {/*Background Image*/}
         <Image
           src={HeroBg}
@@ -108,48 +109,20 @@ const LpHero = () => {
           className="pointer-events-none absolute inset-0 z-[1] object-cover select-none"
         />
 
-        {/*Background Element*/}
-        <div className="pointer-events-none absolute inset-0 z-[2] select-none">
-          <HomeHeroLogoShape1 className="absolute top-[100px] left-[-10px] h-[8rem] w-[4rem] rotate-[25deg] md:top-[150px] md:h-[18.4rem] md:w-[9.1rem] xl:top-[80px]" />
-        </div>
-
-        <div className="absolute top-0 right-[-10rem] z-[3] hidden h-[90rem] w-[87rem] xl:block">
-          <MotionEffect
-            slide={{ direction: "right" }}
-            transition={{ type: "spring", stiffness: 120, damping: 20 }}
-            fade
-            delay={0.6}
-          >
-            <Image
-              src={LpHeroCardImg}
-              width={870}
-              height={900}
-              alt="Card Image"
-            />
-
-            <Image
-              src={CpLogo}
-              width={164}
-              height={179}
-              alt="Card Image"
-              className="absolute bottom-[15rem] left-[20rem]"
-            />
-          </MotionEffect>
-        </div>
-
-        <div className="relative z-[10] container">
-          <div className="flex w-full flex-col items-center pt-[16rem] text-center md:pt-[18rem] xl:w-[66rem] xl:items-start xl:pt-[23.5rem] xl:text-left">
+        <div className="relative z-[10] container pt-[15rem] pb-[10rem] xl:pt-[20rem]">
+          <div className="flex w-full flex-col items-center justify-center gap-[4rem] xl:flex-row">
             <MotionEffect
               slide={{ direction: "down" }}
               transition={{ type: "spring", stiffness: 120, damping: 20 }}
               fade
               zoom
+              className="flex w-full flex-col items-center text-center md:w-[68rem] xl:items-start xl:text-left"
             >
               <div>
                 <SectionLabel text="Wordpress" textColor="#FF37B3" />
               </div>
 
-              <h1 className="mt-[1.5rem] mb-[2.5rem] max-w-[75rem] text-[3rem] leading-[3.7rem] font-bold tracking-[-0.03em] text-white md:text-[6rem] md:leading-[7rem]">
+              <h1 className="mt-[1.5rem] mb-[2.5rem] text-[3rem] leading-[3.7rem] font-bold tracking-[-0.03em] text-white md:text-[6rem] md:leading-[7rem]">
                 <span className="block">Tired of a Website</span>
                 <span className="bg-gradient-yellow-orange block bg-clip-text text-transparent">
                   That Doesn’t Convert?
@@ -207,6 +180,16 @@ const LpHero = () => {
                   </span>
                 </div>
               </div>
+            </MotionEffect>
+
+            <MotionEffect
+              slide={{ direction: "down" }}
+              transition={{ type: "spring", stiffness: 120, damping: 20 }}
+              fade
+              zoom
+              className="w-full md:w-[50rem]"
+            >
+              <LpAuditForm />
             </MotionEffect>
           </div>
         </div>

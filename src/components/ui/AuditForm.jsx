@@ -7,15 +7,10 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import RightArrowIcon from "@/components/icons/RightArrowIcon";
-import { useEffect, useRef, useState } from "react";
-import { usePathname, useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 
 const AuditForm = () => {
-  const formRef = useRef();
-  const router = useRouter();
-  const pathname = usePathname();
-
   const [formData, setFormData] = useState({
     websiteUrl: "",
     email: "",
@@ -51,7 +46,14 @@ const AuditForm = () => {
       const data = await res.json();
 
       if (data.success) {
-        router.push(`/thank-you?return=${pathname}`);
+        setStatus("✅ Thanks! We'll be in touch shortly.");
+        setFormData({
+          websiteUrl: "",
+          email: "",
+          name: "",
+          service: "",
+          primaryGoal: "",
+        });
         return;
       }
 
@@ -73,7 +75,6 @@ const AuditForm = () => {
 
   return (
     <form
-      ref={formRef}
       onSubmit={handleSubmit}
       style={{
         boxShadow: "13px 13px 40px 0px #00000014",

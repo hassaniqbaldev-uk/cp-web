@@ -31,7 +31,7 @@ export const getAuditEmailTemplate = (name, service, email, message) => `
     </div>
 
     <div class="field">
-      <span class="label">Message:</span>
+      <span class="label">Anything else:</span>
       <div class="message">${message || "Not specified"}</div>
     </div>
 

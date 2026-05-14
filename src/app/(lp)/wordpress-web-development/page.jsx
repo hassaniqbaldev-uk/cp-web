@@ -1,5 +1,8 @@
 import LpAuditSection from "@/components/lp/LpAuditSection";
 import LpCtaSection from "@/components/lp/LpCtaSection";
+import LpEstablishedSection from "@/components/lp/LpEstablishedSection";
+import LpFooter from "@/components/lp/LpFooter";
+import LpHeader from "@/components/lp/LpHeader";
 import LpHero from "@/components/lp/LpHero";
 import LpProblemSection from "@/components/lp/LpProblemSection";
 import LpProcessSection from "@/components/lp/LpProcessSection";
@@ -69,11 +72,13 @@ export const questionsData = [
 const WordpressWebDevelopmentPage = () => {
   return (
     <>
+      <LpHeader />
       <LpHero />
       <LpProblemSection />
       <LpWhySection />
       <LpProcessSection />
       <LpServicesSection />
+      <LpEstablishedSection />
       <LpResultSection />
       <LpTestimonialSection />
       <LpAuditSection />
@@ -83,6 +88,7 @@ const WordpressWebDevelopmentPage = () => {
         title="Common Questions"
         description="Everything you need to know about WordPress."
       />
+      <LpFooter />
     </>
   );
 };

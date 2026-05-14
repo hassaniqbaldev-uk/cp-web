@@ -1,7 +1,6 @@
 import CheckMarkIcon from "@/components/icons/CheckMarkIcon";
 import LpPrimaryButton from "@/components/lp/LpPrimaryButton";
 import SectionDescription from "@/components/ui/SectionDescription";
-import Link from "next/link";
 
 export const metadata = {
   title: "Thanks — Your Audit Request Is In",
@@ -10,17 +9,7 @@ export const metadata = {
   robots: { index: false, follow: false },
 };
 
-const nextSteps = [
-  "Request logged confirmation sent to your email",
-  "Our experts review your site & goals within 2–3 business days",
-  "You receive a full conversion audit with clear, actionable fixes",
-];
-
-const ThankYouPage = async ({ searchParams }) => {
-  const params = await searchParams;
-  const returnUrl = params?.return || "/";
-  const isFromLp = params?.source === "lp";
-
+const ThankYouPage = () => {
   return (
     <main className="flex min-h-screen items-center justify-center px-[2rem] py-[6rem] xl:px-[0rem]">
       <div className="container">
@@ -50,14 +39,8 @@ const ThankYouPage = async ({ searchParams }) => {
               text="Go Back"
               bGcolor="#FF37B3"
               textColor="#ffffff"
-              href={returnUrl}
+              href="/wordpress-web-development"
             />
-
-            {!isFromLp && (
-              <Link href="/case-studies" className="text-[1.8rem] font-medium">
-                View our case studies
-              </Link>
-            )}
           </div>
         </div>
       </div>
