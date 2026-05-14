@@ -1,5 +1,5 @@
 // emails/contact-template.js
-export const getCustomerEmailTemplate = (name, service, email, message) => {
+export const getCustomerEmailTemplate = (name, service, email, phone, message) => {
   return `
 <!doctype html>
 <html>
@@ -310,6 +310,7 @@ export const getCustomerEmailTemplate = (name, service, email, message) => {
             Here's a quick summary of what you submitted: <br /> <br />
 
             • <strong> Name: ${name} <br />
+            • Phone: ${phone || "Not provided"} <br />
             • Service requested: ${service} <br />
             • Your message: ${message} </strong>
           </p>

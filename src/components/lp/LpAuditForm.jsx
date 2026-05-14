@@ -13,6 +13,12 @@ import useServiceStore from "@/store/useServiceStore";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 
+const isValidPhone = (phone) => {
+  const digitsOnly = phone.replace(/\D/g, "");
+  if (digitsOnly.length < 7 || digitsOnly.length > 15) return false;
+  return /^\+?[\d\s().-]+$/.test(phone);
+};
+
 const LpAuditForm = () => {
   const { selectedService, setSelectedService } = useServiceStore();
   const router = useRouter();
@@ -24,6 +30,7 @@ const LpAuditForm = () => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
+    phone: "",
     message: "",
   });
   const [loading, setLoading] = useState(false);
@@ -40,9 +47,15 @@ const LpAuditForm = () => {
       !formData.name ||
       !selectedService ||
       !formData.email ||
+      !formData.phone ||
       !formData.message
     ) {
       setStatus("❌ Please fill in all required fields.");
+      return;
+    }
+
+    if (!isValidPhone(formData.phone)) {
+      setStatus("❌ Please enter a valid phone number.");
       return;
     }
 
@@ -156,6 +169,27 @@ const LpAuditForm = () => {
               className="h-full w-full bg-[transparent] p-[1.5rem] outline-0"
               placeholder="Enter your email address"
               value={formData.email}
+              onChange={handleChange}
+            />
+          </div>
+        </fieldset>
+
+        <fieldset className="w-full">
+          <label
+            htmlFor="phone"
+            className="text-[1.6rem] leading-[3rem] font-bold tracking-[-0.02em] text-[#312749]"
+          >
+            My phone number <span className="text-[#F14A58]">*</span>
+          </label>
+
+          <div className="h-[5.2rem] w-full rounded-[1.6rem] border border-[#E5E7EB] bg-[#F9FAFB]">
+            <input
+              id="phone"
+              type="tel"
+              name="phone"
+              className="h-full w-full bg-[transparent] p-[1.5rem] outline-0"
+              placeholder="+44 20 1234 5678"
+              value={formData.phone}
               onChange={handleChange}
             />
           </div>

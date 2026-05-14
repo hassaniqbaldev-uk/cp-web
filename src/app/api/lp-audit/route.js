@@ -6,7 +6,7 @@ import nodemailer from "nodemailer";
 export async function POST(req) {
   try {
     const body = await req.json();
-    const { name, service, email, message } = body;
+    const { name, service, email, phone, message } = body;
 
     // 1️⃣ Validate required fields
     if (!email) {
@@ -37,6 +37,7 @@ export async function POST(req) {
         name,
         service || "Website Audit",
         email,
+        phone,
         message,
       ),
     });
@@ -50,6 +51,7 @@ export async function POST(req) {
         name,
         service || "Website Audit",
         email,
+        phone,
         message,
       ),
     });

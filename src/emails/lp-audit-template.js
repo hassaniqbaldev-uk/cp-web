@@ -1,4 +1,4 @@
-export const getAuditEmailTemplate = (name, service, email, message) => `
+export const getAuditEmailTemplate = (name, service, email, phone, message) => `
 <!DOCTYPE html>
 <html>
 <head>
@@ -24,6 +24,10 @@ export const getAuditEmailTemplate = (name, service, email, message) => `
 
     <div class="field">
       <span class="label">Email:</span> ${email}
+    </div>
+
+    <div class="field">
+      <span class="label">Phone:</span> ${phone || "Not provided"}
     </div>
 
     <div class="field">
