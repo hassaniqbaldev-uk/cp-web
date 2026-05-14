@@ -188,7 +188,7 @@ const LpAuditForm = () => {
               type="tel"
               name="phone"
               className="h-full w-full bg-[transparent] p-[1.5rem] outline-0"
-              placeholder="+44 20 1234 5678"
+              placeholder="Enter your phone number"
               value={formData.phone}
               onChange={handleChange}
             />
