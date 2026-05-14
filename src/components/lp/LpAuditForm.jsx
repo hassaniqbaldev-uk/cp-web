@@ -173,6 +173,7 @@ const LpAuditForm = () => {
             <input
               id="message"
               type="text"
+              placeholder="E.g URL or what we can help with"
               name="message"
               className="h-full w-full bg-[transparent] p-[1.5rem] outline-0"
               value={formData.message}

@@ -118,14 +118,14 @@ const LpHero = () => {
               zoom
               className="flex w-full flex-col items-center text-center md:w-[68rem] xl:items-start xl:text-left"
             >
-              <div>
+              {/* <div>
                 <SectionLabel text="Wordpress" textColor="#FF37B3" />
-              </div>
+              </div> */}
 
-              <h1 className="mt-[1.5rem] mb-[2.5rem] text-[3rem] leading-[3.7rem] font-bold tracking-[-0.03em] text-white md:text-[6rem] md:leading-[7rem]">
-                <span className="block">Tired of a Website</span>
+              <h1 className="mb-[2.5rem] text-[3rem] leading-[3.7rem] font-bold tracking-[-0.03em] text-white md:text-[6rem] md:leading-[7rem]">
+                <span className="block">Tired of a website</span>
                 <span className="bg-gradient-yellow-orange block bg-clip-text text-transparent">
-                  That Doesn’t Convert?
+                  That doesn’t convert?
                 </span>
               </h1>
 
