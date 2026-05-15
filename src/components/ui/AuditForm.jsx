@@ -9,6 +9,7 @@ import {
 import RightArrowIcon from "@/components/icons/RightArrowIcon";
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
+import { useRouter } from "next/navigation";
 
 const AuditForm = () => {
   const [formData, setFormData] = useState({
@@ -20,6 +21,7 @@ const AuditForm = () => {
   });
   const [loading, setLoading] = useState(false);
   const [status, setStatus] = useState("");
+  const router = useRouter();
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -46,14 +48,7 @@ const AuditForm = () => {
       const data = await res.json();
 
       if (data.success) {
-        setStatus("✅ Thanks! We'll be in touch shortly.");
-        setFormData({
-          websiteUrl: "",
-          email: "",
-          name: "",
-          service: "",
-          primaryGoal: "",
-        });
+        router.push("/thank-you");
         return;
       }
 

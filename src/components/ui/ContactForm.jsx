@@ -7,8 +7,9 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
+import { useRouter } from "next/navigation";
 
 const ContactForm = () => {
   const [formData, setFormData] = useState({
@@ -19,6 +20,7 @@ const ContactForm = () => {
   });
   const [loading, setLoading] = useState(false);
   const [status, setStatus] = useState("");
+  const router = useRouter();
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -45,10 +47,10 @@ const ContactForm = () => {
       const data = await res.json();
 
       if (data.success) {
-        setStatus("✅ Thanks! We'll be in touch shortly.");
-        setFormData({ name: "", service: "", email: "", message: "" });
+        router.push("/thank-you");
         return;
       }
+
       setStatus("❌ Failed to send. Please try again later.");
     } catch (error) {
       console.error("Error submitting form:", error);

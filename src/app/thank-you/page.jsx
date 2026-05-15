@@ -1,12 +1,12 @@
 import CheckMarkIcon from "@/components/icons/CheckMarkIcon";
-import LpPrimaryButton from "@/components/lp/LpPrimaryButton";
+import PrimaryButton from "@/components/ui/PrimaryButton";
 import SectionDescription from "@/components/ui/SectionDescription";
 import Link from "next/link";
 
 export const metadata = {
   title: "Thanks Your Audit Request Is In",
   description:
-    "We've received your audit request and will be in touch within 2–3 business days.",
+    "We've received your audit request and will be in touch within 2-3 business days.",
   robots: { index: false, follow: false },
 };
 
@@ -36,7 +36,7 @@ const ThankYouPage = () => {
 
           {/* CTAs */}
           <div className="mt-[5rem] flex flex-col items-center gap-[2.4rem] md:flex-row">
-            <LpPrimaryButton
+            <PrimaryButton
               text="Go Back"
               bGcolor="#FF37B3"
               textColor="#ffffff"
