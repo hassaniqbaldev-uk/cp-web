@@ -223,33 +223,33 @@ export const PROCESS_3_CARD = [
 export const LP_PROCESS_CARD = [
   {
     step: "1",
-    title: "Tell Us What's Wrong (or What You Need)",
+    title: "Tell Us What You Need",
     description:
-      "Book a free call or fill in the form with no tech knowledge required.",
+      "Fill in the form or give us a call. No tech knowledge required  just tell us what's wrong or what you're trying to achieve.",
     color: "#ED910C",
     boxShadow: "5px 5px 44px 0px #ED910CCC",
   },
   {
     step: "2",
-    title: "We Review Your Site",
+    title: "We Diagnose & Plan",
     description:
-      "We take a look, diagnose the issues, and give you a clear plan and honest quote.",
+      "We review your site, identify exactly what's holding it back, and send you a clear plan with an honest, no-surprise quote.",
     color: "#3078FF",
     boxShadow: "5px 5px 44px 0px #3078FFCC",
   },
   {
     step: "3",
-    title: "We Fix or Build Fast ",
+    title: "We Get to Work",
     description:
-      "Most fixes are completed within 24–72 hours. New sites launch in 2–4 weeks.",
+      "Most fixes are done in 24–72 hours. New builds launch in 2–4 weeks. You'll be updated every step of the way.",
     color: "#BF00B4",
     boxShadow: "5px 5px 44px 0px #BF00B4CC",
   },
   {
     step: "4",
-    title: "You Get a Website That Works",
+    title: "You Get a Site That Actually Works",
     description:
-      "Clean, Fast, Secure and you'll know exactly how to manage it going forward.",
+      "Fast, secure, and easy to manage and we'll walk you through everything before we hand it over.",
     color: "#44B276",
     boxShadow: "5px 5px 44px 0px #44B276CC",
   },

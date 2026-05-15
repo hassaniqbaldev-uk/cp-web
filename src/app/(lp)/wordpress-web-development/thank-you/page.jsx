@@ -3,7 +3,7 @@ import LpPrimaryButton from "@/components/lp/LpPrimaryButton";
 import SectionDescription from "@/components/ui/SectionDescription";
 
 export const metadata = {
-  title: "Thanks — Your Audit Request Is In",
+  title: "Thanks Your Audit Request Is In",
   description:
     "We've received your audit request and will be in touch within 2–3 business days.",
   robots: { index: false, follow: false },

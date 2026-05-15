@@ -42,27 +42,34 @@ const LpWhySection = () => {
                 <SectionLabel text="Why choose us" textColor="#3078FF" />
               </div>
 
-              <h2 className="mt-[1.5rem] mb-[2.5rem] max-w-[50rem] text-[3rem] leading-[3.7rem] font-bold tracking-[-0.02em] text-[#312749] md:text-[4.8rem] md:leading-[6rem]">
+              {/* <h2 className="mt-[1.5rem] mb-[2.5rem] max-w-[50rem] text-[3rem] leading-[3.7rem] font-bold tracking-[-0.02em] text-[#312749] md:text-[4.8rem] md:leading-[6rem]">
                 <span>Why Choose Creative Pixels for</span>{" "}
                 <span className="bg-gradient-pink-orange bg-clip-text text-transparent">
                   WordPress?
                 </span>
-              </h2>
+              </h2> */}
+
+              <p className="mt-[1.5rem] mb-[2.5rem] text-[1.6rem] leading-[2.4rem] font-semibold tracking-[-0.01em] text-[#312749] md:text-[2.4rem] md:leading-[3rem]">
+                Why Hundreds of UK Businesses Trust Creative Pixels With Their
+                WordPress Site Most agencies hand you a website and disappear.
+                We stick around because a site that doesn&apos;t perform is a
+                problem for both of us.
+              </p>
             </div>
 
             <h4 className="text-[2.2rem] leading-[3rem] font-semibold tracking-[-0.02em] text-[#312749] md:text-[2.6rem] md:leading-[3.4rem]">
-              We specialize in WordPress web design that is:
+              Here&apos;s what makes us different:
             </h4>
 
             <ul className="my-[3rem] flex flex-col gap-[.8rem]">
               {[
-                "Conversion-Focused: Designed to turn visitors into leads",
-                "Fully Responsive: Looks perfect on desktop, tablet, and mobile",
-                "SEO-Friendly: Optimized to rank higher on search engines",
-                "Customizable & Scalable: Easy to manage & grow with your business",
+                "We fix the root cause, not just the symptoms. No band-aid solutions that break again in 3 months",
+                "You'll never be left in the dark. Clear timelines, honest quotes, and plain-English updates throughout",
+                "We've handled 150+ WordPress projects. chances are, we've seen your exact problem and already know how to fix it",
+                "Your site is built to grow, easy for you to manage, and ready to scale as your business does",
               ].map((item, idx) => (
-                <li key={idx} className="flex items-center gap-[1.2rem]">
-                  <i className="min-w-max">
+                <li key={idx} className="flex gap-[1.2rem]">
+                  <i className="relative top-[.7rem] min-w-max">
                     <CheckMarkIcon color="#EE7621" height="15" width="15" />
                   </i>
 
@@ -74,8 +81,8 @@ const LpWhySection = () => {
             </ul>
 
             <h4 className="mb-[5rem] max-w-[63rem] text-[2.2rem] leading-[3rem] font-semibold tracking-[-0.02em] text-[#312749] md:text-[2.6rem] md:leading-[3.4rem]">
-              With years of experience and hundreds of successful projects, we
-              know how to deliver websites that actually perform.
+              With over 7 years in the industry and a 4.9/5 rating, we
+              don&apos;t just build websites. We build websites that work.
             </h4>
 
             <div>

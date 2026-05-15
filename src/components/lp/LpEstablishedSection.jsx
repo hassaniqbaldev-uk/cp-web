@@ -21,23 +21,21 @@ const LpEstablishedSection = () => {
             <div className="flex flex-col items-center gap-[4.6rem] md:gap-[8rem] xl:flex-row">
               <div className="flex w-[30rem] flex-col items-center text-center md:w-[58.5rem] xl:items-start xl:text-left">
                 <div>
-                  <SectionLabel
-                    text="Established in 2018"
-                    textColor="#3078FF"
-                  />
+                  <SectionLabel text="ABOUT" textColor="#3078FF" />
                 </div>
 
                 <div className="mt-[1rem] mb-[2rem]">
-                  <SectionTitle text="Not just another agency. Your long-term digital partner." />
+                  <SectionTitle text="Built by Hassan Iqbal in 2018 Because Too Many Businesses Were Getting Burned by Agencies That Disappeared After Launch." />
                 </div>
 
                 <p className="mb-[4rem] text-[1.8rem] leading-[2.8rem] font-normal text-[#625C70]">
-                  In an industry of &quot;churn and burn,&quot; we&apos;ve been
-                  building lasting relationships for over a decade. We
-                  don&apos;t just ship code; we solve business problems. <br />{" "}
-                  <br /> Founded by Hassan Iqbal, CreativePixels is a human-led
-                  agency that combines data-driven strategy with world-class
-                  design. No jargon, no hidden fees just real results.
+                  In an industry full of churn-and-burn agencies, we&apos;ve
+                  spent over 7 years doing things differently. We don&apos;t
+                  just ship code we solve business problems and stick around to
+                  make sure they stay solved. <br /> <br />
+                  CreativePixels is a human-led agency that combines data-driven
+                  strategy with world-class design. No jargon, no hidden fees —
+                  just real results.
                 </p>
               </div>
 

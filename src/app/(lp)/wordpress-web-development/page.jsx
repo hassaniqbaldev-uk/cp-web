@@ -81,7 +81,7 @@ const WordpressWebDevelopmentPage = () => {
       <LpEstablishedSection />
       <LpResultSection />
       <LpTestimonialSection />
-      <LpAuditSection />
+      {/* <LpAuditSection /> */}
       <LpCtaSection />
       <Questions
         data={questionsData}

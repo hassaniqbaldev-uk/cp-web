@@ -6,7 +6,7 @@ import { MotionEffect } from "../effects/motion-effect";
 
 const LpCtaSection = () => {
   return (
-    <section className="px-[2rem] xl:px-[0rem]">
+    <section className="px-[2rem] pt-[5rem] xl:px-[0rem] xl:pt-[10rem]">
       <MotionEffect
         slide={{ direction: "down" }}
         fade
@@ -25,12 +25,18 @@ const LpCtaSection = () => {
 
           <div className="relative z-[10] flex flex-col justify-between gap-[4rem] lg:flex-row">
             <div className="w-full text-center lg:w-[52rem] lg:text-left">
-              <h2 className="mb-[3.8rem] text-[3rem] leading-[3.7rem] font-bold tracking-[-0.02em] text-[#312749] md:text-[4.8rem] md:leading-[6rem]">
-                No Risk.
+              <h2 className="text-[3rem] leading-[3.7rem] font-bold tracking-[-0.02em] text-[#312749] md:text-[4.8rem] md:leading-[6rem]">
+                Ready to Stop Losing
                 <span className="bg-gradient-pink-orange block bg-clip-text text-transparent">
-                  No Obligation.
+                  Customers to a Broken Website?
                 </span>
               </h2>
+
+              <p className="mt-[2rem] mb-[3.8rem] text-[1.8rem]">
+                Get a free, no-obligation audit and we&apos;ll show you exactly
+                what&apos;s wrong and exactly how to fix it. No jargon, no
+                pressure, no invoice until you&apos;re ready to move forward.
+              </p>
 
               <div>
                 <PrimaryButton
@@ -44,10 +50,10 @@ const LpCtaSection = () => {
 
             <div className="flex w-full flex-col gap-[1.6rem] lg:w-[45rem]">
               {[
-                "No commitment",
+                "No commitment required",
                 "No tech jargon",
                 "No surprise invoices",
-                "We'll tell you exactly what's wrong before we charge you anything",
+                "We'll tell you exactly what's wrong before we charge you a single penny",
               ].map((item, idx) => (
                 <div
                   key={idx}

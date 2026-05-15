@@ -22,9 +22,9 @@ const LpProblemSection = () => {
             <SectionLabel text="problems you’re facing" textColor="#3078FF" />
           </div>
 
-          <div className="max-w-[90rem]">
+          {/* <div className="max-w-[90rem]">
             <SectionTitle text="Sound Familiar?" />
-          </div>
+          </div> */}
         </div>
 
         <div className="container mt-[5rem] flex flex-col items-start justify-between gap-[4rem] rounded-[3rem] border border-[#EE7621] bg-[#FDF4E7] px-[2rem] py-[3rem] md:pr-[3rem] md:pl-[3rem] lg:flex-row lg:items-center lg:pr-[5rem]">
@@ -46,13 +46,13 @@ const LpProblemSection = () => {
 
             <ul className="my-[2.5rem] flex flex-col gap-[.8rem]">
               {[
-                "Your website is slow and visitors leave before it loads",
-                "Pages are broken, plugins conflict, or things just stop working",
-                "You built it yourself (or had someone cheap do it) and now it's a mess",
-                "You've lost access, been hacked, or something went wrong after an update",
+                "Your site loads slowly and visitors leave before they even see it",
+                "Pages are broken, plugins conflict, or things randomly stop working",
+                "You built it yourself (or hired someone cheap) and now it's a mess",
+                "You've lost access, been hacked, or something broke after an update",
               ].map((item, idx) => (
-                <li key={idx} className="flex items-center gap-[1.2rem]">
-                  <i className="min-w-max">
+                <li key={idx} className="flex gap-[1.2rem]">
+                  <i className="relative top-[.2rem] min-w-max">
                     <CheckMarkIcon color="#EE7621" height="15" width="15" />
                   </i>
 
@@ -64,8 +64,11 @@ const LpProblemSection = () => {
             </ul>
 
             <p className="mb-[4.5rem] text-[1.6rem] leading-[2.5rem] font-medium tracking-normal text-[#312749]">
-              If your website has any of these issues, it’s time for a
-              professional redesign that focuses on performance and results.
+              Sound Familiar? You&apos;re Not Alone. <br /> <br />
+              Thousands of business owners struggle with the exact same
+              WordPress headaches. If any of this sounds like your site,
+              it&apos;s time for a professional WordPress fix — built to perform
+              and built to last.
             </p>
 
             <PrimaryButton

@@ -19,17 +19,18 @@ const LpProcessSection = () => {
           transition={{ type: "tween", duration: 0.6, ease: "easeOut" }}
         >
           <div className="flex flex-col items-center gap-[2rem] text-center xl:mb-[7rem]">
-            <h2 className="text-[3rem] leading-[3.7rem] font-bold tracking-[-0.02em] text-[#312749] md:text-[7rem] md:leading-[7.5rem]">
+            <h2 className="text-[3rem] leading-[3.7rem] font-bold tracking-[-0.01em] text-[#312749] md:text-[7rem] md:leading-[7.5rem]">
               <span className="bg-gradient-pink-orange bg-clip-text text-transparent">
                 Getting Started
               </span>{" "}
-              <span className="block">Is Simple</span>
             </h2>
 
-            <SectionDescription
-              text="Our WordPress web design process is simple, transparent, and results-driven:"
-              textColor="#625C70"
-            />
+            <div className="max-w-[80rem]">
+              <SectionDescription
+                text="Getting Started Is Simple. Even If You're Not Technical You don't need to know anything about WordPress. That's our job."
+                textColor="#625C70"
+              />
+            </div>
           </div>
 
           <div className="hidden grid-cols-4 xl:grid">

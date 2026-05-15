@@ -118,10 +118,6 @@ const LpHero = () => {
               zoom
               className="flex w-full flex-col items-center text-center md:w-[68rem] xl:items-start xl:text-left"
             >
-              {/* <div>
-                <SectionLabel text="Wordpress" textColor="#FF37B3" />
-              </div> */}
-
               <h1 className="mb-[2.5rem] text-[3rem] leading-[3.7rem] font-bold tracking-[-0.03em] text-white md:text-[6rem] md:leading-[7rem]">
                 <span className="block">Tired of a website</span>
                 <span className="bg-gradient-yellow-orange block bg-clip-text text-transparent">
@@ -131,7 +127,7 @@ const LpHero = () => {
 
               <div className="mb-[2rem] max-w-[70rem] md:mb-[4.2rem]">
                 <SectionDescription
-                  text="Your website is your first impression. Our WordPress web development services create professional, fast-loading sites that turn visitors into customers."
+                  text="Your visitors decide in seconds whether to stay or leave. We build fast, professional WordPress sites that make that first second count and turn visitors into paying customers."
                   textColor="#FFFFFF"
                 />
               </div>
@@ -188,8 +184,11 @@ const LpHero = () => {
               fade
               zoom
               className="w-full md:w-[50rem]"
+              id="audit"
             >
-              <LpAuditForm />
+              <Suspense fallback={null}>
+                <LpAuditForm />
+              </Suspense>
             </MotionEffect>
           </div>
         </div>
