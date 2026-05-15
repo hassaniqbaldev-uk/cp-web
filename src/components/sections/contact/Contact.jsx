@@ -9,10 +9,6 @@ import SendIcon2 from "@/assets/icons/ui/send-icon-2.svg";
 import ContactAssistantImg from "@/assets/images/cards/contact-assistant-img.png";
 import Image from "next/image";
 import ContactForm from "@/components/ui/ContactForm";
-import TestimonialAvatar1 from "@/assets/icons/ui/testimonial-avatar-1.svg";
-import TestimonialAvatar2 from "@/assets/icons/ui/testimonial-avatar-2.svg";
-import TestimonialAvatar3 from "@/assets/icons/ui/testimonial-avatar-3.svg";
-import TestimonialAvatar4 from "@/assets/icons/ui/testimonial-avatar-4.svg";
 import { MotionEffect } from "@/components/effects/motion-effect";
 
 const Contact = () => {

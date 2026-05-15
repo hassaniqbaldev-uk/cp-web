@@ -72,12 +72,8 @@ const LpTestimonialSection = () => {
           transition={{ type: "tween", duration: 0.6, ease: "easeOut" }}
         >
           <div className="flex flex-col items-center text-center">
-            <div>
-              <SectionLabel text="Testimonials" textColor="#3078FF" />
-            </div>
-
-            <div className="mt-[10px] mb-[18px] md:mt-[5px] md:mb-[14px]">
-              <SectionTitle text=" Trusted by Businesses That Want Results" />
+            <div className="mb-[18px] md:mt-[5px] md:mb-[14px]">
+              <SectionTitle text="Trusted by Businesses That Want Results" />
             </div>
 
             <div className="flex items-center justify-center gap-[1.2rem]">
@@ -90,7 +86,7 @@ const LpTestimonialSection = () => {
               </ul>
 
               <span className="text-[1.4rem] leading-[3.2rem] font-bold text-[#625C70] md:text-[2rem]">
-                4.9/5 from 47+ Clients
+                4.9/5 ratings from our satisfied clients
               </span>
             </div>
           </div>

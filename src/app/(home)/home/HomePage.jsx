@@ -14,6 +14,7 @@ import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import HeroBg from "@/assets/images/backgrounds/audit-hero-bg.webp";
+import Footer from "@/components/layout/Footer";
 
 const CONTENT_VARIANTS = {
   hidden: {
@@ -117,6 +118,7 @@ const HomePage = ({ caseStudies }) => {
 
         <Contact />
       </section>
+      <Footer />
     </>
   );
 };

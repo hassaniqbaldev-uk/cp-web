@@ -1,4 +1,3 @@
-import Footer from "@/components/layout/Footer";
 import MobileMenu from "@/components/layout/MobileMenu";
 
 export default function HomeLayout({ children }) {
@@ -6,7 +5,6 @@ export default function HomeLayout({ children }) {
     <>
       <MobileMenu />
       <main>{children}</main>
-      <Footer />
     </>
   );
 }
