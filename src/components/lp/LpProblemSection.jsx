@@ -18,9 +18,9 @@ const LpProblemSection = () => {
         transition={{ type: "tween", duration: 0.6, ease: "easeOut" }}
       >
         <div className="flex flex-col items-center gap-[1.3rem] text-center">
-          <div>
+          {/* <div>
             <SectionLabel text="problems you’re facing" textColor="#3078FF" />
-          </div>
+          </div> */}
 
           {/* <div className="max-w-[90rem]">
             <SectionTitle text="Sound Familiar?" />
@@ -40,8 +40,7 @@ const LpProblemSection = () => {
 
           <div className="w-full lg:w-[53rem]">
             <h4 className="text-[2.2rem] leading-[2.6rem] font-semibold tracking-[-0.02em] text-[#312749] md:text-[2.6rem] md:leading-[2.8rem]">
-              You&apos;re not alone. Thousands of business owners deal with
-              these WordPress headaches every day:
+              Are You Facing Any of These Problems?
             </h4>
 
             <ul className="my-[2.5rem] flex flex-col gap-[.8rem]">
