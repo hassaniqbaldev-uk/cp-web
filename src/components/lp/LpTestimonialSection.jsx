@@ -85,7 +85,7 @@ const LpTestimonialSection = () => {
                 ))}
               </ul>
 
-              <span className="text-[1.4rem] leading-[3.2rem] font-bold text-[#625C70] md:text-[2rem]">
+              <span className="text-[1.2rem] leading-[3.2rem] font-semibold text-[#625C70] md:text-[2rem] md:font-bold">
                 4.9/5 ratings from our satisfied clients
               </span>
             </div>
