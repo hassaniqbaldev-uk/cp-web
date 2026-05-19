@@ -32,6 +32,7 @@ const LpAuditForm = () => {
     email: "",
     phone: "",
     message: "",
+    website: "", // honeypot
   });
   const [loading, setLoading] = useState(false);
   const [status, setStatus] = useState("");
@@ -43,12 +44,17 @@ const LpAuditForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    if (formData.website) {
+      // Bot detected. Pretend success, do nothing.
+      router.push("/wordpress-web-development/thank-you");
+      return;
+    }
+
     if (
       !formData.name ||
       !selectedService ||
       !formData.email ||
-      !formData.phone ||
-      !formData.message
+      !formData.phone
     ) {
       setStatus("❌ Please fill in all required fields.");
       return;
@@ -103,6 +109,17 @@ const LpAuditForm = () => {
       }}
       className="flex w-full flex-col items-center justify-center overflow-hidden rounded-[2rem] border-t-8 border-[#FF37B3] bg-white px-[3rem] py-[4rem]"
     >
+      {/* HoneyPot */}
+      <input
+        type="text"
+        name="website"
+        tabIndex={-1}
+        autoComplete="off"
+        value={formData.website || ""}
+        onChange={handleChange}
+        className="absolute left-[-9999px] h-0 w-0 opacity-0"
+        aria-hidden="true"
+      />
       {/* Main */}
       <div className="mb-[2rem] flex w-full flex-col items-start gap-[2.5rem]">
         <div className="grid w-full grid-cols-1 gap-[1.5rem] md:grid-cols-2">
@@ -119,6 +136,7 @@ const LpAuditForm = () => {
                 id="name"
                 type="text"
                 name="name"
+                autoComplete="name"
                 className="h-full w-full bg-[transparent] p-[1.5rem] outline-0"
                 placeholder="John smith"
                 value={formData.name}
@@ -139,7 +157,10 @@ const LpAuditForm = () => {
               value={selectedService || undefined}
               onValueChange={setSelectedService}
             >
-              <SelectTrigger className="!h-[5.2rem] w-full rounded-[1.6rem] border border-[#E5E7EB] bg-[#F9FAFB] px-[1.5rem] text-[1.6rem] font-normal tracking-normal text-[#625C70]">
+              <SelectTrigger
+                id="help"
+                className="!h-[5.2rem] w-full rounded-[1.6rem] border border-[#E5E7EB] bg-[#F9FAFB] px-[1.5rem] text-[1.6rem] font-normal tracking-normal text-[#625C70]"
+              >
                 <SelectValue placeholder="Select desired service" />
               </SelectTrigger>
               <SelectContent align="center">
@@ -166,6 +187,7 @@ const LpAuditForm = () => {
               id="work-email"
               type="email"
               name="email"
+              autoComplete="email"
               className="h-full w-full bg-[transparent] p-[1.5rem] outline-0"
               placeholder="Enter your email address"
               value={formData.email}
@@ -187,6 +209,7 @@ const LpAuditForm = () => {
               id="phone"
               type="tel"
               name="phone"
+              autoComplete="tel"
               className="h-full w-full bg-[transparent] p-[1.5rem] outline-0"
               placeholder="Enter your phone number"
               value={formData.phone}

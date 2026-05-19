@@ -6,12 +6,35 @@ import nodemailer from "nodemailer";
 export async function POST(req) {
   try {
     const body = await req.json();
-    const { name, service, email, phone, message } = body;
+    const { name, service, email, phone, message, website } = body;
+
+    // Honeypot — silently succeed
+    if (website) {
+      return NextResponse.json({ success: true });
+    }
 
     // 1️⃣ Validate required fields
-    if (!email) {
+    if (!name || !email || !phone || !service) {
       return NextResponse.json(
         { success: false, error: "Missing required fields" },
+        { status: 400 },
+      );
+    }
+
+    // Email format
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      return NextResponse.json(
+        { success: false, error: "Invalid email" },
+        { status: 400 },
+      );
+    }
+
+    // Phone format
+    const phoneDigits = phone.replace(/\D/g, "");
+    if (phoneDigits.length < 7 || phoneDigits.length > 15) {
+      return NextResponse.json(
+        { success: false, error: "Invalid phone" },
         { status: 400 },
       );
     }
@@ -30,8 +53,7 @@ export async function POST(req) {
     // 4️⃣ Send email to your team
     await transporter.sendMail({
       from: process.env.SMTP_FROM,
-      to: "hello@cp.agency, afzal@cp.agency",
-      // to: "taha.b@cp.agency",
+      to: process.env.LP_AUDIT_RECIPIENTS.split(",").map((s) => s.trim()),
       subject: `New Free Audit Request from ${name || email}`,
       html: getAuditEmailTemplate(
         name,
