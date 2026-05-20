@@ -86,7 +86,7 @@ const FeaturedCaseStudies = ({
                     <AccordionContent>
                       <ul
                         ref={servicesListRef}
-                        className="no-scrollbar flex h-[44vh] flex-col overflow-y-scroll"
+                        className="no-scrollbar flex h-[45vh] flex-col overflow-y-scroll"
                       >
                         <li>
                           <Link
@@ -165,7 +165,7 @@ const FeaturedCaseStudies = ({
                     <AccordionContent>
                       <ul
                         ref={industriesListRef}
-                        className="no-scrollbar flex h-[44vh] flex-col overflow-y-scroll"
+                        className="no-scrollbar flex h-[45vh] flex-col overflow-y-scroll"
                       >
                         <li>
                           <Link
