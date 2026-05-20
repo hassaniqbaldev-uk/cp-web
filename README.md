@@ -1,1 +1,1 @@
-CP WEB 26 Frontend
+CP WEB 26
