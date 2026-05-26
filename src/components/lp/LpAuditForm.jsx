@@ -81,7 +81,7 @@ const LpAuditForm = () => {
       const data = await res.json();
 
       if (data.success) {
-        router.push("/wordpress-web-development/thank-you");
+        window.location.href = "/wordpress-web-development/thank-you";
         return;
       }
 
