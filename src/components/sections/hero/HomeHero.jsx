@@ -185,6 +185,8 @@ const HomeHero = () => {
                     className="h-[20.7rem] w-[21.1rem] md:h-[41.5rem] md:w-[42.4rem]"
                     priority
                     fetchPriority="high"
+                    sizes="(min-width: 768px) 42.4rem, 21.1rem"
+                    quality={70}
                   />
 
                   <div className="absolute top-[-1.5rem] left-[.5rem] h-[6.8rem] w-[3.4rem] rotate-[34deg] md:top-[-10.5rem] md:left-[-3.8rem] md:h-[17.1rem] md:w-[8.5rem]">
