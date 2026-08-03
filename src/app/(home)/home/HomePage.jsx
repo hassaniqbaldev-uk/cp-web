@@ -11,9 +11,20 @@ import Cta from "@/components/sections/cta/Cta";
 import Testimonials from "@/components/sections/testimonials/Testimonials";
 import Contact from "@/components/sections/contact/Contact";
 import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 import Image from "next/image";
 import HeroBg from "@/assets/images/backgrounds/audit-hero-bg.webp";
 import Footer from "@/components/layout/Footer";
+
+const CONTENT_VARIANTS = {
+  hidden: {
+    opacity: 0,
+  },
+  visible: {
+    opacity: 1,
+    transition: { type: "spring", stiffness: 100, damping: 30 },
+  },
+};
 
 const HomePage = ({ caseStudies }) => {
   const [transition, setTransition] = useState(false);
@@ -74,9 +85,14 @@ const HomePage = ({ caseStudies }) => {
         />
 
         {transition && (
-          <div className="w-full">
-            <HomeHero />
-          </div>
+          <motion.div
+            variants={CONTENT_VARIANTS}
+            initial="hidden"
+            animate={transition ? "visible" : "hidden"}
+            className="w-full"
+          >
+            <HomeHero key={String(transition)} />
+          </motion.div>
         )}
       </div>
       <Expertise />
