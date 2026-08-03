@@ -183,6 +183,7 @@ const HomeHero = () => {
                     width={424}
                     height={415}
                     className="h-[20.7rem] w-[21.1rem] md:h-[41.5rem] md:w-[42.4rem]"
+                    priority
                     fetchPriority="high"
                   />
 
