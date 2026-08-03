@@ -151,7 +151,7 @@ const HomeHero = () => {
                 }}
                 fade
                 zoom
-                delay={0.45}
+                delay={0.2}
               >
                 <div>
                   <GradientButton text="Book with Hassan" />
@@ -165,7 +165,7 @@ const HomeHero = () => {
               }}
               fade
               zoom
-              delay={0.45}
+              delay={0.2}
             >
               <div className="w-[28.7rem] md:w-[42.4rem]">
                 <div
@@ -183,9 +183,7 @@ const HomeHero = () => {
                     width={424}
                     height={415}
                     className="h-[20.7rem] w-[21.1rem] md:h-[41.5rem] md:w-[42.4rem]"
-                    unoptimized
-                    loading="eager"
-                    fetchPriority="high"
+                    priority
                   />
 
                   <div className="absolute top-[-1.5rem] left-[.5rem] h-[6.8rem] w-[3.4rem] rotate-[34deg] md:top-[-10.5rem] md:left-[-3.8rem] md:h-[17.1rem] md:w-[8.5rem]">
