@@ -123,6 +123,7 @@ const ContactForm = () => {
             >
               <SelectTrigger
                 id="help"
+                aria-label="Select a topic"
                 className="!h-[5.2rem] w-full rounded-[1.6rem] border border-[#E5E7EB] bg-[#F9FAFB] px-[1.5rem] text-[1.6rem] font-normal tracking-normal text-[#625C70]"
               >
                 <SelectValue placeholder="Select..." />
