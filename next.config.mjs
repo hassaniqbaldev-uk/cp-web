@@ -11,6 +11,9 @@ const nextConfig = {
       },
     ],
   },
+  experimental: {
+    inlineCss: true,
+  },
 };
 
 export default nextConfig;
