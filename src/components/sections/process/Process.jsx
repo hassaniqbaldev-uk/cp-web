@@ -22,9 +22,9 @@ const Process = () => {
           src={ProcessBg}
           alt="Background Image"
           fill
-          priority
           className="pointer-events-none absolute inset-0 z-[1] object-cover select-none"
-          unoptimized
+          sizes="100vw"
+          quality={70}
         />
 
         <div className="relative z-[10] container">
