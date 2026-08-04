@@ -24,7 +24,7 @@ const Process = () => {
           fill
           className="pointer-events-none absolute inset-0 z-[1] object-cover select-none"
           sizes="100vw"
-          quality={70}
+          quality={65}
         />
 
         <div className="relative z-[10] container">
