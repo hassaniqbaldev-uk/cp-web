@@ -233,7 +233,7 @@ const HomeHero = () => {
                     style={{
                       boxShadow: "30px 24px 64px 0px #426BFD6E",
                     }}
-                    className="absolute top-[.5rem] right-[0rem] flex size-[7.4rem] flex-col items-start justify-center rounded-[1rem] bg-[#0073F8] px-[1rem] text-left md:top-[-4.7rem] md:right-[-6.8rem] md:size-[15rem] md:rounded-[2rem] md:px-[2rem]"
+                    className="absolute top-[.5rem] right-[0rem] flex size-[7.4rem] flex-col items-start justify-center rounded-[1rem] bg-[#0061DB] px-[1rem] text-left md:top-[-4.7rem] md:right-[-6.8rem] md:size-[15rem] md:rounded-[2rem] md:px-[2rem]"
                   >
                     <span className="text-[.7rem] font-bold tracking-normal text-white md:text-[1.6rem]">
                       Projects
