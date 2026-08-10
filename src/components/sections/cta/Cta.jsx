@@ -16,7 +16,13 @@ const Cta = () => {
 
   return (
     <>
-      <MotionEffect slide={{ direction: "down" }} fade inView delay={0.1} transition={{ type: "tween", duration: 0.8, ease: "easeOut" }}>
+      <MotionEffect
+        slide={{ direction: "down" }}
+        fade
+        inView
+        delay={0.1}
+        transition={{ type: "tween", duration: 0.8, ease: "easeOut" }}
+      >
         <div className="relative container px-[3rem] pt-[2.3rem] pb-[3rem] md:px-[10rem] md:pt-[5.6rem] md:pb-[4rem]">
           {/*Background Image*/}
           <Image
@@ -47,25 +53,39 @@ const Cta = () => {
 
               <div className="mt-[1.6rem] md:mt-[2rem]">
                 <SectionTitle
-                  text="Let's design, build, and grow your next big project."
+                  text="A Manchester Web Design Agency Built on Honest Work"
                   textColor="#ffffff"
                 />
               </div>
 
               <div className="mt-[1.8rem] mb-[2.4rem] md:mt-[2rem] md:mb-[4rem]">
-                <SectionDescription
-                  text="Book a free 15-minute call no hard sell, just a chance to see if working together makes sense."
-                  textColor="#ffffff"
-                />
+                <p className="text-[1.6rem] leading-[2.4rem] font-normal tracking-normal text-white md:text-[2rem] md:leading-[3.2rem]">
+                  CreativePixels was founded because we believed businesses
+                  deserved something better than rushed projects, confusing
+                  processes, and unrealistic promises. <br /> <br /> Since 2012,
+                  we&apos;ve helped startups, SMEs, and established
+                  organisations create custom websites that combine strategy,
+                  creativity, and technical expertise. <br /> <br /> Led by our
+                  founder, Hassan, our Manchester-based team works closely with
+                  every client to understand their objectives, solve real
+                  business challenges, and deliver websites that continue
+                  creating value long after launch. <br /> <br /> We believe the
+                  best digital partnerships are built on transparency,
+                  collaboration, and measurable results not marketing buzzwords.
+                </p>
               </div>
 
               <div className="flex items-center justify-center gap-[1rem] md:gap-[2rem] xl:justify-start">
-                <GradientButton text="Get Free Consultation" />
+                <GradientButton text="Book Your Free Consultation" />
 
                 <motion.i
                   className="hidden md:block"
                   animate={{ rotate: [0, -10, 0, -10, 0] }}
-                  transition={{ duration: 1.5, repeat: Infinity, repeatDelay: 1 }}
+                  transition={{
+                    duration: 1.5,
+                    repeat: Infinity,
+                    repeatDelay: 1,
+                  }}
                   style={{ transformOrigin: "bottom right" }}
                 >
                   <Image

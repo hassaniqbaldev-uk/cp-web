@@ -95,7 +95,7 @@ const Process = () => {
             </div>
           </div>
 
-          <div className="mt-[6.5rem] hidden grid-cols-4 xl:grid">
+          <div className="mt-[6.5rem] hidden grid-cols-4 gap-[3rem] xl:grid">
             {PROCESS_CARD.map((item, idx) => (
               <MotionEffect
                 key={item.step}
@@ -114,13 +114,13 @@ const Process = () => {
                         boxShadow: item.boxShadow,
                         backgroundColor: item.color,
                       }}
-                      className="relative z-[1] inline-flex size-[7.9rem] items-center justify-center rounded-[1.6rem] text-center text-[3.5rem] font-extrabold tracking-[-0.02em] text-white"
+                      className="relative z-[1] inline-flex size-[7.9rem] w-full items-center justify-center rounded-[1.6rem] text-center text-[3rem] font-extrabold tracking-[-0.02em] text-white"
                     >
-                      0{item.step}
+                      {item.step}
                     </div>
                   </div>
 
-                  <div className="process-card flex flex-col items-start justify-center gap-[3.5rem] py-[3rem]">
+                  <div className="process-card flex w-full flex-col items-start justify-center gap-[3.5rem] py-[3rem]">
                     <div className="flex h-full flex-col items-start px-[2.8rem] text-left">
                       <h5
                         style={{ color: item.color }}

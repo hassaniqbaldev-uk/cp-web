@@ -16,34 +16,34 @@ import Process2CardImg5 from "@/assets/images/cards/process-2-card-img-5.webp";
 
 export const PROCESS_CARD = [
   {
-    step: "1",
-    title: "Discovery",
+    step: "12+",
+    title: "Years Designing & Developing Websites",
     description:
-      "We dive deep into your business goals, audience, and competitors to build a solid strategy.",
+      "Helping businesses across multiple industries establish, improve, and scale their online presence.",
     color: "#ED910C",
     boxShadow: "5px 5px 44px 0px #ED910CCC",
   },
   {
-    step: "2",
-    title: "Design",
+    step: "200+",
+    title: "Successful Website Projects",
     description:
-      "We create high-fidelity prototypes and visual systems that align with your brand identity.",
+      "From brochure websites to complex business platforms, we've delivered solutions built around real business goals.",
     color: "#3078FF",
     boxShadow: "5px 5px 44px 0px #3078FFCC",
   },
   {
-    step: "3",
-    title: "Develop",
+    step: "15+",
+    title: "Digital Specialists",
     description:
-      "Our engineers build pixel-perfect, clean code that is fast, secure, and scalable.",
+      "A multidisciplinary team covering strategy, UX, UI, web development, SEO, branding, and digital growth.",
     color: "#FF37B3",
     boxShadow: "5px 5px 44px 0px #FF37B3CC",
   },
   {
-    step: "4",
-    title: "Launch & Grow",
+    step: "Manchester, UK",
+    title: "Proudly Based in Manchester",
     description:
-      "We deploy your site and provide ongoing support, SEO, and optimisation to ensure growth.",
+      "Working with businesses across the United Kingdom while supporting organisations internationally.",
     color: "#7EE972",
     boxShadow: "5px 5px 44px 0px #44B276CC",
   },

@@ -46,7 +46,7 @@ const Expertise = () => {
               transition={{ type: "tween", duration: 0.8, ease: "easeOut" }}
             >
               <div className="mt-[5px] mb-[14px] max-w-[28rem] md:max-w-[85rem]">
-                <SectionTitle text="We help businesses like yours" />
+                <SectionTitle text="Professional Web Design & Development Services" />
               </div>
             </MotionEffect>
 
@@ -61,7 +61,7 @@ const Expertise = () => {
               transition={{ type: "tween", duration: 0.8, ease: "easeOut" }}
             >
               <div className="max-w-[25rem] md:max-w-[85rem]">
-                <SectionDescription text="Tailored strategies for every stage of growth." />
+                <SectionDescription text="Whether you need a brand-new website or want to improve an existing one, our team provides end-to-end digital solutions designed around your business objectives." />
               </div>
             </MotionEffect>
           </div>
