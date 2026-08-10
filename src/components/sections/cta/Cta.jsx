@@ -23,7 +23,7 @@ const Cta = () => {
         delay={0.1}
         transition={{ type: "tween", duration: 0.8, ease: "easeOut" }}
       >
-        <div className="relative container px-[3rem] pt-[2.3rem] pb-[3rem] md:px-[10rem] md:pt-[5.6rem] md:pb-[4rem]">
+        <div className="relative container px-[2rem] pt-[2.3rem] pb-[3rem] md:px-[10rem] md:pt-[5.6rem] md:pb-[4rem]">
           {/*Background Image*/}
           <Image
             src={CtaBg}

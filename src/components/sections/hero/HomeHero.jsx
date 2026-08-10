@@ -110,7 +110,7 @@ const HomeHero = () => {
                       <div className="absolute top-1/2 left-1/2 size-[6px] -translate-1/2 rounded-full bg-[#FF37B3] md:size-[10px]" />
                     </div>
 
-                    <span className="text-[1.1rem] leading-[2.4rem] font-medium text-white md:text-[1.6rem]">
+                    <span className="text-[.8rem] leading-[2.4rem] font-medium text-white md:text-[1.6rem]">
                       Websites Built to Grow Your Business, Not Just Look Good.
                     </span>
                   </button>
@@ -305,7 +305,7 @@ const HomeHero = () => {
             zoom
             delay={0.6}
           >
-            <div className="flex flex-row items-center md:gap-[2rem]">
+            <div className="mt-[4rem] flex flex-row flex-wrap items-center justify-center gap-[3rem] px-[2rem] md:mt-[11rem] xl:mt-[0rem] xl:justify-start xl:px-[0rem]">
               <div>
                 <GradientButton text="Book with Hassan" />
               </div>
@@ -337,7 +337,7 @@ const HomeHero = () => {
             zoom
             delay={0.6}
           >
-            <ul className="mt-[3rem] flex flex-col justify-between gap-[1.2rem] text-[1.2rem] font-medium text-white md:mt-[8rem] md:flex-row md:gap-[2rem] md:text-[1.4rem]">
+            <ul className="mt-[3rem] flex flex-col flex-wrap items-center justify-center gap-[1.2rem] px-[2rem] text-[1.2rem] font-medium text-white md:mt-[8rem] md:flex-row md:gap-[2rem] md:text-[1.4rem]">
               <li>
                 <span className="text-[#FF37B3]">✓</span> Manchester Based
               </li>
@@ -359,7 +359,7 @@ const HomeHero = () => {
               </li>
             </ul>
 
-            <hr className="mb-[2.4rem] w-full border-t border-white/15 md:mt-[3rem]" />
+            <hr className="mt-[3rem] mb-[2.4rem] w-full border-t border-white/15" />
 
             <div
               className="w-full"

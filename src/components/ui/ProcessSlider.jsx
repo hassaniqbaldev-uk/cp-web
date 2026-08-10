@@ -33,27 +33,27 @@ const ProcessSlider = ({ PROCESS_CARD }) => {
         {PROCESS_CARD.map((item, idx) => (
           <SwiperSlide
             key={idx}
-            className="!flex !h-auto !justify-center pt-[8rem] pb-[5rem]"
+            className="!flex !h-auto !justify-center px-[2rem] pt-[8rem] pb-[5rem]"
           >
-            <div
-              key={item.step}
-              className="flex h-full flex-col items-center gap-[3.8rem]"
-            >
-              <div className="process-card flex flex-col justify-center gap-[3.5rem]">
+            <div className="flex h-full flex-col items-center gap-[3.8rem]">
+              <div className="relative flex w-full justify-center">
+                <hr className="absolute top-1/2 z-[0] w-full -translate-y-1/2 border-t border-white/30" />
+
                 <div
                   style={{
-                    boxShadow: item.boxShadow,
                     backgroundColor: item.color,
                   }}
-                  className="absolute top-[-3rem] left-[2.8rem] z-[10] inline-flex size-[5.9rem] items-center justify-center rounded-[1.6rem] text-center text-[2.6rem] font-extrabold tracking-[-0.02em] text-white"
+                  className="relative z-[1] inline-flex size-[7.9rem] w-full items-center justify-center rounded-[1.6rem] text-center text-[3rem] font-extrabold tracking-[-0.02em] text-white"
                 >
-                  0{item.step}
+                  {item.step}
                 </div>
+              </div>
 
-                <div className="flex h-full flex-col items-start px-[2.8rem] py-[3rem] text-left">
+              <div className="process-card flex w-full flex-col items-start justify-center gap-[3.5rem] py-[3rem]">
+                <div className="flex h-full flex-col items-start px-[2.8rem] text-left">
                   <h5
                     style={{ color: item.color }}
-                    className="mt-[12px] mb-[8px] text-[1.8rem] leading-[2.6rem] font-bold"
+                    className="mb-[8px] text-[1.8rem] leading-[2.6rem] font-bold"
                   >
                     {item.title}
                   </h5>

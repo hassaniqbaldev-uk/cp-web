@@ -110,7 +110,6 @@ const HomePage = ({ caseStudies }) => {
         <Testimonials />
       </section>
       <section className="relative px-[2rem] py-[5rem] xl:px-[0rem] xl:py-[10rem]">
-        {/*Background Image*/}
         <Image
           src={HeroBg}
           alt="Background Image"

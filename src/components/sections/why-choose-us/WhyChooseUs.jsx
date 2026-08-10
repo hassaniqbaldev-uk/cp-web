@@ -119,7 +119,7 @@ const WhyChooseUs = () => {
               delay={0.4}
               transition={{ type: "tween", duration: 0.8, ease: "easeOut" }}
             >
-              <div className="grid w-[60rem] grid-cols-2 gap-[2rem]">
+              <div className="grid gap-[2rem] md:grid-cols-2 xl:w-[60rem]">
                 {features.map((feature, index) => (
                   <div
                     key={index}

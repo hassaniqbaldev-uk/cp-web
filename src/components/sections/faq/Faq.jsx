@@ -38,7 +38,7 @@ const Faq = () => {
               <Accordion
                 type="single"
                 collapsible
-                className="grid grid-cols-2 gap-x-[4rem] gap-y-[2rem]"
+                className="grid gap-x-[4rem] gap-y-[2rem] md:grid-cols-2"
               >
                 {FAQ_CARD.map((item, idx) => (
                   <MotionEffect
