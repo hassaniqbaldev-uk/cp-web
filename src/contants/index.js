@@ -8,3 +8,4 @@ export * from "./processCard";
 export * from "./footerCard";
 export * from "./caseStudiesCard";
 export * from "./opportunitiesCard";
+export * from "./faqCard";
