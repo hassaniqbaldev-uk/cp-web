@@ -35,7 +35,7 @@ const HomeHero = () => {
   const mouse = useMousePosition();
 
   useEffect(() => {
-    const initCal = async () => {
+    (async function () {
       const { getCalApi } = await import("@calcom/embed-react");
       const cal = await getCalApi({ namespace: "15min" });
       cal("ui", {
@@ -47,13 +47,7 @@ const HomeHero = () => {
         hideEventTypeDetails: false,
         layout: "month_view",
       });
-    };
-
-    if ("requestIdleCallback" in window) {
-      requestIdleCallback(initCal);
-    } else {
-      setTimeout(initCal, 2000);
-    }
+    })();
   }, []);
 
   return (
