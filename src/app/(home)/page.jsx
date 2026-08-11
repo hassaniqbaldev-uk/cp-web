@@ -1,4 +1,3 @@
-import { homePageSchema } from "@/contants/schema";
 import { caseStudiesListingQuery } from "@/sanity/queries.caseStudies";
 import { caseStudiesClient } from "@/sanity/sanity.caseStudies";
 import HomePage from "./home/HomePage";
@@ -6,9 +5,9 @@ import HomePage from "./home/HomePage";
 const options = { next: { revalidate: 3600 } };
 
 export async function generateMetadata() {
-  const title = "Web Design Agency UK | Custom Websites | CreativePixels";
+  const title = "Web Design Agency for Growth-Focused Brands | Free Audit";
   const description =
-    "Manchester-based web design agency creating custom, SEO-friendly websites with AI-assisted development. Book your free strategy call today.";
+    "Elevate your brand with CreativePixels. We craft high-converting websites & powerful growth systems for ambitious businesses. Claim your free strategy call now.";
 
   return {
     title,
@@ -56,13 +55,6 @@ const SitePage = async () => {
 
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(homePageSchema).replace(/</g, "\\u003c"),
-        }}
-      />
-
       <HomePage caseStudies={caseStudies} />
     </>
   );

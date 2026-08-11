@@ -18,16 +18,6 @@ import Counter from "@/components/ui/Counter";
 import useMousePosition from "@/utils/useMousePosition";
 import Cursor from "@/assets/svgs/you-cursor.svg";
 import { MotionEffect } from "@/components/effects/motion-effect";
-import PrimaryButton from "@/components/ui/PrimaryButton";
-import TrustPilot from "@/assets/images/hero/trustpilot-certified-uk.png";
-import ReviewsIo from "@/assets/images/hero/reviews.io-certified.png";
-import GoogleBusinessProfile from "@/assets/images/hero/google-business-profile certified-in-uk.png";
-
-const trustLogos = [
-  { src: TrustPilot },
-  { src: ReviewsIo },
-  { src: GoogleBusinessProfile },
-];
 
 const HomeHero = () => {
   const [isHovered, setIsHovered] = useState(false);
@@ -35,7 +25,7 @@ const HomeHero = () => {
   const mouse = useMousePosition();
 
   useEffect(() => {
-    (async function () {
+    const initCal = async () => {
       const { getCalApi } = await import("@calcom/embed-react");
       const cal = await getCalApi({ namespace: "15min" });
       cal("ui", {
@@ -47,7 +37,13 @@ const HomeHero = () => {
         hideEventTypeDetails: false,
         layout: "month_view",
       });
-    })();
+    };
+
+    if ("requestIdleCallback" in window) {
+      requestIdleCallback(initCal);
+    } else {
+      setTimeout(initCal, 2000);
+    }
   }, []);
 
   return (
@@ -78,10 +74,7 @@ const HomeHero = () => {
         </motion.div>
       )}
 
-      <section
-        id="hero"
-        className="relative w-full overflow-hidden pt-[10rem] pb-[4rem] md:pt-[20rem]"
-      >
+      <section className="relative w-full overflow-hidden pt-[10rem] pb-[4rem] md:pt-[20rem]">
         {/*Background Element*/}
         <div className="pointer-events-none absolute inset-0 z-[2] select-none">
           <HomeHeroLogoShape1 className="absolute top-[70px] left-[-10px] h-[8rem] w-[4rem] rotate-[25deg] md:top-[150px] md:h-[18.4rem] md:w-[9.1rem] xl:top-[5.8px]" />
@@ -98,14 +91,19 @@ const HomeHero = () => {
                 zoom
               >
                 <div className="flex flex-col-reverse items-center gap-[1.2rem] xl:flex-row">
-                  <button className="inline-flex h-[3.2rem] items-center justify-center gap-[5px] rounded-[20rem] border border-white/20 bg-[#DBD5DD1A] px-[1rem] py-[1rem] md:h-[4rem] md:gap-[1rem] md:px-[2rem] md:py-[.8rem]">
+                  <button
+                    data-cal-namespace="15min"
+                    data-cal-link="hassan-iqbal-mznzu9/15min"
+                    data-cal-config='{"layout":"month_view","theme":"dark"}'
+                    className="inline-flex h-[3.2rem] items-center justify-center gap-[5px] rounded-[20rem] border border-white/20 bg-[#DBD5DD1A] px-[1rem] py-[1rem] md:h-[4rem] md:gap-[1rem] md:px-[2rem] md:py-[.8rem]"
+                  >
                     <div className="relative size-[1.1rem] md:size-[1.8rem]">
                       <div className="absolute top-1/2 left-1/2 size-[1.1rem] -translate-1/2 animate-ping rounded-full bg-[#FF37B3]/20 md:size-[1.8rem]" />
                       <div className="absolute top-1/2 left-1/2 size-[6px] -translate-1/2 rounded-full bg-[#FF37B3] md:size-[10px]" />
                     </div>
 
-                    <span className="text-[.8rem] leading-[2.4rem] font-medium text-white md:text-[1.6rem]">
-                      Websites Built to Grow Your Business, Not Just Look Good.
+                    <span className="text-[1.1rem] leading-[2.4rem] font-medium text-white md:text-[1.6rem]">
+                      Book your FREE 2026 strategy call today
                     </span>
                   </button>
                 </div>
@@ -119,18 +117,18 @@ const HomeHero = () => {
                 zoom
                 delay={0.15}
               >
-                <h1 className="mt-[1.5rem] mb-[1rem] text-[3rem] leading-[3.7rem] font-bold tracking-[-0.03em] text-white md:text-[6rem] md:leading-[7.5rem]">
+                <h1 className="mt-[1.5rem] mb-[1rem] text-[3rem] leading-[3.7rem] font-bold tracking-[-0.03em] text-white md:text-[7rem] md:leading-[8.5rem]">
                   <span className="block overflow-hidden">
-                    <span className="block">Custom Web Design & </span>
+                    <span className="block">Grow your digital</span>
                   </span>
 
                   <span className="block overflow-hidden">
-                    <span className="block">AI Web Development</span>
+                    <span className="block">presence with real</span>
                   </span>
 
                   <span className="block overflow-hidden">
                     <span className="bg-gradient-yellow-orange block bg-clip-text text-transparent">
-                      Agency in the UK
+                      human-led strategy
                     </span>
                   </span>
                 </h1>
@@ -146,9 +144,23 @@ const HomeHero = () => {
               >
                 <div className="mb-[3rem] max-w-[62.8rem]">
                   <SectionDescription
-                    text="CreativePixels is a Manchester-based Web Design Agency UK helping ambitious businesses create custom websites that attract the right audience, generate qualified leads, and drive measurable growth. Our experienced designers, developers, and SEO specialists combine human expertise with AI-powered workflows to deliver fast, scalable, and conversion-focused websites that perform."
+                    text="Smart websites, standout branding, and ongoing support
+                everything you need to grow with confidence."
                     textColor="#FFFFFF"
                   />
+                </div>
+              </MotionEffect>
+
+              <MotionEffect
+                slide={{
+                  direction: "down",
+                }}
+                fade
+                zoom
+                delay={0.2}
+              >
+                <div>
+                  <GradientButton text="Book with Hassan" />
                 </div>
               </MotionEffect>
             </div>
@@ -299,61 +311,7 @@ const HomeHero = () => {
             zoom
             delay={0.6}
           >
-            <div className="mt-[4rem] flex flex-row flex-wrap items-center justify-center gap-[3rem] px-[2rem] md:mt-[11rem] xl:mt-[0rem] xl:justify-start xl:px-[0rem]">
-              <div>
-                <GradientButton text="Book with Hassan" />
-              </div>
-
-              <PrimaryButton
-                href="/contact"
-                text="Contact Us"
-                textColor="#FFFFFF"
-                bGcolor="#FF37B3"
-              />
-
-              {trustLogos.map((logo, index) => (
-                <Image
-                  key={index}
-                  src={logo.src}
-                  width={100}
-                  height={50}
-                  alt="Logo"
-                />
-              ))}
-            </div>
-          </MotionEffect>
-
-          <MotionEffect
-            slide={{
-              direction: "down",
-            }}
-            fade
-            zoom
-            delay={0.6}
-          >
-            <ul className="mt-[3rem] flex flex-col flex-wrap items-center justify-center gap-[1.2rem] px-[2rem] text-[1.2rem] font-medium text-white md:mt-[8rem] md:flex-row md:gap-[2rem] md:text-[1.4rem]">
-              <li>
-                <span className="text-[#FF37B3]">✓</span> Manchester Based
-              </li>
-              <li>
-                <span className="text-[#FF37B3]">✓</span> Established in 2012
-              </li>
-              <li>
-                <span className="text-[#FF37B3]">✓</span> 200+ Projects
-                Delivered
-              </li>
-              <li>
-                <span className="text-[#FF37B3]">✓</span> 12+ Years Experience
-              </li>
-              <li>
-                <span className="text-[#FF37B3]">✓</span> Custom Built Websites
-              </li>
-              <li>
-                <span className="text-[#FF37B3]">✓</span> SEO-Ready Development
-              </li>
-            </ul>
-
-            <hr className="mt-[3rem] mb-[2.4rem] w-full border-t border-white/15" />
+            <hr className="mt-[3rem] mb-[2.4rem] w-full border-t border-white/15 md:mt-[8rem]" />
 
             <div
               className="w-full"

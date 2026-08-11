@@ -15,8 +15,6 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import HeroBg from "@/assets/images/backgrounds/audit-hero-bg.webp";
 import Footer from "@/components/layout/Footer";
-import WhyChooseUs from "@/components/sections/why-choose-us/WhyChooseUs";
-import Faq from "@/components/sections/faq/Faq";
 
 const CONTENT_VARIANTS = {
   hidden: {
@@ -101,7 +99,6 @@ const HomePage = ({ caseStudies }) => {
       <Services />
       <Established />
       <Process />
-      <WhyChooseUs />
       <Work caseStudies={caseStudies} />
       <section className="overflow-hidden px-[2rem] pb-[5rem] xl:px-[0rem] xl:pb-[10rem]">
         <Cta />
@@ -110,6 +107,7 @@ const HomePage = ({ caseStudies }) => {
         <Testimonials />
       </section>
       <section className="relative px-[2rem] py-[5rem] xl:px-[0rem] xl:py-[10rem]">
+        {/*Background Image*/}
         <Image
           src={HeroBg}
           alt="Background Image"
@@ -120,7 +118,6 @@ const HomePage = ({ caseStudies }) => {
 
         <Contact />
       </section>
-      <Faq />
       <Footer />
     </>
   );
