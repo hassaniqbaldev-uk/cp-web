@@ -17,7 +17,7 @@ const getLegal = cache(async (slug) => {
   try {
     return await legalClient.fetch(LEGAL_DETAIL_QUERY, { slug }, options);
   } catch (error) {
-    console.error("Failed to fetch leagal detail:", error);
+    console.error("Failed to fetch legal detail:", error);
     return null;
   }
 });
