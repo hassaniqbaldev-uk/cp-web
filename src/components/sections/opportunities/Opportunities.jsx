@@ -7,36 +7,36 @@ import BriefcaseIcon from "@/assets/icons/ui/breifcase-icon.svg";
 import TimelineIcon from "@/components/icons/TimelineIcon";
 import { MotionEffect } from "@/components/effects/motion-effect";
 import JobApplicationForm from "@/components/ui/JobApplicationForm";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import SecondaryButton from "@/components/ui/SecondaryButton";
+import * as Dialog from "@radix-ui/react-dialog";
 
 const Opportunities = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedTitle, setSelectedTitle] = useState("");
 
-  useEffect(() => {
-    if (isOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "";
-    }
-
-    return () => {
-      document.body.style.overflow = "";
-    };
-  }, [isOpen]);
-
   return (
     <>
-      {/* Job Application Form */}
-      <div
-        className={`fixed inset-0 z-[999] flex items-center justify-center backdrop-blur-[10px] transition-all duration-300 ${isOpen ? "pointer-events-auto visible opacity-100" : "pointer-events-none invisible opacity-0"}`}
-      >
-        <JobApplicationForm
-          jobTitle={selectedTitle}
-          onClose={() => setIsOpen(false)}
-        />
-      </div>
+      {/* Job Application Form — a real modal dialog. Radix Dialog provides
+          role="dialog", aria-modal, a focus trap, Escape to close, focus return
+          to the triggering button, and body scroll lock. */}
+      <Dialog.Root open={isOpen} onOpenChange={setIsOpen}>
+        <Dialog.Portal>
+          <Dialog.Overlay className="fixed inset-0 z-[999] backdrop-blur-[10px]" />
+          <Dialog.Content
+            aria-describedby={undefined}
+            className="fixed inset-0 z-[1000] flex items-center justify-center p-[2rem] focus:outline-none"
+          >
+            <Dialog.Title className="sr-only">
+              {selectedTitle ? `Apply for ${selectedTitle}` : "Job application"}
+            </Dialog.Title>
+            <JobApplicationForm
+              jobTitle={selectedTitle}
+              onClose={() => setIsOpen(false)}
+            />
+          </Dialog.Content>
+        </Dialog.Portal>
+      </Dialog.Root>
 
       <section
         id="open-roles"
@@ -98,7 +98,8 @@ const Opportunities = () => {
                                 src={BriefcaseIcon}
                                 width={18}
                                 height={16}
-                                alt="Icon"
+                                alt=""
+                                aria-hidden="true"
                                 unoptimized
                               />
                             </i>
