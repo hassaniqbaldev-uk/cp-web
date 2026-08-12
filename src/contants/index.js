@@ -6,5 +6,4 @@ export * from "./expertiseCard";
 export * from "./servicesCard";
 export * from "./processCard";
 export * from "./footerCard";
-export * from "./caseStudiesCard";
 export * from "./opportunitiesCard";
