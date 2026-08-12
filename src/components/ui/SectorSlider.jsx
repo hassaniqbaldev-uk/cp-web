@@ -7,6 +7,7 @@ import "swiper/css/pagination";
 import RightArrowIcon from "../icons/RightArrowIcon";
 import Link from "next/link";
 import Image from "next/image";
+import CarouselAutoplayControl from "@/components/ui/CarouselAutoplayControl";
 
 const SectorSlider = ({ getThemeColor, solutions }) => {
   return (
@@ -86,6 +87,7 @@ const SectorSlider = ({ getThemeColor, solutions }) => {
             </SwiperSlide>
           );
         })}
+        <CarouselAutoplayControl slot="container-end" />
       </Swiper>
     </>
   );

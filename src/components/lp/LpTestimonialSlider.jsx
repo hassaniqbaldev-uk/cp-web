@@ -6,6 +6,7 @@ import "swiper/css";
 import "swiper/css/pagination";
 import Image from "next/image";
 import StarIcon from "../icons/StarIcon";
+import CarouselAutoplayControl from "@/components/ui/CarouselAutoplayControl";
 
 const LpTestimonialSlider = ({ testimonials }) => {
   return (
@@ -75,6 +76,7 @@ const LpTestimonialSlider = ({ testimonials }) => {
             </div>
           </SwiperSlide>
         ))}
+        <CarouselAutoplayControl slot="container-end" />
       </Swiper>
     </>
   );

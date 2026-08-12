@@ -4,6 +4,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
+import CarouselAutoplayControl from "@/components/ui/CarouselAutoplayControl";
 
 const Expertise2Slider = ({ expertiseData, getThemeColor }) => {
   return (
@@ -65,6 +66,7 @@ const Expertise2Slider = ({ expertiseData, getThemeColor }) => {
             </SwiperSlide>
           );
         })}
+        <CarouselAutoplayControl slot="container-end" />
       </Swiper>
     </>
   );

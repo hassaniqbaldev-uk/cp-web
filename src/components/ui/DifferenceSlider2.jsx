@@ -11,6 +11,7 @@ import LessIcon from "@/assets/icons/ui/less-icon.svg";
 import WeakerIcon from "@/assets/icons/ui/weaker-icon.svg";
 import DifferenceGradientSlideBg2 from "@/assets/images/backgrounds/difference-gradient-slide-bg-02.svg";
 import Image from "next/image";
+import CarouselAutoplayControl from "@/components/ui/CarouselAutoplayControl";
 
 export const withoutDifferenceData = [
   {
@@ -114,6 +115,7 @@ const DifferenceSlider2 = () => {
             </div>
           </SwiperSlide>
         ))}
+        <CarouselAutoplayControl slot="container-end" />
       </Swiper>
     </>
   );

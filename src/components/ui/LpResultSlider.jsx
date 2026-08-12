@@ -16,6 +16,7 @@ import NewCompassImg from "@/assets/images/cards/new-compass-slide-img.png";
 import TeleqoTechImg from "@/assets/images/cards/teleqo-tech-slide-img.png";
 import AlertForceImg from "@/assets/images/cards/alert-force-slide-img.png";
 import CheckMarkIcon from "../icons/CheckMarkIcon";
+import CarouselAutoplayControl from "@/components/ui/CarouselAutoplayControl";
 
 const slides = [
   { id: 1, img: NdifoImg, alt: "Slide Image" },
@@ -66,6 +67,7 @@ const LpResultSlider = () => {
                 />
               </SwiperSlide>
             ))}
+            <CarouselAutoplayControl slot="container-end" />
           </Swiper>
         </div>
 
