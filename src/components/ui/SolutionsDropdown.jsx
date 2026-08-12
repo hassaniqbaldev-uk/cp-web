@@ -1,5 +1,6 @@
 "use client";
 import Image from "next/image";
+import * as NavigationMenu from "@radix-ui/react-navigation-menu";
 import ChevronDownIcon from "../icons/ChevronDownIcon";
 import SuitcaseIcon from "@/assets/icons/ui/suitcase-icon.svg";
 import GrowthIcon from "@/assets/icons/ui/growth-icon.svg";
@@ -9,25 +10,17 @@ import Link from "next/link";
 import PrimaryButton from "./PrimaryButton";
 import ServicesDropdownStroke from "@/assets/svgs/services-dropdown-stroke.svg";
 
-const SolutionsDropdown = ({ className, isOpen, setIsOpen, onToggle }) => {
+const SolutionsDropdown = () => {
   return (
-    <>
-      <button
-        onMouseEnter={onToggle}
-        onClick={onToggle}
-        className={`inline-flex items-start justify-center gap-[.6rem] ${className}`}
-      >
+    <NavigationMenu.Item value="solutions">
+      <NavigationMenu.Trigger className="nav-link group inline-flex items-start justify-center gap-[.6rem] rounded-[.4rem] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-current">
         <span>Solutions</span>{" "}
-        <i
-          className={`relative top-[1rem] origin-center transition-all duration-200 ${isOpen ? "-rotate-180" : "-rotate-0"}`}
-        >
+        <i className="relative top-[1rem] origin-center transition-all duration-200 group-data-[state=open]:-rotate-180">
           <ChevronDownIcon height="6" width="10" />
         </i>
-      </button>
+      </NavigationMenu.Trigger>
 
-      <div
-        className={`absolute top-full left-1/2 z-[600] w-[127.2rem] -translate-x-1/2 transition-all duration-200 ${isOpen ? "pointer-events-auto visible pt-[4rem] opacity-100 select-auto" : "pointer-events-none invisible pt-[0rem] opacity-0 select-none"}`}
-      >
+      <NavigationMenu.Content className="absolute top-full left-1/2 z-[600] w-[127.2rem] -translate-x-1/2 pt-[4rem]">
         <div
           style={{
             clipPath: "polygon(50% 0, 0 100%, 100% 100%)",
@@ -39,7 +32,6 @@ const SolutionsDropdown = ({ className, isOpen, setIsOpen, onToggle }) => {
         />
 
         <div
-          onMouseLeave={() => setIsOpen(false)}
           style={{
             boxShadow: "11px 11px 65px 0px #00000040",
           }}
@@ -58,7 +50,8 @@ const SolutionsDropdown = ({ className, isOpen, setIsOpen, onToggle }) => {
                     src={SuitcaseIcon}
                     width={24}
                     height={24}
-                    alt="Icon"
+                    alt=""
+                    aria-hidden="true"
                     unoptimized
                   />
                 </i>
@@ -74,21 +67,22 @@ const SolutionsDropdown = ({ className, isOpen, setIsOpen, onToggle }) => {
                     key={idx}
                     className="border-[#818181]/30 pb-[1.5rem] not-last:border-b"
                   >
-                    <Link
-                      onClick={() => setIsOpen(false)}
-                      href={item.href}
-                      className="flex items-start justify-between gap-[1rem]"
-                    >
-                      <div className="flex flex-col items-start text-left">
-                        <h5 className="text-[1.8rem] leading-[2rem] font-semibold tracking-[-0.02em] text-[#263238]">
-                          {item.label}
-                        </h5>
-                      </div>
+                    <NavigationMenu.Link asChild>
+                      <Link
+                        href={item.href}
+                        className="flex items-start justify-between gap-[1rem] rounded-[.4rem] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#3078FF]"
+                      >
+                        <div className="flex flex-col items-start text-left">
+                          <h5 className="text-[1.8rem] leading-[2rem] font-semibold tracking-[-0.02em] text-[#263238]">
+                            {item.label}
+                          </h5>
+                        </div>
 
-                      <i className="min-w-max">
-                        <TiltArrowIcon color="#3078FF" width="12" height="12" />
-                      </i>
-                    </Link>
+                        <i className="min-w-max">
+                          <TiltArrowIcon color="#3078FF" width="12" height="12" />
+                        </i>
+                      </Link>
+                    </NavigationMenu.Link>
                   </li>
                 ))}
               </ul>
@@ -106,7 +100,8 @@ const SolutionsDropdown = ({ className, isOpen, setIsOpen, onToggle }) => {
                     src={GrowthIcon}
                     width={24}
                     height={24}
-                    alt="Icon"
+                    alt=""
+                    aria-hidden="true"
                     unoptimized
                   />
                 </i>
@@ -122,21 +117,22 @@ const SolutionsDropdown = ({ className, isOpen, setIsOpen, onToggle }) => {
                     key={idx}
                     className="border-[#818181]/30 pb-[1.5rem] not-last:border-b"
                   >
-                    <Link
-                      onClick={() => setIsOpen(false)}
-                      href={item.href}
-                      className="flex items-start justify-between gap-[1rem]"
-                    >
-                      <div className="flex flex-col items-start text-left">
-                        <h5 className="text-[1.8rem] leading-[2rem] font-semibold tracking-[-0.02em] text-[#263238]">
-                          {item.label}
-                        </h5>
-                      </div>
+                    <NavigationMenu.Link asChild>
+                      <Link
+                        href={item.href}
+                        className="flex items-start justify-between gap-[1rem] rounded-[.4rem] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#EE7621]"
+                      >
+                        <div className="flex flex-col items-start text-left">
+                          <h5 className="text-[1.8rem] leading-[2rem] font-semibold tracking-[-0.02em] text-[#263238]">
+                            {item.label}
+                          </h5>
+                        </div>
 
-                      <i className="min-w-max">
-                        <TiltArrowIcon color="#EE7621" width="12" height="12" />
-                      </i>
-                    </Link>
+                        <i className="min-w-max">
+                          <TiltArrowIcon color="#EE7621" width="12" height="12" />
+                        </i>
+                      </Link>
+                    </NavigationMenu.Link>
                   </li>
                 ))}
               </ul>
@@ -150,7 +146,8 @@ const SolutionsDropdown = ({ className, isOpen, setIsOpen, onToggle }) => {
                   src={ServicesDropdownStroke}
                   width={348}
                   height={220}
-                  alt="Bg Stroke"
+                  alt=""
+                  aria-hidden="true"
                   className="absolute bottom-[6rem] left-1/2 -translate-x-1/2"
                 />
               </div>
@@ -166,7 +163,7 @@ const SolutionsDropdown = ({ className, isOpen, setIsOpen, onToggle }) => {
                 </p>
               </div>
 
-              <div className="relative z-[10]" onClick={() => setIsOpen(false)}>
+              <div className="relative z-[10]">
                 <PrimaryButton
                   text="Get My Audit"
                   textColor="#312749"
@@ -177,8 +174,8 @@ const SolutionsDropdown = ({ className, isOpen, setIsOpen, onToggle }) => {
             </div>
           </div>
         </div>
-      </div>
-    </>
+      </NavigationMenu.Content>
+    </NavigationMenu.Item>
   );
 };
 
