@@ -21,15 +21,15 @@ strategic decisions were confirmed.
 
 ## 1. Platform facts
 
-| Item          | Value                                                             |
-| ------------- | ----------------------------------------------------------------- |
-| Framework     | Next.js 16                                                        |
-| CMS           | Sanity (collections)                                              |
-| Hosting       | Vercel                                                            |
-| Staging       | Vercel staging environment, mirrors the production Sanity dataset |
-| Sanity access | Schema export (not MCP)                                           |
-| Repository    | Internally developed, production, existing codebase               |
-| WordPress     | Not used anywhere on this site                                    |
+| Item | Value |
+| --- | --- |
+| Framework | Next.js 16 |
+| CMS | Sanity (collections) |
+| Hosting | Vercel |
+| Staging | Vercel staging environment, mirrors the production Sanity dataset |
+| Sanity access | Schema export (not MCP) |
+| Repository | Internally developed, production, existing codebase |
+| WordPress | Not used anywhere on this site |
 
 The staging dataset mirroring production matters: staging content changes are not
 isolated. Treat any Sanity write on staging as a production content change until
@@ -45,7 +45,7 @@ Manchester presence and an international client base including US clients.
 Positioning: **UK based, working internationally.** Manchester is a credibility and
 entity signal, not the lead proposition.
 
-Lead proposition: _We design, build and grow digital experiences._
+Lead proposition: *We design, build and grow digital experiences.*
 
 Primary customer: SME to mid-market. Founders, growing businesses, ecommerce
 brands, B2B and professional services, technology and SaaS, charities where
@@ -75,12 +75,12 @@ exclusions and sales decisions. No public "we don't work with" page.
 Four pillars. This architecture must stay consistent across homepage, services hub,
 navigation, case study categorisation, internal linking and content architecture.
 
-| Pillar               | Primary services                                                                | Weighting |
-| -------------------- | ------------------------------------------------------------------------------- | --------- |
-| Brand & Experience   | Branding & Brand Redesign, UI/UX Design                                         | 10–15%    |
-| Web & Ecommerce      | Web Design & Development, Ecommerce, Custom App Development, WordPress, Shopify | 45–50%    |
-| Growth & Performance | CRO, SEO, Paid Media, Ongoing Growth & Support                                  | 20–25%    |
-| AI & Automation      | AI & Automation                                                                 | 10–15%    |
+| Pillar | Primary services | Weighting |
+| --- | --- | --- |
+| Brand & Experience | Branding & Brand Redesign, UI/UX Design | 10–15% |
+| Web & Ecommerce | Web Design & Development, Ecommerce, Custom App Development, WordPress, Shopify | 45–50% |
+| Growth & Performance | CRO, SEO, Paid Media, Ongoing Growth & Support | 20–25% |
+| AI & Automation | AI & Automation | 10–15% |
 
 Weightings are positioning and content-emphasis guidelines. They are not keyword
 density targets.
@@ -93,54 +93,75 @@ Custom App Development sits under **Web & Ecommerce**, not AI & Automation.
 
 All confirmed by Hassan, 12 August 2026.
 
-| ID  | Decision                                                                                  | Consequence                                                                                                                                 |
-| --- | ----------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
-| D1  | Platform is Next.js 16 + Sanity + Vercel                                                  | CP-00A reframed for App Router and Next 16 caching; CP-00K added for Sanity                                                                 |
-| D2  | Sanity accessed by schema export, not MCP                                                 | Schema export required before CP-00K can run                                                                                                |
-| D3  | **Historic** data out of scope: past GSC, GA4, backlinks. Forward measurement is in scope | CP-01 proceeds on first principles. Crawl still mandatory for the redirect map. Does not affect D14                                         |
-| D4  | Ecommerce Brands is an **Industry**, not a Solution                                       | `/solutions/ecommerce-brands` redirects to the Industries page at CP-15                                                                     |
-| D5  | Internationalisation deferred to a later stage                                            | No hreflang, no locale routing, no US-specific pages in this programme                                                                      |
-| D6  | Manchester handled as entity signals only                                                 | Signals live in About, Contact and Organization schema. No local landing page                                                               |
-| D7  | CTA split confirmed                                                                       | Short button label, long phrase demoted to enquiry step heading. See section 6                                                              |
-| D8  | Book a Call demoted                                                                       | Zero bookings in the last 12 months. Removed from page-level CTAs                                                                           |
-| D9  | Pricing deferred                                                                          | Investment module must be designed to work without numbers. See section 7                                                                   |
-| D10 | No verified case study outcome metrics exist                                              | Proof is qualitative and delivery-fact based only. See section 8                                                                            |
-| D11 | All work is free to publish, no white label restrictions                                  | No client anonymisation required                                                                                                            |
-| D12 | Warranty is 3 months free post-launch support                                             | Wording must align to the legal hub document. See section 9                                                                                 |
-| D13 | Canonical task numbering is CP-xx only                                                    | The original brief's parallel 1–47 section numbering is dropped in the repo docs                                                            |
-| D14 | **Forward GA4 and event tracking is in scope and built in, not retrofitted**              | Events are implemented in the CTA, enquiry and card components as they are written. CP-16 analytics workstream is confirmed. See section 10 |
+| ID | Decision | Consequence |
+| --- | --- | --- |
+| D1 | Platform is Next.js 16 + Sanity + Vercel | CP-00A reframed for App Router and Next 16 caching; CP-00K added for Sanity |
+| D2 | Sanity accessed by schema export, not MCP | Schema export required before CP-00K can run |
+| D3 | **Historic** data out of scope: past GSC, GA4, backlinks. Forward measurement is in scope | CP-01 proceeds on first principles. Crawl still mandatory for the redirect map. Does not affect D14 |
+| D4 | Ecommerce Brands is an **Industry**, not a Solution | `/solutions/ecommerce-brands` redirects to the Industries page at CP-15 |
+| D5 | Internationalisation deferred to a later stage | No hreflang, no locale routing, no US-specific pages in this programme |
+| D6 | Manchester handled as entity signals only | Signals live in About, Contact and Organization schema. No local landing page |
+| D7 | CTA split confirmed | Short button label, long phrase demoted to enquiry step heading. See section 6 |
+| D8 | Book a Call demoted | Zero bookings in the last 12 months. Removed from page-level CTAs |
+| D9 | Pricing deferred | Investment module must be designed to work without numbers. See section 7 |
+| D10 | No verified case study outcome metrics exist | Proof is qualitative and delivery-fact based only. See section 8 |
+| D11 | All work is free to publish, no white label restrictions | No client anonymisation required |
+| D12 | Warranty is 3 months free post-launch support | Wording must align to the legal hub document. See section 9 |
+| D13 | Canonical task numbering is CP-xx only | The original brief's parallel 1–47 section numbering is dropped in the repo docs |
+| D14 | **Forward GA4 and event tracking is in scope and built in, not retrofitted** | Events are implemented in the CTA, enquiry and card components as they are written. CP-16 analytics workstream is confirmed. See section 10 |
 
 ### Added after the CP-00 report, 12 August 2026
 
-| ID  | Decision                                                                           | Consequence                                                                                                                                                                                                       |
-| --- | ---------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| D15 | `custom-apps-and-ai` splits into two services                                      | Custom App Development → Web & Ecommerce. AI & Automation → AI & Automation. Was already implied by the original brief; now explicit. Requires a pillar field on the services document type                       |
-| D16 | The three test routes are deleted                                                  | `/hassan-test`, `/review-test`, `/testing-testimonials`. All served HTTP 200 in production; `/hassan-test` embedded an external iframe. Recoverable from git history if needed                                    |
-| D17 | AO Arena retained as clearly labelled concept work                                 | Already titled "AO Arena (Concept)". Excluded from the client-work grid and from flagship candidates. Closes O1                                                                                                   |
-| D18 | The warranty claim is **blocked from publication**                                 | Supersedes D12's "align to the legal hub". No 3-month post-launch clause exists there. See section 9                                                                                                              |
-| D19 | Reuse GTM container `GTM-B8FV6K69`, provision a fresh GA4 property                 | Container saves re-tagging and holds nothing of value. Fresh property avoids inherited filters and a polluted event taxonomy. Closes O7                                                                           |
-| D20 | A consent layer ships in the same phase as the events                              | Google Consent Mode v2. GTM currently fires unconditionally, which is a UK GDPR and PECR gap. CP-16 must verify events in both consent states                                                                     |
-| D21 | `www` → apex redirect added at DNS/Vercel                                          | `www.creativepixels.agency` does not resolve at all. No SEO exposure since nothing is indexed there, but anyone typing the www form gets a dead site. Not a code fix                                              |
-| D22 | Legal detail pages get an `h1`                                                     | Phase 0. WCAG 1.3.1 failure, one template, pages not otherwise touched until CP-13                                                                                                                                |
-| D23 | A separate staging dataset is required before any CP-01 content work               | Confirmed blocker. Every project currently has one dataset named `production` and no staging equivalent                                                                                                           |
-| D24 | Sanity datasets move to private with a server-side read token                      | Public tokenless datasets expose draft documents to anyone holding the project ID, and the IDs ship to the browser in `NEXT_PUBLIC_*` vars. Unacceptable while drafting new positioning, pricing and case studies |
-| D25 | Draft mode, preview and on-demand revalidation are added before heavy content work | Editors currently cannot preview drafts and wait up to an hour for published changes. Bundled with the D23/D24 workstream                                                                                         |
+| ID | Decision | Consequence |
+| --- | --- | --- |
+| D15 | `custom-apps-and-ai` splits into two services | Custom App Development → Web & Ecommerce. AI & Automation → AI & Automation. Was already implied by the original brief; now explicit. Requires a pillar field on the services document type |
+| D16 | The three test routes are deleted | `/hassan-test`, `/review-test`, `/testing-testimonials`. All served HTTP 200 in production; `/hassan-test` embedded an external iframe. Recoverable from git history if needed |
+| D17 | AO Arena retained as clearly labelled concept work | Already titled "AO Arena (Concept)". Excluded from the client-work grid and from flagship candidates. Closes O1 |
+| D18 | The warranty claim is **blocked from publication** | Supersedes D12's "align to the legal hub". No 3-month post-launch clause exists there. See section 9 |
+| D19 | Reuse GTM container `GTM-B8FV6K69`, provision a fresh GA4 property | Container saves re-tagging and holds nothing of value. Fresh property avoids inherited filters and a polluted event taxonomy. Closes O7 |
+| D20 | A consent layer ships in the same phase as the events | Google Consent Mode v2. GTM currently fires unconditionally, which is a UK GDPR and PECR gap. CP-16 must verify events in both consent states |
+| D21 | `www` → apex redirect added at DNS/Vercel | `www.creativepixels.agency` does not resolve at all. No SEO exposure since nothing is indexed there, but anyone typing the www form gets a dead site. Not a code fix |
+| D22 | Legal detail pages get an `h1` | Phase 0. WCAG 1.3.1 failure, one template, pages not otherwise touched until CP-13 |
+| D23 | A separate staging dataset is required before any CP-01 content work | Confirmed blocker. Every project currently has one dataset named `production` and no staging equivalent |
+| D24 | Sanity datasets move to private with a server-side read token | Public tokenless datasets expose draft documents to anyone holding the project ID, and the IDs ship to the browser in `NEXT_PUBLIC_*` vars. Unacceptable while drafting new positioning, pricing and case studies |
+| D25 | Draft mode, preview and on-demand revalidation are added before heavy content work | Editors currently cannot preview drafts and wait up to an hour for published changes. Bundled with the D23/D24 workstream |
+
+### Added after the CP-00K validation, 12 August 2026
+
+| ID | Decision | Consequence |
+| --- | --- | --- |
+| D26 | Consolidation effort is **8 to 10 days**, not 5 to 6 | Corrected upward. Estate is ~138 content documents and ~852 image assets, not ~75 documents. Asset transfer is slow but low-uncertainty; taxonomy reconciliation is the overrun risk |
+| D27 | Asset migration uses `sanity dataset export` / `import`, not scripted re-upload | Export includes asset binaries and import remaps references automatically. Scripted NDJSON transform is used **only** for the type collision, cross-type references, taxonomy merge and the D15 split. The transform must not touch asset references |
+| D28 | **Four taxonomies: `service`, `technology`, `industry`, `capability`. Nothing is deleted; every taxonomy document gets a `hasPage` flag** | Approved 12 Aug. Replaces an earlier recommendation to drop unmapped tags, which was wrong. `print`, `brochure`, `custom-forms` become capabilities with `hasPage: false`. Makes O6 and CP-09 page decisions reversible. See `CP-00K-taxonomy-reconciliation.md` |
+| D29 | The 9 `category: industry` solutions migrate to the new `industry` document type | They are industry pages in the wrong document type. Leaves 5 genuine goal-based solutions, consistent with CP-07 |
+| D30 | Option C rejected | Excluding the legal hub saves 2–3% of the estate and forces D23, D24 and D25 to be implemented twice. Only revisit if legal must be organisationally separate |
+
+### Added after the schema review, 12 August 2026
+
+| ID | Decision | Consequence |
+| --- | --- | --- |
+| D31 | Consolidation effort revised down to **6 to 8 days** | Schemas show one real type collision, an existing working reference pattern, and structurally identical `services`/`solutions`. Supersedes D26 |
+| D32 | Blog `category` (`STRATEGY|DESIGN|DEVELOPMENT|GROWTH`) maps to the four pillars | Approved 12 Aug. A fourth divergent taxonomy; CP-14 requires pillar alignment. Reconciled in the same pass |
+| D33 | `tools` becomes `technology` and gains `title` and `slug` | Currently only `toolImage` and `altText`, so it cannot be queried or filtered. Unusable as a taxonomy without this |
+| D34 | **Step 1 site-hygiene fixes run before the consolidation** | Approved 12 Aug. Keyboard-accessible nav, carousel pause controls, real dialog. Each becomes the base for the later rebuild, so none is throwaway work. See section 14 |
 
 ---
 
 ## 5. Decisions open
 
-| ID     | Question                                                                                                                                                                            | Owner               | Blocks                                                                    |
-| ------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------- | ------------------------------------------------------------------------- |
-| **O8** | **Content platform consolidation. Five separate Sanity projects cannot cross-reference. Consolidate, or accept code-convention linking?** See `CP-00K-content-platform-decision.md` | **Hassan**          | **CP-01 onward. Highest priority open item**                              |
-| O3     | When does pricing get published, and at what figures?                                                                                                                               | Hassan              | CP-11 investment module content                                           |
-| O4     | Will clients be approached for outcome data? Recommended, and drives flagship quality                                                                                               | Hassan              | CP-12, Phase 7                                                            |
-| O5     | Which of the 31 existing case studies get archived                                                                                                                                  | Hassan, after CP-01 | CP-12                                                                     |
-| O6     | Which industry pages survive: Interiors & Furnishings, Driving Schools, Pharmacies, Restaurants                                                                                     | Hassan, after CP-01 | CP-08                                                                     |
-| O9     | Cal.com link views on the booking page. Did prospects click and abandon, or never click? See section 6                                                                              | Hassan              | Whether D8 is the right fix                                               |
-| O10    | Scope the Claude Code "execute fully" memory override to this repository                                                                                                            | Hassan              | Nothing here. Affects other projects, including Laravel teaching sessions |
+| ID | Question | Owner | Blocks |
+| --- | --- | --- | --- |
+| **O8** | **Content platform consolidation. Recommendation is Option A, validated at 8–10 days.** See `CP-00K-content-platform-decision.md` | **Hassan** | **CP-01 onward** |
+| **O11** | **Taxonomy reconciliation ruleset. Must be approved before migration scripting.** See `CP-00K-taxonomy-reconciliation.md` | **Hassan** | **The O8 migration itself** |
+| O3 | When does pricing get published, and at what figures? | Hassan | CP-11 investment module content |
+| O4 | Will clients be approached for outcome data? Recommended, and drives flagship quality | Hassan | CP-12, Phase 7 |
+| O5 | Which of the 31 existing case studies get archived | Hassan, after CP-01 | CP-12 |
+| O6 | Which industry pages survive: Interiors & Furnishings, Driving Schools, Pharmacies, Restaurants | Hassan | **Pulled forward by D28.** Now expressed as `hasPage` flags, so it is reversible and no longer blocks the migration |
+| O9 | Cal.com link views on the booking page. Did prospects click and abandon, or never click? See section 6 | Hassan | Whether D8 is the right fix |
+| O12 | Confirm no case-study taxonomy slug appears in a live URL before normalising the malformed ones | Claude Code | Slug normalisation step |
 
-Closed: O1 → D17. O2 → D14. O7 → D19.
+Closed: O1 → D17. O2 → D14. O7 → D19. O10 → already scoped to the `cp-web` repo, no
+action required.
 
 ---
 
@@ -149,13 +170,13 @@ Closed: O1 → D17. O2 → D14. O7 → D19.
 **Decided.** The previous primary CTA, "Tell Us What You Need", is a sentence doing a
 button's job. It is split rather than discarded.
 
-| Position                | Label                                | Notes                                                                                |
-| ----------------------- | ------------------------------------ | ------------------------------------------------------------------------------------ |
-| Primary CTA (site-wide) | **Start a project**                  | Paired with reassurance microcopy directly beneath                                   |
-| Reassurance microcopy   | _Takes two minutes. No call needed._ | Required wherever the primary CTA appears as a section-level CTA. Optional in nav    |
-| Secondary CTA           | **View our work**                    | Unchanged                                                                            |
-| Enquiry step 1 heading  | _Tell us what you need_              | The original phrase, used where its low-commitment framing actually helps            |
-| High-intent CTA         | **Book a call**                      | Restricted to the enquiry thank-you state and `/contact` only. Not on any other page |
+| Position | Label | Notes |
+| --- | --- | --- |
+| Primary CTA (site-wide) | **Start a project** | Paired with reassurance microcopy directly beneath |
+| Reassurance microcopy | *Takes two minutes. No call needed.* | Required wherever the primary CTA appears as a section-level CTA. Optional in nav |
+| Secondary CTA | **View our work** | Unchanged |
+| Enquiry step 1 heading | *Tell us what you need* | The original phrase, used where its low-commitment framing actually helps |
+| High-intent CTA | **Book a call** | Restricted to the enquiry thank-you state and `/contact` only. Not on any other page |
 
 The microcopy is the mechanism that stops "Start a project" reading as committing.
 It is not decorative. If a component uses the primary CTA without it, that is a
@@ -182,8 +203,8 @@ company size or job title.
 
 Submit label: **Send enquiry**
 
-Thank-you state: _Thanks, we've got it. We'll take a look and get back to you._
-Then, and only here: _Want to talk it through sooner? Book a call._
+Thank-you state: *Thanks, we've got it. We'll take a look and get back to you.*
+Then, and only here: *Want to talk it through sooner? Book a call.*
 
 ### Why Book a Call is demoted rather than deleted
 
@@ -197,7 +218,7 @@ for a prospect who genuinely wants to speak to someone.
 
 CP-00 established that the site has zero event tracking, so the zero-bookings figure
 cannot have come from the site. It came from Cal.com's own dashboard, which makes it
-_more_ reliable, not less. Cal.com knows its own bookings.
+*more* reliable, not less. Cal.com knows its own bookings.
 
 But bookings and clicks are different measurements implying opposite fixes:
 
@@ -224,8 +245,8 @@ specified now:
   gap to retrofit across nine P1 pages later.
 - Use contextual framing, not a bargain menu. Pattern: a scope statement plus a
   "what changes the price" line.
-- Example with no number: _Scope depends on platform, integrations, catalogue
-  complexity and functionality._
+- Example with no number: *Scope depends on platform, integrations, catalogue
+  complexity and functionality.*
 - When figures are approved, they drop into a single content source, not nine
   hardcoded page templates.
 
@@ -267,8 +288,8 @@ This is a decision about **looking backwards only**. Forward measurement is
 explicitly in scope and built into the new site (D14). The two must not be conflated,
 and a future session reading only D3 could easily make that mistake.
 
-One consequence to hold onto: discarding backlink _value_ analysis does not discard
-the need for a _redirect map_. Legacy URLs still have to be recorded from a crawl,
+One consequence to hold onto: discarding backlink *value* analysis does not discard
+the need for a *redirect map*. Legacy URLs still have to be recorded from a crawl,
 because 30 case studies, 14 solutions and 15 service pages are being restructured and
 every one of those routes needs a destination.
 
@@ -328,8 +349,8 @@ a legal document change and may warrant a solicitor's eye rather than a copy dec
 Until then, no page carries a warranty module, and no copy references a warranty
 period.
 
-Working marketing copy, held until the terms exist: _If something we've built isn't
-working as agreed during the warranty period, we'll put it right._
+Working marketing copy, held until the terms exist: *If something we've built isn't
+working as agreed during the warranty period, we'll put it right.*
 
 ---
 
@@ -343,13 +364,13 @@ Full specification lives in `10-analytics-spec.md`. This is the agreed event set
 
 ### Conversion funnel
 
-| Event                  | Fires when                                                  |
-| ---------------------- | ----------------------------------------------------------- |
-| `cta_click`            | Any primary or secondary CTA is clicked, anywhere           |
-| `enquiry_started`      | Step 1 of the enquiry flow is interacted with               |
-| `enquiry_step_2`       | Step 2 reached                                              |
-| `enquiry_step_3`       | Step 3 reached                                              |
-| `enquiry_submitted`    | Send enquiry succeeds                                       |
+| Event | Fires when |
+| --- | --- |
+| `cta_click` | Any primary or secondary CTA is clicked, anywhere |
+| `enquiry_started` | Step 1 of the enquiry flow is interacted with |
+| `enquiry_step_2` | Step 2 reached |
+| `enquiry_step_3` | Step 3 reached |
+| `enquiry_submitted` | Send enquiry succeeds |
 | `call_booking_clicked` | Book a call clicked, from the thank-you state or `/contact` |
 
 Tracking all three enquiry steps separately is deliberate. It gives per-step drop-off,
@@ -357,15 +378,15 @@ which is the only way to tell whether the low-friction flow is actually low fric
 
 ### Engagement and intent
 
-| Event               | Fires when                                  |
-| ------------------- | ------------------------------------------- |
-| `case_study_view`   | A case study page is viewed                 |
-| `service_selected`  | A service is chosen from nav, hub or card   |
-| `solution_selected` | A solution is chosen                        |
+| Event | Fires when |
+| --- | --- |
+| `case_study_view` | A case study page is viewed |
+| `service_selected` | A service is chosen from nav, hub or card |
+| `solution_selected` | A solution is chosen |
 | `industry_selected` | An industry page is entered from nav or hub |
-| `pricing_view`      | An investment module enters the viewport    |
-| `email_click`       | Email link clicked                          |
-| `phone_click`       | Phone link clicked                          |
+| `pricing_view` | An investment module enters the viewport |
+| `email_click` | Email link clicked |
+| `phone_click` | Phone link clicked |
 
 ### Parameters
 
@@ -409,13 +430,13 @@ state, D8 was the right fix for the wrong reason, and that is worth knowing.
 Recorded here because a future session will otherwise assume one Sanity project with
 several document types. That is not what exists.
 
-| Content type | Project ID | Dataset    |
-| ------------ | ---------- | ---------- |
+| Content type | Project ID | Dataset |
+| --- | --- | --- |
 | Case studies | `6qygzc2z` | production |
-| Services     | `cqbs7syw` | production |
-| Solutions    | `z2m53qom` | production |
-| Blog         | `dgx0l3po` | production |
-| Legal hub    | `pz9kcb6n` | production |
+| Services | `cqbs7syw` | production |
+| Solutions | `z2m53qom` | production |
+| Blog | `dgx0l3po` | production |
+| Legal hub | `pz9kcb6n` | production |
 
 Five **independent Sanity projects**, five clients in code, five sets of
 `NEXT_PUBLIC_SANITY_*` env vars. All datasets public and tokenless. No staging
@@ -500,20 +521,39 @@ resolved here.
 
 ## 13. Document index
 
-| File                             | Contains                                                                    |
-| -------------------------------- | --------------------------------------------------------------------------- |
-| `00-context.md`                  | This file. Context, decisions, constraints                                  |
-| `01-codebase-audit.md`           | CP-00 findings: architecture, technical health, SEO, performance, a11y, CRO |
-| `02-component-map.md`            | CP-00C component inventory with KEEP / REFACTOR / REPLACE                   |
-| `03-url-audit.md`                | CP-00B route discovery and CP-01 per-URL decisions                          |
-| `04-information-architecture.md` | CP-02 locked future sitemap                                                 |
-| `05-service-architecture.md`     | CP-03, CP-04, CP-05, CP-06                                                  |
-| `06-solutions-industries.md`     | CP-07, CP-08                                                                |
-| `07-keyword-ownership.md`        | CP-09                                                                       |
-| `08-content-strategy.md`         | CP-14                                                                       |
-| `09-cro-strategy.md`             | CP-11 landing page system, conversion flow                                  |
-| `10-analytics-spec.md`           | CP-16, subject to O2                                                        |
-| `11-migration-map.md`            | CP-15 redirect map                                                          |
-| `12-qa-checklist.md`             | CP-16 acceptance                                                            |
-| `13-implementation-status.md`    | Running status log. Update throughout                                       |
-| `pages/`                         | Per-page briefs for P1 pages                                                |
+| File | Contains |
+| --- | --- |
+| `00-context.md` | This file. Context, decisions, constraints |
+| `01-codebase-audit.md` | CP-00 findings: architecture, technical health, SEO, performance, a11y, CRO |
+| `02-component-map.md` | CP-00C component inventory with KEEP / REFACTOR / REPLACE |
+| `03-url-audit.md` | CP-00B route discovery and CP-01 per-URL decisions |
+| `04-information-architecture.md` | CP-02 locked future sitemap |
+| `05-service-architecture.md` | CP-03, CP-04, CP-05, CP-06 |
+| `06-solutions-industries.md` | CP-07, CP-08 |
+| `07-keyword-ownership.md` | CP-09 |
+| `08-content-strategy.md` | CP-14 |
+| `09-cro-strategy.md` | CP-11 landing page system, conversion flow |
+| `10-analytics-spec.md` | CP-16, subject to O2 |
+| `11-migration-map.md` | CP-15 redirect map |
+| `12-qa-checklist.md` | CP-16 acceptance |
+| `13-implementation-status.md` | Running status log. Update throughout |
+| `pages/` | Per-page briefs for P1 pages |
+
+---
+
+## 14. Route to good standing (approved 12 August 2026)
+
+The site reaches a proper working state before the rebuild begins. Four steps, in
+order. Nothing is built twice.
+
+| Step | Work | Effort |
+| --- | --- | --- |
+| **1** | Site hygiene (D34). Keyboard-accessible nav replacing the mouse-only mega menu, pause controls on autoplay carousels, a real dialog replacing the non-dialog modal | ~1 day |
+| **2** | Consolidation and data layer (D25–D33). One Sanity project, staging dataset, private datasets with a read token, draft mode, on-demand revalidation, `pillar` field, taxonomy reconciliation | 6–8 days |
+| **3** | Component cleanup. One shared slider replacing ~19, one form replacing 3, one header replacing 3. D14 analytics events and WCAG 2.2 AA behaviour are built in here, once | 3–5 days |
+| **4** | CP-01 onward. The transformation proper | Per the original brief |
+
+Steps 1 to 3 are "good standing". Step 1 runs first and standalone because the
+keyboard-inaccessible navigation is a live WCAG failure on a site that sells
+accessibility remediation at `/services/accessibility`, and the Radix disclosure that
+fixes it becomes the base for the rebuilt navigation.
