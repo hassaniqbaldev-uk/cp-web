@@ -182,31 +182,71 @@ lets the three `robots.js` disallow entries be dropped.
 
 ---
 
-## 5. Production crawl (CP-00B) — PENDING
+## 5. Production crawl (CP-00B) — COMPLETE (12 Aug 2026)
 
-Blocked on Hassan confirming the production URL (`creativepixels.agency` per code) and
-green-lighting the crawl. This is discovery only and must be captured before any
-Phase 0 fix lands, because legacy URL/title/H1/status state cannot be recovered once
-the rebuild starts.
+Crawled `https://creativepixels.agency` with a scripted `fetch` sweep (99 URLs: 21
+static/list pages + 3 test routes + 15 services + 14 solutions + 31 case studies + 9
+blog + 7 legal + robots + sitemap), capturing status, final URL, title, meta
+description, H1, canonical and robots per URL, plus infrastructure behaviour. **The
+exhaustive per-URL capture (including full titles, descriptions and H1s) is preserved
+in `03-crawl-raw.jsonl` in this folder** and must not be deleted: it is the legacy
+metadata snapshot and redirect-map raw material that cannot be recovered post-rebuild.
 
-Planned capture per URL (all 25 production paths + the 31+14+15+9+7 dynamic detail
-pages): status code, final URL after redirects, `<title>`, meta description, H1,
-canonical, robots directive, indexation signal. Plus infrastructure behaviour:
+Headline: **every one of the 99 URLs returned HTTP 200.** No 404s, no unexpected
+redirects, no broken slugs. All nav deep-links resolve. Content pages are indexable
+(empty robots); thank-you pages and the three test routes are `noindex, nofollow`.
 
-- trailing-slash vs non-slash (note `SITE_URL` has a trailing slash; the home sitemap
-  entry is `https://creativepixels.agency/`)
-- HTTP → HTTPS redirect behaviour
-- www vs non-www behaviour
-- any legacy sections or orphaned routes not in section 1
-- confirm the `/solutions/#sector` anchor exists
+### Infrastructure behaviour (redirect-map inputs)
 
-Method: scripted `curl -sI` / `curl -s` sweep over the URL set (far faster than the
-browser for ~75 URLs), with the browser used to spot-check rendering and indexation.
+| Test | Result |
+| --- | --- |
+| `http://creativepixels.agency/` to HTTPS | **308** to `https://creativepixels.agency/` (good) |
+| `http://creativepixels.agency` (bare) to HTTPS | **308** to `https://creativepixels.agency/` (good) |
+| `https://www.creativepixels.agency/` | **fails to resolve** (connection error, no redirect). The www host is not served. Fix before or at CP-15: add www to apex redirect at DNS/Vercel. |
+| `https://creativepixels.agency` (no slash) | 200 |
+| `https://creativepixels.agency/about/` (trailing slash) | **308** to `/about` (Next `trailingSlash:false`, good) |
+| `https://creativepixels.agency/About` (uppercase) | 404 (paths are case-sensitive) |
+| `https://creativepixels.agency/nope-404-xyz` | 404 (custom not-found renders) |
 
-### Crawl results
+The sitemap emits the home URL with a trailing slash while the homepage canonical is
+emitted without one (`https://creativepixels.agency`). Harmless but inconsistent; worth
+normalising at CP-15.
 
-_Table to be populated once the crawl runs._
+### Indexation
 
-| URL | Status | Final URL | Title | Meta desc | H1 | Canonical | Robots |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| _pending_ | | | | | | | |
+- **Indexable (robots empty):** all 21 production static/list pages and all 76 dynamic
+  detail pages.
+- **`noindex, nofollow` (correct):** `/thank-you`, `/wordpress-web-development/thank-you`.
+- **`noindex, nofollow` (test routes, still serving 200):** `/hassan-test`,
+  `/review-test`, `/testing-testimonials`. They render the generic root-default
+  title/description, confirming they are throwaways. Recommend deletion (CP-00E/J).
+
+### Metadata anomalies found (all live-confirmed)
+
+1. **Missing canonical on 14 `/solutions/[slug]` pages** — every solution detail page
+   has an empty canonical. Confirms `solutions/[slug]/page.jsx:40` omits
+   `alternates.canonical`. Phase 0 fix.
+2. **Missing canonical on `/call`** — the hardcoded `/call` page emits no canonical.
+   Phase 0 fix candidate (add `alternates.canonical:"/call"`).
+3. **Missing meta description on `/solutions/saas-companies`** — empty description. This
+   is a **Sanity content gap** (blank `seo.metaDescription`), not code. Because staging
+   shares the production dataset, treat any fix as a production content edit. Flag to
+   Hassan; not a Phase 0 code fix.
+4. **No `<h1>` in the server HTML of the seven legal detail pages** — `/legal/[slug]`
+   renders no `<h1>`. Heading-structure gap; fix when the legal template is next touched.
+5. **Homepage `<h1>` not present in static HTML** — the `HomeHero` heading is wrapped
+   for animation and did not surface as a plain `<h1>`. Verify in-browser that a
+   semantic `<h1>` exists (protected page; confirm before any change).
+
+### Content/accuracy observations for later phases (recorded, not actioned)
+
+- `/case-studies/ao-arena` title and H1 are already "AO Arena (Concept)" (O1 input).
+- `/case-studies/unicef` is described as a fundraising-event **print** suite, not a
+  website (delivery-fact accuracy for CP-12).
+- Case-study descriptions carry verifiable delivery facts (Wix to WordPress migrations,
+  Webflow, Shopify builds, LMS platforms), the largest untapped proof source per
+  `00-context.md` section 8.
+- `/solutions/#sector` anchor existence was not separately verified; check at CP-07/CP-08.
+
+Full per-URL titles and descriptions (the exact current metadata for continuity
+verification at CP-15) are in `03-crawl-raw.jsonl`.
