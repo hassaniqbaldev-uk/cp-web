@@ -95,7 +95,7 @@ const HomePage = ({ caseStudies }) => {
           </motion.div>
         )}
       </div>
-      <Expertise />
+      {/* <Expertise /> */}
       <Services />
       <Established />
       <Process />
