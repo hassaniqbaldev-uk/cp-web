@@ -154,9 +154,9 @@ const LegalDetailPage = async (props) => {
           )}
 
           <div>
-            <h4 className="text-[3.6rem] leading-[4rem] font-bold tracking-[-0.9px] text-[#312749]">
+            <h1 className="text-[3.6rem] leading-[4rem] font-bold tracking-[-0.9px] text-[#312749]">
               {legal.title}
-            </h4>
+            </h1>
             {legal.subtitle && (
               <span className="text-[1.6rem] leading-[2.4rem] text-[#312749]">
                 {legal.subtitle}
@@ -181,9 +181,9 @@ const LegalDetailPage = async (props) => {
           {legal.sections?.map((section, index) => (
             <div key={index}>
               {section.sectionTitle && (
-                <h5 className="text-[2.2rem] font-bold">
+                <h2 className="text-[2.2rem] font-bold">
                   {section.sectionTitle}
-                </h5>
+                </h2>
               )}
               {section.content && (
                 <PortableText
