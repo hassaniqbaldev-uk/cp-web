@@ -1,1 +1,1 @@
-CP WEB 26
+CP WEB
