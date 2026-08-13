@@ -52,6 +52,31 @@ Reusable bases retained: `CarouselAutoplayControl` carries into the Step 3 conso
 slider; the `Dialog` pattern is reused for the enquiry flow. (The nav is now a
 behaviour-only layer on the existing components rather than a new `MainNav`.)
 
+### Step 1 verification pass (post-review, 13 Aug 2026)
+
+Reviewed against three concerns. **No code changes were needed — all three were already
+correct.** Verified with trusted (CDP) input on a local production build:
+
+- **Tab from trigger into panel does not close it.** `handleClose` (the `onBlur`) checks
+  `relatedTarget`: if focus moves to an element inside the panel or back to the trigger,
+  it returns without closing. Real Tab moved focus onto `/services/branding` with the
+  menu staying open (`aria-expanded` remained true).
+- **Escape from inside the panel** closes it and returns focus to the trigger. The
+  panel's `onKeyDown` handles Escape and `keydown` bubbles from any focused panel link.
+  Real Escape from a focused panel link closed the menu and refocused the trigger.
+- **prefers-reduced-motion** is honoured: the carousel control reads
+  `matchMedia("(prefers-reduced-motion: reduce)")` on mount and calls
+  `swiper.autoplay.stop()` + shows the Play state when it matches. Verified the stop path
+  against a live running carousel (`running: true → false`). OS-level emulation is not
+  available in the test pane, so the query→stop path was confirmed by code plus a
+  concrete run rather than by toggling the OS setting.
+
+Outside-click: the original mega menu had **no document click-outside listener**; it
+closed via `onMouseLeave` (pointer leaving the panel), plus link click, re-toggle and the
+header's scroll handler. That `onMouseLeave` is preserved unchanged, so mouse
+close-behaviour is identical to before; the added `onBlur` additionally closes it when
+keyboard focus leaves. No dedicated click-outside handler was added (there was never one).
+
 ---
 
 ## O8 / O11 — Content platform (validated; awaiting sign-off)
