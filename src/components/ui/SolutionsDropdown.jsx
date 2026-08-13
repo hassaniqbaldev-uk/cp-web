@@ -1,4 +1,5 @@
 "use client";
+import { useRef } from "react";
 import Image from "next/image";
 import ChevronDownIcon from "../icons/ChevronDownIcon";
 import SuitcaseIcon from "@/assets/icons/ui/suitcase-icon.svg";
@@ -10,11 +11,43 @@ import PrimaryButton from "./PrimaryButton";
 import ServicesDropdownStroke from "@/assets/svgs/services-dropdown-stroke.svg";
 
 const SolutionsDropdown = ({ className, isOpen, setIsOpen, onToggle }) => {
+  const triggerRef = useRef(null);
+  const panelRef = useRef(null);
+
+  const handleTriggerKeyDown = (e) => {
+    if (e.key === "ArrowDown") {
+      e.preventDefault();
+      if (!isOpen) onToggle();
+    } else if (e.key === "Escape") {
+      setIsOpen(false);
+    }
+  };
+
+  const handlePanelKeyDown = (e) => {
+    if (e.key === "Escape") {
+      setIsOpen(false);
+      triggerRef.current?.focus();
+    }
+  };
+
+  const handleClose = (e) => {
+    const next = e.relatedTarget;
+    if (next && (panelRef.current?.contains(next) || next === triggerRef.current))
+      return;
+    setIsOpen(false);
+  };
+
   return (
     <>
       <button
+        ref={triggerRef}
+        id="solutions-menu-trigger"
+        aria-expanded={isOpen}
+        aria-controls="solutions-menu-panel"
         onMouseEnter={onToggle}
         onClick={onToggle}
+        onKeyDown={handleTriggerKeyDown}
+        onBlur={handleClose}
         className={`inline-flex items-start justify-center gap-[.6rem] ${className}`}
       >
         <span>Solutions</span>{" "}
@@ -26,6 +59,10 @@ const SolutionsDropdown = ({ className, isOpen, setIsOpen, onToggle }) => {
       </button>
 
       <div
+        id="solutions-menu-panel"
+        ref={panelRef}
+        onKeyDown={handlePanelKeyDown}
+        onBlur={handleClose}
         className={`absolute top-full left-1/2 z-[600] w-[127.2rem] -translate-x-1/2 transition-all duration-200 ${isOpen ? "pointer-events-auto visible pt-[4rem] opacity-100 select-auto" : "pointer-events-none invisible pt-[0rem] opacity-0 select-none"}`}
       >
         <div

@@ -1,4 +1,5 @@
 "use client";
+import { useRef } from "react";
 import Image from "next/image";
 import ChevronDownIcon from "../icons/ChevronDownIcon";
 import DesignIcon from "@/assets/icons/ui/design-icon.svg";
@@ -15,11 +16,47 @@ import PrimaryButton from "./PrimaryButton";
 import ServicesDropdownStroke from "@/assets/svgs/services-dropdown-stroke.svg";
 
 const ServicesDropdown = ({ className, isOpen, setIsOpen, onToggle }) => {
+  const triggerRef = useRef(null);
+  const panelRef = useRef(null);
+
+  // Disclosure pattern: ArrowDown (or Enter/Space, handled natively by the
+  // button) opens the panel; focus stays on the trigger and Tab moves into the
+  // revealed links. Escape closes and returns focus to the trigger.
+  const handleTriggerKeyDown = (e) => {
+    if (e.key === "ArrowDown") {
+      e.preventDefault();
+      if (!isOpen) onToggle();
+    } else if (e.key === "Escape") {
+      setIsOpen(false);
+    }
+  };
+
+  const handlePanelKeyDown = (e) => {
+    if (e.key === "Escape") {
+      setIsOpen(false);
+      triggerRef.current?.focus();
+    }
+  };
+
+  // Close when focus leaves both the trigger and the panel (e.g. Tab out).
+  const handleClose = (e) => {
+    const next = e.relatedTarget;
+    if (next && (panelRef.current?.contains(next) || next === triggerRef.current))
+      return;
+    setIsOpen(false);
+  };
+
   return (
     <>
       <button
+        ref={triggerRef}
+        id="services-menu-trigger"
+        aria-expanded={isOpen}
+        aria-controls="services-menu-panel"
         onMouseEnter={onToggle}
         onClick={onToggle}
+        onKeyDown={handleTriggerKeyDown}
+        onBlur={handleClose}
         className={`inline-flex items-start justify-center gap-[.6rem] ${className}`}
       >
         <span>Services</span>{" "}
@@ -31,6 +68,10 @@ const ServicesDropdown = ({ className, isOpen, setIsOpen, onToggle }) => {
       </button>
 
       <div
+        id="services-menu-panel"
+        ref={panelRef}
+        onKeyDown={handlePanelKeyDown}
+        onBlur={handleClose}
         className={`absolute top-full left-1/2 z-[600] w-[127.2rem] -translate-x-1/2 transition-all duration-200 ${isOpen ? "pointer-events-auto visible pt-[4rem] opacity-100 select-auto" : "pointer-events-none invisible pt-[0rem] opacity-0 select-none"}`}
       >
         <div
