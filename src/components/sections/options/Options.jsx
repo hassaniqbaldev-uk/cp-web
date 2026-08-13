@@ -8,7 +8,6 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
-import CarouselAutoplayControl from "@/components/ui/CarouselAutoplayControl";
 
 export const pricingCards = [
   {
@@ -265,7 +264,6 @@ const Options = ({ service }) => {
                   </SwiperSlide>
                 );
               })}
-              <CarouselAutoplayControl slot="container-end" />
             </Swiper>
           </div>
         </div>

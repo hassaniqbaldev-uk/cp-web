@@ -6,7 +6,9 @@ import { usePathname } from "next/navigation";
 import Image from "next/image";
 import HamburgerIcon from "@/assets/icons/ui/hamburger-icon.svg";
 import { useMenuStore } from "@/store/mobileMenuStore";
-import MainNav from "./MainNav";
+import ServicesDropdown from "../ui/ServicesDropdown";
+import SolutionsDropdown from "../ui/SolutionsDropdown";
+import AboutDropdown from "../ui/AboutDropdown";
 import { motion } from "framer-motion";
 import SecondaryButton from "../ui/SecondaryButton";
 
@@ -16,6 +18,44 @@ const Header = () => {
   const [lastScrollY, setLastScrollY] = useState(0);
   const pathname = usePathname();
   const { toggleMenu } = useMenuStore();
+  const [isServicesOpen, setIsServicesOpen] = useState(false);
+  const [isSolutionsOpen, setIsSolutionsOpen] = useState(false);
+  const [isAboutOpen, setIsAboutOpen] = useState(false);
+
+  const toggleServices = () => {
+    setIsServicesOpen((prev) => !prev);
+    setIsSolutionsOpen(false);
+    setIsAboutOpen(false);
+  };
+
+  const toggleSolutions = () => {
+    setIsSolutionsOpen((prev) => !prev);
+    setIsServicesOpen(false);
+    setIsAboutOpen(false);
+  };
+
+  const toggleAbout = () => {
+    setIsAboutOpen((prev) => !prev);
+    setIsServicesOpen(false);
+    setIsSolutionsOpen(false);
+  };
+
+  const closeAllDropdowns = () => {
+    setIsServicesOpen(false);
+    setIsSolutionsOpen(false);
+    setIsAboutOpen(false);
+  };
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsServicesOpen(false);
+      setIsSolutionsOpen(false);
+      setIsAboutOpen(false);
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -88,6 +128,7 @@ const Header = () => {
             <Link
               href="/"
               className="inline-flex items-center justify-center"
+              onClick={closeAllDropdowns}
             >
               <Logo
                 width="121"
@@ -96,13 +137,51 @@ const Header = () => {
               />
             </Link>
 
-            <MainNav className="mx-[4.8rem] hidden xl:block" />
+            <nav className="mx-[4.8rem] hidden items-center justify-center gap-[3rem] xl:flex">
+              <ServicesDropdown
+                className="nav-link"
+                isOpen={isServicesOpen}
+                setIsOpen={setIsServicesOpen}
+                onToggle={toggleServices}
+              />
+
+              <SolutionsDropdown
+                className="nav-link"
+                isOpen={isSolutionsOpen}
+                setIsOpen={setIsSolutionsOpen}
+                onToggle={toggleSolutions}
+              />
+
+              <Link
+                href="/case-studies"
+                className="nav-link"
+                onClick={closeAllDropdowns}
+              >
+                Work
+              </Link>
+
+              <Link
+                href="/blog"
+                className="nav-link"
+                onClick={closeAllDropdowns}
+              >
+                Blog
+              </Link>
+
+              <AboutDropdown
+                className="nav-link"
+                isOpen={isAboutOpen}
+                setIsOpen={setIsAboutOpen}
+                onToggle={toggleAbout}
+              />
+            </nav>
 
             <div className="flex items-center justify-end gap-[4px] xl:gap-[0px]">
               <motion.div initial="initial" whileHover="hover">
                 <Link
                   href="/audit"
                   className="nav-btn relative overflow-hidden"
+                  onClick={closeAllDropdowns}
                 >
                   <motion.span
                     variants={{
@@ -130,14 +209,13 @@ const Header = () => {
               {/* Hamburger Button */}
               <button
                 onClick={toggleMenu}
-                aria-label="Open menu"
                 className="inline-flex size-[3.3rem] min-w-[3.3rem] items-center justify-center rounded-full bg-[#FF37B3] xl:hidden"
               >
-                <Image src={HamburgerIcon} width={12} height={9} alt="" aria-hidden="true" />
+                <Image src={HamburgerIcon} width={12} height={9} alt="Icon" />
               </button>
             </div>
 
-            <div className="hidden xl:block">
+            <div className="hidden xl:block" onClick={closeAllDropdowns}>
               <SecondaryButton
                 text="Book a Call"
                 textColor="#FFFFFF"

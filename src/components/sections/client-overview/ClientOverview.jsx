@@ -5,7 +5,6 @@ import { MotionEffect } from "@/components/effects/motion-effect";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
 import "swiper/css";
-import CarouselAutoplayControl from "@/components/ui/CarouselAutoplayControl";
 
 const ClientOverview = ({ caseStudy }) => {
   return (
@@ -148,7 +147,6 @@ const ClientOverview = ({ caseStudy }) => {
                       />
                     </SwiperSlide>
                   ))}
-                  <CarouselAutoplayControl slot="container-end" />
                 </Swiper>
               ) : (
                 <Image

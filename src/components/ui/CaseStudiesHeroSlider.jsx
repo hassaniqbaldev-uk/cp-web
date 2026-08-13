@@ -8,7 +8,6 @@ import Image from "next/image";
 import GraphicDesignIcon from "@/assets/icons/ui/graphic-design-icon.svg";
 import SentIcon from "@/assets/icons/ui/sent-icon.svg";
 import LoadingIcon from "@/assets/icons/ui/loading-icon.svg";
-import CarouselAutoplayControl from "@/components/ui/CarouselAutoplayControl";
 
 const CaseStudiesHeroSlider = () => {
   return (
@@ -93,7 +92,6 @@ const CaseStudiesHeroSlider = () => {
             </div>
           </div>
         </SwiperSlide>
-        <CarouselAutoplayControl slot="container-end" />
       </Swiper>
     </>
   );

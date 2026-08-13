@@ -6,7 +6,6 @@ import "swiper/css";
 import "swiper/css/pagination";
 import CheckMarkIcon from "../icons/CheckMarkIcon";
 import Image from "next/image";
-import CarouselAutoplayControl from "@/components/ui/CarouselAutoplayControl";
 
 const Expertise3Slider = ({ service, getThemeColor }) => {
   return (
@@ -96,7 +95,6 @@ const Expertise3Slider = ({ service, getThemeColor }) => {
             </SwiperSlide>
           );
         })}
-        <CarouselAutoplayControl slot="container-end" />
       </Swiper>
     </>
   );

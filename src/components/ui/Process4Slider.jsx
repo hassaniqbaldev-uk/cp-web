@@ -5,7 +5,6 @@ import { Autoplay, Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
 import Image from "next/image";
-import CarouselAutoplayControl from "@/components/ui/CarouselAutoplayControl";
 
 const Process4Slider = ({ steps, getThemeColor }) => {
   return (
@@ -81,7 +80,6 @@ const Process4Slider = ({ steps, getThemeColor }) => {
             </SwiperSlide>
           );
         })}
-        <CarouselAutoplayControl slot="container-end" />
       </Swiper>
     </>
   );

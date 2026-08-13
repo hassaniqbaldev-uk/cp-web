@@ -5,7 +5,6 @@ import "swiper/css";
 import "swiper/css/pagination";
 import RightArrowIcon from "../icons/RightArrowIcon";
 import useServiceStore from "@/store/useServiceStore";
-import CarouselAutoplayControl from "@/components/ui/CarouselAutoplayControl";
 
 const LpServicesSlider = ({ LP_SERVICES_CARD }) => {
   const { setSelectedService } = useServiceStore();
@@ -93,7 +92,6 @@ const LpServicesSlider = ({ LP_SERVICES_CARD }) => {
             </div>
           </SwiperSlide>
         ))}
-        <CarouselAutoplayControl slot="container-end" />
       </Swiper>
     </>
   );

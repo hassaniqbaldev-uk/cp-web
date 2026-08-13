@@ -11,7 +11,6 @@ import CardImg3 from "@/assets/images/hero/about-hero-slide-img-3.png";
 import CardImg4 from "@/assets/images/hero/about-hero-slide-img-4.png";
 import CardImg5 from "@/assets/images/hero/about-hero-slide-img-5.png";
 import CardImg6 from "@/assets/images/hero/about-hero-slide-img-6.png";
-import CarouselAutoplayControl from "@/components/ui/CarouselAutoplayControl";
 
 const slides = [
   { id: 1, img: CardImg1, alt: "About Hero Slide Image" },
@@ -46,7 +45,6 @@ const AboutHeroSlider = () => {
             />
           </SwiperSlide>
         ))}
-        <CarouselAutoplayControl slot="container-end" />
       </Swiper>
 
       {/* Custom Navigation Arrows */}

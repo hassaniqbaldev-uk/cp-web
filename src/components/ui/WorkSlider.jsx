@@ -8,7 +8,6 @@ import "swiper/css/pagination";
 import Link from "next/link";
 import Image from "next/image";
 import { urlFor } from "@/sanity/caseStudies.image";
-import CarouselAutoplayControl from "./CarouselAutoplayControl";
 
 const WorkSlider = ({ caseStudies }) => {
   return (
@@ -85,7 +84,6 @@ const WorkSlider = ({ caseStudies }) => {
             </Link>
           </SwiperSlide>
         ))}
-        <CarouselAutoplayControl slot="container-end" />
       </Swiper>
     </>
   );

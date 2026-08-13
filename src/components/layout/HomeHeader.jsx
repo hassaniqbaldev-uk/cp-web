@@ -4,7 +4,9 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import HamburgerIcon from "@/assets/icons/ui/hamburger-icon.svg";
 import { useMenuStore } from "@/store/mobileMenuStore";
-import MainNav from "./MainNav";
+import ServicesDropdown from "../ui/ServicesDropdown";
+import SolutionsDropdown from "../ui/SolutionsDropdown";
+import AboutDropdown from "../ui/AboutDropdown";
 import { motion } from "framer-motion";
 import SecondaryButton from "../ui/SecondaryButton";
 import LoaderLogo from "../decorative-elements/LoaderLogo";
@@ -14,6 +16,44 @@ const HomeHeader = ({ transition }) => {
   const [isHidden, setIsHidden] = useState(false);
   const [lastScrollY, setLastScrollY] = useState(0);
   const { toggleMenu } = useMenuStore();
+  const [isServicesOpen, setIsServicesOpen] = useState(false);
+  const [isSolutionsOpen, setIsSolutionsOpen] = useState(false);
+  const [isAboutOpen, setIsAboutOpen] = useState(false);
+
+  const toggleServices = () => {
+    setIsServicesOpen((prev) => !prev);
+    setIsSolutionsOpen(false);
+    setIsAboutOpen(false);
+  };
+
+  const toggleSolutions = () => {
+    setIsSolutionsOpen((prev) => !prev);
+    setIsServicesOpen(false);
+    setIsAboutOpen(false);
+  };
+
+  const toggleAbout = () => {
+    setIsAboutOpen((prev) => !prev);
+    setIsServicesOpen(false);
+    setIsSolutionsOpen(false);
+  };
+
+  const closeAllDropdowns = () => {
+    setIsServicesOpen(false);
+    setIsSolutionsOpen(false);
+    setIsAboutOpen(false);
+  };
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsServicesOpen(false);
+      setIsSolutionsOpen(false);
+      setIsAboutOpen(false);
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -90,7 +130,7 @@ const HomeHeader = ({ transition }) => {
               )}
             </div>
 
-            <motion.div
+            <motion.nav
               initial={{
                 opacity: 0,
               }}
@@ -104,10 +144,45 @@ const HomeHeader = ({ transition }) => {
                     }
               }
               transition={{ type: "tween", duration: 0.4, delay: 0.3 }}
-              className="mx-[4.8rem] hidden xl:block"
+              className="mx-[4.8rem] hidden items-center justify-center gap-[3rem] xl:flex"
             >
-              <MainNav />
-            </motion.div>
+              <ServicesDropdown
+                className="nav-link"
+                isOpen={isServicesOpen}
+                setIsOpen={setIsServicesOpen}
+                onToggle={toggleServices}
+              />
+
+              <SolutionsDropdown
+                className="nav-link"
+                isOpen={isSolutionsOpen}
+                setIsOpen={setIsSolutionsOpen}
+                onToggle={toggleSolutions}
+              />
+
+              <Link
+                href="/case-studies"
+                className="nav-link"
+                onClick={closeAllDropdowns}
+              >
+                Work
+              </Link>
+
+              <Link
+                href="/blog"
+                className="nav-link"
+                onClick={closeAllDropdowns}
+              >
+                Blog
+              </Link>
+
+              <AboutDropdown
+                className="nav-link"
+                isOpen={isAboutOpen}
+                setIsOpen={setIsAboutOpen}
+                onToggle={toggleAbout}
+              />
+            </motion.nav>
 
             <motion.div
               initial={{
@@ -129,6 +204,7 @@ const HomeHeader = ({ transition }) => {
                 <Link
                   href="/audit"
                   className="nav-btn relative overflow-hidden"
+                  onClick={closeAllDropdowns}
                 >
                   <motion.span
                     variants={{
@@ -156,10 +232,9 @@ const HomeHeader = ({ transition }) => {
               {/* Hamburger Button */}
               <button
                 onClick={toggleMenu}
-                aria-label="Open menu"
                 className="inline-flex size-[3.3rem] min-w-[3.3rem] items-center justify-center rounded-full bg-[#FF37B3] xl:hidden"
               >
-                <Image src={HamburgerIcon} width={12} height={9} alt="" aria-hidden="true" />
+                <Image src={HamburgerIcon} width={12} height={9} alt="Icon" />
               </button>
             </motion.div>
 
@@ -178,6 +253,7 @@ const HomeHeader = ({ transition }) => {
               }
               transition={{ type: "tween", duration: 0.4, delay: 0.3 }}
               className="hidden xl:block"
+              onClick={closeAllDropdowns}
             >
               <SecondaryButton
                 text="Book a Call"

@@ -5,7 +5,6 @@ import { Autoplay, Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
 import LightFeatureCard1 from "./LightFeatureCard1";
-import CarouselAutoplayControl from "@/components/ui/CarouselAutoplayControl";
 
 const LightFeatureCardSlider1 = ({ slideData }) => {
   return (
@@ -47,7 +46,6 @@ const LightFeatureCardSlider1 = ({ slideData }) => {
             />
           </SwiperSlide>
         ))}
-        <CarouselAutoplayControl slot="container-end" />
       </Swiper>
     </>
   );

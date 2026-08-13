@@ -5,7 +5,6 @@ import "swiper/css";
 import TiltArrowIcon from "../icons/TiltArrowIcon";
 import Link from "next/link";
 import Image from "next/image";
-import CarouselAutoplayControl from "@/components/ui/CarouselAutoplayControl";
 
 const LpHeroSlider = ({ projects }) => {
   return (
@@ -69,7 +68,6 @@ const LpHeroSlider = ({ projects }) => {
             </div>
           </SwiperSlide>
         ))}
-        <CarouselAutoplayControl slot="container-end" />
       </Swiper>
     </>
   );

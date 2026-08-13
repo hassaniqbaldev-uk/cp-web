@@ -5,7 +5,6 @@ import { Autoplay, Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
 import GlassFeatureCard from "./GlassFeatureCard";
-import CarouselAutoplayControl from "@/components/ui/CarouselAutoplayControl";
 
 const GlassFeatureCardSlider = ({ slideData }) => {
   return (
@@ -49,7 +48,6 @@ const GlassFeatureCardSlider = ({ slideData }) => {
             />
           </SwiperSlide>
         ))}
-        <CarouselAutoplayControl slot="container-end" />
       </Swiper>
     </>
   );
