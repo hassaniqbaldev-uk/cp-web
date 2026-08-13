@@ -24,20 +24,33 @@ Do not start Step 2 (the Sanity consolidation) or CP-01 until Hassan signs off O
 
 ## Step 1 — Site hygiene (D34), 12 August 2026
 
-Three accessibility fixes, each its own commit, each build- and browser-verified. Built
-as reusable bases for the later rebuild (Steps 2–3), not throwaway patches.
+Three accessibility fixes, each build- and browser-verified. **1.1 and 1.2 were first
+implemented with Radix NavigationMenu and a flow-level carousel control; both caused
+visual regressions and were reverted (`a1914dd`), then reimplemented behaviour-only on
+the original markup.** The dialog (1.3) was kept as-is (no regression).
 
-| # | Fix | What & why | Verification | Commit |
-| --- | --- | --- | --- | --- |
-| 1.1 | Keyboard-accessible mega menu | Replaced the mouse-only, ARIA-less dropdowns with Radix `NavigationMenu` (`MainNav`, used by both `Header` and `HomeHeader`). Triggers are buttons with `aria-expanded`/`aria-controls`; panels open on click/hover/keyboard, close on Escape, are Tab-reachable; focus-visible rings added. Fixes WCAG 2.1.1/4.1.2 on primary nav | Browser: `aria-expanded` toggles, panel opens with all 16 links, correct 127.2rem geometry | `97d1aaf` |
-| 1.2 | Carousel pause controls | One reusable accessible control (`CarouselAutoplayControl`, via Swiper `container-end` slot) toggling autoplay with `aria-pressed`; starts paused under `prefers-reduced-motion`. Wired into all 30 autoplay carousels. Fixes WCAG 2.2.2 | Browser: control stops/restarts autoplay on homepage and services (5 controls) | `21820b3` |
-| 1.3 | Real modal dialog | Job-application modal moved from an opacity-toggled `<div>` to Radix `Dialog`: `role="dialog"`, focus trap, Escape, focus return to the Apply button, scroll lock, screen-reader title | Browser (`/careers`): role/name/focus-trap confirmed, focus returns on close, clean unmount | `4d7bdbc` |
+| # | Fix | Final approach | Commit(s) |
+| --- | --- | --- | --- |
+| 1.1 | Keyboard mega menu | Keyboard/ARIA added to the **existing** dropdown markup (no DOM/class change, no Radix): `aria-expanded`/`aria-controls`/`id`, ArrowDown/Enter/Space open, Escape closes + returns focus to trigger, `onBlur` closes on Tab-out. Disclosure pattern (focus stays on trigger, Tab enters panel). | first `97d1aaf` → revert `a1914dd` → redo `5705963` |
+| 1.2 | Carousel pause controls | One reusable `CarouselAutoplayControl` (Swiper `container-end` slot + `useSwiper`), **absolutely positioned** so it adds no layout space; `aria-pressed`, starts paused under `prefers-reduced-motion`. No Swiper layout config changed. All 30 autoplay carousels. | first `21820b3` → revert `a1914dd` → redo `16edbfa` |
+| 1.3 | Real modal dialog | Job-application modal on Radix `Dialog`: `role="dialog"`, focus trap, Escape, focus return to the Apply button, scroll lock, SR title. | `4d7bdbc` (kept) |
 
-Added deps: `@radix-ui/react-navigation-menu ^1.2.22`, `@radix-ui/react-dialog ^1.1.23`.
+Why the first attempt regressed: 1.1 replaced the dropdown DOM with `NavigationMenu`
+(new `nav>ul>li` nesting, panel moved into an `li`, flex/centering classes moved off the
+`<nav>`), shifting menu-item layout and mega-panel alignment; 1.2's control was a
+flow-level block that added vertical space below carousels. Neither changed Swiper config.
 
-Not throwaway: `MainNav` is the base for the rebuilt navigation; `CarouselAutoplayControl`
-carries into the consolidated slider in Step 3; the `Dialog` pattern is reused for the
-enquiry flow.
+Deps: `@radix-ui/react-dialog ^1.1.23` (dialog). `@radix-ui/react-navigation-menu` was
+added then removed with the revert.
+
+Verification: nav markup/classes confirmed byte-identical to original, `aria-expanded`
+toggles, panel opens, Escape returns focus; carousels verified at 375 / 768 / 1440 with
+controls out of flow, in-bounds, autoplay toggling, and no horizontal overflow. Builds
+clean throughout.
+
+Reusable bases retained: `CarouselAutoplayControl` carries into the Step 3 consolidated
+slider; the `Dialog` pattern is reused for the enquiry flow. (The nav is now a
+behaviour-only layer on the existing components rather than a new `MainNav`.)
 
 ---
 
