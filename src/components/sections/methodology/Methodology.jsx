@@ -12,6 +12,7 @@ import { Autoplay, Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
 import { MotionEffect } from "@/components/effects/motion-effect";
+import CarouselAutoplayControl from "@/components/ui/CarouselAutoplayControl";
 
 export const steps = [
   {
@@ -263,6 +264,7 @@ const Methodology = ({ service }) => {
                     </SwiperSlide>
                   );
                 })}
+                <CarouselAutoplayControl slot="container-end" />
               </Swiper>
             </div>
           </MotionEffect>

@@ -5,6 +5,7 @@ import { Autoplay, Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
 import Image from "next/image";
+import CarouselAutoplayControl from "@/components/ui/CarouselAutoplayControl";
 
 const Values2Slider = ({ valuesCards }) => {
   return (
@@ -75,6 +76,7 @@ const Values2Slider = ({ valuesCards }) => {
             </div>
           </SwiperSlide>
         ))}
+        <CarouselAutoplayControl slot="container-end" />
       </Swiper>
     </>
   );

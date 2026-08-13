@@ -11,6 +11,7 @@ import FocusIcon from "@/assets/icons/ui/focus-icon.svg";
 import GridIcon from "@/assets/icons/ui/grid-icon.svg";
 import DifferenceGradientSlideBg from "@/assets/images/backgrounds/difference-gradient-slide-bg.svg";
 import Image from "next/image";
+import CarouselAutoplayControl from "@/components/ui/CarouselAutoplayControl";
 
 export const withDifferenceData = [
   {
@@ -117,6 +118,7 @@ const DifferenceSlider = () => {
             </div>
           </SwiperSlide>
         ))}
+        <CarouselAutoplayControl slot="container-end" />
       </Swiper>
     </>
   );

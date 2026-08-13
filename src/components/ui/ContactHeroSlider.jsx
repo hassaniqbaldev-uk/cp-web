@@ -10,6 +10,7 @@ import HeadphoneIcon from "@/assets/icons/ui/headphone-icon.svg";
 import EmailIcon from "@/assets/icons/ui/email-icon.svg";
 import TimelineIcon from "@/assets/icons/ui/timeline-icon.svg";
 import { useEffect } from "react";
+import CarouselAutoplayControl from "@/components/ui/CarouselAutoplayControl";
 
 const ContactHeroSlider = () => {
   useEffect(() => {
@@ -160,6 +161,7 @@ const ContactHeroSlider = () => {
             </div>
           </div>
         </SwiperSlide>
+        <CarouselAutoplayControl slot="container-end" />
       </Swiper>
     </>
   );
