@@ -50,8 +50,11 @@ Rule: tags that match a real service reference that service; the rest become
 `custom-app-development` (Web & Ecommerce) and `ai-automation` (AI & Automation). The
 only case study using this tag is Anthony Walker Foundation (an LMS platform, i.e. a
 custom app), so the tag repoints to `custom-app-development`. No existing case study is
-an AI/automation project, so `ai-automation` starts with zero case-study references,
-which is expected.
+an AI/automation project, so `ai-automation` starts with zero case-study references.
+
+**Recorded finding (approved 13 Aug):** `ai-automation` will have **zero case studies**
+after migration. This is a **commercial** finding for CP-05 (service page) and CP-12
+(proof), not a migration problem. Do not invent case-study tags to populate it.
 
 ### 1b. Industries, deduplicated (35 CS + 9 solution → 33 canonical)
 
@@ -132,11 +135,16 @@ After reconciliation, a case study is serviceless only if all its tags are
 - **UNICEF** — tags `brochure` + `print`, both `capability`. **Zero service references.**
 
 This is consistent with the crawl finding that UNICEF is a fundraising-event print
-suite, not a web build. Recommendation: per the O11 rule, flag for manual assignment.
-Options for Hassan: (a) assign `branding` (Brand & Experience), since print collateral
-is brand work; or (b) leave it capability-only and treat it as a non-web/creative case.
-I lean (a). No other case study is affected (Now Press Play keeps `ui-ux-design`,
-Fultons keeps services, Anthony Walker keeps `wordpress`/`custom-app-development`, etc.).
+suite, not a web build. **Decision (Hassan, 13 Aug): leave UNICEF with zero service
+references.** Assigning a service to fill an empty field would invent a service
+association, which the truth constraint prohibits. UNICEF stays as a logo and
+credibility proof, keeps its `brochure`/`print` capabilities, and is **excluded from the
+relevant-work module on service pages** (it has no service to be relevant to).
+
+**A case study may legitimately hold zero service references.** This is a valid state,
+not an error to be fixed. The migration must not force a service onto any serviceless
+case study, and the verification step must not treat zero-service as a failure. UNICEF
+is the only such case today; others may arise as tags are curated.
 
 ### 1f. Malformed slugs → normalised
 
@@ -281,8 +289,10 @@ Neither is a blocker; both are cheaper to fix now than mid-migration.
    problem, but the migration seeds `technology` from the real tools + 2 tags, and any
    broader tech list is net-new content to be added later, not migrated.
 3. **UNICEF becomes serviceless** under the ruleset's own rules (its only tags are
-   capabilities). The ruleset's "flag for manual assignment" catches it; I am naming it
-   explicitly and recommending it be assigned `branding` rather than left orphaned.
+   capabilities). I originally recommended assigning `branding`; **Hassan overruled that
+   (13 Aug)** on the correct grounds that assigning a service to fill an empty field
+   invents an association. UNICEF stays with zero service references (see 1e). Zero
+   service references is a legitimate state, not an error.
 
 Everything else in the ruleset holds: the four-taxonomy model, nothing-deleted +
 `hasPage`, the 9 solutions → `industry`, and slug normalisation are all correct and
@@ -292,15 +302,18 @@ supported by the data.
 
 ## 6. Decision
 
-**Mapping table approved as written / with amendments:**
+**Signed off by Hassan, 13 August 2026**, with one amendment:
 
-**Services/Solutions:** two types sharing objects / one discriminated type:
+- **Mapping table:** approved. Amendment: UNICEF stays with zero service references (not
+  assigned `branding`); zero service references is a legitimate state (sections 1e, 5).
+- **Services/Solutions:** two types sharing objects (approved; slug-collision and
+  wrong-route arguments accepted).
+- **Blog:** enum replaced with the four pillars; AI post manually re-tagged (approved).
+- **Estimate:** plan for 8 days, buffer to 9 (approved).
+- **Migration plan:** approved as written (backups-first, dry-run to staging, env-var
+  cutover, env-var rollback, 30-day read-only gate before decommission).
+- **Industry mapping + `hasPage`, tools→technology titles/slugs, slug normalisation
+  (O12 safe):** approved.
 
-**Estimate accepted (days):**
-
-**Signed off by:**
-
-**Date:**
-
-Record the outcome here, then Step 2b (the migration) may begin. Do not start Step 2b
-until this is signed off.
+Step 2b (the migration) may now begin, stopping for review after the backups and the
+dry-run into the new project's staging dataset, before anything touches production.
