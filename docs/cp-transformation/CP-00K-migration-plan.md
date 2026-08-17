@@ -387,6 +387,20 @@ positioning/pricing, and any *issued* token is powerful, but there is no urgent 
 (This holds for these 2024-api-version datasets; older datasets could behave differently,
 which is why the direct test mattered.)
 
+**Caveat (for the record):** the authenticated *control* half of the test did not
+successfully execute. The `sanity documents query` control ran on the default
+`published` perspective, which itself excludes drafts, so it returned 0 rather than the
+expected 48 and did not serve as an independent authenticated confirmation. The verdict
+therefore rests on (a) the clean anonymous result across all five projects and (b) the
+authenticated `dataset export`, which does surface all 48 drafts. A stricter re-test
+would query with `perspective=raw` and a token; not blocking, but noted.
+
+**Plan (checked 17 Aug):** all five projects are on the **Free** plan (their Growth
+Trials expired Feb–May 2026). Free per-project quotas: 2 datasets, 10,000 documents,
+100 GB assets/bandwidth, 20 non-viewer users. The consolidated project (2 datasets,
+~1,038 docs incl. assets, ~277 MB) fits, with the 2-dataset limit the only tight one.
+Private datasets are not plan-gated, so D24's private datasets work on Free. No ceiling.
+
 ### Decisions (Hassan, 17 Aug) and the one remaining input
 
 - **Project name:** `CreativePixels`.
@@ -403,3 +417,64 @@ Once the org id arrives I will: build the transform against the section-1 table,
 the `CreativePixels` project + private `production`/`staging` datasets + read token,
 dry-run (drafts included) into **staging**, and report post-transform counts against the
 baseline above, before anything touches production.
+
+### Dry-run executed — 17 Aug (staging only, production untouched)
+
+**Project created:** `CreativePixels` = `4m0eqoi1`, org `ostkePt9R`. `production` +
+`staging` datasets **private** (confirms private datasets on Free). Viewer read token
+written outside the repo.
+
+**Raw import into staging (lossless):** 186 content docs = **138 published + 48 drafts**;
+**845 unique image assets** (852 source; 7 identical images shared across projects were
+deduped by content hash, expected); plus 12 Sanity-managed `system.*` docs (dataset
+infrastructure, not content).
+
+**Migration finding (caught by the dry run):** Sanity treats `_type` as **immutable** —
+neither `patch` nor `createOrReplace` can change a document's type in place. The first
+transform attempt failed on the tools→technology and solution→industry conversions, and
+the transaction rollback cascaded. The corrected transform does type changes as
+**new-id + reference-rewrite + delete-old**, in **three phases** (create targets → rewrite
+case-study refs → delete old docs) so referenced docs exist before they are referenced.
+The real migration must follow this pattern; note the new ids are internal (no URL/redirect
+impact).
+
+**Post-transform counts (staging):**
+
+| Type | Before | After | Note |
+| --- | --- | --- | --- |
+| services | 35 | **16** | 15 real minus `custom-apps-and-ai` (renamed `custom-app-development`) plus new `ai-automation`; 20 stubs deleted |
+| technology | 0 | **7** | 6 ex-tools + `woocommerce` |
+| capability | 0 | **3** | brochure, custom-forms, print |
+| tools | 6 | **0** | all converted |
+| industries | 35 | **45** | 35 cs + 10 moved solution-industries (dedup to 33 deferred, see below) |
+| solutions | 15 | **5** | goal-only after 10 industry-solutions moved |
+| caseStudies / blog / author / legalPage | 40 / 47 / 1 / 7 | unchanged | |
+| services with `pillar` | 0 | **16** (all) | |
+| blog with `pillar` | 0 | **47** (all) | incl. AI post re-tagged to AI & Automation |
+| industries `hasPage:true` | 0 | **5** | 4 CP-08 candidates + 1 draft of one of them |
+
+**Every reference resolved: 0 failures.** 0 orphan refs during transform; post-transform,
+every case-study `services`/`technologies`/`capabilities`/`industries` reference
+dereferences (checked with `!defined(@->)`).
+
+**Documents that changed type:** 6 `tools`→`technology`; 10 `solutions`(industry)→
+`industries` (9 published + 1 draft); 20 stub `services` deleted with their case-study
+refs repointed; `custom-apps-and-ai` split into `custom-app-development` + `ai-automation`.
+
+**UNICEF:** ends with **0 services**, 2 capabilities (brochure, print), 1 technology —
+the zero-service state, as decided. No service was invented.
+
+**Lossless check:** content-doc count 186→171 is **intended consolidation, not loss**.
+The removed docs are 20 redundant stub-service duplicates (title/slug/order only, their
+tagging preserved as refs to the real services) plus the tools/solutions converted to new
+types; net of 21 created canonical docs. No unique content was destroyed; drafts held at
+48; all real services, case studies, blog, legal intact.
+
+**Deferred (as the section-1 table said Hassan confirms per-merge):** the industry
+**dedup merges** (44→33) were not applied; the dry run keeps industries un-merged (45).
+Merges are reversible content decisions that do not affect reference integrity, so they
+belong in the new Studio, not the transform. Field renames (`partnerWithUs2`,
+`expertise3`) were also not applied in the dry run (schema-authoring step, no data impact).
+
+Nothing touched production or the live site. Awaiting review of these counts before the
+production run.
