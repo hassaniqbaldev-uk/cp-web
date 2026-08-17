@@ -571,6 +571,16 @@ break through every phase of the rebuild.
 break links. A service/industry with `hasPage: false` (or unpublished) simply does not
 appear; a renamed slug follows automatically. Do **not** implement before Step 3.
 
+**Dead ends, not just broken hrefs.** "Zero 404s" and "no dead ends" are different
+tests, and the second is the one that matters to a visitor. A link can return **200 and
+still be broken** — landing on an empty section, a listing with no items, or a filter
+with no matches. The data-driven nav work must therefore cover **empty states**, not only
+href validity: any label, heading, column, section, or CTA whose content is now empty
+(e.g. a category filtered to zero documents) must not render at all. When a source query
+returns nothing, the surrounding chrome (headings, icons, "By Sector" columns, section
+wrappers) hides with it. Broken href = automated check catches it; empty-but-200 dead end
+= only a content-aware render catches it.
+
 ### Regression record — 7 nav links broke on the consolidation branch (CP-00K)
 
 The consolidation branch (`development`, not merged) introduced **7 nav links that 404**;
@@ -583,14 +593,32 @@ before this branch goes anywhere near production**. Fixed on-branch in commit `0
   `charities-and-foundation`, `interiors-and-furnishings`, `pharmacies`) — those became
   routeless `industries` docs; CP-08 builds their routes.
 
-**Still open (same regression class, not nav — surfaced, not yet fixed):**
+**Content links fixed in commit `f611af3`** (same regression class, not nav):
 
-- `src/contants/expertiseCard.js` (`EXPERTISE_CARD`, rendered by `<Expertise/>` on the
-  **homepage**) has four "Explore Solutions" links to routeless sector industries:
-  `/solutions/sme-founders`, `/solutions/ecommerce-brands`,
-  `/solutions/charities-and-foundation`, `/solutions/b2b-services`. All 404. Awaiting a
-  treatment decision (remove the CTA vs. wait for CP-08 industry routes).
-- `SECTOR_SOLUTION_NAV` still carries "View all industries" → `/solutions/#sector`. The
-  page returns 200, but `/solutions` now filters `category == "industry"` which is empty
-  post-migration, so the `<Sector/>` section renders nothing — a live-but-empty
-  dead-end. Resolve when CP-08 gives industries real routes.
+- `src/contants/expertiseCard.js` (`EXPERTISE_CARD`, homepage `<Expertise/>`) — removed
+  the "Explore Solutions" CTAs on the **five** cards pointing at routeless sector
+  industries (`sme-founders`, `ecommerce-brands`, `charities-and-foundation`,
+  `b2b-services`, `saas-companies`; the fifth was missed in the first pass). The Agencies
+  card keeps its CTA (`/agencies` is valid).
+- `SECTOR_SOLUTION_NAV` — removed "View all industries" → `/solutions/#sector` (200 but
+  empty section = a dead end).
+
+**Dead-end sweep — still open (empty-but-200 states, NOT fixed; hiding them touches
+component render, which is Step 3 data-driven-nav work):**
+
+- **Empty "BY SECTOR" nav column.** `SECTOR_SOLUTION_NAV` is now `[]`, but
+  `SolutionsDropdown`, `Footer`, and `MobileMenu` still render a "BY SECTOR" heading +
+  icon above it → a labelled column with no links. Hide the column when the array is
+  empty.
+- **Empty "By Sector" section on `/solutions`.** The page filters
+  `category == "industry"` (0 docs post-migration) and renders `<Sector solutions={[]}/>`
+  → an empty section visible to any visitor, independent of nav. Hide the section when
+  there are no industry solutions.
+- **`/services` silently omits `ai-automation`.** It has `category: null`, so it falls
+  outside the design-development / growth / support groups and never lists. Not an empty
+  state (the page renders the other 15 fine) — expected for a taxonomy-only service, but
+  recorded so it is not mistaken for a bug later.
+
+**Dead-end sweep — confirmed clean:** `/legal` (both categories populated: 3 + 4),
+`/services` groups (5 / 5 / 5), `/blog` (9 posts, 1 featured), `/case-studies` filters
+(options are guarded by `references() > 0`, so no filter selection can return empty).
