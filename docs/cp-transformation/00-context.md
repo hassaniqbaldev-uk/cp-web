@@ -557,3 +557,40 @@ Steps 1 to 3 are "good standing". Step 1 runs first and standalone because the
 keyboard-inaccessible navigation is a live WCAG failure on a site that sells
 accessibility remediation at `/services/accessibility`, and the Radix disclosure that
 fixes it becomes the base for the rebuilt navigation.
+
+### Step 3 addition — navigation becomes data-driven (recorded 17 August 2026, CP-00K)
+
+Navigation is currently a **hardcoded constants file** (`src/contants/navigation.js`),
+consumed by `Footer.jsx`, `MobileMenu.jsx`, `LpFooter.jsx`, and the header dropdowns
+(`ServicesDropdown` / `SolutionsDropdown` / `AboutDropdown`). Because the link list is
+authored by hand, it silently drifts out of sync every time content changes — it will
+break through every phase of the rebuild.
+
+**Scope, added to Step 3:** navigation becomes data-driven, sourced from `services` and
+`industries` documents and their `hasPage` flags, so content changes cannot silently
+break links. A service/industry with `hasPage: false` (or unpublished) simply does not
+appear; a renamed slug follows automatically. Do **not** implement before Step 3.
+
+### Regression record — 7 nav links broke on the consolidation branch (CP-00K)
+
+The consolidation branch (`development`, not merged) introduced **7 nav links that 404**;
+all seven **work on the current live site**, so this is a regression that **must be fixed
+before this branch goes anywhere near production**. Fixed on-branch in commit `0b24dac`:
+
+- `/services/custom-apps-and-ai` → repointed to `/services/custom-app-development` (slug
+  renamed in the migration).
+- Six sector links removed (`b2b-services`, `driving-schools`, `ecommerce-brands`,
+  `charities-and-foundation`, `interiors-and-furnishings`, `pharmacies`) — those became
+  routeless `industries` docs; CP-08 builds their routes.
+
+**Still open (same regression class, not nav — surfaced, not yet fixed):**
+
+- `src/contants/expertiseCard.js` (`EXPERTISE_CARD`, rendered by `<Expertise/>` on the
+  **homepage**) has four "Explore Solutions" links to routeless sector industries:
+  `/solutions/sme-founders`, `/solutions/ecommerce-brands`,
+  `/solutions/charities-and-foundation`, `/solutions/b2b-services`. All 404. Awaiting a
+  treatment decision (remove the CTA vs. wait for CP-08 industry routes).
+- `SECTOR_SOLUTION_NAV` still carries "View all industries" → `/solutions/#sector`. The
+  page returns 200, but `/solutions` now filters `category == "industry"` which is empty
+  post-migration, so the `<Sector/>` section renders nothing — a live-but-empty
+  dead-end. Resolve when CP-08 gives industries real routes.
