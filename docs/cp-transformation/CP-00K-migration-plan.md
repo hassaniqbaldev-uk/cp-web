@@ -338,9 +338,19 @@ written to any production dataset.
 | Case studies | `6qygzc2z` | 165 MB | 365 |
 | **Total** | | **~277 MB** | **852** |
 
-Note: the archives were written to the session scratchpad to validate the step and read
-counts. **Before the real migration they must be re-exported to durable, dated storage**
-(the scratchpad is ephemeral). This does not change the counts below.
+**Durable location (outside the repo, not in git):**
+`C:/Users/tahab/cp-sanity-backups/2026-08-17/`. Re-exported 17 Aug after the first run
+went to the ephemeral scratchpad. SHA-256 checksums (verify before anything is created):
+
+| Archive | SHA-256 | Docs |
+| --- | --- | --- |
+| `legal-hub-pz9kcb6n-production-2026-08-17.tar.gz` | `c71d610b6e643a98bafcddc0ae3fa58244ccdbbfa60a8fc3e228793a05dc545d` | 7 |
+| `services-cqbs7syw-production-2026-08-17.tar.gz` | `02b2fa30c84c0d929b04e0e80bc478a843cd0ccc2786e4f450d41ba478e23e53` | 15 |
+| `solutions-z2m53qom-production-2026-08-17.tar.gz` | `17506f9a90e05c6ca3ce66faf8d0d80b406481ad2097d6fe1d75cb564c09cdf9` | 15 |
+| `blog-dgx0l3po-production-2026-08-17.tar.gz` | `669457abc7c43edd07c883d2e97d51fa5f4c36bd1aee909c826524c62be365fa` | 48 |
+| `case-studies-6qygzc2z-production-2026-08-17.tar.gz` | `6d6f4b8357b4613c8d92b49770c2c4198cdaf4c61141eef39e63ec00e93294b6` | 101 |
+
+Doc counts include drafts (lossless). Total ~277 MB, 852 assets.
 
 ### Source verification counts (from the authenticated exports — the dry-run baseline)
 
@@ -356,35 +366,40 @@ counts. **Before the real migration they must be re-exported to durable, dated s
 Published content = 138 (matches the earlier estimate). The dry-run's post-transform
 counts will be checked against these.
 
-### Correction: there ARE drafts (48), not zero
+### Correction: there ARE drafts (48), not zero — but they are NOT anonymously exposed
 
 Earlier (`CP-00K-validation.md`, `13-implementation-status.md`) I recorded "0 drafts",
-based on the **anonymous** public API, which does not return draft documents. The
-**authenticated** export reveals **48 drafts**: 38 in blog (draft versions plus
-unpublished posts), 9 case studies, 1 solution. This corrects the record. It does not
-change the D24/D25 rationale, but it does add a migration decision (below). (Note: the
-draft-exposure wording in D24 is also worth revisiting — anonymous reads on a public
-dataset return published docs only; drafts require a token. The public-dataset risk is
-real for published content and for anyone issued a token, but drafts are not anonymously
-readable.)
+based on the **anonymous** public API. The **authenticated** export reveals **48 drafts**:
+38 blog (draft versions plus unpublished posts), 9 case studies, 1 solution. That
+corrects the count. Those two docs are superseded on this point.
 
-### Open before the dry-run (two inputs + one decision)
+**Drafts-exposure test (D24), run 17 Aug.** Queried each of the five projects
+**anonymously, no token**, against the live (non-CDN) API with the explicit drafts path
+`*[_id in path("drafts.**")]`, exactly as an internet user holding only the public
+project ID. **Result: 0 drafts on all five; empty samples.** The same drafts exist under
+an authenticated export. Sanity serves anonymous callers the `published` perspective, so
+drafts are token-gated.
 
-The dry-run requires standing up the new project, which is **billable infrastructure on
-your Sanity account** plus an **API token** (a credential). I have paused before
-provisioning it to confirm what I should not guess:
+**Verdict: D24 is NOT a live anonymous data exposure.** The `NEXT_PUBLIC_*` project IDs
+do not let anyone read the 48 unpublished documents. D24 stays as **hygiene**: private
+datasets + a server-side read token are still worth doing before drafting sensitive new
+positioning/pricing, and any *issued* token is powerful, but there is no urgent leak.
+(This holds for these 2024-api-version datasets; older datasets could behave differently,
+which is why the direct test mattered.)
 
-1. **Sanity organisation** to create the new project under (the CLI's
-   `organizations list` is not a command in 6.4.0; the org needs confirming from the
-   Sanity manage UI or an org id).
-2. **New project name** (e.g. "CreativePixels" or "CP Content").
-3. **Drafts decision:** migrate the 48 drafts (preserves editor work-in-progress, fits
-   D25 draft mode) or migrate published-only (`--no-drafts`, clean slate)? This changes
-   the transform, so it should be settled before the transform is written. My lean:
-   migrate drafts, since draft mode is a goal, but the 38 blog drafts may include
-   abandoned experiments worth pruning first.
+### Decisions (Hassan, 17 Aug) and the one remaining input
 
-Once these are settled I will build the transform against the section-1 table, create
-the new project + private `production`/`staging` datasets + read token, dry-run into
-**staging**, and report the post-transform counts against the baseline above, before
-anything touches production.
+- **Project name:** `CreativePixels`.
+- **Drafts:** migrate **all 48**, no pruning during migration. Migration is lossless;
+  the transform runs **without** `--no-drafts` and drafts are included in the dry-run
+  counts. Pruning the 38 blog drafts is a content decision Hassan makes afterwards in the
+  new Studio, where they are readable and deletion is reversible from these backups.
+- **Still needed before I create anything: the Sanity organisation id.** Hassan is
+  fetching it from sanity.io/manage. Creating the project is **billable infrastructure +
+  an API token (a credential)** on Hassan's account, so I will not create it until the
+  org id is given.
+
+Once the org id arrives I will: build the transform against the section-1 table, create
+the `CreativePixels` project + private `production`/`staging` datasets + read token,
+dry-run (drafts included) into **staging**, and report post-transform counts against the
+baseline above, before anything touches production.
