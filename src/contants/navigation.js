@@ -37,9 +37,9 @@ export const DESIGN_SERVICE_NAV = [
     href: "/services/shopify",
   },
   {
-    label: "Custom Apps & AI",
+    label: "Custom App Development",
     excerpt: "React, Next.js & Automation",
-    href: "/services/custom-apps-and-ai",
+    href: "/services/custom-app-development",
   },
 ];
 
@@ -79,25 +79,11 @@ export const SUPPORT_SERVICE_NAV = [
   },
 ];
 
+// CP-00K: the individual sector links were removed. Those industries became
+// routeless `industries` documents (hasPage flags preserved in the dataset);
+// CP-08 builds their routes properly. Linking them now would 404, and pointing
+// them at a fragment that shows nothing is worse than no link.
 export const SECTOR_SOLUTION_NAV = [
-  { label: "B2B Services", excerpt: "", href: "/solutions/b2b-services" },
-  { label: "Driving Schools", excerpt: "", href: "/solutions/driving-schools" },
-  {
-    label: "Ecommerce Brands",
-    excerpt: "Soft Furnishing & bespoke",
-    href: "/solutions/ecommerce-brands",
-  },
-  {
-    label: "Charities & Foundation",
-    excerpt: "",
-    href: "/solutions/charities-and-foundation",
-  },
-  {
-    label: "Interiors & Furnishings",
-    excerpt: "NHIS integrations & Bookings",
-    href: "/solutions/interiors-and-furnishings",
-  },
-  { label: "Pharmacies", excerpt: "", href: "/solutions/pharmacies" },
   { label: "View all industries", excerpt: "", href: "/solutions/#sector" },
 ];
 
