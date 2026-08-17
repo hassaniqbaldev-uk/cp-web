@@ -1,0 +1,306 @@
+# CP-00K — Migration plan (Step 2a)
+
+**Status:** Planning only. Nothing migrated, no schema changed, no new Sanity project
+created. This document is the artefact Hassan signs off before any transform runs.
+**Blocks:** Step 2b (the migration itself).
+**Prepared:** 13 August 2026, from live queries of all five production datasets.
+
+Cross-references: `CP-00K-content-platform-decision.md` (O8, Option A),
+`CP-00K-taxonomy-reconciliation.md` (O11 ruleset), `CP-00K-validation.md`.
+
+Where this plan disagrees with the O11 ruleset, section 5 says so plainly.
+
+---
+
+## 1. Reconciliation mapping table
+
+This is the sign-off artefact. The transform script is written against this table, not
+against judgement calls that only exist in conversation. All data captured live on
+13 Aug 2026.
+
+### 1a. Case-study service tags → target (20 tags, project `6qygzc2z`)
+
+Rule: tags that match a real service reference that service; the rest become
+`technology` or `capability` per D28. **No tag maps to nothing.**
+
+| CS service tag | Target type | Target | Notes |
+| --- | --- | --- | --- |
+| `accessibility` | service | `accessibility` | |
+| `analytics` | service | `analytics` | |
+| `branding` | service | `branding` | |
+| `cro` | service | `cro` | |
+| `custom-apps-and-ai` | service | **`custom-app-development`** | D15 split; existing users are app builds, not AI. See note. |
+| `email` | service | `email` | |
+| `maintenance` | service | `maintenance` | |
+| `migrations` | service | `migrations` | |
+| `ppc` | service | `ppc` | |
+| `security` | service | `security` | |
+| `seo` | service | `seo` | |
+| `shopify` | service | `shopify` | also a `technology` (D28 dual, intended) |
+| `speed` | service | `speed` | |
+| `ui-ux-design` | service | `ui-ux-design` | |
+| `wordpress` | service | `wordpress` | also a `technology` (D28 dual, intended) |
+| `webflow` | technology | `webflow` | `hasPage:false` |
+| `woocommerce` | technology | `woocommerce` | `hasPage:false` |
+| `brochure` | capability | `brochure` | `hasPage:false` |
+| `custom-forms` | capability | `custom-forms` | `hasPage:false` |
+| `print` | capability | `print` | `hasPage:false` |
+
+**`custom-apps-and-ai` note.** After the D15 split there are two services,
+`custom-app-development` (Web & Ecommerce) and `ai-automation` (AI & Automation). The
+only case study using this tag is Anthony Walker Foundation (an LMS platform, i.e. a
+custom app), so the tag repoints to `custom-app-development`. No existing case study is
+an AI/automation project, so `ai-automation` starts with zero case-study references,
+which is expected.
+
+### 1b. Industries, deduplicated (35 CS + 9 solution → 33 canonical)
+
+Rule (D28): nothing deleted, every industry gets `hasPage`, default `false`, `true`
+only for the four CP-08 candidates. The 9 solution industries (D29) migrate into this
+type. CS industries are descriptive metadata for the work hub.
+
+**Commercial industries (merged from both sources):**
+
+| Canonical slug | Title | hasPage | Merged from |
+| --- | --- | --- | --- |
+| `b2b-services` | B2B & Professional Services | **true** | sol `b2b-services`, cs `b2b` |
+| `technology-and-saas` | Technology & SaaS | **true** | sol `saas-companies`, cs `saas`, cs `technology` |
+| `ecommerce-brands` | Ecommerce Brands | **true** | sol `ecommerce-brands`, cs `ecommerce` |
+| `charities-and-non-profits` | Charities & Non-profits | **true** | sol `charities-and-foundation`, cs `charity-non-profit` |
+| `interiors-and-furnishings` | Interiors & Furnishings | false (O6) | sol `interiors-and-furnishings`, cs `interiors`, cs `interiors-and-furnishings` |
+| `driving-schools` | Driving Schools | false (O6) | sol `driving-schools`, cs `driving-schools` |
+| `pharmacies` | Pharmacies | false (O6) | sol `pharmacies`, cs `pharmacies` |
+| `restaurants` | Restaurants | false (O6) | sol `restaurants`, cs `restaurants` |
+| `sme-founders` | SME Founders | false | sol `sme-founders`, cs `smes` (segment, not strictly an industry) |
+
+**Descriptive-only industries (CS metadata, all `hasPage:false`), 24:**
+`photography`, `hospitality`, `leisure`, `media-and-publishing`, `fashion`,
+`home-improvement`, `property-marketing`, `food`, `training`, `education`, `housing`,
+`gaming`, `financial-services`, `events`, `entertainment`, `family-entertainment`,
+`travel`, `children`, `retail`, `public-sector` (slug fix), `energy` (slug fix),
+`creative`, `jewellery`, `startup`.
+
+The four `hasPage:true` merges (b2b, technology/saas, ecommerce, charities) are the
+CP-08 candidates. O6 (interiors, driving-schools, pharmacies, restaurants) are `false`
+and flippable per D28 once Hassan decides. Every proposed merge above is a judgement
+call for Hassan to confirm; the granular tags are preserved either way (nothing lost).
+
+### 1c. Tools → technology (6 entries, project `6qygzc2z`)
+
+`tools` has only `toolImage` + `altText` today (no title, no slug), so D33 adds both.
+
+| Current `altText` | Proposed title | Proposed slug |
+| --- | --- | --- |
+| Elementor | Elementor | `elementor` |
+| Adobe Illustrator | Adobe Illustrator | `adobe-illustrator` |
+| Figma | Figma | `figma` |
+| Shopify | Shopify | `shopify` |
+| Webflow | Webflow | `webflow` |
+| Wordpress | WordPress | `wordpress` (title casing fixed) |
+
+**Unified `technology` taxonomy** = these 6 tools + the 2 tag-derived techs
+(`webflow`, `woocommerce`) → **7 unique**: `elementor`, `adobe-illustrator`, `figma`,
+`shopify`, `webflow`, `wordpress`, `woocommerce`. `shopify`/`wordpress`/`webflow` are
+deduplicated to one technology doc each (they appear in both `tools` and the tags), and
+`shopify`/`wordpress` also keep their service pages (D28 dual). Note: Figma and Adobe
+Illustrator are design tools rather than delivery platforms; they are fine as
+`technology` per D33, but flag if you want a tool/platform distinction later.
+
+### 1d. Blog categories → pillars (project `dgx0l3po`)
+
+**The blog has 4 categories, not 8.** Distinct live values: `STRATEGY`, `DESIGN`,
+`DEVELOPMENT`, `GROWTH`. Proposed pillar mapping:
+
+| Blog category | Pillar |
+| --- | --- |
+| `DESIGN` | Brand & Experience |
+| `DEVELOPMENT` | Web & Ecommerce |
+| `GROWTH` | Growth & Performance |
+| `STRATEGY` | Growth & Performance (default; strategy posts are positioning/growth) |
+
+**Gap (flagged): no category maps to AI & Automation.** The one AI post ("AI Automation
+in 2026: What Businesses Need to Know") is currently `GROWTH`. A pure category→pillar map
+cannot pillar-tag it as AI. Recommendation: replace the blog `category` enum with the
+four pillar values directly and manually re-tag that one post to AI & Automation during
+the transform (a single per-document override). See section 5, disagreement 1.
+
+### 1e. Case studies that end with zero service references
+
+After reconciliation, a case study is serviceless only if all its tags are
+`capability`/`technology`. Checked all 31 against their live tags:
+
+- **UNICEF** — tags `brochure` + `print`, both `capability`. **Zero service references.**
+
+This is consistent with the crawl finding that UNICEF is a fundraising-event print
+suite, not a web build. Recommendation: per the O11 rule, flag for manual assignment.
+Options for Hassan: (a) assign `branding` (Brand & Experience), since print collateral
+is brand work; or (b) leave it capability-only and treat it as a non-web/creative case.
+I lean (a). No other case study is affected (Now Press Play keeps `ui-ux-design`,
+Fultons keeps services, Anthony Walker keeps `wordpress`/`custom-app-development`, etc.).
+
+### 1f. Malformed slugs → normalised
+
+| Current slug | Normalised | Type |
+| --- | --- | --- |
+| `Energy` | `energy` | cs industry |
+| `Public Sector` | `public-sector` | cs industry |
+
+Trailing-whitespace **titles** to trim (slugs are already valid): "Leisure ",
+"Media & Publishing ", and the case-study title "West Midlands Racial Justice
+Initiative ".
+
+**O12 satisfied:** no `/industries/` routes exist today and industries are not URL
+segments anywhere (they are reference tags only), so normalising these slugs breaks no
+live URL. Confirmed against the route inventory in `03-url-audit.md`.
+
+---
+
+## 2. Services / Solutions merge recommendation
+
+**Recommendation: keep two document types (`services`, `solutions`) sharing extracted
+object/field definitions. Do not merge into one discriminated type.**
+
+Context: the schemas are structurally identical (same 18 fields including the
+`partnerWithUs2`/`expertise3` artefacts; only `category` differs). After D29 the 9
+industry-solutions leave for the `industry` type, so `solutions` shrinks to the 5
+goal-based entries.
+
+Reasoning, including routing:
+
+- **Routing stays clean and unchanged.** `/services/[slug]` and `/solutions/[slug]` are
+  separate routes today and stay separate (no URL change before CP-15). With two types,
+  each route queries its own `_type` by slug: simple and unambiguous. With one
+  discriminated type, both routes query the same type filtered by a `kind` discriminator,
+  so every query must remember the filter, and a missed filter renders a solution at
+  `/services/...` or vice versa.
+- **Slug integrity.** Sanity uniqueness is per document type. Two types namespace slugs
+  cleanly. Under one type, a service and a goal-solution could both take slug
+  `wordpress` and collide, with nothing to warn the editor.
+- **Fields will diverge.** Services get `pillar` and the investment module; goal-solutions
+  are outcome entry points that will grow different fields. A discriminated type forces
+  conditional `hidden`/`readOnly` field logic; two types keep each schema honest.
+- **The IA already separates them** (CP-06 Services Hub vs CP-07 Solutions), and
+  industries are becoming their own type. A merged service/solution type would be the
+  outlier.
+- **Migration is lighter** with two types: keep `_type:"services"` and
+  `_type:"solutions"`, move only the 9 industry docs out. A merged type means rewriting
+  every service and solution `_type` plus adding a discriminator.
+
+The only argument for merging is DRY across the 18 shared fields, and that is solved by
+**extracting the shared fields/objects into reusable schema definitions** spread into
+both types. Do the `partnerWithUs2`/`expertise3` renames once, in those shared
+definitions. Also note (from the schema export) **`solutions` has zero reference fields
+today** — real references (to services, industries, case studies) are added during
+consolidation regardless of this decision.
+
+---
+
+## 3. Confirmed estimate
+
+**Confirmed range 6 to 8 days is right; plan for 8, with a 1-day buffer to 9.** The
+schema review de-risked the collision and reference work, but three items keep it at the
+top of the range: the two brand-new taxonomies (`technology`, `capability`), adding
+references to `solutions` (it has none today), and the D25 draft/preview/webhook
+revalidation work, plus the 852-asset import.
+
+| Step | Work | Days |
+| --- | --- | --- |
+| 1 | New project + datasets (`production`, `staging`), private + read token (D24); author the unified schema (shared service/solution objects, `pillar`, `technology`, `capability`, `industry` with `hasPage`, `title`/`slug` on ex-tools, D15 split, field renames, real solution references) | 1.5 |
+| 2 | Export all five projects **with assets** as backups; stand up Studio | 0.5 |
+| 3 | Transform scripts against the section-1 table (drop `services` stub + repoint refs by slug; 9 solutions→industry; dedupe industries + `hasPage`; tools→technology; blog category→pillar + AI re-tag; slug normalisation; custom-apps-and-ai split; UNICEF flag) + **dry run** with counts | 2 |
+| 4 | Import into the new project (assets via `dataset import`) + integrity verification | 1 |
+| 5 | Code refactor: five clients → one, rewrite all GROQ, consolidate env vars, add draft mode / preview / webhook on-demand revalidation (D25) | 1.5–2 |
+| 6 | Full verification, cutover, buffer | 0.5–1 |
+
+**Total: 7 to 9 days.** The asset import (step 4) and the D25 preview/webhook work
+(step 5) are the overrun risks, not the taxonomy, now that the mapping table exists.
+
+---
+
+## 4. Migration plan (order of operations)
+
+Principle: build the new project alongside the old five; never migrate in place; make
+cutover a config change, not a restore.
+
+1. **Backups first.** `sanity dataset export` each of the five projects (includes asset
+   binaries) to dated archives. Nothing else starts until the five archives exist and
+   their document/asset counts are recorded.
+2. **Stand up the new project.** One project, two datasets (`production`, `staging`),
+   both **private**, with a server-side read token (D24). Author the unified schema
+   (section 3, step 1). No content yet.
+3. **Write the transform**, driven entirely by the section-1 table: rename/drop the
+   `services` stub and repoint case-study refs by slug; move the 9 industry-solutions to
+   `industry`; dedupe industries and set `hasPage`; convert tools to `technology` with
+   title/slug; map blog category to pillar and re-tag the AI post; normalise the two
+   slugs; split `custom-apps-and-ai`; leave asset references untouched (the import
+   remaps them).
+4. **Dry run into `staging`.** Import transformed NDJSON + assets into the new project's
+   **staging** dataset. Verify counts and spot-check before touching production-equivalent
+   data. Fix the transform and re-run until clean. (Staging here is the new project's
+   staging, which is isolated, unlike the old projects.)
+5. **Production import.** Once the dry run is clean, import into the new project's
+   `production` dataset.
+6. **Wire the code on a branch.** One `sanity` client, rewritten GROQ, consolidated env
+   vars, draft mode + preview + webhook revalidation. Point env vars at the **new**
+   project. Deploy to a Vercel preview and run the QA checklist.
+7. **Cutover by env var.** Flip the production Vercel environment's Sanity env vars from
+   the five old projects to the new project. Because selection is env-var driven, cutover
+   and rollback are config changes, not restores.
+8. **Rollback path.** If anything fails post-cutover, revert the Vercel env vars to the
+   five old projects (kept read-only, not deleted) and redeploy. No data restore needed.
+9. **Decommission gate.** Keep the five old projects **read-only for 30 days** after
+   cutover. Only then archive them.
+
+**Verified before decommissioning the old projects:**
+
+- Document counts match the transform's expected output (content docs, per type).
+- Asset counts match (852 images expected) and a sample of rendered images resolve via
+  the new project's CDN.
+- Every dynamic route renders for a sampled slug per type (`services`, `solutions`,
+  `industry` pages that are `hasPage:true`, `case-studies`, `blog`, `legal`).
+- No case study is unintentionally serviceless except the known UNICEF flag.
+- All 26 hardcoded nav deep-links still resolve (per `03-url-audit.md`).
+- `next build` clean; sitemap regenerates from the new project; no broken references
+  (Sanity reference integrity holds within the single project).
+- Draft mode / preview / webhook revalidation work in the Vercel preview.
+
+---
+
+## 5. Where I disagree with `CP-00K-taxonomy-reconciliation.md`
+
+Neither is a blocker; both are cheaper to fix now than mid-migration.
+
+1. **Blog is described as a "fourth taxonomy" that maps to the four pillars, but its 4
+   categories do not cover AI & Automation.** A straight category→pillar map silently
+   drops AI content into another pillar. Fix: replace the blog `category` enum with the
+   four pillar values and manually re-tag the single AI post during the transform, rather
+   than treating it as a clean 1:1 map. (The ruleset also implies "8 categories"; there
+   are 4.)
+2. **The technology examples in the ruleset (Laravel, React, Next.js, LearnDash) do not
+   exist in the data.** The actual `technology` seed is 7 entries (section 1c). Not a
+   problem, but the migration seeds `technology` from the real tools + 2 tags, and any
+   broader tech list is net-new content to be added later, not migrated.
+3. **UNICEF becomes serviceless** under the ruleset's own rules (its only tags are
+   capabilities). The ruleset's "flag for manual assignment" catches it; I am naming it
+   explicitly and recommending it be assigned `branding` rather than left orphaned.
+
+Everything else in the ruleset holds: the four-taxonomy model, nothing-deleted +
+`hasPage`, the 9 solutions → `industry`, and slug normalisation are all correct and
+supported by the data.
+
+---
+
+## 6. Decision
+
+**Mapping table approved as written / with amendments:**
+
+**Services/Solutions:** two types sharing objects / one discriminated type:
+
+**Estimate accepted (days):**
+
+**Signed off by:**
+
+**Date:**
+
+Record the outcome here, then Step 2b (the migration) may begin. Do not start Step 2b
+until this is signed off.
