@@ -491,17 +491,42 @@ Hassan publishes or discards it.
 
 **Content-review findings (from reading real dereferenced titles):**
 
-- **Technology refs can duplicate.** Now Press Play resolves to technologies
-  `[Webflow, Figma, Webflow]` — Webflow appears twice because the case study had `webflow`
-  as both a service-tag and a tool, and both mapped to `technology-webflow`. The
-  production transform must **dedup each case study's `technologies` array by `_ref`**.
-  Not a data-integrity issue (both resolve), but a cleanup the dry run surfaced.
+- **Technology refs could duplicate — fixed in the transform.** Now Press Play first
+  resolved to `[Webflow, Figma, Webflow]` because it had `webflow` as both a service-tag
+  and a tool, both mapping to `technology-webflow`. The transform now **dedups all four
+  reference arrays by `_ref`** (services, technologies, capabilities, industries),
+  defensively. Re-run from a **clean** staging dataset (deleted, recreated, re-imported)
+  on 17 Aug: Now Press Play resolves to `[Webflow, Figma]` (once), and a dup-check across
+  every case study and all four arrays returned **zero duplicates**. Counts unchanged and
+  lossless.
 - **Freeze on the new project.** `4m0eqoi1` is on a **Growth Trial until 16 Sep 2026**,
   so it currently has `privateDataset`, scheduled publishing, roles, comments and **no
   `automaticDatasetFreezing`**. When the trial lapses it reverts to **Free with freeze
   enabled**, the same fate the five existing projects already hit. So the Free-tier freeze
   availability risk applies to the consolidated project too, ~30 days out — an input to
   the separate upgrade decision.
+
+**Recorded — pillar distribution (CP-01 input, not a migration issue).** After migration
+the 16 services distribute as **Growth & Performance 10, Web & Ecommerce 3, Brand &
+Experience 2, AI & Automation 1** — close to the *inverse* of the commercial weighting in
+`00-context.md` §3 (Web & Ecommerce 45–50%, Growth & Performance 20–25%). The reason is
+that **"Web Design & Development" and "Ecommerce" do not exist as services yet**; they are
+created at CP-05. This is a CP-01/CP-05 content input, not a data-migration problem.
+
+**Deferred Studio task list (Hassan owns) — explicit:**
+
+1. Industry dedup/merge: 45 → 33 canonical (collapse the ~12 solution/case-study
+   duplicates), reversible, no reference-integrity impact.
+2. **Rename the four `hasPage:true` industries to their CP-08 commercial titles** (they
+   currently keep their pre-migration solution titles):
+   - `SaaS Companies` → **Technology & SaaS**
+   - `Charities & Foundation` → **Charities & Non-profits**
+   - `B2B Services` → **B2B & Professional Services**
+   - `Ecommerce Brands` → unchanged
+   These are commercial page titles; recorded here so the rename is not lost.
+3. Resolve the draft duplicate of SaaS Companies (publish or discard).
+4. Prune the 38 blog drafts (content review) and the abandoned drafts.
+5. Field renames `partnerWithUs2`/`expertise3` (schema authoring).
 
 Nothing touched production or the live site. Awaiting review of this content before the
 production run.
