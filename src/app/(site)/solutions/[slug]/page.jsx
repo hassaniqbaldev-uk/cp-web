@@ -32,7 +32,7 @@ export async function generateMetadata({ params }) {
   const { slug } = await params;
   const solution = await getSolutions(slug);
 
-  if (!solution) return {};
+  if (!solution || !solution.detailHero) return {};
 
   const title = solution.seo?.metaTitle || solution.detailHero.title;
   const description = solution.seo?.metaDescription || "";
@@ -84,14 +84,14 @@ const SolutionsDetailPage = async (props) => {
 
   const solution = await getSolutions(slug);
 
-  if (!solution) {
+  if (!solution || !solution.detailHero) {
     notFound();
   }
 
   return (
     <>
       <ServicesDetailHero service={solution.detailHero} />
-      <PartnerWithUs2 service={solution.partnerWithUs2} />
+      <PartnerWithUs2 service={solution.partnerWithUs} />
       <div className="overflow-hidden px-[2rem] py-[5rem] xl:px-[0rem] xl:py-[10rem]">
         <Cta2
           title="Facing these challenges right now?"
@@ -99,7 +99,7 @@ const SolutionsDetailPage = async (props) => {
           buttonText="Get Free Consultation"
         />
       </div>
-      <Expertise3 service={solution.expertise3} />
+      <Expertise3 service={solution.expertise} />
       <Methodology service={solution.methodology} />
       <section className="bg-[#ed910c]/13 px-[2rem] py-[5rem] xl:px-[0rem] xl:py-[10rem]">
         <Testimonials />

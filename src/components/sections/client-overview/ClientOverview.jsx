@@ -54,7 +54,7 @@ const ClientOverview = ({ caseStudy }) => {
                   </h5>
 
                   <ul className="flex flex-wrap gap-[5px]">
-                    {caseStudy.industries.map((item, idx) => (
+                    {caseStudy.industries?.map((item, idx) => (
                       <li
                         key={item._id}
                         className="inline-flex items-center gap-[5px] text-[1.8rem] leading-[3rem] font-medium tracking-normal text-[#625C70] md:text-[2.2rem] md:leading-[3.7rem]"
@@ -80,7 +80,7 @@ const ClientOverview = ({ caseStudy }) => {
                   </h5>
 
                   <ul className="flex flex-wrap gap-[5px]">
-                    {caseStudy.services.map((item, idx) => (
+                    {caseStudy.services?.map((item, idx) => (
                       <li
                         key={item._id}
                         className="inline-flex items-center gap-[5px] text-[1.8rem] leading-[3rem] font-medium tracking-normal text-[#625C70] md:text-[2.2rem] md:leading-[3.7rem]"
@@ -102,17 +102,17 @@ const ClientOverview = ({ caseStudy }) => {
               >
                 <div className="flex w-full flex-col gap-[7px] rounded-[1.5rem] border border-[#3078FF] p-[2.3rem]">
                   <h5 className="text-[1.8rem] leading-[3rem] font-bold tracking-normal text-[#3078FF] md:text-[2.2rem] md:leading-[3.7rem]">
-                    Tools Used
+                    Technologies
                   </h5>
 
-                  <ul className="flex items-center gap-[2rem] md:gap-[3rem]">
-                    {caseStudy.tools.map((item) => (
-                      <li key={item._id}>
-                        <img
-                          src={urlFor(item.toolImage).url()}
-                          alt={item.altText}
-                          className="h-[2.6rem]"
-                        />
+                  <ul className="flex flex-wrap gap-[5px]">
+                    {caseStudy.technologies?.map((item, idx) => (
+                      <li
+                        key={item._id}
+                        className="inline-flex items-center gap-[5px] text-[1.8rem] leading-[3rem] font-medium tracking-normal text-[#625C70] md:text-[2.2rem] md:leading-[3.7rem]"
+                      >
+                        {item.title}
+                        {idx < caseStudy.technologies.length - 1 && " / "}
                       </li>
                     ))}
                   </ul>

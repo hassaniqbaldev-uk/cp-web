@@ -72,13 +72,19 @@ export const caseStudiesDetailQuery = `
   // Custom Code Section
   customCode,
 
-  // Filters (for later use or display)
-  tools[]->{
-    _id,
-    toolImage,
-    altText
-  },
+  // Taxonomy (CP-00K four-taxonomy model). The old tools array was migrated into
+  // technologies; capabilities is a new sibling array. Projected for display / future use.
   services[]->{
+    _id,
+    title,
+    "slug": slug.current
+  },
+  technologies[]->{
+    _id,
+    title,
+    "slug": slug.current
+  },
+  capabilities[]->{
     _id,
     title,
     "slug": slug.current

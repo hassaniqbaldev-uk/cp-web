@@ -49,14 +49,14 @@ export const SOLUTIONS_DETAIL_QUERY = `
       }
     },
 
-    partnerWithUs2  {
+    partnerWithUs  {
     card[] {
         title,
         description,
       },
     },
 
-    expertise3  {
+    expertise  {
     card[] {
         icon {
           asset->{

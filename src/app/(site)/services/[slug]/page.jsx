@@ -28,7 +28,9 @@ export async function generateMetadata({ params }) {
   const { slug } = await params;
   const service = await getServices(slug);
 
-  if (!service) return {};
+  // A service can exist as a taxonomy/pillar stub with no detail content
+  // (e.g. ai-automation). Treat those as no-metadata rather than crashing.
+  if (!service || !service.detailHero) return {};
 
   const title = service.seo?.metaTitle || service.detailHero.title;
   const description = service.seo?.metaDescription || "";
@@ -80,14 +82,16 @@ const ServicesDetailPage = async (props) => {
 
   const service = await getServices(slug);
 
-  if (!service) {
+  // Stub services (taxonomy/pillar placeholders with no authored detail page)
+  // 404 rather than crash the render on a null detailHero.
+  if (!service || !service.detailHero) {
     notFound();
   }
 
   return (
     <>
       <ServicesDetailHero service={service.detailHero} />
-      <PartnerWithUs2 service={service.partnerWithUs2} />
+      <PartnerWithUs2 service={service.partnerWithUs} />
       <div className="overflow-hidden px-[2rem] py-[5rem] xl:px-[0rem] xl:py-[10rem]">
         <Cta2
           title="Facing these challenges right now?"
@@ -95,7 +99,7 @@ const ServicesDetailPage = async (props) => {
           buttonText="Get Free Consultation"
         />
       </div>
-      <Expertise3 service={service.expertise3} />
+      <Expertise3 service={service.expertise} />
       <Methodology service={service.methodology} />
       <section className="bg-[#ed910c]/13 px-[2rem] py-[5rem] xl:px-[0rem] xl:py-[10rem]">
         <Testimonials />
