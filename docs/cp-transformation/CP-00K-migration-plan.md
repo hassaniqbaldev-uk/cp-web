@@ -530,3 +530,43 @@ created at CP-05. This is a CP-01/CP-05 content input, not a data-migration prob
 
 Nothing touched production or the live site. Awaiting review of this content before the
 production run.
+
+### Production run executed — 17 Aug (new project's `production` dataset)
+
+Populated and transformed **`4m0eqoi1/production`** (the new project). The **live site and
+the five old projects are untouched** — no Vercel env var changed, so the site still reads
+the old projects. Results are identical to the signed-off dry run:
+
+- Import lossless: **138 published + 48 drafts**, **845 assets** (852 source, 7 deduped).
+- Transform: 3 phases, 0 failed batches, 0 orphan refs.
+- Post-transform: services **16**, technology **7**, capability **3**, tools **0**,
+  industries **45**, solutions **5**, caseStudies 40, blog 47, legalPage 7, author 1.
+- **Zero unresolved references** (`badRefCaseStudies: []`).
+- **Zero duplicate refs** across all four arrays (dup-check `[]`); Now Press Play →
+  `[Webflow, Figma]`.
+- UNICEF still **0 services** (2 capabilities, 1 technology).
+- **All 16 services and all 47 blog posts carry a `pillar`**; 5 industries `hasPage:true`.
+
+Code is NOT wired yet (a separate, unmerged branch, on request). No env var changed.
+
+### Rollback window — the honest limit (state before cutover)
+
+Rollback = revert the Vercel Sanity env vars to the five old projects, which stay
+**read-only** and therefore hold a **frozen snapshot as of the cutover moment**.
+
+- Reverting env vars restores the **site** instantly, but restores **content** only to the
+  cutover-moment state. **There is no back-sync** from the new project to the old ones.
+- So **any content edited in the new project after cutover is lost on rollback.** The true
+  rollback window is "until editors resume content work in the new project", not a fixed
+  number of days.
+- **Day 3 vs day 10:** roll back on day 3 and you lose ~3 days of edits in the new project
+  (e.g. a few blog updates, the industry dedup/renames if started) — usually small and
+  re-doable. Roll back on day 10 and you lose ~10 days (more content, the completed
+  industry merges/renames, any new case studies or pricing) — potentially not re-doable.
+  The cost of rollback grows with every edit made in the new project.
+- **Not at risk:** enquiry/lead data does not live in Sanity (it is emailed via SMTP), so
+  rollback loses no leads — only Sanity content edits.
+- **To keep rollback cheap:** freeze content editing in the new project through the
+  post-cutover verification window; only resume editing once you have decided not to roll
+  back. If you must roll back after edits, export the new project first and re-apply the
+  delta by hand — a straight env-var revert will not carry those edits back.
