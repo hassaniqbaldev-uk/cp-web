@@ -4,8 +4,8 @@ export const EXPERTISE_CARD = [
     title: "SME Founders",
     description:
       "Grow your business with a website that converts visitors into loyal customers.",
-    link: "/solutions/sme-founders",
-    linkText: "Explore Solutions",
+    // CP-00K: CTA removed — /solutions/sme-founders is now a routeless industry.
+    // Restore at CP-08 when industries have real routes.
     color: "#3078FF",
     boxShadow: "4px 12px 30px 0px #3078FF1C",
   },
@@ -14,8 +14,7 @@ export const EXPERTISE_CARD = [
     title: "Ecommerce Brands",
     description:
       "Scale sales with high-performance online stores built on Shopify or Woo.",
-    link: "/solutions/ecommerce-brands",
-    linkText: "Explore Solutions",
+    // CP-00K: CTA removed — /solutions/ecommerce-brands is now a routeless industry.
     color: "#EE7621",
     boxShadow: "4px 12px 30px 0px #EE76211C",
   },
@@ -24,8 +23,7 @@ export const EXPERTISE_CARD = [
     title: "Non-Profits & Charity",
     description:
       "Connect with your community through accessible, impactful digital experiences.",
-    link: "/solutions/charities-and-foundation",
-    linkText: "Explore Solutions",
+    // CP-00K: CTA removed — /solutions/charities-and-foundation is now a routeless industry.
     color: "#FF37B3",
     boxShadow: "4px 12px 30px 0px #FF37B31C",
   },
@@ -34,8 +32,7 @@ export const EXPERTISE_CARD = [
     title: "B2B Services",
     description:
       "Generate qualified leads and build trust with a strategic web presence.",
-    link: "/solutions/b2b-services",
-    linkText: "Explore Solutions",
+    // CP-00K: CTA removed — /solutions/b2b-services is now a routeless industry.
     color: "#44B276",
     boxShadow: "4px 12px 30px 0px #44B2761C",
   },
@@ -54,8 +51,7 @@ export const EXPERTISE_CARD = [
     title: "Startups & SaaS",
     description:
       "Modern tech stacks (React, Headless) for rapid growth and scalability.",
-    link: "/solutions/saas-companies",
-    linkText: "Explore Solutions",
+    // CP-00K: CTA removed — /solutions/saas-companies is now a routeless industry.
     color: "#F14A58",
     boxShadow: "4px 12px 30px 0px #F14A581C",
   },

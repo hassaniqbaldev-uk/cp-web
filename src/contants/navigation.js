@@ -79,13 +79,14 @@ export const SUPPORT_SERVICE_NAV = [
   },
 ];
 
-// CP-00K: the individual sector links were removed. Those industries became
-// routeless `industries` documents (hasPage flags preserved in the dataset);
-// CP-08 builds their routes properly. Linking them now would 404, and pointing
-// them at a fragment that shows nothing is worse than no link.
-export const SECTOR_SOLUTION_NAV = [
-  { label: "View all industries", excerpt: "", href: "/solutions/#sector" },
-];
+// CP-00K: sector links removed. Those industries became routeless `industries`
+// documents (hasPage flags preserved in the dataset); CP-08 builds their routes.
+// "View all industries" -> /solutions/#sector was also removed: /solutions returns
+// 200 but its sector section filters `category == "industry"`, which is empty
+// post-migration, so that link was a live-but-empty dead-end.
+// NOTE: this array is now empty. Consumers (SolutionsDropdown, Footer, MobileMenu)
+// still render a "BY SECTOR" heading above it — see 00-context.md §14 dead-end note.
+export const SECTOR_SOLUTION_NAV = [];
 
 export const GOAL_SOLUTION_NAV = [
   {
