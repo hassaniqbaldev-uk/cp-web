@@ -317,3 +317,74 @@ supported by the data.
 
 Step 2b (the migration) may now begin, stopping for review after the backups and the
 dry-run into the new project's staging dataset, before anything touches production.
+
+---
+
+## 7. Step 2b run log
+
+### Backups — DONE (17 Aug 2026)
+
+All five projects exported with assets via `sanity dataset export` (authenticated CLI,
+`hassan.iqbal@cp.agency`, which owns all five projects). Archives are dated tarballs
+(documents + `assets.json` + `images/` + `files/`). Read-only to Sanity; nothing was
+written to any production dataset.
+
+| Project | Project ID | Archive size | Assets |
+| --- | --- | --- | --- |
+| Legal hub | `pz9kcb6n` | 63 KB | 12 |
+| Services | `cqbs7syw` | 4.1 MB | 229 |
+| Solutions | `z2m53qom` | 1.3 MB | 171 |
+| Blog | `dgx0l3po` | 107 MB | 75 |
+| Case studies | `6qygzc2z` | 165 MB | 365 |
+| **Total** | | **~277 MB** | **852** |
+
+Note: the archives were written to the session scratchpad to validate the step and read
+counts. **Before the real migration they must be re-exported to durable, dated storage**
+(the scratchpad is ephemeral). This does not change the counts below.
+
+### Source verification counts (from the authenticated exports — the dry-run baseline)
+
+| Project | Content docs | Published | Drafts | Breakdown (published) |
+| --- | --- | --- | --- | --- |
+| Legal | 7 | 7 | 0 | 7 legalPage |
+| Services | 15 | 15 | 0 | 15 services |
+| Solutions | 15 | 14 | 1 | 14 solutions |
+| Blog | 48 | 10 | 38 | 9 blog + 1 author |
+| Case studies | 101 | 92 | 9 | 40→31 caseStudies + 35 industries + 20 service-tags + 6 tools |
+| **Total** | **186** | **138** | **48** | plus 852 image assets |
+
+Published content = 138 (matches the earlier estimate). The dry-run's post-transform
+counts will be checked against these.
+
+### Correction: there ARE drafts (48), not zero
+
+Earlier (`CP-00K-validation.md`, `13-implementation-status.md`) I recorded "0 drafts",
+based on the **anonymous** public API, which does not return draft documents. The
+**authenticated** export reveals **48 drafts**: 38 in blog (draft versions plus
+unpublished posts), 9 case studies, 1 solution. This corrects the record. It does not
+change the D24/D25 rationale, but it does add a migration decision (below). (Note: the
+draft-exposure wording in D24 is also worth revisiting — anonymous reads on a public
+dataset return published docs only; drafts require a token. The public-dataset risk is
+real for published content and for anyone issued a token, but drafts are not anonymously
+readable.)
+
+### Open before the dry-run (two inputs + one decision)
+
+The dry-run requires standing up the new project, which is **billable infrastructure on
+your Sanity account** plus an **API token** (a credential). I have paused before
+provisioning it to confirm what I should not guess:
+
+1. **Sanity organisation** to create the new project under (the CLI's
+   `organizations list` is not a command in 6.4.0; the org needs confirming from the
+   Sanity manage UI or an org id).
+2. **New project name** (e.g. "CreativePixels" or "CP Content").
+3. **Drafts decision:** migrate the 48 drafts (preserves editor work-in-progress, fits
+   D25 draft mode) or migrate published-only (`--no-drafts`, clean slate)? This changes
+   the transform, so it should be settled before the transform is written. My lean:
+   migrate drafts, since draft mode is a goal, but the 38 blog drafts may include
+   abandoned experiments worth pruning first.
+
+Once these are settled I will build the transform against the section-1 table, create
+the new project + private `production`/`staging` datasets + read token, dry-run into
+**staging**, and report the post-transform counts against the baseline above, before
+anything touches production.
