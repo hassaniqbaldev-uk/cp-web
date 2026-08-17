@@ -476,5 +476,32 @@ Merges are reversible content decisions that do not affect reference integrity, 
 belong in the new Studio, not the transform. Field renames (`partnerWithUs2`,
 `expertise3`) were also not applied in the dry run (schema-authoring step, no data impact).
 
-Nothing touched production or the live site. Awaiting review of these counts before the
+**Industry merges — deferred and owned by Hassan (approved).** Production will go live
+with **45 industries, including ~12 duplicates** (each solution-industry that means the
+same as a case-study industry, e.g. `b2b`/`b2b-services`, `saas`/`saas-companies`,
+`ecommerce`/`ecommerce-brands`, `charity-non-profit`/`charities-and-foundation`,
+`driving-schools`, `pharmacies`, `restaurants`, `interiors`/`interiors-and-furnishings`,
+`smes`/`sme-founders`). The dedup-and-rename to 33 canonical industries is a **follow-up
+content task Hassan owns**, done in the new Studio (reversible, no reference-integrity
+impact). Note: the 5 `hasPage:true` industries currently carry their original solution
+titles (e.g. "SaaS Companies", "Charities & Foundation"), not the mapping-table canonical
+titles, because the rename is part of that deferred merge. One of the 5 is a **draft
+duplicate** of SaaS Companies (the migrated draft solution-industry), which resolves when
+Hassan publishes or discards it.
+
+**Content-review findings (from reading real dereferenced titles):**
+
+- **Technology refs can duplicate.** Now Press Play resolves to technologies
+  `[Webflow, Figma, Webflow]` — Webflow appears twice because the case study had `webflow`
+  as both a service-tag and a tool, and both mapped to `technology-webflow`. The
+  production transform must **dedup each case study's `technologies` array by `_ref`**.
+  Not a data-integrity issue (both resolve), but a cleanup the dry run surfaced.
+- **Freeze on the new project.** `4m0eqoi1` is on a **Growth Trial until 16 Sep 2026**,
+  so it currently has `privateDataset`, scheduled publishing, roles, comments and **no
+  `automaticDatasetFreezing`**. When the trial lapses it reverts to **Free with freeze
+  enabled**, the same fate the five existing projects already hit. So the Free-tier freeze
+  availability risk applies to the consolidated project too, ~30 days out — an input to
+  the separate upgrade decision.
+
+Nothing touched production or the live site. Awaiting review of this content before the
 production run.
