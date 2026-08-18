@@ -41,8 +41,8 @@ export const EXPERTISE_CARD = [
     title: "Agencies",
     description:
       "White-label web solutions to scale your agency's output without growing your team.",
-    link: "/agencies",
-    linkText: "Explore Solutions",
+    // CP-00K: CTA removed for consistency — all six cards end at the description
+    // until the industry pages exist (CP-08). /agencies stays reachable elsewhere.
     color: "#BF00B4",
     boxShadow: "4px 12px 30px 0px #BF00B41C",
   },

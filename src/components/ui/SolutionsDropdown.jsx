@@ -83,6 +83,7 @@ const SolutionsDropdown = ({ className, isOpen, setIsOpen, onToggle }) => {
           className="flex w-full gap-[3.8rem] rounded-[3rem] bg-white px-[3.5rem] py-[4rem]"
         >
           <div className="grid flex-1 grid-cols-2 gap-[3.8rem]">
+            {SECTOR_SOLUTION_NAV.length > 0 && (
             <div className="flex w-full flex-col gap-[2.4rem] border-r border-[#818181]/30 pr-[3.8rem]">
               <div className="flex items-center gap-[2rem] text-left">
                 <i
@@ -130,6 +131,7 @@ const SolutionsDropdown = ({ className, isOpen, setIsOpen, onToggle }) => {
                 ))}
               </ul>
             </div>
+            )}
 
             <div className="flex w-full flex-col gap-[2.4rem]">
               <div className="flex items-center gap-[2rem] text-left">

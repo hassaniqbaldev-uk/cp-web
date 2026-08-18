@@ -354,6 +354,7 @@ const Footer = () => {
 
                     <div>
                       <Accordion type="single" collapsible>
+                        {SECTOR_SOLUTION_NAV.length > 0 && (
                         <AccordionItem
                           value="item-1"
                           className="flex flex-col gap-[6px]"
@@ -379,6 +380,7 @@ const Footer = () => {
                             </ul>
                           </AccordionContent>
                         </AccordionItem>
+                        )}
 
                         <AccordionItem
                           value="item-2"

@@ -303,6 +303,7 @@ const MobileMenu = () => {
                   </AccordionTrigger>
                   <AccordionContent>
                     <ul className="flex flex-col gap-[2rem] pt-[2rem]">
+                      {SECTOR_SOLUTION_NAV.length > 0 && (
                       <li>
                         <Accordion type="single" collapsible>
                           <AccordionItem value="item-1">
@@ -354,6 +355,7 @@ const MobileMenu = () => {
                           </AccordionItem>
                         </Accordion>
                       </li>
+                      )}
 
                       <li>
                         <Accordion type="single" collapsible>

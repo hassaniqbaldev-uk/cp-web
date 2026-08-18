@@ -58,7 +58,7 @@ const SolutionsPage = async () => {
   return (
     <>
       <SolutionsHero />
-      <Sector solutions={industrySolutions} />
+      {industrySolutions.length > 0 && <Sector solutions={industrySolutions} />}
       <Goal solutions={goalSolutions} />
       <section className="overflow-hidden px-[2rem] py-[5rem] xl:px-[0rem] xl:py-[10rem]">
         <Cta />
