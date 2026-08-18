@@ -1,4 +1,3 @@
-import React, { Suspense } from "react";
 import { MotionEffect } from "../effects/motion-effect";
 import SectionLabel from "../ui/SectionLabel";
 import SectionDescription from "../ui/SectionDescription";
@@ -51,9 +50,7 @@ const LpAuditSection = () => {
             transition={{ type: "tween", duration: 0.6, ease: "easeOut" }}
             className="w-full md:w-[59.5rem]"
           >
-            <Suspense fallback={null}>
-              <LpAuditForm />
-            </Suspense>
+            <LpAuditForm />
           </MotionEffect>
         </div>
       </div>

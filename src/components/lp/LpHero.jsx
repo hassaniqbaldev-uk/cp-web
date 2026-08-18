@@ -20,7 +20,6 @@ import NewCompassImg from "@/assets/images/cards/new-compass.png";
 import TeleqoTechImg from "@/assets/images/cards/teleqo-tech.png";
 import AlertForceImg from "@/assets/images/cards/alert-force.png";
 import dynamic from "next/dynamic";
-import { Suspense } from "react";
 import LpAuditForm from "./LpAuditForm";
 
 const projects = [
@@ -186,9 +185,7 @@ const LpHero = () => {
               className="w-full md:w-[50rem]"
               id="audit"
             >
-              <Suspense fallback={null}>
-                <LpAuditForm />
-              </Suspense>
+              <LpAuditForm />
             </MotionEffect>
           </div>
         </div>
