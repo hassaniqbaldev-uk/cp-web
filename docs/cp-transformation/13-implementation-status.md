@@ -11,7 +11,7 @@ should be able to reconstruct the state of play from here.
 
 | Item | Value |
 | --- | --- |
-| Current task | **Step 3 in progress — sliders COMPLETE.** All 30 sliders migrated to the `Carousel` primitive (7 batches). Forms next, then headers/nav |
+| Current task | **Step 3 in progress — forms.** Shared `Form` core built + proven on ContactForm; awaiting review before migrating the other 3. Headers/nav after. Sliders COMPLETE (30 migrated) |
 | Branch | `development`, reading the new project's **staging** dataset (`4m0eqoi1` / `staging`). Not merged to main |
 | Started | 12 August 2026 |
 | Sign-off authority | Hassan |
@@ -37,6 +37,43 @@ complete and Hassan signs off final cutover.
 Plan `step-3-component-cleanup-plan.md` approved as written (schema fields for nav labels,
 5–7 days, header merge + data-driven nav last). Working in order: **sliders → forms →
 headers/nav**, stopping after each for Hassan's review.
+
+### Forms — shared `Form` core built + proven on ContactForm (checkpoint, `e383c87`)
+
+- **`src/lib/analytics/events.js`** — one GA4 event-name registry + safe-no-op `track()`.
+  `enquiry_step_2`/`step_3` and `industry_selected` are marked **PENDING host UI** (the
+  multi-step enquiry flow and CP-08 industry routes do not exist), so they are wired-ready
+  but must not be claimed live.
+- **`src/components/forms/Form.jsx`** — **headless** shared core. Each form keeps its own
+  field markup (as children); it inherits by default: honeypot spam protection
+  (auto-injected + checked — impossible to omit), a11y (role=alert aria-live announcement,
+  focus-to-first-invalid on failed submit, `aria-invalid`/`aria-describedby` via
+  `fieldProps`), and GA4 `enquiry_started` + `enquiry_submitted`. Transport `json` |
+  `multipart` (for the job form's file upload).
+- **ContactForm migrated** and its a11y bugs fixed (service `<label>` now associated with
+  the Radix Select via `id="service"`; per-field errors announced + wired). Markup,
+  endpoint (`/api/contact`) and success redirect preserved.
+
+**Current-form a11y defects the core fixes (measured):** (1) no SR error announcement
+(plain `<p>`, no live region) — all 4; (2) no focus move to the first invalid field — all
+4; (3) no `aria-invalid`/`aria-describedby` — all 4; (4) broken/missing label association —
+ContactForm `htmlFor="service"`→nothing, AuditForm `htmlFor="revenue-range"`→nothing,
+JobApplicationForm has no `htmlFor`/`id` at all; (5) decorative `*` not tied to required.
+
+**Verified (fetch stubbed → no real email sent):** invalid submit announces + moves focus +
+sets `aria-invalid`; valid submit posts the correct `/api/contact` payload incl the
+`website` honeypot; `enquiry_started` + `enquiry_submitted` fire into `dataLayer`. Observed
+`gtm.*` auto-events → a **GTM/dataLayer is already present** on the site (relevant to O7 /
+CP-00L: wired events reach the dataLayer today; GA4 forwarding depends on GTM tag config).
+
+**Design decision flagged (rule #6):** a single *declarative field-rendering* form component
+would force a redesign of four visually-distinct forms (custom inputs, Radix Select, file
+dropzone, differing buttons/success flows) — a design change, not a refactor. So the shared
+piece is a **headless core** (logic + honeypot + a11y + GA4), and each form keeps its
+markup. Confirm this shape before the remaining three are migrated.
+
+**Not yet done (held for review):** AuditForm (real `websiteUrl` field alongside the
+honeypot), LpAuditForm, JobApplicationForm (multipart + file upload + modal-close success).
 
 ### Sliders — `Carousel` primitive built + proven (checkpoint, awaiting review)
 
