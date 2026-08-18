@@ -2,9 +2,7 @@
 
 import LpLaptop from "@/assets/svgs/lp-laptop.svg";
 import Image from "next/image";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay } from "swiper/modules";
-import "swiper/css";
+import Carousel from "@/components/ui/Carousel";
 import NdifoImg from "@/assets/images/cards/ndifo-slide-img.png";
 import SmokeyImg from "@/assets/images/cards/smokey-carter-slide-img.png";
 import IvyDukeImg from "@/assets/images/cards/ivy-duke-slide-img.png";
@@ -16,7 +14,6 @@ import NewCompassImg from "@/assets/images/cards/new-compass-slide-img.png";
 import TeleqoTechImg from "@/assets/images/cards/teleqo-tech-slide-img.png";
 import AlertForceImg from "@/assets/images/cards/alert-force-slide-img.png";
 import CheckMarkIcon from "../icons/CheckMarkIcon";
-import CarouselAutoplayControl from "@/components/ui/CarouselAutoplayControl";
 
 const slides = [
   { id: 1, img: NdifoImg, alt: "Slide Image" },
@@ -45,30 +42,24 @@ const LpResultSlider = () => {
 
         {/* Slider */}
         <div className="absolute top-[2.3rem] left-1/2 h-[15.8rem] w-[24rem] -translate-x-1/2 overflow-hidden rounded-tl-[.4rem] rounded-tr-[.4rem] md:top-[1.2rem] md:h-[34rem] md:w-[52.5rem] md:rounded-tl-[.8rem] md:rounded-tr-[.8rem] lg:top-[.8rem] lg:h-[41.7rem] lg:w-[64rem] lg:rounded-tl-[.6rem] lg:rounded-tr-[.6rem]">
-          <Swiper
-            loop={true}
-            autoplay={{
-              delay: 2500,
-              disableOnInteraction: false,
+          <Carousel
+            items={slides}
+            pagination={false}
+            slideClassName="size-full"
+            swiperProps={{
+              allowTouchMove: false,
+              simulateTouch: false,
+              slideToClickedSlide: false,
             }}
-            modules={[Autoplay]}
-            allowTouchMove={false}
-            simulateTouch={false}
-            slideToClickedSlide={false}
-            className="mySwiper"
-          >
-            {slides.map((item, idx) => (
-              <SwiperSlide key={idx} className="size-full">
-                <Image
-                  src={item.img}
-                  fill
-                  alt={item.alt}
-                  className="h-full w-full object-cover"
-                />
-              </SwiperSlide>
-            ))}
-            <CarouselAutoplayControl slot="container-end" />
-          </Swiper>
+            renderItem={(item) => (
+              <Image
+                src={item.img}
+                fill
+                alt={item.alt}
+                className="h-full w-full object-cover"
+              />
+            )}
+          />
         </div>
 
         <div className="pointer-events-none relative hidden h-full w-full md:block">
