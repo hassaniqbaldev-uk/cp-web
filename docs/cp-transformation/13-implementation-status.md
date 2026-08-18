@@ -72,7 +72,13 @@ excluded by `perspective: "published"`).
 `ContactForm`, `AuditForm`, `JobApplicationForm` had no honeypot while `LpAuditForm` did.
 Added the same honeypot (client hidden `website` field + server `if (website) success`) to
 all three + their API routes. Self-contained (6 files), no deps, no user-facing change.
-Committed alone (`c86e629`) so it can be cherry-picked to production ahead of cutover.
+Committed alone (`c86e629`).
+
+**Deliberately held on `development` at Hassan's instruction (18 Aug 2026).** Although this
+is a live-production defect and the commit is self-contained enough to cherry-pick, Hassan
+directed that nothing goes to production until final cutover: no hotfix branch, no
+cherry-pick, no PR. The fix ships with everything else at cutover. Recorded here so it is
+not later mistaken for forgotten or lost work.
 
 ### Step 3 — plan only
 
