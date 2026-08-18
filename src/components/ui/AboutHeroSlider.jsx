@@ -1,8 +1,6 @@
 "use client";
 import { useRef } from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay } from "swiper/modules";
-import "swiper/css";
+import Carousel from "@/components/ui/Carousel";
 import Image from "next/image";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import CardImg1 from "@/assets/images/hero/about-hero-slide-img-1.png";
@@ -11,7 +9,6 @@ import CardImg3 from "@/assets/images/hero/about-hero-slide-img-3.png";
 import CardImg4 from "@/assets/images/hero/about-hero-slide-img-4.png";
 import CardImg5 from "@/assets/images/hero/about-hero-slide-img-5.png";
 import CardImg6 from "@/assets/images/hero/about-hero-slide-img-6.png";
-import CarouselAutoplayControl from "@/components/ui/CarouselAutoplayControl";
 
 const slides = [
   { id: 1, img: CardImg1, alt: "About Hero Slide Image" },
@@ -27,27 +24,23 @@ const AboutHeroSlider = () => {
 
   return (
     <div className="relative h-full w-full">
-      <Swiper
-        onSwiper={(swiper) => (swiperRef.current = swiper)}
-        modules={[Autoplay]}
-        loop={true}
-        autoplay={{ delay: 3000, disableOnInteraction: false }}
-        slidesPerView={1}
+      <Carousel
+        items={slides}
         className="h-full w-full overflow-hidden rounded-[3rem]"
-      >
-        {slides.map((slide) => (
-          <SwiperSlide key={slide.id} className="relative h-full w-full">
-            <Image
-              src={slide.img}
-              alt={slide.alt}
-              fill
-              className="size-full object-cover"
-              unoptimized
-            />
-          </SwiperSlide>
-        ))}
-        <CarouselAutoplayControl slot="container-end" />
-      </Swiper>
+        pagination={false}
+        autoplay={{ delay: 3000, disableOnInteraction: false }}
+        slideClassName="relative h-full w-full"
+        swiperProps={{ onSwiper: (swiper) => (swiperRef.current = swiper) }}
+        renderItem={(slide) => (
+          <Image
+            src={slide.img}
+            alt={slide.alt}
+            fill
+            className="size-full object-cover"
+            unoptimized
+          />
+        )}
+      />
 
       {/* Custom Navigation Arrows */}
       <div className="absolute bottom-[3rem] left-[3.2rem] z-[10] flex items-center gap-[1.2rem]">
