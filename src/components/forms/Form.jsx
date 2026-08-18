@@ -63,9 +63,12 @@ export default function Form({
   const focusFirst = (errs) => {
     const first = Object.keys(errs)[0];
     if (!first || !formRef.current) return;
+    // Match by name, then id, then the field wired via fieldProps (aria-describedby).
+    // The last covers controls with no queryable name/id (e.g. a Radix Select trigger).
     const el =
       formRef.current.querySelector(`[name="${first}"]`) ||
-      formRef.current.querySelector(`#${CSS.escape(first)}`);
+      formRef.current.querySelector(`#${CSS.escape(first)}`) ||
+      formRef.current.querySelector(`[aria-describedby="${errorId(first)}"]`);
     el?.focus?.();
   };
 
