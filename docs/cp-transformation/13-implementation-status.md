@@ -11,14 +11,73 @@ should be able to reconstruct the state of play from here.
 
 | Item | Value |
 | --- | --- |
-| Current task | **Step 1 site hygiene (D34) — COMPLETE.** Next: Step 2 (consolidation) after O8/O11 sign-off |
-| Branch | `development` |
+| Current task | **Step 3 component cleanup — PLAN written (`step-3-component-cleanup-plan.md`), awaiting sign-off.** No component work started |
+| Branch | `development`, reading the new project's **staging** dataset (`4m0eqoi1` / `staging`). Not merged to main |
 | Started | 12 August 2026 |
 | Sign-off authority | Hassan |
-| Status | CP-00 done. Step 1 (keyboard nav, carousel pause controls, real dialog) implemented, build- and browser-verified. **Awaiting Hassan's O8/O11 sign-off before Step 2 / consolidation.** No migration/schema change performed |
+| Status | CP-00 + Step 1 done. O8/O11 signed off. **CP-00K consolidation executed on `development` against staging**: five Sanity projects → one, code wired to one client, field renames, draft-mode + revalidation routes, nav regression + dead-end fixes, form spam fix. Production still reads the five old projects. Nothing merged; no Vercel production change |
 
-Do not start Step 2 (the Sanity consolidation) or CP-01 until Hassan signs off O8
-(platform consolidation) and O11 (taxonomy reconciliation ruleset).
+### Standing working rules (apply every task)
+
+All work stays on `development` reading the **staging** dataset until the full brief is
+complete and Hassan signs off final cutover.
+
+- Commit to `development`, never to `main`. Never merge to `main`; never ask whether to.
+- Never change a Vercel **production** environment variable.
+- Never write to the five old Sanity projects — they stay read-only as the rollback path.
+- The live site keeps reading the old projects until final cutover.
+- Keep `development` up to date with `main` as work proceeds; flag conflicts that need Hassan.
+- Keep this file current with every task.
+- At the end of each task, state plainly what is safe to review on staging and what is unfinished.
+
+---
+
+## CP-00K — consolidation executed + wired to staging (August 2026)
+
+Five Sanity projects consolidated into one new project **CreativePixels** (`4m0eqoi1`).
+Migration ran into that project's **production** dataset (lossless, verified) and the code
+branch reads its **staging** dataset. Production site untouched — still reads the five old
+projects. Rollback = revert Vercel env vars (restores to the cutover snapshot; new-project
+edits are lost on rollback, no back-sync). Full plan + run results in
+`CP-00K-migration-plan.md`.
+
+### Code wiring (branch `development`, staging)
+
+| Area | Change | Commit |
+| --- | --- | --- |
+| Sanity client | Five per-project clients → one `src/sanity/client.js` (+ `previewClient`, `getClient`) and one `image.js`; the five `sanity.<type>.js` / `<type>.image.js` kept as re-export shims so imports resolve unchanged | `5c50867` |
+| Field renames | `partnerWithUs2` → `partnerWithUs`, `expertise3` → `expertise` in queries + detail pages (component names unchanged); data renamed on 30 docs | `5c50867` |
+| Case-study taxonomy | Dropped removed `tools[]->`; added `technologies[]->` + `capabilities[]->`; ClientOverview "Tools Used" logos → "Technologies" text pills; null-guarded all four taxonomy arrays | `5c50867` |
+| Detail-page guards | services/solutions detail pages 404 (not crash) on a stub doc with no `detailHero` (e.g. `ai-automation`) | `5c50867` |
+| D25 routes | `/api/draft`, `/api/disable-draft` (draft mode), `/api/revalidate` (secret-checked webhook) | `5c50867` |
+
+### Nav regression + dead-end fixes (CP-00K side-effects)
+
+The hardcoded nav (`src/contants/navigation.js`) had drifted from the migrated data.
+
+| Fix | Detail | Commit |
+| --- | --- | --- |
+| Repoint / drop nav links | `custom-apps-and-ai` → `custom-app-development`; removed six routeless sector links | `0b24dac` |
+| Remove dead-end content links | Five homepage `EXPERTISE_CARD` "Explore Solutions" CTAs to routeless industries; "View all industries" → empty `/solutions/#sector` | `f611af3` |
+| Hide empty-state chrome | Guard "By Sector" column/accordion (SolutionsDropdown, Footer, MobileMenu) + `/solutions` `<Sector>` on empty source; dropped Agencies card CTA for consistency | `7cdb856` |
+| Docs | Nav regression + data-driven-nav scope + dead-end-vs-404 distinction into `00-context.md` §14 | `43bdbf9`, `b6e8472` |
+
+Verified: build green throughout; every `navigation.js` href resolves (0/31 404s);
+dead-end sweep clean except the two guarded empty states. blog 9 / case-studies 31 /
+services 16 / solutions 5 / legal 7 pages build from staging (draft-only docs correctly
+excluded by `perspective: "published"`).
+
+### Form spam protection (standalone production-relevant fix)
+
+`ContactForm`, `AuditForm`, `JobApplicationForm` had no honeypot while `LpAuditForm` did.
+Added the same honeypot (client hidden `website` field + server `if (website) success`) to
+all three + their API routes. Self-contained (6 files), no deps, no user-facing change.
+Committed alone (`c86e629`) so it can be cherry-picked to production ahead of cutover.
+
+### Step 3 — plan only
+
+Component cleanup plan written to `step-3-component-cleanup-plan.md` (`b5e160d`), awaiting
+sign-off. Measured inventory: 33 sliders, 4 forms, 3 headers. No component work started.
 
 ---
 
