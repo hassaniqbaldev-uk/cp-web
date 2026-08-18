@@ -97,6 +97,38 @@ endpoints, validation and success behaviour preserved.
   cause. Root cause open (dev-only Turbopack artifact vs a real bailout). **Needs a separate
   look** — if it reproduces in a production build, the LP audit form is non-functional today.
 
+### LpAuditForm dead on the WordPress LP — root cause found (18 Aug 2026)
+
+**Confirmed real, not a dev artifact.** Ran a production build (`next build` + `next start`)
+and served it locally: on `/wordpress-web-development` the LpAuditForm still does not
+hydrate — honeypot input has no React fiber, the Radix Select will not open, submit does
+not run — while the page's carousels hydrate normally. So the audit form on a page built
+for **paid traffic is a live lead-capture failure today.**
+
+**Cause (proven, not guessed).** `<LpAuditForm />` is wrapped in `<Suspense fallback={null}>`
+in **both** `LpHero.jsx:189` and `LpAuditSection.jsx:54`. Walking up from the honeypot, the
+form's parent is `div#S:0` — a React streaming-Suspense holding container attached directly
+to `<body>` — and the first ancestor with a React fiber is `<body>` itself. So the
+server-streamed form is stranded in the Suspense holding div and never adopted; the client
+boundary resolves to its `null` fallback, orphaning the SSR DOM (no fiber → no handlers →
+inert). Nothing inside the boundary suspends (no `useSearchParams` / `use()` / `lazy()` /
+`dynamic` anywhere in the LP tree or the store), so the wrapper is pointless.
+
+**Proof.** Temporarily removed both wrappers, rebuilt production, retested: the form now
+hydrates fully — parent is its correct `div#audit` slot (not `div#S:0`), honeypot has a
+fiber, the Radix Select opens, submit + the a11y announcement work. Then **reverted the
+experiment** (no fix committed — reporting before implementing).
+
+**Scope.** These are the only two `<Suspense fallback={null}>` in the whole codebase, both
+wrapping LpAuditForm; there is one landing route. Nothing else on the page or elsewhere uses
+the pattern; other interactivity (carousels, the `#audit` anchor) works.
+
+**Proposed fix (awaiting sign-off).** Remove the `<Suspense fallback={null}>` wrapper around
+`<LpAuditForm />` in `LpHero.jsx` and `LpAuditSection.jsx` (render it directly). Proven to
+restore hydration; the wrapper serves no purpose. This is a **pre-existing production bug**
+(reproduced with the original form via stash last session), independent of the Step-3 form
+migration.
+
 ### GTM is live on the production site (O7 context — recorded here, not lost in a commit)
 
 While verifying the forms I observed `gtm.formInteract` and `gtm.formSubmit` auto-events
