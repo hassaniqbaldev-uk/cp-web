@@ -79,6 +79,23 @@ Committed alone (`c86e629`) so it can be cherry-picked to production ahead of cu
 Component cleanup plan written to `step-3-component-cleanup-plan.md` (`b5e160d`), awaiting
 sign-off. Measured inventory: 33 sliders, 4 forms, 3 headers. No component work started.
 
+### Carousel pause control → visually hidden but keyboard/SR accessible (18 Aug 2026)
+
+The shared `CarouselAutoplayControl` (all autoplay carousels) is now visually hidden by
+default and appears on keyboard focus. Added one unlayered `.sr-only-focusable:not(:focus)`
+utility to `globals.css` (clip + 1px, **not** `display:none`/`visibility:hidden`) and the
+`sr-only-focusable` class to the shared button — implemented once, inherited everywhere.
+Nothing else changed: autoplay, `prefers-reduced-motion`, hover and touch behaviour are
+untouched. **WCAG 2.2 SC 2.2.2 still met** (control stays focusable + announced).
+
+Verified on a dev build against staging (mobile viewport, live carousel): resting state
+1×1 with `clip: rect(0,0,0,0)`, `display:flex`, `visibility:visible`, in the a11y tree;
+focused/revealed state 30×30 with `clip:auto` (its own `size-[3rem]`); activating the
+control stops autoplay (`swiper.autoplay.running: true → false`). The reveal-on-real-focus
+could not be shown through the automation pane (`document.hasFocus() === false`, so CSS
+`:focus` never matches programmatic focus) — an environment limit, confirmed by reproducing
+the exact `:focus` cascade via class removal.
+
 ---
 
 ## Step 1 — Site hygiene (D34), 12 August 2026

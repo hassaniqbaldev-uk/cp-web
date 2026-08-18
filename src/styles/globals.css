@@ -677,3 +677,24 @@
     z-index: -1;
   }
 }
+
+/*
+  Screen-reader-only-until-focus (WCAG 2.2 SC 2.2.2, Pause/Stop/Hide).
+  Used by CarouselAutoplayControl: the pause/play control is visually hidden but
+  STAYS in the accessibility tree and keyboard-focusable — this clips it rather
+  than using display:none / visibility:hidden, so it remains announced and
+  operable. When it receives focus this rule stops matching and the button's own
+  (visible, corner-positioned) styles apply, so it appears on keyboard focus.
+  Left UNLAYERED so it reliably wins over Tailwind's utility-layer classes.
+*/
+.sr-only-focusable:not(:focus) {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}

@@ -558,6 +558,17 @@ keyboard-inaccessible navigation is a live WCAG failure on a site that sells
 accessibility remediation at `/services/accessibility`, and the Radix disclosure that
 fixes it becomes the base for the rebuilt navigation.
 
+### Carousel pause control made visually hidden (recorded 18 August 2026)
+
+The Step-1 autoplay pause/play control (`CarouselAutoplayControl`, shared across all
+carousels) is now **visually hidden by default** and becomes visible on keyboard focus. It
+uses a screen-reader-only-until-focus pattern (`.sr-only-focusable` in `globals.css`:
+`clip`/1px, not `display:none`/`visibility:hidden`), so it stays in the accessibility tree,
+keyboard-focusable, and announced. **WCAG 2.2 SC 2.2.2 (Pause, Stop, Hide) remains met** —
+the mechanism to pause autoplay is still reachable and operable, just no longer shown as
+persistent chrome. One shared change; every carousel inherits it. Autoplay and
+reduced-motion handling are unchanged.
+
 ### Step 3 addition — navigation becomes data-driven (recorded 17 August 2026, CP-00K)
 
 Navigation is currently a **hardcoded constants file** (`src/contants/navigation.js`),
