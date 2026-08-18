@@ -157,11 +157,32 @@ All confirmed by Hassan, 12 August 2026.
 | O6 | Which industry pages survive: Interiors & Furnishings, Driving Schools, Pharmacies, Restaurants | Hassan | **Pulled forward by D28.** Now expressed as `hasPage` flags, so it is reversible and no longer blocks the migration |
 | O9 | Cal.com link views on the booking page. Did prospects click and abandon, or never click? See section 6 | Hassan | Whether D8 is the right fix |
 | O12 | Confirm no case-study taxonomy slug appears in a live URL before normalising the malformed ones | Claude Code | Slug normalisation step |
+| O13 | **Add the nav field DEFINITIONS to the separate Sanity Studio repo** so editors can set them. The field DATA is already populated on staging and the cp-web nav query reads it (title fallback), but the Studio schema lives outside cp-web. Spec below. | Whoever owns the Studio repo | Editors setting nav labels; full data-driven nav |
 
 Closed: O1 → D17. O2 → D14. O7 → D19. O10 → already scoped to the `cp-web` repo, no
 action required. **O3 → pricing approved for publication (18 Aug 2026; D9 superseded, see
 section 7).** **O5 → keep all 31 case studies; classify flagship / supporting / archive at
 CP-12 as a presentation decision, nothing deleted (see section 8).**
+
+### O13 — Sanity Studio nav fields (spec for the separate Studio repo)
+
+Data-driven navigation (Step 3) reads two optional fields per nav-surfaced document, with a
+`title` fallback. The **data** is already populated on the staging dataset (via the
+management API) and the cp-web query reads it; but the **field definitions** live in the
+Sanity **Studio project, which is not in the cp-web repo** — so this must be done by whoever
+owns that repo before editors can set the fields. Exact fields:
+
+| Field | Type | Notes |
+| --- | --- | --- |
+| `navLabel` | `string` (optional) | Short menu label. Menu wording ≠ page title on purpose ("Web Design & Development" is a good title, a clumsy menu item). Empty → falls back to `title`. |
+| `navExcerpt` | `string` (optional) | One-line menu descriptor, e.g. "Identity & Strategy". Empty → renders no descriptor. |
+
+Add both to the document types surfaced in the menu: **`services`**, **`solutions`**
+(goal), and **`industries`**. Recommended: also add **`navOrder`** (`number`, optional) so
+menu order is editor-controlled — the cp-web query currently sorts by `title`, which does
+NOT preserve the hand-curated column order in the old `navigation.js`; without `navOrder`
+the menu will render alphabetically. Until the Studio fields exist, editors cannot change
+these values, but the site renders correctly from the populated data + title fallback.
 
 ---
 

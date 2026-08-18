@@ -11,7 +11,7 @@ should be able to reconstruct the state of play from here.
 
 | Item | Value |
 | --- | --- |
-| Current task | **Step 3 in progress — forms COMPLETE** (all 4 on the shared core). Next: headers/nav (the Step-1-fragile surface — to be approached fresh). Sliders COMPLETE (30) |
+| Current task | **Step 3 in progress — data-driven nav DATA LAYER done** (query + fetch wired to headers; no DOM rewired). Awaiting review before rewiring the mega-menu DOM + header merge. Sliders ✅, forms ✅, LP lead-capture bug ✅ fixed |
 | Branch | `development`, reading the new project's **staging** dataset (`4m0eqoi1` / `staging`). Not merged to main |
 | Started | 12 August 2026 |
 | Sign-off authority | Hassan |
@@ -164,6 +164,45 @@ for the analytics build: our wired `enquiry_started` / `enquiry_submitted` event
 dataLayer now (the core's `track()` uses `gtag`/`dataLayer` when present). **Whether GTM
 forwards anything to GA4 remains open as O7** (reuse vs replace the property; direct vs via
 GTM — CP-00L). Do not assume events are landing in GA4 just because they reach the dataLayer.
+
+### Headers + data-driven nav — DATA LAYER done (checkpoint, awaiting review)
+
+Safe part first (same pattern as sliders/forms); the mega-menu DOM rewire + header merge
+come next as a separate pass.
+
+- **Schema source = Option B** (dedicated `navLabel` / `navExcerpt`, title fallback). The
+  Studio schema is **not in cp-web**, so the field DATA was populated on the staging docs
+  (20 patched: 15 nav services + 5 goal solutions, via the management API) and the query
+  reads it with a title fallback. Field DEFINITIONS for the Studio are recorded as **O13**
+  in `00-context.md` (a separate-repo task).
+- **`src/sanity/queries.nav.js`** (`NAV_QUERY`, `coalesce(navLabel, title)` /
+  `coalesce(navExcerpt, "")`) + **`src/sanity/nav.js`** (`getNavData()` — shapes into the
+  `designService` / `growthService` / `supportService` / `goalSolution` / `sectorSolution` /
+  `industries` arrays that mirror the old `navigation.js` constants, so the rewire is a
+  straight swap; returns empty arrays on failure).
+- **Wired server→client:** `(site)/layout.jsx` is now async and fetches `getNavData()`,
+  passing `navData` to `<Header>`; `(home)/page.jsx` fetches it and threads it through
+  `HomePage` to `<HomeHeader>`. Both headers accept `navData` but **do not consume it yet —
+  no nav markup changed.** LpHeader has no mega menu; MobileMenu/Footer/dropdowns get
+  threaded in the consume pass.
+- **Fallback proven** with fields empty (every doc's state before populate): labels → title,
+  excerpt → "". After populate, the 20 nav docs read their `navLabel`/`navExcerpt`; un-set
+  docs (ai-automation, industries) still fall back to title.
+
+**Link-set produced by the query vs `navigation.js` today** — nothing vanished; two things
+appeared, both handled:
+- **Services:** 15 in-menu services all present and matched (grouped by `category` into
+  design-development / growth / support). One extra doc — `ai-automation` — has no nav
+  `category`, so `getNavData()` leaves it out of the menu (it is a taxonomy-only stub that
+  404s; correct to omit).
+- **Goal solutions:** 5 / 5 exact match.
+- **Industries:** 4 `hasPage` industries now resolve (b2b-services, charities-and-foundation,
+  ecommerce-brands, saas-companies). They are **exposed as data but held OUT of the rendered
+  menu** (`sectorSolution: []`) — `/industries/<slug>` has no route until CP-08, so linking
+  them now would 404 (the fault we just fixed). CP-08 switches them on.
+- **Order caveat:** the query sorts by `title` (alphabetical); the old hand-curated column
+  order is not preserved without a `navOrder` field (recorded in O13). Order is a consume-pass
+  decision.
 
 ### Sliders — `Carousel` primitive built + proven (checkpoint, awaiting review)
 
