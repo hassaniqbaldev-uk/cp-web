@@ -4,10 +4,6 @@ import BlogCardImg1 from "@/assets/images/cards/blog-card-img-1.webp";
 import BlogCardImg2 from "@/assets/images/cards/blog-card-img-2.webp";
 import BlogCardImg3 from "@/assets/images/cards/blog-card-img-3.webp";
 import BlogCardImg4 from "@/assets/images/cards/blog-card-img-4.webp";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay, Pagination } from "swiper/modules";
-import "swiper/css";
-import "swiper/css/pagination";
 import { MotionEffect } from "@/components/effects/motion-effect";
 
 export const CardData = [
@@ -73,7 +69,9 @@ const Blog = ({ blogs }) => {
             ))}
           </div>
 
-          {/* Responsive */}
+          {/* Responsive — intentionally a sticky stacked list on mobile, NOT a
+              carousel. This is a deliberate layout choice; do not convert it to a
+              slider. */}
           <MotionEffect
             slide={{ direction: "down" }}
             fade
