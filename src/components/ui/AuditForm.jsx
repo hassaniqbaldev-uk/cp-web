@@ -18,6 +18,7 @@ const AuditForm = () => {
     name: "",
     service: "",
     primaryGoal: "",
+    website: "", // honeypot (distinct from the real websiteUrl field)
   });
   const [loading, setLoading] = useState(false);
   const [status, setStatus] = useState("");
@@ -29,6 +30,12 @@ const AuditForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (formData.website) {
+      // Bot detected. Pretend success, do nothing.
+      router.push("/thank-you");
+      return;
+    }
 
     if (!formData.websiteUrl || !formData.email) {
       setStatus("❌ Please fill in the required fields.");
@@ -76,6 +83,17 @@ const AuditForm = () => {
       }}
       className="flex w-full flex-col items-center justify-center overflow-hidden rounded-[2rem] border-t-8 border-[#FF37B3] bg-white px-[2.7rem] py-[4rem] md:w-[52.5rem]"
     >
+      {/* HoneyPot */}
+      <input
+        type="text"
+        name="website"
+        tabIndex={-1}
+        autoComplete="off"
+        value={formData.website || ""}
+        onChange={handleChange}
+        className="absolute left-[-9999px] h-0 w-0 opacity-0"
+        aria-hidden="true"
+      />
       {/* Header */}
       <div className="flex w-full flex-col gap-[1rem] border-b border-[#D6D6D6] pb-[2.5rem]">
         <h4 className="text-[2.6rem] leading-[3rem] font-bold tracking-[-0.02em] text-[#312749]">

@@ -15,6 +15,12 @@ export async function POST(req) {
     const message = formData.get("message");
     const portfolio = formData.get("portfolio");
     const resume = formData.get("resume");
+    const website = formData.get("website"); // honeypot
+
+    // Honeypot — silently succeed
+    if (website) {
+      return NextResponse.json({ success: true });
+    }
 
     // 2. Validate required fields
     if (!fullName || !email || !resume) {

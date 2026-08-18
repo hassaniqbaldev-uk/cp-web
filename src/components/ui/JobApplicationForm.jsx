@@ -17,6 +17,7 @@ const JobApplicationForm = ({
   const [dragOver, setDragOver] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [errors, setErrors] = useState({});
+  const [website, setWebsite] = useState(""); // honeypot
 
   //   Ref
   const fileInputRef = useRef(null);
@@ -79,6 +80,12 @@ const JobApplicationForm = ({
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    if (website) {
+      // Bot detected. Pretend success, do nothing.
+      setIsSubmitted(true);
+      return;
+    }
+
     const newErrors = validate();
     if (Object.keys(newErrors).length > 0) {
       setErrors(newErrors);
@@ -97,6 +104,7 @@ const JobApplicationForm = ({
       formData.append("portfolio", portfolio);
       formData.append("resume", resumeFile);
       formData.append("jobTitle", jobTitle);
+      formData.append("website", website); // honeypot
 
       const res = await fetch("/api/job-application", {
         method: "POST",
@@ -211,6 +219,17 @@ const JobApplicationForm = ({
 
         {/* Main */}
         <form onSubmit={handleSubmit}>
+          {/* HoneyPot */}
+          <input
+            type="text"
+            name="website"
+            tabIndex={-1}
+            autoComplete="off"
+            value={website}
+            onChange={(e) => setWebsite(e.target.value)}
+            className="absolute left-[-9999px] h-0 w-0 opacity-0"
+            aria-hidden="true"
+          />
           {/* Fields */}
           <div className="mt-[2.5rem] mb-[3rem] flex w-full flex-col items-start gap-[2.5rem]">
             {/* Full Name */}

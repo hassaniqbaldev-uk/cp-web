@@ -6,7 +6,12 @@ import nodemailer from "nodemailer";
 export async function POST(req) {
   try {
     const body = await req.json();
-    const { name, email, service, message } = body;
+    const { name, email, service, message, website } = body;
+
+    // Honeypot — silently succeed
+    if (website) {
+      return NextResponse.json({ success: true });
+    }
 
     // 1️⃣ Validate basic fields
     if (!name || !email || !service || !message) {
