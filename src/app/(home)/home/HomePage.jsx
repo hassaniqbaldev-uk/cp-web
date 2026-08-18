@@ -26,7 +26,7 @@ const CONTENT_VARIANTS = {
   },
 };
 
-const HomePage = ({ caseStudies }) => {
+const HomePage = ({ caseStudies, navData }) => {
   const [transition, setTransition] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
 
@@ -62,7 +62,7 @@ const HomePage = ({ caseStudies }) => {
   return (
     <>
       <div className="relative flex min-h-screen flex-col justify-center">
-        <HomeHeader transition={transition} />
+        <HomeHeader transition={transition} navData={navData} />
 
         <div
           style={{

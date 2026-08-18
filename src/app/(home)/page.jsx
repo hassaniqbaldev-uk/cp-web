@@ -1,5 +1,6 @@
 import { caseStudiesListingQuery } from "@/sanity/queries.caseStudies";
 import { caseStudiesClient } from "@/sanity/sanity.caseStudies";
+import { getNavData } from "@/sanity/nav";
 import HomePage from "./home/HomePage";
 
 const options = { next: { revalidate: 3600 } };
@@ -53,9 +54,11 @@ const SitePage = async () => {
     console.error("Failed to fetch case studies data:", error);
   }
 
+  const navData = await getNavData();
+
   return (
     <>
-      <HomePage caseStudies={caseStudies} />
+      <HomePage caseStudies={caseStudies} navData={navData} />
     </>
   );
 };
