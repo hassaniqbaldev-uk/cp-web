@@ -11,7 +11,7 @@ should be able to reconstruct the state of play from here.
 
 | Item | Value |
 | --- | --- |
-| Current task | **Step 3 component cleanup — PLAN written (`step-3-component-cleanup-plan.md`), awaiting sign-off.** No component work started |
+| Current task | **Step 3 in progress — sliders.** `Carousel` primitive built + proven on 2 sliders; awaiting review before rolling out to the remaining ~30. Forms and headers/nav not started |
 | Branch | `development`, reading the new project's **staging** dataset (`4m0eqoi1` / `staging`). Not merged to main |
 | Started | 12 August 2026 |
 | Sign-off authority | Hassan |
@@ -29,6 +29,38 @@ complete and Hassan signs off final cutover.
 - Keep `development` up to date with `main` as work proceeds; flag conflicts that need Hassan.
 - Keep this file current with every task.
 - At the end of each task, state plainly what is safe to review on staging and what is unfinished.
+
+---
+
+## Step 3 — component cleanup (in progress), August 2026
+
+Plan `step-3-component-cleanup-plan.md` approved as written (schema fields for nav labels,
+5–7 days, header merge + data-driven nav last). Working in order: **sliders → forms →
+headers/nav**, stopping after each for Hassan's review.
+
+### Sliders — `Carousel` primitive built + proven (checkpoint, awaiting review)
+
+- **New `src/components/ui/Carousel.jsx`** — shared primitive replacing the ~30
+  near-identical Swiper wrappers. Emits the same DOM/classes (`<Swiper className="mySwiper">`
+  + `<SwiperSlide>`), auto-derives modules, and **auto-renders `CarouselAutoplayControl` at
+  `slot="container-end"` whenever autoplay is on** — so every autoplay carousel inherits the
+  pause control, `prefers-reduced-motion` handling and the visually-hidden-until-focus
+  treatment by default, with no per-slider work. Slides via `items` + `renderItem` (raw
+  `<SwiperSlide>` children also accepted); outlier props (`effect`, `centeredSlides`) pass
+  through `swiperProps` / `extraModules`.
+- **Migrated 2 proof sliders:** `LightFeatureCardSlider1`, `TestimonialsSlider`. Public
+  props and slide markup unchanged.
+- **Verified** (dev build vs staging, mobile): the migrated slider emits `.swiper.mySwiper`
+  with slides carrying the exact `!flex !h-auto !justify-center px-…` classes, clickable
+  pagination (bullet count = slide count), autoplay running, and the pause control present
+  **with `sr-only-focusable`**. Build green.
+- **Not yet done:** the remaining ~29 slider migrations + the 2 outliers (`LpHeroSlider`
+  effect/centeredSlides; `Testimonials2` no-autoplay → primitive renders no control, correct).
+  Held for review of the primitive design before rollout.
+
+Variance measured across all 33: only `Testimonials2` lacks autoplay; only `LpHeroSlider`
+uses `effect`/`centeredSlides`; none use Swiper `navigation` arrows; the control is always
+`slot="container-end"`.
 
 ---
 
