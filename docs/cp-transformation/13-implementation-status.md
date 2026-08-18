@@ -11,7 +11,7 @@ should be able to reconstruct the state of play from here.
 
 | Item | Value |
 | --- | --- |
-| Current task | **Step 3 in progress — sliders.** `Carousel` primitive built + proven on 2 sliders; awaiting review before rolling out to the remaining ~30. Forms and headers/nav not started |
+| Current task | **Step 3 in progress — sliders COMPLETE.** All 30 sliders migrated to the `Carousel` primitive (7 batches). Forms next, then headers/nav |
 | Branch | `development`, reading the new project's **staging** dataset (`4m0eqoi1` / `staging`). Not merged to main |
 | Started | 12 August 2026 |
 | Sign-off authority | Hassan |
@@ -54,13 +54,50 @@ headers/nav**, stopping after each for Hassan's review.
   with slides carrying the exact `!flex !h-auto !justify-center px-…` classes, clickable
   pagination (bullet count = slide count), autoplay running, and the pause control present
   **with `sr-only-focusable`**. Build green.
-- **Not yet done:** the remaining ~29 slider migrations + the 2 outliers (`LpHeroSlider`
-  effect/centeredSlides; `Testimonials2` no-autoplay → primitive renders no control, correct).
-  Held for review of the primitive design before rollout.
+### Sliders — ALL 30 migrated (7 batches, each a separate commit)
 
-Variance measured across all 33: only `Testimonials2` lacks autoplay; only `LpHeroSlider`
-uses `effect`/`centeredSlides`; none use Swiper `navigation` arrows; the control is always
-`slot="container-end"`.
+Rollout complete. Every component that rendered a `<Swiper>` now renders `<Carousel>`;
+the real `<Swiper>` lives only in the primitive. 30 files import `Carousel`.
+
+| Batch | Commit | Sliders |
+| --- | --- | --- |
+| proof | `7b37389` | LightFeatureCardSlider1, TestimonialsSlider |
+| 1 cards | `d3c…`* | GlassFeatureCardSlider, LightFeatureCardSlider2, Expertise2Slider, Expertise3Slider, Values2Slider |
+| 2 testimonials | — | Testimonials2Slider, LpTestimonialSlider |
+| 3a | — | DifferenceSlider, DifferenceSlider2, PartnerWithUs2Slider, PoliciesSlider, ResourcesSlider |
+| 3b | — | SectorSlider, SupportSlider, WorkSlider, LpResultSlider, LpServicesSlider |
+| 4 heroes | — | AboutHeroSlider, CaseStudiesHeroSlider, ContactHeroSlider |
+| 5 process | — | ProcessSlider, Process3Slider, Process4Slider, LpProcessSection |
+| 6 sections | — | Options, Methodology, ClientOverview |
+| 7 outlier | — | LpHeroSlider |
+
+*(exact hashes in `git log`; batches committed sequentially after `7b37389`.)*
+
+**Corrections to the earlier count (rule #6 — flagged, not forced):**
+- There are **30** sliders, not 32. The earlier "33 Swiper files / 32 autoplay + 1
+  non-autoplay" counted non-sliders.
+- **`Testimonials2.jsx` is NOT a slider** — it renders `<Testimonials2Slider>` (already
+  migrated) inside a bento section. So there is **no non-autoplay slider**; every one of
+  the 30 uses autoplay and therefore carries the inherited control. The primitive's
+  "autoplay off → no control" branch is correct by construction but currently unused.
+- **`Blog.jsx` is NOT a slider** — it imports Swiper but renders a sticky stacked list on
+  mobile (no `<Swiper>`). Its swiper imports (lines 7–10) are dead. Left untouched pending
+  Hassan's decision (remove dead imports vs make it a real carousel).
+
+**Outliers handled via props (fit the primitive, not special-cased):** `LpHeroSlider`
+(fractional slidesPerView + `centeredSlides` via `swiperProps`), `LpResultSlider`
+(`allowTouchMove`/`simulateTouch`/`slideToClickedSlide` via `swiperProps`), `AboutHeroSlider`
+(custom className + `onSwiper` for its arrows), the Difference sliders (no pagination,
+spaceBetween 10), Options (767-only breakpoint). None use Swiper `navigation` arrows; the
+control is always `slot="container-end"`.
+
+**Verification:** build green after every batch. Browser spot-check (dev vs staging) of the
+visually-distinct ones — `/about` AboutHeroSlider (custom arrows + no pagination, 6 slides),
+`/case-studies` CaseStudiesHeroSlider (3 slides + pagination), `/services/wordpress` mobile
+(4 sliders incl. Options/Methodology/Expertise3/PartnerWithUs2), `/how-we-work` process
+slider — every carousel had the pause control with `sr-only-focusable`, pagination bullets =
+slide count, autoplay running; 0 controls missing the treatment. The remaining standard-shape
+sliders were taken on trust (build-verified + DOM-identical by construction).
 
 ---
 
