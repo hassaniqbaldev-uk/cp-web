@@ -32,6 +32,7 @@ export default function Form({
   onSuccess,
   onError,
   analyticsForm, // label sent as GA4 `form` param, e.g. "contact"
+  enquiryEvents = true, // fire enquiry_started/submitted; set false for non-enquiry forms
   className = "",
   style,
   children,
@@ -52,7 +53,7 @@ export default function Form({
   });
 
   const markStarted = () => {
-    if (startedRef.current) return;
+    if (!enquiryEvents || startedRef.current) return;
     startedRef.current = true;
     track(
       ANALYTICS_EVENTS.ENQUIRY_STARTED,
@@ -114,10 +115,12 @@ export default function Form({
       const data = await res.json().catch(() => ({}));
 
       if (data.success) {
-        track(
-          ANALYTICS_EVENTS.ENQUIRY_SUBMITTED,
-          analyticsForm ? { form: analyticsForm } : {},
-        );
+        if (enquiryEvents) {
+          track(
+            ANALYTICS_EVENTS.ENQUIRY_SUBMITTED,
+            analyticsForm ? { form: analyticsForm } : {},
+          );
+        }
         onSuccess?.(data);
       } else {
         setAnnouncement("Failed to send. Please try again later.");
