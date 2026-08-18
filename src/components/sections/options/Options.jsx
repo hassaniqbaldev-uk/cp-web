@@ -4,11 +4,7 @@ import CheckMarkIcon3 from "@/components/icons/CheckMarkIcon3";
 import PrimaryButton from "@/components/ui/PrimaryButton";
 import SectionDescription from "@/components/ui/SectionDescription";
 import SectionTitle from "@/components/ui/SectionTitle";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay, Pagination } from "swiper/modules";
-import "swiper/css";
-import "swiper/css/pagination";
-import CarouselAutoplayControl from "@/components/ui/CarouselAutoplayControl";
+import Carousel from "@/components/ui/Carousel";
 
 export const pricingCards = [
   {
@@ -189,84 +185,62 @@ const Options = ({ service }) => {
 
           {/* Responsive */}
           <div className="block w-full xl:hidden">
-            <Swiper
-              pagination={{ clickable: true }}
-              modules={[Pagination, Autoplay]}
-              loop={true}
-              autoplay={{
-                delay: 2500,
-                disableOnInteraction: false,
-              }}
-              slidesPerView={1}
-              spaceBetween={0}
+            <Carousel
+              items={service.pricingCard}
               breakpoints={{
-                767: {
-                  slidesPerView: 2,
-                  spaceBetween: 0,
-                },
+                767: { slidesPerView: 2, spaceBetween: 0 },
               }}
-              className="mySwiper"
-            >
-              {service.pricingCard.map((card, idx) => {
+              slideClassName="!flex !h-auto !items-center !justify-center px-[1rem] pb-[10rem]"
+              renderItem={(card, idx) => {
                 const theme = getThemeColor(idx);
 
                 return (
-                  <SwiperSlide
-                    key={idx}
-                    className="!flex !h-auto !items-center !justify-center px-[1rem] pb-[10rem]"
+                  <div
+                    style={{ background: theme.color }}
+                    className="flex size-full flex-col items-start gap-[2.5rem] rounded-[3rem] px-[3rem] py-[4rem]"
                   >
-                    <div
-                      style={{ background: theme.color }}
-                      className="flex size-full flex-col items-start gap-[2.5rem] rounded-[3rem] px-[3rem] py-[4rem]"
-                    >
-                      <div className="flex w-full flex-col items-start">
-                        <span className="text-[1.8rem] font-bold tracking-[-0.02em] text-white uppercase">
-                          {card.tag}
-                        </span>
+                    <div className="flex w-full flex-col items-start">
+                      <span className="text-[1.8rem] font-bold tracking-[-0.02em] text-white uppercase">
+                        {card.tag}
+                      </span>
 
-                        <span className="mt-[1rem] mb-[.5rem] text-[1.6rem] leading-[2.4rem] text-white">
-                          {card.category}
-                        </span>
+                      <span className="mt-[1rem] mb-[.5rem] text-[1.6rem] leading-[2.4rem] text-white">
+                        {card.category}
+                      </span>
 
-                        <h4 className="text-[4.8rem] leading-[6rem] font-bold text-white">
-                          {card.price}
-                        </h4>
+                      <h4 className="text-[4.8rem] leading-[6rem] font-bold text-white">
+                        {card.price}
+                      </h4>
 
-                        <p className="text-[1.6rem] leading-[2.4rem] text-white">
-                          {card.description}
-                        </p>
+                      <p className="text-[1.6rem] leading-[2.4rem] text-white">
+                        {card.description}
+                      </p>
 
-                        <hr className="my-[2rem] w-full border-t border-[#E4E3E8]" />
+                      <hr className="my-[2rem] w-full border-t border-[#E4E3E8]" />
 
-                        <ul className="flex flex-col gap-[.5rem]">
-                          {card.features.map((feature, i) => (
-                            <li
-                              key={i}
-                              className="inline-flex items-center gap-[1rem] text-[1.6rem] font-bold text-white"
-                            >
-                              <CheckMarkIcon
-                                color="#ffffff"
-                                width="17"
-                                height="17"
-                              />
-                              <span>{feature.label}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-
-                      <PrimaryButton
-                        href="/contact"
-                        text="Request Proposal"
-                        bGcolor="#ffffff"
-                        textColor={theme.color}
-                      />
+                      <ul className="flex flex-col gap-[.5rem]">
+                        {card.features.map((feature, i) => (
+                          <li
+                            key={i}
+                            className="inline-flex items-center gap-[1rem] text-[1.6rem] font-bold text-white"
+                          >
+                            <CheckMarkIcon color="#ffffff" width="17" height="17" />
+                            <span>{feature.label}</span>
+                          </li>
+                        ))}
+                      </ul>
                     </div>
-                  </SwiperSlide>
+
+                    <PrimaryButton
+                      href="/contact"
+                      text="Request Proposal"
+                      bGcolor="#ffffff"
+                      textColor={theme.color}
+                    />
+                  </div>
                 );
-              })}
-              <CarouselAutoplayControl slot="container-end" />
-            </Swiper>
+              }}
+            />
           </div>
         </div>
       </section>

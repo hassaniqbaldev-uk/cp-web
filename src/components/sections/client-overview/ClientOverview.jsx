@@ -2,10 +2,7 @@
 import Image from "next/image";
 import { urlFor } from "@/sanity/caseStudies.image";
 import { MotionEffect } from "@/components/effects/motion-effect";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay } from "swiper/modules";
-import "swiper/css";
-import CarouselAutoplayControl from "@/components/ui/CarouselAutoplayControl";
+import Carousel from "@/components/ui/Carousel";
 
 const ClientOverview = ({ caseStudy }) => {
   return (
@@ -130,26 +127,22 @@ const ClientOverview = ({ caseStudy }) => {
           >
             <div className="mt-[5rem] w-full overflow-hidden rounded-[1rem] md:rounded-[3rem]">
               {caseStudy.clientOverview.cardImage?.length > 1 ? (
-                <Swiper
-                  modules={[Autoplay]}
-                  loop={true}
-                  autoplay={{ delay: 3000, disableOnInteraction: false }}
+                <Carousel
+                  items={caseStudy.clientOverview.cardImage}
                   className="w-full"
-                >
-                  {caseStudy.clientOverview.cardImage.map((img, idx) => (
-                    <SwiperSlide key={idx}>
-                      <Image
-                        src={urlFor(img).width(1200).height(600).url()}
-                        alt={`${caseStudy.clientOverview.title} slide ${idx + 1}`}
-                        width={1200}
-                        height={600}
-                        unoptimized
-                        className="size-full object-cover object-center"
-                      />
-                    </SwiperSlide>
-                  ))}
-                  <CarouselAutoplayControl slot="container-end" />
-                </Swiper>
+                  pagination={false}
+                  autoplay={{ delay: 3000, disableOnInteraction: false }}
+                  renderItem={(img, idx) => (
+                    <Image
+                      src={urlFor(img).width(1200).height(600).url()}
+                      alt={`${caseStudy.clientOverview.title} slide ${idx + 1}`}
+                      width={1200}
+                      height={600}
+                      unoptimized
+                      className="size-full object-cover object-center"
+                    />
+                  )}
+                />
               ) : (
                 <Image
                   src={urlFor(caseStudy.clientOverview.cardImage?.[0])
