@@ -103,7 +103,7 @@ All confirmed by Hassan, 12 August 2026.
 | D6 | Manchester handled as entity signals only | Signals live in About, Contact and Organization schema. No local landing page |
 | D7 | CTA split confirmed | Short button label, long phrase demoted to enquiry step heading. See section 6 |
 | D8 | Book a Call demoted | Zero bookings in the last 12 months. Removed from page-level CTAs |
-| D9 | Pricing deferred | Investment module must be designed to work without numbers. See section 7 |
+| D9 | Pricing deferred — **SUPERSEDED 18 Aug 2026**; pricing approved for publication (O3 closed) | Investment module keeps contextual framing, now with published figures. See section 7 |
 | D10 | No verified case study outcome metrics exist | Proof is qualitative and delivery-fact based only. See section 8 |
 | D11 | All work is free to publish, no white label restrictions | No client anonymisation required |
 | D12 | Warranty is 3 months free post-launch support | Wording must align to the legal hub document. See section 9 |
@@ -153,15 +153,15 @@ All confirmed by Hassan, 12 August 2026.
 | --- | --- | --- | --- |
 | **O8** | **Content platform consolidation. Recommendation is Option A, validated at 8–10 days.** See `CP-00K-content-platform-decision.md` | **Hassan** | **CP-01 onward** |
 | **O11** | **Taxonomy reconciliation ruleset. Must be approved before migration scripting.** See `CP-00K-taxonomy-reconciliation.md` | **Hassan** | **The O8 migration itself** |
-| O3 | When does pricing get published, and at what figures? | Hassan | CP-11 investment module content |
-| O4 | Will clients be approached for outcome data? Recommended, and drives flagship quality | Hassan | CP-12, Phase 7 |
-| O5 | Which of the 31 existing case studies get archived | Hassan, after CP-01 | CP-12 |
+| O4 | Approach clients for real outcome data. **DECIDED 18 Aug 2026: yes — collecting; no estimating.** Until the data returns, proof is delivery facts + testimonials only (section 8). **Stays open until the data lands** (for CP-12). | Hassan / data collection | CP-12 flagship quality |
 | O6 | Which industry pages survive: Interiors & Furnishings, Driving Schools, Pharmacies, Restaurants | Hassan | **Pulled forward by D28.** Now expressed as `hasPage` flags, so it is reversible and no longer blocks the migration |
 | O9 | Cal.com link views on the booking page. Did prospects click and abandon, or never click? See section 6 | Hassan | Whether D8 is the right fix |
 | O12 | Confirm no case-study taxonomy slug appears in a live URL before normalising the malformed ones | Claude Code | Slug normalisation step |
 
 Closed: O1 → D17. O2 → D14. O7 → D19. O10 → already scoped to the `cp-web` repo, no
-action required.
+action required. **O3 → pricing approved for publication (18 Aug 2026; D9 superseded, see
+section 7).** **O5 → keep all 31 case studies; classify flagship / supporting / archive at
+CP-12 as a presentation decision, nothing deleted (see section 8).**
 
 ---
 
@@ -238,24 +238,31 @@ regardless.
 
 ## 7. Pricing
 
-Deferred (D9). This still has build consequences, so the investment module is
-specified now:
+**Approved for publication — O3 closed, 18 August 2026 (supersedes D9).** Pricing is
+published using **contextual framing, not a price menu**: a scope statement plus a line on
+what changes the price. Not a bargain menu, not a comparison table.
 
-- It must be designed to read correctly with no figures present, not built with a
-  gap to retrofit across nine P1 pages later.
-- Use contextual framing, not a bargain menu. Pattern: a scope statement plus a
-  "what changes the price" line.
-- Example with no number: *Scope depends on platform, integrations, catalogue
-  complexity and functionality.*
-- When figures are approved, they drop into a single content source, not nine
-  hardcoded page templates.
+Published starting figures (from the original brief):
 
-Indicative internal figures from the original brief, **not approved for
-publication**: Branding £1,000, Web Design & Development £1,500, Ecommerce £3,500,
-Growth retainers £300/month, Custom App Development £5,000, AI & Automation ~£1,500.
+| Service | Starting price | Framing pattern (scope + what moves the price) |
+| --- | --- | --- |
+| Branding | from £1,000 | e.g. "Branding from £1,000 — logo-and-essentials through to a full identity system." |
+| Web Design & Development | from £1,500 | "Web projects from £1,500 — from focused business websites through to larger custom builds." |
+| Ecommerce | from £3,500 | scope by platform, catalogue size and integrations |
+| Growth retainers | from £300/month | scope by channels and scope of work |
+| Custom App Development | from £5,000 | scope by features, integrations and complexity |
+| AI & Automation | from ~£1,500 | scope by workflow complexity and integrations |
 
-Payment options are publishable: staged project payments, and monthly arrangements
-where appropriate.
+(Exact framing copy is CP-11 content work; the pattern above is the rule.)
+
+Build rules (binding):
+- **Contextual framing** — scope statement + a "what changes the price" line per service.
+- Figures live in a **single content source**, never hardcoded across service pages / the
+  nine P1 templates. One edit updates every surface.
+- The investment module must still read correctly if a figure is absent for a given service.
+
+Payment options are publishable: staged project payments, and monthly arrangements where
+appropriate.
 
 ---
 
@@ -312,8 +319,19 @@ capabilities, invented security or compliance claims. This includes non-numeric
 claims that merely sound plausible. A fabricated qualitative fact is harder to
 detect later than a fabricated number and does the same damage.
 
-If outcome data is wanted for flagship case studies, it has to be requested from
-clients. See O4.
+**O4 decision (18 August 2026): outcome data is being collected, NOT estimated.** Clients
+will be approached for real outcome figures, landing in time for CP-12. **Until that data
+exists, no estimated, assumed or realistic-sounding improvement figures go into any case
+study or page** — no invented percentages, no plausible-looking uplift claims, no "typical
+results" phrasing. An estimate that sounds realistic is harder to catch later than an
+obvious placeholder, and in six months neither we nor anyone else will be able to tell it
+from real data. Until the data returns, **proof is delivery facts + existing testimonials
+only** (the two strongest, largely untapped sources above). **O4 stays open** until the
+data comes back.
+
+**O5 decision (18 August 2026): keep all 31 case studies — nothing is deleted.**
+Classification into flagship / supporting / archive happens at CP-12 as a **presentation**
+decision, not a deletion.
 
 ### Client relationship accuracy
 
