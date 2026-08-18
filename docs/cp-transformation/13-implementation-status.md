@@ -129,6 +129,32 @@ restore hydration; the wrapper serves no purpose. This is a **pre-existing produ
 (reproduced with the original form via stash last session), independent of the Step-3 form
 migration.
 
+**FIXED — `0a3c282` (18 Aug 2026).** Both wrappers removed (and their now-unused Suspense
+imports). Verified in a **production build** (`next build` + `next start`): LpAuditForm
+hydrates in its correct `#audit` slot (fiber present), the Radix Select opens, invalid
+submit announces "Please enter your name." and moves focus, `enquiry_started` fires, the
+honeypot is present, and the page's carousels / `#audit` anchor / Cal.com are unaffected.
+(A full valid submit to `/api/lp-audit` could not be scripted because the Radix Select
+selection does not register under synthetic events — a harness limit, not a form fault; the
+identical core is fully submit-verified on ContactForm and AuditForm.)
+
+**Commercial impact (on the record).** `/wordpress-web-development` is a **paid-traffic
+landing page** in the brief — traffic is bought to it specifically to capture WordPress-audit
+leads. Before this fix the form on that page was **non-functional in production**: visitors
+(including paid clicks) could not submit an audit request, so **every lead on that page was
+being lost**. This was live, silent, and predates the Step-3 work. The fix restores lead
+capture.
+
+**Other three forms — production re-check (dev hid the LP fault, so all were retested in a
+production build):** all hydrate and validate — none dead.
+- **ContactForm** (`/contact`): fiber ✓, Radix opens ✓, honeypot ✓, invalid announces +
+  focuses `name` ✓.
+- **AuditForm** (`/audit`): fiber ✓, Radix opens ✓, honeypot distinct from real `websiteUrl`
+  ✓, invalid announces + focuses `website-url` ✓.
+- **JobApplicationForm** (`/careers` modal): fiber ✓, modal opens ✓, honeypot ✓, labels
+  associated ✓, invalid announces + focuses `fullName` ✓ (multipart file upload already
+  submit-verified).
+
 ### GTM is live on the production site (O7 context — recorded here, not lost in a commit)
 
 While verifying the forms I observed `gtm.formInteract` and `gtm.formSubmit` auto-events
