@@ -11,7 +11,7 @@ should be able to reconstruct the state of play from here.
 
 | Item | Value |
 | --- | --- |
-| Current task | **Step 3 in progress — forms.** Shared `Form` core built + proven on ContactForm; awaiting review before migrating the other 3. Headers/nav after. Sliders COMPLETE (30 migrated) |
+| Current task | **Step 3 in progress — forms COMPLETE** (all 4 on the shared core). Next: headers/nav (the Step-1-fragile surface — to be approached fresh). Sliders COMPLETE (30) |
 | Branch | `development`, reading the new project's **staging** dataset (`4m0eqoi1` / `staging`). Not merged to main |
 | Started | 12 August 2026 |
 | Sign-off authority | Hassan |
@@ -72,8 +72,40 @@ dropzone, differing buttons/success flows) — a design change, not a refactor. 
 piece is a **headless core** (logic + honeypot + a11y + GA4), and each form keeps its
 markup. Confirm this shape before the remaining three are migrated.
 
-**Not yet done (held for review):** AuditForm (real `websiteUrl` field alongside the
-honeypot), LpAuditForm, JobApplicationForm (multipart + file upload + modal-close success).
+**All four forms migrated (separate commits):** ContactForm (`e383c87`), AuditForm
+(`ffc260b`), LpAuditForm (`fc3ee93`), JobApplicationForm (`d62ec45`). Every form now
+inherits the honeypot, a11y and (where applicable) GA4 from the core, with markup,
+endpoints, validation and success behaviour preserved.
+
+- **AuditForm:** the real `websiteUrl` field and the injected `website` honeypot stay
+  distinct — verified by submitting: payload `{ websiteUrl: "<value>", website: "" }`, a
+  filled websiteUrl does not trigger the honeypot. Fixed its `htmlFor="revenue-range"` label.
+- **JobApplicationForm:** multipart **file upload verified by submitting** — the FormData
+  carries `resume` as a real File (name/type/size) + fields + jobTitle + `website:""`. Fixed
+  all its labels (originals had no `htmlFor`/`id`). Added `enquiryEvents={false}` to the core
+  so a job application does not pollute the enquiry funnel (it is not a sales enquiry).
+- **LpAuditForm:** migrated and build-clean, but see the flagged pre-existing issue below.
+
+**Verified by submitting vs taken on trust (rule #5):**
+- Submitted (fetch stubbed, no real email/upload): **ContactForm**, **AuditForm**,
+  **JobApplicationForm** (incl. the file upload).
+- Not submitted — **LpAuditForm**: on `/wordpress-web-development` its subtree does not
+  hydrate in dev (honeypot input has **no React fiber**, the Radix Select will not open),
+  while the page's carousels do run. **Confirmed pre-existing, not caused by the migration**:
+  stashing the migration reproduced the exact same non-interactivity with the ORIGINAL
+  form. `useServiceStore` is a plain zustand `create()` with no persist, so it is not the
+  cause. Root cause open (dev-only Turbopack artifact vs a real bailout). **Needs a separate
+  look** — if it reproduces in a production build, the LP audit form is non-functional today.
+
+### GTM is live on the production site (O7 context — recorded here, not lost in a commit)
+
+While verifying the forms I observed `gtm.formInteract` and `gtm.formSubmit` auto-events
+firing into `window.dataLayer`, and `window.gtag` is a function. **A dataLayer / GTM
+container is already active on the site and auto-tracking form events today.** This matters
+for the analytics build: our wired `enquiry_started` / `enquiry_submitted` events reach the
+dataLayer now (the core's `track()` uses `gtag`/`dataLayer` when present). **Whether GTM
+forwards anything to GA4 remains open as O7** (reuse vs replace the property; direct vs via
+GTM — CP-00L). Do not assume events are landing in GA4 just because they reach the dataLayer.
 
 ### Sliders — `Carousel` primitive built + proven (checkpoint, awaiting review)
 
