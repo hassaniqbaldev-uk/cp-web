@@ -3,11 +3,7 @@ import { LP_PROCESS_CARD } from "@/contants";
 import { MotionEffect } from "../effects/motion-effect";
 import SectionDescription from "../ui/SectionDescription";
 import PrimaryButton from "./LpPrimaryButton";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay, Pagination } from "swiper/modules";
-import "swiper/css";
-import "swiper/css/pagination";
-import CarouselAutoplayControl from "@/components/ui/CarouselAutoplayControl";
+import Carousel from "@/components/ui/Carousel";
 
 const LpProcessSection = () => {
   return (
@@ -79,75 +75,51 @@ const LpProcessSection = () => {
 
           {/* Responsive */}
           <div className="block w-full xl:hidden">
-            <Swiper
-              pagination={{ clickable: true }}
-              modules={[Pagination, Autoplay]}
-              loop={true}
-              autoplay={{
-                delay: 2500,
-                disableOnInteraction: false,
-              }}
-              slidesPerView={1}
-              spaceBetween={0}
+            <Carousel
+              items={LP_PROCESS_CARD}
               breakpoints={{
-                767: {
-                  slidesPerView: 2,
-                  spaceBetween: 0,
-                },
-                1024: {
-                  slidesPerView: 3,
-                  spaceBetween: 0,
-                },
+                767: { slidesPerView: 2, spaceBetween: 0 },
+                1024: { slidesPerView: 3, spaceBetween: 0 },
               }}
-              className="mySwiper"
-            >
-              {LP_PROCESS_CARD.map((item, idx) => (
-                <SwiperSlide
-                  key={idx}
-                  className="!flex !h-auto !justify-center pt-[8rem] pb-[5rem]"
-                >
-                  <div
-                    key={item.step}
-                    className="flex h-full w-full flex-col items-center gap-[3.8rem]"
-                  >
-                    <div className="relative flex w-full justify-center">
-                      <hr className="absolute top-1/2 z-[0] w-full -translate-y-1/2 border-t border-black/30" />
-
-                      <div
-                        style={{
-                          boxShadow: item.boxShadow,
-                          backgroundColor: item.color,
-                        }}
-                        className="relative z-[1] inline-flex size-[7.9rem] items-center justify-center rounded-[1.6rem] text-center text-[3.5rem] font-extrabold tracking-[-0.02em] text-white"
-                      >
-                        0{item.step}
-                      </div>
-                    </div>
+              slideClassName="!flex !h-auto !justify-center pt-[8rem] pb-[5rem]"
+              renderItem={(item) => (
+                <div className="flex h-full w-full flex-col items-center gap-[3.8rem]">
+                  <div className="relative flex w-full justify-center">
+                    <hr className="absolute top-1/2 z-[0] w-full -translate-y-1/2 border-t border-black/30" />
 
                     <div
                       style={{
-                        borderColor: item.color,
+                        boxShadow: item.boxShadow,
+                        backgroundColor: item.color,
                       }}
-                      className="lp-process-card flex flex-col justify-center gap-[3.5rem] border py-[3rem]"
+                      className="relative z-[1] inline-flex size-[7.9rem] items-center justify-center rounded-[1.6rem] text-center text-[3.5rem] font-extrabold tracking-[-0.02em] text-white"
                     >
-                      <div className="flex h-full flex-col items-center px-[2.8rem] text-center">
-                        <h5
-                          style={{ color: item.color }}
-                          className="mb-[8px] text-[1.8rem] leading-[2.6rem] font-bold"
-                        >
-                          {item.title}
-                        </h5>
-
-                        <p className="text-[1.6rem] leading-[2.4rem] font-normal text-[#312749]">
-                          {item.description}
-                        </p>
-                      </div>
+                      0{item.step}
                     </div>
                   </div>
-                </SwiperSlide>
-              ))}
-              <CarouselAutoplayControl slot="container-end" />
-            </Swiper>
+
+                  <div
+                    style={{
+                      borderColor: item.color,
+                    }}
+                    className="lp-process-card flex flex-col justify-center gap-[3.5rem] border py-[3rem]"
+                  >
+                    <div className="flex h-full flex-col items-center px-[2.8rem] text-center">
+                      <h5
+                        style={{ color: item.color }}
+                        className="mb-[8px] text-[1.8rem] leading-[2.6rem] font-bold"
+                      >
+                        {item.title}
+                      </h5>
+
+                      <p className="text-[1.6rem] leading-[2.4rem] font-normal text-[#312749]">
+                        {item.description}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              )}
+            />
           </div>
 
           <div className="mt-[6rem] flex justify-center">
