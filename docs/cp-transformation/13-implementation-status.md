@@ -32,31 +32,34 @@ complete and Hassan signs off final cutover.
 
 ---
 
-## Biome4Pets case study — approved, BLOCKED on the draft copy (18 August 2026)
+## Biome4Pets case study — CREATED as a staging draft (18 August 2026)
 
-Hassan approved creating the Biome4Pets case study in staging (first proof under the **AI &
-Automation** pillar, which has none). **BLOCKED:** the referenced "attached draft copy" did
-**not** reach this session — no file, and the message body carries the facts but not the
-draft prose or its "five things to collect" list. Per the standing no-invention doctrine
-(named client), the case study is **not created** until the draft arrives; I will not
-compose narrative from bare facts.
+First (and currently only) proof under the **AI & Automation** pillar. Created from Hassan's
+supplied draft (`biome4pets-case-study-draft.md`) — **verbatim, nothing invented**.
 
-**Confirmed facts available (from Hassan's message — the ONLY facts usable, nothing added):**
-- Client: **Biome4Pets** — publishable, happy to be named; provides pet microbiome testing.
-- What we built: a **custom application** that converts laboratory medical results into
-  structured data, uses **AI** to analyse and interpret it, then uses **AI** to improve the
-  written reports.
-- Metric (the only one; do not add others): **200 reports previously took 3 days, now take
-  1 day** — observed by us and confirmed by the client.
-- No confidentiality restrictions.
-- Services to reference: **ai-automation** + **custom-app-development**.
+- **`drafts.biome4pets`** created in the staging dataset (Sanity **draft**, not published).
+  Deliberately a draft: it's "for Hassan's review", and a draft is excluded from the site's
+  published perspective, so it does **not** render on the staging build (which also avoids an
+  image-less render break) while being fully visible/editable in the Studio. `caseStudies`
+  type; field shapes matched to an existing study (descriptions are plain strings, points are
+  string arrays).
+- **Mapped from the draft:** title "Biome4Pets"; slug `biome4pets`; seo metaTitle/description
+  (draft's suggested metadata); clientOverview (Client context), theChallenge, ourApproach
+  (What We Delivered — with the 3 delivery stages as points), theSolution (Outcome + "why this
+  matters" merged). Services reference **ai-automation** (primary) + **custom-app-development**
+  (secondary) — both resolve. The one metric (200 reports 3d→1d) stated once, as the draft
+  directs. No percentages, no "AI-powered", no accuracy claim — per the draft's wording notes.
 
-**Outstanding — needed before/for creation (record, do not fill in):**
-- The **draft copy** itself (prose + structure) — not received.
-- The draft's **"five things worth collecting" from the client** — not received; cannot be
-  recorded until the draft is provided. (Likely candidates the message says NOT to invent: a
-  client quote, a technology list, a timeline, any additional metric — plus a 5th in the
-  draft.)
+**Outstanding — to collect from the client before publishing (from the draft; NOT invented):**
+1. **A client quote** (1–2 sentences) — the single biggest gap.
+2. **The technology used** — so the AI & Automation page's tech grid has something real.
+3. **What the old process actually involved** — who wrote the reports, and how.
+4. **Report volume since launch** — growth would be the stronger commercial point.
+5. **Timeline** — how long the build took.
+
+Plus, to render/publish: **images and brand colours** (thumbnail, hero, section images,
+primary/secondary colour) — none were in the draft; the doc has `hasImages: false`. These are
+content-completion items for the Studio, separate from the 5 client-facts above.
 
 ---
 
