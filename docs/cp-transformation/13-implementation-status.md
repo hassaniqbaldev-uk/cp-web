@@ -11,7 +11,7 @@ should be able to reconstruct the state of play from here.
 
 | Item | Value |
 | --- | --- |
-| Current task | **CP-01 — URL/content/intent audit COMPLETE (19 Aug 2026).** All sections in `03-url-audit.md` §6–§11: services, solutions, case studies (9/20/2), blog (re-pillar for CP-14), legal, static (About rewrite + date-inconsistency fix). 14 approved service meta descriptions **written to staging** (security blank pending O14; 2 hubs done in code). D38/D39 recorded; O16/O17 opened. **Awaiting review; next phase TBD by Hassan.** |
+| Current task | **CP-02 — future sitemap on paper, COMPLETE, awaiting review** (`04-information-architecture.md`). Full route inventory + redirect map + 7-item nav (reconstructed, flagged) + brief-now-outdated list + open decisions. Nothing implemented. Preceded by: O13 CLOSED (nav fields verified), O16 inspected (6/7 drafts are Casa Botanica stubs; ivy-and-duke SEO completed as draft), CP-01 COMPLETE (`03-url-audit.md` §6–§11). |
 | Branch | `development`, reading the new project's **staging** dataset (`4m0eqoi1` / `staging`). Not merged to main |
 | Started | 12 August 2026 |
 | Sign-off authority | Hassan |
@@ -29,6 +29,20 @@ complete and Hassan signs off final cutover.
 - Keep `development` up to date with `main` as work proceeds; flag conflicts that need Hassan.
 - Keep this file current with every task.
 - At the end of each task, state plainly what is safe to review on staging and what is unfinished.
+
+---
+
+## CP-02 — future information architecture on paper (19 August 2026)
+
+Wrote `04-information-architecture.md`: the complete future sitemap for Hassan's approval. Every
+route with purpose / pillar / parent / status; the redirect map (custom-apps-and-ai split,
+scale-marketing merge, ecommerce-brands + 8 industry-solutions → industries, agencies →
+partner-with-us, LP retired, test routes removed); the four-pillar → services grouping (incl. the 2
+NEW CP-05 pages); a **reconstructed 7-item nav with an explicit flag** that the exact seven are not
+recorded and must be confirmed (the Book-a-Call-vs-D8 tension is the key open point); a list of **10
+places the brief is now out of date**; and the open decisions this surfaces (ppc slug, ongoing-G&S
+slug, security/O14, migrations/accessibility pillar homes, industries set, O15). **Nothing
+implemented — no routes, redirects, middleware or content.** Awaiting review.
 
 ---
 
