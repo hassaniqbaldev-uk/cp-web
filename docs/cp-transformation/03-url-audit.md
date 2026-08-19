@@ -250,3 +250,90 @@ normalising at CP-15.
 
 Full per-URL titles and descriptions (the exact current metadata for continuity
 verification at CP-15) are in `03-crawl-raw.jsonl`.
+
+---
+
+## 6. CP-01 — content / intent audit: SERVICES (18 August 2026)
+
+Analysis only — no implementation. Judged on commercial and content merit (historic search
+and backlink data out of scope, D3). Source: the §5 crawl + `03-crawl-raw.jsonl`. Scope of
+this section: the services hub + the 15 live `/services/*` detail pages **as they exist on
+production today** (production still reads the old projects — so `custom-apps-and-ai` is one
+fused page here, not yet the staging split). Solutions, case studies, blog, legal and the
+static pages are separate sections, still to do.
+
+### Findings common to all service pages (recorded once)
+
+- **Page type:** hub = static list (`/services`, Sanity-driven); details = dynamic
+  `/services/[slug]` (Sanity `services`, ISR 3600). All returned 200.
+- **Internal links:** every service is linked from the desktop mega menu, the `/services`
+  hub, the footer and mobile menu — well-linked, no orphans.
+- **SEO — titles:** strong, intent-led, keyword + "Free [audit/call]" pattern. Good as-is.
+- **SEO — canonical:** emitted by code (`services/[slug]/page.jsx` sets
+  `alternates.canonical`), so present despite the raw extraction showing blank.
+- **SEO — meta description: EMPTY on every service page** (hub and all 15). Driven by blank
+  `seo.metaDescription` in Sanity. This is a **content gap, not code** — and because staging
+  shares the production dataset, filling them is a **production content edit** to flag to
+  Hassan, not a CP-01 or Phase-0 change.
+- **Commercial value:** high across the board — these are the money pages. Keep all; the work
+  is REWRITE-for-quality and RE-GROUP, not removal.
+- **Taxonomy:** the live 3-way grouping (`design-development` / `growth` / `support`) is
+  replaced by the four pillars at CP-03 (mapping in `01-codebase-audit.md` §6). Every KEEP
+  below is "keep the page, re-pillar it at CP-03".
+
+### Per-URL
+
+| URL | H1 (current) | Role / target intent | Content quality | Decision |
+| --- | --- | --- | --- | --- |
+| `/services` | "Services built around your goals, not templates." | Hub; browse + commercial entry | Decent hub, groups by the old 3 categories | **KEEP** — REWRITE grouping to the four pillars at CP-03; add meta description |
+| `/services/branding` | Strategic Brand Identity Design | Brand & Experience buyer | Solid | **KEEP** (+ meta desc) |
+| `/services/ui-ux-design` | UI/UX Design Services & Prototyping | Brand & Experience buyer | Solid | **KEEP** (+ meta desc) |
+| `/services/wordpress` | WordPress Development Services | Platform buyer (WP) | Solid | **KEEP** — but see "Web Design & Development" gap below |
+| `/services/shopify` | High-Performance Shopify Development | Platform buyer (Shopify) | Solid | **KEEP** — but see "Ecommerce" gap below |
+| `/services/custom-apps-and-ai` | Custom Web Development & AI Solutions | Two distinct buyers fused | Conflates two offerings in two different pillars | **SPLIT** → Custom App Development (Web & Ecommerce) + AI & Automation (AI & Automation). **REDIRECT** old slug → `/services/custom-app-development` at cutover |
+| `/services/seo` | ROI-Driven SEO Services & Growth Strategy | Growth buyer | Solid | **KEEP** (+ meta desc) |
+| `/services/ppc` | ROI-Focused Paid Search & Social | Growth buyer | Solid | **KEEP** (+ meta desc) |
+| `/services/cro` | Conversion Rate Optimisation (CRO) Services | Growth buyer | Solid | **KEEP** (+ meta desc) |
+| `/services/email` | Email Marketing & Retention Strategy | Growth buyer | Solid | **KEEP** (+ meta desc) |
+| `/services/analytics` | Data Analytics & BI | Growth buyer | Solid | **KEEP** (+ meta desc) |
+| `/services/maintenance` | Website Maintenance & Growth Support | Retained-support buyer | Solid | **KEEP** — overlap cluster, see below |
+| `/services/speed` | Web Performance Optimisation | Performance buyer | Solid, but narrow | **KEEP?** — candidate to MERGE into maintenance; **Hassan decision** |
+| `/services/security` | Web Security & Protection | Security buyer | Solid, but narrow | **KEEP?** — candidate to MERGE into maintenance; **Hassan decision** |
+| `/services/migrations` | Website & Platform Migration Services | Replatform buyer | Solid | **KEEP** (+ meta desc) |
+| `/services/accessibility` | Web Accessibility (WCAG) Services | Accessibility buyer | Solid — and strategically important (we sell accessibility) | **KEEP** — must be exemplary; ties to the Step-1 WCAG work |
+
+### Decisions that need more than KEEP
+
+- **SPLIT — `custom-apps-and-ai`.** It fuses Custom App Development (Web & Ecommerce pillar)
+  and AI & Automation (its own pillar). CP-00K already split it in staging
+  (`custom-app-development` + `ai-automation`). CP-01 records the URL consequence: the old
+  `/services/custom-apps-and-ai` must **REDIRECT** to `/services/custom-app-development` at
+  cutover (CP-15 redirect map), and the AI half becomes the `ai-automation` service page
+  (currently a taxonomy-only stub — needs authored content; note the **AI & Automation case
+  study is on HOLD** per 00-context, but the *service page* content is a separate item).
+- **CREATE — Web Design & Development, and Ecommerce.** These are distinct offerings in the
+  approved pricing (§7: from £1,500 / from £3,500) with **no page today**. Confirmed for
+  **CP-05, first in priority**. `wordpress` and `shopify` are platform-specific pages that
+  should sit **under** these broader offerings (IA below).
+
+### Where the decision depends on Hassan (not assumed)
+
+1. **IA: platform pages vs umbrella pages.** Once Web Design & Development and Ecommerce
+   exist (CP-05), do `wordpress` and `shopify` become children of them (kept, re-parented),
+   or stay as standalone peers? This changes internal linking and the mega-menu grouping at
+   CP-03. **Needs Hassan.**
+2. **Support cluster consolidation.** `maintenance`, `speed`, `security` (and arguably
+   `accessibility`) overlap. Options: keep four distinct pages, or MERGE `speed`/`security`
+   into `maintenance` as sections. Commercially, standalone pages rank for their own terms;
+   against that, four thin pages dilute. **Needs Hassan** — I have not assumed either way.
+3. **`ai-automation` service page content timing** — created/authored at CP-05, or later?
+   The pillar exists but the page is an empty stub.
+
+### CP-01 services summary
+
+15 live service pages + hub. **No REMOVE, no NOINDEX, no REDIRECT-away** — every page is a
+real commercial asset. Decisions: **13 KEEP** (all pending re-pillaring at CP-03 + meta
+descriptions), **1 SPLIT** (`custom-apps-and-ai`, with a redirect of the old slug), **2
+KEEP-or-MERGE flagged for Hassan** (`speed`, `security`), and **2 CREATE** (Web Design &
+Development, Ecommerce — CP-05). The single most impactful, low-risk content win across the
+whole set is filling the **empty meta descriptions** (a Sanity content edit, production).
