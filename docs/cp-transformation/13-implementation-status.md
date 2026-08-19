@@ -11,7 +11,7 @@ should be able to reconstruct the state of play from here.
 
 | Item | Value |
 | --- | --- |
-| Current task | **CP-02 — future sitemap on paper, COMPLETE, awaiting review** (`04-information-architecture.md`). Full route inventory + redirect map + 7-item nav (reconstructed, flagged) + brief-now-outdated list + open decisions. Nothing implemented. Preceded by: O13 CLOSED (nav fields verified), O16 inspected (6/7 drafts are Casa Botanica stubs; ivy-and-duke SEO completed as draft), CP-01 COMPLETE (`03-url-audit.md` §6–§11). |
+| Current task | **CP-02 — future sitemap, UPDATED with Hassan's confirmations, awaiting FINAL approval** (`04-information-architecture.md`). Nav locked (D40, 7 items); D41 paid-media slug; D42 growth-and-support slug; O14 CLOSED (security stays a service, meta restored); D43 migrations+accessibility → Web & Ecommerce; D44 four-industry set. navLabels fixed on staging (WordPress, Paid Media). Ivy & Duke excerpt fixed. Nothing implemented. Next: Hassan reads the full doc, then CP-03. |
 | Branch | `development`, reading the new project's **staging** dataset (`4m0eqoi1` / `staging`). Not merged to main |
 | Started | 12 August 2026 |
 | Sign-off authority | Hassan |
@@ -29,6 +29,25 @@ complete and Hassan signs off final cutover.
 - Keep `development` up to date with `main` as work proceeds; flag conflicts that need Hassan.
 - Keep this file current with every task.
 - At the end of each task, state plainly what is safe to review on staging and what is unfinished.
+
+---
+
+## CP-02 — nav confirmed + parked decisions resolved (19 August 2026)
+
+Hassan's CP-02 review closed every open decision; `04-information-architecture.md` rewritten in full.
+- **D40 — main nav = 7 items:** Work, Services, Solutions, Industries, Blog, About, Contact. Free
+  Audit is a secondary link (off service pages); **Book a Call removed entirely** (D8). Recorded so
+  it stops being reconstructed.
+- **D41** `/services/ppc` → **`/services/paid-media`** (redirect CP-15; "PPC" stays in copy).
+  **D42** `/services/maintenance` → **`/services/growth-and-support`** (redirect CP-15).
+- **O14 CLOSED** — we DO deliver standalone security (malware removal, firewall config, monitoring);
+  `/services/security` stays a Growth & Performance service; **meta description restored to staging**.
+- **D43** Migrations + Accessibility → **Web & Ecommerce** (build/delivery capabilities).
+- **D44** Industries set = **four** (B2B & Professional Services, Technology & SaaS, Ecommerce Brands,
+  Charities & Non-profits); duplicate-slug/flag cleanup deferred to CP-08.
+- **Staging writes:** navLabels `wordpress`→"WordPress", `ppc`→"Paid Media"; `security` meta restored;
+  `ivy-and-duke` excerpt fixed ("LMS Migration & Rebrand" → accurate dog-bed-brand line, kept as draft).
+- Six Casa Botanica clone stubs left untouched/unpublished pending Hassan's brief-or-delete call.
 
 ---
 
