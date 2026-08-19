@@ -11,7 +11,7 @@ should be able to reconstruct the state of play from here.
 
 | Item | Value |
 | --- | --- |
-| Current task | **Step 3 in progress — mega-menu rewire: ONE COLUMN proven** (data-driven `ServiceNavColumn`, navOrder, GA4). Awaiting review before rewiring the remaining columns + the grid (a flagged structural change), then the header merge. Sliders ✅, forms ✅, LP fix ✅ |
+| Current task | **CP-01 — URL / content / search / intent audit (analysis only).** Step 3 CLOSED as partially complete (deferred remainder to CP-03; see 00-context §14). Working CP-01 in sections, services first, into `03-url-audit.md` |
 | Branch | `development`, reading the new project's **staging** dataset (`4m0eqoi1` / `staging`). Not merged to main |
 | Started | 12 August 2026 |
 | Sign-off authority | Hassan |

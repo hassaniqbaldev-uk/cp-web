@@ -652,6 +652,43 @@ keyboard-inaccessible navigation is a live WCAG failure on a site that sells
 accessibility remediation at `/services/accessibility`, and the Radix disclosure that
 fixes it becomes the base for the rebuilt navigation.
 
+### Step 3 — CLOSED as partially complete (18 August 2026)
+
+Step 3 is closed here and the programme moves to CP-01. This is a **deliberate** stop, not
+an abandonment.
+
+**Done (banked, all on `development`):**
+- Sliders — one shared `Carousel` primitive; all 30 migrated; pause control + reduced-motion
+  + visually-hidden treatment inherited.
+- Forms — one shared headless `Form` core; all 4 migrated; honeypot, a11y (announcement /
+  focus / aria wiring) and GA4 enquiry events inherited. (LP audit form hydration bug fixed
+  along the way — `0a3c282`.)
+- Shared component groundwork + the **GA4 event layer** (`lib/analytics/events.js`).
+- **Nav data layer** — `NAV_QUERY`, `getNavData()`, and the `navLabel` / `navExcerpt` /
+  `navOrder` fields (data populated on staging; title fallback proven).
+- **One proven data-driven nav column** (Services → Design & Build), incl. `service_selected`
+  and the empty-state primitive. **This is the pattern CP-03 follows.**
+
+**Deferred to CP-03 — deliberately, because the four-pillar structure these depend on is
+defined at CP-03, not because they were forgotten:**
+- The remaining nav surfaces — Services columns 2 & 3, the Solutions dropdown, the Footer and
+  the MobileMenu.
+- The **data-driven column count** (grid `grid-cols-3` → `repeat(N)`), which only makes sense
+  once the pillar count is fixed.
+- The **three-header merge** (`Header` / `HomeHeader` / `LpHeader` → one `<SiteHeader>`).
+
+Finishing these now would mean building against a structure that does not exist yet and
+reworking it at CP-03; the reusable pieces are already banked, and the remainder is nav
+plumbing in the most fragile part of the codebase (revisited three times).
+
+**Risk accepted:** navigation stays **partly hardcoded** until CP-03. If content moves before
+then — a service renamed, recategorised, or unpublished — the hardcoded columns (Services 2 &
+3, Solutions, Footer, Mobile) can break again exactly as they did in CP-00K. Column 1 and any
+future data-driven surface are safe; the hardcoded ones are not.
+
+**Still outstanding:** the **O13** Sanity Studio field spec (`navLabel` / `navExcerpt` /
+`navOrder` definitions in the separate Studio repo) — see section 5.
+
 ### Carousel pause control made visually hidden (recorded 18 August 2026)
 
 The Step-1 autoplay pause/play control (`CarouselAutoplayControl`, shared across all
