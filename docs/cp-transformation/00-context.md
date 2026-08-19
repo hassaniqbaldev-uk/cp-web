@@ -153,6 +153,13 @@ All confirmed by Hassan, 12 August 2026.
 | D36 | **Growth & Support consolidation** — `maintenance` becomes the parent proposition **"Ongoing Growth & Support"** (covering maintenance, security, performance and ongoing improvement). **Speed kept** as a supporting specialist page. **Security demoted to a capability** within Growth & Support — *pending confirmation* | Reduces the thin "support" cluster to one strong parent + one justified specialist. Speed stays because there is **real search demand** for site-speed work. Security is demoted because the brief warns against promising services we do not actually provide and security is the easiest to overclaim — **OPEN: confirm we do not deliver standalone security work; if we do, it stays a service.** Do not assume; see O14. Inherited by CP-02/CP-03. |
 | D37 | **AI & Automation page built at CP-05** as a P1 pillar page; its **sub-pages** (Workflow Automation, AI Agents, AI Integrations) **wait** for more delivery proof | It is one of the four pillars and now has real evidence behind it (the Biome4Pets case study). The sub-pages hold until there is more delivery proof, exactly as the brief states. Inherited by CP-03/CP-05. |
 
+### Added after the CP-01 services/solutions review, 19 August 2026
+
+| ID | Decision | Rationale |
+| --- | --- | --- |
+| D38 | **Analytics page repositioned (option A)** — `/services/analytics` becomes a **Growth & Performance measurement** page (tracking, GA4/GTM, attribution, reporting). **BI / dashboard builds move to Custom App Development** as a capability, not a separate page. The H1/title/meta drop "& BI". | A page cannot sit cleanly in two pillars, so a dual page (b) perpetuates the ambiguity the brief flags. A standalone BI page (c) is thin overlap — BI dashboards *are* custom builds, so they belong under Custom App Development. Option (a) gives clean pillar assignment and matches the dominant "analytics services" search intent (marketing measurement). Approved by Hassan. Inherited by CP-03 (pillar map) and CP-09 (copy). |
+| D39 | **Scale Marketing merged into Increase Leads** — `/solutions/scale-marketing` is folded into `/solutions/increase-leads`; anything worth keeping is moved into that page, **not deleted**. `/solutions/scale-marketing` **REDIRECTS** to the merged page at **CP-15**. Leaves **4 goal solutions** (`increase-leads`, `replatform-rebuild`, `launch-new-product`, `automate-operations`). | Fails the brief's distinctness test: Scale Marketing and Increase Leads are both growth outcomes served by the same services (SEO / Paid Media / email / CRO) with no separate buyer journey. The other three each map to a distinct journey (rebuild, go-to-market, ops automation). Approved by Hassan. Content preserved (fold, don't delete). Inherited by CP-07 (solutions) and CP-15 (redirect map). |
+
 ---
 
 ## 5. Decisions open
@@ -167,11 +174,13 @@ All confirmed by Hassan, 12 August 2026.
 | O12 | Confirm no case-study taxonomy slug appears in a live URL before normalising the malformed ones | Claude Code | Slug normalisation step |
 | O13 | **Add the nav field DEFINITIONS to the separate Sanity Studio repo** so editors can set them. The field DATA is already populated on staging and the cp-web nav query reads it (title fallback), but the Studio schema lives outside cp-web. Spec below. | Whoever owns the Studio repo | Editors setting nav labels; full data-driven nav |
 | O14 | **Do we deliver standalone security work as a service?** If yes, `/services/security` stays a service; if no (the default under D36), it becomes a capability within Growth & Support. Do not overclaim. | Hassan | Finalising D36 / the security page's fate at CP-03 |
+| O15 | **Is `launch-new-product` a real, delivered offering** (go-to-market / MVP launch) or aspirational? If real it stays a goal solution (D39 leaves it in the set of 4); if not, it merges or drops. Do not assume. | Hassan | Finalising the goal-solutions set at CP-07 |
 
 Closed: O1 → D17. O2 → D14. O7 → D19. O10 → already scoped to the `cp-web` repo, no
 action required. **O3 → pricing approved for publication (18 Aug 2026; D9 superseded, see
-section 7).** **O5 → keep all 31 case studies; classify flagship / supporting / archive at
-CP-12 as a presentation decision, nothing deleted (see section 8).**
+section 7).** **O5 → keep all 31 case studies; the flagship / supporting / archive
+classification is now drafted in the CP-01 audit (`03-url-audit.md` §8: 9 flagship, 20
+supporting, 2 archive) and feeds the CP-12 presentation decision, nothing deleted.**
 
 ### O13 — Sanity Studio nav fields (spec for the separate Studio repo)
 
@@ -210,10 +219,12 @@ correctly from the populated data + title fallback + navOrder.
   £1,500 / from £3,500) but have **no page today** — the current design-development services
   are `wordpress` / `shopify` / `custom-app-development`. CP-05 creates them. No action now;
   the gap is understood and scheduled.
-- **AI & Automation case study — HOLD.** A case study is being written for the pillar (which
-  currently has zero case studies) to fill the gap; Hassan is confirming the facts
-  separately. **Do not create it, draft it, or invent any details** in the meantime — this is
-  exactly the fabrication that sections 8 and 11 prohibit until real facts exist.
+- **AI & Automation case study — Biome4Pets created as an unpublished draft (19 Aug 2026).**
+  Facts confirmed by Hassan; created verbatim from the approved draft as `drafts.biome4pets`
+  in staging (not published — awaiting images + brand colours, and the 5 client facts still to
+  collect). It is the **only** evidence for the AI & Automation pillar, and it is not yet
+  published — so **the pillar still has zero *published* case studies** (see the CP-01 case
+  studies audit, `03-url-audit.md` §8). No other AI case study is to be invented.
 
 ---
 

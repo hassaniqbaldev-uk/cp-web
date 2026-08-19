@@ -271,10 +271,17 @@ static pages are separate sections, still to do.
 - **SEO — titles:** strong, intent-led, keyword + "Free [audit/call]" pattern. Good as-is.
 - **SEO — canonical:** emitted by code (`services/[slug]/page.jsx` sets
   `alternates.canonical`), so present despite the raw extraction showing blank.
-- **SEO — meta description: EMPTY on every service page** (hub and all 15). Driven by blank
-  `seo.metaDescription` in Sanity. This is a **content gap, not code** — and because staging
-  shares the production dataset, filling them is a **production content edit** to flag to
-  Hassan, not a CP-01 or Phase-0 change.
+- **SEO — meta descriptions: CORRECTION (19 Aug 2026).** An earlier draft of this section said
+  descriptions were *empty* on every service page. That was wrong — verified directly against the
+  staging dataset (`4m0eqoi1/staging`): **15 of the 16 service docs carry a `seo.metaDescription`**
+  (the CP-00K migration carried the old copy across). The only genuinely blank one is
+  **`ai-automation`** (the new split stub, on HOLD for content). So the real problem is not *empty*,
+  it is **non-compliant**: the migrated descriptions are the old marketing copy and break the
+  content rules — banned words ("Unlock", "Maximize", "elite", "stunning", "powerful", "Boost"),
+  **em dashes**, and **US spelling** ("optimization", "Maximize"). The `/services` **hub** description
+  is **hardcoded in code** (`services/page.jsx:2-4`, itself em-dash-joined), not Sanity. So the task
+  is a **REWRITE, not a fill** — and it is **staging-safe** (a new-project edit that ships at cutover,
+  see the meta block below). Drafts prepared for review (below); nothing written to staging yet.
 - **Commercial value:** high across the board — these are the money pages. Keep all; the work
   is REWRITE-for-quality and RE-GROUP, not removal.
 - **Taxonomy:** the live 3-way grouping (`design-development` / `growth` / `support`) is
@@ -351,28 +358,55 @@ page that overlaps Custom App Development — BI dashboards *are* custom builds,
 as Custom App Development work, not a separate thin service. (a) gives clean pillar
 assignment, matches the dominant "analytics services" search intent (marketing measurement),
 and removes the overlap: rewrite the page to marketing measurement (drop "& BI" from the
-positioning) and point dashboard/BI builds at Custom App Development. **Your call — I have
-not assumed; recommending (a).**
+positioning) and point dashboard/BI builds at Custom App Development.
 
-### Empty meta descriptions — what filling them involves (do not fill yet)
+**APPROVED (a) — Hassan, 19 Aug 2026 → D38.** Analytics becomes a Growth & Performance
+measurement page; BI/dashboard builds become a Custom App Development capability, not a
+separate page. The H1/title/meta drop "& BI" (the rewritten meta description below reflects
+this). Inherited by CP-03 (pillar map) and CP-09 (copy).
 
-- **What it is:** every service page's `seo.metaDescription` is blank, so the pages ship with
-  no meta description — a pure, cheap SEO/CTR win.
-- **How many:** **15** `/services/[slug]` detail pages read it from Sanity (blank). The
-  `/services` **hub** description is code-controlled in its `generateMetadata` (a one-line code
-  check, separate). So ~16 surfaces, 15 of them content.
-- **The risk / premise correction:** the old note "staging shares the production dataset, so
-  filling them is a production edit" is **stale** — it described the pre-CP-00K setup. **Today
-  the branch reads a SEPARATE `4m0eqoi1/staging` dataset; live production still reads the five
-  old projects.** So editing `seo.metaDescription` on the new project's staging docs affects
-  **only the staging preview, not production**, and goes live at cutover. That is **safe and
-  within the rules.**
-- **What is genuinely blocked:** fixing the descriptions on the **live** site *before* cutover
-  would require editing the five old projects — which the standing rules forbid (read-only
-  rollback path). So: we *can* bank the value now in staging; we *cannot* patch live early.
-- **Content caveat:** meta descriptions are copy — same no-overclaim doctrine. If approved,
-  I'd **draft** all 15 for your review before writing them to staging, not free-type them into
-  the dataset.
+### Meta descriptions — drafts for review (approved 19 Aug 2026; not yet written to staging)
+
+- **Corrected scope:** not empty — **non-compliant** (see the corrected finding above). 15 service
+  docs carry migrated old copy that breaks the content rules; `ai-automation` is blank (on hold);
+  the `/services` hub description is hardcoded in code. So this is a **rewrite**.
+- **Staging-safe:** editing `seo.metaDescription` on the new project's staging docs affects **only
+  the staging preview, not production** (production still reads the old projects), and ships at
+  cutover. The **hub** rewrite is a **code** change (`services/page.jsx`), not Sanity.
+- **What is genuinely blocked:** fixing descriptions on the **live** site before cutover would
+  require editing the five old projects — forbidden by the standing rules. We bank the value in
+  staging now; we do not patch live early.
+- **Rules applied:** UK English, no em dashes, ≈150 chars, specific to each service (not a template
+  with the name swapped), no banned buzzwords, no invented claims, no pricing/warranty references.
+
+| Page | Current title (kept) | Current H1 (kept) | Draft meta description (≈150) |
+| --- | --- | --- | --- |
+| `/services` (hub, code) | Web Design and Development Services \| Free Strategy Call | Services built around your goals, not templates. | Brand, web and ecommerce, growth marketing and automation, delivered by one team. See how CreativePixels can help and book a free strategy call. |
+| `/services/branding` | Brand & Identity Design for Ambitious Brands \| Free Call | Strategic Brand Identity Design | Brand identity design covering strategy, logo, typography and visual guidelines, built to make your business look consistent and credible across every channel. |
+| `/services/ui-ux-design` | UI/UX Designing Services & Figma Prototypes \| Free Call | UI/UX Design Services & Prototyping | UI and UX design for websites and apps: user flows, wireframes, Figma prototypes and design systems that make products clearer and easier to use. |
+| `/services/wordpress` | WordPress Web Development Services \| Free Website Audit | WordPress Development Services | Custom WordPress development with bespoke themes, fast page loads and an editor your team can manage, built for reliable performance and search visibility. |
+| `/services/shopify` | Shopify Web Development Services \| Free Strategy Call Now | High-Performance Shopify Development | Shopify design and development with custom themes, conversion-led product pages and the integrations your store needs to sell and grow. |
+| `/services/custom-app-development` | *(post-split; title/H1 to be updated off the fused page)* | *(Custom App Development)* | Custom web application development: bespoke tools, dashboards, portals and API integrations built around the way your business actually works. |
+| `/services/seo` | SEO Services to Grow Traffic & Leads \| Free Website Audit | ROI-Driven SEO Services & Growth Strategy | SEO services covering technical audits, on-page work, content and local search, focused on the rankings and qualified traffic that turn into enquiries. |
+| `/services/ppc` (Paid Media) | PPC Ad Management Services \| Free Audit to Improve ROI Now | ROI-Focused Paid Search & Social | Paid media management across Google, Meta and LinkedIn, from PPC campaign setup to targeting and testing, focused on getting more from your ad budget. |
+| `/services/cro` | Conversion Rate Optimisation Services \| Free CRO Audit Now | Conversion Rate Optimisation (CRO) Services | Conversion rate optimisation using audits, A/B testing, user research and funnel analysis to turn more of your existing traffic into customers. |
+| `/services/email` | Email Marketing Services & Retention Strategy \| Free Audit | Email Marketing & Retention Strategy | Email marketing and retention: automated flows, campaigns and segmentation that keep customers engaged and bring more repeat revenue from your list. |
+| `/services/analytics` | Data Analytics Services & BI Dashboards \| Free Audit Now | Data Analytics & BI *(→ measurement, D38)* | Marketing measurement and analytics: GA4 and GTM setup, tracking, attribution and reporting so you can see what your marketing is really delivering. |
+| `/services/maintenance` | Website Maintenance Support & Security \| Free Audit Now | Website Maintenance & Growth Support | Ongoing website support: updates, backups, monitoring, fixes and steady improvements that keep your site fast, secure and working month to month. |
+| `/services/speed` | Web Performance Optimization Techniques \| Free Audit Now | Web Performance Optimisation | Website speed and Core Web Vitals work: finding what slows your pages down and fixing it with caching, image and code improvements for faster loads. |
+| `/services/security` | Web Security Services & Protection \| Free Website Audit | Web Security & Protection | Website security: audits, malware removal, firewalls, updates and monitoring to protect your site and the people who use it from common threats. |
+| `/services/migrations` | SEO Website Migration Services \| Secure Free Audit Call | Website & Platform Migration Services | Website and platform migrations handled carefully, with redirect mapping, content transfer, DNS and launch planning that protect your rankings and traffic. |
+| `/services/accessibility` | Web Accessibility Services \| WCAG Audit & Free Consultation | Web Accessibility (WCAG) Services | Web accessibility services: WCAG 2.2 audits, remediation, VPAT support and user testing to make your site work for more people and meet requirements. |
+
+**Solutions hub (`/solutions`) — rewrite (drops the "by sector" framing, D39 context):** Outcome-led
+solutions for common business goals, from generating more leads to rebuilding your website or
+automating operations. Book a free strategy call.
+
+Notes: `custom-app-development`'s title/H1 still carry the old fused "& AI Solutions" wording and
+need updating as part of the SPLIT (separate from the meta description). `analytics` copy already
+reflects the D38 reposition (measurement, no "& BI"). The 5 **goal-solution** detail descriptions
+are in the same non-compliant state as services (old migrated copy) — not drafted here; flag if you
+want them rewritten in the same pass.
 
 ### CP-01 services summary
 
@@ -381,9 +415,10 @@ real commercial asset. Decisions: **12 KEEP** (pending re-pillaring at CP-03 + m
 descriptions; PPC renamed user-facing to "Paid Media"), **1 REVIEW** (`analytics` — recommend
 option (a)), **1 REPOSITION** (`maintenance` → "Ongoing Growth & Support"), **1 DEMOTE**
 (`security` → capability, pending O14), **1 SPLIT** (`custom-apps-and-ai`, with a redirect of
-the old slug), and **2 CREATE** (Web Design & Development, Ecommerce — CP-05). Biggest
-low-risk win: filling the **empty meta descriptions** — safe in the new staging dataset (see
-above), draftable for review.
+the old slug), and **2 CREATE** (Web Design & Development, Ecommerce — CP-05). `analytics`
+resolved to **D38** (reposition as measurement). Biggest low-risk win: **rewriting the
+non-compliant meta descriptions** (not empty — corrected above) — safe in the new staging dataset;
+15 drafts + both hubs prepared for review above.
 
 ---
 
@@ -400,8 +435,11 @@ industry URLs are handled as redirects (below), not audited here.
   ISR 3600). All 200.
 - **SEO — MISSING CANONICAL on every `/solutions/[slug]`** (the §5 anomaly; `solutions/[slug]`
   omits `alternates.canonical`, unlike services). Phase-0 code fix, already logged.
-- **SEO — empty meta descriptions** on all 5 goal detail pages (same gap as services; same
-  staging-safe fix as §6). The hub *does* have a description.
+- **SEO — meta descriptions present but non-compliant** on all 5 goal detail pages (CORRECTION,
+  19 Aug 2026 — verified in staging: they carry migrated old copy, not blank, same as services; the
+  one genuinely blank description in this project is `saas-companies`, an industry that redirects
+  anyway). Same staging-safe **rewrite** as §6. The hub *does* have a description (also to rewrite,
+  drafted in §6).
 - **Internal links:** the 5 goals are linked from the mega-menu "By Goal" column + the
   `/solutions` hub.
 - **Overlap risk:** goal solutions are outcome-framed entries that sit alongside the
@@ -429,7 +467,12 @@ automation (automate). Scale Marketing does not; it reads as a second growth-out
 overlapping Increase Leads. Options: **(a)** merge it into Increase Leads; **(b)** reframe one
 broader "Grow & Scale" goal; **(c)** keep it only if the copy is sharply differentiated
 (Increase Leads = new-demand acquisition; Scale Marketing = scaling spend/channels on existing
-demand). **Default recommendation: (a) merge.** Your call — not assumed.
+demand). **Default recommendation: (a) merge.**
+
+**APPROVED (a) — Hassan, 19 Aug 2026 → D39.** `/solutions/scale-marketing` is folded into
+`/solutions/increase-leads` (anything worth keeping is moved across, **not deleted**), and
+`/solutions/scale-marketing` **REDIRECTS** to the merged page at CP-15. This leaves **4 goal
+solutions**: `increase-leads`, `replatform-rebuild`, `launch-new-product`, `automate-operations`.
 
 ### The 9 industry-category "solutions" (redirect, not audited here)
 
@@ -442,10 +485,133 @@ the solutions decision set.
 
 ### CP-01 solutions summary
 
-Hub + 5 goal solutions. **KEEP + REWRITE the hub** (drop the sector framing; add canonical);
-**4 KEEP** goals (`increase-leads`, `replatform-rebuild`, `launch-new-product`,
-`automate-operations`); **1 REVIEW** (`scale-marketing` — recommend MERGE into Increase Leads).
-The 9 industry URLs REDIRECT to industry pages at CP-08 (not solutions). Same two SEO gaps as
-services apply to all 5 goal pages: **missing canonical** (Phase-0 code fix) and **empty meta
-descriptions** (staging-safe content fix). One light flag: confirm `launch-new-product` is a
-real, delivered offering.
+Hub + (now) **4 goal solutions**. **KEEP + REWRITE the hub** (drop the sector framing; add
+canonical); **4 KEEP** goals (`increase-leads`, `replatform-rebuild`, `launch-new-product`,
+`automate-operations`); **`scale-marketing` MERGED into Increase Leads (D39, approved)** — content
+folded, old slug redirects at CP-15. The 9 industry URLs REDIRECT to industry pages at CP-08 (not
+solutions). Same two SEO gaps apply to the goal pages: **missing canonical** (Phase-0 code fix) and
+**non-compliant meta descriptions** (staging-safe rewrite). One open flag: **O15** — confirm
+`launch-new-product` is a real, delivered offering.
+
+---
+
+## 8. CP-01 — content / intent audit: CASE STUDIES (19 August 2026)
+
+Analysis only. Not a keep-or-remove exercise — **all 31 published case studies are kept** (O5). This
+section does what the brief asks: **classify each as flagship / supporting / archive**, record the
+**service + pillar** it evidences, the **proof it actually contains**, and whether it is strong
+enough to sit on a commercial page as evidence. Source: the §5 crawl + the **staging case-study
+bodies read directly** (`theChallenge` / `ourApproach` / `theSolution` / `excerpt` / live-site link)
+— because the meta descriptions alone cannot show whether a study contains real proof.
+
+### Scope correction — 31 published, but 41 records in staging
+
+The production crawl found **31** case studies; staging holds **41 `caseStudies` records**. The
+extra 10 are: **8 draft-only new studies** not in production — `loop`, `lola-blake`, `core-estates`,
+`amana-partnership`, `ivy-and-duke`, `drive-uk`, `ofh-care`, plus **`biome4pets`** (ours, the AI
+pillar draft) — and **2 draft edits** of already-published studies (`mr-pickles`, `wmrji`). **This
+audit covers the 31 published only** (the user's scope). The 8 unknown draft studies need Hassan's
+confirmation (real delivered work? publish or discard?) — flagged, not classified here.
+
+### The proof profile — read this before the table
+
+Three findings shape every classification below:
+
+1. **Delivery facts: strong and universal.** Every one of the 31 clearly states what was built
+   (WordPress / WooCommerce / Shopify / Webflow / Figma handoff / brand identity / migration /
+   custom portal / print). This is the real, honest proof asset, exactly as `00-context.md` §8 says.
+2. **Outcome data: almost absent.** Only **3 of 31** carry any quantified result — `unicef`
+   (£478,000 raised, 2018, print), `now-press-play` (97% / 89%), `sight-for-life` (100%). The other
+   28 assert quality ("now has a website that matches…") with **no numbers**. Consistent with O4.
+3. **Testimonials: none.** **Zero** of the 31 contain a client quote in the CMS body (there is no
+   testimonial field). The closest is `unicef` ("the UNICEF UK events team crediting the suite…"),
+   paraphrased, not a quote.
+
+**Consequence:** no study can be "flagship" on *results* — the evidence isn't there yet. Flagship
+here means **recognisable client and/or standout delivery scope or capability, live and verifiable**.
+The single highest-leverage action for CP-12 is O4: get a **quote + one metric** onto each flagship.
+
+### Pillar coverage (by actual work, not the unreliable tags)
+
+The case-studies project's `services`/`industries` tags are **mis-assigned** (e.g. `chloes-cleaning-crew`
+tagged "Shopify" but built on WordPress+Elementor; `junior-jam` tagged industry "Restaurants"), so
+pillar is judged from the body copy:
+
+| Pillar | Published evidence | Verdict |
+| --- | --- | --- |
+| **Brand & Experience** | branding / UI-UX led: `manzar`, `trust-certs`, `sp-elite-installation`, `dr-donuts`, `junior-jam`, `chloes-cleaning-crew`, (`ao-arena` concept, `peekaboo` MVP) | Well evidenced |
+| **Web & Ecommerce** | the bulk — WordPress/WooCommerce/Shopify/Webflow builds, migrations, and one **custom app** (`anthony-walker-foundation`) | **Strongest** pillar; heavily evidenced |
+| **Growth & Performance** | SEO/CRO/analytics/migrations appear **only as secondary** workstreams on website builds (`alertforce`, `teleqo-tech`, `new-compass`, `casa-botanica-panama`, `sight-for-life`, `little-astronauts`, `smartspaces`). **No study is primarily a growth engagement**, and **Paid Media (PPC) and email have zero evidence at all** | **Thin** — no standalone proof; **flag** |
+| **AI & Automation** | **none published** — only `biome4pets` (draft) | **Empty** — biggest gap; **flag** |
+
+### Per-study classification (31)
+
+Proof key: **D** = delivery facts (what was built), **O** = quantified outcome, **Q** = client quote.
+
+| Study | Evidences (pillar / work) | Proof | Class | Note |
+| --- | --- | --- | --- | --- |
+| `alertforce` | Web & Ecommerce + Growth (WP rebuild, ~20yr SEO preserved) | D | **Flagship** | AU market leader in WHS/OHS training; large content-heavy, SEO-safe rebuild. Add a metric. |
+| `ayoa` | Web & Ecommerce + Growth (redesign + ongoing) | D | **Flagship** | Recognisable UK AI/SaaS name. Ongoing relationship. |
+| `anthony-walker-foundation` | Web & Ecommerce — **Custom App / LMS portal** | D | **Flagship** | Rare capability (custom app) + recognisable cause. Strongest non-AI custom-build proof. |
+| `now-press-play` | Web & Ecommerce (Webflow), EdTech | **D + O** (97% / 89%) | **Flagship** | Award-winning EdTech; one of only 3 with numbers. |
+| `teleqo-tech` | Web & Ecommerce + Growth (redesign + SEO), enterprise B2B | D | **Flagship** | US enterprise geospatial; anchors B2B/SaaS. |
+| `casa-botanica-panama` | Web & Ecommerce + Growth (brand→Squarespace→WP migration, SEO, CRO, booking) | D | **Flagship** | Broadest full-service scope in one project; luxury/hospitality. |
+| `minnessak` | Web & Ecommerce (full Shopify build), premium ecommerce | D | **Flagship** | Best pure-ecommerce flagship (full build, not a refresh). |
+| `sight-for-life` | Web & Ecommerce + Growth (redesign, CRO, analytics, migration), charity | **D + O** (100%) | **Flagship** | Two-decade charity; has a metric; donor-trust story. |
+| `unicef` | **Print / event design** (not a digital pillar) | **D + O** (£478k) + near-Q | **Flagship (caveat)** | Globally recognisable + strongest proof, but **print, not web** — use for credibility, **not pillar evidence**. Live:NO is correct (no website). |
+| `3d-cad-visuals` | Web & Ecommerce + Brand (WP showcase site) | D | Supporting | Niche premium build; solid. |
+| `chloes-cleaning-crew` | Brand & Experience + Web (brand + WP/Elementor) | D | Supporting | Local service; brand+site from scratch. |
+| `dr-donuts` | Brand & Experience + Web (brand + site) | D | Supporting | **Verify live** (live:NO). |
+| `energy-angels` | Web & Ecommerce (B2B redesign) | D | Supporting | **Verify live** (live:NO). |
+| `fultons` | Web & Ecommerce (WooCommerce rebuild) + ongoing maintenance | D | Supporting | Solid ecommerce rebuild; retained client. |
+| `game-art-brain` | Web & Ecommerce + Brand (WP, performance-heavy) | D | Supporting | Graphics-heavy build; good craft story. |
+| `junior-jam` | Brand & Experience (Figma design + dev handoff) | D | Supporting | Design/UX-only engagement (no build); distinct model. |
+| `little-astronauts` | Web & Ecommerce + Growth (two sites, launch→rebuild, booking) | D | Supporting | Good "outgrew the first site" narrative. |
+| `manzar` | Brand & Experience + Web (bilingual brand + WP) | D | Supporting | Distinctive bilingual/brand angle. |
+| `mr-pickles` | Web & Ecommerce (Shopify homepage refresh) | D | Supporting | **Thin scope** (homepage cleanup only). |
+| `ndifo-safari` | Web & Ecommerce (Wix→WP migration), luxury travel | D | Supporting | Clean migration story. |
+| `new-compass` | Web & Ecommerce + Growth (redesign, SEO, ongoing), US SaaS | D | Supporting | Solid B2B; overlaps teleqo-tech (kept it flagship). |
+| `smartspaces` | Web & Ecommerce + Growth (refresh, SEO, migration) | D | Supporting | Premium home-improvement build. |
+| `sorted` | Web & Ecommerce + ongoing support, media | D | Supporting | **Verify live** (live:NO; copy uses past tense). |
+| `sp-elite-installation` | Brand & Experience (branding) + local WP | D | Supporting | Trades/local lead-gen. |
+| `the-smokey-carter` | Web & Ecommerce (ecommerce redesign), award-winning food brand | D | Supporting | Named award; could rise with a metric. |
+| `trust-certs` | Brand & Experience + Web (brand + site), B2B compliance | D | Supporting | New-business launch, credibility framing. |
+| `varissa` | Web & Ecommerce (redesign), FCA-regulated finance | D | Supporting | Regulated-sector trust angle. |
+| `vuegraphy` | Web & Ecommerce (WP), publishing | D | Supporting | Longevity proof ("built 2019, still running"). |
+| `wmrji` | Web & Ecommerce + **Accessibility**, charity | D | Supporting | One of the few tagged Accessibility — ties to the WCAG selling point. |
+| `ao-arena` | Brand & Experience (UI/UX) — **concept pitch** | concept only (no D) | **Archive** | **Not delivered client work** (O1). Keep only as a clearly-labelled *concept*; never present as delivered. Copy even uses "world-class" (banned). |
+| `peekaboo` | Brand & Experience (UI/UX) — early-stage **MVP** | D (thin) | **Archive** | Delivered but very thin (MVP landing + extension UI, early-stage startup, no live product). Archive candidate; **verify live**. |
+
+**Tally: 9 flagship (1 with a print caveat), 20 supporting, 2 archive.**
+
+### Flags for Hassan (the brief asks for these specifically)
+
+- **AI & Automation has zero published evidence.** The pillar the whole strategy leans on rests on
+  one **unpublished** draft (`biome4pets`). Until it publishes (+ its 5 facts collected), the AI
+  pillar page (D37, CP-05) will launch with no case-study proof. **Highest-priority evidence gap.**
+- **Growth & Performance is thin, and Paid Media + email are empty.** Every SEO/CRO/analytics
+  mention is secondary to a website build; there is **no case study that is primarily a growth
+  engagement with a result**, and **no PPC/Paid-Media or email case study at all**. If we sell those
+  services (we do), we need at least one proof each — flag for outcome collection (O4) or a new write-up.
+- **Concept / speculative work:** `ao-arena` (explicit concept — archive/label) and `peekaboo`
+  (early-stage MVP, thin) are the only two that are not solid delivered client work.
+- **Off-pillar but valuable:** `unicef` is **print, not web** — recognisable and well-proven, but it
+  evidences event/print design, not a digital pillar. Use it as a credibility/logo, not pillar proof.
+- **No study has *zero* usable proof** (all carry delivery facts) — but **28 of 31 have no metric and
+  31 of 31 have no quote**. The flagships are where a single quote + metric would matter most (O4).
+- **Live-status to verify at CP-12** (CMS has no live-site link): `dr-donuts`, `energy-angels`,
+  `sorted`, `peekaboo` claim delivered sites but link to none; `ao-arena` (concept) and `unicef`
+  (print) are expected blanks. Confirm the four are actually live before using them as proof.
+- **Tags are unreliable** — service/industry tags are mis-assigned across the set (divergent
+  case-studies taxonomy, per §2). Pillar and industry mapping must be **re-derived from content** at
+  CP-03 / CP-08 / CP-12, not inherited from the existing tags.
+
+### CP-01 case studies summary
+
+All 31 kept. **9 flagship** (`alertforce`, `ayoa`, `anthony-walker-foundation`, `now-press-play`,
+`teleqo-tech`, `casa-botanica-panama`, `minnessak`, `sight-for-life`, `unicef`†), **20 supporting**,
+**2 archive** (`ao-arena` concept, `peekaboo` MVP). †`unicef` is flagship for recognition/proof but
+is print, not a digital pillar. Evidence is delivery-fact-rich, outcome-poor, testimonial-empty —
+so classifications rest on client recognition + scope, and O4 (collect a quote + metric per
+flagship) is the biggest quality lever. Two structural gaps: **AI & Automation (no published proof)**
+and **Growth & Performance / Paid Media / email (no standalone proof)**.

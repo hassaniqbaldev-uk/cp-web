@@ -11,7 +11,7 @@ should be able to reconstruct the state of play from here.
 
 | Item | Value |
 | --- | --- |
-| Current task | **CP-01 — URL audit (analysis only).** Services section signed off (+ corrections: Analytics→REVIEW, PPC→Paid Media rename). Solutions section done → awaiting review before case studies. Into `03-url-audit.md` §6/§7 |
+| Current task | **CP-01 — URL audit (analysis only).** Services + solutions signed off; Analytics→D38 (reposition, option a), Scale Marketing→D39 (merge into Increase Leads), 15 service meta descriptions + 2 hubs drafted (not written to staging). **Case studies §8 done** (31 classified: 9 flagship / 20 supporting / 2 archive) → **awaiting review before blog/legal/static**. Into `03-url-audit.md` §6/§7/§8 |
 | Branch | `development`, reading the new project's **staging** dataset (`4m0eqoi1` / `staging`). Not merged to main |
 | Started | 12 August 2026 |
 | Sign-off authority | Hassan |
@@ -29,6 +29,31 @@ complete and Hassan signs off final cutover.
 - Keep `development` up to date with `main` as work proceeds; flag conflicts that need Hassan.
 - Keep this file current with every task.
 - At the end of each task, state plainly what is safe to review on staging and what is unfinished.
+
+---
+
+## CP-01 — case studies audit + services/solutions sign-off (19 August 2026)
+
+Analysis only; nothing implemented, no content written to staging. All in `03-url-audit.md`.
+
+- **Decisions recorded** (`00-context.md`): **D38** Analytics repositioned as Growth measurement,
+  BI → Custom App Development capability (option a, approved); **D39** Scale Marketing merged into
+  Increase Leads, old slug redirects at CP-15, 4 goal solutions remain (approved). **O15** opened:
+  confirm `launch-new-product` is a real offering. **O14** (standalone security) still pending.
+- **Meta descriptions — premise corrected + drafts done.** The audit's "empty on every service
+  page" claim was **wrong**: verified in staging that 15/16 service docs carry migrated old copy
+  (only `ai-automation` blank), and the 5 goal solutions too. Real problem = **non-compliant** (banned
+  words, em dashes, US spelling), so it's a **rewrite**. Drafted **15 service + `/services` hub +
+  `/solutions` hub** descriptions (≈150 chars, UK English, rules-compliant) into §6 **for review —
+  NOT written to staging**.
+- **Case studies §8 — 31 classified.** Read the staging bodies directly (not just crawl meta).
+  **9 flagship / 20 supporting / 2 archive** (`ao-arena` concept, `peekaboo` MVP). Key flags:
+  **AI & Automation has zero *published* proof** (only `biome4pets` draft); **Growth & Performance
+  is thin and Paid Media + email have no case study at all**; proof is delivery-fact-rich but
+  **only 3/31 have a metric and 0/31 have a quote** (feeds O4); `unicef` is print not web; tags are
+  unreliable (re-map pillars from content). **Staging has 41 case-study records, not 31** — 8
+  draft-only new studies + `biome4pets` + 2 draft edits; the 8 unknown drafts need Hassan's
+  confirmation. Awaiting review before blog / legal / static-page sections.
 
 ---
 
