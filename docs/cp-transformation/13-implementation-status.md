@@ -32,6 +32,20 @@ complete and Hassan signs off final cutover.
 
 ---
 
+## Outstanding-item decisions (18 August 2026)
+
+Recorded in `00-context.md` (full detail there):
+- **D18 warranty → approved pending clause sign-off.** Draft ToS clause written (§9A);
+  awaiting Hassan's sign-off. No warranty copy on any page until then.
+- **LP page deprioritised** — superseded by CP-05 service pages; its form stays
+  non-functional on production until cutover (fix is on `development` only).
+- **New service pages (Web Design & Development, Ecommerce) scheduled for CP-05**, first in
+  priority — the pricing references them but no page exists yet.
+- **AI & Automation case study: HOLD** — not to be created/drafted/invented until Hassan
+  confirms real facts.
+
+---
+
 ## Step 3 — component cleanup (in progress), August 2026
 
 Plan `step-3-component-cleanup-plan.md` approved as written (schema fields for nav labels,

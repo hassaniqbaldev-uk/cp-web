@@ -117,7 +117,7 @@ All confirmed by Hassan, 12 August 2026.
 | D15 | `custom-apps-and-ai` splits into two services | Custom App Development → Web & Ecommerce. AI & Automation → AI & Automation. Was already implied by the original brief; now explicit. Requires a pillar field on the services document type |
 | D16 | The three test routes are deleted | `/hassan-test`, `/review-test`, `/testing-testimonials`. All served HTTP 200 in production; `/hassan-test` embedded an external iframe. Recoverable from git history if needed |
 | D17 | AO Arena retained as clearly labelled concept work | Already titled "AO Arena (Concept)". Excluded from the client-work grid and from flagship candidates. Closes O1 |
-| D18 | The warranty claim is **blocked from publication** | Supersedes D12's "align to the legal hub". No 3-month post-launch clause exists there. See section 9 |
+| D18 | Warranty — **approved pending clause sign-off** (updated 18 Aug 2026; was "blocked from publication") | 3-month post-launch support confirmed as real practice; draft ToS clause in §9A awaiting Hassan's sign-off. No warranty copy on any page until signed off. See section 9 |
 | D19 | Reuse GTM container `GTM-B8FV6K69`, provision a fresh GA4 property | Container saves re-tagging and holds nothing of value. Fresh property avoids inherited filters and a polluted event taxonomy. Closes O7 |
 | D20 | A consent layer ships in the same phase as the events | Google Consent Mode v2. GTM currently fires unconditionally, which is a UK GDPR and PECR gap. CP-16 must verify events in both consent states |
 | D21 | `www` → apex redirect added at DNS/Vercel | `www.creativepixels.agency` does not resolve at all. No SEO exposure since nothing is indexed there, but anyone typing the www form gets a dead site. Not a code fix |
@@ -183,6 +183,23 @@ menu order is editor-controlled — the cp-web query currently sorts by `title`,
 NOT preserve the hand-curated column order in the old `navigation.js`; without `navOrder`
 the menu will render alphabetically. Until the Studio fields exist, editors cannot change
 these values, but the site renders correctly from the populated data + title fallback.
+
+### Scheduling and holds (18 August 2026)
+
+- **WordPress landing page (`/wordpress-web-development`) — DEPRIORITISED.** It will be
+  superseded by the new service pages at **CP-05**, so no further work on it. The hydration
+  fix (`0a3c282`) stays committed as-is. Its audit form **remains non-functional on
+  production until cutover** — the fix lives on the unmerged `development` branch only. This
+  is an accepted state given the page's scheduled replacement.
+- **New service pages confirmed for CP-05 (first in the priority order): Web Design &
+  Development and Ecommerce.** These are distinct offerings in the pricing (section 7: from
+  £1,500 / from £3,500) but have **no page today** — the current design-development services
+  are `wordpress` / `shopify` / `custom-app-development`. CP-05 creates them. No action now;
+  the gap is understood and scheduled.
+- **AI & Automation case study — HOLD.** A case study is being written for the pillar (which
+  currently has zero case studies) to fill the gap; Hassan is confirming the facts
+  separately. **Do not create it, draft it, or invent any details** in the meantime — this is
+  exactly the fabrication that sections 8 and 11 prohibit until real facts exist.
 
 ---
 
@@ -372,24 +389,57 @@ or something else.
 Three months of free post-launch support on delivered products. If something breaks
 after launch, within that window, CP fixes it.
 
-### Status: blocked from publication (D18)
+### Status: approved pending clause sign-off (D18, updated 18 August 2026)
 
-CP-00 searched the legal hub and **found no 3-month post-launch warranty clause**. The
-Support & Maintenance Schedule covers ongoing retained support, which is a different
-thing. Terms of Service §9 and §15 were checked directly.
+**Update (18 Aug 2026):** the three-month post-launch support is confirmed as real
+practice and is being added to the legal documents. D18 moves from "blocked from
+publication" to **approved pending clause sign-off**. A draft Terms of Service clause is
+below (§9A). It is a **draft for Hassan's approval — not final, not a legal decision made on
+his behalf**. Until Hassan signs the clause off:
+- No page carries a warranty module and **no marketing copy references a warranty period.**
+- The clause may still warrant a solicitor's eye before it is adopted.
 
-So the position is: this is real practice with nothing contractual behind it.
+Original finding (for the record): CP-00 searched the legal hub and found **no** 3-month
+post-launch warranty clause. The Support & Maintenance Schedule covers ongoing retained
+support, a different thing. Terms of Service §9 and §15 were checked directly. So the
+warranty was real practice with nothing contractual behind it — publishing it before the
+terms existed would have been the invented-guarantee case section 11 prohibits.
 
-Publishing a warranty the terms do not support is the invented-guarantee case that
-section 11 prohibits. It is also the kind of claim a client can hold you to. The
-warranty therefore does not appear on any page until the terms are updated, which is
-a legal document change and may warrant a solicitor's eye rather than a copy decision.
+Working marketing copy, still held until the clause is signed off: *If something we've
+built isn't working as agreed during the warranty period, we'll put it right.*
 
-Until then, no page carries a warranty module, and no copy references a warranty
-period.
+### §9A — Post-launch warranty clause (DRAFT for approval, not final)
 
-Working marketing copy, held until the terms exist: *If something we've built isn't
-working as agreed during the warranty period, we'll put it right.*
+> **Post-Launch Warranty.** CreativePixels provides a warranty period of three (3) months
+> from the date the delivered work is made live or handed over to you ("the Warranty
+> Period").
+>
+> **1. What is covered.** During the Warranty Period we will, at no additional charge,
+> correct defects in the work we delivered. A "defect" means the delivered work failing to
+> function as set out in the agreed specification — for example a broken link, a page or
+> feature that does not work as agreed, or a fault introduced by us. Work that functions as
+> agreed but is now wanted differently — new pages, new features, design changes, added
+> functionality, or any change to the agreed scope — is **not** a defect; it is a change
+> request, quoted and carried out separately.
+>
+> **2. What is not covered.** The warranty covers only the work we built. It does **not**
+> cover: (a) third-party services, platforms, plugins, hosting, or integrations, or changes
+> those parties make; (b) changes, customisations, or code made by you or anyone else after
+> handover; (c) content, data, or edits you add or change after handover; (d) faults caused
+> by misuse, or by the environment the work runs in rather than the work itself. Where a
+> problem falls outside the warranty, we can help under a separate support arrangement.
+>
+> **3. How to raise a claim.** Report the issue to us in writing (email is sufficient)
+> within the Warranty Period, describing the problem and how to reproduce it. We will
+> acknowledge the report within [N] business days and, where the issue is a covered defect,
+> tell you our assessment and expected timeframe to correct it.
+>
+> **4. Remedy.** The sole remedy under this warranty is that we will correct the covered
+> defect. The warranty does **not** entitle you to a refund, discount, credit, or any other
+> financial compensation.
+
+*(Bracketed [N] to be set by Hassan. Draft only — approve/adjust before adoption; do not
+publish or reference in marketing until signed off.)*
 
 ---
 
