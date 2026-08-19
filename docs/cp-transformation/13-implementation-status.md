@@ -32,6 +32,32 @@ complete and Hassan signs off final cutover.
 
 ---
 
+## O13 verified + O16 draft case studies inspected (19 August 2026)
+
+**O13 — CLOSED.** Studio nav fields (`navLabel`/`navExcerpt`/`navOrder`) verified against staging:
+names match `NAV_QUERY`, `navOrder` is a real number (sort works), services 15/16 + goal solutions
+5/5 populated. Empty: `ai-automation` service + all 44 industries (CP-08). Detail in `00-context.md`
+O13 note. Flagged: industries duplicate slugs + hasPage mismatch; "Wordpress" casing; PPC→Paid Media
+label; confirm the `solutions` type also got the fields.
+
+**O16 — the 8 draft-only case studies inspected.** Read each draft's body in staging. Finding:
+- **`ivy-and-duke` is the only real one.** Genuine content (Manchester maker of handcrafted luxury
+  dog beds; WordPress + Maintenance + UI/UX; live `ivyandduke.co.uk`; challenge/approach/4 points/
+  solution all real). **Completed:** wrote its empty `seo.metaTitle` + `seo.metaDescription` from the
+  readable body (kept as a **draft**, not published). **Flag:** its `excerpt` reads "LMS Migration &
+  Rebrand" — "LMS" does not match a dog-bed brand site; likely a paste error, left for Hassan.
+- **6 are placeholder stubs cloned from Casa Botanica Panama** (`loop`, `lola-blake`, `core-estates`,
+  `amana-partnership`, `drive-uk`, `ofh-care`). Their clientOverview/challenge/approach/solution are
+  Casa Botanica boilerplate; only title/slug/live-URL/one service tag are real. **Left untouched — not
+  padded or invented** (per the rules). Real anchors only: loop (`loop-am.com`, Speed+UI/UX),
+  lola-blake (`lolaandblake.co.uk`, Analytics), amana-partnership (`amanapartnership.com`, Branding),
+  ofh-care (`ofhcare.co.uk`, Maintenance), core-estates (no live URL), drive-uk (no live URL, but has
+  a real seo title/desc). **None have a published version on the CP live site** (all draft-only, not
+  in the 31). To build them, Hassan needs to supply a real brief per client (as for Biome4Pets).
+- Nothing published. `biome4pets` is the 8th draft (already complete, separate).
+
+---
+
 ## CP-01 — case studies audit + services/solutions sign-off (19 August 2026)
 
 Analysis only; nothing implemented, no content written to staging. All in `03-url-audit.md`.
