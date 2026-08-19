@@ -1,28 +1,33 @@
 import { client } from "./client";
 import { NAV_QUERY } from "./queries.nav";
 
-// Maps a service's `category` to its mega-menu column. A service with no matching
-// category (e.g. the taxonomy-only `ai-automation` stub) is intentionally left out of
-// the menu.
-const SERVICE_COLUMN = {
-  "design-development": "designService",
-  growth: "growthService",
-  support: "supportService",
-};
+// Mega-menu columns are DATA-DRIVEN: this config defines the grouping (which field
+// value maps to which column, its heading and colour theme, in order). The number of
+// columns and their grouping come from here + the data, not from the DOM — so CP-03's
+// switch from the old service categories to the four pillars is a change to THIS config
+// (and the theme map in ServiceNavColumn), NOT another pass through the mega-menu markup.
+// A column with no resolved items is dropped entirely (empty-state handled downstream).
+const SERVICE_COLUMNS = [
+  { key: "design-development", heading: "Design & Build", theme: "design" },
+  { key: "growth", heading: "Growth", theme: "growth" },
+  { key: "support", heading: "Support", theme: "support" },
+];
 
-const EMPTY_NAV = {
-  designService: [],
-  growthService: [],
-  supportService: [],
-  goalSolution: [],
-  sectorSolution: [],
-  industries: [],
-};
+const byNavOrder = (a, b) =>
+  (a.navOrder ?? 9999) - (b.navOrder ?? 9999) || a.label.localeCompare(b.label);
 
-// Server-side. Fetches the nav source and shapes it into the arrays the menu
-// consumes (same shape as the old hardcoded navigation.js constants), so the later
-// rewire is a straight swap. Returns empty arrays on failure rather than throwing,
-// so a nav-data outage never blanks the whole layout.
+const toItem = (s, base) => ({
+  label: s.label,
+  excerpt: s.excerpt,
+  slug: s.slug,
+  href: `${base}/${s.slug}`,
+});
+
+const EMPTY_NAV = { serviceColumns: [], goalSolution: [], sectorSolution: [], industries: [] };
+
+// Server-side. Fetches the nav source and shapes it into the structures the menu
+// consumes. Returns empty structures on failure rather than throwing, so a nav-data
+// outage never blanks the whole layout.
 export async function getNavData() {
   let raw;
   try {
@@ -32,32 +37,26 @@ export async function getNavData() {
     return EMPTY_NAV;
   }
 
-  const columns = { designService: [], growthService: [], supportService: [] };
-  for (const s of raw?.services || []) {
-    const col = SERVICE_COLUMN[s.category];
-    if (!col) continue;
-    columns[col].push({
-      label: s.label,
-      excerpt: s.excerpt,
-      href: `/services/${s.slug}`,
-    });
-  }
+  const services = raw?.services || [];
+  const serviceColumns = SERVICE_COLUMNS.map((col) => ({
+    key: col.key,
+    heading: col.heading,
+    theme: col.theme,
+    items: services
+      .filter((s) => s.category === col.key)
+      .sort(byNavOrder)
+      .map((s) => toItem(s, "/services")),
+  })).filter((col) => col.items.length > 0); // drop empty columns
 
-  const goalSolution = (raw?.goalSolutions || []).map((s) => ({
-    label: s.label,
-    excerpt: s.excerpt,
-    href: `/solutions/${s.slug}`,
-  }));
+  const goalSolution = (raw?.goalSolutions || [])
+    .slice()
+    .sort(byNavOrder)
+    .map((s) => toItem(s, "/solutions"));
 
   // Industries carry `hasPage` but have NO route until CP-08. Linking
-  // /industries/<slug> now would 404 (the exact fault we just fixed in nav), so the
-  // sector column stays EMPTY for now; the resolved data is exposed under `industries`
-  // for CP-08 to switch on once the routes exist.
-  const industries = (raw?.industries || []).map((s) => ({
-    label: s.label,
-    excerpt: s.excerpt,
-    href: `/industries/${s.slug}`,
-  }));
+  // /industries/<slug> now would 404 (the fault we just fixed), so the sector column
+  // stays EMPTY; the resolved data is exposed under `industries` for CP-08.
+  const industries = (raw?.industries || []).map((s) => toItem(s, "/industries"));
 
-  return { ...columns, goalSolution, sectorSolution: [], industries };
+  return { serviceColumns, goalSolution, sectorSolution: [], industries };
 }

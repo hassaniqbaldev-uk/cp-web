@@ -11,7 +11,6 @@ import { motion } from "framer-motion";
 import SecondaryButton from "../ui/SecondaryButton";
 import LoaderLogo from "../decorative-elements/LoaderLogo";
 
-// eslint-disable-next-line no-unused-vars -- navData is wired now, consumed in the next pass
 const HomeHeader = ({ transition, navData }) => {
   const [isSticky, setIsSticky] = useState(false);
   const [isHidden, setIsHidden] = useState(false);
@@ -152,6 +151,7 @@ const HomeHeader = ({ transition, navData }) => {
                 isOpen={isServicesOpen}
                 setIsOpen={setIsServicesOpen}
                 onToggle={toggleServices}
+                navData={navData}
               />
 
               <SolutionsDropdown

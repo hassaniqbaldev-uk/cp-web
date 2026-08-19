@@ -9,6 +9,7 @@ export const NAV_QUERY = `{
     "label": coalesce(navLabel, title),
     "excerpt": coalesce(navExcerpt, ""),
     "slug": slug.current,
+    navOrder,
     category
   },
   "goalSolutions": *[_type == "solutions" && category == "goal" && !(_id in path("drafts.**")) && defined(slug.current)] | order(title asc){

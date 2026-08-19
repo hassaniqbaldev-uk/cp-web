@@ -2,20 +2,16 @@
 import { useRef } from "react";
 import Image from "next/image";
 import ChevronDownIcon from "../icons/ChevronDownIcon";
-import DesignIcon from "@/assets/icons/ui/design-icon.svg";
 import GrowthIcon from "@/assets/icons/ui/growth-icon.svg";
 import SupportIcon from "@/assets/icons/ui/support-icon.svg";
 import TiltArrowIcon from "../icons/TiltArrowIcon";
-import {
-  DESIGN_SERVICE_NAV,
-  GROWTH_SERVICE_NAV,
-  SUPPORT_SERVICE_NAV,
-} from "@/contants";
+import { GROWTH_SERVICE_NAV, SUPPORT_SERVICE_NAV } from "@/contants";
 import Link from "next/link";
 import PrimaryButton from "./PrimaryButton";
 import ServicesDropdownStroke from "@/assets/svgs/services-dropdown-stroke.svg";
+import ServiceNavColumn from "./ServiceNavColumn";
 
-const ServicesDropdown = ({ className, isOpen, setIsOpen, onToggle }) => {
+const ServicesDropdown = ({ className, isOpen, setIsOpen, onToggle, navData }) => {
   const triggerRef = useRef(null);
   const panelRef = useRef(null);
 
@@ -92,53 +88,13 @@ const ServicesDropdown = ({ className, isOpen, setIsOpen, onToggle }) => {
           className="flex w-full gap-[3.8rem] rounded-[3rem] bg-white px-[3.5rem] py-[4rem]"
         >
           <div className="grid flex-1 grid-cols-3 gap-[3.8rem]">
-            <div className="flex w-full flex-col gap-[2.4rem] border-r border-[#818181]/30 pr-[3.8rem]">
-              <div className="flex items-center gap-[2rem] text-left">
-                <i
-                  style={{
-                    boxShadow: "5px 5px 22px 0px #ED910C99",
-                  }}
-                  className="inline-flex size-[5.5rem] items-center justify-center rounded-[1.5rem] bg-[#ED910C]"
-                >
-                  <Image
-                    src={DesignIcon}
-                    width={24}
-                    height={24}
-                    alt="Icon"
-                    unoptimized
-                  />
-                </i>
-
-                <span className="text-left text-[1.6rem] leading-[2.4rem] font-bold tracking-[-0.02em] text-[#263238] uppercase">
-                  Design & Build
-                </span>
-              </div>
-
-              <ul className="flex flex-col gap-[1.5rem]">
-                {DESIGN_SERVICE_NAV.map((item, idx) => (
-                  <li
-                    key={idx}
-                    className="border-[#818181]/30 pb-[1.5rem] not-last:border-b"
-                  >
-                    <Link
-                      onClick={() => setIsOpen(false)}
-                      href={item.href}
-                      className="flex items-start justify-between gap-[1rem]"
-                    >
-                      <div className="flex flex-col items-start text-left">
-                        <h5 className="text-[1.8rem] leading-[2rem] font-semibold tracking-[-0.02em] text-[#263238]">
-                          {item.label}
-                        </h5>
-                      </div>
-
-                      <i className="min-w-max">
-                        <TiltArrowIcon color="#ED910C" width="12" height="12" />
-                      </i>
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
+            {/* Column 1 — data-driven proof (Design & Build). Columns 2 & 3 below are
+                still hardcoded pending review; the full rewire replaces the whole grid
+                with serviceColumns.map(...). */}
+            <ServiceNavColumn
+              column={navData?.serviceColumns?.[0]}
+              onSelect={() => setIsOpen(false)}
+            />
 
             <div className="flex w-full flex-col gap-[2.4rem] border-r border-[#818181]/30 pr-[3.8rem]">
               <div className="flex items-center gap-[2rem] text-left">
