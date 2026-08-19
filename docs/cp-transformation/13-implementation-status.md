@@ -32,6 +32,34 @@ complete and Hassan signs off final cutover.
 
 ---
 
+## Biome4Pets case study — approved, BLOCKED on the draft copy (18 August 2026)
+
+Hassan approved creating the Biome4Pets case study in staging (first proof under the **AI &
+Automation** pillar, which has none). **BLOCKED:** the referenced "attached draft copy" did
+**not** reach this session — no file, and the message body carries the facts but not the
+draft prose or its "five things to collect" list. Per the standing no-invention doctrine
+(named client), the case study is **not created** until the draft arrives; I will not
+compose narrative from bare facts.
+
+**Confirmed facts available (from Hassan's message — the ONLY facts usable, nothing added):**
+- Client: **Biome4Pets** — publishable, happy to be named; provides pet microbiome testing.
+- What we built: a **custom application** that converts laboratory medical results into
+  structured data, uses **AI** to analyse and interpret it, then uses **AI** to improve the
+  written reports.
+- Metric (the only one; do not add others): **200 reports previously took 3 days, now take
+  1 day** — observed by us and confirmed by the client.
+- No confidentiality restrictions.
+- Services to reference: **ai-automation** + **custom-app-development**.
+
+**Outstanding — needed before/for creation (record, do not fill in):**
+- The **draft copy** itself (prose + structure) — not received.
+- The draft's **"five things worth collecting" from the client** — not received; cannot be
+  recorded until the draft is provided. (Likely candidates the message says NOT to invent: a
+  client quote, a technology list, a timeline, any additional metric — plus a 5th in the
+  draft.)
+
+---
+
 ## Outstanding-item decisions (18 August 2026)
 
 Recorded in `00-context.md` (full detail there):
