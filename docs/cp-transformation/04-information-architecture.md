@@ -104,8 +104,10 @@ Status key: **KEEP** · **REWRITE** · **NEW** · **REDIRECT** · **REMOVE**. De
 Only these **four** ship (the four current `hasPage` industries). The industries type's **duplicate
 slugs and mismatched flags are cleaned at CP-08** (D44); final slugs confirmed there. The **other five**
 legacy industry-solutions (`interiors-and-furnishings`, `driving-schools`, `sme-founders`,
-`pharmacies`, `restaurants`) have **no page in this set** — their `/solutions/<x>` URLs redirect to the
-**`/industries` hub** at CP-15 unless CP-08 promotes any of them (see §4).
+`pharmacies`, `restaurants`) have **no page in this set** — each is redirected to the **closest
+relevant page individually** (no hub dead-end), based on what each page actually described: interiors,
+restaurants, driving-schools and pharmacies → `/services/web-design-development`; sme-founders →
+`/solutions` (audience positioning, not an industry). Mapping in §4.
 
 ### 3.5 Case studies, Blog, Legal
 
@@ -151,7 +153,11 @@ legacy industry-solutions (`interiors-and-furnishings`, `driving-schools`, `sme-
 | `/solutions/b2b-services` | `/industries/b2b-services` | D44 |
 | `/solutions/saas-companies` | `/industries/saas-companies` | D44 |
 | `/solutions/charities-and-foundation` | `/industries/charities-and-foundation` | D44 |
-| `/solutions/interiors-and-furnishings`, `/driving-schools`, `/sme-founders`, `/pharmacies`, `/restaurants` | `/industries` (hub) | No page in the 4-industry set; revisit at CP-08 |
+| `/solutions/interiors-and-furnishings` | `/services/web-design-development` | Premium lead-gen website for a design service (not an ecommerce brand) |
+| `/solutions/restaurants` | `/services/web-design-development` | Restaurant website + booking/ordering systems (not an ecommerce brand) |
+| `/solutions/driving-schools` | `/services/web-design-development` | Driving-school website + automated bookings |
+| `/solutions/pharmacies` | `/services/web-design-development` | Pharmacy website + growth; NHS-integration/ordering angle noted (closest clean page) |
+| `/solutions/sme-founders` | `/solutions` (hub) | Audience positioning, not an industry — no single page owns it |
 | `/agencies` | `/partner-with-us` | White-label merge |
 | `/wordpress-web-development`, `/wordpress-web-development/thank-you` | `/services/web-design-development` | LP retired |
 | `/hassan-test`, `/review-test`, `/testing-testimonials` | 410 / removed | Test routes |
