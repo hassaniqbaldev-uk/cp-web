@@ -288,17 +288,17 @@ static pages are separate sections, still to do.
 | `/services` | "Services built around your goals, not templates." | Hub; browse + commercial entry | Decent hub, groups by the old 3 categories | **KEEP** — REWRITE grouping to the four pillars at CP-03; add meta description |
 | `/services/branding` | Strategic Brand Identity Design | Brand & Experience buyer | Solid | **KEEP** (+ meta desc) |
 | `/services/ui-ux-design` | UI/UX Design Services & Prototyping | Brand & Experience buyer | Solid | **KEEP** (+ meta desc) |
-| `/services/wordpress` | WordPress Development Services | Platform buyer (WP) | Solid | **KEEP** — but see "Web Design & Development" gap below |
-| `/services/shopify` | High-Performance Shopify Development | Platform buyer (Shopify) | Solid | **KEEP** — but see "Ecommerce" gap below |
+| `/services/wordpress` | WordPress Development Services | Platform buyer (WP) | Solid | **KEEP, flat URL** (D35) — conceptually Web & Ecommerce; hierarchy lives in nav grouping, not the URL |
+| `/services/shopify` | High-Performance Shopify Development | Platform buyer (Shopify) | Solid | **KEEP, flat URL** (D35) — as above |
 | `/services/custom-apps-and-ai` | Custom Web Development & AI Solutions | Two distinct buyers fused | Conflates two offerings in two different pillars | **SPLIT** → Custom App Development (Web & Ecommerce) + AI & Automation (AI & Automation). **REDIRECT** old slug → `/services/custom-app-development` at cutover |
 | `/services/seo` | ROI-Driven SEO Services & Growth Strategy | Growth buyer | Solid | **KEEP** (+ meta desc) |
 | `/services/ppc` | ROI-Focused Paid Search & Social | Growth buyer | Solid | **KEEP** (+ meta desc) |
 | `/services/cro` | Conversion Rate Optimisation (CRO) Services | Growth buyer | Solid | **KEEP** (+ meta desc) |
 | `/services/email` | Email Marketing & Retention Strategy | Growth buyer | Solid | **KEEP** (+ meta desc) |
 | `/services/analytics` | Data Analytics & BI | Growth buyer | Solid | **KEEP** (+ meta desc) |
-| `/services/maintenance` | Website Maintenance & Growth Support | Retained-support buyer | Solid | **KEEP** — overlap cluster, see below |
-| `/services/speed` | Web Performance Optimisation | Performance buyer | Solid, but narrow | **KEEP?** — candidate to MERGE into maintenance; **Hassan decision** |
-| `/services/security` | Web Security & Protection | Security buyer | Solid, but narrow | **KEEP?** — candidate to MERGE into maintenance; **Hassan decision** |
+| `/services/maintenance` | Website Maintenance & Growth Support | Retained-support buyer | Solid | **REPOSITION** (D36) → parent proposition **"Ongoing Growth & Support"** (maintenance + security + performance + ongoing improvement) |
+| `/services/speed` | Web Performance Optimisation | Performance buyer | Solid, but narrow | **KEEP** (D36) — supporting specialist page; real search demand for site-speed work |
+| `/services/security` | Web Security & Protection | Security buyer | Solid, but narrow | **DEMOTE → capability** within Growth & Support (D36) — **pending O14** (confirm we don't deliver standalone security work) |
 | `/services/migrations` | Website & Platform Migration Services | Replatform buyer | Solid | **KEEP** (+ meta desc) |
 | `/services/accessibility` | Web Accessibility (WCAG) Services | Accessibility buyer | Solid — and strategically important (we sell accessibility) | **KEEP** — must be exemplary; ties to the Step-1 WCAG work |
 
@@ -316,24 +316,26 @@ static pages are separate sections, still to do.
   **CP-05, first in priority**. `wordpress` and `shopify` are platform-specific pages that
   should sit **under** these broader offerings (IA below).
 
-### Where the decision depends on Hassan (not assumed)
+### Decisions made on the flagged questions (Hassan, 18 August 2026)
 
-1. **IA: platform pages vs umbrella pages.** Once Web Design & Development and Ecommerce
-   exist (CP-05), do `wordpress` and `shopify` become children of them (kept, re-parented),
-   or stay as standalone peers? This changes internal linking and the mega-menu grouping at
-   CP-03. **Needs Hassan.**
-2. **Support cluster consolidation.** `maintenance`, `speed`, `security` (and arguably
-   `accessibility`) overlap. Options: keep four distinct pages, or MERGE `speed`/`security`
-   into `maintenance` as sections. Commercially, standalone pages rank for their own terms;
-   against that, four thin pages dilute. **Needs Hassan** — I have not assumed either way.
-3. **`ai-automation` service page content timing** — created/authored at CP-05, or later?
-   The pillar exists but the page is an empty stub.
+1. **IA — platform pages stay flat (D35).** `wordpress` / `shopify` are NOT nested under a
+   parent path; they sit at the same URL depth as every other service. The hierarchy lives in
+   the mega-menu grouping + internal linking, not the URL.
+2. **Support cluster consolidated (D36).** `maintenance` → parent **"Ongoing Growth &
+   Support"** (maintenance + security + performance + ongoing improvement); **`speed` kept** as
+   a supporting specialist (real search demand); **`security` demoted to a capability** —
+   **pending O14** (confirm CP does not deliver standalone security work; if it does, it stays
+   a service — do not overclaim).
+3. **`ai-automation` page built at CP-05 (D37)** as a P1 pillar page (Biome4Pets is now real
+   evidence behind it). Its sub-pages (Workflow Automation, AI Agents, AI Integrations) wait
+   for more delivery proof.
 
 ### CP-01 services summary
 
 15 live service pages + hub. **No REMOVE, no NOINDEX, no REDIRECT-away** — every page is a
 real commercial asset. Decisions: **13 KEEP** (all pending re-pillaring at CP-03 + meta
-descriptions), **1 SPLIT** (`custom-apps-and-ai`, with a redirect of the old slug), **2
-KEEP-or-MERGE flagged for Hassan** (`speed`, `security`), and **2 CREATE** (Web Design &
-Development, Ecommerce — CP-05). The single most impactful, low-risk content win across the
-whole set is filling the **empty meta descriptions** (a Sanity content edit, production).
+descriptions), **1 REPOSITION** (`maintenance` → "Ongoing Growth & Support"), **1 DEMOTE**
+(`security` → capability, pending O14), **1 SPLIT** (`custom-apps-and-ai`, with a redirect of
+the old slug), and **2 CREATE** (Web Design & Development, Ecommerce — CP-05). The single most
+impactful, low-risk content win across the whole set is filling the **empty meta
+descriptions** (a Sanity content edit, production).

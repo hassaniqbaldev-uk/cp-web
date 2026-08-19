@@ -145,6 +145,14 @@ All confirmed by Hassan, 12 August 2026.
 | D33 | `tools` becomes `technology` and gains `title` and `slug` | Currently only `toolImage` and `altText`, so it cannot be queried or filtered. Unusable as a taxonomy without this |
 | D34 | **Step 1 site-hygiene fixes run before the consolidation** | Approved 12 Aug. Keyboard-accessible nav, carousel pause controls, real dialog. Each becomes the base for the later rebuild, so none is throwaway work. See section 14 |
 
+### Added after the CP-01 services audit, 18 August 2026
+
+| ID | Decision | Rationale |
+| --- | --- | --- |
+| D35 | **Service URLs stay flat** — `/services/wordpress`, `/services/shopify` are NOT nested under a parent path | Nesting adds depth, complicates the redirect map and buries the pages. WordPress and Shopify belong to **Web & Ecommerce** *conceptually*, but sit at the same URL depth as every other service. The hierarchy lives in the **mega-menu grouping + internal linking**, as CP-15 describes — not in the URL. Applies to all platform/service pages. Inherited by CP-02/CP-03. |
+| D36 | **Growth & Support consolidation** — `maintenance` becomes the parent proposition **"Ongoing Growth & Support"** (covering maintenance, security, performance and ongoing improvement). **Speed kept** as a supporting specialist page. **Security demoted to a capability** within Growth & Support — *pending confirmation* | Reduces the thin "support" cluster to one strong parent + one justified specialist. Speed stays because there is **real search demand** for site-speed work. Security is demoted because the brief warns against promising services we do not actually provide and security is the easiest to overclaim — **OPEN: confirm we do not deliver standalone security work; if we do, it stays a service.** Do not assume; see O14. Inherited by CP-02/CP-03. |
+| D37 | **AI & Automation page built at CP-05** as a P1 pillar page; its **sub-pages** (Workflow Automation, AI Agents, AI Integrations) **wait** for more delivery proof | It is one of the four pillars and now has real evidence behind it (the Biome4Pets case study). The sub-pages hold until there is more delivery proof, exactly as the brief states. Inherited by CP-03/CP-05. |
+
 ---
 
 ## 5. Decisions open
@@ -158,6 +166,7 @@ All confirmed by Hassan, 12 August 2026.
 | O9 | Cal.com link views on the booking page. Did prospects click and abandon, or never click? See section 6 | Hassan | Whether D8 is the right fix |
 | O12 | Confirm no case-study taxonomy slug appears in a live URL before normalising the malformed ones | Claude Code | Slug normalisation step |
 | O13 | **Add the nav field DEFINITIONS to the separate Sanity Studio repo** so editors can set them. The field DATA is already populated on staging and the cp-web nav query reads it (title fallback), but the Studio schema lives outside cp-web. Spec below. | Whoever owns the Studio repo | Editors setting nav labels; full data-driven nav |
+| O14 | **Do we deliver standalone security work as a service?** If yes, `/services/security` stays a service; if no (the default under D36), it becomes a capability within Growth & Support. Do not overclaim. | Hassan | Finalising D36 / the security page's fate at CP-03 |
 
 Closed: O1 → D17. O2 → D14. O7 → D19. O10 → already scoped to the `cp-web` repo, no
 action required. **O3 → pricing approved for publication (18 Aug 2026; D9 superseded, see
