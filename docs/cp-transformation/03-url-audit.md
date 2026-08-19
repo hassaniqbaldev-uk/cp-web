@@ -637,3 +637,111 @@ is print, not a digital pillar. Evidence is delivery-fact-rich, outcome-poor, te
 so classifications rest on client recognition + scope, and O4 (collect a quote + metric per
 flagship) is the biggest quality lever. Two structural gaps: **AI & Automation (no published proof)**
 and **Growth & Performance / Paid Media / email (no standalone proof)**.
+
+---
+
+## 9. CP-01 — content / intent audit: BLOG (19 August 2026)
+
+Analysis only. 9 posts, all Sanity-driven (`/blog/[slug]`). **All 9 KEEP** — real, on-topic content,
+no thin/spam posts. The work is re-classification (CP-14) and meta-title fixes, not removal.
+
+**Pillar mapping (for CP-14, which organises content by pillar).** The current CMS `category` field
+is a 4-way taxonomy (`STRATEGY` / `GROWTH` / `DESIGN` / `DEVELOPMENT`) that **does not match the four
+pillars** — notably there is **no AI category**, so the AI post is mis-filed under `GROWTH`. Mapped to
+pillars by topic:
+
+| Post | Current `category` | Pillar (CP-14) |
+| --- | --- | --- |
+| `why-template-is-a-dirty-word-in-enterprise-web-design` | STRATEGY | Web & Ecommerce |
+| `webflow-vs-wordpress-which-is-better-for-your-business` | DEVELOPMENT | Web & Ecommerce |
+| `why-your-wordpress-website-is-slow-and-how-to-fix-it` | DEVELOPMENT | Web & Ecommerce |
+| `how-crm-integrations-improve-ecommerce-checkout-conversions` | DEVELOPMENT | Web & Ecommerce (ecommerce) |
+| `conversion-rate-optimisation-tactics-that-drive-better-marketing-results` | GROWTH | Growth & Performance |
+| `driving-better-ppc-results-mistakes-that-waste-budget` | GROWTH | Growth & Performance (Paid Media) |
+| `10-signs-your-website-is-costing-you-leads` | GROWTH | Growth & Performance |
+| `rebranding-strategy-what-to-consider-before-changing-your-brand` | DESIGN | Brand & Experience |
+| `ai-automation-in-2026-what-businesses-need-to-know` | GROWTH *(mis-filed)* | AI & Automation |
+
+**Pillar balance:** Web & Ecommerce **4**, Growth & Performance **3**, Brand & Experience **1**,
+AI & Automation **1**. **Gaps for CP-14:** Brand and AI are thin (1 each); **email marketing has no
+post at all**. Cross-referencing the case-study gaps (§8) sharpens the picture of what we can support
+with *content* vs *proof*:
+
+| Service area | Blog post? | Case study? |
+| --- | --- | --- |
+| Paid Media (PPC) | ✓ (1) | ✗ — no proof |
+| AI & Automation | ✓ (1) | ✗ published (only `biome4pets` draft) |
+| **Email marketing** | ✗ | ✗ — **total blind spot** |
+
+**Also fix (CP-14):** several meta titles are **truncated mid-phrase** ("Conversion Rate Optimisation
+Tactics That Drive", "Rebranding Strategy: What to Consider Before") — length overflow, not content.
+
+## 10. CP-01 — content / intent audit: LEGAL (19 August 2026)
+
+Analysis only. 7 pages, Sanity-driven (`/legal/[slug]`). **All 7 KEEP** — necessary policy / client
+documents, low commercial value by nature, correctly not commercial pages.
+
+| URL | Role | Decision |
+| --- | --- | --- |
+| `/legal/privacy-policy` | Policy | KEEP |
+| `/legal/cookies-policy` | Policy | KEEP |
+| `/legal/data-processing-agreement` | Client resource (UK GDPR) | KEEP — consider NOINDEX (utility doc, no search value) |
+| `/legal/paid-ads-schedule` | Paid-media terms | KEEP — ties to the Paid Media service |
+| `/legal/terms-of-service` | Commercial terms | **KEEP + ADD the D18 warranty clause** (§9A of 00-context) when the ToS is next edited |
+| `/legal/support-and-maintenance-schedule` | Ongoing-support SLA | KEEP — covers retained support, **not** the launch warranty (D12) |
+| `/legal/nda-template` | Client resource | KEEP — consider NOINDEX (utility doc) |
+
+- **Template bug (from §5):** the 7 legal detail pages render **no `<h1>`** in server HTML. Fix when
+  the legal template is next touched (heading-structure / a11y gap, not content).
+- **No REMOVE, no REDIRECT.** The warranty clause (D18) lands in `terms-of-service`; nothing else changes.
+
+## 11. CP-01 — content / intent audit: STATIC / HARDCODED PAGES (19 August 2026)
+
+Analysis only. The hardcoded pages (content in code, not Sanity). Decisions:
+
+| URL | H1 (current) | Decision | Why |
+| --- | --- | --- | --- |
+| `/about` | "A digital agency that gives a damn." | **REWRITE (major) + FIX DATES** | Brief calls for a major rewrite; also the estate's **date inconsistency** lives here ("12+ Years"). Location claim "Manchester". |
+| `/agencies` | "White Label Web Design & Branding" | **MERGE / REVIEW** | Duplicate white-label proposition with `/partner-with-us` (below). |
+| `/partner-with-us` | "An agency, for your agency" | **MERGE / REVIEW** | Same white-label offer as `/agencies`; two pages competing for one intent. Consolidate to one, redirect the other (CP-15). |
+| `/audit` | "Unlock your website's hidden revenue." | **KEEP + REWRITE** | Key CTA page (Free Audit → AuditForm). H1 uses banned "Unlock"; rewrite copy, keep the page. |
+| `/contact` | "Let's build something extraordinary." | **KEEP** | ContactForm destination. |
+| `/call` | "Book a quick call with us" | **KEEP** | Cal.com booking utility. |
+| `/careers` | "Build the Extraordinary." | **KEEP** | Careers + JobApplicationForm. |
+| `/how-we-work` | "We bring order to digital chaos." | **KEEP + REWRITE** | Process page; contains the "over 10 years" variant of the date inconsistency. |
+| `/testimonials` | "Let's simplify your growth strategy." | **KEEP + FIX** | Important evidence surface given the case-study quote gap (§8), but the **H1 does not match the page** (reads like a growth CTA, not testimonials). Pulls external reviews (revuora.app). |
+| `/thank-you` | "Thanks for your enquiry" | **KEEP** | noindex utility (form success). |
+| `/wordpress-web-development` (LP) | "Tired of a website that doesn't convert?" | **REMOVE / REDIRECT (CP-05/CP-15)** | Deprioritised; superseded by the new CP-05 service pages (00-context holds). Redirect at cutover. |
+| `/hassan-test`, `/review-test`, `/testing-testimonials` | — | **REMOVE (CP-00E)** | Test/junk routes (§4). |
+
+### The date inconsistency — record as a truth/accuracy issue (brief asks to resolve it)
+
+CP's own age is stated **four different ways** across the estate — a credibility risk on a site that
+sells trust:
+
+| Claim | Where |
+| --- | --- |
+| **"12+ Years Experience"** | About `Stats.jsx` (+ LP `LpEstablishedSection` counter) |
+| **"over 10 years"** | `Process.jsx` (`/how-we-work` and elsewhere) |
+| **"over 7 years"** | LP `LpEstablishedSection` body **and** `LpWhySection` (the LP contradicts *itself* — 7-year text next to a 12+ counter) |
+| **"Since 2014"** (= 12 years by 2026) | `AgenciesHero.jsx`, `PartnerWithUsHero.jsx` |
+
+**Recommendation:** pick **one canonical founding year** (a fact for Hassan to confirm — do not
+assume; "Since 2014" is the only explicit year and matches the 12+ counters, but the 7/10-year copy
+must be reconciled, not silently overwritten) and drive every "N years"/"since" claim from a **single
+source of truth**. This is a **CP-01 finding**; the fix happens at the rewrite phases (CP-05/CP-09),
+not now.
+
+- **Unverified numeric claims (O4 / truth):** About `Stats` shows **12+ / 200+ / 15+**; the LP adds
+  **£10M+ / 100% / 4.9-5 rating**. These are marketing figures with no source in the repo — treat
+  under the O4 prohibition (no unverified numbers on rebuilt pages until confirmed). Flag, don't fix now.
+
+## CP-01 — COMPLETE (19 August 2026)
+
+All sections done: services (§6), solutions (§7), case studies (§8), blog (§9), legal (§10), static
+(§11). Nothing implemented beyond the approved meta-description writes (§6). Headline outputs:
+**services** 12 KEEP / D38 Analytics / D36 maintenance+security / SPLIT custom-apps-and-ai / 2 CREATE;
+**solutions** hub REWRITE + 4 goals, D39 merge; **case studies** 9/20/2 with three estate-wide evidence
+findings (00-context §8); **blog** 9 KEEP, re-pillar at CP-14, email is a content blind spot; **legal**
+7 KEEP (+ D18 clause into ToS); **static** About major REWRITE + date-inconsistency fix, agencies /
+partner-with-us MERGE, LP + test routes REMOVE. Open items carried: O14, O15, O16, O17.

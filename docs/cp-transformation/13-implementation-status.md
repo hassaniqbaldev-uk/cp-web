@@ -11,7 +11,7 @@ should be able to reconstruct the state of play from here.
 
 | Item | Value |
 | --- | --- |
-| Current task | **CP-01 — URL audit (analysis only).** Services + solutions signed off; Analytics→D38 (reposition, option a), Scale Marketing→D39 (merge into Increase Leads), 15 service meta descriptions + 2 hubs drafted (not written to staging). **Case studies §8 done** (31 classified: 9 flagship / 20 supporting / 2 archive) → **awaiting review before blog/legal/static**. Into `03-url-audit.md` §6/§7/§8 |
+| Current task | **CP-01 — URL/content/intent audit COMPLETE (19 Aug 2026).** All sections in `03-url-audit.md` §6–§11: services, solutions, case studies (9/20/2), blog (re-pillar for CP-14), legal, static (About rewrite + date-inconsistency fix). 14 approved service meta descriptions **written to staging** (security blank pending O14; 2 hubs done in code). D38/D39 recorded; O16/O17 opened. **Awaiting review; next phase TBD by Hassan.** |
 | Branch | `development`, reading the new project's **staging** dataset (`4m0eqoi1` / `staging`). Not merged to main |
 | Started | 12 August 2026 |
 | Sign-off authority | Hassan |
@@ -46,6 +46,17 @@ Analysis only; nothing implemented, no content written to staging. All in `03-ur
   words, em dashes, US spelling), so it's a **rewrite**. Drafted **15 service + `/services` hub +
   `/solutions` hub** descriptions (≈150 chars, UK English, rules-compliant) into §6 **for review —
   NOT written to staging**.
+- **Blog / legal / static (§9–§11, 19 Aug) — CP-01 complete.** Blog: 9 KEEP, re-pillared for CP-14
+  (Web 4 / Growth 3 / Brand 1 / AI 1; **email = content blind spot**, AI post mis-filed as GROWTH).
+  Legal: 7 KEEP (D18 warranty clause lands in ToS; legal template has no `<h1>`). Static: **About
+  major REWRITE + the estate date inconsistency** (age stated as 12+/10/7 years and "Since 2014"
+  across About/Process/LP/heroes — pick one canonical founding year, Hassan to confirm); `/agencies`
+  + `/partner-with-us` **MERGE** (duplicate white-label); `/audit` REWRITE (banned "Unlock");
+  `/testimonials` H1 mismatch; LP + test routes REMOVE.
+- **Meta descriptions written to staging.** 14 approved service descriptions written via the Sanity
+  mutate API (CLI login token; the `.env.local` read token lacks write perms). `security` **cleared
+  to blank** (was promising malware removal / firewalls / 24-7 monitoring — held pending O14);
+  `ai-automation` stays blank. Both hub descriptions rewritten in **code** (not Sanity). Verified.
 - **Case studies §8 — 31 classified.** Read the staging bodies directly (not just crawl meta).
   **9 flagship / 20 supporting / 2 archive** (`ao-arena` concept, `peekaboo` MVP). Key flags:
   **AI & Automation has zero *published* proof** (only `biome4pets` draft); **Growth & Performance
