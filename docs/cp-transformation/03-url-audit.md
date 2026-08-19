@@ -394,9 +394,9 @@ this). Inherited by CP-03 (pillar map) and CP-09 (copy).
 | `/services/analytics` | Data Analytics Services & BI Dashboards \| Free Audit Now | Data Analytics & BI *(→ measurement, D38)* | Marketing measurement and analytics: GA4 and GTM setup, tracking, attribution and reporting so you can see what your marketing is really delivering. |
 | `/services/maintenance` | Website Maintenance Support & Security \| Free Audit Now | Website Maintenance & Growth Support | Ongoing website support: updates, backups, monitoring, fixes and steady improvements that keep your site fast, secure and working month to month. |
 | `/services/speed` | Web Performance Optimization Techniques \| Free Audit Now | Web Performance Optimisation | Website speed and Core Web Vitals work: finding what slows your pages down and fixing it with caching, image and code improvements for faster loads. |
-| `/services/security` | Web Security Services & Protection \| Free Website Audit | Web Security & Protection | Website security: audits, malware removal, firewalls, updates and monitoring to protect your site and the people who use it from common threats. |
+| `/services/security` | Web Security Services & Protection \| Free Website Audit | Web Security & Protection | **HELD — left blank pending O14.** Not written; the migrated copy (which promised malware removal, firewalls, 24/7 monitoring) was **cleared to blank** so staging does not overclaim standalone security work until O14 confirms we deliver it. |
 | `/services/migrations` | SEO Website Migration Services \| Secure Free Audit Call | Website & Platform Migration Services | Website and platform migrations handled carefully, with redirect mapping, content transfer, DNS and launch planning that protect your rankings and traffic. |
-| `/services/accessibility` | Web Accessibility Services \| WCAG Audit & Free Consultation | Web Accessibility (WCAG) Services | Web accessibility services: WCAG 2.2 audits, remediation, VPAT support and user testing to make your site work for more people and meet requirements. |
+| `/services/accessibility` | Web Accessibility Services \| WCAG Audit & Free Consultation | Web Accessibility (WCAG) Services | Web accessibility services covering WCAG 2.2 audits, remediation, VPAT support and assistive-technology testing to find and fix the barriers on your site. *(reworded per Hassan: describes the work, not a compliance outcome)* |
 
 **Solutions hub (`/solutions`) — rewrite (drops the "by sector" framing, D39 context):** Outcome-led
 solutions for common business goals, from generating more leads to rebuilding your website or
@@ -404,9 +404,31 @@ automating operations. Book a free strategy call.
 
 Notes: `custom-app-development`'s title/H1 still carry the old fused "& AI Solutions" wording and
 need updating as part of the SPLIT (separate from the meta description). `analytics` copy already
-reflects the D38 reposition (measurement, no "& BI"). The 5 **goal-solution** detail descriptions
-are in the same non-compliant state as services (old migrated copy) — not drafted here; flag if you
-want them rewritten in the same pass.
+reflects the D38 reposition (measurement, no "& BI").
+
+**WRITTEN TO STAGING — 19 Aug 2026 (Hassan approved).** The 14 approved service descriptions
+(accessibility in its reworded form) were written to `4m0eqoi1/staging` via the Sanity mutate API;
+`security` was **cleared to blank** (held pending O14 — see its row); `ai-automation` stays blank
+(on hold). Verified in staging: all 14 present (135–159 chars, no US spelling, no em dashes), security
+and ai-automation blank. The **two hubs are code** (`services/page.jsx`, `solutions/page.jsx`), so
+those two approved descriptions were made as **code edits on `development`**, not Sanity writes.
+Production is unaffected (still reads the old projects); these ship at cutover.
+
+### Goal-solution meta descriptions — drafts for review (not written)
+
+Same rules; the 4 surviving goals only (`scale-marketing` is merging under D39, so it needs no
+description — it redirects). Present but non-compliant today; **drafted here for review, NOT written
+to staging** (unlike the approved services above):
+
+| Page | H1 (current) | Draft meta description (≈150) |
+| --- | --- | --- |
+| `/solutions/increase-leads` | Generate More Qualified Leads Online | Generate more qualified leads and grow the channels that bring them in, with landing pages, CRM integration, SEO, paid media and conversion work. |
+| `/solutions/replatform-rebuild` | Rebuild & Modernise Your Website | Rebuild and modernise an ageing website with a faster, mobile-first design and an SEO-safe migration that protects the rankings and traffic you already have. |
+| `/solutions/launch-new-product` | Launch Your New Product | Take a new product to market with MVP planning, a launch-ready website or landing pages, and the campaigns to put it in front of the right audience. *(pending O15)* |
+| `/solutions/automate-operations` | Automate Your Operations | Automate manual, repetitive operations with AI, system integrations and workflow design that free your team from the work software should be doing. |
+
+`increase-leads` copy is written broad to absorb the merged Scale Marketing (D39). These 4 await
+your approval before I write them to staging.
 
 ### CP-01 services summary
 

@@ -175,6 +175,8 @@ All confirmed by Hassan, 12 August 2026.
 | O13 | **Add the nav field DEFINITIONS to the separate Sanity Studio repo** so editors can set them. The field DATA is already populated on staging and the cp-web nav query reads it (title fallback), but the Studio schema lives outside cp-web. Spec below. | Whoever owns the Studio repo | Editors setting nav labels; full data-driven nav |
 | O14 | **Do we deliver standalone security work as a service?** If yes, `/services/security` stays a service; if no (the default under D36), it becomes a capability within Growth & Support. Do not overclaim. | Hassan | Finalising D36 / the security page's fate at CP-03 |
 | O15 | **Is `launch-new-product` a real, delivered offering** (go-to-market / MVP launch) or aspirational? If real it stays a goal solution (D39 leaves it in the set of 4); if not, it merges or drops. Do not assume. | Hassan | Finalising the goal-solutions set at CP-07 |
+| O16 | **Are the 8 draft-only case studies real projects or abandoned drafts?** In staging but not in the production 31: `loop`, `lola-blake`, `core-estates`, `amana-partnership`, `ivy-and-duke`, `drive-uk`, `ofh-care` (+ `biome4pets`, ours). Publish (adds evidence, incl. possible Growth/AI proof) or discard. | Hassan (confirming) | CP-11/CP-12 evidence set |
+| O17 | **Do `dr-donuts`, `energy-angels`, `sorted`, `peekaboo` have live sites?** Their CMS records carry no live-site link. If live, they are usable proof; if not, they weaken further. | Hassan (confirming) | CP-12 flagship/supporting verification |
 
 Closed: O1 → D17. O2 → D14. O7 → D19. O10 → already scoped to the `cp-web` repo, no
 action required. **O3 → pricing approved for publication (18 Aug 2026; D9 superseded, see
@@ -395,6 +397,33 @@ data comes back.
 **O5 decision (18 August 2026): keep all 31 case studies — nothing is deleted.**
 Classification into flagship / supporting / archive happens at CP-12 as a **presentation**
 decision, not a deletion.
+
+### Estate-wide evidence audit — the three findings that shape CP-05, CP-11 and CP-12 (CP-01, 19 August 2026)
+
+Reading all 31 published case-study bodies directly (staging) produced three findings that are
+**not footnotes** — they govern what the site can honestly claim. Full detail in `03-url-audit.md` §8.
+
+1. **The estate has almost no proof beyond delivery facts — this is its single biggest weakness.**
+   Across **31 case studies**: **0 client quotes** and **only 3 quantified outcomes** (`unicef`
+   £478k [print], `now-press-play` 97%/89%, `sight-for-life` 100%). Everything else asserts quality
+   with no evidence. This is the **strongest possible argument for O4** (collect a quote + one metric,
+   starting with the 9 flagships) and it **directly caps CP-11 and CP-12**: a case-study system and
+   flagship pages built on delivery facts alone can show *what we built*, not *what it achieved*.
+   Until O4 lands, do not paper over this with plausible-sounding claims (see O4 prohibition above).
+
+2. **We are building service pages for work we cannot currently evidence — Paid Media and email.**
+   There is **no case study for Paid Media (PPC) or email marketing** — not standalone, not even as a
+   named workstream with a result. The Growth & Performance pillar as a whole has no primary-growth
+   case study (SEO/CRO/analytics only ever ride on a website build). **Record against CP-05 and
+   CP-11:** the service pages for these are being built ahead of any proof. This is a **content risk,
+   not a build blocker** — the pages can ship, but they will read as unsupported until we either
+   collect outcomes (O4) or write up a Paid Media / email engagement.
+
+3. **UNICEF — our most recognisable client name — evidences nothing we sell.** It is **print / event
+   collateral** (the 2018 Halloween Ball), not a website. It is **credibility and brand-recognition
+   proof only**: usable as a logo / "clients include" mention, and it **must not be used as evidence
+   on any digital service page** (web, ecommerce, growth, AI). Placing it as proof of a digital
+   capability would be a misrepresentation. (`ao-arena` is separately a concept, not delivered — §8.)
 
 ### Client relationship accuracy
 
