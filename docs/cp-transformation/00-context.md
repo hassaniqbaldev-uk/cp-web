@@ -177,12 +177,17 @@ owns that repo before editors can set the fields. Exact fields:
 | `navLabel` | `string` (optional) | Short menu label. Menu wording ≠ page title on purpose ("Web Design & Development" is a good title, a clumsy menu item). Empty → falls back to `title`. |
 | `navExcerpt` | `string` (optional) | One-line menu descriptor, e.g. "Identity & Strategy". Empty → renders no descriptor. |
 
-Add both to the document types surfaced in the menu: **`services`**, **`solutions`**
-(goal), and **`industries`**. Recommended: also add **`navOrder`** (`number`, optional) so
-menu order is editor-controlled — the cp-web query currently sorts by `title`, which does
-NOT preserve the hand-curated column order in the old `navigation.js`; without `navOrder`
-the menu will render alphabetically. Until the Studio fields exist, editors cannot change
-these values, but the site renders correctly from the populated data + title fallback.
+Add all three to the document types surfaced in the menu: **`services`**, **`solutions`**
+(goal), and **`industries`**:
+
+| Field | Type | Notes |
+| --- | --- | --- |
+| `navLabel` | `string` (optional) | Short menu label; empty → `title`. |
+| `navExcerpt` | `string` (optional) | One-line menu descriptor; empty → none. |
+| `navOrder` | `number` (optional) | Menu order **within a column**. Alphabetical is wrong for a commercial menu (it puts Accessibility first under Support, Analytics first under Growth); order must be editor-controlled. **Data populated on staging (18 Aug 2026)** to reproduce the old `navigation.js` hand-order exactly; the query orders by it. |
+
+Until the Studio fields exist, editors cannot change these values, but the site renders
+correctly from the populated data + title fallback + navOrder.
 
 ### Scheduling and holds (18 August 2026)
 

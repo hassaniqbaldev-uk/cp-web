@@ -11,7 +11,7 @@ should be able to reconstruct the state of play from here.
 
 | Item | Value |
 | --- | --- |
-| Current task | **Step 3 in progress — data-driven nav DATA LAYER done** (query + fetch wired to headers; no DOM rewired). Awaiting review before rewiring the mega-menu DOM + header merge. Sliders ✅, forms ✅, LP lead-capture bug ✅ fixed |
+| Current task | **Step 3 in progress — mega-menu rewire: ONE COLUMN proven** (data-driven `ServiceNavColumn`, navOrder, GA4). Awaiting review before rewiring the remaining columns + the grid (a flagged structural change), then the header merge. Sliders ✅, forms ✅, LP fix ✅ |
 | Branch | `development`, reading the new project's **staging** dataset (`4m0eqoi1` / `staging`). Not merged to main |
 | Started | 12 August 2026 |
 | Sign-off authority | Hassan |
@@ -217,6 +217,42 @@ appeared, both handled:
 - **Order caveat:** the query sorts by `title` (alphabetical); the old hand-curated column
   order is not preserved without a `navOrder` field (recorded in O13). Order is a consume-pass
   decision.
+
+### Mega menu — ONE COLUMN proven (checkpoint, awaiting review)
+
+Same discipline as sliders/forms: prove one column before the rest. **Only column 1
+(Design & Build) of the Services mega menu is data-driven so far**; columns 2 & 3 and the
+Solutions dropdown are still hardcoded pending review.
+
+- **`navOrder`** field DATA populated on the 20 nav docs (staging) to reproduce the exact
+  hand-order (Accessibility-first alphabetical is wrong for a commercial menu). Query orders
+  by it. O13 updated to list `navOrder` (number) as a confirmed Studio field.
+- **`sanity/nav.js` refactored** to emit `serviceColumns: [{ key, heading, theme, items }]`
+  — a **data-driven column array**. The grouping config (`SERVICE_COLUMNS`) is the CP-03
+  seam: CP-03 swaps 3 categories → 4 pillars by editing that config + adding theme entries,
+  **not** by touching the mega-menu markup. Columns with no items are dropped.
+- **New `ServiceNavColumn` primitive** reproduces the hand-written column markup from data;
+  **empty column renders nothing (heading included)**; fires **GA4 `service_selected`** on
+  link click. Column colour/icon must be inline (Tailwind can't compile dynamic arbitrary
+  values) — the one class→inline-style change, visually identical.
+- **Wired:** `Header`/`HomeHeader` pass `navData` to `ServicesDropdown`; column 1 now
+  renders `<ServiceNavColumn column={navData.serviceColumns[0]} />`.
+
+**Verified in a production build (1440):** column 1 renders identically — heading "Design &
+Build", 5 items in the exact navOrder (Branding → UI/UX Design → Wordpress → Shopify →
+Custom App Development), correct hrefs; columns 2 & 3 intact; no console errors. GA4
+`service_selected` fires with `{ service: "branding" }`. **Keyboard preserved** (I did not
+touch the trigger/panel handlers): Escape closes and returns focus to the trigger;
+`aria-expanded` toggles. Harness caveats: the browser pane does not composite frames, so the
+opacity/transition and pixel-level visuals could not be machine-verified — recommend a
+real-browser eyeball at 375/768/1440. The mega menu is `xl`-only; at 375/768 this nav is
+`display:none` and the (unchanged) mobile menu is used.
+
+**FLAGGED structural change for the full rollout (needs go-ahead):** turning the whole grid
+data-driven (N columns) means replacing `grid grid-cols-3` with a computed
+`gridTemplateColumns: repeat(N, minmax(0,1fr))` — **visually identical at N=3**, but it is a
+class→style change and the mechanism that lets CP-03 add a 4th column without a DOM pass.
+Not done yet; raised for approval before rewiring the remaining columns.
 
 ### Sliders — `Carousel` primitive built + proven (checkpoint, awaiting review)
 
