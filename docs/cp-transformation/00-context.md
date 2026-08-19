@@ -117,7 +117,7 @@ All confirmed by Hassan, 12 August 2026.
 | D15 | `custom-apps-and-ai` splits into two services | Custom App Development → Web & Ecommerce. AI & Automation → AI & Automation. Was already implied by the original brief; now explicit. Requires a pillar field on the services document type |
 | D16 | The three test routes are deleted | `/hassan-test`, `/review-test`, `/testing-testimonials`. All served HTTP 200 in production; `/hassan-test` embedded an external iframe. Recoverable from git history if needed |
 | D17 | AO Arena retained as clearly labelled concept work | Already titled "AO Arena (Concept)". Excluded from the client-work grid and from flagship candidates. Closes O1 |
-| D18 | Warranty — **approved pending clause sign-off** (updated 18 Aug 2026; was "blocked from publication") | 3-month post-launch support confirmed as real practice; draft ToS clause in §9A awaiting Hassan's sign-off. No warranty copy on any page until signed off. See section 9 |
+| D18 | Warranty — **APPROVED** (18 Aug 2026; was "blocked" → "pending sign-off" → approved) | Hassan approved the §9A clause as a working version (he will edit the legal wording himself later). Warranty is **cleared for site copy and marketing**, incl. the CP-11 landing-page warranty module. Copy constraint: conservative, close to actual practice — 3 months free support on what we built, fixing issues in that window; never promise more than the clause covers. See section 9 |
 | D19 | Reuse GTM container `GTM-B8FV6K69`, provision a fresh GA4 property | Container saves re-tagging and holds nothing of value. Fresh property avoids inherited filters and a polluted event taxonomy. Closes O7 |
 | D20 | A consent layer ships in the same phase as the events | Google Consent Mode v2. GTM currently fires unconditionally, which is a UK GDPR and PECR gap. CP-16 must verify events in both consent states |
 | D21 | `www` → apex redirect added at DNS/Vercel | `www.creativepixels.agency` does not resolve at all. No SEO exposure since nothing is indexed there, but anyone typing the www form gets a dead site. Not a code fix |
@@ -394,24 +394,26 @@ or something else.
 Three months of free post-launch support on delivered products. If something breaks
 after launch, within that window, CP fixes it.
 
-### Status: approved pending clause sign-off (D18, updated 18 August 2026)
+### Status: APPROVED (D18, 18 August 2026)
 
-**Update (18 Aug 2026):** the three-month post-launch support is confirmed as real
-practice and is being added to the legal documents. D18 moves from "blocked from
-publication" to **approved pending clause sign-off**. A draft Terms of Service clause is
-below (§9A). It is a **draft for Hassan's approval — not final, not a legal decision made on
-his behalf**. Until Hassan signs the clause off:
-- No page carries a warranty module and **no marketing copy references a warranty period.**
-- The clause may still warrant a solicitor's eye before it is adopted.
+**Approved.** Hassan has approved the §9A clause as a **working version** — he will review
+and edit the legal wording himself later. The warranty is **cleared for use in site copy and
+marketing**, including the CP-11 landing-page warranty module.
+
+**Copy constraint (binding):** keep warranty copy **conservative and close to actual
+practice** — three months of free support on what we built, fixing issues that arise in that
+window. **Do not write copy that promises more than the §9A clause covers**, so the final
+legal wording cannot end up contradicting the site (e.g. no "guaranteed", no implied
+coverage of third-party services / client-side changes / post-handover content, no refund
+implication — the clause's remedy is a fix, not compensation).
+
+Approved working marketing line: *If something we've built isn't working as agreed during
+the warranty period, we'll put it right.*
 
 Original finding (for the record): CP-00 searched the legal hub and found **no** 3-month
 post-launch warranty clause. The Support & Maintenance Schedule covers ongoing retained
-support, a different thing. Terms of Service §9 and §15 were checked directly. So the
-warranty was real practice with nothing contractual behind it — publishing it before the
-terms existed would have been the invented-guarantee case section 11 prohibits.
-
-Working marketing copy, still held until the clause is signed off: *If something we've
-built isn't working as agreed during the warranty period, we'll put it right.*
+support, a different thing. So the warranty was real practice with nothing contractual
+behind it — which is why it was withheld until the clause existed.
 
 ### §9A — Post-launch warranty clause (DRAFT for approval, not final)
 
