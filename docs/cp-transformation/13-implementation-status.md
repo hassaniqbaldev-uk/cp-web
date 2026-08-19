@@ -11,7 +11,7 @@ should be able to reconstruct the state of play from here.
 
 | Item | Value |
 | --- | --- |
-| Current task | **CP-01 — URL / content / search / intent audit (analysis only).** Step 3 CLOSED as partially complete (deferred remainder to CP-03; see 00-context §14). Working CP-01 in sections, services first, into `03-url-audit.md` |
+| Current task | **CP-01 — URL audit (analysis only).** Services section signed off (+ corrections: Analytics→REVIEW, PPC→Paid Media rename). Solutions section done → awaiting review before case studies. Into `03-url-audit.md` §6/§7 |
 | Branch | `development`, reading the new project's **staging** dataset (`4m0eqoi1` / `staging`). Not merged to main |
 | Started | 12 August 2026 |
 | Sign-off authority | Hassan |

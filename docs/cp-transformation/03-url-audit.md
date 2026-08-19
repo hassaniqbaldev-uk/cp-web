@@ -292,10 +292,10 @@ static pages are separate sections, still to do.
 | `/services/shopify` | High-Performance Shopify Development | Platform buyer (Shopify) | Solid | **KEEP, flat URL** (D35) — as above |
 | `/services/custom-apps-and-ai` | Custom Web Development & AI Solutions | Two distinct buyers fused | Conflates two offerings in two different pillars | **SPLIT** → Custom App Development (Web & Ecommerce) + AI & Automation (AI & Automation). **REDIRECT** old slug → `/services/custom-app-development` at cutover |
 | `/services/seo` | ROI-Driven SEO Services & Growth Strategy | Growth buyer | Solid | **KEEP** (+ meta desc) |
-| `/services/ppc` | ROI-Focused Paid Search & Social | Growth buyer | Solid | **KEEP** (+ meta desc) |
+| `/services/ppc` | ROI-Focused Paid Search & Social | Growth buyer | Solid | **KEEP** — **rename user-facing to "Paid Media"** (keep "PPC" in the copy for search). CP-03/CP-09 inherit (+ meta desc) |
 | `/services/cro` | Conversion Rate Optimisation (CRO) Services | Growth buyer | Solid | **KEEP** (+ meta desc) |
 | `/services/email` | Email Marketing & Retention Strategy | Growth buyer | Solid | **KEEP** (+ meta desc) |
-| `/services/analytics` | Data Analytics & BI | Growth buyer | Solid | **KEEP** (+ meta desc) |
+| `/services/analytics` | Data Analytics & BI | Straddles TWO propositions | Ambiguous — H1 literally "Data Analytics & BI" | **REVIEW** — the page fuses marketing measurement (Growth & Performance) and BI/dashboard builds (Custom App Development). Options + recommendation below |
 | `/services/maintenance` | Website Maintenance & Growth Support | Retained-support buyer | Solid | **REPOSITION** (D36) → parent proposition **"Ongoing Growth & Support"** (maintenance + security + performance + ongoing improvement) |
 | `/services/speed` | Web Performance Optimisation | Performance buyer | Solid, but narrow | **KEEP** (D36) — supporting specialist page; real search demand for site-speed work |
 | `/services/security` | Web Security & Protection | Security buyer | Solid, but narrow | **DEMOTE → capability** within Growth & Support (D36) — **pending O14** (confirm we don't deliver standalone security work) |
@@ -330,12 +330,122 @@ static pages are separate sections, still to do.
    evidence behind it). Its sub-pages (Workflow Automation, AI Agents, AI Integrations) wait
    for more delivery proof.
 
+### Analytics — REVIEW (options + recommendation)
+
+The page straddles two propositions in two different pillars, and the H1 ("Data Analytics &
+BI") makes the ambiguity live:
+- **Marketing measurement** — tracking, GA4, attribution, reporting → **Growth & Performance**.
+- **BI / dashboard builds** — bespoke data products → these are genuinely **Custom App
+  Development** work.
+
+Options:
+- **(a) Reposition as a Growth measurement page; move BI/dashboard builds to Custom App
+  Development.** Analytics becomes the measurement service; BI is surfaced as a use-case under
+  Custom App Development.
+- **(b) Keep as a genuine dual page** spanning both propositions.
+- **(c) Split** into two pages (measurement + a separate BI page).
+
+**Recommendation: (a).** A page cannot cleanly sit in two pillars, so (b) perpetuates exactly
+the ambiguity the brief flags and muddies the CP-03 pillar assignment. (c) creates a thin BI
+page that overlaps Custom App Development — BI dashboards *are* custom builds, so they belong
+as Custom App Development work, not a separate thin service. (a) gives clean pillar
+assignment, matches the dominant "analytics services" search intent (marketing measurement),
+and removes the overlap: rewrite the page to marketing measurement (drop "& BI" from the
+positioning) and point dashboard/BI builds at Custom App Development. **Your call — I have
+not assumed; recommending (a).**
+
+### Empty meta descriptions — what filling them involves (do not fill yet)
+
+- **What it is:** every service page's `seo.metaDescription` is blank, so the pages ship with
+  no meta description — a pure, cheap SEO/CTR win.
+- **How many:** **15** `/services/[slug]` detail pages read it from Sanity (blank). The
+  `/services` **hub** description is code-controlled in its `generateMetadata` (a one-line code
+  check, separate). So ~16 surfaces, 15 of them content.
+- **The risk / premise correction:** the old note "staging shares the production dataset, so
+  filling them is a production edit" is **stale** — it described the pre-CP-00K setup. **Today
+  the branch reads a SEPARATE `4m0eqoi1/staging` dataset; live production still reads the five
+  old projects.** So editing `seo.metaDescription` on the new project's staging docs affects
+  **only the staging preview, not production**, and goes live at cutover. That is **safe and
+  within the rules.**
+- **What is genuinely blocked:** fixing the descriptions on the **live** site *before* cutover
+  would require editing the five old projects — which the standing rules forbid (read-only
+  rollback path). So: we *can* bank the value now in staging; we *cannot* patch live early.
+- **Content caveat:** meta descriptions are copy — same no-overclaim doctrine. If approved,
+  I'd **draft** all 15 for your review before writing them to staging, not free-type them into
+  the dataset.
+
 ### CP-01 services summary
 
 15 live service pages + hub. **No REMOVE, no NOINDEX, no REDIRECT-away** — every page is a
-real commercial asset. Decisions: **13 KEEP** (all pending re-pillaring at CP-03 + meta
-descriptions), **1 REPOSITION** (`maintenance` → "Ongoing Growth & Support"), **1 DEMOTE**
+real commercial asset. Decisions: **12 KEEP** (pending re-pillaring at CP-03 + meta
+descriptions; PPC renamed user-facing to "Paid Media"), **1 REVIEW** (`analytics` — recommend
+option (a)), **1 REPOSITION** (`maintenance` → "Ongoing Growth & Support"), **1 DEMOTE**
 (`security` → capability, pending O14), **1 SPLIT** (`custom-apps-and-ai`, with a redirect of
-the old slug), and **2 CREATE** (Web Design & Development, Ecommerce — CP-05). The single most
-impactful, low-risk content win across the whole set is filling the **empty meta
-descriptions** (a Sanity content edit, production).
+the old slug), and **2 CREATE** (Web Design & Development, Ecommerce — CP-05). Biggest
+low-risk win: filling the **empty meta descriptions** — safe in the new staging dataset (see
+above), draftable for review.
+
+---
+
+## 7. CP-01 — content / intent audit: SOLUTIONS (18 August 2026)
+
+Analysis only. Same method and constraints as §6. **Scope is deliberately narrow:** per the
+prior decisions, the 9 `category: industry` solutions are **not solutions** — they migrate to
+`industry` documents at CP-08, and `ecommerce-brands` is an industry not a solution (D4). So
+this audit covers **the `/solutions` hub + the 5 remaining goal-based solutions only**. The 9
+industry URLs are handled as redirects (below), not audited here.
+
+### Findings common to the goal solutions
+- **Page type:** hub = static list; details = dynamic `/solutions/[slug]` (Sanity `solutions`,
+  ISR 3600). All 200.
+- **SEO — MISSING CANONICAL on every `/solutions/[slug]`** (the §5 anomaly; `solutions/[slug]`
+  omits `alternates.canonical`, unlike services). Phase-0 code fix, already logged.
+- **SEO — empty meta descriptions** on all 5 goal detail pages (same gap as services; same
+  staging-safe fix as §6). The hub *does* have a description.
+- **Internal links:** the 5 goals are linked from the mega-menu "By Goal" column + the
+  `/solutions` hub.
+- **Overlap risk:** goal solutions are outcome-framed entries that sit alongside the
+  service-framed Growth pages (SEO/PPC/CRO/email). The goal-vs-service distinction must be
+  sharp or they cannibalise each other — this is where Scale Marketing fails (below).
+
+### Per-URL
+
+| URL | H1 (current) | Role / target intent | Decision |
+| --- | --- | --- | --- |
+| `/solutions` | "Solutions tailored to your Reality." | Hub for the solutions axis | **KEEP + REWRITE** — the hub (and its meta description) still frames "by sector"; sectors move to industries, so rewrite to a **goal-only** hub (+ link to industries once they exist, CP-08). Add canonical (Phase 0) |
+| `/solutions/increase-leads` | Generate More Qualified Leads Online | Outcome buyer: acquisition | **KEEP** — clear, distinct goal (top-of-funnel acquisition) |
+| `/solutions/scale-marketing` | Scale Your Marketing & Expand Reach | Outcome buyer: scale existing marketing | **REVIEW — weakest of the 5** (distinctness flag below) |
+| `/solutions/replatform-rebuild` | Rebuild & Modernise Your Website | Outcome buyer: rebuild | **KEEP** — distinct rebuild/replatform goal (pairs with the Migrations service, different framing) |
+| `/solutions/launch-new-product` | Launch Your New Product | Outcome buyer: go-to-market | **KEEP** — distinct go-to-market goal (light flag: confirm it's a real offering, not aspirational) |
+| `/solutions/automate-operations` | Automate Your Operations | Outcome buyer: ops automation | **KEEP** — maps to the **AI & Automation** pillar and now has real evidence behind it (Biome4Pets) |
+
+### Scale Marketing — distinctness flag (the brief asks)
+
+**Recommendation: MERGE / consolidate — it is the weakest of the five.** "Scale Marketing" and
+"Increase Leads" are both growth outcomes served by the same underlying services (SEO / Paid
+Media / email / CRO), and a buyer can't easily tell which page they belong on. The other three
+each map to a distinct buyer journey — rebuild (replatform), go-to-market (launch), ops
+automation (automate). Scale Marketing does not; it reads as a second growth-outcome page
+overlapping Increase Leads. Options: **(a)** merge it into Increase Leads; **(b)** reframe one
+broader "Grow & Scale" goal; **(c)** keep it only if the copy is sharply differentiated
+(Increase Leads = new-demand acquisition; Scale Marketing = scaling spend/channels on existing
+demand). **Default recommendation: (a) merge.** Your call — not assumed.
+
+### The 9 industry-category "solutions" (redirect, not audited here)
+
+`ecommerce-brands`, `interiors-and-furnishings`, `sme-founders`, `driving-schools`,
+`charities-and-foundation`, `pharmacies`, `restaurants`, `b2b-services`, `saas-companies` —
+these live URLs migrate to `industry` documents (CP-08). At cutover each
+`/solutions/<industry>` **REDIRECTS** to its `/industries/<slug>` page once CP-08 builds those
+routes (D4 covers `ecommerce-brands` specifically at CP-15). Recorded in §2/§3; not part of
+the solutions decision set.
+
+### CP-01 solutions summary
+
+Hub + 5 goal solutions. **KEEP + REWRITE the hub** (drop the sector framing; add canonical);
+**4 KEEP** goals (`increase-leads`, `replatform-rebuild`, `launch-new-product`,
+`automate-operations`); **1 REVIEW** (`scale-marketing` — recommend MERGE into Increase Leads).
+The 9 industry URLs REDIRECT to industry pages at CP-08 (not solutions). Same two SEO gaps as
+services apply to all 5 goal pages: **missing canonical** (Phase-0 code fix) and **empty meta
+descriptions** (staging-safe content fix). One light flag: confirm `launch-new-product` is a
+real, delivered offering.
