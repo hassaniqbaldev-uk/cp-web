@@ -172,7 +172,6 @@ All confirmed by Hassan, 12 August 2026.
 | O6 | Which industry pages survive: Interiors & Furnishings, Driving Schools, Pharmacies, Restaurants | Hassan | **Pulled forward by D28.** Now expressed as `hasPage` flags, so it is reversible and no longer blocks the migration |
 | O9 | Cal.com link views on the booking page. Did prospects click and abandon, or never click? See section 6 | Hassan | Whether D8 is the right fix |
 | O12 | Confirm no case-study taxonomy slug appears in a live URL before normalising the malformed ones | Claude Code | Slug normalisation step |
-| O13 | **Add the nav field DEFINITIONS to the separate Sanity Studio repo** so editors can set them. The field DATA is already populated on staging and the cp-web nav query reads it (title fallback), but the Studio schema lives outside cp-web. Spec below. | Whoever owns the Studio repo | Editors setting nav labels; full data-driven nav |
 | O14 | **Do we deliver standalone security work as a service?** If yes, `/services/security` stays a service; if no (the default under D36), it becomes a capability within Growth & Support. Do not overclaim. | Hassan | Finalising D36 / the security page's fate at CP-03 |
 | O15 | **Is `launch-new-product` a real, delivered offering** (go-to-market / MVP launch) or aspirational? If real it stays a goal solution (D39 leaves it in the set of 4); if not, it merges or drops. Do not assume. | Hassan | Finalising the goal-solutions set at CP-07 |
 | O16 | **Are the 8 draft-only case studies real projects or abandoned drafts?** In staging but not in the production 31: `loop`, `lola-blake`, `core-estates`, `amana-partnership`, `ivy-and-duke`, `drive-uk`, `ofh-care` (+ `biome4pets`, ours). Publish (adds evidence, incl. possible Growth/AI proof) or discard. | Hassan (confirming) | CP-11/CP-12 evidence set |
@@ -183,14 +182,48 @@ action required. **O3 → pricing approved for publication (18 Aug 2026; D9 supe
 section 7).** **O5 → keep all 31 case studies; the flagship / supporting / archive
 classification is now drafted in the CP-01 audit (`03-url-audit.md` §8: 9 flagship, 20
 supporting, 2 archive) and feeds the CP-12 presentation decision, nothing deleted.**
+**O13 → CLOSED (19 Aug 2026). Studio fields added and VERIFIED against staging** (see the
+O13 verification note below): field names match the nav query exactly, `navOrder` is a real
+`number` (sort works), services 15/16 and goal solutions 5/5 populated. Residual fill-in
+tasks (not blockers) tracked in the note.
 
-### O13 — Sanity Studio nav fields (spec for the separate Studio repo)
+### O13 — Sanity Studio nav fields (CLOSED, verified 19 August 2026)
 
-Data-driven navigation (Step 3) reads two optional fields per nav-surfaced document, with a
-`title` fallback. The **data** is already populated on the staging dataset (via the
-management API) and the cp-web query reads it; but the **field definitions** live in the
-Sanity **Studio project, which is not in the cp-web repo** — so this must be done by whoever
-owns that repo before editors can set the fields. Exact fields:
+**Verification result (queried staging directly, `4m0eqoi1/staging`):**
+
+- **Field names match the nav query exactly** — `navLabel`, `navExcerpt`, `navOrder` (as
+  `src/sanity/queries.nav.js` `NAV_QUERY` projects them). No silent title-fallback mismatch.
+- **Types are correct:** `navLabel`/`navExcerpt` are **strings**, `navOrder` is a **number**
+  (not a string) on every populated doc. This was the easy-to-miss failure mode — a string
+  `navOrder` would break the `(a.navOrder ?? 9999) - (b.navOrder ?? 9999)` sort in `nav.js:17`;
+  it is a genuine number, so sorting is correct.
+- **Data written before the definitions existed is visible through the new fields:** services
+  **15/16** and goal solutions **5/5** carry navLabel + navExcerpt + navOrder. navOrder is a
+  1–5 order *within each column group* (design/growth/support; goals), matching the spec.
+- **Empty / to fill in Studio (not blockers, nothing renders wrong):**
+  - **`ai-automation`** service — navLabel, navExcerpt, navOrder all empty (the new split stub;
+    give it label "AI & Automation", an excerpt, and a navOrder when its content lands, CP-05).
+  - **All 44 `industries`** — every nav field empty. Expected: industry nav data was never
+    populated (industries have no route until CP-08, and `getNavData` deliberately holds them
+    out of the menu, `nav.js:56-59`), so nothing renders wrong. Fill at CP-08. **Also flag for
+    CP-08:** the industries type has **duplicate slugs** (`driving-schools`, `restaurants`,
+    `pharmacies`, `interiors-and-furnishings` each appear twice) and the four `hasPage==true`
+    docs (`b2b-services`, `charities-and-foundation`, `ecommerce-brands`, `saas-companies`) do
+    **not** match the O6 shortlist (Interiors, Driving Schools, Pharmacies, Restaurants) — the
+    industries taxonomy needs a cleanup pass at CP-08.
+- **Content-not-verification notes (update at CP-03/CP-09, not now):** service navLabel
+  **"Wordpress" → "WordPress"** (casing); **"PPC" → "Paid Media"** user-facing rename (D-services);
+  `scale-marketing` still carries nav data but drops out of the menu when D39 merges it.
+- **One thing to confirm on your side:** you added the fields to the **service and industry**
+  types. The menu also reads `navLabel`/`navExcerpt` on **goal `solutions`** (their data reads
+  fine via coalesce). If the **`solutions`** document type did **not** also get the field
+  definitions, those 5 goal-solution labels are editable via API only, not in the Studio UI —
+  worth adding the fields there too for editor parity.
+
+---
+
+**Original spec (retained for reference).** Data-driven navigation (Step 3) reads two optional
+fields per nav-surfaced document, with a `title` fallback. Exact fields:
 
 | Field | Type | Notes |
 | --- | --- | --- |
