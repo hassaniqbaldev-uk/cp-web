@@ -54,6 +54,42 @@ Hassan reversed the /call decision and widened industries + analytics. Applied:
 
 **CP-03 mega-menu next**, then stop for review.
 
+### UI pass — services pillars section brought in line (checkpoint, awaiting review)
+
+Second section. **Studied first** the comparable content sections (homepage `Services`, service-detail
+`Expertise3`) + the shared card (`LightFeatureCard2`). Findings in the chat report: tinted-bg section +
+decorative `ServicesLogoShape`; centred `SectionLabel/Title/Description` in **scroll-triggered**
+(`inView`) `MotionEffect`s, **tween `duration:0.8 ease:"easeOut"`**, delays 0.1/0.25/0.4; card grid
+`grid-cols-3` xl (mobile slider), each card `MotionEffect inView` index-staggered `0.4+idx*0.15`,
+tween 1.0; card = white `rounded-[3rem] p-[3rem]`, coloured icon tile, hover coloured shadow `…1C` +
+`border`, arrow-on-hover.
+
+**Rebuilt `ServicesPillars`** to that language:
+- Section shell now matches: `bg-[#F0F6FF]`, decorative `ServicesLogoShape`, standard padding.
+- Header + each pillar card wrapped in **scroll-triggered `MotionEffect`** (tween 0.8/1.0 ease-out,
+  index-staggered) — same as the homepage sections; reduced-motion now inherited from the fixed primitive.
+- Cards adopt the shared **card treatment** (white `rounded-[3rem]`, `p-[3rem]`, coloured icon tile,
+  coloured hover shadow) — but hold a **list of service LINKS** (each firing `service_selected`), not
+  `LightFeatureCard2`'s plain bullets, and keep the **featured** hierarchy, so `LightFeatureCard2` is
+  not force-fit (it has no linked-list or featured variant). Colours = same source as the mega-menu.
+- **Kept:** pillar grouping from `getNavData` (unchanged), **Web & Ecommerce featured + leading**
+  (full-width, larger heading, services in 2 columns), empty pillars render nothing (AI absent),
+  `service_selected` firing, **all placeholder copy verbatim**.
+- **Mobile:** pillars **stack** (grid-cols-1 → md:2 → xl:3 for the non-featured; featured full-width)
+  rather than a card slider — deliberate: 4 content-heavy cards with a featured one read better stacked
+  than in a carousel of uneven cards. Flagged as a considered deviation from the homepage slider.
+- **Verified in a production build** (`next build` exit 0; `next start`): SSR shows tinted section,
+  header placeholder copy, Web & Ecommerce card first at the featured size, Brand + Growth after, AI
+  absent, service links present. Browser: **1440** featured 1200px full-width + others ~380px (3-col),
+  **768** 0 overflow, **375** stacked, featured 335px with its 5 services, **0 horizontal overflow at
+  all three**.
+- **Could NOT verify visually here** (pane doesn't composite; hover not reliably drivable): the
+  scroll-entrance animation *playing* (inView/tween/stagger), the card **hover shadow/border**, the
+  rendered pixels (icon tiles, colours, spacing, decorative-shape position, balance), and the
+  reduced-motion render. Those need your eyes.
+
+---
+
 ### MotionEffect primitive now respects prefers-reduced-motion (site-wide, checkpoint)
 
 The reduced-motion gap was a **site-wide** bug (the primitive powers **74 components**), not a hero one.
