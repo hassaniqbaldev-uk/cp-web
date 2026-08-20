@@ -92,7 +92,7 @@ const RouteCard = ({
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
       style={{
-        border: `1px solid ${accent}22`,
+        border: `1px solid ${accent}`,
         boxShadow: hover
           ? `4px 16px 46px 0px ${accent}26`
           : "0 8px 30px 0px #00000008",
@@ -100,7 +100,7 @@ const RouteCard = ({
       className="relative flex h-full flex-col justify-between gap-[3.5rem] overflow-hidden rounded-[3rem] bg-white p-[3rem] transition-all duration-300 xl:p-[4rem]"
     >
       {/* Coloured decorative stroke */}
-      <AccentStroke accent={accent} id={strokeId} />
+      {/* <AccentStroke accent={accent} id={strokeId} /> */}
 
       <div className="relative z-10 flex flex-col items-start">
         {/* Coloured glowing icon tile */}
