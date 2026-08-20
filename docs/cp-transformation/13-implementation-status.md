@@ -54,7 +54,22 @@ Hassan reversed the /call decision and widened industries + analytics. Applied:
 
 **CP-03 mega-menu next**, then stop for review.
 
-### Pillars section — recoloured to the PartnerWithUs2 dark-glass treatment (checkpoint)
+### Pillars section — matched to PartnerWithUs2 EXACTLY (glass/bg/colour) — AA caveat (checkpoint)
+
+**Update:** after the AA-safe darker version, Hassan asked (repeatedly) for the pillars to look
+**exactly like the Partner With Us section** — "background colour glass effect each and everything".
+So the section now matches `PartnerWithUs2` / `GlassFeatureCard` **literally**: `process-bg` background
+(no scrim), **`white/15` translucent glass cards with the white gradient-mask border**, white text,
+pink `#FF37B3` label, per-pillar glowing coloured icon tiles (Web=blue, Brand=orange, Growth=pink).
+Colour only — layout, grid, structure, animations, copy unchanged; 3 equal cards, Web first.
+- **AA CAVEAT (recorded, informed decision):** this literal treatment is the one that **measures below
+  WCAG AA** on `process-bg`'s light patches — white text **worst 2.06:1 / avg 4.46:1**, pink label
+  ~1.9:1 — the same as `PartnerWithUs2` itself. Hassan chose the exact PWU look over the AA-safe darker
+  variant after being shown the numbers twice. The AA-safe version (dark scrim + darker glass fill +
+  lightened label, all text ≥ 4.5:1) is one commit away if AA is reprioritised.
+- Verified in a production build: structure identical, **0 overflow at 1440/768/375**.
+
+### Pillars section — recoloured to the PartnerWithUs2 dark-glass treatment (superseded by the above)
 
 Colour-only restyle (layout, grid, card structure, animations, copy all unchanged; still 3 equal cards,
 Web & Ecommerce first, primary-only). Studied both Partner With Us sections and **flagged a conflict

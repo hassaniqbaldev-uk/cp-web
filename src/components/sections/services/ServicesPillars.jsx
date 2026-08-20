@@ -50,15 +50,30 @@ const PillarCard = ({ column }) => {
     <div
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
-      style={{
-        border: hover
-          ? `1px solid ${t.color}`
-          : "1px solid rgba(255, 255, 255, 0.15)",
-        boxShadow: hover ? `0 0 30px 0px ${t.color}55` : "none",
-      }}
-      className="flex h-full flex-col gap-[2.4rem] rounded-[3rem] bg-[#0b0a24]/55 p-[3rem] transition-all duration-200"
+      className="relative h-full w-full rounded-[3rem]"
     >
-      <div className="flex items-center gap-[2rem]">
+      {/* Gradient border — the Partner With Us (GlassFeatureCard) glass edge */}
+      <div
+        aria-hidden
+        style={{
+          background:
+            "linear-gradient(149.03deg, rgba(255,255,255,0.6) 0%, rgba(255,255,255,0) 51.06%, rgba(255,255,255,0.6) 98.34%)",
+          WebkitMask:
+            "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
+          WebkitMaskComposite: "xor",
+          maskComposite: "exclude",
+          padding: "1px",
+          borderRadius: "3rem",
+        }}
+        className="pointer-events-none absolute inset-0 z-[1]"
+      />
+
+      {/* Glass content — the Partner With Us white/15 fill */}
+      <div
+        style={{ boxShadow: hover ? `0 0 30px 0px ${t.color}55` : "none" }}
+        className="relative z-[2] flex h-full flex-col gap-[2.4rem] rounded-[3rem] bg-white/15 p-[3rem] transition-all duration-200"
+      >
+        <div className="flex items-center gap-[2rem]">
         <i
           style={{
             backgroundColor: t.color,
@@ -75,7 +90,7 @@ const PillarCard = ({ column }) => {
       </div>
 
       {/* PLACEHOLDER positioning copy — CP-04 */}
-      <p className="text-[1.6rem] leading-[2.6rem] font-normal tracking-normal text-white/80">
+      <p className="text-[1.6rem] leading-[2.6rem] font-normal tracking-normal text-white">
         {PILLAR_BLURB[column.key] || "[Placeholder — CP-04]"}
       </p>
 
@@ -100,6 +115,7 @@ const PillarCard = ({ column }) => {
           </li>
         ))}
       </ul>
+      </div>
     </div>
   );
 };
@@ -140,11 +156,6 @@ const ServicesPillars = ({ columns = [] }) => {
         unoptimized
       />
 
-      {/* AA scrim — process-bg has light patches (max luminance ~0.37) that drop
-          white text below WCAG AA. This dark overlay pins the effective background
-          dark enough that every text element clears 4.5:1 (verified). */}
-      <div className="pointer-events-none absolute inset-0 z-[1] bg-[#080818]/70" />
-
       {/* Decorative shape (kept from before; sits over the dark bg now) */}
       <div className="pointer-events-none absolute inset-0 z-[2] select-none">
         <ServicesLogoShape className="absolute top-[2rem] right-[-1rem] h-[7.1rem] w-[5.2rem] rotate-[-34deg] md:top-[7.8rem] md:h-[17.7rem] md:w-[12.9rem]" />
@@ -161,7 +172,7 @@ const ServicesPillars = ({ columns = [] }) => {
             transition={{ type: "tween", duration: 0.8, ease: "easeOut" }}
           >
             <div>
-              <SectionLabel text="What We Do" textColor="#FFCCEC" />
+              <SectionLabel text="What We Do" textColor="#FF37B3" />
             </div>
           </MotionEffect>
 
