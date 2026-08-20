@@ -43,12 +43,16 @@ import { caseStudiesClient } from "@/sanity/sanity.caseStudies";
 
 export const revalidate = 3600; // Next.js ISR
 
-// Newest published case studies for the "relevant work" section. On the hub there is
-// no specific tag to match, so this is the NEWEST-FIRST fallback of the tagged-first /
-// newest-fallback rule (tagged matching lives on the industry + service-detail pages).
+// Case studies for the "relevant work" section. Fallback order (site-wide rule):
+// tagged matches first, then FLAGSHIP, then SUPPORTING, then newest. ARCHIVE
+// (e.g. AO Arena pitch mockup, Peekaboo MVP) NEVER surfaces through a fallback — only
+// via a direct link or the work hub — so it is filtered out here. The hub has no tag,
+// so this is the flagship-first fallback; `select(...)` ranks the designation tiers,
+// and `_createdAt desc` orders newest within a tier. `!(designation in ["archive"])`
+// also lets an as-yet-undesignated study through (it ranks into the newest tier).
 const HUB_WORK_QUERY = `
-  *[_type == "caseStudies" && defined(slug.current) && defined(thumbnailImage)]
-    | order(_createdAt desc)[0...6]{
+  *[_type == "caseStudies" && !(_id in path("drafts.**")) && defined(slug.current) && defined(thumbnailImage) && !(designation in ["archive"])]
+    | order(select(designation == "flagship" => 0, designation == "supporting" => 1, 2) asc, _createdAt desc)[0...6]{
       "slug": slug.current, title, excerpt, thumbnailImage, iconBg, iconColor
     }
 `;

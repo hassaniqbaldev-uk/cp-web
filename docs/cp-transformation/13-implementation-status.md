@@ -54,6 +54,24 @@ Hassan reversed the /call decision and widened industries + analytics. Applied:
 
 **CP-03 mega-menu next**, then stop for review.
 
+### Relevant-work — Part 1: flagship designation + fallback order (checkpoint)
+
+The hub was surfacing AO Arena (pitch mockup) and Peekaboo (MVP) as featured work via a
+newest-first fallback. Fixed the data:
+- **Added a `designation` field** (`flagship` / `supporting` / `archive`) to the `caseStudies` type;
+  **populated all 31 published studies** in staging from `03-url-audit.md` §8 — **9 flagship, 20
+  supporting, 2 archive** (`ao-arena`, `peekaboo`). Verified counts.
+- **Fallback order changed** (hub `HUB_WORK_QUERY`, `services/page.jsx`): tagged → **flagship** →
+  **supporting** → newest, via `order(select(designation==...))`. **Archive is filtered out of the
+  fallback entirely** (`!(designation in ["archive"])`) — it can only surface via a direct link or the
+  work hub, per the rule. An undesignated study still passes (ranks into the newest tier).
+- **Added `designation` (and `pillar`) to the O13 Studio spec** so they're editable in Studio.
+- **Confirmed in a production build:** AO Arena and Peekaboo **no longer appear on `/services`**; the
+  section now shows flagships (Minnessak, Now Press Play, Sight for Life).
+- Styling of the section is **Part 2** (next); labels ("Recent work" / "Related work") handled there.
+
+---
+
 ### UI pass — services pillars section brought in line (checkpoint, awaiting review)
 
 Second section. **Studied first** the comparable content sections (homepage `Services`, service-detail

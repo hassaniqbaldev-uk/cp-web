@@ -255,6 +255,15 @@ Add all three to the document types surfaced in the menu: **`services`**, **`sol
 Until the Studio fields exist, editors cannot change these values, but the site renders
 correctly from the populated data + title fallback + navOrder.
 
+**Other data-driven fields written to staging that also need Studio definitions** (same
+situation — the data is populated and the site reads it, but editors can't set them until the
+Studio schema is updated):
+
+| Doc type | Field | Type | Notes |
+| --- | --- | --- | --- |
+| `services` | `pillar` | `string`, enum: `brand-experience` / `web-ecommerce` / `growth-performance` / `ai-automation` | Groups services into the four pillars for the mega-menu + services hub (CP-03). Populated 20 Aug. |
+| `caseStudies` | `designation` | `string`, enum: `flagship` / `supporting` / `archive` | Drives the relevant-work fallback order (tagged → **flagship** → **supporting** → newest). **`archive` never surfaces through a fallback anywhere** (only a direct link or the work hub). Populated from `03-url-audit.md` §8 (9 / 20 / 2), 20 Aug. |
+
 ### Scheduling and holds (18 August 2026)
 
 - **WordPress landing page (`/wordpress-web-development`) — DEPRIORITISED.** It will be
