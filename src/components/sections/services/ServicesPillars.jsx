@@ -38,11 +38,12 @@ const PILLAR_BLURB = {
     "[Placeholder — CP-04] Removing operational bottlenecks with automation and applied AI.",
 };
 
-// One pillar card. Adopts the shared card treatment (white rounded-[3rem], p-[3rem],
-// coloured icon tile, coloured hover shadow) but holds a list of SERVICE LINKS
-// (each firing service_selected) rather than plain bullets. `featured` gives Web &
-// Ecommerce the extra weight — larger heading, services in two columns.
-const PillarCard = ({ column, featured = false }) => {
+// One pillar card — EQUAL to every other (no featured/oversized variant). Adopts the
+// shared card treatment (white rounded-[3rem], p-[3rem], coloured icon tile, coloured
+// hover shadow) but holds a list of SERVICE LINKS (each firing service_selected)
+// rather than plain bullets. `h-full` + the service list anchored to the bottom keeps
+// every card the same height in its row regardless of how many services it lists.
+const PillarCard = ({ column }) => {
   const [hover, setHover] = useState(false);
   const t = THEME[column.theme] || THEME.brand;
 
@@ -54,7 +55,7 @@ const PillarCard = ({ column, featured = false }) => {
         border: `1px solid ${t.color}22`,
         boxShadow: hover ? `4px 12px 30px 0px ${t.color}1C` : "none",
       }}
-      className="flex h-full flex-col gap-[2.4rem] rounded-[3rem] bg-white p-[3rem] transition-all duration-200 xl:p-[4rem]"
+      className="flex h-full flex-col gap-[2.4rem] rounded-[3rem] bg-white p-[3rem] transition-all duration-200"
     >
       <div className="flex items-center gap-[2rem]">
         <i className="relative inline-flex size-[5.8rem] min-w-[5.8rem] items-center justify-center rounded-[1.5rem]">
@@ -67,33 +68,17 @@ const PillarCard = ({ column, featured = false }) => {
           />
         </i>
 
-        <h3
-          className={`font-bold tracking-[-0.02em] text-[#312749] ${
-            featured
-              ? "text-[2.8rem] leading-[3.4rem] xl:text-[3.6rem] xl:leading-[4.2rem]"
-              : "text-[2.2rem] leading-[2.8rem] xl:text-[2.6rem] xl:leading-[3rem]"
-          }`}
-        >
+        <h3 className="text-[2.2rem] leading-[2.8rem] font-bold tracking-[-0.02em] text-[#312749] xl:text-[2.6rem] xl:leading-[3rem]">
           {column.heading}
         </h3>
       </div>
 
       {/* PLACEHOLDER positioning copy — CP-04 */}
-      <p
-        className={`font-normal tracking-normal text-[#625C70] ${
-          featured
-            ? "text-[1.8rem] leading-[2.9rem]"
-            : "text-[1.6rem] leading-[2.6rem]"
-        }`}
-      >
+      <p className="text-[1.6rem] leading-[2.6rem] font-normal tracking-normal text-[#625C70]">
         {PILLAR_BLURB[column.key] || "[Placeholder — CP-04]"}
       </p>
 
-      <ul
-        className={`mt-auto grid gap-x-[3rem] gap-y-[1.4rem] ${
-          featured ? "grid-cols-1 md:grid-cols-2" : "grid-cols-1"
-        }`}
-      >
+      <ul className="mt-auto flex flex-col gap-[1.4rem]">
         {column.items.map((item) => (
           <li key={item.slug} className="border-t border-black/10 pt-[1.4rem]">
             <Link
@@ -119,17 +104,21 @@ const PillarCard = ({ column, featured = false }) => {
 };
 
 // The four-pillar overview — the primary structure of the services hub (CP-06).
-// NOT fifteen equal cards: pillars are the frame, services sit inside them, and
-// Web & Ecommerce leads with the most weight (its 45–50% commercial weighting).
-// Grouping + column set come from the SAME data as the mega-menu (serviceColumns),
-// and empty pillars are already dropped upstream, so nothing renders for them.
-// Section shell + scroll-triggered MotionEffect (tween, inView) match the site's
-// other content sections (homepage Services, Expertise3).
+// NOT fifteen equal cards: pillars are the frame, services sit inside them. All
+// pillars are EQUAL cards in a single row; Web & Ecommerce keeps its prominence by
+// ORDER (it appears first), not by size. Grouping + column set come from the SAME
+// data as the mega-menu (serviceColumns); empty pillars are already dropped upstream,
+// so nothing renders for them. The row's column COUNT adapts to the data (three now,
+// four once AI & Automation has content) via repeat(N) — never hardcoded. Section
+// shell + scroll-triggered MotionEffect (tween, inView, index-staggered) match the
+// site's other content sections (homepage Services, Expertise3).
 const ServicesPillars = ({ columns = [] }) => {
   if (!columns.length) return null;
 
-  const featured = columns.find((c) => c.key === "web-ecommerce");
-  const rest = columns.filter((c) => c !== featured);
+  // Web & Ecommerce leads by order (stable sort keeps the rest in registry order).
+  const ordered = [...columns].sort((a, b) =>
+    a.key === "web-ecommerce" ? -1 : b.key === "web-ecommerce" ? 1 : 0,
+  );
 
   return (
     <section className="relative overflow-hidden bg-[#F0F6FF] px-[2rem] py-[5rem] xl:px-[0rem] xl:py-[10rem]">
@@ -181,38 +170,27 @@ const ServicesPillars = ({ columns = [] }) => {
           </MotionEffect>
         </div>
 
-        <div className="mt-[5rem] flex flex-col gap-[3rem] xl:mt-[7rem]">
-          {/* Web & Ecommerce — featured, full width (most weight, leads) */}
-          {featured && (
+        {/* Equal pillar cards in a single row. Column count adapts to the data
+            (repeat(N)) at xl; stacks to 1 / 2 columns below. */}
+        <div
+          className="mt-[5rem] grid grid-cols-1 gap-[3.3rem] md:grid-cols-2 xl:mt-[7rem] xl:[grid-template-columns:var(--pillar-cols)]"
+          style={{
+            "--pillar-cols": `repeat(${ordered.length}, minmax(0, 1fr))`,
+          }}
+        >
+          {ordered.map((column, idx) => (
             <MotionEffect
+              key={column.key}
               slide={{ direction: "down" }}
               fade
               inView
-              delay={0.4}
+              delay={0.4 + idx * 0.15}
               transition={{ type: "tween", duration: 1.0, ease: "easeOut" }}
+              className="h-full"
             >
-              <PillarCard column={featured} featured />
+              <PillarCard column={column} />
             </MotionEffect>
-          )}
-
-          {/* The remaining non-empty pillars */}
-          {rest.length > 0 && (
-            <div className="grid grid-cols-1 gap-[3rem] md:grid-cols-2 xl:grid-cols-3">
-              {rest.map((column, idx) => (
-                <MotionEffect
-                  key={column.key}
-                  slide={{ direction: "down" }}
-                  fade
-                  inView
-                  delay={0.5 + idx * 0.15}
-                  transition={{ type: "tween", duration: 1.0, ease: "easeOut" }}
-                  className="h-full"
-                >
-                  <PillarCard column={column} />
-                </MotionEffect>
-              ))}
-            </div>
-          )}
+          ))}
         </div>
       </div>
     </section>

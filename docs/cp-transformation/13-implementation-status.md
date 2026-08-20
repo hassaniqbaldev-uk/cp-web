@@ -72,17 +72,21 @@ tween 1.0; card = white `rounded-[3rem] p-[3rem]`, coloured icon tile, hover col
   coloured hover shadow) — but hold a **list of service LINKS** (each firing `service_selected`), not
   `LightFeatureCard2`'s plain bullets, and keep the **featured** hierarchy, so `LightFeatureCard2` is
   not force-fit (it has no linked-list or featured variant). Colours = same source as the mega-menu.
-- **Kept:** pillar grouping from `getNavData` (unchanged), **Web & Ecommerce featured + leading**
-  (full-width, larger heading, services in 2 columns), empty pillars render nothing (AI absent),
-  `service_selected` firing, **all placeholder copy verbatim**.
-- **Mobile:** pillars **stack** (grid-cols-1 → md:2 → xl:3 for the non-featured; featured full-width)
-  rather than a card slider — deliberate: 4 content-heavy cards with a featured one read better stacked
-  than in a carousel of uneven cards. Flagged as a considered deviation from the homepage slider.
+- **REVISED (Hassan): no featured card.** The oversized Web & Ecommerce card unbalanced the layout —
+  removed. **All pillars are now EQUAL cards in a single adaptive row**; Web & Ecommerce keeps its
+  prominence **by order (first), not size**. The row's **column count adapts to the data** —
+  `repeat(N)` at xl via a `--pillar-cols` CSS var (three now, four once AI has content), stacking to
+  md:2 / base:1 below. Never hardcoded 3.
+- **Kept:** pillar grouping from `getNavData` (unchanged), **Web & Ecommerce first** (stable sort),
+  empty pillars render nothing (AI absent), `service_selected` firing, **all placeholder copy verbatim**.
+- **Mobile:** pillars **stack** (grid-cols-1 → md:2 → xl:repeat(N)) rather than a card slider — the
+  shared slider renders `LightFeatureCard2`, not linked pillar cards, so a slider would be a
+  near-duplicate; a small set stacks cleanly. Flagged.
 - **Verified in a production build** (`next build` exit 0; `next start`): SSR shows tinted section,
-  header placeholder copy, Web & Ecommerce card first at the featured size, Brand + Growth after, AI
-  absent, service links present. Browser: **1440** featured 1200px full-width + others ~380px (3-col),
-  **768** 0 overflow, **375** stacked, featured 335px with its 5 services, **0 horizontal overflow at
-  all three**.
+  header placeholder copy, all three pillar headings at the SAME size, Web & Ecommerce first. Browser:
+  **3 cards** → 1440 three equal columns (378px each), 768 two columns, 375 one column;
+  **4 cards** (simulated via `repeat(4)` + a cloned card) → 1440 four equal columns (275px each);
+  **0 horizontal overflow at every count and breakpoint**.
 - **Could NOT verify visually here** (pane doesn't composite; hover not reliably drivable): the
   scroll-entrance animation *playing* (inView/tween/stagger), the card **hover shadow/border**, the
   rendered pixels (icon tiles, colours, spacing, decorative-shape position, balance), and the
