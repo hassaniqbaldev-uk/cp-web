@@ -54,6 +54,37 @@ Hassan reversed the /call decision and widened industries + analytics. Applied:
 
 **CP-03 mega-menu next**, then stop for review.
 
+### UI pass — services hero brought in line with the site pattern (checkpoint, awaiting review)
+
+Section-by-section UI fixing (content/copy untouched, placeholder stays — CP-04). First section: the
+`/services` hero (`ServicesHubHero`), rebuilt to match the existing hero treatment.
+- **Studied first** (homepage hero + service detail hero + the `MotionEffect` primitive). Findings in
+  the chat report. Key facts: entrance animation is `MotionEffect` (`motion/react`), variant-based
+  slide-down + fade + zoom, **spring stiffness:120 damping:20** in heroes, **0.15s stagger** via
+  incremental `delay` (0 → 0.15 → 0.3 → 0.45), animate-on-mount (`inView` false).
+- **Rebuilt** the hero to that pattern: full-bleed `audit-hero-bg.webp` + three decorative logo shapes
+  (`z-1`/`z-2`), content at `z-10` in `.container`; `SectionLabel` → h1 (`text-[3rem] md:text-[7rem]`,
+  `#312749`) → `SectionDescription` positioning slot → `PrimaryButton` "Start a project" + reassurance;
+  the four blocks wrapped in staggered `MotionEffect`s (spring 120/20, delays 0/0.15/0.3/0.45).
+- **Reused** the shared primitives (`MotionEffect`, `SectionLabel/Description`, `PrimaryButton`,
+  decorative-element shapes) — no near-duplicates.
+- **Kept:** CP-06 structure, positioning slot, "Start a project" + reassurance, **no Book a Call**.
+  **Placeholder copy unchanged** (verbatim).
+- **prefers-reduced-motion:** the shared `MotionEffect` primitive **does NOT respect it** and neither
+  do the existing heroes — reported, not copied. This hero gates its animation on `useReducedMotion`
+  (motion/react): under reduced motion the slide/zoom/fade are dropped and content simply appears. The
+  proper site-wide fix is to teach `MotionEffect` itself — flagged for a later pass so every hero
+  benefits.
+- **Verified in a production build** (`next build` exit 0; `next start`): background present, h1 70px
+  at ≥md / 30px mobile, 4 `MotionEffect` wrappers, no Book a Call in the hero, **0 horizontal overflow
+  at 1440 / 768 / 375**.
+- **Could NOT verify visually** (browser pane doesn't composite frames + no reduced-motion emulation
+  here): the actual entrance motion (slide/fade/zoom, timing, stagger) playing, the reduced-motion
+  render, and the rendered pixels (background image, shape positions, spacing). Structure + computed
+  styles verified via DOM; motion needs a human eye.
+
+---
+
 ### Industries — 3 held (19 Aug) + CP-03 services hub rebuilt (checkpoint, awaiting review)
 
 **Industries:** 7 evidenced approved; **Driving Schools, Pharmacies, Restaurants HELD** — set to
