@@ -32,6 +32,51 @@ complete and Hassan signs off final cutover.
 
 ---
 
+## CP-02 corrections v2 + analytics go-wide (19 August 2026)
+
+Hassan reversed the /call decision and widened industries + analytics. Applied:
+1. **KEEP /call** (Cal.com stays) — **noindexed** in code (`call/page.jsx` robots.index=false); off all
+   nav/CTAs, direct/emailed links only. Removed from the redirect map. **No Cal.com teardown.**
+2. **Industries — evidence-led set of 10** (`04` §3.4): 7 with real delivered case-study evidence
+   (B2B & Professional Services, Technology & SaaS, Ecommerce Brands, Charities & Non-profits,
+   Education & EdTech [added], Travel/Hospitality/Leisure [added], Home Improvement & Interiors) + 3
+   fallback-only (Driving Schools, Pharmacies, Restaurants — no delivered proof, "Recent work"
+   fallback). Each legacy industry URL → its own page; sme-founders → /solutions. Expansion contract:
+   `hasPage:true` ⇒ page + nav + filtering, no code (built once at CP-08). Fallback labelled
+   "Recent work". Set decided from the 31 case-study bodies (staging).
+3. **Test routes → 404** (not 410).
+4. **Analytics go-wide** (see 00-context §10 wiring status): conversion `enquiry_submitted` fires in
+   `Form.jsx` on success before redirect (most reliable). Wired: `cta_click` (Primary/Secondary
+   buttons), `call_booking_clicked` (GradientButton), `case_study_view` (new `TrackView`), `email_click`
+   + `phone_click` (footer); `service_selected`/`solution_selected` in the mega-menu (CP-03). Pending:
+   step_2/3, industry_selected, pricing_view. All events reach `dataLayer` (page_path auto-added);
+   **GTM→GA4 forwarding open as O7**.
+
+**CP-03 mega-menu next**, then stop for review.
+
+---
+
+## CP-02 — sitemap approved with earlier corrections (superseded by v2 above)
+
+(First-round corrections; /call reversal + industries widening above supersede the /call-removal and
+four-industry set.)
+1. **`/call` REMOVE entirely** — redirect `/call` → `/contact` (CP-15); **Cal.com integration to be
+   stripped from the codebase.** Recorded in route inventory + redirect map. **Code teardown pending**
+   — it is ~25 files (every hero/footer/header carries a Book-a-Call/inline Cal button, GradientButton
+   hardcodes the Cal attrs, 6 embed-init blocks). Flagged to Hassan as larger than a correction;
+   sequencing vs the CP-03 mega-menu **awaiting his decision** (he dismissed the sequencing prompt —
+   holding for next instruction).
+2. **Four industry redirects marked PROVISIONAL** (interiors/restaurants/driving-schools/pharmacies →
+   web-design-development) — revisit at CP-08; noted in §3.4 + §4.
+3. **Test routes → 404** (not 410) in the redirect map.
+4. **`/thank-you` confirmed:** noindexed ✓; fires **no event** — the `enquiry_submitted` conversion is
+   measured in `Form.jsx` (client-side, on successful submit) **before** the redirect. ContactForm +
+   AuditForm land on `/thank-you`; it is a real destination, not orphaned. Recorded in §3.6.
+
+**CP-03 (services mega-menu) NOT started** — held pending the Cal.com sequencing decision.
+
+---
+
 ## CP-02 — nav confirmed + parked decisions resolved (19 August 2026)
 
 Hassan's CP-02 review closed every open decision; `04-information-architecture.md` rewritten in full.

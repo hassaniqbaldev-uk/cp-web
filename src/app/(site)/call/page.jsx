@@ -6,6 +6,9 @@ export async function generateMetadata() {
   return {
     title,
     description,
+    // Direct-link / emailed-booking page only: kept live but off all site nav and
+    // CTAs (D8/D40). noindex so it does not compete in search.
+    robots: { index: false, follow: true },
     alternates: {
       canonical: "/call",
     },

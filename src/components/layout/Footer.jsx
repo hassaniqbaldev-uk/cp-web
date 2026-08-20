@@ -8,6 +8,7 @@ import InstagramIcon from "@/assets/icons/social/instagram-icon.svg";
 import LinkedinIcon from "@/assets/icons/social/linkedin-icon.svg";
 import HostingIcon from "@/assets/svgs/footer-hosting-logo.svg";
 import WpFixedIcon from "@/assets/svgs/footer-wp-fixed-logo.svg";
+import { track, ANALYTICS_EVENTS } from "@/lib/analytics/events";
 import MonthlyIcon from "@/assets/svgs/footer-monthly-logo.svg";
 import Image from "next/image";
 import Link from "next/link";
@@ -97,6 +98,7 @@ const Footer = () => {
               <div className="flex w-full flex-wrap justify-center gap-[1.6rem] md:gap-[2rem]">
                 <Link
                   href="tel:01618202667"
+                  onClick={() => track(ANALYTICS_EVENTS.PHONE_CLICK)}
                   className="group flex h-[9rem] w-full items-center justify-start gap-[1.5rem] overflow-hidden rounded-[1.6rem] border border-white/20 bg-white/10 px-[2rem] backdrop-blur-[10px] transition-all duration-400 hover:-translate-y-2 md:h-[14rem] md:w-[37.9rem] md:justify-center md:gap-[2.4rem] md:px-[0rem]"
                 >
                   <i className="relative inline-flex size-[5.2rem] min-w-max items-center justify-center md:size-[8.2rem]">
@@ -129,6 +131,7 @@ const Footer = () => {
 
                 <Link
                   href="mailto:hello@cp.agency"
+                  onClick={() => track(ANALYTICS_EVENTS.EMAIL_CLICK)}
                   className="group flex h-[9rem] w-full items-center justify-start gap-[1.5rem] overflow-hidden rounded-[1.6rem] border border-white/20 bg-white/10 px-[2rem] backdrop-blur-[10px] transition-all duration-400 hover:-translate-y-2 md:h-[14rem] md:w-[43rem] md:justify-center md:gap-[2.4rem] md:px-[0rem]"
                 >
                   <i className="relative inline-flex size-[5.2rem] min-w-max items-center justify-center md:size-[8.2rem]">

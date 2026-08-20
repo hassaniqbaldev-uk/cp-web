@@ -2,6 +2,7 @@
 import { useEffect } from "react";
 import Image from "next/image";
 import HassanAvatar from "@/assets/icons/ui/hassan-avatar.png";
+import { track, ANALYTICS_EVENTS } from "@/lib/analytics/events";
 
 const GradientButton = ({ text = "Book with Hassan" }) => {
   useEffect(() => {
@@ -26,6 +27,9 @@ const GradientButton = ({ text = "Book with Hassan" }) => {
         data-cal-namespace="15min"
         data-cal-link="hassan-iqbal-mznzu9/15min"
         data-cal-config='{"layout":"month_view","theme":"dark"}'
+        onClick={() =>
+          track(ANALYTICS_EVENTS.CALL_BOOKING_CLICKED, { cta_label: text })
+        }
         className="gradient-button inline-flex cursor-pointer items-center justify-center"
       >
         <div className="text-span">

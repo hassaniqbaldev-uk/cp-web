@@ -35,9 +35,17 @@ export const PENDING_EVENTS = new Set([
 // yet. Do not treat a wired event as a verified/live event.
 export function track(event, params = {}) {
   if (typeof window === "undefined") return;
+  const page_path = window.location?.pathname;
+  const payload = page_path ? { page_path, ...params } : params;
   if (typeof window.gtag === "function") {
-    window.gtag("event", event, params);
+    window.gtag("event", event, payload);
   } else if (Array.isArray(window.dataLayer)) {
-    window.dataLayer.push({ event, ...params });
+    window.dataLayer.push({ event, ...payload });
   }
+}
+
+// Convenience for the shared CTA buttons: fires `cta_click` with the label + slot.
+// `cta_label` and `cta_position` are the pair that make cta_click meaningful (§10).
+export function trackCta(cta_label, cta_position = "") {
+  track(ANALYTICS_EVENTS.CTA_CLICK, { cta_label, cta_position });
 }

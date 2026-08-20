@@ -91,23 +91,61 @@ Status key: **KEEP** · **REWRITE** · **NEW** · **REDIRECT** · **REMOVE**. De
 | `/solutions/automate-operations` | Goal: ops automation (AI & Automation) | `/solutions` | KEEP |
 | `/solutions/scale-marketing` | — | — | **REDIRECT → `/solutions/increase-leads`** (D39) |
 
-### 3.4 Industries (NEW axis, CP-08) — four to start (D44)
+### 3.4 Industries (NEW axis, CP-08) — evidence-led set of ten (D44, revised)
 
-| Route | Industry | Legacy source | Status |
-| --- | --- | --- | --- |
-| `/industries` | Industries hub | — | **NEW (CP-08)** |
-| `/industries/b2b-services` | **B2B & Professional Services** | `/solutions/b2b-services` | **NEW** ← redirect |
-| `/industries/saas-companies` | **Technology & SaaS** | `/solutions/saas-companies` | **NEW** ← redirect |
-| `/industries/ecommerce-brands` | **Ecommerce Brands** | `/solutions/ecommerce-brands` (D4) | **NEW** ← redirect |
-| `/industries/charities-and-foundation` | **Charities & Non-profits** | `/solutions/charities-and-foundation` | **NEW** ← redirect |
+The four-industry limit was too conservative. This set was worked out from the **actual case-study
+evidence** (all 31 published bodies read from staging — the same content the live site serves; §8 of
+the audit) plus sensible search demand. **Ten industries ship**, built so that **adding another later
+is a content change, not code** (see the expansion contract below).
 
-Only these **four** ship (the four current `hasPage` industries). The industries type's **duplicate
-slugs and mismatched flags are cleaned at CP-08** (D44); final slugs confirmed there. The **other five**
-legacy industry-solutions (`interiors-and-furnishings`, `driving-schools`, `sme-founders`,
-`pharmacies`, `restaurants`) have **no page in this set** — each is redirected to the **closest
-relevant page individually** (no hub dead-end), based on what each page actually described: interiors,
-restaurants, driving-schools and pharmacies → `/services/web-design-development`; sme-founders →
-`/solutions` (audience positioning, not an industry). Mapping in §4.
+**Seven with real, delivered case-study evidence:**
+
+| Route | Industry | Tagged evidence (real delivered work) |
+| --- | --- | --- |
+| `/industries` | Industries hub | — |
+| `/industries/b2b-services` | **B2B & Professional Services** | alertforce, energy-angels, trust-certs, varissa, teleqo-tech, new-compass |
+| `/industries/technology-saas` | **Technology & SaaS** | ayoa, new-compass, teleqo-tech, peekaboo, now-press-play |
+| `/industries/ecommerce-brands` | **Ecommerce Brands** | fultons, minnessak, mr-pickles, the-smokey-carter (+ ivy-and-duke draft) |
+| `/industries/charities-non-profits` | **Charities & Non-profits** | anthony-walker-foundation, sight-for-life, unicef*, wmrji |
+| `/industries/education-edtech` | **Education & EdTech** *(added)* | anthony-walker-foundation, junior-jam, now-press-play, alertforce |
+| `/industries/travel-hospitality` | **Travel, Hospitality & Leisure** *(added)* | casa-botanica-panama, ndifo-safari, little-astronauts |
+| `/industries/home-improvement-interiors` | **Home Improvement & Interiors** | smartspaces, sp-elite-installation |
+
+**Three on the fallback only (existing marketing page + niche search demand, but NO delivered
+case study yet):**
+
+| Route | Industry | Evidence |
+| --- | --- | --- |
+| `/industries/driving-schools` | **Driving Schools** | none delivered — "Recent work" fallback (drive-uk / ofh-care are only draft stubs) |
+| `/industries/pharmacies` | **Pharmacies** | none delivered — fallback (lola-blake is a stub) |
+| `/industries/restaurants` | **Restaurants** | none delivered — fallback (dr-donuts is a donut shop, the-smokey-carter is ecommerce; neither is a restaurant) |
+
+\* `unicef` is print, not web — usable as recognition, not as digital-delivery proof (audit §8).
+Case studies legitimately tag **multiple** industries (e.g. anthony-walker-foundation → Charities +
+Education; new-compass / teleqo-tech → B2B + Technology).
+
+**Kept OFF the set (folded or too thin), flagged as future candidates:** Financial Services (varissa
+only → folded into B2B); Media & Publishing (sorted, vuegraphy — 2 studies, modest demand); Creative /
+Studios (manzar, game-art-brain — fold into their client sector). Add later if evidence grows.
+
+**On the three fallback-only industries:** they have existing bespoke marketing pages and real
+(if niche) search demand, and your fallback rule is designed precisely so they are never empty — so
+they ship. But they carry **no delivered proof**; if you would rather not run a page on fallback
+alone, say which and its legacy URL will instead point at the nearest evidence-backed page.
+
+**Case-study evidence rule (per your instruction):** on every industry page, **tagged matches show
+first**; where an industry has none, it **falls back to the most recently added case studies**, and
+that block is labelled **"Recent work"** (not "Related work") so it stays honest. No industry page is
+ever empty.
+
+**Expansion contract (build once at CP-08, then content-only):** a new `industries` document with
+`hasPage: true` must, with **no code change**, produce (1) a live `/industries/[slug]` page from the
+shared template, (2) a nav entry (the nav query already filters `industries` by `hasPage == true`,
+verified in the O13 check), and (3) correct case-study filtering with the "Recent work" fallback. This
+requires, at CP-08: the `/industries/[slug]` template + hub, a **reliable industry reference on case
+studies** (the current case-study industry tags are unreliable and cross-project — the O8 consolidation
+dependency; until reliable tags exist, every page uses the "Recent work" fallback), and the
+duplicate-slug / `hasPage` cleanup (O13 note).
 
 ### 3.5 Case studies, Blog, Legal
 
@@ -132,8 +170,8 @@ restaurants, driving-schools and pharmacies → `/services/web-design-developmen
 | `/careers` | Careers + JobApplicationForm | footer | KEEP |
 | `/how-we-work` | Process / method | About cluster | KEEP + REWRITE (holds the "10 years" date variant) |
 | `/testimonials` | Testimonials (external reviews) — matters given the case-study quote gap | secondary | KEEP + FIX (H1 mismatch) |
-| `/call` | Cal.com booking utility | — | KEEP (page stays; **Book a Call removed as a CTA**, D8/D40) |
-| `/thank-you` | Form success (noindex) | — | KEEP |
+| `/call` | Direct-link Cal.com booking page — used in emails only | — | **KEEP + noindex** — Cal.com integration stays; **off all site nav and CTAs, nothing on the site links to it**; the route stays live for **direct/emailed links only** (D8/D40 remove Book a Call as an on-site CTA, but the page persists). noindex so it does not compete in search. |
+| `/thank-you` | Form success page (ContactForm + AuditForm land here) | — | KEEP — **noindexed** ✓; **fires no event** — the `enquiry_submitted` conversion is measured on the form (`Form.jsx`) at successful submit, before the redirect |
 | `/wordpress-web-development` (+ `/thank-you`) | WordPress landing page | — | **REMOVE / REDIRECT** → `/services/web-design-development` (superseded, CP-05) |
 | `/hassan-test`, `/review-test`, `/testing-testimonials` | Test/junk routes | — | **REMOVE (CP-00E)** |
 
@@ -149,18 +187,24 @@ restaurants, driving-schools and pharmacies → `/services/web-design-developmen
 | `/services/ppc` | `/services/paid-media` | Slug rename (D41) |
 | `/services/maintenance` | `/services/growth-and-support` | Slug rename (D42) |
 | `/solutions/scale-marketing` | `/solutions/increase-leads` | Merge (D39) |
-| `/solutions/ecommerce-brands` | `/industries/ecommerce-brands` | D4 / D44 |
-| `/solutions/b2b-services` | `/industries/b2b-services` | D44 |
-| `/solutions/saas-companies` | `/industries/saas-companies` | D44 |
-| `/solutions/charities-and-foundation` | `/industries/charities-and-foundation` | D44 |
-| `/solutions/interiors-and-furnishings` | `/services/web-design-development` | Premium lead-gen website for a design service (not an ecommerce brand) |
-| `/solutions/restaurants` | `/services/web-design-development` | Restaurant website + booking/ordering systems (not an ecommerce brand) |
-| `/solutions/driving-schools` | `/services/web-design-development` | Driving-school website + automated bookings |
-| `/solutions/pharmacies` | `/services/web-design-development` | Pharmacy website + growth; NHS-integration/ordering angle noted (closest clean page) |
+| `/solutions/ecommerce-brands` | `/industries/ecommerce-brands` | D4 / D44 — own industry page |
+| `/solutions/b2b-services` | `/industries/b2b-services` | D44 — own industry page |
+| `/solutions/saas-companies` | `/industries/technology-saas` | D44 — own industry page |
+| `/solutions/charities-and-foundation` | `/industries/charities-non-profits` | D44 — own industry page |
+| `/solutions/interiors-and-furnishings` | `/industries/home-improvement-interiors` | Own industry page (D44 revised) |
+| `/solutions/restaurants` | `/industries/restaurants` | Own industry page (fallback evidence) |
+| `/solutions/driving-schools` | `/industries/driving-schools` | Own industry page (fallback evidence) |
+| `/solutions/pharmacies` | `/industries/pharmacies` | Own industry page (fallback evidence) |
 | `/solutions/sme-founders` | `/solutions` (hub) | Audience positioning, not an industry — no single page owns it |
 | `/agencies` | `/partner-with-us` | White-label merge |
 | `/wordpress-web-development`, `/wordpress-web-development/thank-you` | `/services/web-design-development` | LP retired |
-| `/hassan-test`, `/review-test`, `/testing-testimonials` | 410 / removed | Test routes |
+| `/hassan-test`, `/review-test`, `/testing-testimonials` | **404** | Test routes, never meant to be public (simple default, not 410) |
+
+Every legacy industry URL now points at **its own industry page** (no hub dead-end, no flattening into
+Web Design & Development). `sme-founders` is the only exception — it is audience positioning, not an
+industry, so it points at `/solutions`. The three fallback-only industry pages (driving-schools,
+pharmacies, restaurants) are honest via the "Recent work" fallback; if you drop any (see §3.4), its
+redirect repoints to the nearest evidence-backed page.
 
 Infra at CP-15: **www → apex** (the www host currently does not resolve) and home-URL trailing-slash
 normalisation.

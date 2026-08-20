@@ -614,6 +614,39 @@ state, D8 was the right fix for the wrong reason, and that is worth knowing.
 - Every event needs verifying in DebugView before the phase it belongs to closes, not
   at launch.
 
+### Wiring status (CP-03, 19 August 2026) — go-wide instrumentation
+
+**Conversion event location (decided):** `enquiry_submitted` fires in **`Form.jsx`, client-side, the
+moment the fetch resolves successfully — *before* the `/thank-you` redirect.** This is the most
+reliable point: it does not depend on the thank-you page rendering or GTM firing there, and it fires
+once per successful submit regardless of which form or destination. `/thank-you` itself fires no event
+and is noindexed. This is the right home; it stays here.
+
+**All events reach the `dataLayer`.** `track()` pushes `{ event, page_path, ...params }` to
+`window.dataLayer` when `gtag` is absent (and calls `gtag('event', …)` when present). `page_path` is
+attached automatically. **GTM → GA4 forwarding is still open as O7** — the events reach the dataLayer;
+whether GTM forwards them to a GA4 property (reused or new) is the O7 decision. Verify in DebugView
+once O7 lands.
+
+**Wired now (host UI exists and is stable):**
+
+| Event | Host |
+| --- | --- |
+| `enquiry_started`, `enquiry_submitted` | `Form.jsx` (all migrated forms) |
+| `cta_click` | `PrimaryButton`, `SecondaryButton` (fires `cta_label`; `cta_position` optional prop) |
+| `call_booking_clicked` | `GradientButton` (the Cal.com booking button) |
+| `case_study_view` | `/case-studies/[slug]` via `TrackView` |
+| `email_click`, `phone_click` | footer `mailto:` / `tel:` links |
+| `service_selected` | `ServiceNavColumn` (mega-menu) |
+| `solution_selected` | mega-menu solutions column (CP-03, this pass) |
+
+**Pending — kept in `PENDING_EVENTS`, not claimed as live (no stable host UI yet):**
+`enquiry_step_2`, `enquiry_step_3` (the multi-step enquiry flow is not built); `industry_selected`
+(industry routes land at CP-08); `pricing_view` (the Investment module is reworked at CP-05 — wiring it
+now would attach to a component about to change). `call_booking_clicked` is *wired* on the Cal button,
+but the single uncontested booking position the CP-00I test wants is not finalised — the data is
+captured; the interpretation waits.
+
 ---
 
 ## 10a. Content platform (confirmed by CP-00K)

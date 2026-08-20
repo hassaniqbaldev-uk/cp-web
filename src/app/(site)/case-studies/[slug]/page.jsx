@@ -5,6 +5,8 @@ import OurApproach from "@/components/sections/our-approach/OurApproach";
 import TheChallenge from "@/components/sections/the-challenge/TheChallenge";
 import TheSolution from "@/components/sections/the-solution/TheSolution";
 import CustomCode from "@/components/sections/custom-code/CustomCode";
+import TrackView from "@/components/analytics/TrackView";
+import { ANALYTICS_EVENTS } from "@/lib/analytics/events";
 import {
   CASE_STUDY_SITEMAP_QUERY,
   caseStudiesDetailQuery,
@@ -90,6 +92,10 @@ const CaseStudiesDetailPage = async (props) => {
 
   return (
     <>
+      <TrackView
+        event={ANALYTICS_EVENTS.CASE_STUDY_VIEW}
+        params={{ page_type: "case_study", case_study: slug }}
+      />
       <div className="overflow-hidden">
         <CaseStudiesDetailHero caseStudy={caseStudy} />
         <ClientOverview caseStudy={caseStudy} />

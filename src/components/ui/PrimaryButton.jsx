@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { motion } from "framer-motion";
 import RightArrowIcon from "@/components/icons/RightArrowIcon";
+import { trackCta } from "@/lib/analytics/events";
 
 const slideUp = {
   initial: { y: "0%" },
@@ -20,12 +21,18 @@ const PrimaryButton = ({
   bGcolor = "#070707",
   textColor = "#ffffff",
   target = "",
+  ctaPosition = "",
+  onClick,
 }) => {
   return (
     <motion.div initial="initial" whileHover="hover" className="inline-flex">
       <Link
         href={href}
         target={target}
+        onClick={(e) => {
+          trackCta(text, ctaPosition);
+          onClick?.(e);
+        }}
         className="inline-flex items-center justify-center"
       >
         {/* TEXT PILL */}
