@@ -1,7 +1,12 @@
 "use client";
 
 import * as React from "react";
-import { AnimatePresence, motion, useInView } from "motion/react";
+import {
+  AnimatePresence,
+  motion,
+  useInView,
+  useReducedMotion,
+} from "motion/react";
 
 function MotionEffect({
   ref,
@@ -20,6 +25,15 @@ function MotionEffect({
 }) {
   const localRef = React.useRef(null);
   React.useImperativeHandle(ref, () => localRef.current);
+
+  // Respect prefers-reduced-motion for EVERY section that uses this primitive.
+  // When reduced, we pin the element to its final ("visible") state with a zero
+  // transition — no slide, no zoom/scale, no fade-from-transform. This matches the
+  // behaviour chosen for the carousels (disable the motion, show the static result)
+  // rather than inventing a new one. Because the "visible" variant is always the
+  // fully-shown end state (opacity 1, scale 1, offset 0), forcing it can never leave
+  // a section invisible — the failure mode of naively "turning animation off".
+  const shouldReduceMotion = useReducedMotion();
 
   const inViewResult = useInView(localRef, {
     once: inViewOnce,
@@ -64,17 +78,23 @@ function MotionEffect({
       <motion.div
         ref={localRef}
         data-slot="motion-effect"
-        initial="hidden"
-        animate={isInView ? "visible" : "hidden"}
+        initial={shouldReduceMotion ? "visible" : "hidden"}
+        animate={
+          shouldReduceMotion ? "visible" : isInView ? "visible" : "hidden"
+        }
         exit="hidden"
         variants={{
           hidden: hiddenVariant,
           visible: visibleVariant,
         }}
-        transition={{
-          ...transition,
-          delay: (transition?.delay ?? 0) + delay,
-        }}
+        transition={
+          shouldReduceMotion
+            ? { duration: 0 }
+            : {
+                ...transition,
+                delay: (transition?.delay ?? 0) + delay,
+              }
+        }
         className={className}
         {...props}
       >

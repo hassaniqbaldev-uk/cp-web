@@ -54,6 +54,33 @@ Hassan reversed the /call decision and widened industries + analytics. Applied:
 
 **CP-03 mega-menu next**, then stop for review.
 
+### MotionEffect primitive now respects prefers-reduced-motion (site-wide, checkpoint)
+
+The reduced-motion gap was a **site-wide** bug (the primitive powers **74 components**), not a hero one.
+Fixed at the source:
+- `motion-effect.jsx` now calls `useReducedMotion()` (motion/react). Under reduced motion the element
+  is pinned to its final **"visible"** variant with a **zero-duration** transition — no slide, no
+  zoom/scale, no fade-from-transform — matching the carousels' choice (disable the motion, show the
+  static result), not a new behaviour. **When motion is on, the rendered props are byte-identical to
+  before**, so no animated section changes.
+- **Cannot leave a section invisible by construction:** the "visible" variant is always the
+  fully-shown end state (opacity 1, scale 1, offset 0; unset props default to visible), and reduced
+  motion forces `initial=animate="visible"`. This holds for all 74 usages regardless of their flags,
+  so the "disabling motion hides content" failure mode cannot occur.
+- **Removed the local reduced-motion handling from `ServicesHubHero`** — it now uses `MotionEffect`
+  plainly, like every other hero. One implementation.
+- **Verified:** `next build` exit 0; motion-on logic provably unchanged (only the reduced-motion branch
+  is new); SSR renders content for every section.
+- **Could NOT verify visually here:** (1) the motion-on animation *playing* — the Browser pane isn't
+  displayed, so it doesn't composite frames and framer's rAF never ticks; MotionEffect content sits at
+  its initial opacity in this env (a long-standing env artifact, unchanged by this fix, not a
+  regression). (2) The reduced-motion *render* — I can't emulate `prefers-reduced-motion` in this env.
+  Both need a real displayed browser. **Caveat to check:** because `useReducedMotion` is client-only,
+  SSR renders the motion-on initial (hidden) state, so a reduced-motion user gets a brief opacity-0
+  flash until hydration snaps content visible — acceptable and standard, but flagging it.
+
+---
+
 ### UI pass — services hero brought in line with the site pattern (checkpoint, awaiting review)
 
 Section-by-section UI fixing (content/copy untouched, placeholder stays — CP-04). First section: the

@@ -1,7 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import { useReducedMotion } from "motion/react";
 import HeroBg from "@/assets/images/backgrounds/audit-hero-bg.webp";
 import SectionLabel from "@/components/ui/SectionLabel";
 import SectionDescription from "@/components/ui/SectionDescription";
@@ -15,26 +14,13 @@ import ContactHeroLogoShape1 from "@/components/decorative-elements/ContactHeroL
 // Matches the site's hero treatment (audit-hero background + decorative shapes +
 // MotionEffect staggered entrance, spring 120/20, 0.15s stagger) — the same pattern
 // as ServicesDetailHero, reusing the shared primitives rather than a new look.
+// prefers-reduced-motion is handled inside MotionEffect itself (one implementation
+// for the whole site), so this hero just uses the primitive like every other hero.
 // ALL COPY HERE IS PLACEHOLDER — final wording is CP-04. No Cal.com / Book a Call
 // (D40); the single primary CTA is "Start a project" → the enquiry flow.
-//
-// prefers-reduced-motion: the shared MotionEffect primitive does NOT respect it, and
-// neither do the existing heroes. We do not copy that fault — when the user prefers
-// reduced motion we drop the slide/zoom/fade entirely (content simply appears). The
-// proper fix is to teach MotionEffect itself, so every hero benefits (flagged).
 const SPRING = { type: "spring", stiffness: 120, damping: 20 };
 
 const ServicesHubHero = () => {
-  const reduce = useReducedMotion();
-
-  // Animation props for MotionEffect, staggered by delay. Under reduced motion we
-  // pass nothing, so the primitive renders the element in its final state with no
-  // slide/zoom/fade.
-  const mp = (delay, zoom = false) =>
-    reduce
-      ? {}
-      : { slide: { direction: "down" }, fade: true, zoom, transition: SPRING, delay };
-
   return (
     <section className="relative w-full overflow-hidden px-[2rem] pt-[15rem] pb-[5rem] md:pt-[20rem] md:pb-[10rem] xl:px-[0rem]">
       {/* Background image */}
@@ -60,12 +46,18 @@ const ServicesHubHero = () => {
 
       <div className="relative z-[10] container">
         <div className="mx-auto flex max-w-[92rem] flex-col items-center text-center">
-          <MotionEffect {...mp(0, true)}>
+          <MotionEffect slide={{ direction: "down" }} transition={SPRING} fade zoom>
             <SectionLabel text="Services" textColor="#FF37B3" />
           </MotionEffect>
 
           {/* PLACEHOLDER headline — CP-04 */}
-          <MotionEffect {...mp(0.15, true)}>
+          <MotionEffect
+            slide={{ direction: "down" }}
+            transition={SPRING}
+            fade
+            zoom
+            delay={0.15}
+          >
             <h1 className="mt-[1.5rem] mb-[2.5rem] text-[3rem] leading-[3.7rem] font-bold tracking-[-0.03em] text-[#312749] md:text-[7rem] md:leading-[8rem]">
               [Placeholder headline — CP-04] One team across brand, web, growth and
               automation.
@@ -73,7 +65,12 @@ const ServicesHubHero = () => {
           </MotionEffect>
 
           {/* PLACEHOLDER positioning statement — CP-04 */}
-          <MotionEffect {...mp(0.3)}>
+          <MotionEffect
+            slide={{ direction: "down" }}
+            transition={SPRING}
+            fade
+            delay={0.3}
+          >
             <div className="mb-[4rem] max-w-[76rem]">
               <SectionDescription
                 text="[Placeholder positioning — CP-04] A short statement that tells a visitor what CreativePixels is within seconds, weighted toward the web and ecommerce work that is the core of what we do."
@@ -82,7 +79,12 @@ const ServicesHubHero = () => {
             </div>
           </MotionEffect>
 
-          <MotionEffect {...mp(0.45)}>
+          <MotionEffect
+            slide={{ direction: "down" }}
+            transition={SPRING}
+            fade
+            delay={0.45}
+          >
             <div className="flex flex-col items-center gap-[1.4rem]">
               <PrimaryButton
                 text="Start a project"
