@@ -74,47 +74,50 @@ const PillarCard = ({ column }) => {
         className="relative z-[2] flex h-full flex-col gap-[2.4rem] rounded-[3rem] bg-white/15 p-[3rem] transition-all duration-200"
       >
         <div className="flex items-center gap-[2rem]">
-        <i
-          style={{
-            backgroundColor: t.color,
-            boxShadow: `5px 5px 44px 0px ${t.color}CC`,
-          }}
-          className="relative inline-flex size-[5.8rem] min-w-[5.8rem] items-center justify-center rounded-[1.3rem]"
-        >
-          <Image src={t.icon} width={30} height={30} alt="Icon" unoptimized />
-        </i>
+          <i
+            style={{
+              backgroundColor: t.color,
+              boxShadow: `5px 5px 44px 0px ${t.color}CC`,
+            }}
+            className="relative inline-flex size-[5.8rem] min-w-[5.8rem] items-center justify-center rounded-[1.3rem]"
+          >
+            <Image src={t.icon} width={30} height={30} alt="Icon" unoptimized />
+          </i>
 
-        <h3 className="text-[2.2rem] leading-[2.8rem] font-bold tracking-[-0.02em] text-white xl:text-[2.6rem] xl:leading-[3rem]">
-          {column.heading}
-        </h3>
-      </div>
+          <h3 className="text-[2.2rem] leading-[2.8rem] font-bold tracking-[-0.02em] text-white xl:text-[2.6rem] xl:leading-[3rem]">
+            {column.heading}
+          </h3>
+        </div>
 
-      {/* PLACEHOLDER positioning copy — CP-04 */}
-      <p className="text-[1.6rem] leading-[2.6rem] font-normal tracking-normal text-white">
-        {PILLAR_BLURB[column.key] || "[Placeholder — CP-04]"}
-      </p>
+        {/* PLACEHOLDER positioning copy — CP-04 */}
+        <p className="text-[1.6rem] leading-[2.6rem] font-normal tracking-normal text-white">
+          {PILLAR_BLURB[column.key] || "[Placeholder — CP-04]"}
+        </p>
 
-      <ul className="mt-auto flex flex-col gap-[1.4rem]">
-        {column.items.map((item) => (
-          <li key={item.slug} className="border-t border-white/15 pt-[1.4rem]">
-            <Link
-              href={item.href}
-              onClick={() =>
-                track(ANALYTICS_EVENTS.SERVICE_SELECTED, {
-                  service: item.slug,
-                  service_pillar: column.key,
-                })
-              }
-              className="group inline-flex w-full items-center justify-between gap-[1rem] text-[1.7rem] leading-[2.2rem] font-semibold text-white"
+        <ul className="mt-auto flex h-full flex-col gap-[1.4rem]">
+          {column.items.map((item) => (
+            <li
+              key={item.slug}
+              className="border-t border-white/15 pt-[1.4rem]"
             >
-              {item.label}
-              <i className="min-w-max transition-transform duration-200 group-hover:translate-x-[3px]">
-                <TiltArrowIcon color={t.color} width="12" height="12" />
-              </i>
-            </Link>
-          </li>
-        ))}
-      </ul>
+              <Link
+                href={item.href}
+                onClick={() =>
+                  track(ANALYTICS_EVENTS.SERVICE_SELECTED, {
+                    service: item.slug,
+                    service_pillar: column.key,
+                  })
+                }
+                className="group inline-flex w-full items-center justify-between gap-[1rem] text-[1.7rem] leading-[2.2rem] font-semibold text-white"
+              >
+                {item.label}
+                <i className="min-w-max transition-transform duration-200 group-hover:translate-x-[3px]">
+                  <TiltArrowIcon color={t.color} width="12" height="12" />
+                </i>
+              </Link>
+            </li>
+          ))}
+        </ul>
       </div>
     </div>
   );
@@ -186,7 +189,10 @@ const ServicesPillars = ({ columns = [] }) => {
           >
             {/* PLACEHOLDER copy — CP-04 */}
             <div className="mt-[5px] mb-[14px]">
-              <SectionTitle text="Four things we do, one team." textColor="#FFFFFF" />
+              <SectionTitle
+                text="Four things we do, one team."
+                textColor="#FFFFFF"
+              />
             </div>
           </MotionEffect>
 

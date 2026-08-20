@@ -36,7 +36,7 @@ const ServicesCapabilities = ({ columns = [] }) => {
   if (!capabilities.length) return null;
 
   return (
-    <section className="px-[2rem] py-[5rem] xl:px-[0rem] xl:py-[10rem]">
+    <section className="bg-[#F7FAFF] px-[2rem] py-[5rem] xl:px-[0rem] xl:py-[10rem]">
       <div className="container">
         <div className="flex flex-col items-center text-center">
           <MotionEffect
@@ -48,7 +48,10 @@ const ServicesCapabilities = ({ columns = [] }) => {
             transition={{ type: "tween", duration: 0.8, ease: "easeOut" }}
           >
             <div>
-              <SectionLabel text="Specialist Capabilities" textColor="#3078FF" />
+              <SectionLabel
+                text="Specialist Capabilities"
+                textColor="#3078FF"
+              />
             </div>
           </MotionEffect>
 
