@@ -1,16 +1,18 @@
 import { client } from "./client";
 import { NAV_QUERY } from "./queries.nav";
 
-// Mega-menu columns are DATA-DRIVEN: this config defines the grouping (which field
-// value maps to which column, its heading and colour theme, in order). The number of
-// columns and their grouping come from here + the data, not from the DOM — so CP-03's
-// switch from the old service categories to the four pillars is a change to THIS config
-// (and the theme map in ServiceNavColumn), NOT another pass through the mega-menu markup.
-// A column with no resolved items is dropped entirely (empty-state handled downstream).
-const SERVICE_COLUMNS = [
-  { key: "design-development", heading: "Design & Build", theme: "design" },
-  { key: "growth", heading: "Growth", theme: "growth" },
-  { key: "support", heading: "Support", theme: "support" },
+// Mega-menu columns are DATA-DRIVEN by the four pillars (CP-03). This registry defines
+// the KNOWN pillars in display order, each with its heading and colour theme; the
+// COLUMN COUNT comes from the DATA — a pillar with no live services is dropped, so an
+// empty pillar renders nothing (heading included). Adding a service under a pillar makes
+// its column appear; removing the last one makes it disappear — both are content changes.
+// A genuinely new 5th pillar is the only thing that needs an entry here (+ a theme in
+// ServiceNavColumn). Grouping is by the `pillar` field on the services document.
+const PILLARS = [
+  { key: "brand-experience", heading: "Brand & Experience", theme: "brand" },
+  { key: "web-ecommerce", heading: "Web & Ecommerce", theme: "web" },
+  { key: "growth-performance", heading: "Growth & Performance", theme: "growth" },
+  { key: "ai-automation", heading: "AI & Automation", theme: "ai" },
 ];
 
 const byNavOrder = (a, b) =>
@@ -38,15 +40,15 @@ export async function getNavData() {
   }
 
   const services = raw?.services || [];
-  const serviceColumns = SERVICE_COLUMNS.map((col) => ({
+  const serviceColumns = PILLARS.map((col) => ({
     key: col.key,
     heading: col.heading,
     theme: col.theme,
     items: services
-      .filter((s) => s.category === col.key)
+      .filter((s) => s.pillar === col.key)
       .sort(byNavOrder)
       .map((s) => toItem(s, "/services")),
-  })).filter((col) => col.items.length > 0); // drop empty columns
+  })).filter((col) => col.items.length > 0); // drop empty pillars (column count is data-driven)
 
   const goalSolution = (raw?.goalSolutions || [])
     .slice()

@@ -8,6 +8,7 @@ import TiltArrowIcon from "../icons/TiltArrowIcon";
 import { GOAL_SOLUTION_NAV, SECTOR_SOLUTION_NAV } from "@/contants";
 import Link from "next/link";
 import PrimaryButton from "./PrimaryButton";
+import { ANALYTICS_EVENTS, track } from "@/lib/analytics/events";
 import ServicesDropdownStroke from "@/assets/svgs/services-dropdown-stroke.svg";
 
 const SolutionsDropdown = ({ className, isOpen, setIsOpen, onToggle }) => {
@@ -162,7 +163,12 @@ const SolutionsDropdown = ({ className, isOpen, setIsOpen, onToggle }) => {
                     className="border-[#818181]/30 pb-[1.5rem] not-last:border-b"
                   >
                     <Link
-                      onClick={() => setIsOpen(false)}
+                      onClick={() => {
+                        track(ANALYTICS_EVENTS.SOLUTION_SELECTED, {
+                          solution: item.href?.split("/").pop(),
+                        });
+                        setIsOpen(false);
+                      }}
                       href={item.href}
                       className="flex items-start justify-between gap-[1rem]"
                     >

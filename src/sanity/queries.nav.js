@@ -5,12 +5,12 @@
 // added to the separate Sanity Studio repo before editors can set them — see the
 // Studio task in 00-context.md.
 export const NAV_QUERY = `{
-  "services": *[_type == "services" && !(_id in path("drafts.**")) && defined(slug.current)] | order(title asc){
+  "services": *[_type == "services" && !(_id in path("drafts.**")) && defined(slug.current) && defined(detailHero)] | order(title asc){
     "label": coalesce(navLabel, title),
     "excerpt": coalesce(navExcerpt, ""),
     "slug": slug.current,
     navOrder,
-    category
+    pillar
   },
   "goalSolutions": *[_type == "solutions" && category == "goal" && !(_id in path("drafts.**")) && defined(slug.current)] | order(title asc){
     "label": coalesce(navLabel, title),

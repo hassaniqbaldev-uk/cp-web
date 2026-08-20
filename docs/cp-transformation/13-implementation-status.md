@@ -54,6 +54,30 @@ Hassan reversed the /call decision and widened industries + analytics. Applied:
 
 **CP-03 mega-menu next**, then stop for review.
 
+### CP-03 — services mega-menu now fully data-driven (checkpoint, awaiting review)
+
+The Step-3 deferred work is done. The mega-menu column count + grouping come from the **four pillars**
+in data, not the DOM:
+- **`pillar` field written to all 16 staging services** (brand-experience / web-ecommerce /
+  growth-performance / ai-automation).
+- **Nav query** (`queries.nav.js`) projects `pillar` and filters services to `defined(detailHero)` —
+  so content-less stubs (ai-automation) are excluded, and an **empty pillar renders nothing at all**.
+- **`nav.js`** replaces the 3-category `SERVICE_COLUMNS` with a 4-pillar `PILLARS` registry; groups by
+  `pillar`; drops empty pillars (column count is data-driven).
+- **`ServicesDropdown.jsx`** rewritten: the hardcoded GROWTH/SUPPORT columns are gone; it now renders
+  `serviceColumns.map(<ServiceNavColumn>)` with `gridTemplateColumns: repeat(N, …)`. **Keyboard
+  disclosure preserved verbatim** (ArrowDown opens, Escape closes + returns focus to trigger, Tab into
+  panel via onBlur handleClose, aria-expanded/aria-controls) — those handlers were not touched.
+- **`ServiceNavColumn.jsx`** THEME map updated to the four pillar themes (web/ai reuse existing icons as
+  placeholders).
+- **Analytics:** `service_selected` (already on the column links) + **`solution_selected`** now wired on
+  the goal-solution links in `SolutionsDropdown`.
+- **Verified in a production build** (`next build` exit 0; `next start`): SSR HTML shows exactly 3
+  pillar columns (Brand & Experience → Web & Ecommerce → Growth & Performance), old headings absent,
+  `/services/ai-automation` absent (empty AI pillar dropped). Browser at **1440**: mega-menu opens with
+  the 3 columns + "WordPress"/"Paid Media" navLabels; **768** and **375**: desktop nav hidden, hamburger
+  shown, no break. **Stopped before the services-hub rebuild, per instruction.**
+
 ---
 
 ## CP-02 — sitemap approved with earlier corrections (superseded by v2 above)

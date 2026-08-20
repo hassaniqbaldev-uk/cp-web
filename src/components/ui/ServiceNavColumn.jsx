@@ -8,21 +8,23 @@ import GrowthIcon from "@/assets/icons/ui/growth-icon.svg";
 import SupportIcon from "@/assets/icons/ui/support-icon.svg";
 import { ANALYTICS_EVENTS, track } from "@/lib/analytics/events";
 
-// Colour + icon per column theme. Keyed by the `theme` value the nav data layer
-// assigns to each column. CP-03 adds the four pillars by adding entries here (and
-// swapping the grouping config in sanity/nav.js) — the column MARKUP below does not
-// change. Colour must be inline (Tailwind can't compile dynamic arbitrary values).
+// Colour + icon per PILLAR theme. Keyed by the `theme` value the nav data layer
+// assigns to each pillar column (sanity/nav.js PILLARS registry). The column MARKUP
+// below does not change when pillars change — only this map. Colour must be inline
+// (Tailwind can't compile dynamic arbitrary values). Icons for `web`/`ai` reuse the
+// existing set as placeholders — swap for bespoke pillar icons in a design pass.
 const THEME = {
-  design: { icon: DesignIcon, color: "#ED910C" },
+  brand: { icon: DesignIcon, color: "#ED910C" },
+  web: { icon: SupportIcon, color: "#3078FF" },
   growth: { icon: GrowthIcon, color: "#FF37B3" },
-  support: { icon: SupportIcon, color: "#F14A58" },
+  ai: { icon: DesignIcon, color: "#7C3AED" },
 };
 
 // One data-driven mega-menu column, reproducing the hand-written column markup.
 // Empty-state: a column with no items renders NOTHING — heading included.
 const ServiceNavColumn = ({ column, isLast = false, onSelect }) => {
   if (!column?.items?.length) return null;
-  const theme = THEME[column.theme] || THEME.design;
+  const theme = THEME[column.theme] || THEME.brand;
 
   return (
     <div
