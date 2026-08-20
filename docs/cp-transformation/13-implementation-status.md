@@ -54,7 +54,19 @@ Hassan reversed the /call decision and widened industries + analytics. Applied:
 
 **CP-03 mega-menu next**, then stop for review.
 
-### Route cards (audit + solutions) — upgraded to the site's rich card language (checkpoint)
+### Route cards — use the project PrimaryButton + accent-tinted stroke (checkpoint)
+
+Two small follow-up tweaks per Hassan:
+- **CTA now uses the project's `PrimaryButton`** (white on navy `#312749`) instead of a custom
+  button span — so the card is a `div` (button link no longer nested), fires `cta_click` via
+  `ctaPosition`.
+- **Decorative stroke is now colour-tinted to each card's accent** (orange / pink) — the cta-bg stroke
+  path with a transparent→accent gradient, bleeding off the bottom-right corner.
+- Everything else unchanged; contrast re-verified AA (label 4.96 / 6.84:1, heading 13.2, body 6.4:1);
+  0 overflow at 1440/768/375. Needs your eyes: the tinted stroke + PrimaryButton look, and that the
+  stroke (behind, corner) doesn't sit under body text.
+
+### Route cards (audit + solutions) — upgraded to the site's rich card language (superseded above)
 
 The two `/services` route cards read too plain. Studied the richest card treatments (Partner With Us /
 GlassFeatureCard, the cta-bg closing CTA + decorative stroke, LightFeatureCard2 / Expertise feature

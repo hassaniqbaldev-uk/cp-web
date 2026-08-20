@@ -1,23 +1,21 @@
 "use client";
 
-import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
-import TiltArrowIcon from "@/components/icons/TiltArrowIcon";
+import PrimaryButton from "@/components/ui/PrimaryButton";
 import { MotionEffect } from "@/components/effects/motion-effect";
-import RouteStroke from "@/assets/svgs/services-dropdown-stroke.svg";
 import AnalysisIcon from "@/assets/icons/ui/analysis-icon.svg";
 import FocusIcon from "@/assets/icons/ui/focus-icon.svg";
 
 // The two routes off the services hub (CP-06 items 7 & 8): the "not sure what you
 // need?" route → /audit, and the solutions route → /solutions. No dedicated two-up
-// signpost pattern exists on the site, so these borrow the RICHEST card treatments
-// that do: the coloured glowing icon tile (Partner With Us / feature cards), a
-// decorative stroke bleeding off a corner (the cta-bg / mega-menu audit card), a
-// coloured hover-shadow lift (LightFeatureCard2), generous padding, and a solid CTA
-// button. Audit = orange, Solutions = pink — visually distinct but clearly a pair.
-// Text is AA-safe (dark on white; white on a dark-navy button; label uses a darkened
-// accent). ALL COPY PLACEHOLDER — CP-04.
+// signpost pattern exists on the site, so these borrow the richest card treatments:
+// the coloured glowing icon tile (Partner With Us / feature cards), a decorative
+// stroke bleeding off a corner (the cta-bg card — here TINTED to each card's accent),
+// a coloured hover-shadow lift (LightFeatureCard2), and the project's own PrimaryButton
+// as the CTA. Audit = orange, Solutions = pink — distinct but a pair. Text is AA-safe
+// (dark on white; the label uses a darkened accent; PrimaryButton is white-on-navy).
+// ALL COPY PLACEHOLDER — CP-04.
 const ROUTES = [
   {
     href: "/audit",
@@ -27,6 +25,8 @@ const ROUTES = [
     accent: "#EE8D00", // orange — icon tile, hover glow, stroke tint
     labelColor: "#A85D00", // darkened orange — AA on white
     icon: AnalysisIcon,
+    strokeId: "route-stroke-audit",
+    ctaPosition: "services-route-audit",
   },
   {
     href: "/solutions",
@@ -36,15 +36,59 @@ const ROUTES = [
     accent: "#FF37B3", // pink
     labelColor: "#B0006E", // darkened pink — AA on white
     icon: FocusIcon,
+    strokeId: "route-stroke-solutions",
+    ctaPosition: "services-route-solutions",
   },
 ];
 
-const RouteCard = ({ href, label, title, body, accent, labelColor, icon }) => {
+// Decorative stroke, tinted to the card's accent — the cta-bg card stroke path with a
+// transparent → accent gradient, bleeding off the bottom-right corner (clipped by the
+// card's overflow-hidden).
+const AccentStroke = ({ accent, id }) => (
+  <svg
+    aria-hidden
+    viewBox="0 0 1126 316"
+    fill="none"
+    className="pointer-events-none absolute right-[-6rem] bottom-[-2rem] z-0 h-auto w-[34rem] select-none"
+  >
+    <path
+      d="M17.5028 278.672C41.3899 238.696 102.323 157.928 159.829 153.222C231.712 147.34 246.019 294.249 178.001 297.63C114.94 300.764 142.942 138.823 386.406 141.96C629.87 145.096 727.804 231.33 872.506 192.737C1017.21 154.144 1077.93 17.8587 1002.02 17.5003C947.403 17.2424 926.404 213.338 1108.01 131.814"
+      stroke={`url(#${id})`}
+      strokeWidth="35"
+      strokeLinecap="round"
+    />
+    <defs>
+      <linearGradient
+        id={id}
+        x1="407"
+        y1="144"
+        x2="1028"
+        y2="279"
+        gradientUnits="userSpaceOnUse"
+      >
+        <stop stopColor={accent} stopOpacity="0" />
+        <stop offset="0.5" stopColor={accent} stopOpacity="0.25" />
+        <stop offset="1" stopColor={accent} stopOpacity="0.65" />
+      </linearGradient>
+    </defs>
+  </svg>
+);
+
+const RouteCard = ({
+  href,
+  label,
+  title,
+  body,
+  accent,
+  labelColor,
+  icon,
+  strokeId,
+  ctaPosition,
+}) => {
   const [hover, setHover] = useState(false);
 
   return (
-    <Link
-      href={href}
+    <div
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
       style={{
@@ -53,15 +97,10 @@ const RouteCard = ({ href, label, title, body, accent, labelColor, icon }) => {
           ? `4px 16px 46px 0px ${accent}26`
           : "0 8px 30px 0px #00000008",
       }}
-      className="group relative flex h-full flex-col justify-between gap-[3.5rem] overflow-hidden rounded-[3rem] bg-white p-[3rem] transition-all duration-300 xl:p-[4rem]"
+      className="relative flex h-full flex-col justify-between gap-[3.5rem] overflow-hidden rounded-[3rem] bg-white p-[3rem] transition-all duration-300 xl:p-[4rem]"
     >
-      {/* Decorative stroke — bleeds off the bottom-right corner (mega-menu audit card) */}
-      <Image
-        src={RouteStroke}
-        alt=""
-        aria-hidden
-        className="pointer-events-none absolute right-[-3rem] bottom-[-3rem] z-0 h-auto w-[24rem] opacity-25 select-none"
-      />
+      {/* Coloured decorative stroke */}
+      <AccentStroke accent={accent} id={strokeId} />
 
       <div className="relative z-10 flex flex-col items-start">
         {/* Coloured glowing icon tile */}
@@ -90,14 +129,17 @@ const RouteCard = ({ href, label, title, body, accent, labelColor, icon }) => {
         </p>
       </div>
 
-      {/* CTA — solid dark button (white on navy is comfortably AA) */}
-      <span className="relative z-10 inline-flex w-max items-center gap-[1rem] rounded-[6rem] bg-[#312749] px-[2.8rem] py-[1.5rem] text-[1.6rem] leading-[2rem] font-semibold text-white transition-all duration-200 group-hover:bg-[#241c39]">
-        Continue
-        <i className="transition-transform duration-200 group-hover:translate-x-[4px]">
-          <TiltArrowIcon color="#ffffff" width="12" height="12" />
-        </i>
-      </span>
-    </Link>
+      {/* CTA — the project's PrimaryButton (white on navy, AA-safe) */}
+      <div className="relative z-10">
+        <PrimaryButton
+          text="Continue"
+          href={href}
+          bGcolor="#312749"
+          textColor="#FFFFFF"
+          ctaPosition={ctaPosition}
+        />
+      </div>
+    </div>
   );
 };
 
