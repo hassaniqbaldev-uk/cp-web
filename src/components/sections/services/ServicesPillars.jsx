@@ -115,10 +115,18 @@ const PillarCard = ({ column }) => {
 const ServicesPillars = ({ columns = [] }) => {
   if (!columns.length) return null;
 
-  // Web & Ecommerce leads by order (stable sort keeps the rest in registry order).
-  const ordered = [...columns].sort((a, b) =>
-    a.key === "web-ecommerce" ? -1 : b.key === "web-ecommerce" ? 1 : 0,
-  );
+  // Pillars show PRIMARY services only (the ones that lead each pillar); specialist
+  // services live in the capabilities section, so the two never overlap. A pillar with
+  // no primary services drops out entirely (empty pillar renders nothing). Web &
+  // Ecommerce leads by order (stable sort keeps the rest in registry order).
+  const ordered = [...columns]
+    .map((c) => ({ ...c, items: c.items.filter((i) => !i.specialist) }))
+    .filter((c) => c.items.length > 0)
+    .sort((a, b) =>
+      a.key === "web-ecommerce" ? -1 : b.key === "web-ecommerce" ? 1 : 0,
+    );
+
+  if (!ordered.length) return null;
 
   return (
     <section className="relative overflow-hidden bg-[#F0F6FF] px-[2rem] py-[5rem] xl:px-[0rem] xl:py-[10rem]">

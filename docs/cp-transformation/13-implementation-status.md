@@ -54,6 +54,22 @@ Hassan reversed the /call decision and widened industries + analytics. Applied:
 
 **CP-03 mega-menu next**, then stop for review.
 
+### Services hub — specialist flag splits pillars vs capabilities (checkpoint)
+
+Added a `specialist` boolean to the `services` type (staging, all 16): `true` for wordpress, shopify,
+migrations, accessibility, speed, security, email, analytics; `false` for the rest. Nav query projects
+it; `nav.js` carries it on each service item (mega-menu still shows all). **Pillars section now shows
+PRIMARY only** (`!specialist`, empty pillars still drop); **capabilities section shows SPECIALIST
+only** — **verified: no overlap**. Added `specialist` to the O13 Studio spec (alongside `pillar`,
+`designation`). Verified in a production build, 0 overflow at 1440/768/375. The resulting split:
+- Brand & Experience (primary): Branding, UI/UX Design (2)
+- **Web & Ecommerce (primary): Custom App Development ONLY (1) — THIN**, because WordPress / Shopify /
+  Migrations / Accessibility moved to specialist and the two primary CP-05 pages (Web Design &
+  Development, Ecommerce) don't exist yet. Once CP-05 adds them it becomes 3 and reads well. Flagged.
+- Growth & Performance (primary): Ongoing Growth & Support (maintenance), SEO, Paid Media, CRO (4)
+- Capabilities (specialist): WordPress, Shopify, Migrations, Accessibility, Speed, Security, Email,
+  Analytics (8)
+
 ### Services hub — final three sections styled; HUB COMPLETE (checkpoint, awaiting review)
 
 Studied the comparable sections first (findings in chat): closing-CTA language = `Cta.jsx` /

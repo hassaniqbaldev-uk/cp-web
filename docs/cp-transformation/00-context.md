@@ -262,6 +262,7 @@ Studio schema is updated):
 | Doc type | Field | Type | Notes |
 | --- | --- | --- | --- |
 | `services` | `pillar` | `string`, enum: `brand-experience` / `web-ecommerce` / `growth-performance` / `ai-automation` | Groups services into the four pillars for the mega-menu + services hub (CP-03). Populated 20 Aug. |
+| `services` | `specialist` | `boolean` | Splits each pillar's services: **primary** (`false`) lead the pillar cards on the services hub; **specialist** (`true`) show in the hub's "specialist capabilities" band instead — no overlap. `true` for wordpress, shopify, migrations, accessibility, speed, security, email, analytics; `false` for the rest. The mega-menu still shows all. Populated 20 Aug. |
 | `caseStudies` | `designation` | `string`, enum: `flagship` / `supporting` / `archive` | Drives the relevant-work fallback order (tagged → **flagship** → **supporting** → newest). **`archive` never surfaces through a fallback anywhere** (only a direct link or the work hub). Populated from `03-url-audit.md` §8 (9 / 20 / 2), 20 Aug. |
 
 ### Scheduling and holds (18 August 2026)

@@ -16,26 +16,24 @@ const THEME_COLOR = {
 
 // Specialist capabilities (CP-06 item 6). ONE SOURCE OF TRUTH: the capabilities are the
 // services pulled from getNavData (the same pillar data as the mega-menu + the pillars
-// section) — never a hardcoded list. Presented as a compact, scannable chip index, a
-// lighter treatment than the pillar cards.
-//
-// FLAG: there is no primary/specialist distinction on the services data yet, so this
-// currently shows the FULL capability set (it overlaps the pillars). The honest fix is a
-// `specialist` boolean/flag on the services type (mirroring the case-study `designation`
-// added for relevant work); the section would then filter to the genuine specialist
-// subset. That is a data change, not something to invent here. Header + description copy
-// are PLACEHOLDER (CP-04) — and the placeholder already says the exact set awaits a
-// designation.
+// section) — never a hardcoded list. This shows the SPECIALIST services only
+// (`specialist === true`); the pillars section shows the PRIMARY ones — so the two never
+// overlap. Presented as a compact, scannable chip index, a lighter treatment than the
+// pillar cards. Header + description copy are PLACEHOLDER (CP-04).
 const ServicesCapabilities = ({ columns = [] }) => {
   if (!columns.length) return null;
 
   const capabilities = columns.flatMap((c) =>
-    c.items.map((i) => ({
-      ...i,
-      color: THEME_COLOR[c.theme] || THEME_COLOR.brand,
-      pillar: c.key,
-    })),
+    c.items
+      .filter((i) => i.specialist)
+      .map((i) => ({
+        ...i,
+        color: THEME_COLOR[c.theme] || THEME_COLOR.brand,
+        pillar: c.key,
+      })),
   );
+
+  if (!capabilities.length) return null;
 
   return (
     <section className="px-[2rem] py-[5rem] xl:px-[0rem] xl:py-[10rem]">

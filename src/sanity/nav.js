@@ -23,6 +23,8 @@ const toItem = (s, base) => ({
   excerpt: s.excerpt,
   slug: s.slug,
   href: `${base}/${s.slug}`,
+  // Only services carry `specialist`; undefined (falsy) for solutions/industries.
+  specialist: s.specialist === true,
 });
 
 const EMPTY_NAV = { serviceColumns: [], goalSolution: [], sectorSolution: [], industries: [] };
