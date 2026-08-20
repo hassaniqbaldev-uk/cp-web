@@ -54,6 +54,16 @@ Hassan reversed the /call decision and widened industries + analytics. Applied:
 
 **CP-03 mega-menu next**, then stop for review.
 
+### CP-05 plan (Web Design & Development + Ecommerce) — delivered for approval, NOT built (20 Aug)
+
+Presented the approach in chat (structural model, CP-11 modules, Sanity/data needs, WordPress/Shopify
+relationship, case-study evidence + gaps). Nothing built — awaiting Hassan's approval. Key flags:
+the brief's exact CP-11 landing-page module list is **not in the repo** (external brief), so modules
+are derived from the existing `services` module toolkit; the `services` type supports the standard
+modules already, but has **no warranty field** and **no parent/related-services field** for the
+WordPress/Shopify cross-links (schema additions to confirm); and case-study→service **tags are
+unreliable**, so both pages fall back to flagship-first "Recent work" until reliable tags exist.
+
 ### Services hub — specialist flag splits pillars vs capabilities (checkpoint)
 
 Added a `specialist` boolean to the `services` type (staging, all 16): `true` for wordpress, shopify,
