@@ -9,16 +9,15 @@ import SectionDescription from "@/components/ui/SectionDescription";
 import TiltArrowIcon from "@/components/icons/TiltArrowIcon";
 import { MotionEffect } from "@/components/effects/motion-effect";
 import ServicesLogoShape from "@/components/decorative-elements/ServicesLogoShape";
+import ProcessBg from "@/assets/images/backgrounds/process-bg.webp";
 import { ANALYTICS_EVENTS, track } from "@/lib/analytics/events";
 import DesignIcon from "@/assets/icons/ui/design-icon.svg";
 import GrowthIcon from "@/assets/icons/ui/growth-icon.svg";
 import SupportIcon from "@/assets/icons/ui/support-icon.svg";
 
 // Colour + icon per pillar theme — the same source of truth as the mega-menu
-// (ServiceNavColumn), and the same card language as LightFeatureCard2 / Expertise3
-// (coloured icon tile + soft coloured hover shadow `…1C`). Inline because Tailwind
-// can't compile dynamic arbitrary colours. Icons for web/ai reuse the existing set
-// as placeholders (a design pass can swap them).
+// (ServiceNavColumn). Inline because Tailwind can't compile dynamic arbitrary colours.
+// Icons for web/ai reuse the existing set as placeholders (a design pass can swap them).
 const THEME = {
   brand: { color: "#ED910C", icon: DesignIcon },
   web: { color: "#3078FF", icon: SupportIcon },
@@ -38,11 +37,11 @@ const PILLAR_BLURB = {
     "[Placeholder — CP-04] Removing operational bottlenecks with automation and applied AI.",
 };
 
-// One pillar card — EQUAL to every other (no featured/oversized variant). Adopts the
-// shared card treatment (white rounded-[3rem], p-[3rem], coloured icon tile, coloured
-// hover shadow) but holds a list of SERVICE LINKS (each firing service_selected)
-// rather than plain bullets. `h-full` + the service list anchored to the bottom keeps
-// every card the same height in its row regardless of how many services it lists.
+// One pillar card — EQUAL to every other. COLOUR TREATMENT brought in line with the
+// PartnerWithUs2 dark-glass section: translucent glass fill on a dark background, white
+// text, and a per-pillar coloured icon tile with a colour glow (Web=blue, Brand=orange,
+// Growth=pink) — the tile carries the per-pillar distinction, so the cards still read
+// apart. Layout, grid, structure, animations and copy are unchanged from before.
 const PillarCard = ({ column }) => {
   const [hover, setHover] = useState(false);
   const t = THEME[column.theme] || THEME.brand;
@@ -52,35 +51,37 @@ const PillarCard = ({ column }) => {
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
       style={{
-        border: `1px solid ${t.color}22`,
-        boxShadow: hover ? `4px 12px 30px 0px ${t.color}1C` : "none",
+        border: hover
+          ? `1px solid ${t.color}`
+          : "1px solid rgba(255, 255, 255, 0.15)",
+        boxShadow: hover ? `0 0 30px 0px ${t.color}55` : "none",
       }}
-      className="flex h-full flex-col gap-[2.4rem] rounded-[3rem] bg-white p-[3rem] transition-all duration-200"
+      className="flex h-full flex-col gap-[2.4rem] rounded-[3rem] bg-[#0b0a24]/55 p-[3rem] transition-all duration-200"
     >
       <div className="flex items-center gap-[2rem]">
-        <i className="relative inline-flex size-[5.8rem] min-w-[5.8rem] items-center justify-center rounded-[1.5rem]">
-          <div className="absolute top-0 left-0 z-[1] inline-flex size-[5.4rem] items-center justify-center rounded-[1.3rem] border-white/20 bg-white/35 backdrop-blur-[1rem]">
-            <Image src={t.icon} width={24} height={24} alt="Icon" unoptimized />
-          </div>
-          <div
-            style={{ background: t.color }}
-            className="absolute right-0 bottom-0 z-[0] size-[5.4rem] rounded-[1.5rem]"
-          />
+        <i
+          style={{
+            backgroundColor: t.color,
+            boxShadow: `5px 5px 44px 0px ${t.color}CC`,
+          }}
+          className="relative inline-flex size-[5.8rem] min-w-[5.8rem] items-center justify-center rounded-[1.3rem]"
+        >
+          <Image src={t.icon} width={30} height={30} alt="Icon" unoptimized />
         </i>
 
-        <h3 className="text-[2.2rem] leading-[2.8rem] font-bold tracking-[-0.02em] text-[#312749] xl:text-[2.6rem] xl:leading-[3rem]">
+        <h3 className="text-[2.2rem] leading-[2.8rem] font-bold tracking-[-0.02em] text-white xl:text-[2.6rem] xl:leading-[3rem]">
           {column.heading}
         </h3>
       </div>
 
       {/* PLACEHOLDER positioning copy — CP-04 */}
-      <p className="text-[1.6rem] leading-[2.6rem] font-normal tracking-normal text-[#625C70]">
+      <p className="text-[1.6rem] leading-[2.6rem] font-normal tracking-normal text-white/80">
         {PILLAR_BLURB[column.key] || "[Placeholder — CP-04]"}
       </p>
 
       <ul className="mt-auto flex flex-col gap-[1.4rem]">
         {column.items.map((item) => (
-          <li key={item.slug} className="border-t border-black/10 pt-[1.4rem]">
+          <li key={item.slug} className="border-t border-white/15 pt-[1.4rem]">
             <Link
               href={item.href}
               onClick={() =>
@@ -89,7 +90,7 @@ const PillarCard = ({ column }) => {
                   service_pillar: column.key,
                 })
               }
-              className="group inline-flex w-full items-center justify-between gap-[1rem] text-[1.7rem] leading-[2.2rem] font-semibold text-[#312749]"
+              className="group inline-flex w-full items-center justify-between gap-[1rem] text-[1.7rem] leading-[2.2rem] font-semibold text-white"
             >
               {item.label}
               <i className="min-w-max transition-transform duration-200 group-hover:translate-x-[3px]">
@@ -109,9 +110,8 @@ const PillarCard = ({ column }) => {
 // ORDER (it appears first), not by size. Grouping + column set come from the SAME
 // data as the mega-menu (serviceColumns); empty pillars are already dropped upstream,
 // so nothing renders for them. The row's column COUNT adapts to the data (three now,
-// four once AI & Automation has content) via repeat(N) — never hardcoded. Section
-// shell + scroll-triggered MotionEffect (tween, inView, index-staggered) match the
-// site's other content sections (homepage Services, Expertise3).
+// four once AI & Automation has content) via repeat(N) — never hardcoded. Colour
+// treatment matches the PartnerWithUs2 dark-glass section (dark bg + glass cards).
 const ServicesPillars = ({ columns = [] }) => {
   if (!columns.length) return null;
 
@@ -129,8 +129,23 @@ const ServicesPillars = ({ columns = [] }) => {
   if (!ordered.length) return null;
 
   return (
-    <section className="relative overflow-hidden bg-[#F0F6FF] px-[2rem] py-[5rem] xl:px-[0rem] xl:py-[10rem]">
-      {/* Decorative shape (matches homepage Services) */}
+    <section className="relative overflow-hidden px-[2rem] py-[5rem] xl:px-[0rem] xl:py-[10rem]">
+      {/* Dark background image — the PartnerWithUs2 treatment */}
+      <Image
+        src={ProcessBg}
+        alt="Background Image"
+        fill
+        priority
+        className="pointer-events-none absolute inset-0 z-[1] object-cover select-none"
+        unoptimized
+      />
+
+      {/* AA scrim — process-bg has light patches (max luminance ~0.37) that drop
+          white text below WCAG AA. This dark overlay pins the effective background
+          dark enough that every text element clears 4.5:1 (verified). */}
+      <div className="pointer-events-none absolute inset-0 z-[1] bg-[#080818]/70" />
+
+      {/* Decorative shape (kept from before; sits over the dark bg now) */}
       <div className="pointer-events-none absolute inset-0 z-[2] select-none">
         <ServicesLogoShape className="absolute top-[2rem] right-[-1rem] h-[7.1rem] w-[5.2rem] rotate-[-34deg] md:top-[7.8rem] md:h-[17.7rem] md:w-[12.9rem]" />
       </div>
@@ -146,7 +161,7 @@ const ServicesPillars = ({ columns = [] }) => {
             transition={{ type: "tween", duration: 0.8, ease: "easeOut" }}
           >
             <div>
-              <SectionLabel text="What We Do" textColor="#EE8D00" />
+              <SectionLabel text="What We Do" textColor="#FFCCEC" />
             </div>
           </MotionEffect>
 
@@ -160,7 +175,7 @@ const ServicesPillars = ({ columns = [] }) => {
           >
             {/* PLACEHOLDER copy — CP-04 */}
             <div className="mt-[5px] mb-[14px]">
-              <SectionTitle text="Four things we do, one team." />
+              <SectionTitle text="Four things we do, one team." textColor="#FFFFFF" />
             </div>
           </MotionEffect>
 
@@ -173,7 +188,10 @@ const ServicesPillars = ({ columns = [] }) => {
             transition={{ type: "tween", duration: 0.8, ease: "easeOut" }}
           >
             <div className="max-w-[70rem]">
-              <SectionDescription text="[Placeholder — CP-04] Not fifteen services shouting for attention. Four pillars, weighted the way our work actually is." />
+              <SectionDescription
+                text="[Placeholder — CP-04] Not fifteen services shouting for attention. Four pillars, weighted the way our work actually is."
+                textColor="#FFFFFF"
+              />
             </div>
           </MotionEffect>
         </div>

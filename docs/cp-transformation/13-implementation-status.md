@@ -54,6 +54,27 @@ Hassan reversed the /call decision and widened industries + analytics. Applied:
 
 **CP-03 mega-menu next**, then stop for review.
 
+### Pillars section — recoloured to the PartnerWithUs2 dark-glass treatment (checkpoint)
+
+Colour-only restyle (layout, grid, card structure, animations, copy all unchanged; still 3 equal cards,
+Web & Ecommerce first, primary-only). Studied both Partner With Us sections and **flagged a conflict
+before applying**: `PartnerWithUs` uses a single pink accent (would flatten the pillars' per-pillar
+colours) and `PartnerWithUs2` uses three per-card colours. Hassan chose **PartnerWithUs2 (dark glass)**.
+- **Second conflict flagged + resolved:** PWU2's *literal* treatment (white/15 glass + white text + pink
+  `#FF37B3` label on `process-bg`) **fails WCAG AA** — measured white heading avg 4.46 / worst 2.06:1,
+  label ~1.9:1 (process-bg has light patches, max luminance 0.37; the white/15 glass lightens the card).
+  Hassan chose the **AA-safe dark-glass** option.
+- **Applied:** dark bg image (`process-bg`) + a `bg-[#080818]/70` **scrim**; card fill `bg-[#0b0a24]/55`
+  (dark translucent glass, not white/15); white text; per-pillar **glowing coloured icon tiles**
+  (Web=blue #3078FF, Brand=orange #ED910C, Growth=pink #FF37B3 — distinction preserved on the tiles);
+  border white/15 → per-pillar on hover; label lightened to `#FFCCEC`.
+- **Contrast re-verified (worst case, over the brightest image patch):** heading white **10.2:1**, blurb
+  white/80 **8.4:1**, service links **10.2:1**, label **4.67:1** — **all ≥ 4.5 (WCAG AA)**.
+- **Verified in a production build:** structure identical, **0 horizontal overflow at 1440/768/375**.
+- **Needs your eyes:** the rendered look (dark glass over process-bg, the glow tiles, whether the
+  **decorative `ServicesLogoShape`** — kept from before — still suits the dark background), and the
+  animations/hover playing. The contrast is verified by measurement, not by eye.
+
 ### CP-05 plan (Web Design & Development + Ecommerce) — delivered for approval, NOT built (20 Aug)
 
 Presented the approach in chat (structural model, CP-11 modules, Sanity/data needs, WordPress/Shopify
