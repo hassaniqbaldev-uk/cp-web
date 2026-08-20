@@ -54,6 +54,29 @@ Hassan reversed the /call decision and widened industries + analytics. Applied:
 
 **CP-03 mega-menu next**, then stop for review.
 
+### Route cards (audit + solutions) — upgraded to the site's rich card language (checkpoint)
+
+The two `/services` route cards read too plain. Studied the richest card treatments (Partner With Us /
+GlassFeatureCard, the cta-bg closing CTA + decorative stroke, LightFeatureCard2 / Expertise feature
+cards) and rebuilt the signposts borrowing from them (no invented pattern):
+- White `rounded-[3rem]` cards, generous padding, a **decorative stroke** (`services-dropdown-stroke`)
+  bleeding off the bottom-right, a **glowing coloured icon tile** (white icon on the accent), a
+  **coloured hover-shadow lift**, label → heading (2.6–3rem) → body, and a solid navy CTA button with a
+  hover arrow-slide.
+- **Distinct but a pair:** audit = **orange** accent + analysis icon, solutions = **pink** accent +
+  focus icon; identical layout/treatment otherwise.
+- **Kept:** two cards side-by-side desktop / stacked mobile, `/audit` + `/solutions`, `MotionEffect`
+  scroll animation staggered (0.1 / 0.25), **placeholder copy verbatim**.
+- **Contrast — all WCAG AA (measured on the rendered colours):** audit label 4.96:1, solutions label
+  6.84:1, heading 13.2:1, body 6.4:1, CTA button (white on navy) 13.8:1 — labels use darkened accent
+  shades (#A85D00 / #B0006E) so the accent still reads but passes AA on white.
+- **Verified in a production build:** 1440 two cards (585px), 768 two columns (342px), 375 stacked;
+  **0 horizontal overflow at all three**.
+- **Needs your eyes:** the rendered richness — the glowing icon tiles + whether the white
+  analysis/focus icons sit well on the coloured tiles, the decorative stroke at 25% opacity, the
+  hover shadow-lift + arrow-slide, and that the two cards read as a distinguishable pair. Contrast is
+  verified by measurement; the rest is visual.
+
 ### Pillars section — matched to PartnerWithUs2 EXACTLY (glass/bg/colour) — AA caveat (checkpoint)
 
 **Update:** after the AA-safe darker version, Hassan asked (repeatedly) for the pillars to look
