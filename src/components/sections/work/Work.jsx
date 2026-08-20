@@ -18,7 +18,16 @@ const WorkSlider = dynamic(() => import("@/components/ui/WorkSlider"), {
   loading: () => <div className="h-[42.5rem]" />, // placeholder height to prevent layout shift
 });
 
-const Work = ({ caseStudies }) => {
+// Reusable work section. Defaults reproduce the homepage copy exactly; other pages
+// (e.g. the services hub) pass their own label/title/description. `label` is where the
+// honest fallback wording lives: "Recent work" when the set is a fallback (no tag),
+// "Related work" when the matches are genuinely tagged.
+const Work = ({
+  caseStudies,
+  label = "Our Work",
+  title = "Digital Done Right.",
+  description = "We've crafted websites and brands that blend design, development, and strategy into measurable success.",
+}) => {
   const [isHovered, setIsHovered] = useState(false);
 
   const mouse = useMousePosition();
@@ -70,7 +79,7 @@ const Work = ({ caseStudies }) => {
                 transition={{ type: "tween", duration: 0.8, ease: "easeOut" }}
               >
                 <div>
-                  <SectionLabel text="Our Work" textColor="#EE8D00" />
+                  <SectionLabel text={label} textColor="#EE8D00" />
                 </div>
               </MotionEffect>
 
@@ -83,7 +92,7 @@ const Work = ({ caseStudies }) => {
                 transition={{ type: "tween", duration: 0.8, ease: "easeOut" }}
               >
                 <div className="mt-[5px] mb-[14px]">
-                  <SectionTitle text="Digital Done Right." />
+                  <SectionTitle text={title} />
                 </div>
               </MotionEffect>
 
@@ -96,7 +105,7 @@ const Work = ({ caseStudies }) => {
                 transition={{ type: "tween", duration: 0.8, ease: "easeOut" }}
               >
                 <div>
-                  <SectionDescription text="We've crafted websites and brands that blend design, development, and strategy into measurable success." />
+                  <SectionDescription text={description} />
                 </div>
               </MotionEffect>
             </div>

@@ -78,8 +78,19 @@ const ServicesPage = async () => {
       {/* 3 four pillars + 4 primary services (services sit inside their pillar) */}
       <ServicesPillars columns={navData.serviceColumns} />
 
-      {/* 5 relevant work — newest-first fallback (no tag on the hub) */}
-      {caseStudies.length > 0 && <Work caseStudies={caseStudies} />}
+      {/* 5 relevant work — the hub has no tag, so this is always the FALLBACK set
+          (flagship → supporting → newest, archive excluded; see HUB_WORK_QUERY). Honest
+          label = "Recent work" ("Related work" is reserved for tagged contexts — the
+          industry / service-detail pages). Title + description are PLACEHOLDER (CP-04);
+          the shared Work section carries the site's card + scroll-animation treatment. */}
+      {caseStudies.length > 0 && (
+        <Work
+          caseStudies={caseStudies}
+          label="Recent work"
+          title="[Placeholder — CP-04] Recent work across the pillars."
+          description="[Placeholder — CP-04] A few recent projects that show the range of what we deliver."
+        />
+      )}
 
       {/* 6 specialist capabilities, 7 not-sure route, 8 solutions route, 9 CTA */}
       <ServicesHubOutro />

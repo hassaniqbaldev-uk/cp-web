@@ -68,7 +68,27 @@ newest-first fallback. Fixed the data:
 - **Added `designation` (and `pillar`) to the O13 Studio spec** so they're editable in Studio.
 - **Confirmed in a production build:** AO Arena and Peekaboo **no longer appear on `/services`**; the
   section now shows flagships (Minnessak, Now Press Play, Sight for Life).
-- Styling of the section is **Part 2** (next); labels ("Recent work" / "Related work") handled there.
+- Styling of the section is **Part 2** (below); labels ("Recent work" / "Related work") handled there.
+
+### Relevant-work — Part 2: reuse the work section + honest labelling (checkpoint)
+
+Studied the homepage `Work` section + the hub `FeaturedCaseStudies` (findings in the chat report).
+The relevant-work section **already reuses `Work.jsx`** (the homepage work section — same card
+treatment, big-card + two-small-cards desktop / `WorkSlider` mobile, cropped images, hover cursor
+bubble, `MotionEffect` scroll animation), so `FeaturedCaseStudies` (a heavy filtered listing) was
+rightly not force-fit. Part 2 made it honest:
+- **Parametrised `Work.jsx`** with `label` / `title` / `description` props — **defaults reproduce the
+  homepage copy exactly**, so the homepage is unchanged (verified: still "Our Work" / "Digital Done
+  Right.").
+- **`/services` passes `label="Recent work"`** — the honest fallback wording, because the hub has no
+  tag so its set is always the fallback (flagship-first). ("Related work" is reserved for tagged
+  contexts — industry / service-detail pages — later.) Title + description are **PLACEHOLDER (CP-04)**.
+- **Verified in a production build:** `/services` relevant-work shows the "Recent work" label + the
+  flagship studies (sight-for-life, now-press-play, minnessak), **no archive**; homepage unchanged;
+  **0 horizontal overflow at 1440 / 768 / 375**.
+- **Could NOT verify visually** (pane doesn't composite; hover not drivable): the scroll-entrance
+  animation *playing*, the cursor-follow "View" hover bubble + card hover shadow, and the rendered
+  pixels (image crops, card spacing, balance). Those need your eyes.
 
 ---
 
