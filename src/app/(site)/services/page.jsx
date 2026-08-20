@@ -34,51 +34,53 @@ export async function generateMetadata() {
   };
 }
 
-import Contact from "@/components/sections/contact/Contact";
-import Cta from "@/components/sections/cta/Cta";
-import DesignBuild from "@/components/sections/design-build/DesignBuild";
-import Expertise2 from "@/components/sections/expertise/Expertise2";
-import Growth2 from "@/components/sections/growth/Growth2";
-import ServicesHero from "@/components/sections/hero/ServicesHero";
-import Support from "@/components/sections/support/Support";
-import Testimonials from "@/components/sections/testimonials/Testimonials";
-import { SERVICES_QUERY } from "@/sanity/queries.services";
-import { servicesClient } from "@/sanity/sanity.services";
+import ServicesHubHero from "@/components/sections/services/ServicesHubHero";
+import ServicesPillars from "@/components/sections/services/ServicesPillars";
+import ServicesHubOutro from "@/components/sections/services/ServicesHubOutro";
+import Work from "@/components/sections/work/Work";
+import { getNavData } from "@/sanity/nav";
+import { caseStudiesClient } from "@/sanity/sanity.caseStudies";
 
 export const revalidate = 3600; // Next.js ISR
 
+// Newest published case studies for the "relevant work" section. On the hub there is
+// no specific tag to match, so this is the NEWEST-FIRST fallback of the tagged-first /
+// newest-fallback rule (tagged matching lives on the industry + service-detail pages).
+const HUB_WORK_QUERY = `
+  *[_type == "caseStudies" && defined(slug.current) && defined(thumbnailImage)]
+    | order(_createdAt desc)[0...6]{
+      "slug": slug.current, title, excerpt, thumbnailImage, iconBg, iconColor
+    }
+`;
+
 const ServicesPage = async () => {
-  let services = [];
+  // ONE source of truth: the pillar grouping is the SAME data the mega-menu uses
+  // (getNavData -> serviceColumns). Empty pillars are already dropped, so the hub
+  // renders nothing for them, exactly like the nav.
+  const navData = await getNavData();
 
+  let caseStudies = [];
   try {
-    services = await servicesClient.fetch(SERVICES_QUERY);
+    caseStudies = await caseStudiesClient.fetch(HUB_WORK_QUERY);
   } catch (error) {
-    console.error("Failed to fetch services data:", error);
+    console.error("Failed to fetch hub case studies:", error);
   }
-
-  const designBuildServices = services.filter(
-    (s) => s.category === "design-development",
-  );
-  const growthServices = services.filter((s) => s.category === "growth");
-  const supportServices = services.filter((s) => s.category === "support");
 
   return (
     <>
-      <ServicesHero />
-      <DesignBuild services={designBuildServices} />
-      <Growth2 services={growthServices} />
-      <Support services={supportServices} />
-      <Expertise2 />
-      <section className="overflow-hidden px-[2rem] py-[5rem] xl:px-[0rem] xl:py-[10rem]">
-        <Cta />
-      </section>
-      <section className="bg-[#ed910c]/13 px-[2rem] py-[5rem] xl:px-[0rem] xl:py-[10rem]">
-        <Testimonials />
-      </section>
-      <section className="px-[2rem] py-[5rem] xl:px-[0rem] xl:py-[10rem]">
-        <Contact />
-      </section>
+      {/* 1 hero + 2 positioning statement */}
+      <ServicesHubHero />
+
+      {/* 3 four pillars + 4 primary services (services sit inside their pillar) */}
+      <ServicesPillars columns={navData.serviceColumns} />
+
+      {/* 5 relevant work — newest-first fallback (no tag on the hub) */}
+      {caseStudies.length > 0 && <Work caseStudies={caseStudies} />}
+
+      {/* 6 specialist capabilities, 7 not-sure route, 8 solutions route, 9 CTA */}
+      <ServicesHubOutro />
     </>
   );
 };
+
 export default ServicesPage;

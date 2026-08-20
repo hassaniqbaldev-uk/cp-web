@@ -38,9 +38,15 @@ const ServiceNavColumn = ({ column, isLast = false, onSelect }) => {
             boxShadow: `5px 5px 22px 0px ${theme.color}99`,
             backgroundColor: theme.color,
           }}
-          className="inline-flex size-[5.5rem] items-center justify-center rounded-[1.5rem]"
+          className="inline-flex size-[5.5rem] min-w-[5.5rem] items-center justify-center rounded-[1.5rem]"
         >
-          <Image src={theme.icon} width={24} height={24} alt="Icon" unoptimized />
+          <Image
+            src={theme.icon}
+            width={24}
+            height={24}
+            alt="Icon"
+            unoptimized
+          />
         </i>
 
         <span className="text-left text-[1.6rem] leading-[2.4rem] font-bold tracking-[-0.02em] text-[#263238] uppercase">
@@ -56,7 +62,9 @@ const ServiceNavColumn = ({ column, isLast = false, onSelect }) => {
           >
             <Link
               onClick={() => {
-                track(ANALYTICS_EVENTS.SERVICE_SELECTED, { service: item.slug });
+                track(ANALYTICS_EVENTS.SERVICE_SELECTED, {
+                  service: item.slug,
+                });
                 onSelect?.();
               }}
               href={item.href}

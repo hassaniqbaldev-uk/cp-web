@@ -54,6 +54,41 @@ Hassan reversed the /call decision and widened industries + analytics. Applied:
 
 **CP-03 mega-menu next**, then stop for review.
 
+### Industries — 3 held (19 Aug) + CP-03 services hub rebuilt (checkpoint, awaiting review)
+
+**Industries:** 7 evidenced approved; **Driving Schools, Pharmacies, Restaurants HELD** — set to
+`hasPage:false` in staging (6 docs incl. duplicates), NOT published. Reasoning recorded in D44 +
+`04` §3.4: no delivered case study, and the "Recent work" fallback would fill their page with
+unrelated work (a pharmacy owner seeing a safari lodge learns we've never done pharmacies — worse than
+no page). Legacy `/solutions/<x>` URLs redirect to `/services/web-design-development` until Hassan
+confirms; turning one on later is a content change (`hasPage:true`). `interiors-and-furnishings` →
+`/industries/home-improvement-interiors`; `sme-founders` → `/solutions`.
+
+**CP-03 services HUB rebuilt** (`/services`) to the CP-06 hierarchy, awaiting review:
+- **One source of truth:** the hub uses **the same `getNavData()` serviceColumns** as the mega-menu;
+  empty pillars render nothing (AI & Automation is absent — verified).
+- **Not fifteen equal cards:** the FOUR PILLARS are the frame; services sit inside them.
+  **Web & Ecommerce is the featured, full-width block** (its 45–50% weighting) and leads the section;
+  Brand & Experience + Growth & Performance follow in a responsive grid.
+- **Sections** (new, in `components/sections/services/`): `ServicesHubHero` (hero + positioning +
+  "Start a project"), `ServicesPillars` (data-driven pillars), reused **`Work`** for relevant work,
+  `ServicesHubOutro` (specialist capabilities + "not sure?"→/audit + solutions→/solutions + final CTA).
+- **CTA is "Start a project" + reassurance microcopy** (D7); **no Book a Call in the hub** (the 1
+  "Book a Call" in SSR is the shared site header/footer — the still-pending D40 CTA sweep, not the hub).
+- **All copy is PLACEHOLDER, flagged** (24 `[Placeholder — CP-04]` markers) — real copy is CP-04.
+- `service_selected` fires on the pillar service links (with `service_pillar`).
+- **Verified in a production build** (`next build` exit 0; `next start`): SSR shows the full hierarchy;
+  browser at **1440** (Web featured, 3-col rest), **768** (2-col rest, 0 overflow), **375** (stacked,
+  0 overflow).
+- **FLAG:** relevant work is newest-first (the honest fallback, no tag on the hub), which currently
+  surfaces **AO Arena (concept)** and **Peekaboo (MVP)** as featured — because a **flagship
+  designation does not exist in Sanity yet** (the §8 classification lives only in the audit doc). To
+  show flagships tagged-first on the hub, that designation needs adding to the case-study data
+  (O4/O5 / CP-11). Recorded, not hacked around.
+- **Stopped before any further hub polish / other pages, per instruction.**
+
+---
+
 ### CP-03 — services mega-menu now fully data-driven (checkpoint, awaiting review)
 
 The Step-3 deferred work is done. The mega-menu column count + grouping come from the **four pillars**

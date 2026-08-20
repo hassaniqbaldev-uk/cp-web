@@ -91,12 +91,13 @@ Status key: **KEEP** · **REWRITE** · **NEW** · **REDIRECT** · **REMOVE**. De
 | `/solutions/automate-operations` | Goal: ops automation (AI & Automation) | `/solutions` | KEEP |
 | `/solutions/scale-marketing` | — | — | **REDIRECT → `/solutions/increase-leads`** (D39) |
 
-### 3.4 Industries (NEW axis, CP-08) — evidence-led set of ten (D44, revised)
+### 3.4 Industries (NEW axis, CP-08) — seven shipping + three held (D44, revised)
 
 The four-industry limit was too conservative. This set was worked out from the **actual case-study
 evidence** (all 31 published bodies read from staging — the same content the live site serves; §8 of
-the audit) plus sensible search demand. **Ten industries ship**, built so that **adding another later
-is a content change, not code** (see the expansion contract below).
+the audit) plus sensible search demand. **Seven industries ship** (all with real delivered evidence);
+**three are held** as `hasPage:false` documents (below). Built so that **adding another later is a
+content change, not code** (see the expansion contract below).
 
 **Seven with real, delivered case-study evidence:**
 
@@ -111,14 +112,22 @@ is a content change, not code** (see the expansion contract below).
 | `/industries/travel-hospitality` | **Travel, Hospitality & Leisure** *(added)* | casa-botanica-panama, ndifo-safari, little-astronauts |
 | `/industries/home-improvement-interiors` | **Home Improvement & Interiors** | smartspaces, sp-elite-installation |
 
-**Three on the fallback only (existing marketing page + niche search demand, but NO delivered
-case study yet):**
+**Three HELD — set up as `hasPage: false` documents, NOT published (Hassan, 19 Aug 2026):**
 
-| Route | Industry | Evidence |
-| --- | --- | --- |
-| `/industries/driving-schools` | **Driving Schools** | none delivered — "Recent work" fallback (drive-uk / ofh-care are only draft stubs) |
-| `/industries/pharmacies` | **Pharmacies** | none delivered — fallback (lola-blake is a stub) |
-| `/industries/restaurants` | **Restaurants** | none delivered — fallback (dr-donuts is a donut shop, the-smokey-carter is ecommerce; neither is a restaurant) |
+| Industry | Status |
+| --- | --- |
+| **Driving Schools** | `hasPage: false` — held, no page |
+| **Pharmacies** | `hasPage: false` — held, no page |
+| **Restaurants** | `hasPage: false` — held, no page |
+
+**Reasoning (recorded for CP-08):** these three have **no delivered case study**, and the "Recent work"
+fallback would fill their page with *unrelated* work. As Hassan put it: *a pharmacy owner landing on a
+pharmacy page and seeing a safari lodge and a jewellery store learns we have never worked with
+pharmacies — which is worse than having no page.* So the fallback is fine as a safety net for an
+industry we *do* serve, but it must not be used to fake a vertical we have never worked in. The three
+are created as `hasPage: false` documents so turning one on later is a **content change** (set
+`hasPage: true`), pending Hassan's decision on whether we are actively chasing those verticals. Until
+then, their legacy `/solutions/<x>` URLs redirect to `/services/web-design-development` (§4).
 
 \* `unicef` is print, not web — usable as recognition, not as digital-delivery proof (audit §8).
 Case studies legitimately tag **multiple** industries (e.g. anthony-walker-foundation → Charities +
@@ -127,11 +136,6 @@ Education; new-compass / teleqo-tech → B2B + Technology).
 **Kept OFF the set (folded or too thin), flagged as future candidates:** Financial Services (varissa
 only → folded into B2B); Media & Publishing (sorted, vuegraphy — 2 studies, modest demand); Creative /
 Studios (manzar, game-art-brain — fold into their client sector). Add later if evidence grows.
-
-**On the three fallback-only industries:** they have existing bespoke marketing pages and real
-(if niche) search demand, and your fallback rule is designed precisely so they are never empty — so
-they ship. But they carry **no delivered proof**; if you would rather not run a page on fallback
-alone, say which and its legacy URL will instead point at the nearest evidence-backed page.
 
 **Case-study evidence rule (per your instruction):** on every industry page, **tagged matches show
 first**; where an industry has none, it **falls back to the most recently added case studies**, and
@@ -192,19 +196,19 @@ duplicate-slug / `hasPage` cleanup (O13 note).
 | `/solutions/saas-companies` | `/industries/technology-saas` | D44 — own industry page |
 | `/solutions/charities-and-foundation` | `/industries/charities-non-profits` | D44 — own industry page |
 | `/solutions/interiors-and-furnishings` | `/industries/home-improvement-interiors` | Own industry page (D44 revised) |
-| `/solutions/restaurants` | `/industries/restaurants` | Own industry page (fallback evidence) |
-| `/solutions/driving-schools` | `/industries/driving-schools` | Own industry page (fallback evidence) |
-| `/solutions/pharmacies` | `/industries/pharmacies` | Own industry page (fallback evidence) |
+| `/solutions/restaurants` | `/services/web-design-development` | Industry HELD (`hasPage:false`); repoints to its own page if Hassan turns it on |
+| `/solutions/driving-schools` | `/services/web-design-development` | Industry HELD (`hasPage:false`); repoints if turned on |
+| `/solutions/pharmacies` | `/services/web-design-development` | Industry HELD (`hasPage:false`); repoints if turned on |
 | `/solutions/sme-founders` | `/solutions` (hub) | Audience positioning, not an industry — no single page owns it |
 | `/agencies` | `/partner-with-us` | White-label merge |
 | `/wordpress-web-development`, `/wordpress-web-development/thank-you` | `/services/web-design-development` | LP retired |
 | `/hassan-test`, `/review-test`, `/testing-testimonials` | **404** | Test routes, never meant to be public (simple default, not 410) |
 
-Every legacy industry URL now points at **its own industry page** (no hub dead-end, no flattening into
-Web Design & Development). `sme-founders` is the only exception — it is audience positioning, not an
-industry, so it points at `/solutions`. The three fallback-only industry pages (driving-schools,
-pharmacies, restaurants) are honest via the "Recent work" fallback; if you drop any (see §3.4), its
-redirect repoints to the nearest evidence-backed page.
+Legacy industry URLs for the **seven shipping** industries point at their own `/industries/<slug>` page.
+The **three HELD** industries (driving-schools, pharmacies, restaurants — `hasPage:false`, §3.4) point at
+`/services/web-design-development` until Hassan confirms whether we chase those verticals; when one is
+turned on (`hasPage:true`) its redirect repoints to its own page. `sme-founders` points at `/solutions`
+(audience positioning, not an industry).
 
 Infra at CP-15: **www → apex** (the www host currently does not resolve) and home-URL trailing-slash
 normalisation.
