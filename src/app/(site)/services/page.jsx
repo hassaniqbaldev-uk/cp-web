@@ -36,7 +36,9 @@ export async function generateMetadata() {
 
 import ServicesHubHero from "@/components/sections/services/ServicesHubHero";
 import ServicesPillars from "@/components/sections/services/ServicesPillars";
-import ServicesHubOutro from "@/components/sections/services/ServicesHubOutro";
+import ServicesCapabilities from "@/components/sections/services/ServicesCapabilities";
+import ServicesRoutes from "@/components/sections/services/ServicesRoutes";
+import ServicesHubCta from "@/components/sections/services/ServicesHubCta";
 import Work from "@/components/sections/work/Work";
 import { getNavData } from "@/sanity/nav";
 import { caseStudiesClient } from "@/sanity/sanity.caseStudies";
@@ -92,8 +94,14 @@ const ServicesPage = async () => {
         />
       )}
 
-      {/* 6 specialist capabilities, 7 not-sure route, 8 solutions route, 9 CTA */}
-      <ServicesHubOutro />
+      {/* 6 specialist capabilities — from the same pillar data (one source of truth) */}
+      <ServicesCapabilities columns={navData.serviceColumns} />
+
+      {/* 7 not-sure route (→ /audit) + 8 solutions route (→ /solutions) */}
+      <ServicesRoutes />
+
+      {/* 9 closing CTA — "Start a project", proper weight, no Book a Call */}
+      <ServicesHubCta />
     </>
   );
 };

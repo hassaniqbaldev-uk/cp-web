@@ -54,6 +54,38 @@ Hassan reversed the /call decision and widened industries + analytics. Applied:
 
 **CP-03 mega-menu next**, then stop for review.
 
+### Services hub — final three sections styled; HUB COMPLETE (checkpoint, awaiting review)
+
+Studied the comparable sections first (findings in chat): closing-CTA language = `Cta.jsx` /
+`Cta2.jsx` (both **Book-a-Call-built**, so treatment reused, not the component); capability list =
+`Expertise2.jsx`; **no dedicated two-up signpost pattern exists** (said so; used the shared card
+language). Split `ServicesHubOutro` into three styled components, each committed separately:
+- **`ServicesCapabilities`** — pulls the capabilities from **getNavData** (one source of truth), as a
+  compact chip index of the services (15 chips), Expertise2-style header, `MotionEffect` scroll
+  animation. **FLAG:** no primary/specialist flag on the service data, so it shows the FULL set
+  (overlaps the pillars); a `specialist` flag (mirroring the case-study `designation`) would make it a
+  genuine subset — recommended, not invented. Placeholder copy verbatim.
+- **`ServicesRoutes`** — the two routes (`/audit`, `/solutions`) as two-up cards in the shared card
+  language (rounded, coloured border + hover shadow, arrow), `MotionEffect` staggered. Placeholder
+  copy verbatim.
+- **`ServicesHubCta`** — the closing CTA, given **proper weight**: the site's heavy closing-CTA
+  treatment (full-bleed `cta-bg` `rounded-[3rem]` card + `CtaBgStroke` + white `SectionTitle`/
+  `Description`, one `MotionEffect`), **"Start a project" + reassurance, NO Book a Call**. Placeholder
+  copy verbatim. (Fixed a 10px overflow at 768 from the decorative stroke bleed — added
+  `overflow-hidden` to the section.)
+- **Verified in a production build:** all three render (15 capability chips, 2 equal route cards, CTA
+  with "Start a project", no Book a Call in the hub); **0 horizontal overflow at 1440 / 768 / 375**.
+- **Could NOT verify visually:** the scroll-entrance animations *playing*, card/chip **hover** states,
+  and the rendered pixels (CTA background, stroke, spacing, balance). Those need your eyes.
+
+**HUB STATUS: the `/services` UI is now complete** — hero, pillars, relevant work, specialist
+capabilities, the two routes, and the closing CTA are all brought to the site pattern. Outstanding on
+the hub is **copy only (CP-04)** — every section carries `[Placeholder — CP-04]` — plus the
+data-driven refinements already flagged (a `specialist` flag for capabilities; a live-status check on
+a few case studies). No structural UI work remains.
+
+---
+
 ### Relevant-work — Part 1: flagship designation + fallback order (checkpoint)
 
 The hub was surfacing AO Arena (pitch mockup) and Peekaboo (MVP) as featured work via a
