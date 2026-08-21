@@ -32,6 +32,26 @@ complete and Hassan signs off final cutover.
 
 ---
 
+## Services hub — real copy pass + CP-05 plan written (21 August 2026)
+
+CP-04 copy pass on /services: every `[Placeholder — CP-04]` marker replaced with real,
+publishable marketing copy (`162a06d`, pushed to `origin/development`). Covered hero + positioning
+statement, four pillar blurbs (Web & Ecommerce weighted as "the core of what we do, and the largest
+part of our business"), the relevant-work heading, specialist-capabilities intro, both route cards
+(audit + solutions), and the closing CTA (warranty — three months free post-launch support — as the
+trust signal). UK English, no em dashes, no banned phrases, no invented outcomes/metrics/testimonials.
+Verified against a production build (`next build` + `next start`, curl-confirmed the rendered copy).
+Stale PLACEHOLDER code comments removed; pillar fallback string emptied. No structural/UI change.
+
+CP-05 plan delivered to `cp-05-service-pages-plan.md` (plan only, not built): module system (the
+existing fixed section sequence + two latent modules to activate — `projectShowcase`, `options`),
+structural model, both pages (Web Design & Development from £1,500; Ecommerce from £3,500), evidence
+footing (web strong, ecommerce thinner-but-real; the §8 0-quotes constraint; recommend dropping the
+empty global Testimonials + generic mid-page Cta2 from these two pages), pricing + warranty placement,
+and build sequence. Awaiting Hassan approval before any build.
+
+---
+
 ## CP-02 corrections v2 + analytics go-wide (19 August 2026)
 
 Hassan reversed the /call decision and widened industries + analytics. Applied:
