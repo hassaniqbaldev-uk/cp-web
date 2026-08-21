@@ -41,7 +41,7 @@ const Cta = () => {
                 </div>
 
                 <span className="text-[1.2rem] leading-[2.4rem] font-medium text-white md:text-[1.6rem]">
-                  Book now for {currentMonth} Slots
+                  Now taking on projects for {currentMonth}
                 </span>
               </div>
 
@@ -54,13 +54,13 @@ const Cta = () => {
 
               <div className="mt-[1.8rem] mb-[2.4rem] md:mt-[2rem] md:mb-[4rem]">
                 <SectionDescription
-                  text="Book a free 15-minute call no hard sell, just a chance to see if working together makes sense."
+                  text="Tell us what you are working on. No hard sell, just a straight conversation about whether we are a good fit."
                   textColor="#ffffff"
                 />
               </div>
 
               <div className="flex items-center justify-center gap-[1rem] md:gap-[2rem] xl:justify-start">
-                <GradientButton text="Get Free Consultation" />
+                <GradientButton text="Start a project" ctaPosition="cta-primary" />
 
                 <motion.i
                   className="hidden md:block"
@@ -99,14 +99,15 @@ const Cta = () => {
                 </div>
 
                 <h4 className="text-[2.6rem] leading-[3.3rem] font-semibold tracking-[-0.02em] text-black">
-                  Book a FREE <br /> strategy call with Hassan.
+                  Start your project with <br /> Hassan and the team.
                 </h4>
 
                 <PrimaryButton
-                  text="Book a Call"
+                  text="Start a project"
                   textColor="#FFFFFF"
                   bGcolor="#FF37B3"
                   href="/contact"
+                  ctaPosition="cta-card"
                 />
               </div>
             </div>

@@ -1,7 +1,7 @@
 export async function generateMetadata() {
-  const title = "Website Design Process | Free Consultation With Hassan";
+  const title = "Our Website Design Process | CreativePixels";
   const description =
-    "Proven website design process from discovery to launch & growth. See how we work, reduce risk & book your free consultation with CreativePixels today online!";
+    "Our proven website design process, from discovery to launch and growth. See how we work, reduce risk and start your project with CreativePixels.";
 
   return {
     title,

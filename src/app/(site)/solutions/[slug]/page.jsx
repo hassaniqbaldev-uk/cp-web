@@ -96,7 +96,7 @@ const SolutionsDetailPage = async (props) => {
         <Cta2
           title="Facing these challenges right now?"
           description="You don't have to tackle them alone. Let's discuss your specific situation."
-          buttonText="Get Free Consultation"
+          buttonText="Start a project"
         />
       </div>
       <Expertise3 service={solution.expertise} />

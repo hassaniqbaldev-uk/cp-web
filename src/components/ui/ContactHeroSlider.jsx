@@ -7,25 +7,8 @@ import Image from "next/image";
 import HeadphoneIcon from "@/assets/icons/ui/headphone-icon.svg";
 import EmailIcon from "@/assets/icons/ui/email-icon.svg";
 import TimelineIcon from "@/assets/icons/ui/timeline-icon.svg";
-import { useEffect } from "react";
 
 const ContactHeroSlider = () => {
-  useEffect(() => {
-    (async function () {
-      const { getCalApi } = await import("@calcom/embed-react");
-      const cal = await getCalApi({ namespace: "15min" });
-      cal("ui", {
-        theme: "dark",
-        cssVarsPerTheme: {
-          light: { "cal-brand": "#292929" },
-          dark: { "cal-brand": "#FF37B3" },
-        },
-        hideEventTypeDetails: false,
-        layout: "month_view",
-      });
-    })();
-  }, []);
-
   return (
     <Carousel
       breakpoints={{
@@ -47,23 +30,21 @@ const ContactHeroSlider = () => {
               </i>
 
               <h4 className="mt-[2rem] text-[2.6rem] font-semibold tracking-[-0.02em] text-white">
-                Book Strategy Call
+                Start a Project
               </h4>
 
               <p className="mt-[1rem] mb-[2rem] text-[1.6rem] font-semibold tracking-normal text-white">
-                Fastest way to get answers.{" "}
+                Tell us what you are working on.{" "}
               </p>
             </div>
 
             <div className="w-full">
-              <button
-                data-cal-namespace="15min"
-                data-cal-link="hassan-iqbal-mznzu9/15min"
-                data-cal-config='{"layout":"month_view","theme":"dark"}'
+              <Link
+                href="#contact-form"
                 className="flex h-[5.6rem] w-full items-center justify-center rounded-[6rem] border border-white/20 px-[1rem] py-[8px] text-[1.8rem] font-medium tracking-normal text-white transition-all duration-300 hover:border-[#3078FF] hover:bg-[#3078FF]"
               >
-                15-min chat with Hassan
-              </button>
+                Start a project
+              </Link>
             </div>
           </div>
         </div>

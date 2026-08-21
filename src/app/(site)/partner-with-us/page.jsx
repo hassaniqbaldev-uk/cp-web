@@ -1,7 +1,7 @@
 export async function generateMetadata() {
-  const title = "White Label Web Design Agency | Book Free Strategy Call";
+  const title = "White Label Web Design for Agencies | CreativePixels";
   const description =
-    "Scale your agency with white-label web design, branding and support from CreativePixels. Book a free 15-min call with Hassan & grow faster today online!";
+    "Scale your agency with white-label web design, branding and support from CreativePixels, delivered under your brand. Start a project and grow faster.";
 
   return {
     title,

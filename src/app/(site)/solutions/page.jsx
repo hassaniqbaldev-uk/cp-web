@@ -1,7 +1,7 @@
 export async function generateMetadata() {
   const title = "Digital Solutions | Tailored Strategies for Real Growth";
   const description =
-    "Outcome-led solutions for common business goals, from generating more leads to rebuilding your website or automating operations. Book a free strategy call.";
+    "Outcome-led solutions for common business goals, from generating more leads to rebuilding your website or automating your operations. Start a project today.";
 
   return {
     title,

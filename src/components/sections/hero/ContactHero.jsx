@@ -12,7 +12,6 @@ import { MotionEffect } from "@/components/effects/motion-effect";
 import HomeHeroLogoShape1 from "@/components/decorative-elements/HomeHeroLogoShape1";
 import HomeHeroLogoShape2 from "@/components/decorative-elements/HomeHeroLogoShape2";
 import ContactHeroLogoShape1 from "@/components/decorative-elements/ContactHeroLogoShape1";
-import { useEffect } from "react";
 import dynamic from "next/dynamic";
 
 const ContactHeroSlider = dynamic(
@@ -24,22 +23,6 @@ const ContactHeroSlider = dynamic(
 );
 
 const ContactHero = () => {
-  useEffect(() => {
-    (async function () {
-      const { getCalApi } = await import("@calcom/embed-react");
-      const cal = await getCalApi({ namespace: "15min" });
-      cal("ui", {
-        theme: "dark",
-        cssVarsPerTheme: {
-          light: { "cal-brand": "#292929" },
-          dark: { "cal-brand": "#FF37B3" },
-        },
-        hideEventTypeDetails: false,
-        layout: "month_view",
-      });
-    })();
-  }, []);
-
   return (
     <>
       <section className="relative w-full overflow-hidden px-[2rem] pt-[10rem] pb-[5rem] md:pt-[15.7rem] xl:px-[0rem] xl:pb-[8.3rem]">
@@ -132,22 +115,20 @@ const ContactHero = () => {
                     </i>
 
                     <h4 className="mt-[2rem] text-[2.6rem] font-semibold tracking-[-0.02em] text-white">
-                      Book Strategy Call
+                      Start a Project
                     </h4>
 
                     <p className="mt-[1rem] mb-[2rem] text-[1.6rem] font-semibold tracking-normal text-white">
-                      Fastest way to get answers.{" "}
+                      Tell us what you are working on.{" "}
                     </p>
 
                     <div className="w-full px-[3rem]">
-                      <button
-                        data-cal-namespace="15min"
-                        data-cal-link="hassan-iqbal-mznzu9/15min"
-                        data-cal-config='{"layout":"month_view","theme":"dark"}'
+                      <Link
+                        href="#contact-form"
                         className="flex h-[5.6rem] w-full items-center justify-center rounded-[6rem] border border-white/20 px-[3rem] py-[8px] text-[1.8rem] font-medium tracking-normal text-white transition-all duration-300 hover:border-[#3078FF] hover:bg-[#3078FF]"
                       >
-                        15-min chat with Hassan
-                      </button>
+                        Start a project
+                      </Link>
                     </div>
                   </div>
                 </div>

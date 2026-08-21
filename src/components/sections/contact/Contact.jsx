@@ -14,7 +14,8 @@ import { MotionEffect } from "@/components/effects/motion-effect";
 const Contact = () => {
   return (
     <>
-      <div className="relative z-[10] container">
+      {/* Anchor target for the "Start a project" card in the contact hero */}
+      <div id="contact-form" className="relative z-[10] container">
         <div className="flex flex-col items-center gap-[4rem] xl:flex-row xl:items-start">
           <div className="flex w-[30rem] flex-col items-center text-center md:w-[56.3rem] xl:items-start xl:text-left">
             <MotionEffect

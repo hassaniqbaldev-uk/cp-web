@@ -37,6 +37,38 @@ complete and Hassan signs off final cutover.
 
 ---
 
+## O20 completed — avatar booking sections reworked + booking scrubbed from metadata (21 August 2026)
+
+Hassan: replace the avatar booking sections (do not preserve), and confirm no Cal.com embed or Book a Call
+reference remains anywhere. Done:
+
+- **`GradientButton`** (the avatar "Book with Hassan" button) → now a `/contact` "Start a project" link;
+  gradient pill + avatar + arrow visual kept, Cal.com embed removed.
+- **`Cta.jsx`** (closing section, ~7 pages) → badge, description, both CTAs reworked to Start-a-project;
+  the Hassan avatar card is now "Start your project with Hassan and the team".
+- **`HomeHero`** → the Cal booking badge and GradientButton reworked to Start-a-project; embed removed.
+- **`ContactHero` + `ContactHeroSlider`** → the "Book Strategy Call / 15-min chat with Hassan" card became
+  a **"Start a Project"** card that scrolls to the contact form (new `#contact-form` anchor on the Contact
+  section). Kept the 3-card "ways to connect" layout (Start a project | Email | Phone). Layout still makes
+  sense, so reworked rather than flagged.
+- **Metadata cleanup:** 6 page titles + 10 meta descriptions advertised "book a free strategy call /
+  consultation" (now a broken promise). Rewrote them to Start-a-project / enquiry framing (home, about,
+  agencies, case-studies, contact, how-we-work, partner-with-us, services, solutions, testimonials).
+  Also the last `Cta2` caller (`solutions/[slug]`) label → "Start a project".
+
+**Audit result:** the only Cal.com embed left is `CallHero` (the `/call` page). The only "book a call"
+references left are (a) the `/call` page itself and (b) two **email templates** that link to
+`creativepixels.agency/call` — which is the intended email→/call flow (`/call` was kept for exactly this).
+Explanatory code comments that say "no Book a Call" are left as documentation. Verified home + contact at
+375/768/1440 (no overflow; GradientButton links to /contact; contact card anchors to the form).
+
+- **SpecialistLinks** now hides itself when fewer than 2 links (Branding's single UI/UX card no longer
+  renders as a lone card — auto-handles any future one-link page).
+
+**Nothing pushed.**
+
+---
+
 ## CRO migrated to modular pattern (21 August 2026)
 
 Migrated the `cro` doc in place onto the modular layout. Real copy across every module, 10 questions.

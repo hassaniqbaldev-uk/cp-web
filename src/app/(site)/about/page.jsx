@@ -8,7 +8,7 @@ import Values from "@/components/sections/values/Values";
 export async function generateMetadata() {
   const title = "About CreativePixels | Manchester Digital Agency That Cares";
   const description =
-    "Manchester digital agency for web design, WordPress & growth-focused solutions. Learn how we work & book your free strategy call with CreativePixels today!";
+    "Manchester digital agency for web design, WordPress and growth-focused solutions. Learn how we work and start your project with CreativePixels today.";
 
   return {
     title,

@@ -1,7 +1,7 @@
 export async function generateMetadata() {
-  const title = "Web Design and Development Services | Free Strategy Call";
+  const title = "Digital Services for Brand, Web & Growth | CreativePixels";
   const description =
-    "Brand, web and ecommerce, growth marketing and automation, delivered by one team. See how CreativePixels can help and book a free strategy call.";
+    "Brand, web and ecommerce, growth marketing and automation, delivered by one team. See how CreativePixels can help and start your project.";
 
   return {
     title,

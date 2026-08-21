@@ -13,7 +13,7 @@ import { CLIENT_LOGO } from "@/contants";
 import SectionDescription from "@/components/ui/SectionDescription";
 import { motion } from "framer-motion";
 import HomeHeroLogoShape1 from "@/components/decorative-elements/HomeHeroLogoShape1";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Counter from "@/components/ui/Counter";
 import useMousePosition from "@/utils/useMousePosition";
 import Cursor from "@/assets/svgs/you-cursor.svg";
@@ -23,28 +23,6 @@ const HomeHero = () => {
   const [isHovered, setIsHovered] = useState(false);
 
   const mouse = useMousePosition();
-
-  useEffect(() => {
-    const initCal = async () => {
-      const { getCalApi } = await import("@calcom/embed-react");
-      const cal = await getCalApi({ namespace: "15min" });
-      cal("ui", {
-        theme: "dark",
-        cssVarsPerTheme: {
-          light: { "cal-brand": "#292929" },
-          dark: { "cal-brand": "#FF37B3" },
-        },
-        hideEventTypeDetails: false,
-        layout: "month_view",
-      });
-    };
-
-    if ("requestIdleCallback" in window) {
-      requestIdleCallback(initCal);
-    } else {
-      setTimeout(initCal, 2000);
-    }
-  }, []);
 
   return (
     <>
@@ -91,10 +69,8 @@ const HomeHero = () => {
                 zoom
               >
                 <div className="flex flex-col-reverse items-center gap-[1.2rem] xl:flex-row">
-                  <button
-                    data-cal-namespace="15min"
-                    data-cal-link="hassan-iqbal-mznzu9/15min"
-                    data-cal-config='{"layout":"month_view","theme":"dark"}'
+                  <Link
+                    href="/contact"
                     className="inline-flex h-[3.2rem] items-center justify-center gap-[5px] rounded-[20rem] border border-white/20 bg-[#DBD5DD1A] px-[1rem] py-[1rem] md:h-[4rem] md:gap-[1rem] md:px-[2rem] md:py-[.8rem]"
                   >
                     <div className="relative size-[1.1rem] md:size-[1.8rem]">
@@ -103,9 +79,9 @@ const HomeHero = () => {
                     </div>
 
                     <span className="text-[1.1rem] leading-[2.4rem] font-medium text-white md:text-[1.6rem]">
-                      Book your FREE 2026 strategy call today
+                      Now taking on new projects for 2026
                     </span>
-                  </button>
+                  </Link>
                 </div>
               </MotionEffect>
 
@@ -160,7 +136,7 @@ const HomeHero = () => {
                 delay={0.2}
               >
                 <div>
-                  <GradientButton text="Book with Hassan" />
+                  <GradientButton text="Start a project" ctaPosition="home-hero" />
                 </div>
               </MotionEffect>
             </div>
