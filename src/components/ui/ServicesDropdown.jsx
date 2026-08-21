@@ -6,7 +6,13 @@ import PrimaryButton from "./PrimaryButton";
 import ServicesDropdownStroke from "@/assets/svgs/services-dropdown-stroke.svg";
 import ServiceNavColumn from "./ServiceNavColumn";
 
-const ServicesDropdown = ({ className, isOpen, setIsOpen, onToggle, navData }) => {
+const ServicesDropdown = ({
+  className,
+  isOpen,
+  setIsOpen,
+  onToggle,
+  navData,
+}) => {
   const triggerRef = useRef(null);
   const panelRef = useRef(null);
 
@@ -38,7 +44,10 @@ const ServicesDropdown = ({ className, isOpen, setIsOpen, onToggle, navData }) =
   // Close when focus leaves both the trigger and the panel (e.g. Tab out).
   const handleClose = (e) => {
     const next = e.relatedTarget;
-    if (next && (panelRef.current?.contains(next) || next === triggerRef.current))
+    if (
+      next &&
+      (panelRef.current?.contains(next) || next === triggerRef.current)
+    )
       return;
     setIsOpen(false);
   };
@@ -106,7 +115,7 @@ const ServicesDropdown = ({ className, isOpen, setIsOpen, onToggle, navData }) =
             ))}
           </div>
 
-          <div className="h-[42rem] w-[34.8rem]">
+          {/* <div className="h-[42rem] w-[34.8rem]">
             <div className="relative flex h-full flex-col items-start justify-between rounded-[2rem] bg-[#F5F5F5] px-[2.6rem] py-[2rem]">
               <div className="absolute inset-0 z-[1]">
                 <Image
@@ -138,7 +147,7 @@ const ServicesDropdown = ({ className, isOpen, setIsOpen, onToggle, navData }) =
                 />
               </div>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
     </>
