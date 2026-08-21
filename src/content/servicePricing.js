@@ -12,6 +12,11 @@
 // Figures are the approved "from" prices (00-context §7). UK English, no invented ceilings.
 
 export const SERVICE_PRICING = {
+  cro: {
+    from: "From £300/month",
+    framing:
+      "Conversion work runs as a monthly retainer from £300/month. What you pay depends on the number of tests and the scope of the work each month, and we agree it with you before we start.",
+  },
   branding: {
     from: "From £1,000",
     framing:

@@ -26,7 +26,7 @@ for them yet, **editors cannot see or change them in Sanity Studio** until the s
 | `specialist` | boolean | Splits pillar display: `false` = primary (leads the pillar card), `true` = specialist (capabilities band) | Optional | Treated as `false` (primary) |
 | `modularLayout` | boolean | `true` = CP-05 modular pillar layout (ProjectShowcase + Investment on; generic Cta2 + global Testimonials off). `false`/absent = legacy layout | Optional | Legacy layout (the pre-CP-05 pages) |
 | `specialistLinks` | array of object `{ label: string, href: string, description: text }` | The "specialisms that are part of this offer" band | Optional | Section not rendered |
-| `workSlugs` | array of string (case-study `slug.current` values) | Curated case studies for the Work section, order preserved | Optional | Generic flagship→supporting→newest set |
+| `workSlugs` | array of string (case-study `slug.current` values) | Curated case studies for the Work section, order preserved. **Empty array = intentionally NO work section** (honest opt-out where there is no credible standalone evidence, e.g. CRO) | Optional | Absent → generic flagship→supporting→newest set |
 | `warrantyApplies` | boolean | Whether the post-launch warranty shows (Investment warranty strip + closing-CTA warranty line). Set `false` for services the warranty does not cover (e.g. Branding) | Optional | Treated as `true` (warranty shown) |
 | `detailHero.label` | string | Hero eyebrow label | Optional | `"Our Expertise"` |
 | `partnerWithUs.heading` | object `{ label: string, title: string, description: text }` | Partner-With-Us section header | Optional | Component default (compliant copy) |

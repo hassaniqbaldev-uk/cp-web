@@ -37,6 +37,27 @@ complete and Hassan signs off final cutover.
 
 ---
 
+## CRO migrated to modular pattern (21 August 2026)
+
+Migrated the `cro` doc in place onto the modular layout. Real copy across every module, 10 questions.
+Verified at 375/768/1440 (no overflow, 9 sections).
+
+- **Pricing — retainer framing (Hassan's call, option b):** from **£300/month** (single source), framed as a
+  monthly conversion programme. Not a fabricated project figure.
+- **Warranty — OFF** (`warrantyApplies:false`): CRO is ongoing optimisation, not a build that "breaks".
+- **Work section — DELIBERATELY ABSENT.** The audit finding held: there is **not one standalone CRO case
+  study** in the estate (SEO/CRO only ever appear as secondary work on website builds). Rather than pad the
+  page with unrelated web builds, CRO uses the new `workSlugs: []` opt-out → **no work section renders**.
+  This is the honest presentation; the page carries its weight on the fit/not-a-fit qualifier, the process
+  and the FAQ instead. (If Hassan prefers, a curated set of conversion-relevant builds can be added.)
+- **Specialist links:** UI/UX Design, Ecommerce, Analytics, Paid Media (→ `/services/ppc`, the current slug
+  until the CP-15 redirect).
+
+Registry updated: `workSlugs` empty-array = intentional no-work-section. **Branding + CRO done.
+Nothing pushed.**
+
+---
+
 ## Branding migrated to modular pattern (21 August 2026)
 
 Migrated the existing `branding` doc (replaced in place at its _id, nav/pillar fields preserved) onto the

@@ -145,14 +145,20 @@ const ServicesDetailPage = async (props) => {
   // identity does not "break"). warrantyApplies defaults to true (absent) and is set false where it does
   // not belong; it gates the Investment warranty strip and the closing-CTA warranty line.
   const warrantyApplies = service.warrantyApplies !== false;
-  // Curated work (workSlugs) when the page specifies it (e.g. Ecommerce -> its Shopify projects);
-  // otherwise the generic flagship-ordered set.
+  // Work section:
+  //  - no `workSlugs` field        -> generic flagship-ordered set (e.g. Web Design & Development)
+  //  - `workSlugs` non-empty        -> curated, on-topic set, order preserved (e.g. Ecommerce, Branding)
+  //  - `workSlugs` present but EMPTY -> intentionally NO work section (honest opt-out where there is no
+  //                                     credible standalone evidence, e.g. CRO — never pad with unrelated work)
   let caseStudies = [];
   if (modular) {
-    const curated = service.workSlugs?.length
-      ? await getCuratedWork(service.workSlugs.join(","))
-      : [];
-    caseStudies = curated.length ? curated : await getWork();
+    if (Array.isArray(service.workSlugs)) {
+      caseStudies = service.workSlugs.length
+        ? await getCuratedWork(service.workSlugs.join(","))
+        : [];
+    } else {
+      caseStudies = await getWork();
+    }
   }
 
   if (!modular) {
