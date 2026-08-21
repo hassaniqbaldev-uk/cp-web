@@ -32,6 +32,30 @@ complete and Hassan signs off final cutover.
 
 ---
 
+## Ecommerce page built (21 August 2026)
+
+Second Web & Ecommerce pillar page, same modular pattern as WDD (`service-ecommerce`, staging,
+`modularLayout:true`, `pillar:web-ecommerce`, `specialist:false`, `navOrder:2` → sits second, after WDD).
+Real copy across every module answering the 10 commercial-page questions; from £3,500 (single source);
+warranty in both places.
+
+- **Specialist links:** Shopify (primary platform, own page) + **Migrations** (replatforming an existing
+  store is a core ecommerce scenario and has its own page). **WooCommerce got no link** — there is no
+  standalone WooCommerce service page to point to — but it is named in the copy (platform choice).
+- **Evidence (honest read — thin but real):** curated work via a new optional `workSlugs` field so the
+  page shows genuine ecommerce work, not the generic web set. Draws on **minnessak** (flagship Shopify
+  build), **mr-pickles** (supporting Shopify), and **dr-donuts** (a lighter donut-shop website; O17 flags
+  its live status). So the section is **credible but thin — anchored by two real Shopify builds**, not
+  padded with unrelated work. `ivy-and-duke` (a real ecommerce dog-bed brand) is still a DRAFT (O16); if
+  published it would strengthen this section.
+
+Code: `workSlugs` added to the query + a `getCuratedWork` path in `/services/[slug]` (curated, order
+preserved; falls back to the generic flagship set). `SpecialistLinks` grid made count-adaptive (2 cards
+centre instead of gapping a 4-up row). Verified at 375/768/1440 (no overflow; 2 specialist cards centred;
+curated Shopify work renders). **Stopped for review. Nothing pushed.**
+
+---
+
 ## Book a Call removed from global header + footer (21 August 2026)
 
 Per Hassan (D40/D8, deferred three times): removed the Cal.com Book-a-Call from the global chrome.

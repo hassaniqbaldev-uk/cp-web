@@ -21,6 +21,13 @@ const SpecialistLinks = ({
 }) => {
   if (!links.length) return null;
 
+  // Grid adapts to the count so a page with 2 specialisms (e.g. Ecommerce) doesn't leave a gap in a
+  // 4-up row, and a page with 4 (e.g. Web Design & Development) fills the row. Centred + width-capped
+  // for small counts.
+  const cols = Math.min(links.length, 4);
+  const maxW =
+    cols <= 2 ? "max-w-[72rem]" : cols === 3 ? "max-w-[104rem]" : "max-w-full";
+
   return (
     <section className="px-[2rem] py-[5rem] xl:px-[0rem] xl:py-[10rem]">
       <div className="container">
@@ -44,7 +51,10 @@ const SpecialistLinks = ({
           </MotionEffect>
         </div>
 
-        <div className="mt-[5rem] grid grid-cols-1 gap-[3rem] md:grid-cols-2 xl:mt-[6rem] xl:grid-cols-4">
+        <div
+          className={`mx-auto mt-[5rem] grid grid-cols-1 gap-[3rem] md:grid-cols-2 xl:mt-[6rem] xl:[grid-template-columns:var(--cols)] ${maxW}`}
+          style={{ "--cols": `repeat(${cols}, minmax(0, 1fr))` }}
+        >
           {links.map((link, idx) => (
             <MotionEffect
               key={link.href || idx}

@@ -49,6 +49,28 @@ const getWork = cache(async () => {
   }
 });
 
+// Curated work for a service (optional `workSlugs`): fetch exactly those case studies and preserve the
+// authored order, so a page like Ecommerce shows genuinely on-topic work (its real Shopify projects)
+// rather than the generic flagship set. Falls back to nothing if none resolve.
+const CURATED_WORK_QUERY = `
+  *[_type == "caseStudies" && !(_id in path("drafts.**")) && slug.current in $slugs && defined(thumbnailImage)]{
+    "slug": slug.current, title, excerpt, thumbnailImage, iconBg, iconColor
+  }
+`;
+
+const getCuratedWork = cache(async (slugsKey) => {
+  const slugs = slugsKey ? slugsKey.split(",") : [];
+  if (!slugs.length) return [];
+  try {
+    const rows = await caseStudiesClient.fetch(CURATED_WORK_QUERY, { slugs }, options);
+    // preserve the authored order
+    return slugs.map((s) => rows.find((r) => r.slug === s)).filter(Boolean);
+  } catch (error) {
+    console.error("Failed to fetch curated work:", error);
+    return [];
+  }
+});
+
 export async function generateMetadata({ params }) {
   const { slug } = await params;
   const service = await getServices(slug);
@@ -119,7 +141,15 @@ const ServicesDetailPage = async (props) => {
   //          dropped (approved: we have no real client quotes, and one clear conversion path per page).
   //  - OFF → the existing 16 service pages render exactly as before.
   const modular = service.modularLayout === true;
-  const caseStudies = modular ? await getWork() : [];
+  // Curated work (workSlugs) when the page specifies it (e.g. Ecommerce -> its Shopify projects);
+  // otherwise the generic flagship-ordered set.
+  let caseStudies = [];
+  if (modular) {
+    const curated = service.workSlugs?.length
+      ? await getCuratedWork(service.workSlugs.join(","))
+      : [];
+    caseStudies = curated.length ? curated : await getWork();
+  }
 
   if (!modular) {
     return (
