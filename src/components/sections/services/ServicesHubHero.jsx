@@ -16,8 +16,8 @@ import ContactHeroLogoShape1 from "@/components/decorative-elements/ContactHeroL
 // as ServicesDetailHero, reusing the shared primitives rather than a new look.
 // prefers-reduced-motion is handled inside MotionEffect itself (one implementation
 // for the whole site), so this hero just uses the primitive like every other hero.
-// ALL COPY HERE IS PLACEHOLDER — final wording is CP-04. No Cal.com / Book a Call
-// (D40); the single primary CTA is "Start a project" → the enquiry flow.
+// No Cal.com / Book a Call (D40); the single primary CTA is "Start a project" → the
+// enquiry flow.
 const SPRING = { type: "spring", stiffness: 120, damping: 20 };
 
 const ServicesHubHero = () => {
@@ -50,7 +50,6 @@ const ServicesHubHero = () => {
             <SectionLabel text="Services" textColor="#FF37B3" />
           </MotionEffect>
 
-          {/* PLACEHOLDER headline — CP-04 */}
           <MotionEffect
             slide={{ direction: "down" }}
             transition={SPRING}
@@ -59,12 +58,11 @@ const ServicesHubHero = () => {
             delay={0.15}
           >
             <h1 className="mt-[1.5rem] mb-[2.5rem] text-[3rem] leading-[3.7rem] font-bold tracking-[-0.03em] text-[#312749] md:text-[7rem] md:leading-[8rem]">
-              [Placeholder headline — CP-04] One team across brand, web, growth and
+              One digital team for brand, web and ecommerce, growth and
               automation.
             </h1>
           </MotionEffect>
 
-          {/* PLACEHOLDER positioning statement — CP-04 */}
           <MotionEffect
             slide={{ direction: "down" }}
             transition={SPRING}
@@ -73,7 +71,7 @@ const ServicesHubHero = () => {
           >
             <div className="mb-[4rem] max-w-[76rem]">
               <SectionDescription
-                text="[Placeholder positioning — CP-04] A short statement that tells a visitor what CreativePixels is within seconds, weighted toward the web and ecommerce work that is the core of what we do."
+                text="We are a full-service digital team. We design brands, build websites and ecommerce stores that perform, run the marketing that brings customers in, and automate the work that slows you down. Most of what we do is web and ecommerce, and all of it is handled by senior people who own the result."
                 textColor="#625C70"
               />
             </div>
@@ -93,9 +91,8 @@ const ServicesHubHero = () => {
                 textColor="#ffffff"
                 ctaPosition="services-hero"
               />
-              {/* PLACEHOLDER reassurance microcopy — CP-04 (D7) */}
               <span className="text-[1.4rem] leading-[2.2rem] font-medium text-[#625C70]">
-                [Placeholder reassurance — CP-04] No obligation, just a conversation.
+                Tell us what you are working on. No obligation, no hard sell.
               </span>
             </div>
           </MotionEffect>

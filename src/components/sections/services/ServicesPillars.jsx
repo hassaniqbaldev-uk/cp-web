@@ -25,16 +25,17 @@ const THEME = {
   ai: { color: "#7C3AED", icon: DesignIcon },
 };
 
-// PLACEHOLDER positioning copy — CP-04 writes the real lines. One per pillar key.
+// One positioning line per pillar. Web & Ecommerce carries the most weight (it is
+// 45-50% of the business), so its copy reads as the core offering.
 const PILLAR_BLURB = {
   "brand-experience":
-    "[Placeholder — CP-04] Identity and interface work that makes the brand feel considered from the first impression.",
+    "The work that makes a first impression count. We shape brand identities and design the interfaces people use, so your business looks considered and feels easy to deal with from the first click.",
   "web-ecommerce":
-    "[Placeholder — CP-04] The core of what we do: websites, stores and custom builds engineered to perform and convert.",
+    "The core of what we do, and the largest part of our business. We design and build websites and ecommerce stores that load quickly, read clearly to search engines and turn visitors into customers, from WordPress and Shopify builds to bespoke applications.",
   "growth-performance":
-    "[Placeholder — CP-04] Turning traffic into revenue — search, paid media, conversion and ongoing improvement.",
+    "The work that turns traffic into revenue. Search, paid media, conversion and ongoing improvement, run with a clear view of what each channel is doing and where the next customer comes from.",
   "ai-automation":
-    "[Placeholder — CP-04] Removing operational bottlenecks with automation and applied AI.",
+    "The work that takes manual, repetitive tasks off your team. We build automations and apply AI to real operational bottlenecks, so people spend less time on process and more on the work that matters.",
 };
 
 // One pillar card — EQUAL to every other. COLOUR TREATMENT brought in line with the
@@ -89,9 +90,8 @@ const PillarCard = ({ column }) => {
           </h3>
         </div>
 
-        {/* PLACEHOLDER positioning copy — CP-04 */}
         <p className="text-[1.6rem] leading-[2.6rem] font-normal tracking-normal text-white">
-          {PILLAR_BLURB[column.key] || "[Placeholder — CP-04]"}
+          {PILLAR_BLURB[column.key] || ""}
         </p>
 
         <ul className="mt-auto flex h-full flex-col gap-[1.4rem]">
@@ -187,7 +187,6 @@ const ServicesPillars = ({ columns = [] }) => {
             delay={0.25}
             transition={{ type: "tween", duration: 0.8, ease: "easeOut" }}
           >
-            {/* PLACEHOLDER copy — CP-04 */}
             <div className="mt-[5px] mb-[14px]">
               <SectionTitle
                 text="Four things we do, one team."
@@ -206,7 +205,7 @@ const ServicesPillars = ({ columns = [] }) => {
           >
             <div className="max-w-[70rem]">
               <SectionDescription
-                text="[Placeholder — CP-04] Not fifteen services shouting for attention. Four pillars, weighted the way our work actually is."
+                text="Everything we do sits in one of four areas. They are weighted the way our work really is, so you can see where our strength lies and where to start."
                 textColor="#FFFFFF"
               />
             </div>

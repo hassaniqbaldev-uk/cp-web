@@ -83,14 +83,14 @@ const ServicesPage = async () => {
       {/* 5 relevant work — the hub has no tag, so this is always the FALLBACK set
           (flagship → supporting → newest, archive excluded; see HUB_WORK_QUERY). Honest
           label = "Recent work" ("Related work" is reserved for tagged contexts — the
-          industry / service-detail pages). Title + description are PLACEHOLDER (CP-04);
-          the shared Work section carries the site's card + scroll-animation treatment. */}
+          industry / service-detail pages). The shared Work section carries the site's
+          card + scroll-animation treatment. */}
       {caseStudies.length > 0 && (
         <Work
           caseStudies={caseStudies}
           label="Recent work"
-          title="[Placeholder — CP-04] Recent work across the pillars."
-          description="[Placeholder — CP-04] A few recent projects that show the range of what we deliver."
+          title="A look at the work behind it."
+          description="Brand, websites, ecommerce and the growth work around them. A few recent projects that show the range, and the standard we hold across all of it."
         />
       )}
 

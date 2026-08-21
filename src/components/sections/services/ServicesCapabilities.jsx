@@ -19,7 +19,7 @@ const THEME_COLOR = {
 // section) — never a hardcoded list. This shows the SPECIALIST services only
 // (`specialist === true`); the pillars section shows the PRIMARY ones — so the two never
 // overlap. Presented as a compact, scannable chip index, a lighter treatment than the
-// pillar cards. Header + description copy are PLACEHOLDER (CP-04).
+// pillar cards.
 const ServicesCapabilities = ({ columns = [] }) => {
   if (!columns.length) return null;
 
@@ -63,7 +63,6 @@ const ServicesCapabilities = ({ columns = [] }) => {
             delay={0.25}
             transition={{ type: "tween", duration: 0.8, ease: "easeOut" }}
           >
-            {/* PLACEHOLDER copy — CP-04 */}
             <div className="mt-[5px] mb-[14px]">
               <SectionTitle text="Depth where it matters." />
             </div>
@@ -78,7 +77,7 @@ const ServicesCapabilities = ({ columns = [] }) => {
             transition={{ type: "tween", duration: 0.8, ease: "easeOut" }}
           >
             <div className="mx-auto max-w-[74rem]">
-              <SectionDescription text="[Placeholder — CP-04] A band for the deeper, specialist capabilities (for example performance, security, accessibility, migrations) that sit beneath the headline pillars. The exact set is a content decision once primary vs specialist is designated." />
+              <SectionDescription text="Alongside the core work sits a set of specialist skills we are often brought in for, from performance and security to accessibility, migrations and the platforms we know inside out. Pick the one you need." />
             </div>
           </MotionEffect>
         </div>

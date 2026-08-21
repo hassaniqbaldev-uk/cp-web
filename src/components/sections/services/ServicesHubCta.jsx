@@ -14,7 +14,7 @@ import { MotionEffect } from "@/components/effects/motion-effect";
 // MotionEffect), the same language as Cta.jsx. Cta.jsx itself can't be reused — it is
 // built around Book a Call / Cal.com — so this reuses the treatment + shared parts with
 // the enquiry CTA instead. Primary CTA is "Start a project" + reassurance (D7); NO Book
-// a Call. ALL COPY PLACEHOLDER — CP-04.
+// a Call. Warranty (three months of free post-launch support) used as a trust signal.
 const ServicesHubCta = () => {
   return (
     <section className="overflow-hidden px-[2rem] py-[5rem] xl:px-[0rem] xl:py-[10rem]">
@@ -42,12 +42,11 @@ const ServicesHubCta = () => {
           </div>
 
           <div className="relative z-[10] mx-auto flex max-w-[72rem] flex-col items-center gap-[2.4rem] text-center">
-            {/* PLACEHOLDER copy — CP-04 */}
             <SectionTitle text="Ready when you are." textColor="#ffffff" />
 
             <div className="max-w-[60rem]">
               <SectionDescription
-                text="[Placeholder — CP-04] A closing line inviting the visitor to start, with the reassurance that reduces the friction of the first step."
+                text="Tell us what you are working on and we will point you to the right place to start. Every website we build includes three months of free support after launch, so you are looked after once you go live."
                 textColor="#ffffff"
               />
             </div>
@@ -60,9 +59,8 @@ const ServicesHubCta = () => {
                 textColor="#ffffff"
                 ctaPosition="services-outro"
               />
-              {/* PLACEHOLDER reassurance microcopy — CP-04 (D7) */}
               <span className="text-[1.4rem] leading-[2.2rem] font-medium text-white/80">
-                [Placeholder reassurance — CP-04] No obligation, just a conversation.
+                No obligation, just a conversation.
               </span>
             </div>
           </div>

@@ -15,13 +15,13 @@ import FocusIcon from "@/assets/icons/ui/focus-icon.svg";
 // a coloured hover-shadow lift (LightFeatureCard2), and the project's own PrimaryButton
 // as the CTA. Audit = orange, Solutions = pink — distinct but a pair. Text is AA-safe
 // (dark on white; the label uses a darkened accent; PrimaryButton is white-on-navy).
-// ALL COPY PLACEHOLDER — CP-04.
 const ROUTES = [
   {
     href: "/audit",
     label: "Not sure what you need?",
-    title: "[Placeholder — CP-04] Get a free audit",
-    body: "[Placeholder — CP-04] A guided route for visitors who do not know which service fits. Points at the free audit.",
+    title: "Start with a free website audit.",
+    body: "Not sure which service fits? We will review your website and send back a clear, no-obligation audit: what is working, what is holding you back, and where to focus first.",
+    cta: "Get a free audit",
     accent: "#EE8D00", // orange — icon tile, hover glow, stroke tint
     labelColor: "#A85D00", // darkened orange — AA on white
     icon: AnalysisIcon,
@@ -31,8 +31,9 @@ const ROUTES = [
   {
     href: "/solutions",
     label: "Prefer to start from a goal?",
-    title: "[Placeholder — CP-04] Explore solutions by outcome",
-    body: "[Placeholder — CP-04] The route across to the goal-based solutions for visitors who think in outcomes, not services.",
+    title: "Start from the outcome you want.",
+    body: "If you think in results rather than services, browse our solutions by goal, from generating more leads to rebuilding your site, launching a product or automating your operations.",
+    cta: "Explore solutions",
     accent: "#FF37B3", // pink
     labelColor: "#B0006E", // darkened pink — AA on white
     icon: FocusIcon,
@@ -79,6 +80,7 @@ const RouteCard = ({
   label,
   title,
   body,
+  cta,
   accent,
   labelColor,
   icon,
@@ -114,7 +116,6 @@ const RouteCard = ({
           <Image src={icon} width={32} height={32} alt="Icon" unoptimized />
         </i>
 
-        {/* PLACEHOLDER copy — CP-04 */}
         <span
           style={{ color: labelColor }}
           className="mt-[3rem] text-[1.4rem] leading-[2rem] font-bold tracking-[0.02em] uppercase"
@@ -132,7 +133,7 @@ const RouteCard = ({
       {/* CTA — the project's PrimaryButton (white on navy, AA-safe) */}
       <div className="relative z-10">
         <PrimaryButton
-          text="Continue"
+          text={cta}
           href={href}
           bGcolor="#312749"
           textColor="#FFFFFF"
