@@ -32,6 +32,70 @@ complete and Hassan signs off final cutover.
 
 ---
 
+## CP-05 — wrapper refactor DONE + Web Design & Development page built (21 August 2026)
+
+Hassan approved the refactor plan + all five decisions (modularLayout boolean; code pricing source now,
+Sanity singleton later; Studio fields to be added; leave the 14 placeholder docs but record them;
+remove Book a Call + banned header on all 16). Also confirmed the Investment module ignores
+`options.pricingCard` and reads the approved source. Executed:
+
+**Wrapper refactor (shared, prop-driven, presence-gated):**
+- `ServicesDetailHero` — Book a Call / Cal.com **removed** (D40); primary CTA now "Start a project" →
+  /contact; "See Case Studies" secondary when `caseStudiesLink` present; `heroImage` optional (centres
+  when absent); label content-driven.
+- `PartnerWithUs2` — banned "Stop losing money to..." header **removed**, header content-driven with a
+  compliant default ("The problems we solve").
+- `Expertise3`, `Methodology` — headers content-driven with current-copy defaults; icons made optional.
+- `src/content/servicePricing.js` — single source for "from" figures + warranty copy.
+- New modules `SpecialistLinks`, `ProjectShowcase` (fit/not-a-fit), `Investment` (approved price +
+  includes + warranty). `ServicesHubCta` parametrised for reuse as the closing CTA.
+- `queries.services.js` — projects the new fields; **drops `options.pricingCard`**.
+- `/services/[slug]` page gates on `modularLayout`: ON → modular layout (Cta2 + Testimonials dropped);
+  OFF → the legacy layout unchanged.
+
+**Verified the 16 existing pages (local prod build, 375/768/1440):** all build and render.
+**Visual changes — only the two intended ones, on all 16:** (1) hero CTA row is now Start-a-project +
+See-Case-Studies (Book a Call gone); (2) partner header is the compliant "The problems we solve". No
+overflow at any breakpoint. Residual "Book a Call" is the **global Header/Footer** (site-wide chrome,
+present on the homepage too) — the deferred Cal.com teardown (O9), out of scope here.
+
+**Web Design & Development page built** (`service-web-design-development`, staging, `modularLayout:true`,
+`pillar:web-ecommerce`, `specialist:false`, `navOrder:1`). Real copy answering the 10 commercial-page
+questions; specialist links to WordPress / Migrations / Accessibility / Website Speed; price from the
+single source (from £1,500); warranty in both places. Verified at 375/768/1440 (no overflow; no-image
+hero centres; 4 specialist cards in one row at xl). The hub + mega-menu now lead Web & Ecommerce with
+WDD (fixes the earlier thin-pillar flag). **Stopped for review before Ecommerce. Nothing pushed.**
+
+New open items recorded: **O18** (14-doc content cleanup — placeholder showcases + unapproved pricing),
+**O19** (wordpress doc UI/UX-copy contamination — flagged as a content error). Studio field spec for the
+new fields added to 00-context §5.
+
+---
+
+## CP-05 — pivot to wrapper refactor + data-integrity findings (21 August 2026)
+
+Hassan overruled building the two pages as bespoke route segments (two parallel systems; uneditable
+in Studio; leaves the same faults on the other 14 service pages). Correct call. New direction: refactor
+the shared Sanity section wrappers to be prop-driven / presence-gated / banned-phrase-free /
+Book-a-Call-free / asset-optional, then author both pages as `services` docs on `/services/[slug]`.
+
+Investigated staging (read-only) before planning. **Findings that reshape the work:**
+- Section headers (partnerWithUs/expertise/methodology) have **no content fields** — 100% hardcoded in
+  components. Making copy content-driven needs **new schema fields**. **No Studio schema in this repo**
+  (external; O13 pattern — I spec + populate, Hassan adds Studio definitions).
+- **`projectShowcase` is a repeated placeholder** (same Smokey Carter / Game Art Brain / Ivy & Duke trio
+  on nearly every doc). **`options.pricingCard` is unapproved + inconsistent** (£1,995/£2,495/£1k-mo/…,
+  none matching the approved £1,500/£3,500). **Neither is rendered today** — activating naively would
+  surface broken content + old prices on all 16 pages. `wordpress` doc is cross-contaminated with
+  UI/UX-design copy. → Author correct data for the 2 new pages only; clean the other 14 in a later pass.
+
+Refactor plan written to `cp-05-wrapper-refactor-plan.md` and reported for approval **before**
+implementing (scope is larger than it looks: external Studio schema changes + content decisions).
+Five open decisions gate the build (gating field, pricing source, Studio fields, the 14 placeholder
+docs, universal Book-a-Call/banned-phrase removal). **Nothing built, nothing pushed.**
+
+---
+
 ## Services hub — real copy pass + CP-05 plan written (21 August 2026)
 
 CP-04 copy pass on /services: every `[Placeholder — CP-04]` marker replaced with real,

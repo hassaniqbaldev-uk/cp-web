@@ -15,7 +15,15 @@ import { MotionEffect } from "@/components/effects/motion-effect";
 // built around Book a Call / Cal.com — so this reuses the treatment + shared parts with
 // the enquiry CTA instead. Primary CTA is "Start a project" + reassurance (D7); NO Book
 // a Call. Warranty (three months of free post-launch support) used as a trust signal.
-const ServicesHubCta = () => {
+//
+// Parametrised (CP-05) so the service-detail pages reuse it as their closing CTA. Props default to the
+// hub's own copy, so the hub call site is unchanged.
+const ServicesHubCta = ({
+  title = "Ready when you are.",
+  description = "Tell us what you are working on and we will point you to the right place to start. Every website we build includes three months of free support after launch, so you are looked after once you go live.",
+  reassurance = "No obligation, just a conversation.",
+  ctaPosition = "services-outro",
+}) => {
   return (
     <section className="overflow-hidden px-[2rem] py-[5rem] xl:px-[0rem] xl:py-[10rem]">
       <MotionEffect
@@ -42,13 +50,10 @@ const ServicesHubCta = () => {
           </div>
 
           <div className="relative z-[10] mx-auto flex max-w-[72rem] flex-col items-center gap-[2.4rem] text-center">
-            <SectionTitle text="Ready when you are." textColor="#ffffff" />
+            <SectionTitle text={title} textColor="#ffffff" />
 
             <div className="max-w-[60rem]">
-              <SectionDescription
-                text="Tell us what you are working on and we will point you to the right place to start. Every website we build includes three months of free support after launch, so you are looked after once you go live."
-                textColor="#ffffff"
-              />
+              <SectionDescription text={description} textColor="#ffffff" />
             </div>
 
             <div className="mt-[1.6rem] flex flex-col items-center gap-[1.4rem]">
@@ -57,10 +62,10 @@ const ServicesHubCta = () => {
                 href="/contact"
                 bGcolor="#FF37B3"
                 textColor="#ffffff"
-                ctaPosition="services-outro"
+                ctaPosition={ctaPosition}
               />
               <span className="text-[1.4rem] leading-[2.2rem] font-medium text-white/80">
-                No obligation, just a conversation.
+                {reassurance}
               </span>
             </div>
           </div>

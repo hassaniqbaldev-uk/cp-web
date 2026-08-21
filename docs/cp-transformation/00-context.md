@@ -26,7 +26,8 @@ strategic decisions were confirmed.
 | Framework | Next.js 16 |
 | CMS | Sanity (collections) |
 | Hosting | Vercel |
-| Staging | Vercel staging environment, mirrors the production Sanity dataset |
+| Staging URL | **https://staging-cp.vercel.app/** — auto-deploys on every push to `development`, reads the `staging` dataset. Use for final verification, but it reflects only what has been **pushed**, not local commits. |
+| Staging | Vercel staging environment, reads the consolidated `4m0eqoi1/staging` dataset |
 | Sanity access | Schema export (not MCP) |
 | Repository | Internally developed, production, existing codebase |
 | WordPress | Not used anywhere on this site |
@@ -189,6 +190,8 @@ All confirmed by Hassan, 12 August 2026.
 | O15 | **Is `launch-new-product` a real, delivered offering** (go-to-market / MVP launch) or aspirational? If real it stays a goal solution (D39 leaves it in the set of 4); if not, it merges or drops. Do not assume. | Hassan | Finalising the goal-solutions set at CP-07 |
 | O16 | **The 8 draft-only case studies — INSPECTED 19 Aug.** **`ivy-and-duke` is the only real one** — SEO completed **and excerpt fixed** ("LMS Migration & Rebrand" paste error → "Website redesign for a Manchester brand of handcrafted luxury dog beds and accessories"); kept as a **draft**. **6 are placeholder stubs cloned from Casa Botanica** (`loop`, `lola-blake`, `core-estates`, `amana-partnership`, `drive-uk`, `ofh-care`) — **left untouched and unpublished** per Hassan; he will **supply a real brief per stub or delete them.** `biome4pets` is the 8th (ours). | Hassan (brief-or-delete) | CP-11/CP-12 evidence set |
 | O17 | **Do `dr-donuts`, `energy-angels`, `sorted`, `peekaboo` have live sites?** Their CMS records carry no live-site link. If live, they are usable proof; if not, they weaken further. | Hassan (confirming) | CP-12 flagship/supporting verification |
+| O18 | **Service-doc content cleanup pass (found during CP-05, 21 Aug 2026).** Across the 15 real `services` docs, two modules hold **hidden, unrendered, low-quality data** (they only render when `modularLayout` is on, which is the two new pages only): (a) **`projectShowcase` is a repeated placeholder** — the same Smokey Carter / Game Art Brain / Ivy & Duke trio on nearly every doc, not curated per service; (b) **`options.pricingCard` holds unapproved, inconsistent pricing** (e.g. £1,995 / £2,495 / £1k-mo — none matching the approved £1,500 / £3,500). Neither renders today. Clean or remove before any of the 14 legacy pages is ever switched to `modularLayout`. | Hassan / content | Switching any legacy service page to the modular layout |
+| **O19** | **CONTENT ERROR (not just untidiness) — flagged separately per Hassan.** The **`wordpress`** service doc is **cross-contaminated with UI/UX-design copy**: its `projectShowcase.fitCard` / `notFitCard` / `options` read as UI/UX content ("Startups needing an MVP design to raise capital", "SaaS companies with outdated interfaces", "just a logo — see Branding", "print-only design requests"). This is wrong content in the wrong document. It does not render today (WordPress is not `modularLayout`), but it must be corrected, and the other docs spot-checked for the same paste errors. | Hassan / content | Correctness of the `wordpress` doc before it is ever surfaced |
 
 Closed: O1 → D17. O2 → D14. O7 → D19. O10 → already scoped to the `cp-web` repo, no
 action required. **O3 → pricing approved for publication (18 Aug 2026; D9 superseded, see
@@ -264,6 +267,21 @@ Studio schema is updated):
 | `services` | `pillar` | `string`, enum: `brand-experience` / `web-ecommerce` / `growth-performance` / `ai-automation` | Groups services into the four pillars for the mega-menu + services hub (CP-03). Populated 20 Aug. |
 | `services` | `specialist` | `boolean` | Splits each pillar's services: **primary** (`false`) lead the pillar cards on the services hub; **specialist** (`true`) show in the hub's "specialist capabilities" band instead — no overlap. `true` for wordpress, shopify, migrations, accessibility, speed, security, email, analytics; `false` for the rest. The mega-menu still shows all. Populated 20 Aug. |
 | `caseStudies` | `designation` | `string`, enum: `flagship` / `supporting` / `archive` | Drives the relevant-work fallback order (tagged → **flagship** → **supporting** → newest). **`archive` never surfaces through a fallback anywhere** (only a direct link or the work hub). Populated from `03-url-audit.md` §8 (9 / 20 / 2), 20 Aug. |
+
+**CP-05 service-page fields (added 21 Aug 2026 — data populated on the two new docs; need Studio definitions):**
+
+| Doc type | Field | Type | Notes |
+| --- | --- | --- | --- |
+| `services` | `modularLayout` | `boolean` | Switches a service page to the CP-05 pillar layout: turns ProjectShowcase + Investment **on** and drops the generic mid-page `Cta2` + global `Testimonials`. Default/absent = the legacy layout (the 16 existing pages). `true` on the two new Web & Ecommerce pages. |
+| `services` | `specialistLinks` | `array` of `object { label: string, href: string, description: text }` | The specialisms that are **part of** a parent offer (rendered as a "part of the offer" band, framed as belonging to the parent, not competing). WDD → WordPress, Migrations, Accessibility, Website Speed; Ecommerce → Shopify. |
+| `services` | `partnerWithUs.heading` | `object { label: string, title: string, description: text }` | Section header for the Partner-With-Us band. **Absent → the component's compliant default** (so the 16 existing pages are unchanged; the old hardcoded banned "Stop losing money" header is gone everywhere). |
+| `services` | `expertise.heading` | `object { label, title, description }` | Section header for the Expertise band. Absent → current default. |
+| `services` | `methodology.heading` | `object { label, title, description }` | Section header for the Methodology band. Absent → current default. |
+| `services` | `projectShowcase.heading` | `object { label, title, description }` | Section header for the fit / not-a-fit qualifier. Absent → default. |
+| `services` | `options.heading` | `object { label, title, description }` | Section header for the Investment band. Absent → default. |
+| `services` | `detailHero.label` | `string` | Optional hero eyebrow label. Absent → "Our Expertise" (current default). |
+
+> `projectShowcase` and `options` already exist in the schema. **`options.pricingCard` is intentionally no longer read** — the Investment module reads the approved single source (`src/content/servicePricing.js`), never the per-doc pricing (see §8 data-integrity finding). Pricing moves to a Sanity **pricing singleton** later (deliberate staging post, not an oversight).
 
 ### Scheduling and holds (18 August 2026)
 
