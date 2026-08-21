@@ -12,6 +12,11 @@
 // Figures are the approved "from" prices (00-context §7). UK English, no invented ceilings.
 
 export const SERVICE_PRICING = {
+  "ai-automation": {
+    from: "From £1,500",
+    framing:
+      "AI and automation projects start from £1,500. What you pay depends on the complexity of the process and the tools involved. We start from the bottleneck worth fixing and scope it with you before anything begins.",
+  },
   cro: {
     from: "From £300/month",
     framing:

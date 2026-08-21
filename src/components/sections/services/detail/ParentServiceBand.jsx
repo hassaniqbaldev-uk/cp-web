@@ -12,7 +12,7 @@ const ParentServiceBand = ({ parent }) => {
   if (!parent?.href || !parent?.label) return null;
 
   return (
-    <section className="px-[2rem] pt-[1rem] xl:px-[0rem]">
+    <section className="px-[2rem] py-[2rem] xl:px-[0rem]">
       <div className="container">
         <MotionEffect
           slide={{ direction: "down" }}

@@ -74,6 +74,15 @@ export const SERVICES_DETAIL_QUERY = `
       description,
     },
 
+    caseHighlight {
+      eyebrow,
+      title,
+      context,
+      points[] { label },
+      result,
+      href,
+    },
+
     partnerWithUs  {
     heading { label, title, description },
     card[] {

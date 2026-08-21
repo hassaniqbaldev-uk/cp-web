@@ -8,6 +8,7 @@ import Testimonials from "@/components/sections/testimonials/Testimonials";
 import Work from "@/components/sections/work/Work";
 import SpecialistLinks from "@/components/sections/services/detail/SpecialistLinks";
 import ParentServiceBand from "@/components/sections/services/detail/ParentServiceBand";
+import ServiceCaseHighlight from "@/components/sections/services/detail/ServiceCaseHighlight";
 import ProjectShowcase from "@/components/sections/services/detail/ProjectShowcase";
 import Investment from "@/components/sections/services/detail/Investment";
 import ServicesHubCta from "@/components/sections/services/ServicesHubCta";
@@ -63,7 +64,11 @@ const getCuratedWork = cache(async (slugsKey) => {
   const slugs = slugsKey ? slugsKey.split(",") : [];
   if (!slugs.length) return [];
   try {
-    const rows = await caseStudiesClient.fetch(CURATED_WORK_QUERY, { slugs }, options);
+    const rows = await caseStudiesClient.fetch(
+      CURATED_WORK_QUERY,
+      { slugs },
+      options,
+    );
     // preserve the authored order
     return slugs.map((s) => rows.find((r) => r.slug === s)).filter(Boolean);
   } catch (error) {
@@ -203,6 +208,9 @@ const ServicesDetailPage = async (props) => {
           title="Work we have delivered."
           description="A few recent projects that show the range and the standard we hold across every build."
         />
+      )}
+      {service.caseHighlight && (
+        <ServiceCaseHighlight highlight={service.caseHighlight} />
       )}
       <ProjectShowcase service={service.projectShowcase} />
       <Investment

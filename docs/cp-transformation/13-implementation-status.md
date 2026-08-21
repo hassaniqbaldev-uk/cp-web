@@ -34,6 +34,35 @@ complete and Hassan signs off final cutover.
   goes in `custom-fields-registry.md` as it is created (that doc is the Studio-setup handover).
 - **Until the Studio pass, all copy changes come through Claude, not the Studio** — the new fields have no
   Studio definitions yet, so editors cannot change this copy in Sanity. Route copy edits through the build.
+- **Copy standing rule (21 Aug 2026):** write confident, SEO-driven, conversion-focused copy on every page;
+  invent and shape capability descriptions, positioning, benefits, process and FAQs as needed (Hassan
+  proof-checks at the end). **The one exception:** never invent client outcomes, results, metrics or
+  testimonials, or what any named client achieved — those are the only claims a client can contradict.
+  Confirmed facts Hassan provides (e.g. the Biome4Pets 3-days→1-day result) are usable as given, not added to.
+
+---
+
+## AI & Automation pillar built + Biome4Pets published (21 August 2026)
+
+Built the AI & Automation PILLAR page (`service-ai-automation`, was a bare stub). Top-level pillar — no
+parent band, no specialist links (sub-pages held under D37). modularLayout, real copy leading with
+operational OUTCOMES (from Hassan's offering: work with AI tools, build tools with AI, set up processes,
+custom AI plugins/tools/integrations). from £1,500 (approved). Warranty on (we build the tools). Verified
+375/768/1440 (no overflow, 9 sections).
+
+- **AI pillar now appears in the mega-menu and the services hub** — confirmed. It previously dropped out as
+  an empty pillar; now that it has a live service it renders.
+- **Biome4Pets published + used as the page's evidence.** Published the `biome4pets` draft → live case study
+  (confirmed narrative copied verbatim; only presentation fields added — brand colours, designation). Shown
+  on the AI page via a new `caseHighlight` field + `ServiceCaseHighlight` component (the Work carousel needs
+  several thumbnailed items; this presents one confirmed story with weight). Facts are exactly as confirmed
+  by Hassan — custom app, AI structuring/interpreting/improving reports, 200 reports 3 days → 1 day, observed
+  by us + confirmed by client. Nothing added. Links to `/case-studies/biome4pets`.
+- **Case-study template hardened** (needed to publish an image-light case study without breaking the build):
+  `TheSolution`, `OurApproach`, `TheChallenge`, `ClientOverview` now guard missing images, and the
+  `.points.map` calls are null-safe. The 31 image-complete case studies are unaffected. Build verified.
+
+New fields `caseHighlight` added to the registry. New standing rule recorded (below).
 
 ---
 
