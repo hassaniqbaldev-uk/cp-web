@@ -12,6 +12,11 @@
 // Figures are the approved "from" prices (00-context §7). UK English, no invented ceilings.
 
 export const SERVICE_PRICING = {
+  "custom-app-development": {
+    from: "From £5,000",
+    framing:
+      "Custom application projects start from £5,000. Bespoke software is scoped by what it needs to do, the integrations involved and the data behind it, so we work that out with you before anything starts.",
+  },
   "ai-automation": {
     from: "From £1,500",
     framing:

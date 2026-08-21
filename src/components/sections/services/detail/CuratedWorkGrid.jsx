@@ -19,7 +19,7 @@ const CuratedWorkGrid = ({ caseStudies = [], label, title, description }) => {
 
   const cols = Math.min(items.length, 3);
   const maxW =
-    cols <= 2 ? "max-w-[80rem]" : "max-w-full";
+    cols === 1 ? "max-w-[52rem]" : cols === 2 ? "max-w-[80rem]" : "max-w-full";
 
   return (
     <section className="px-[2rem] py-[5rem] xl:px-[0rem] xl:py-[10rem]">

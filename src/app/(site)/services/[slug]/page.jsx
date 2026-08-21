@@ -205,7 +205,12 @@ const ServicesDetailPage = async (props) => {
       <PartnerWithUs2 service={service.partnerWithUs} />
       <Expertise3 service={service.expertise} />
       {service.specialistLinks?.length > 0 && (
-        <SpecialistLinks links={service.specialistLinks} />
+        <SpecialistLinks
+          links={service.specialistLinks}
+          label={service.specialistLinksHeading?.label}
+          title={service.specialistLinksHeading?.title}
+          description={service.specialistLinksHeading?.description}
+        />
       )}
       <Methodology service={service.methodology} />
       {caseStudies.length > 0 &&

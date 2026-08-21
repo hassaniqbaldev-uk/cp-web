@@ -42,6 +42,27 @@ complete and Hassan signs off final cutover.
 
 ---
 
+## Custom App Development built — eight P1 pages complete (21 August 2026)
+
+Migrated `custom-app-development` in place onto the modular layout. Verified 375/768/1440 (no overflow).
+
+- **Peer, not a specialist** — `specialist:false`, a primary alongside WDD and Ecommerce. **No parent band**
+  (bespoke software is not a website; a parent band would undersell the work and the £5,000 price point).
+  Cross-links ACROSS to **AI & Automation + Web Design & Development**, reframed as **"Related services"** via
+  the new `specialistLinksHeading` field (so peer cross-links don't read as sub-parts of its own offer).
+- **BI + dashboards covered** in the capabilities (D38 moved them here from Analytics).
+- **Pricing from £5,000**, warranty on.
+- **Evidence (thin for £5k, so the page carries weight through problem framing + capabilities + process):**
+  the two genuine custom-app builds only — **Anthony Walker Foundation** (flagship learning portal) in the
+  CuratedWorkGrid, **Biome4Pets** as the caseHighlight. Ayoa/Teleqo/New Compass excluded (website projects).
+- CuratedWorkGrid now sizes a single card sensibly (~52rem, centred). New field `specialistLinksHeading`
+  added to the registry.
+
+**This completes the eight P1 service pages** (WDD, Ecommerce, Branding, CRO, WordPress, AI & Automation,
+Shopify, Custom App Development). Stopped for review. Nothing pushed.
+
+---
+
 ## Shopify migrated to modular pattern + curated-work grid for non-3 sets (21 August 2026)
 
 Migrated the `shopify` SPECIALIST page in place onto the modular layout. Verified 375/768/1440 (no overflow,

@@ -67,6 +67,7 @@ export const SERVICES_DETAIL_QUERY = `
       href,
       description,
     },
+    specialistLinksHeading { label, title, description },
 
     parentService {
       label,
