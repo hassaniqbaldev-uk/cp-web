@@ -19,7 +19,10 @@ const SpecialistLinks = ({
   title = "Specialisms built into this service",
   description = "These are not separate products to weigh up. They are the deeper parts of the same offer, and we bring them in wherever your project needs them.",
 }) => {
-  if (!links.length) return null;
+  // The section needs at least TWO links to read as a set. A single card in a multi-column grid looks
+  // like something failed to load, so the section hides itself (e.g. Branding, which only relates to
+  // UI/UX). This handles any future one-link page automatically.
+  if (links.length < 2) return null;
 
   // Grid adapts to the count so a page with 2 specialisms (e.g. Ecommerce) doesn't leave a gap in a
   // 4-up row, and a page with 4 (e.g. Web Design & Development) fills the row. Centred + width-capped
