@@ -20,7 +20,7 @@ const DEFAULT_HEADING = {
   description: null,
 };
 
-const Investment = ({ slug, includes = [], heading }) => {
+const Investment = ({ slug, includes = [], heading, showWarranty = true }) => {
   const pricing = getServicePricing(slug);
   const h = { ...DEFAULT_HEADING, ...(heading || {}) };
   const description = h.description || pricing?.framing;
@@ -96,13 +96,16 @@ const Investment = ({ slug, includes = [], heading }) => {
               )}
             </div>
 
-            {/* Warranty strip — first of the two warranty placements */}
-            <div className="border-t border-black/10 bg-[#F7FAFF] px-[3rem] py-[2.4rem] md:px-[5rem]">
-              <p className="text-[1.5rem] leading-[2.4rem] text-[#312749]">
-                <span className="font-semibold">Covered after launch. </span>
-                {WARRANTY.short}
-              </p>
-            </div>
+            {/* Warranty strip — first of the two warranty placements. Only where the warranty genuinely
+                applies (it covers what we build); omitted for services like Branding. */}
+            {showWarranty && (
+              <div className="border-t border-black/10 bg-[#F7FAFF] px-[3rem] py-[2.4rem] md:px-[5rem]">
+                <p className="text-[1.5rem] leading-[2.4rem] text-[#312749]">
+                  <span className="font-semibold">Covered after launch. </span>
+                  {WARRANTY.short}
+                </p>
+              </div>
+            )}
           </div>
         </MotionEffect>
       </div>

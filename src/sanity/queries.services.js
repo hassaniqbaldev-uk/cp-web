@@ -25,6 +25,7 @@ export const SERVICES_DETAIL_QUERY = `
   *[_type == "services" && slug.current == $slug][0] {
     _id,
     modularLayout,
+    warrantyApplies,
     workSlugs,
      seo {
     metaTitle,

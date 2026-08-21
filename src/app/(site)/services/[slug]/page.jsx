@@ -141,6 +141,10 @@ const ServicesDetailPage = async (props) => {
   //          dropped (approved: we have no real client quotes, and one clear conversion path per page).
   //  - OFF → the existing 16 service pages render exactly as before.
   const modular = service.modularLayout === true;
+  // The post-launch warranty covers what we BUILD, so it does not apply to every service (e.g. a brand
+  // identity does not "break"). warrantyApplies defaults to true (absent) and is set false where it does
+  // not belong; it gates the Investment warranty strip and the closing-CTA warranty line.
+  const warrantyApplies = service.warrantyApplies !== false;
   // Curated work (workSlugs) when the page specifies it (e.g. Ecommerce -> its Shopify projects);
   // otherwise the generic flagship-ordered set.
   let caseStudies = [];
@@ -195,9 +199,17 @@ const ServicesDetailPage = async (props) => {
         slug={slug}
         includes={service.options?.includeCard}
         heading={service.options?.heading}
+        showWarranty={warrantyApplies}
       />
       <DynamicQuestions service={service.faqs} />
-      <ServicesHubCta ctaPosition="service-detail-outro" />
+      <ServicesHubCta
+        ctaPosition="service-detail-outro"
+        description={
+          warrantyApplies
+            ? undefined
+            : "Tell us what you are working on and we will point you to the right place to start. No obligation, no hard sell."
+        }
+      />
     </>
   );
 };

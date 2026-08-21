@@ -12,6 +12,11 @@
 // Figures are the approved "from" prices (00-context §7). UK English, no invented ceilings.
 
 export const SERVICE_PRICING = {
+  branding: {
+    from: "From £1,000",
+    framing:
+      "Branding projects start from £1,000, from a logo and the essentials through to a full identity system with guidelines and collateral. Where yours lands depends on how much you need, and we scope it with you before anything starts.",
+  },
   "web-design-development": {
     from: "From £1,500",
     framing:

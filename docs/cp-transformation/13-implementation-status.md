@@ -29,6 +29,36 @@ complete and Hassan signs off final cutover.
 - Keep `development` up to date with `main` as work proceeds; flag conflicts that need Hassan.
 - Keep this file current with every task.
 - At the end of each task, state plainly what is safe to review on staging and what is unfinished.
+- **Content editing = Option 2 (decided 21 Aug 2026):** build everything first, then ONE Sanity Studio
+  setup pass at the end. **No Studio field definitions are added during the build.** Every custom field
+  goes in `custom-fields-registry.md` as it is created (that doc is the Studio-setup handover).
+- **Until the Studio pass, all copy changes come through Claude, not the Studio** — the new fields have no
+  Studio definitions yet, so editors cannot change this copy in Sanity. Route copy edits through the build.
+
+---
+
+## Branding migrated to modular pattern (21 August 2026)
+
+Migrated the existing `branding` doc (replaced in place at its _id, nav/pillar fields preserved) onto the
+CP-05 modular layout: `modularLayout:true`, real copy across every module answering the 10 commercial-page
+questions, from £1,000 (single source). Verified at 375/768/1440 (no overflow, 10 sections).
+
+- **Warranty — deliberately OFF (`warrantyApplies:false`).** The post-launch warranty covers what we
+  BUILD and fixes things that break; a brand identity does not "break", so it does not belong on a
+  branding page. Added a `warrantyApplies` field (default true) that gates the Investment warranty strip
+  and the closing-CTA warranty line; Branding sets it false. (Recorded in the field registry.)
+- **Specialist links:** UI/UX Design only (branding's sibling in Brand & Experience). Renders as a single
+  centred card — functional but a touch lone; flagged for Hassan.
+- **Evidence (honest):** branding is real but mostly appears bundled INTO web projects (brand-and-website,
+  brand redesign), rarely as a standalone engagement. Curated work = `casa-botanica-panama` (flagship,
+  brand to life), `the-smokey-carter` (award-winning brand redesign), `manzar` (the clearest standalone
+  identity work — bilingual logo + brand guidelines). Credible, better-evidenced than CRO, but the
+  identity-led standalone proof is thin.
+- **CRO pricing (next page):** no approved figure — will NOT invent one; options put to Hassan (retainer
+  framing vs price-less "scoped with you"). CRO warranty likely also off (optimisation, not a build).
+
+New field `warrantyApplies` added to `custom-fields-registry.md`. **Stopped for review before CRO. Nothing
+pushed.**
 
 ---
 
