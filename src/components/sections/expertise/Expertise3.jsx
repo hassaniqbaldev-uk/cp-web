@@ -45,14 +45,26 @@ export const themeColors = {
 
 export const themeColorList = Object.values(themeColors);
 
+// CP-05 refactor (21 Aug 2026): header is content-driven via `service.heading` (defaults preserve the
+// current copy, so the 16 existing pages are unchanged). Card icons are OPTIONAL — the underlying
+// LightFeatureCard2 already renders without one, so a service without icons still displays cleanly.
+const DEFAULT_HEADING = {
+  label: "Specialised Expertise",
+  title: "What we build",
+  description:
+    "Deep expertise across the entire ecosystem. We don't just 'install themes' we engineer solutions.",
+};
+
 const Expertise3 = ({ service }) => {
   const getThemeColor = (index) =>
     themeColorList[index % themeColorList.length];
 
+  const heading = { ...DEFAULT_HEADING, ...(service.heading || {}) };
+
   const slideData = service.card.map((item, idx) => {
     const theme = getThemeColor(idx);
     return {
-      icon: item.icon.asset.url,
+      icon: item.icon?.asset?.url,
       title: item.title,
       description: item.description,
       listItem: item.listItem?.map((list) => list.label),
@@ -85,10 +97,7 @@ const Expertise3 = ({ service }) => {
               transition={{ type: "tween", duration: 0.8, ease: "easeOut" }}
             >
               <div>
-                <SectionLabel
-                  text="Specialised Expertise"
-                  textColor="#EE8D00"
-                />
+                <SectionLabel text={heading.label} textColor="#EE8D00" />
               </div>
             </MotionEffect>
 
@@ -101,7 +110,7 @@ const Expertise3 = ({ service }) => {
               transition={{ type: "tween", duration: 0.8, ease: "easeOut" }}
             >
               <div>
-                <SectionTitle text="What we build" textColor="#312749" />
+                <SectionTitle text={heading.title} textColor="#312749" />
               </div>
             </MotionEffect>
 
@@ -115,7 +124,7 @@ const Expertise3 = ({ service }) => {
             >
               <div className="max-w-[74rem]">
                 <SectionDescription
-                  text="Deep expertise across the entire ecosystem. We don't just 'install themes' we engineer solutions."
+                  text={heading.description}
                   textColor="#625C70"
                 />
               </div>
@@ -137,7 +146,7 @@ const Expertise3 = ({ service }) => {
                   transition={{ type: "tween", duration: 1.0, ease: "easeOut" }}
                 >
                   <LightFeatureCard2
-                    icon={item.icon.asset.url}
+                    icon={item.icon?.asset?.url}
                     title={item.title}
                     description={item.description}
                     points={item.listItem?.map((list) => list.label)}

@@ -66,9 +66,20 @@ export const themeColors = {
 
 export const themeColorList = Object.values(themeColors);
 
+// CP-05 refactor (21 Aug 2026): header is content-driven via `service.heading` (defaults preserve the
+// current copy, so the 16 existing pages are unchanged). Step icons are OPTIONAL — a step without one
+// renders as a numbered row with no icon column.
+const DEFAULT_HEADING = {
+  label: "Our Methodology",
+  title: "How we deliver results",
+  description: "A proven process that minimises risk and maximises ROI.",
+};
+
 const Methodology = ({ service }) => {
   const getThemeColor = (index) =>
     themeColorList[index % themeColorList.length];
+
+  const heading = { ...DEFAULT_HEADING, ...(service.heading || {}) };
 
   return (
     <>
@@ -84,7 +95,7 @@ const Methodology = ({ service }) => {
               transition={{ type: "tween", duration: 0.8, ease: "easeOut" }}
             >
               <div>
-                <SectionLabel text="Our Methodology" textColor="#3078FF" />
+                <SectionLabel text={heading.label} textColor="#3078FF" />
               </div>
             </MotionEffect>
 
@@ -97,10 +108,7 @@ const Methodology = ({ service }) => {
               transition={{ type: "tween", duration: 0.8, ease: "easeOut" }}
             >
               <div className="mt-[.5rem] mb-[1.4rem]">
-                <SectionTitle
-                  text="How we deliver results"
-                  textColor="#312749"
-                />
+                <SectionTitle text={heading.title} textColor="#312749" />
               </div>
             </MotionEffect>
 
@@ -114,7 +122,7 @@ const Methodology = ({ service }) => {
             >
               <div>
                 <SectionDescription
-                  text="A proven process that minimises risk and maximises ROI."
+                  text={heading.description}
                   textColor="#625C70"
                 />
               </div>
@@ -163,15 +171,17 @@ const Methodology = ({ service }) => {
                         </p>
                       </div>
 
-                      <div className="h-[14rem] min-w-[13rem]">
-                        <Image
-                          src={step.icon.asset.url}
-                          width={130}
-                          height={140}
-                          alt="Icon"
-                          unoptimized
-                        />
-                      </div>
+                      {step.icon?.asset?.url && (
+                        <div className="h-[14rem] min-w-[13rem]">
+                          <Image
+                            src={step.icon.asset.url}
+                            width={130}
+                            height={140}
+                            alt="Icon"
+                            unoptimized
+                          />
+                        </div>
+                      )}
                     </div>
                   </div>
                 </MotionEffect>
@@ -227,15 +237,17 @@ const Methodology = ({ service }) => {
                           </p>
                         </div>
 
-                        <div className="h-[14rem] min-w-[13rem]">
-                          <Image
-                            src={step.icon.asset.url}
-                            width={130}
-                            height={140}
-                            alt="Icon"
-                            unoptimized
-                          />
-                        </div>
+                        {step.icon?.asset?.url && (
+                          <div className="h-[14rem] min-w-[13rem]">
+                            <Image
+                              src={step.icon.asset.url}
+                              width={130}
+                              height={140}
+                              alt="Icon"
+                              unoptimized
+                            />
+                          </div>
+                        )}
                       </div>
                     </div>
                   );

@@ -32,9 +32,21 @@ export const themeColors = {
 
 export const themeColorList = Object.values(themeColors);
 
+// CP-05 refactor (21 Aug 2026): the header is content-driven via `service.heading`. The defaults are
+// COMPLIANT replacements for the old hardcoded copy — the banned "Stop losing money to..." line is
+// removed everywhere it appeared (all 16 pages), per the approved decision. Existing pages that don't
+// author a heading now render these compliant defaults instead of the banned phrase.
+const DEFAULT_HEADING = {
+  label: "partner with us",
+  title: "The problems we solve",
+  description: "The issues that hold a website back, and how we put them right.",
+};
+
 const PartnerWithUs2 = ({ service }) => {
   const getThemeColor = (index) =>
     themeColorList[index % themeColorList.length];
+
+  const heading = { ...DEFAULT_HEADING, ...(service.heading || {}) };
 
   const slideData = service.card.map((item, idx) => {
     const theme = getThemeColor(idx);
@@ -72,7 +84,7 @@ const PartnerWithUs2 = ({ service }) => {
                 transition={{ type: "tween", duration: 0.8, ease: "easeOut" }}
               >
                 <div>
-                  <SectionLabel text="partner with us" textColor="#FF37B3" />
+                  <SectionLabel text={heading.label} textColor="#FF37B3" />
                 </div>
               </MotionEffect>
 
@@ -85,10 +97,7 @@ const PartnerWithUs2 = ({ service }) => {
                 transition={{ type: "tween", duration: 0.8, ease: "easeOut" }}
               >
                 <div>
-                  <SectionTitle
-                    text="Stop losing money to..."
-                    textColor="#FFFFFF"
-                  />
+                  <SectionTitle text={heading.title} textColor="#FFFFFF" />
                 </div>
               </MotionEffect>
 
@@ -102,7 +111,7 @@ const PartnerWithUs2 = ({ service }) => {
               >
                 <div>
                   <SectionDescription
-                    text="We identify and fix the bottlenecks that are choking your growth."
+                    text={heading.description}
                     textColor="#FFFFFF"
                   />
                 </div>
