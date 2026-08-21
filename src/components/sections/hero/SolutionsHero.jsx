@@ -9,24 +9,8 @@ import { MotionEffect } from "@/components/effects/motion-effect";
 import HomeHeroLogoShape1 from "@/components/decorative-elements/HomeHeroLogoShape1";
 import HomeHeroLogoShape2 from "@/components/decorative-elements/HomeHeroLogoShape2";
 import ContactHeroLogoShape1 from "@/components/decorative-elements/ContactHeroLogoShape1";
-import { useEffect } from "react";
 
 const SolutionsHero = () => {
-  useEffect(() => {
-    (async function () {
-      const { getCalApi } = await import("@calcom/embed-react");
-      const cal = await getCalApi({ namespace: "15min" });
-      cal("ui", {
-        theme: "dark",
-        cssVarsPerTheme: {
-          light: { "cal-brand": "#292929" },
-          dark: { "cal-brand": "#FF37B3" },
-        },
-        hideEventTypeDetails: false,
-        layout: "month_view",
-      });
-    })();
-  }, []);
 
   return (
     <>
@@ -107,35 +91,13 @@ const SolutionsHero = () => {
                   href="/case-studies"
                 />
 
-                <motion.button
-                  data-cal-namespace="15min"
-                  data-cal-link="hassan-iqbal-mznzu9/15min"
-                  data-cal-config='{"layout":"month_view","theme":"dark"}'
-                  initial="initial"
-                  whileHover="hover"
-                  className="relative inline-flex h-[4rem] items-center justify-center overflow-hidden rounded-[60px] border-2 border-[#312749]/40 px-[30px] py-[8px] text-center text-[1.4rem] font-semibold tracking-normal text-[#312749] md:h-[5rem] md:text-[1.8rem]"
-                >
-                  <motion.span
-                    variants={{
-                      initial: { y: "0%" },
-                      hover: { y: "-130%" },
-                    }}
-                    transition={{ duration: 0.2, ease: "easeOut" }}
-                    className="block"
-                  >
-                    Book a Strategy Call
-                  </motion.span>
-                  <motion.span
-                    variants={{
-                      initial: { y: "100%" },
-                      hover: { y: "0%" },
-                    }}
-                    transition={{ duration: 0.2, ease: "easeOut" }}
-                    className="absolute inset-0 flex items-center justify-center"
-                  >
-                    Book a Strategy Call
-                  </motion.span>
-                </motion.button>
+                <PrimaryButton
+                  text="Start a project"
+                  href="/contact"
+                  bGcolor="#FF37B3"
+                  textColor="#FFFFFF"
+                  ctaPosition="solutions-hero"
+                />
               </div>
             </MotionEffect>
           </div>

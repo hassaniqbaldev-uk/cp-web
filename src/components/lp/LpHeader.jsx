@@ -3,7 +3,6 @@
 import Link from "next/link";
 import Logo from "../decorative-elements/Logo";
 import RightArrowIcon from "../icons/RightArrowIcon";
-import SecondaryButton from "../ui/SecondaryButton";
 import PhoneIcon from "../icons/PhoneIcon";
 import { motion } from "framer-motion";
 import { MotionEffect } from "../effects/motion-effect";
@@ -23,22 +22,6 @@ const LpHeader = () => {
     initial: { y: "100%" },
     hover: { y: "0%" },
   };
-
-  useEffect(() => {
-    (async function () {
-      const { getCalApi } = await import("@calcom/embed-react");
-      const cal = await getCalApi({ namespace: "15min" });
-      cal("ui", {
-        theme: "dark",
-        cssVarsPerTheme: {
-          light: { "cal-brand": "#292929" },
-          dark: { "cal-brand": "#FF37B3" },
-        },
-        hideEventTypeDetails: false,
-        layout: "month_view",
-      });
-    })();
-  }, []);
 
   useEffect(() => {
     const handleScroll = () => {

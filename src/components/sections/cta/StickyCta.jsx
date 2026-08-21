@@ -69,10 +69,10 @@ const StickyCta = () => {
 
               <div className="min-w-max">
                 <PrimaryButton
-                  text="Book a Call"
+                  text="Start a project"
                   textColor="#FFFFFF"
                   bGcolor="#FF37B3"
-                  href="/call"
+                  href="/contact"
                 />
               </div>
             </div>

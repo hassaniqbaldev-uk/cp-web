@@ -7,27 +7,10 @@ import HomeHeroLogoShape1 from "@/components/decorative-elements/HomeHeroLogoSha
 import AboutHeroLogoShape1 from "@/components/decorative-elements/AboutHeroLogoShape1";
 import ContactHeroLogoShape1 from "@/components/decorative-elements/ContactHeroLogoShape1";
 import Logo from "@/components/decorative-elements/Logo";
-import SecondaryButton from "@/components/ui/SecondaryButton";
-import { useEffect } from "react";
+import PrimaryButton from "@/components/ui/PrimaryButton";
 import { MotionEffect } from "@/components/effects/motion-effect";
 
 const AgenciesHero = () => {
-  useEffect(() => {
-    (async function () {
-      const { getCalApi } = await import("@calcom/embed-react");
-      const cal = await getCalApi({ namespace: "15min" });
-      cal("ui", {
-        theme: "dark",
-        cssVarsPerTheme: {
-          light: { "cal-brand": "#292929" },
-          dark: { "cal-brand": "#FF37B3" },
-        },
-        hideEventTypeDetails: false,
-        layout: "month_view",
-      });
-    })();
-  }, []);
-
   return (
     <>
       <section className="relative w-full overflow-hidden px-[2rem] pt-[15rem] pb-[10rem] md:pt-[20rem] xl:px-[0rem]">
@@ -89,11 +72,12 @@ const AgenciesHero = () => {
                 fade
                 delay={0.3}
               >
-                <SecondaryButton
-                  data-cal-namespace="15min"
-                  data-cal-link="hassan-iqbal-mznzu9/15min"
-                  data-cal-config='{"layout":"month_view","theme":"dark"}'
-                  text="Book with Hassan"
+                <PrimaryButton
+                  text="Start a project"
+                  href="/contact"
+                  bGcolor="#FF37B3"
+                  textColor="#FFFFFF"
+                  ctaPosition="agencies-hero"
                 />
               </MotionEffect>
             </div>

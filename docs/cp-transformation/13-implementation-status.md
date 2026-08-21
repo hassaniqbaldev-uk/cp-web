@@ -32,6 +32,34 @@ complete and Hassan signs off final cutover.
 
 ---
 
+## O20 sweep — Book a Call / Cal.com removed site-wide except booking-centric sections (21 August 2026)
+
+Swapped every simple Book-a-Call CTA to **Start a project → /contact** and removed the Cal.com embed,
+keeping section layouts. Components changed (10):
+- `Cta2.jsx` (14 legacy service pages) — Cal button → Start a project; embed removed.
+- `TheSolution.jsx` (case-study detail, 31) — Book a Call (/call) → Start a project (/contact).
+- `SolutionsHero`, `TestimonialsHero`, `AgenciesHero` — hero Cal booking button → Start a project; embeds
+  removed. `LegalHero`, `ServicesHero` (unused) — vestigial embeds removed. `StickyCta` (unused) — /call
+  link → /contact.
+- `LpFooter`, `LpHeader` (retiring LP) — Book-a-Call card + embeds removed.
+
+**Verified** at 375/768/1440 (/solutions, /services/wordpress): no overflow, Start a project renders,
+legacy pages fully clean.
+
+**Deliberately NOT rewritten — booking-centric sections flagged for Hassan (per his instruction to tell
+him before rewriting the avatar booking card):**
+- `GradientButton` — the avatar "Book with Hassan" button (Hassan's photo + online dot + Cal).
+- `Cta.jsx` — the closing section built around it (Hassan avatar card, "Book a FREE strategy call with
+  Hassan"), on home, about, case-studies (both), how-we-work, partner-with-us, solutions.
+- `HomeHero` — uses GradientButton.
+- `ContactHero` + `ContactHeroSlider` — the "Book Strategy Call / 15-min chat with Hassan" card.
+
+`/call` (CallHero + page title) intentionally kept, noindexed. So **"no Book a Call anywhere" is true
+except `/call` and the flagged avatar/booking sections** — those await Hassan's call on how to replace the
+booking concept. O20 stays open for that decision.
+
+---
+
 ## Ecommerce page built (21 August 2026)
 
 Second Web & Ecommerce pillar page, same modular pattern as WDD (`service-ecommerce`, staging,

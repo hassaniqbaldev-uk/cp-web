@@ -2,7 +2,6 @@
 import FooterBg from "@/assets/images/backgrounds/footer-bg.webp";
 import PhoneIcon from "@/assets/icons/ui/phone-icon.svg";
 import EmailIcon from "@/assets/icons/ui/email-icon.svg";
-import HeadphoneIcon from "@/assets/icons/ui/headphone-icon.svg";
 import FacebookIcon from "@/assets/icons/social/facebook-icon.svg";
 import InstagramIcon from "@/assets/icons/social/instagram-icon.svg";
 import LinkedinIcon from "@/assets/icons/social/linkedin-icon.svg";
@@ -29,27 +28,9 @@ import {
 import FooterBgStroke from "../decorative-elements/FooterBgStroke";
 import ChevronDownIcon from "../icons/ChevronDownIcon";
 import Marquee from "react-fast-marquee";
-import { useEffect } from "react";
-import SecondaryButton from "../ui/SecondaryButton";
 import Logo from "../decorative-elements/Logo";
 
 const LpFooter = () => {
-  useEffect(() => {
-    (async function () {
-      const { getCalApi } = await import("@calcom/embed-react");
-      const cal = await getCalApi({ namespace: "15min" });
-      cal("ui", {
-        theme: "dark",
-        cssVarsPerTheme: {
-          light: { "cal-brand": "#292929" },
-          dark: { "cal-brand": "#FF37B3" },
-        },
-        hideEventTypeDetails: false,
-        layout: "month_view",
-      });
-    })();
-  }, []);
-
   return (
     <>
       <footer
@@ -144,38 +125,6 @@ const LpFooter = () => {
                   </div>
                 </Link>
 
-                <button
-                  data-cal-namespace="15min"
-                  data-cal-link="hassan-iqbal-mznzu9/15min"
-                  data-cal-config='{"layout":"month_view","theme":"dark"}'
-                  className="group flex h-[9rem] w-full items-center justify-start gap-[1.5rem] overflow-hidden rounded-[1.6rem] border border-white/20 bg-white/10 px-[2rem] backdrop-blur-[10px] transition-all duration-400 hover:-translate-y-2 md:h-[14rem] md:w-[33.4rem] md:justify-center md:gap-[2.4rem] md:px-[0rem]"
-                >
-                  <i className="relative inline-flex size-[5.2rem] min-w-max items-center justify-center md:size-[8.2rem]">
-                    <div
-                      style={{
-                        boxShadow: "5px 5px 44px 0px #ED910CCC",
-                      }}
-                      className="absolute inset-0 z-[1] rounded-[.9rem] bg-[#ED910C] transition-all duration-800 group-hover:scale-[12] md:rounded-[1.5rem]"
-                    />
-                    <Image
-                      src={HeadphoneIcon}
-                      width={45}
-                      height={45}
-                      alt="Icon"
-                      className="absolute z-[10] size-[2.4rem] md:size-[4.5rem]"
-                    />
-                  </i>
-
-                  <div className="relative z-[100] flex flex-col items-start text-left">
-                    <span className="text-[1.2rem] font-medium tracking-normal text-white md:text-[1.8rem]">
-                      Let&apos;s talk
-                    </span>
-
-                    <h4 className="text-[2rem] font-bold tracking-[-0.02em] text-white md:text-[3.2rem]">
-                      Book a Call
-                    </h4>
-                  </div>
-                </button>
               </div>
 
               <p className="text-center text-[1.6rem] leading-[2.6rem] font-semibold tracking-normal text-white md:text-[1.8rem]">

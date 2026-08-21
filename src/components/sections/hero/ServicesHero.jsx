@@ -9,25 +9,8 @@ import { MotionEffect } from "@/components/effects/motion-effect";
 import HomeHeroLogoShape1 from "@/components/decorative-elements/HomeHeroLogoShape1";
 import HomeHeroLogoShape2 from "@/components/decorative-elements/HomeHeroLogoShape2";
 import ContactHeroLogoShape1 from "@/components/decorative-elements/ContactHeroLogoShape1";
-import { useEffect } from "react";
 
 const ServicesHero = () => {
-  useEffect(() => {
-    (async function () {
-      const { getCalApi } = await import("@calcom/embed-react");
-      const cal = await getCalApi({ namespace: "15min" });
-      cal("ui", {
-        theme: "dark",
-        cssVarsPerTheme: {
-          light: { "cal-brand": "#292929" },
-          dark: { "cal-brand": "#FF37B3" },
-        },
-        hideEventTypeDetails: false,
-        layout: "month_view",
-      });
-    })();
-  }, []);
-
   return (
     <>
       <section className="relative w-full overflow-hidden px-[2rem] pt-[19rem] pb-[13rem] xl:px-[0rem]">
@@ -124,14 +107,13 @@ const ServicesHero = () => {
                   href="/case-studies"
                 />
 
-                <button
-                  data-cal-namespace="15min"
-                  data-cal-link="hassan-iqbal-mznzu9/15min"
-                  data-cal-config='{"layout":"month_view","theme":"dark"}'
-                  className="inline-flex h-[4rem] items-center justify-center rounded-[60px] border-2 border-[#312749]/40 px-[30px] py-[8px] text-center text-[1.4rem] font-semibold tracking-normal text-[#312749] md:h-[5rem] md:text-[1.8rem]"
-                >
-                  Book a Strategy Call
-                </button>
+                <PrimaryButton
+                  text="Start a project"
+                  href="/contact"
+                  bGcolor="#FF37B3"
+                  textColor="#FFFFFF"
+                  ctaPosition="services-hero-legacy"
+                />
               </div>
             </MotionEffect>
           </div>

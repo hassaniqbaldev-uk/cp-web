@@ -1,33 +1,16 @@
 "use client";
 
-import { useEffect } from "react";
 import SectionTitle from "@/components/ui/SectionTitle";
 import SectionDescription from "@/components/ui/SectionDescription";
-import SecondaryButton from "@/components/ui/SecondaryButton";
+import PrimaryButton from "@/components/ui/PrimaryButton";
 import Cta2BgStroke from "@/components/decorative-elements/Cta2BgStroke";
 import { MotionEffect } from "@/components/effects/motion-effect";
 
 const Cta2 = ({
   title = "Facing these challenges right now?",
   description = "You don't have to tackle them alone. Let's discuss your specific situation.",
-  buttonText = "Get Free Consultation",
+  buttonText = "Start a project",
 }) => {
-  useEffect(() => {
-    (async function () {
-      const { getCalApi } = await import("@calcom/embed-react");
-      const cal = await getCalApi({ namespace: "15min" });
-      cal("ui", {
-        theme: "dark",
-        cssVarsPerTheme: {
-          light: { "cal-brand": "#292929" },
-          dark: { "cal-brand": "#FF37B3" },
-        },
-        hideEventTypeDetails: false,
-        layout: "month_view",
-      });
-    })();
-  }, []);
-
   return (
     <MotionEffect
       slide={{ direction: "down" }}
@@ -53,13 +36,12 @@ const Cta2 = ({
           </div>
 
           <div className="relative flex w-full justify-center xl:w-[36rem] xl:justify-end">
-            <SecondaryButton
+            <PrimaryButton
               text={buttonText}
+              href="/contact"
               bGcolor="#312749"
               textColor="#FFFFFF"
-              data-cal-namespace="15min"
-              data-cal-link="hassan-iqbal-mznzu9/15min"
-              data-cal-config='{"layout":"month_view","theme":"dark"}'
+              ctaPosition="service-detail-cta2"
             />
           </div>
         </div>

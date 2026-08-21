@@ -7,25 +7,8 @@ import { MotionEffect } from "@/components/effects/motion-effect";
 import HomeHeroLogoShape1 from "@/components/decorative-elements/HomeHeroLogoShape1";
 import HomeHeroLogoShape2 from "@/components/decorative-elements/HomeHeroLogoShape2";
 import ContactHeroLogoShape1 from "@/components/decorative-elements/ContactHeroLogoShape1";
-import { useEffect } from "react";
 
 const LegalHero = () => {
-  useEffect(() => {
-    (async function () {
-      const { getCalApi } = await import("@calcom/embed-react");
-      const cal = await getCalApi({ namespace: "15min" });
-      cal("ui", {
-        theme: "dark",
-        cssVarsPerTheme: {
-          light: { "cal-brand": "#292929" },
-          dark: { "cal-brand": "#FF37B3" },
-        },
-        hideEventTypeDetails: false,
-        layout: "month_view",
-      });
-    })();
-  }, []);
-
   return (
     <>
       <section className="relative w-full overflow-hidden px-[2rem] pt-[19rem] pb-[13rem] xl:px-[0rem]">

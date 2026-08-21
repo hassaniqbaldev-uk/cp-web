@@ -76,8 +76,8 @@ const TheSolution = ({ caseStudy }) => {
               >
                 <div>
                   <PrimaryButton
-                    href="/call"
-                    text="Book a Call"
+                    href="/contact"
+                    text="Start a project"
                     textColor="#05020B"
                     bGcolor={caseStudy.primaryColor}
                   />
