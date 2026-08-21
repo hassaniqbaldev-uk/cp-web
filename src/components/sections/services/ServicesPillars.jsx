@@ -212,14 +212,11 @@ const ServicesPillars = ({ columns = [] }) => {
           </MotionEffect>
         </div>
 
-        {/* Equal pillar cards in a single row. Column count adapts to the data
-            (repeat(N)) at xl; stacks to 1 / 2 columns below. */}
-        <div
-          className="mt-[5rem] grid grid-cols-1 gap-[3.3rem] md:grid-cols-2 xl:mt-[7rem] xl:[grid-template-columns:var(--pillar-cols)]"
-          style={{
-            "--pillar-cols": `repeat(${ordered.length}, minmax(0, 1fr))`,
-          }}
-        >
+        {/* Equal pillar cards. FIXED three per row at xl (never forced four across): a fourth pillar wraps
+            to a second row and, because each column is 1fr, keeps the same 1/3 card width and aligns left
+            rather than stretching. Works for any count from the data — 3 → one row; 4 → 3 + 1; 5 → 3 + 2;
+            6 → 3 + 3. Stacks to 2 columns at md and 1 at mobile. */}
+        <div className="mt-[5rem] grid grid-cols-1 gap-[3.3rem] md:grid-cols-2 xl:mt-[7rem] xl:grid-cols-3">
           {ordered.map((column, idx) => (
             <MotionEffect
               key={column.key}

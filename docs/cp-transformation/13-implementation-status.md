@@ -42,6 +42,19 @@ complete and Hassan signs off final cutover.
 
 ---
 
+## Services pillars — fixed 3-per-row grid (21 August 2026)
+
+With four pillars now live, the pillars grid was forcing four across (`repeat(N)`). Changed the xl grid to a
+fixed **3 columns** (`xl:grid-cols-3`); md stays 2, mobile stays 1. Because each column is `1fr`, a wrapped
+card keeps the same 1/3 width and aligns left (no stretch). Everything else unchanged (Web & Ecommerce
+first, card styling/colours, scroll animation + stagger, copy).
+
+**Verified at 375/768/1440, and simulated every count at xl (cards come from data, max 4 in the registry
+today):** 3 → one row of 3; 4 → 3 + 1; 5 → 3 + 2; 6 → 3 + 3. Every wrapped card measured at the same 378px
+(1/3) width, left-aligned; no overflow at any breakpoint. Committed on its own.
+
+---
+
 ## AI & Automation pillar built + Biome4Pets published (21 August 2026)
 
 Built the AI & Automation PILLAR page (`service-ai-automation`, was a bare stub). Top-level pillar — no
