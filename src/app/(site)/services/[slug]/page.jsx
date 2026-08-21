@@ -9,6 +9,7 @@ import Work from "@/components/sections/work/Work";
 import SpecialistLinks from "@/components/sections/services/detail/SpecialistLinks";
 import ParentServiceBand from "@/components/sections/services/detail/ParentServiceBand";
 import ServiceCaseHighlight from "@/components/sections/services/detail/ServiceCaseHighlight";
+import CuratedWorkGrid from "@/components/sections/services/detail/CuratedWorkGrid";
 import ProjectShowcase from "@/components/sections/services/detail/ProjectShowcase";
 import Investment from "@/components/sections/services/detail/Investment";
 import ServicesHubCta from "@/components/sections/services/ServicesHubCta";
@@ -157,15 +158,21 @@ const ServicesDetailPage = async (props) => {
   //  - `workSlugs` present but EMPTY -> intentionally NO work section (honest opt-out where there is no
   //                                     credible standalone evidence, e.g. CRO — never pad with unrelated work)
   let caseStudies = [];
+  let curated = false;
   if (modular) {
     if (Array.isArray(service.workSlugs)) {
-      caseStudies = service.workSlugs.length
+      curated = service.workSlugs.length > 0;
+      caseStudies = curated
         ? await getCuratedWork(service.workSlugs.join(","))
         : [];
     } else {
       caseStudies = await getWork();
     }
   }
+  // The shared Work component is a fixed 1-big-+-2-small layout that needs exactly three case studies.
+  // A curated set that is NOT three (e.g. Shopify's two genuine builds) renders in the flexible
+  // CuratedWorkGrid instead, so it shows the real evidence without padding to three.
+  const useCuratedGrid = curated && caseStudies.length !== 3;
 
   if (!modular) {
     return (
@@ -201,14 +208,22 @@ const ServicesDetailPage = async (props) => {
         <SpecialistLinks links={service.specialistLinks} />
       )}
       <Methodology service={service.methodology} />
-      {caseStudies.length > 0 && (
-        <Work
-          caseStudies={caseStudies}
-          label="Recent work"
-          title="Work we have delivered."
-          description="A few recent projects that show the range and the standard we hold across every build."
-        />
-      )}
+      {caseStudies.length > 0 &&
+        (useCuratedGrid ? (
+          <CuratedWorkGrid
+            caseStudies={caseStudies}
+            label="Recent work"
+            title="Work we have delivered."
+            description="A few recent projects that show the range and the standard we hold across every build."
+          />
+        ) : (
+          <Work
+            caseStudies={caseStudies}
+            label="Recent work"
+            title="Work we have delivered."
+            description="A few recent projects that show the range and the standard we hold across every build."
+          />
+        ))}
       {service.caseHighlight && (
         <ServiceCaseHighlight highlight={service.caseHighlight} />
       )}

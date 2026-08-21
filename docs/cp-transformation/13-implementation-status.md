@@ -42,6 +42,29 @@ complete and Hassan signs off final cutover.
 
 ---
 
+## Shopify migrated to modular pattern + curated-work grid for non-3 sets (21 August 2026)
+
+Migrated the `shopify` SPECIALIST page in place onto the modular layout. Verified 375/768/1440 (no overflow,
+11 sections).
+
+- **Reads as part of Ecommerce** — parentService band "Part of Ecommerce" links up to `/services/ecommerce`.
+- **Specialist links: Migrations + CRO.** Migrations is the primary (replatforming to Shopify). Added CRO
+  as the second because (a) a lone link hides the section per the <2 rule set on Branding, and (b) improving
+  a live store's conversion genuinely fits an ecommerce build. Flagged for Hassan — happy to drop to just
+  Migrations (section then hides) if he prefers.
+- **Pricing from £3,500** (a Shopify store is an ecommerce build; same figure as Ecommerce, per Hassan).
+  Warranty on (it is a build).
+- **Evidence — thin but real, not padded.** Only the two genuine Shopify builds: `minnessak` (flagship) and
+  `mr-pickles` (supporting). The shared Work component is a fixed 1-big-+-2-small layout needing exactly
+  three, so a new **`CuratedWorkGrid`** presents any count (Shopify shows two, centred). Ecommerce/Branding
+  (three curated) still use the Work component unchanged; WDD (generic) unchanged; CRO (empty) still no
+  section. The page renders two real builds rather than padding to three.
+
+**Stopped for review before Custom App Development.** (See report for the parent-band framing question on
+Custom App Development.) Nothing pushed.
+
+---
+
 ## Services pillars — fixed 3-per-row grid (21 August 2026)
 
 With four pillars now live, the pillars grid was forcing four across (`repeat(N)`). Changed the xl grid to a

@@ -37,6 +37,11 @@ export const SERVICE_PRICING = {
     framing:
       "Web projects start from £1,500, from a focused business website through to a larger custom build. The right figure depends on the number of pages, the design work and any functionality you need, and we scope it with you before anything starts.",
   },
+  shopify: {
+    from: "From £3,500",
+    framing:
+      "Shopify builds start from £3,500, the same starting point as our wider ecommerce work, since a Shopify store is an ecommerce build. Where yours lands depends on the design, your catalogue and the apps you need, and we scope it with you first.",
+  },
   ecommerce: {
     from: "From £3,500",
     framing:
