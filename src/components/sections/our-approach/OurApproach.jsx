@@ -35,7 +35,7 @@ const OurApproach = ({ caseStudy }) => {
               </div>
 
               <ul className="flex flex-col gap-[3.8rem] text-left">
-                {caseStudy.ourApproach.points.map((item, idx) => (
+                {caseStudy.ourApproach.points?.map((item, idx) => (
                   <li
                     key={idx}
                     className="inline-flex gap-[1rem] md:gap-[2rem]"
@@ -56,18 +56,20 @@ const OurApproach = ({ caseStudy }) => {
               </ul>
             </div>
 
-            <div className="absolute right-0 bottom-0 hidden h-[67.7rem] w-[64.5rem] xl:block">
-              <Image
-                src={urlFor(caseStudy.ourApproach.cardImage)
-                  .width(645)
-                  .height(677)
-                  .url()}
-                alt={caseStudy.ourApproach.title}
-                width={645}
-                height={677}
-                unoptimized
-              />
-            </div>
+            {caseStudy.ourApproach.cardImage && (
+              <div className="absolute right-0 bottom-0 hidden h-[67.7rem] w-[64.5rem] xl:block">
+                <Image
+                  src={urlFor(caseStudy.ourApproach.cardImage)
+                    .width(645)
+                    .height(677)
+                    .url()}
+                  alt={caseStudy.ourApproach.title}
+                  width={645}
+                  height={677}
+                  unoptimized
+                />
+              </div>
+            )}
           </div>
         </MotionEffect>
       </section>

@@ -24,18 +24,20 @@ const TheSolution = ({ caseStudy }) => {
               delay={0.1}
               transition={{ type: "tween", duration: 1.0, ease: "easeOut" }}
             >
-              <div className="flex w-full items-center justify-center md:w-[51.1rem]">
-                <Image
-                  src={urlFor(caseStudy.theSolution.cardImage)
-                    .width(511)
-                    .height(495)
-                    .url()}
-                  alt={caseStudy.theSolution.title}
-                  width={511}
-                  height={495}
-                  unoptimized
-                />
-              </div>
+              {caseStudy.theSolution.cardImage && (
+                <div className="flex w-full items-center justify-center md:w-[51.1rem]">
+                  <Image
+                    src={urlFor(caseStudy.theSolution.cardImage)
+                      .width(511)
+                      .height(495)
+                      .url()}
+                    alt={caseStudy.theSolution.title}
+                    width={511}
+                    height={495}
+                    unoptimized
+                  />
+                </div>
+              )}
             </MotionEffect>
 
             <div className="w-full md:w-[51.6rem] xl:pb-[4rem]">

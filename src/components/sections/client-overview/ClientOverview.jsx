@@ -126,7 +126,8 @@ const ClientOverview = ({ caseStudy }) => {
             transition={{ type: "tween", duration: 1.0, ease: "easeOut" }}
           >
             <div className="mt-[5rem] w-full overflow-hidden rounded-[1rem] md:rounded-[3rem]">
-              {caseStudy.clientOverview.cardImage?.length > 1 ? (
+              {!caseStudy.clientOverview.cardImage?.length ? null : caseStudy
+                  .clientOverview.cardImage?.length > 1 ? (
                 <Carousel
                   items={caseStudy.clientOverview.cardImage}
                   className="w-full"

@@ -45,23 +45,25 @@ const TheChallenge = ({ caseStudy }) => {
                 delay={0.1}
                 transition={{ type: "tween", duration: 1.0, ease: "easeOut" }}
               >
-                <div className="flex h-full w-full items-center justify-center md:w-[57.8rem]">
-                  <Image
-                    src={urlFor(caseStudy.theChallenge.cardImage1)
-                      .width(578)
-                      .height(820)
-                      .url()}
-                    alt={caseStudy.theChallenge.title}
-                    width={578}
-                    height={820}
-                    unoptimized
-                  />
-                </div>
+                {caseStudy.theChallenge.cardImage1 && (
+                  <div className="flex h-full w-full items-center justify-center md:w-[57.8rem]">
+                    <Image
+                      src={urlFor(caseStudy.theChallenge.cardImage1)
+                        .width(578)
+                        .height(820)
+                        .url()}
+                      alt={caseStudy.theChallenge.title}
+                      width={578}
+                      height={820}
+                      unoptimized
+                    />
+                  </div>
+                )}
               </MotionEffect>
 
               <div className="flex w-full flex-col justify-between gap-[5rem] md:w-[58.4rem]">
                 <ul className="flex flex-col gap-[2rem] md:gap-[3.8rem]">
-                  {caseStudy.theChallenge.points.map((item, idx) => (
+                  {caseStudy.theChallenge.points?.map((item, idx) => (
                     <MotionEffect
                       key={idx}
                       slide={{ direction: "down" }}
@@ -98,18 +100,20 @@ const TheChallenge = ({ caseStudy }) => {
                   delay={0.25}
                   transition={{ type: "tween", duration: 1.0, ease: "easeOut" }}
                 >
-                  <div className="flex h-full w-full items-end justify-center">
-                    <Image
-                      src={urlFor(caseStudy.theChallenge.cardImage2)
-                        .width(584)
-                        .height(375)
-                        .url()}
-                      alt={caseStudy.theChallenge.title}
-                      width={584}
-                      height={375}
-                      unoptimized
-                    />
-                  </div>
+                  {caseStudy.theChallenge.cardImage2 && (
+                    <div className="flex h-full w-full items-end justify-center">
+                      <Image
+                        src={urlFor(caseStudy.theChallenge.cardImage2)
+                          .width(584)
+                          .height(375)
+                          .url()}
+                        alt={caseStudy.theChallenge.title}
+                        width={584}
+                        height={375}
+                        unoptimized
+                      />
+                    </div>
+                  )}
                 </MotionEffect>
               </div>
             </div>
