@@ -37,6 +37,29 @@ complete and Hassan signs off final cutover.
 
 ---
 
+## WordPress migrated to modular pattern + O19 fixed + parent-link feature (21 August 2026)
+
+Migrated the `wordpress` SPECIALIST page in place onto the modular layout. Real WordPress copy across every
+module, 10 questions. Verified at 375/768/1440 (no overflow, 11 sections).
+
+- **O19 FIXED.** The old doc was contaminated with UI/UX-design copy (fit/not-fit/options read as UI/UX:
+  "MVP design", "just a logo — see Branding", "SaaS companies"). The full createOrReplace **removes all of
+  it** and replaces with real WordPress content. Verified: none of the UI/UX strings remain.
+- **Links UP to its parent** (new `parentService` field + `ParentServiceBand` component): a slim "Part of
+  Web Design & Development" band under the hero, linking to the parent so WordPress reads as part of that
+  offer, not a competitor. **Links across/down** via specialistLinks (Migrations, Website Speed, Security).
+- **Pricing:** from £1,500 — a WordPress site is a web build, so it shares the web starting point (added a
+  `wordpress` entry to the single source; flagged for Hassan in case he wants a WordPress-specific figure).
+- **Warranty ON** (it is a build). Curated work: `casa-botanica-panama` + `sight-for-life` (flagships) +
+  `sorted` — WordPress evidence is genuinely strong (6 WordPress case studies, 2 flagships).
+
+New field `parentService` added to `custom-fields-registry.md`. **Stopped for review. Nothing pushed.**
+
+**AI & Automation — blocked, need input from Hassan (see report):** no page content exists, and its only
+evidence (Biome4Pets) is an unpublished draft. Cannot build an honest page without direction.
+
+---
+
 ## O20 completed — avatar booking sections reworked + booking scrubbed from metadata (21 August 2026)
 
 Hassan: replace the avatar booking sections (do not preserve), and confirm no Cal.com embed or Book a Call

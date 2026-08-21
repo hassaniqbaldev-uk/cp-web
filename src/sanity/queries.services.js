@@ -68,6 +68,12 @@ export const SERVICES_DETAIL_QUERY = `
       description,
     },
 
+    parentService {
+      label,
+      href,
+      description,
+    },
+
     partnerWithUs  {
     heading { label, title, description },
     card[] {

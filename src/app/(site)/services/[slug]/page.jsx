@@ -7,6 +7,7 @@ import DynamicQuestions from "@/components/sections/questions/DynamicQuestions";
 import Testimonials from "@/components/sections/testimonials/Testimonials";
 import Work from "@/components/sections/work/Work";
 import SpecialistLinks from "@/components/sections/services/detail/SpecialistLinks";
+import ParentServiceBand from "@/components/sections/services/detail/ParentServiceBand";
 import ProjectShowcase from "@/components/sections/services/detail/ProjectShowcase";
 import Investment from "@/components/sections/services/detail/Investment";
 import ServicesHubCta from "@/components/sections/services/ServicesHubCta";
@@ -186,6 +187,9 @@ const ServicesDetailPage = async (props) => {
   return (
     <>
       <ServicesDetailHero service={service.detailHero} />
+      {service.parentService && (
+        <ParentServiceBand parent={service.parentService} />
+      )}
       <PartnerWithUs2 service={service.partnerWithUs} />
       <Expertise3 service={service.expertise} />
       {service.specialistLinks?.length > 0 && (

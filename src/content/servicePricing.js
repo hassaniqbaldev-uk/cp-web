@@ -22,6 +22,11 @@ export const SERVICE_PRICING = {
     framing:
       "Branding projects start from £1,000, from a logo and the essentials through to a full identity system with guidelines and collateral. Where yours lands depends on how much you need, and we scope it with you before anything starts.",
   },
+  wordpress: {
+    from: "From £1,500",
+    framing:
+      "WordPress builds start from £1,500, the same starting point as our wider web work, since a WordPress site is one of the ways we deliver it. Where yours lands depends on the pages, the design and any custom functionality, and we scope it with you first.",
+  },
   "web-design-development": {
     from: "From £1,500",
     framing:
