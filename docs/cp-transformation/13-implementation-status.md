@@ -32,6 +32,32 @@ complete and Hassan signs off final cutover.
 
 ---
 
+## Book a Call removed from global header + footer (21 August 2026)
+
+Per Hassan (D40/D8, deferred three times): removed the Cal.com Book-a-Call from the global chrome.
+- **Header + HomeHeader** — Book a Call `SecondaryButton` (Cal.com) → **Start a project** `PrimaryButton`
+  (a real Link → /contact); Cal.com `getCalApi` embed removed.
+- **MobileMenu** — the "Contact Us" CTA became **Start a project** + reassurance microcopy
+  ("No obligation, just a conversation."); the Book-a-Call contact card removed (Phone + Email kept);
+  Cal.com embed removed.
+- **Footer** — the top "Book a free 15-minute call / Get Free Consultation" block **removed entirely**,
+  and the "Book a Call" contact card removed (Phone + Email kept); Cal.com embed removed.
+- `/call` stays live + noindexed for direct email links; nothing on the site links to it.
+- Reassurance microcopy sits in the mobile menu (room); the desktop header bar is the button only (a
+  fixed pill with no room for a second line) — flagged for Hassan.
+
+Verified at 1440 + 375: header shows Start a project, footer/menu have no Book a Call, no overflow.
+
+**Residual (NOT header/footer — out of the stated "components only" scope, flagged for a decision):**
+"Book a Call" / Cal.com booking still appears via **`Cta.jsx`** (the closing-CTA section) on home, about,
+case-studies (index + detail), how-we-work, partner-with-us, solutions; **`TheSolution`** on case-study
+detail; **`Cta2`** (as "Get Free Consultation" + Cal embed) on the 14 legacy service pages; and the
+retiring **LP footer**. `StickyCta.jsx` also has it but is unused (dead). So "no Book a Call anywhere" is
+NOT yet fully true — replacing the `Cta`/`Cta2` closing CTAs is a separate, site-wide CTA change. Recorded
+as **O20**.
+
+---
+
 ## CP-05 — wrapper refactor DONE + Web Design & Development page built (21 August 2026)
 
 Hassan approved the refactor plan + all five decisions (modularLayout boolean; code pricing source now,

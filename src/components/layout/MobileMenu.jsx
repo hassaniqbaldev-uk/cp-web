@@ -16,7 +16,6 @@ import SupportIcon from "@/assets/icons/ui/support-icon.svg";
 import SuitcaseIcon from "@/assets/icons/ui/suitcase-icon.svg";
 import PhoneIcon from "@/assets/icons/ui/phone-icon.svg";
 import EmailIcon from "@/assets/icons/ui/email-icon.svg";
-import HeadphoneIcon from "@/assets/icons/ui/headphone-icon.svg";
 import FacebookDarkIcon from "@/assets/icons/social/facebook-dark-icon.svg";
 import InstagramDarkIcon from "@/assets/icons/social/instagram-dark-icon.svg";
 import LinkedinDarkIcon from "@/assets/icons/social/linkedin-dark-icon.svg";
@@ -47,22 +46,6 @@ const MobileMenu = () => {
       document.body.style.overflow = "";
     };
   }, [isOpen]);
-
-  useEffect(() => {
-    (async function () {
-      const { getCalApi } = await import("@calcom/embed-react");
-      const cal = await getCalApi({ namespace: "15min" });
-      cal("ui", {
-        theme: "dark",
-        cssVarsPerTheme: {
-          light: { "cal-brand": "#292929" },
-          dark: { "cal-brand": "#FF37B3" },
-        },
-        hideEventTypeDetails: false,
-        layout: "month_view",
-      });
-    })();
-  }, []);
 
   return (
     <>
@@ -477,13 +460,17 @@ const MobileMenu = () => {
         </nav>
         {/* Footer */}
         <div>
-          <div>
+          <div className="flex flex-col items-start gap-[1rem]" onClick={closeMenu}>
             <PrimaryButton
               href="/contact"
-              text="Contact Us"
+              text="Start a project"
               bGcolor="#FF37B3"
               textColor="#FFFFFF"
+              ctaPosition="mobile-menu"
             />
+            <span className="text-[1.3rem] leading-[2rem] font-medium text-[#625C70]">
+              No obligation, just a conversation.
+            </span>
           </div>
 
           <hr className="my-[3.3rem] border-t border-[#818181]/30" />
@@ -543,40 +530,6 @@ const MobileMenu = () => {
               </Link>
             </li>
 
-            <li>
-              <button
-                onClick={closeMenu}
-                data-cal-namespace="15min"
-                data-cal-link="hassan-iqbal-mznzu9/15min"
-                data-cal-config='{"layout":"month_view","theme":"dark"}'
-                className="flex items-center justify-start gap-[1.5rem]"
-              >
-                <i
-                  style={{
-                    boxShadow: "3px 3px 26.41px 0px #ED910CCC",
-                  }}
-                  className="inline-flex size-[5.2rem] items-center justify-center rounded-[.9rem] bg-[#ED910C]"
-                >
-                  <Image
-                    src={HeadphoneIcon}
-                    width={28}
-                    height={28}
-                    alt="Icon"
-                    unoptimized
-                  />
-                </i>
-
-                <div className="flex flex-col items-start text-left">
-                  <span className="text-[1.2rem] font-medium tracking-normal text-[#312749]">
-                    Let&apos;s Talk
-                  </span>
-
-                  <h4 className="text-[2rem] font-bold tracking-[-0.02em] text-[#312749]">
-                    Book a Call
-                  </h4>
-                </div>
-              </button>
-            </li>
           </ul>
 
           <hr className="my-[3.3rem] border-t border-[#818181]/30" />

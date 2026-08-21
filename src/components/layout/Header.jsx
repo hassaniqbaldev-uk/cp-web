@@ -10,7 +10,7 @@ import ServicesDropdown from "../ui/ServicesDropdown";
 import SolutionsDropdown from "../ui/SolutionsDropdown";
 import AboutDropdown from "../ui/AboutDropdown";
 import { motion } from "framer-motion";
-import SecondaryButton from "../ui/SecondaryButton";
+import PrimaryButton from "../ui/PrimaryButton";
 
 const Header = ({ navData }) => {
   const [isSticky, setIsSticky] = useState(false);
@@ -93,22 +93,6 @@ const Header = ({ navData }) => {
   const isHeaderSecondary = headerSecondaryPaths.some(
     (path) => pathname === path || pathname.startsWith(`${path}/`),
   );
-
-  useEffect(() => {
-    (async function () {
-      const { getCalApi } = await import("@calcom/embed-react");
-      const cal = await getCalApi({ namespace: "15min" });
-      cal("ui", {
-        theme: "dark",
-        cssVarsPerTheme: {
-          light: { "cal-brand": "#292929" },
-          dark: { "cal-brand": "#FF37B3" },
-        },
-        hideEventTypeDetails: false,
-        layout: "month_view",
-      });
-    })();
-  }, []);
 
   return (
     <>
@@ -217,13 +201,12 @@ const Header = ({ navData }) => {
             </div>
 
             <div className="hidden xl:block" onClick={closeAllDropdowns}>
-              <SecondaryButton
-                text="Book a Call"
-                textColor="#FFFFFF"
+              <PrimaryButton
+                text="Start a project"
+                href="/contact"
                 bGcolor="#FF37B3"
-                data-cal-namespace="15min"
-                data-cal-link="hassan-iqbal-mznzu9/15min"
-                data-cal-config='{"layout":"month_view","theme":"dark"}'
+                textColor="#FFFFFF"
+                ctaPosition="header"
               />
             </div>
           </div>
