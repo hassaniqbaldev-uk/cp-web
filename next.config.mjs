@@ -14,6 +14,22 @@ const nextConfig = {
   experimental: {
     inlineCss: true,
   },
+  // Service slug renames applied during Batch A (from the CP-15 redirect map, brought forward with the
+  // renames so the old URLs never 404). ppc -> paid-media (D41), maintenance -> growth-and-support (D42).
+  async redirects() {
+    return [
+      {
+        source: "/services/ppc",
+        destination: "/services/paid-media",
+        permanent: true,
+      },
+      {
+        source: "/services/maintenance",
+        destination: "/services/growth-and-support",
+        permanent: true,
+      },
+    ];
+  },
 };
 
 export default nextConfig;

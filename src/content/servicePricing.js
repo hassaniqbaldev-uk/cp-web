@@ -22,6 +22,31 @@ export const SERVICE_PRICING = {
     framing:
       "AI and automation projects start from £1,500. What you pay depends on the complexity of the process and the tools involved. We start from the bottleneck worth fixing and scope it with you before anything begins.",
   },
+  seo: {
+    from: "From £500/month",
+    framing:
+      "SEO runs as a monthly retainer from £500/month. It is a substantial, ongoing engagement, and what you pay reflects the competitiveness of your market and the depth of work each month. We agree the scope with you before we start.",
+  },
+  "paid-media": {
+    from: "From £300/month",
+    framing:
+      "Paid media management starts from £300/month, and that is our fee for running the campaigns. Your advertising budget is separate and goes directly to the platforms. We agree both with you up front, so there are no surprises.",
+  },
+  email: {
+    from: "From £300/month",
+    framing:
+      "Email marketing runs as a monthly retainer from £300/month, covering the flows and campaigns we build and send. What you pay reflects how much sending and how many automations you need each month.",
+  },
+  "growth-and-support": {
+    from: "From £300/month",
+    framing:
+      "Ongoing support runs as a monthly care plan from £300/month, covering updates, monitoring and the steady improvements that keep your site healthy. Plans scale with the size of your site and how hands-on you want us to be.",
+  },
+  security: {
+    from: "From £1,000",
+    framing:
+      "Security work starts from £1,000 as a project, covering the cleanup, hardening and configuration your site needs. Ongoing monitoring is available as part of Growth & Support rather than priced here.",
+  },
   cro: {
     from: "From £300/month",
     framing:

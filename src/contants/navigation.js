@@ -45,7 +45,11 @@ export const DESIGN_SERVICE_NAV = [
 
 export const GROWTH_SERVICE_NAV = [
   { label: "SEO", excerpt: "Rank higher on google", href: "/services/seo" },
-  { label: "PPC", excerpt: "Google & Social Ads", href: "/services/ppc" },
+  {
+    label: "Paid Media",
+    excerpt: "Google & Social Ads",
+    href: "/services/paid-media",
+  },
   { label: "CRO", excerpt: "Boost conversion rates", href: "/services/cro" },
   { label: "Email", excerpt: "Automated Flows", href: "/services/email" },
   {
@@ -57,9 +61,9 @@ export const GROWTH_SERVICE_NAV = [
 
 export const SUPPORT_SERVICE_NAV = [
   {
-    label: "Maintenance",
-    excerpt: "Updates & Security",
-    href: "/services/maintenance",
+    label: "Growth & Support",
+    excerpt: "Ongoing care & maintenance",
+    href: "/services/growth-and-support",
   },
   { label: "Speed", excerpt: "Core web vitals", href: "/services/speed" },
   {

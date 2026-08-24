@@ -42,6 +42,35 @@ complete and Hassan signs off final cutover.
 
 ---
 
+## Batch A — six growth pages migrated; ALL 18 service docs now modular (21 August 2026)
+
+Migrated the six growth pages onto the modular pattern with approved pricing/naming. All verified at
+375/768/1440 (no overflow). O18 data replaced. **This completes the service-page migration: 18/18 modular,
+0 legacy.**
+
+- **Two renames applied now** (brought the CP-15 redirects forward): `ppc → paid-media` (title "Paid Media"),
+  `maintenance → growth-and-support` (title "Ongoing Growth & Support"). **Redirects wired in
+  `next.config.mjs`** (`/services/ppc → /services/paid-media`, `/services/maintenance →
+  /services/growth-and-support`, permanent) — verified 308. Footer nav constants updated to the new
+  slugs/labels. Weak-name discipline: titles/H1/body carry the search term (PPC/Google Ads; website
+  maintenance), nav labels stay short.
+- **Pricing (approved):** SEO £500/mo; Paid Media £300/mo (ad spend stated separately on the page); Email
+  £300/mo; Growth & Support £300/mo; Security £1,000 (project); **Analytics — no price** (the Investment
+  section explains it is usually bundled).
+- **The three £300/mo pages read as genuinely different services** — different work, capabilities, framing
+  (run ads / send emails / maintain the site). No blurring.
+- **Warranty OFF on all six** (none is a build). **No parent bands** (growth pillar has no anchor page).
+  **Cross-links "related"** between growth services. **workSlugs [] on all six** — none has genuine
+  standalone evidence (SEO only rides on builds; Paid Media + Email have none), so no work section, no
+  padding.
+- **D43 updated** to cover speed (Batch B move).
+- **`speed` navOrder set to 6 in Web & Ecommerce** (from the Batch B move).
+
+**Analytics keep-or-fold recommendation delivered to Hassan (report). Batch A complete — the whole legacy
+migration is done. Stopped for review. Nothing pushed.**
+
+---
+
 ## Batch B — web specialists migrated (accessibility, migrations, speed) (21 August 2026)
 
 Migrated the three web specialists in place onto the modular pattern (WordPress pattern). All verified at
