@@ -32,18 +32,15 @@ const Work = ({
 
   const mouse = useMousePosition();
 
-  const casaBotanica =
-    caseStudies.find((item) => item.slug === "casa-botanica-panama") ||
-    caseStudies[0];
+  // Show the first three of whatever is passed, in order. Callers control the selection and order
+  // (the homepage passes flagship case studies; service / solution / industry pages pass their curated
+  // set), so no slug is hardcoded here and archive or unwanted work can never surface through this
+  // component.
+  const primaryCase = caseStudies[0];
+  const secondaryCase = caseStudies[1];
+  const tertiaryCase = caseStudies[2];
 
-  const ndifoSafari =
-    caseStudies.find((item) => item.slug === "ndifo-safari") || caseStudies[1];
-
-  const smokeyCarter =
-    caseStudies.find((item) => item.slug === "the-smokey-carter") ||
-    caseStudies[2];
-
-  const selectedCaseStudies = [casaBotanica, ndifoSafari, smokeyCarter];
+  const selectedCaseStudies = [primaryCase, secondaryCase, tertiaryCase];
 
   return (
     <>
@@ -143,17 +140,17 @@ const Work = ({
                   style={{
                     boxShadow: "11px 11px 65px 0px #00000012",
                   }}
-                  href={`/case-studies/${casaBotanica.slug}`}
+                  href={`/case-studies/${primaryCase.slug}`}
                   className="flex flex-col gap-[3.9rem] rounded-[3rem] bg-white px-[3rem] pt-[2rem] pb-[4rem]"
                 >
                   <div className="flex h-[49.7rem] w-full overflow-hidden rounded-[2rem]">
                     <Image
-                      src={urlFor(casaBotanica.thumbnailImage)
+                      src={urlFor(primaryCase.thumbnailImage)
                         ?.width(737)
                         .height(497)
                         .fit("crop")
                         .url()}
-                      alt={casaBotanica.title || "Case Study Thumbnail Image"}
+                      alt={primaryCase.title || "Case Study Thumbnail Image"}
                       width={737}
                       height={497}
                       className="size-full"
@@ -167,21 +164,21 @@ const Work = ({
                     <div className="flex h-full items-center justify-between">
                       <div className="flex flex-col items-start text-left">
                         <h4 className="text-[3.4rem] leading-[4.8rem] font-bold tracking-[-0.02em] text-[#312749]">
-                          {casaBotanica.title}
+                          {primaryCase.title}
                         </h4>
 
                         <span className="text-[1.6rem] leading-[2.6rem] font-semibold text-[#625C70]">
-                          {casaBotanica.excerpt}
+                          {primaryCase.excerpt}
                         </span>
                       </div>
 
                       <i
                         style={{
-                          background: casaBotanica.iconBg,
+                          background: primaryCase.iconBg,
                         }}
                         className="inline-flex size-[6rem] min-w-[6rem] items-center justify-center rounded-full"
                       >
-                        <TiltArrowIcon color={casaBotanica.iconColor} />
+                        <TiltArrowIcon color={primaryCase.iconColor} />
                       </i>
                     </div>
                   </div>
@@ -203,17 +200,17 @@ const Work = ({
                   style={{
                     boxShadow: "11px 11px 65px 0px #00000012",
                   }}
-                  href={`/case-studies/${ndifoSafari.slug}`}
+                  href={`/case-studies/${secondaryCase.slug}`}
                   className="flex w-full flex-col gap-[2rem] rounded-[3rem] bg-white px-[2rem] pt-[1.5rem] pb-[3rem]"
                 >
                   <div className="flex h-[22.7rem] w-full overflow-hidden rounded-[1.5rem]">
                     <Image
-                      src={urlFor(ndifoSafari.thumbnailImage)
+                      src={urlFor(secondaryCase.thumbnailImage)
                         ?.width(365)
                         .height(227)
                         .fit("crop")
                         .url()}
-                      alt={ndifoSafari.title || "Case Study Thumbnail Image"}
+                      alt={secondaryCase.title || "Case Study Thumbnail Image"}
                       width={365}
                       height={227}
                       className="size-full"
@@ -224,21 +221,21 @@ const Work = ({
                   <div className="flex items-center justify-between">
                     <div className="flex flex-col items-start text-left">
                       <h4 className="text-[2.6rem] leading-[4rem] font-bold tracking-[-0.02em] text-[#312749]">
-                        {ndifoSafari.title}
+                        {secondaryCase.title}
                       </h4>
 
                       <span className="text-[1.6rem] leading-[2.6rem] font-semibold text-[#625C70]">
-                        {ndifoSafari.excerpt}
+                        {secondaryCase.excerpt}
                       </span>
                     </div>
 
                     <i
                       style={{
-                        background: ndifoSafari.iconBg,
+                        background: secondaryCase.iconBg,
                       }}
                       className="inline-flex size-[6rem] min-w-[6rem] items-center justify-center rounded-full"
                     >
-                      <TiltArrowIcon color={ndifoSafari.iconColor} />
+                      <TiltArrowIcon color={secondaryCase.iconColor} />
                     </i>
                   </div>
                 </Link>
@@ -257,17 +254,17 @@ const Work = ({
                   style={{
                     boxShadow: "11px 11px 65px 0px #00000012",
                   }}
-                  href={`/case-studies/${smokeyCarter.slug}`}
+                  href={`/case-studies/${tertiaryCase.slug}`}
                   className="flex w-full flex-col gap-[2rem] rounded-[3rem] bg-white px-[2rem] pt-[1.5rem] pb-[3rem]"
                 >
                   <div className="flex h-[22.7rem] w-full overflow-hidden rounded-[1.5rem]">
                     <Image
-                      src={urlFor(smokeyCarter.thumbnailImage)
+                      src={urlFor(tertiaryCase.thumbnailImage)
                         ?.width(365)
                         .height(227)
                         .fit("crop")
                         .url()}
-                      alt={smokeyCarter.title || "Case Study Thumbnail Image"}
+                      alt={tertiaryCase.title || "Case Study Thumbnail Image"}
                       width={365}
                       height={227}
                       className="size-full"
@@ -278,21 +275,21 @@ const Work = ({
                   <div className="flex items-center justify-between">
                     <div className="flex flex-col items-start text-left">
                       <h4 className="text-[2.6rem] leading-[4rem] font-bold tracking-[-0.02em] text-[#312749]">
-                        {smokeyCarter.title}
+                        {tertiaryCase.title}
                       </h4>
 
                       <span className="text-[1.6rem] leading-[2.6rem] font-semibold text-[#625C70]">
-                        {smokeyCarter.excerpt}
+                        {tertiaryCase.excerpt}
                       </span>
                     </div>
 
                     <i
                       style={{
-                        background: smokeyCarter.iconBg,
+                        background: tertiaryCase.iconBg,
                       }}
                       className="inline-flex size-[6rem] min-w-[6rem] items-center justify-center rounded-full"
                     >
-                      <TiltArrowIcon color={smokeyCarter.iconColor} />
+                      <TiltArrowIcon color={tertiaryCase.iconColor} />
                     </i>
                   </div>
                 </Link>

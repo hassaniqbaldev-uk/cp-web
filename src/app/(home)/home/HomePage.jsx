@@ -95,11 +95,18 @@ const HomePage = ({ caseStudies, navData }) => {
           </motion.div>
         )}
       </div>
+      {/* Selected work sits high so the page shows capability rather than describing it.
+          Flagship-only (fetched in page.jsx), so archive work never surfaces. */}
+      <Work
+        caseStudies={caseStudies}
+        label="Selected work"
+        title="Work we've delivered."
+        description="A selection of recent projects across brand, web and ecommerce."
+      />
       <Expertise />
       <Services />
       <Established />
       <Process />
-      <Work caseStudies={caseStudies} />
       <section className="overflow-hidden px-[2rem] pb-[5rem] xl:px-[0rem] xl:pb-[10rem]">
         <Cta />
       </section>

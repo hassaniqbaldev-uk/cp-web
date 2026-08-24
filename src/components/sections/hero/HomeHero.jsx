@@ -11,7 +11,7 @@ import Link from "next/link";
 import Marquee from "react-fast-marquee";
 import { CLIENT_LOGO } from "@/contants";
 import SectionDescription from "@/components/ui/SectionDescription";
-import { YEARS_IN_BUSINESS } from "@/content/company";
+import { YEARS_IN_BUSINESS, PROJECTS_DELIVERED } from "@/content/company";
 import { motion } from "framer-motion";
 import HomeHeroLogoShape1 from "@/components/decorative-elements/HomeHeroLogoShape1";
 import { useState } from "react";
@@ -224,7 +224,7 @@ const HomeHero = () => {
                     <hr className="mt-[.7rem] mb-[.3rem] w-full border-t border-white md:mt-[1.6rem] md:mb-[.8rem]" />
 
                     <div className="inline-flex items-center text-[2.3rem] leading-[2.9rem] font-bold tracking-[-0.02em] text-white md:text-[4.8rem] md:leading-[6rem]">
-                      <Counter value={200} />{" "}
+                      <Counter value={PROJECTS_DELIVERED} />{" "}
                       <span className="text-[#FFD900]">+</span>
                     </div>
 

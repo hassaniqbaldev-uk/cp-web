@@ -1,4 +1,4 @@
-import { caseStudiesListingQuery } from "@/sanity/queries.caseStudies";
+import { caseStudiesFlagshipQuery } from "@/sanity/queries.caseStudies";
 import { caseStudiesClient } from "@/sanity/sanity.caseStudies";
 import { getNavData } from "@/sanity/nav";
 import HomePage from "./home/HomePage";
@@ -46,7 +46,7 @@ const SitePage = async () => {
 
   try {
     caseStudies = await caseStudiesClient.fetch(
-      caseStudiesListingQuery,
+      caseStudiesFlagshipQuery,
       {},
       options,
     );

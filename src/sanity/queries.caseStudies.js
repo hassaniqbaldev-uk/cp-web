@@ -11,6 +11,21 @@ export const caseStudiesListingQuery = `
 }
 `;
 
+// Homepage "selected work" — FLAGSHIP case studies only, never archive or drafts, must have a thumbnail.
+// Ordered the same way as the listing. The homepage shows the first three of these.
+export const caseStudiesFlagshipQuery = `
+*[_type == "caseStudies" && designation == "flagship" && !(_id in path("drafts.**")) && defined(thumbnailImage)]
+| order(order asc, _createdAt desc) {
+  _id,
+  title,
+  "slug": slug.current,
+  excerpt,
+  thumbnailImage,
+  iconBg,
+  iconColor
+}
+`;
+
 export const caseStudiesDetailQuery = `
 *[_type == "caseStudies" && slug.current == $slug][0]{
   _id,

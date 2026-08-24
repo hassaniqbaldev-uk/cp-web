@@ -58,8 +58,9 @@ const Established = () => {
                   years. We
                   don&apos;t just ship code; we solve business problems. <br />{" "}
                   <br /> Founded by Hassan Iqbal, CreativePixels is a human-led
-                  agency that combines data-driven strategy with world-class
-                  design. No jargon, no hidden fees just real results.
+                  agency that pairs clear strategy with senior design and
+                  development. No jargon, no hidden fees, and we stay with you
+                  long after launch.
                 </p>
               </MotionEffect>
 

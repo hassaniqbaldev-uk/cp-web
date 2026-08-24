@@ -1,7 +1,7 @@
 "use client";
 import Counter from "@/components/ui/Counter";
 import { MotionEffect } from "@/components/effects/motion-effect";
-import { YEARS_IN_BUSINESS } from "@/content/company";
+import { YEARS_IN_BUSINESS, PROJECTS_DELIVERED } from "@/content/company";
 
 const Stats = () => {
   return (
@@ -35,7 +35,7 @@ const Stats = () => {
           >
             <div className="flex size-full flex-col items-start justify-center gap-[2rem] rounded-[3rem] bg-[#EE7621] p-[4rem] text-left">
               <h4 className="text-[7rem] leading-[8rem] font-bold tracking-[-0.03em] text-white">
-                <Counter value={200} suffix="+" />
+                <Counter value={PROJECTS_DELIVERED} suffix="+" />
               </h4>
 
               <span className="text-[1.8rem] font-bold tracking-normal text-white">

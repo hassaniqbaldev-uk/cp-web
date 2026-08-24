@@ -16,3 +16,7 @@ export function yearsInBusiness(now = new Date()) {
 }
 
 export const YEARS_IN_BUSINESS = yearsInBusiness();
+
+// Total projects delivered since founding. A marketing figure (Hassan is confirming the exact number);
+// kept here so the "200+" claim lives in one place rather than being duplicated across components.
+export const PROJECTS_DELIVERED = 200;

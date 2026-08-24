@@ -209,7 +209,30 @@ render, logos present, no horizontal overflow.
 **Note (flagged, not fixed — out of this step's scope):** `Established.jsx` still contains "world-class
 design" (banned) and "real results"; these get cleaned in the slot-9 "Why CreativePixels" rework.
 
-**Next section (after review):** selected work (flagship designation, appears high), then four pillars.
+**Banned copy on homepage — FIXED now (Hassan, not waiting for slot 9).** `Established.jsx`: "combines
+data-driven strategy with world-class design. No jargon, no hidden fees just real results." →
+"pairs clear strategy with senior design and development. No jargon, no hidden fees, and we stay with you
+long after launch." (removes "world-class" + "real results", both specific now).
+
+**200+ figure — now a constant.** `PROJECTS_DELIVERED = 200` added to `src/content/company.js`; the two
+`value={200}` counters (HomeHero "Projects" card + `Stats.jsx`) read from it. Figure still pending Hassan's
+confirmation, but now lives in one place.
+
+**Selected work — DONE (this step).** Moved HIGH — immediately after the hero, before the (soon-to-be-dropped)
+Expertise/Services (verified: workY ~1560 < ExpertiseY ~2370 < ServicesY at 375/768/1440). Flagship-only:
+new `caseStudiesFlagshipQuery` (`designation == "flagship"`, no drafts, no archive, must have thumbnail,
+ordered), fetched in `(home)/page.jsx`. **It selects the top three flagships: Casa Botanica Panama (big),
+Ayoa, AlertForce.** Section copy set explicitly (label "Selected work", title "Work we've delivered.",
+restrained description) to avoid the component's default "measurable success" claim.
+- **`Work.jsx` de-hardcoded:** it previously forced slugs casa-botanica-panama / ndifo-safari /
+  the-smokey-carter (falling back to indices 0/1/2). Now it shows the first three of whatever is passed, in
+  order — deterministic, honours the caller's selection, and archive can never surface. This also *improves*
+  the service/solution/industry pages (curated order now respected). Verified the charities industry page
+  still shows its curated three (Anthony Walker, Sight for Life, West Midlands Racial Justice Initiative);
+  no Casa Botanica leak. No horizontal overflow at 375/768/1440.
+
+**Next section (after review):** four pillars — reuse `ServicesPillars` (already weights Web & Ecommerce,
+runs off nav data), no second version; then the per-pillar feature blocks.
 
 ---
 
