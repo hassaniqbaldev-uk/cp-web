@@ -155,6 +155,31 @@ no banned phrases; no overflow at 375/768/1440.
 6. **Nav integration deferred:** no "Industries" item in the header yet, and the mega-menu sector column is
    still empty-gated. Best switched on once all seven are live, so the menu is not half-populated.
 
+## CP-08 nav layout fix (7th item) — COMPLETE (commit on its own)
+
+**What was breaking (measured at 1024/1280/1440/1920):** the header is fixed-width chrome
+(`max-w-[104rem]` = 1040px, centred), so it renders identically at 1280/1440/1920 — only outer
+whitespace changes, and below 1280 it is already the hamburger. Not wrapping, not font-shrink, not page
+overflow: it was **edge-jamming**. The bar carried logo + the (now 6-link) nav + **two** CTA buttons
+(Free Audit and Start a project); adding Industries filled the 1040px bar to ~1px slack each side — logo
+jammed to the left edge, Start-a-project to the right, the two buttons touching (0 gap), on the verge of
+clipping under any slightly wider font rendering. Two separate headers were involved: `Header.jsx` (all
+`(site)` pages) and `HomeHeader.jsx` (homepage) — and `HomeHeader` had never received Industries at all.
+
+**Fix (Hassan chose "drop Free Audit on desktop"):** the secondary **Free Audit** button is now
+`xl:hidden` — removed from the desktop bar (freeing ~140px), kept on mobile beside the hamburger and on
+its `/audit` page. With the room recovered, the original nav spacing (`gap-[3rem]`, `mx-[4.8rem]`) is
+retained (no squeezing). Industries also added to `HomeHeader` (it was missing there). Applied to both
+headers. The keyboard disclosure behaviour is untouched (no dropdown JS changed; triggers stay `<button>`,
+`aria-expanded` still toggles).
+
+**Verified:** 1024 = hamburger, Industries in mobile menu; 375/768 = Free Audit still visible on mobile,
+no overflow; 1280/1440/1920 = all seven items on one row, Industries present on both headers, Free Audit
+hidden, group 987px in the 1040px bar with **26–27px slack each side** (was 1px), Start-a-project primary
+CTA intact, no page overflow. Not pushed.
+
+---
+
 ## CP-08 batch 2 — remaining six industries + data cleanup — COMPLETE (stop for review)
 
 **Data cleanup (all by patch/unset/delete, never createOrReplace on existing docs):**

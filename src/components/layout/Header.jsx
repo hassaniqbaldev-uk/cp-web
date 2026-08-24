@@ -170,7 +170,14 @@ const Header = ({ navData }) => {
             </nav>
 
             <div className="flex items-center justify-end gap-[4px] xl:gap-[0px]">
-              <motion.div initial="initial" whileHover="hover">
+              {/* Free Audit is a secondary CTA. Hidden on desktop (xl) so the seven-item nav +
+                  logo + primary "Start a project" fit the fixed 1040px bar with room; it stays
+                  on mobile (beside the hamburger) and on its /audit page. */}
+              <motion.div
+                initial="initial"
+                whileHover="hover"
+                className="xl:hidden"
+              >
                 <Link
                   href="/audit"
                   className="nav-btn relative overflow-hidden"
