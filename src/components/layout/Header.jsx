@@ -138,6 +138,14 @@ const Header = ({ navData }) => {
               />
 
               <Link
+                href="/industries"
+                className="nav-link"
+                onClick={closeAllDropdowns}
+              >
+                Industries
+              </Link>
+
+              <Link
                 href="/case-studies"
                 className="nav-link"
                 onClick={closeAllDropdowns}

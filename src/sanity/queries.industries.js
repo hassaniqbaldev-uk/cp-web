@@ -4,13 +4,14 @@
 // industries are published — the hub, the nav and the static params all filter on it, so turning an
 // industry on later is a content change (set `hasPage: true`), not code (the expansion contract, D44).
 
-// Hub listing — only published industries.
+// Hub listing — only published industries. `slug { current }` (object shape) matches what the shared
+// Sector grid reads (item.slug.current); a flattened string would render /industries/undefined links.
 export const INDUSTRIES_QUERY = `
   *[_type == "industries" && hasPage == true && !(_id in path("drafts.**")) && defined(slug.current)] | order(title asc) {
     _id,
     title,
     excerpt,
-    "slug": slug.current,
+    slug { current },
     icon { asset->{ url } }
   }
 `;

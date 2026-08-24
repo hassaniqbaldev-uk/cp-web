@@ -400,6 +400,16 @@ const MobileMenu = () => {
             <li className="w-full border-b border-[#818181]/30 pb-[1.2rem]">
               <Link
                 onClick={closeMenu}
+                href="/industries"
+                className="inline-flex items-start justify-start text-left text-[2.2rem] leading-[2.4rem] font-extrabold tracking-normal text-[#312749]"
+              >
+                Industries
+              </Link>
+            </li>
+
+            <li className="w-full border-b border-[#818181]/30 pb-[1.2rem]">
+              <Link
+                onClick={closeMenu}
                 href="/case-studies"
                 className="inline-flex items-start justify-start text-left text-[2.2rem] leading-[2.4rem] font-extrabold tracking-normal text-[#312749]"
               >

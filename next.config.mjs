@@ -43,6 +43,26 @@ const nextConfig = {
         destination: "/industries/ecommerce-brands",
         permanent: true,
       },
+      {
+        source: "/solutions/b2b-services",
+        destination: "/industries/b2b-services",
+        permanent: true,
+      },
+      {
+        source: "/solutions/saas-companies",
+        destination: "/industries/technology-saas",
+        permanent: true,
+      },
+      {
+        source: "/solutions/charities-and-foundation",
+        destination: "/industries/charities-non-profits",
+        permanent: true,
+      },
+      {
+        source: "/solutions/interiors-and-furnishings",
+        destination: "/industries/home-improvement-interiors",
+        permanent: true,
+      },
       // The three HELD industries (hasPage:false) point at Web Design & Development until Hassan
       // decides whether we chase those verticals; turning one on repoints it to its own page.
       {

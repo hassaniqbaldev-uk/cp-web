@@ -155,7 +155,57 @@ no banned phrases; no overflow at 375/768/1440.
 6. **Nav integration deferred:** no "Industries" item in the header yet, and the mega-menu sector column is
    still empty-gated. Best switched on once all seven are live, so the menu is not half-populated.
 
-**Next: CP-08 batch 2 — the remaining six industries + the data cleanup above (after review).**
+## CP-08 batch 2 — remaining six industries + data cleanup — COMPLETE (stop for review)
+
+**Data cleanup (all by patch/unset/delete, never createOrReplace on existing docs):**
+- **ServicesDropdown.jsx reverted** (Hassan's call) — the three-session dead-code deletion discarded; tree clean.
+- **35 legacy UUID industry docs KEPT** (Hassan's call) — they are the `_ref` targets the case studies point
+  at (verified: junior-jam, smartspaces, lola-blake, core-estates, drive-uk, ofh-care reference them by
+  `_ref`, not slug). Deleting them would break real references.
+- **4 colliding slugs stripped** (unset `slug` on the legacy UUID docs for driving-schools,
+  interiors-and-furnishings, pharmacies, restaurants) — collisions gone (0 duplicate slugs), `_ref`
+  relationships intact (references are by id, so stripping slug is safe).
+- **Stale `drafts.industry-saas-companies` deleted.**
+
+**Six industries authored (same pattern as Ecommerce Brands, sector-understanding framing):**
+- Patched (existing docs, reslugged/retitled where needed): b2b-services → **B2B & Professional Services**;
+  saas-companies → slug **technology-saas**, **Technology & SaaS**; charities-and-foundation → slug
+  **charities-non-profits**, **Charities & Non-profits**; interiors-and-furnishings → slug
+  **home-improvement-interiors**, **Home Improvement & Interiors**.
+- Created fresh (no prior doc): **Education & EdTech** (education-edtech), **Travel, Hospitality & Leisure**
+  (travel-hospitality). createOrReplace is safe here — genuinely new docs, nothing to drop.
+- Curated work (D44 evidence, order preserved): B2B [alertforce, energy-angels, trust-certs, varissa,
+  teleqo-tech, new-compass]; Technology & SaaS [ayoa, new-compass, teleqo-tech, now-press-play] —
+  **peekaboo dropped (archive)**; Charities [anthony-walker-foundation, sight-for-life, wmrji] —
+  **unicef dropped (print-only, not digital proof)**; Education [anthony-walker-foundation, junior-jam,
+  now-press-play, alertforce]; Travel [casa-botanica-panama, ndifo-safari, little-astronauts];
+  Home Improvement [smartspaces, sp-elite-installation].
+
+**Invented metrics found in the legacy copy (per Hassan's ask, since Ecommerce had several):** only
+**Charities** carried them — "Most charity sites lose 70% of potential donors at checkout" (invented stat)
+and "a standard 15% discount on our day rates" (an unconfirmed pricing/offer I will not invent). Both
+removed and reframed. B2B, SaaS and Interiors legacy copy was pitch-heavy but **metric-free**.
+
+**Redirects:** the four remaining legacy industry URLs now wired (b2b-services, saas-companies →
+technology-saas, charities-and-foundation → charities-non-profits, interiors-and-furnishings →
+home-improvement-interiors). All nine industry redirects live and 308.
+
+**Nav (D40):** added **Industries** to the main navigation — desktop `Header.jsx` (after Solutions) and
+`MobileMenu.jsx` — linking to `/industries`. It is a plain link, not a mega-menu; the sector column in the
+Solutions dropdown remains a separate future task.
+
+**Bug found + fixed during verification:** `INDUSTRIES_QUERY` projected `"slug": slug.current` (string) but
+the shared `Sector` grid reads `item.slug.current`, so every hub card linked to `/industries/undefined`.
+Fixed the query to `slug { current }`; all 7 cards now link correctly.
+
+**AGGREGATE QUERY (standing rule) — from the data:** `*[_type=="industries" && hasPage==true]` → **7**
+(b2b-services, technology-saas, ecommerce-brands, charities-non-profits, education-edtech,
+travel-hospitality, home-improvement-interiors); held `industry-*` docs (hasPage!=true) = 4 (driving-schools,
+pharmacies, restaurants + sme-founders which redirects to /solutions). No duplicate slugs. All 7 detail
+pages HTTP 200, all modular sections render, prose clean (no banned phrases / invented metrics), no overflow
+at 375/768/1440.
+
+**NOT pushed (per instruction). Stop for review.**
 
 ---
 
