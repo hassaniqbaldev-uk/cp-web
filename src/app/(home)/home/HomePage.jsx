@@ -2,8 +2,7 @@
 
 import HomeHeader from "@/components/layout/HomeHeader";
 import HomeHero from "@/components/sections/hero/HomeHero";
-import Expertise from "@/components/sections/expertise/Expertise";
-import Services from "@/components/sections/services/Services";
+import ServicesPillars from "@/components/sections/services/ServicesPillars";
 import Established from "@/components/sections/established/Established";
 import Process from "@/components/sections/process/Process";
 import Work from "@/components/sections/work/Work";
@@ -103,8 +102,10 @@ const HomePage = ({ caseStudies, navData }) => {
         title="Work we've delivered."
         description="A selection of recent projects across brand, web and ecommerce."
       />
-      <Expertise />
-      <Services />
+      {/* Four pillars — reuses the services-hub ServicesPillars (one source, no second version).
+          Web & Ecommerce leads by order and carries the weight. Replaces the old generic
+          Expertise + Services sections, which predated the pillar model. */}
+      <ServicesPillars columns={navData.serviceColumns} />
       <Established />
       <Process />
       <section className="overflow-hidden px-[2rem] pb-[5rem] xl:px-[0rem] xl:pb-[10rem]">

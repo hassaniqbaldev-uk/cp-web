@@ -231,8 +231,25 @@ restrained description) to avoid the component's default "measurable success" cl
   still shows its curated three (Anthony Walker, Sight for Life, West Midlands Racial Justice Initiative);
   no Casa Botanica leak. No horizontal overflow at 375/768/1440.
 
-**Next section (after review):** four pillars — reuse `ServicesPillars` (already weights Web & Ecommerce,
-runs off nav data), no second version; then the per-pillar feature blocks.
+**Four pillars — DONE (this step).** Reused `ServicesPillars` (one source, no second version) — its own
+heading ("What We Do" / "Four things we do, one team.") suits the homepage; runs off
+`navData.serviceColumns` the homepage already fetches. Dropped the generic `Expertise` + `Services`
+sections (agreed — they predated the pillar model). Verified 375/768/1440: **4 cards in order Web &
+Ecommerce → Brand & Experience → Growth & Performance → AI & Automation** (Web leads by the component's
+sort, carries the weight), positioned after selected work and before the Why/Established section, no
+horizontal overflow, old sections gone.
+
+**Selected-work order — Hassan deciding (Q raised, not changed).** Current lead is the first three of the
+flagship query, ordered by the generic `order asc, _createdAt desc` listing field (Casa Botanica order=2,
+Ayoa 5, AlertForce 6) — i.e. inherited from the /case-studies sort, not a deliberate homepage curation.
+My view given: (1) curate the homepage three explicitly (a `HOMEPAGE_WORK_SLUGS`-style list, same
+discipline as service/industry `workSlugs`) so the lead is intentional; (2) Casa Botanica (Panama villa
+rentals) should not hold the largest card — it reads as holiday rentals, not the SME/mid-market B2B the
+brief targets; lead with Ayoa (recognised SaaS/app, ties to the Web & Ecommerce apps weight), AlertForce
+strong second, Minnessak an ecommerce-forward alternative. Awaiting Hassan's decision before wiring.
+
+**Next section (after review):** per-pillar feature blocks — Web & Ecommerce heaviest (websites, ecommerce,
+apps and platforms, with relevant work); the other three concise.
 
 ---
 
