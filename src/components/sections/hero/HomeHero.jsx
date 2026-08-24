@@ -95,16 +95,16 @@ const HomeHero = () => {
               >
                 <h1 className="mt-[1.5rem] mb-[1rem] text-[3rem] leading-[3.7rem] font-bold tracking-[-0.03em] text-white md:text-[7rem] md:leading-[8.5rem]">
                   <span className="block overflow-hidden">
-                    <span className="block">Grow your digital</span>
+                    <span className="block">Brands, websites</span>
                   </span>
 
                   <span className="block overflow-hidden">
-                    <span className="block">presence with real</span>
+                    <span className="block">and online stores</span>
                   </span>
 
                   <span className="block overflow-hidden">
                     <span className="bg-gradient-yellow-orange block bg-clip-text text-transparent">
-                      human-led strategy
+                      built to grow
                     </span>
                   </span>
                 </h1>
@@ -120,8 +120,7 @@ const HomeHero = () => {
               >
                 <div className="mb-[3rem] max-w-[62.8rem]">
                   <SectionDescription
-                    text="Smart websites, standout branding, and ongoing support
-                everything you need to grow with confidence."
+                    text="Brand, web and ecommerce, growth and automation, from one senior team that stays with you long after launch. Web and ecommerce is where we do the heaviest lifting."
                     textColor="#FFFFFF"
                   />
                 </div>

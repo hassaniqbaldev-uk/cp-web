@@ -155,6 +155,70 @@ no banned phrases; no overflow at 375/768/1440.
 6. **Nav integration deferred:** no "Industries" item in the header yet, and the mega-menu sector column is
    still empty-gated. Best switched on once all seven are live, so the menu is not half-populated.
 
+## CP-10 — Homepage BUILD (section by section, review gate between each)
+
+Answers locked (Hassan, 24 Aug): schema = add Organization + WebSite + BreadcrumbList (truthful only),
+URL/canonical/title held constant; founding year = **December 2013 (12 years)** from a **single source**
+(the audit found 4 drifting versions — "Established in 2018", "over a decade", "10 years"); founder-only
+(no team grid), owner-led-accountability message, I draft Hassan's short bio; reviews = real, published,
+use them and give them weight (not near the footer); slot 10 = **lifecycle** (launch, improve, grow,
+automate), Process moves to How We Work; title = careful brand-forward rewrite, CreativePixels early
+(before/after shown for approval before writing); drop the generic Expertise + Services homepage sections.
+
+**Hero — DONE (this step).** `HomeHero.jsx` copy reworked (animation/visual/200+ counter/logo marquee
+untouched): H1 "Brands, websites / and online stores / **built to grow**" (weights web & ecommerce, 2 of 3
+nouns; brand + growth named); subhead "Brand, web and ecommerce, growth and automation, from one senior
+team that stays with you long after launch. Web and ecommerce is where we do the heaviest lifting." All
+four pillars read in the hero within seconds; UK English, no em dashes. Verified 375/768/1440: H1 renders
+3 lines, subhead present, all four pillars in view, old copy gone, no horizontal overflow. Not pushed.
+
+**Title:** before/after presented to Hassan for approval; NOT changed until he confirms (a "show me first"
+gate). URL + canonical untouched regardless.
+
+**Next section (after review):** immediate-proof logo band, then selected work / four pillars.
+
+---
+
+## CP-10 — Homepage: PLAN written (24 Aug 2026)
+
+Plan at `docs/cp-transformation/cp-10-homepage-plan.md`. Homepage chosen over company pages (highest
+organic traffic, only real SEO asset). Plan-only per Hassan; no code written. Key findings: (1) **no
+Organization schema / JSON-LD exists anywhere** — the "protected" schema is absent; recommend adding
+Organization+WebSite (brand-signal gain), URL/canonical/title held constant; (2) homepage is generic
+"Web Design Agency / Our Services / Our Expertise", not the 4-pillar model the interior now uses —
+Web & Ecommerce gets no weight; (3) **date contradiction**: "Established in 2018" + "over a decade / 10
+years"; (4) proof: case studies have no metric fields (~3 real metrics, in prose) and no quotes, BUT a
+real testimonial bank exists (reuse, confirm permission); (5) founder section buildable partially (Hassan
+MD + photo exist, needs bio; no other team data); (6) biggest risk = brand-term rankings (mitigate by
+holding URL/canonical/title/H1 continuity, adding not removing schema). Reuse: ServicesPillars (weights
+Web & Ecommerce), Work/CuratedWorkGrid, Investment (servicePricing), ServiceCaseHighlight. Drop the generic
+Expertise + Services homepage sections. Six open questions listed for Hassan before build.
+
+---
+
+## Header/HomeHeader drift audit (24 Aug 2026) — reported, NOT merged (Hassan's instruction)
+
+The 7-item nav set is hand-maintained in **three** files: `Header.jsx` (desktop, all `(site)` pages),
+`HomeHeader.jsx` (desktop, homepage), and `MobileMenu.jsx` (mobile slide-out, shared by both layouts).
+`LpHeader.jsx` carries no main nav. Adding Industries touched Header + MobileMenu but missed HomeHeader —
+exactly this duplication. All three are back in sync now.
+
+**Header vs HomeHeader — intentional differences (keep):** the `transition` prop + Framer opacity/height/
+layout animations (intro from the loader), `LoaderLogo` (shared-element `layoutId`) vs static `Logo`,
+always-transparent→sticky vs route-based `header-secondary`, and a deliberate `ctaPosition` analytics tag
+("home-header" vs "header").
+
+**Genuine drift that matters:** (1) the nav item list is physically duplicated (plus the 3rd mobile copy) —
+the drift hazard that dropped Industries; (2) the disclosure + scroll behaviour is byte-for-byte duplicated
+(3 dropdown state hooks, 3 toggles, closeAllDropdowns, two scroll `useEffect`s) — a fix to one won't reach
+the other. **Minor:** HomeHeader's logo is not a `<Link href="/">` (homepage logo not clickable-to-home).
+
+**Recommendation (later, not now):** extract one `NAV_ITEMS` source consumed by all three, and a shared hook
+for the dropdown/scroll behaviour, leaving each header's animation shell distinct. Do NOT merge the
+components wholesale (the homepage intro animation genuinely differs). Not scheduled yet — Hassan's call.
+
+---
+
 ## CP-08 nav layout fix (7th item) — COMPLETE (commit on its own)
 
 **What was breaking (measured at 1024/1280/1440/1920):** the header is fixed-width chrome
