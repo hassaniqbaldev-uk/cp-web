@@ -52,6 +52,11 @@ export const SERVICE_PRICING = {
     framing:
       "Conversion work runs as a monthly retainer from £300/month. What you pay depends on the number of tests and the scope of the work each month, and we agree it with you before we start.",
   },
+  "ui-ux-design": {
+    from: "From £1,500",
+    framing:
+      "UI/UX design projects start from £1,500. Where yours lands depends on the number of screens and flows and whether you need a full design system. We scope it with you before anything starts.",
+  },
   branding: {
     from: "From £1,000",
     framing:

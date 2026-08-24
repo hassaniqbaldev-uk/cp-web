@@ -34,11 +34,41 @@ complete and Hassan signs off final cutover.
   goes in `custom-fields-registry.md` as it is created (that doc is the Studio-setup handover).
 - **Until the Studio pass, all copy changes come through Claude, not the Studio** — the new fields have no
   Studio definitions yet, so editors cannot change this copy in Sanity. Route copy edits through the build.
+- **Batch-completion verification rule (24 Aug 2026, after the count drifted):** at the end of EVERY batch,
+  run an **aggregate query across the whole set** (e.g. `*[_type=="services"]{slug, modularLayout}`) and
+  report the actual count **from the data**, never from Claude's own tracking. Never claim a batch complete
+  without it. This applies going forward to Solutions, Industries and case studies too — the same gap
+  (verifying items individually while never querying the total) is how a count silently drifts. What went
+  wrong once: ui-ux-design (Batch C) was skipped and dropped from tracking, and "18/18" was asserted when
+  the real count was 17/18; a single aggregate query would have caught it.
 - **Copy standing rule (21 Aug 2026):** write confident, SEO-driven, conversion-focused copy on every page;
   invent and shape capability descriptions, positioning, benefits, process and FAQs as needed (Hassan
   proof-checks at the end). **The one exception:** never invent client outcomes, results, metrics or
   testimonials, or what any named client achieved — those are the only claims a client can contradict.
   Confirmed facts Hassan provides (e.g. the Biome4Pets 3-days→1-day result) are usable as given, not added to.
+
+---
+
+## Batch C — UI/UX Design built; 18/18 confirmed FROM THE DATA (24 August 2026)
+
+Built the missing brand page (ui-ux-design, Batch C — the one skipped when we went B → A, which made the
+earlier "18/18" claim wrong; real count then was 17/18). Verified 375/768/1440 (no overflow).
+
+- Brand & Experience pillar, PEER alongside Branding (specialist:false) → **no parent band**. From £1,500,
+  warranty off (design work, not a build).
+- **Concrete copy, not generic process** (per Hassan): covers websites, apps, ecommerce and products;
+  capability cards name the actual work; the "how we design" section is about decisions (job → structure →
+  detail → buildable), not a discovery/wireframe/prototype/test template.
+- Cross-links (4): Branding (peer) + Web Design & Development + Ecommerce + Custom App Development ("Where
+  our design work fits").
+- **Evidence:** the two genuinely design-LED cases only — `now-press-play` (flagship, Webflow design) +
+  `junior-jam` (Figma + developer handoff). Excluded `ao-arena` (a pitch concept, not delivered, per the
+  audit) and `peekaboo` (archived/uncertain). Two real cases, not padded.
+
+**AGGREGATE QUERY RUN (the new standing rule): `*[_type=="services"]{slug, modularLayout}` → TOTAL 18,
+MODULAR 18, NOT 0. All modular, confirmed from the data.** The service-page migration is genuinely complete.
+
+**Next: CP-07 Solutions (hub + 4 goal pages + Scale Marketing merge/redirect).**
 
 ---
 
