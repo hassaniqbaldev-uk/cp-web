@@ -34,6 +34,11 @@ complete and Hassan signs off final cutover.
   goes in `custom-fields-registry.md` as it is created (that doc is the Studio-setup handover).
 - **Until the Studio pass, all copy changes come through Claude, not the Studio** — the new fields have no
   Studio definitions yet, so editors cannot change this copy in Sanity. Route copy edits through the build.
+- **Mutation rule (24 Aug 2026, after `createOrReplace` dropped fields three times): NEVER `createOrReplace`
+  a document that already exists — use `patch { set: {...} }`, which only touches the named fields and
+  cannot drop an unlisted one.** `create` / `createOrReplace` is allowed ONLY for a genuinely new document
+  authored from a complete template (nothing to drop). Every field-level edit to an existing doc is a patch.
+  This is the single rule that would have prevented all three incidents below.
 - **Batch-completion verification rule (24 Aug 2026, after the count drifted):** at the end of EVERY batch,
   run an **aggregate query across the whole set** (e.g. `*[_type=="services"]{slug, modularLayout}`) and
   report the actual count **from the data**, never from Claude's own tracking. Never claim a batch complete
@@ -96,6 +101,36 @@ All modular, confirmed from the data. scale-marketing gone.** Verified at 375/76
 or any goal page; hub shows exactly 4 goal cards; scale-marketing 308-redirects.
 
 **Next: CP-08 Industries.**
+
+---
+
+## createOrReplace damage audit (24 Aug 2026) — COMPLETE, all recovered
+
+Queried all 22 authored docs (18 services + 4 solutions) on staging and diffed each against its
+pre-rewrite Sanity history (base ~17 Aug, the earliest retained). Method: (1) history top-level key
+diff for dropped fields; (2) null-risk check of every asset/content field the modular components read.
+
+**Found — fields dropped by `createOrReplace`:**
+- **15 pre-existing service docs** lost `category`, `excerpt`, `icon`. (The 3 docs I authored fresh —
+  ai-automation, ecommerce, web-design-development — never had them; nothing dropped.) **No live reader:**
+  `SERVICES_QUERY` (the only consumer of these) has zero imports; the hub + mega-menu run entirely off
+  pillar data (`getNavData` → `pillar`/`navLabel`/`navExcerpt`/`navOrder`, all intact). So nothing rendered
+  wrong, but the docs were incomplete vs schema. Recovered all three fields verbatim from history by patch.
+- **4 solution docs** lost `excerpt`. **This one WAS read:** the `/solutions` hub feeds `SOLUTIONS_QUERY`
+  into `Goal.jsx`, which renders `description: item.excerpt` — so the four goal cards had blank descriptions
+  (no crash, which is why the earlier structural check missed it). Recovered by patch; increase-leads got a
+  fresh merged-scope excerpt (it absorbed Scale Marketing, so the old pre-merge line was too narrow), the
+  other three restored verbatim.
+
+**The optional image/icon fields the modular design never populates are NOT damage:** every modular
+component guards them (`service?.heroImage?.asset?.url`, `item.icon?.asset?.url`, `step.icon?.asset?.url &&`,
+`(service.fitCard || [])`) and the template intentionally omits them.
+
+**Post-recovery re-diff: CLEAN — no doc is missing any field it had pre-rewrite.** Rebuilt (fresh cache):
+all four hub goal cards now render their descriptions. Prior incidents (caseStudies images, solutions goal
+icons) were already fixed earlier; this pass closes the remaining service `category/excerpt/icon` +
+solution `excerpt` gaps. Go-forward mutation rule recorded in the standing rules above (patch, never
+createOrReplace on an existing doc).
 
 ---
 
