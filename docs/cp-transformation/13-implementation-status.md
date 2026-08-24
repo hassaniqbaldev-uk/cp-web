@@ -175,7 +175,41 @@ four pillars read in the hero within seconds; UK English, no em dashes. Verified
 **Title:** before/after presented to Hassan for approval; NOT changed until he confirms (a "show me first"
 gate). URL + canonical untouched regardless.
 
-**Next section (after review):** immediate-proof logo band, then selected work / four pillars.
+**Title — DONE (approved).** Homepage `<title>` now `CreativePixels | Web, Ecommerce, Brand & Growth
+Agency` (brand term first — brand queries are what we rank for). URL + canonical untouched.
+
+**Founding year — DONE (single source).** New `src/content/company.js` — `FOUNDED_YEAR = 2013`,
+`FOUNDED_MONTH = 12`, and `YEARS_IN_BUSINESS` computed from the founding date (=12 now, auto-ticks to 13
+in Dec 2026). **11 occurrences across 8 files** now read from it (the audit's four drifting versions plus
+extras the render-scan caught):
+- `established/Established.jsx`: "Established in 2018" → `Established in ${FOUNDED_YEAR}`; "over a decade" →
+  "over 12 years"; "Years in Business" counter `value={12}` → `YEARS_IN_BUSINESS`.
+- `process/Process.jsx`: "over 10 years" → "over 12 years".
+- `stats/Stats.jsx` (About page): "Years Experience" counter `value={12}` → `YEARS_IN_BUSINESS`.
+- `lp/LpEstablishedSection.jsx`: "Built by Hassan Iqbal in 2018" → `${FOUNDED_YEAR}`; "over 7 years" →
+  "over 12 years"; "Years in Business" counter `value={12}` → `YEARS_IN_BUSINESS`.
+- `lp/LpWhySection.jsx`: "over 7 years" → "over 12 years".
+- `hero/AgenciesHero.jsx`: "Since 2014" → `Since ${FOUNDED_YEAR}`.
+- `hero/PartnerWithUsHero.jsx`: "Since 2014" → `Since ${FOUNDED_YEAR}` (+ removed an em dash).
+Client testimonial quotes mentioning "7 years" are the clients' words and were left untouched. Full-site
+render-scan: no "2018 / Since 2014 / over 10 years / over 7 years / over a decade" remain anywhere.
+
+**200+ projects counter — flagged for Hassan (not changed).** It is a hardcoded marketing figure
+(`HomeHero` "Projects" card + `Stats.jsx`, `value={200}`), not sourced from data (Sanity holds 31 case
+studies; 200+ is total projects delivered since 2013, not the showcased set). Defensible *kind* of claim
+(delivery volume, ~17/year over 12 years is plausible) but there is no source of truth in the system —
+its defensibility rests entirely on the real delivered count, which only Hassan can confirm. Recommend
+confirming the figure; if kept, it appears in two places and could also become a constant.
+
+**Immediate-proof band — DONE (this step).** Kept restrained per the brief: the existing client-logo
+marquee plus ONE line above it — "Building for growing brands for over {YEARS_IN_BUSINESS} years" (reads
+from the constant). No other trust signals stacked at the top. Verified 375/768/1440: hero + proof line
+render, logos present, no horizontal overflow.
+
+**Note (flagged, not fixed — out of this step's scope):** `Established.jsx` still contains "world-class
+design" (banned) and "real results"; these get cleaned in the slot-9 "Why CreativePixels" rework.
+
+**Next section (after review):** selected work (flagship designation, appears high), then four pillars.
 
 ---
 

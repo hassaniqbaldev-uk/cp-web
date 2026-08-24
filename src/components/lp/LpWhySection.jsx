@@ -7,6 +7,7 @@ import CheckMarkIcon from "../icons/CheckMarkIcon";
 import PrimaryButton from "./LpPrimaryButton";
 import ServicesLogoShape from "../decorative-elements/ServicesLogoShape";
 import AboutHeroLogoShape1 from "../decorative-elements/AboutHeroLogoShape1";
+import { YEARS_IN_BUSINESS } from "@/content/company";
 
 const LpWhySection = () => {
   return (
@@ -81,7 +82,8 @@ const LpWhySection = () => {
             </ul>
 
             <h4 className="mb-[5rem] max-w-[63rem] text-[2.2rem] leading-[3rem] font-semibold tracking-[-0.02em] text-[#312749] md:text-[2.6rem] md:leading-[3.4rem]">
-              With over 7 years in the industry and a 4.9/5 rating, we
+              With over {YEARS_IN_BUSINESS} years in the industry and a 4.9/5
+              rating, we
               don&apos;t just build websites. We build websites that work.
             </h4>
 

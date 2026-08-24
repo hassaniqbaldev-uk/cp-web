@@ -9,6 +9,7 @@ import ContactHeroLogoShape1 from "@/components/decorative-elements/ContactHeroL
 import Logo from "@/components/decorative-elements/Logo";
 import PrimaryButton from "@/components/ui/PrimaryButton";
 import { MotionEffect } from "@/components/effects/motion-effect";
+import { FOUNDED_YEAR } from "@/content/company";
 
 const AgenciesHero = () => {
   return (
@@ -61,7 +62,7 @@ const AgenciesHero = () => {
                 delay={0.15}
               >
                 <SectionDescription
-                  text="Since 2014, CreativePixels has supported agencies across the UK, US & Australia with WordPress websites, branding, and ongoing support all delivered under your brand."
+                  text={`Since ${FOUNDED_YEAR}, CreativePixels has supported agencies across the UK, US & Australia with WordPress websites, branding, and ongoing support all delivered under your brand.`}
                   textColor="#312749"
                 />
               </MotionEffect>

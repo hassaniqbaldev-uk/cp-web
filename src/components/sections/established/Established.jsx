@@ -7,6 +7,7 @@ import BusinessIcon from "@/assets/icons/ui/business-icon.svg";
 import Image from "next/image";
 import Counter from "@/components/ui/Counter";
 import { MotionEffect } from "@/components/effects/motion-effect";
+import { FOUNDED_YEAR, YEARS_IN_BUSINESS } from "@/content/company";
 
 const Established = () => {
   return (
@@ -25,7 +26,7 @@ const Established = () => {
               >
                 <div>
                   <SectionLabel
-                    text="Established in 2018"
+                    text={`Established in ${FOUNDED_YEAR}`}
                     textColor="#3078FF"
                   />
                 </div>
@@ -53,7 +54,8 @@ const Established = () => {
               >
                 <p className="mb-[4rem] text-[1.8rem] leading-[2.8rem] font-normal text-[#625C70]">
                   In an industry of &quot;churn and burn,&quot; we&apos;ve been
-                  building lasting relationships for over a decade. We
+                  building lasting relationships for over {YEARS_IN_BUSINESS}{" "}
+                  years. We
                   don&apos;t just ship code; we solve business problems. <br />{" "}
                   <br /> Founded by Hassan Iqbal, CreativePixels is a human-led
                   agency that combines data-driven strategy with world-class
@@ -141,7 +143,7 @@ const Established = () => {
 
                     <div className="flex flex-col items-start">
                       <span className="text-[3.4rem] leading-[3rem] font-semibold tracking-[-0.02em] text-white md:text-[6.8rem] md:leading-[6rem]">
-                        <Counter value={12} suffix="+" />
+                        <Counter value={YEARS_IN_BUSINESS} suffix="+" />
                       </span>
 
                       <span className="text-[.8rem] leading-[1rem] font-bold tracking-normal text-white md:text-[1.6rem] md:leading-[2rem]">

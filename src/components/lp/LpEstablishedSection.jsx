@@ -6,6 +6,7 @@ import BusinessIcon from "@/assets/icons/ui/business-icon.svg";
 import Image from "next/image";
 import Counter from "@/components/ui/Counter";
 import { MotionEffect } from "@/components/effects/motion-effect";
+import { FOUNDED_YEAR, YEARS_IN_BUSINESS } from "@/content/company";
 
 const LpEstablishedSection = () => {
   return (
@@ -25,12 +26,15 @@ const LpEstablishedSection = () => {
                 </div>
 
                 <div className="mt-[1rem] mb-[2rem]">
-                  <SectionTitle text="Built by Hassan Iqbal in 2018 Because Too Many Businesses Were Getting Burned by Agencies That Disappeared After Launch." />
+                  <SectionTitle
+                    text={`Built by Hassan Iqbal in ${FOUNDED_YEAR} Because Too Many Businesses Were Getting Burned by Agencies That Disappeared After Launch.`}
+                  />
                 </div>
 
                 <p className="mb-[4rem] text-[1.8rem] leading-[2.8rem] font-normal text-[#625C70]">
                   In an industry full of churn-and-burn agencies, we&apos;ve
-                  spent over 7 years doing things differently. We don&apos;t
+                  spent over {YEARS_IN_BUSINESS} years doing things
+                  differently. We don&apos;t
                   just ship code we solve business problems and stick around to
                   make sure they stay solved. <br /> <br />
                   CreativePixels is a human-led agency that combines data-driven
@@ -94,7 +98,7 @@ const LpEstablishedSection = () => {
 
                     <div className="flex flex-col items-start">
                       <span className="text-[3.4rem] leading-[3rem] font-semibold tracking-[-0.02em] text-white md:text-[6.8rem] md:leading-[6rem]">
-                        <Counter value={12} suffix="+" />
+                        <Counter value={YEARS_IN_BUSINESS} suffix="+" />
                       </span>
 
                       <span className="text-[.8rem] leading-[1rem] font-bold tracking-normal text-white md:text-[1.6rem] md:leading-[2rem]">

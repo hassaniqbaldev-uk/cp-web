@@ -6,7 +6,7 @@ import HomePage from "./home/HomePage";
 const options = { next: { revalidate: 3600 } };
 
 export async function generateMetadata() {
-  const title = "Web Design Agency for Growth-Focused Brands | Free Audit";
+  const title = "CreativePixels | Web, Ecommerce, Brand & Growth Agency";
   const description =
     "Elevate your brand with CreativePixels. We craft high-converting websites and powerful growth systems for ambitious businesses. Start your project with a senior team.";
 

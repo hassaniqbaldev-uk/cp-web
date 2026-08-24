@@ -11,6 +11,7 @@ import Link from "next/link";
 import Marquee from "react-fast-marquee";
 import { CLIENT_LOGO } from "@/contants";
 import SectionDescription from "@/components/ui/SectionDescription";
+import { YEARS_IN_BUSINESS } from "@/content/company";
 import { motion } from "framer-motion";
 import HomeHeroLogoShape1 from "@/components/decorative-elements/HomeHeroLogoShape1";
 import { useState } from "react";
@@ -287,6 +288,10 @@ const HomeHero = () => {
             delay={0.6}
           >
             <hr className="mt-[3rem] mb-[2.4rem] w-full border-t border-white/15 md:mt-[8rem]" />
+
+            <p className="mb-[2.4rem] text-center text-[1.2rem] font-medium tracking-[0.08em] text-white/55 uppercase md:text-[1.4rem]">
+              Building for growing brands for over {YEARS_IN_BUSINESS} years
+            </p>
 
             <div
               className="w-full"

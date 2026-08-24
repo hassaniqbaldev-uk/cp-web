@@ -8,6 +8,7 @@ import { MotionEffect } from "@/components/effects/motion-effect";
 import HomeHeroLogoShape1 from "@/components/decorative-elements/HomeHeroLogoShape1";
 import AboutHeroLogoShape1 from "@/components/decorative-elements/AboutHeroLogoShape1";
 import ContactHeroLogoShape1 from "@/components/decorative-elements/ContactHeroLogoShape1";
+import { FOUNDED_YEAR } from "@/content/company";
 
 const PartnerWithUsHero = () => {
   return (
@@ -70,7 +71,7 @@ const PartnerWithUsHero = () => {
             >
               <div className="mb-[4rem] max-w-[76rem]">
                 <SectionDescription
-                  text="Since 2014, CreativePixels has supported agencies across the UK, US & Australia with WordPress websites, branding, and ongoing support—all delivered under your brand."
+                  text={`Since ${FOUNDED_YEAR}, CreativePixels has supported agencies across the UK, US & Australia with WordPress websites, branding, and ongoing support, all delivered under your brand.`}
                   textColor="#ffffff"
                 />
               </div>

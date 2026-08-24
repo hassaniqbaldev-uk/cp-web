@@ -6,6 +6,7 @@ import SectionDescription from "@/components/ui/SectionDescription";
 import PrimaryButton from "@/components/ui/PrimaryButton";
 import { PROCESS_CARD } from "@/contants";
 import { MotionEffect } from "@/components/effects/motion-effect";
+import { YEARS_IN_BUSINESS } from "@/content/company";
 import dynamic from "next/dynamic";
 
 const ProcessSlider = dynamic(() => import("@/components/ui/ProcessSlider"), {
@@ -70,7 +71,7 @@ const Process = () => {
               >
                 <div>
                   <SectionDescription
-                    text="We've refined our delivery process over 10 years to minimise risk and maximise speed to market."
+                    text={`We've refined our delivery process over ${YEARS_IN_BUSINESS} years to minimise risk and maximise speed to market.`}
                     textColor="#ffffff"
                   />
                 </div>
