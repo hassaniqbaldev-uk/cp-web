@@ -42,6 +42,29 @@ complete and Hassan signs off final cutover.
 
 ---
 
+## Legacy services (P2/P3) migration — PLANNING, awaiting approval (21 August 2026)
+
+Before migrating the 10 legacy service pages, Hassan asked for: (a) the two renames now (ppc → paid-media,
+maintenance → growth-and-support; old URLs already in the CP-15 redirect map); (b) an SEO/search-query
+analysis for all 10 (what each should rank for + whether the name matches search); (c) "from" pricing
+RECOMMENDATIONS (not written in — he approves each first); (d) the O18 check; (e) migration grouping.
+
+**O18 confirmed (still present on all 10 legacy docs, unrendered):** `projectShowcase[0]` = "The Smokey
+Carter" on every one (the placeholder trio), and `options.pricingCard` holds unapproved/inconsistent
+figures on every one. Neither renders (legacy layout). Each migration does a full createOrReplace that
+REPLACES both with real content + curated workSlugs + single-source pricing (as WordPress did), so O18 is
+cleared page-by-page. wordpress already done (O19 too).
+
+**Pricing recommendations, naming/SEO analysis and the 3-batch migration grouping delivered to Hassan for
+approval (report). No prices written in, no renames done, no migration started until he approves.**
+Growth-retainer services anchor to the approved "from £300/month"; project services anchor to Branding
+£1,000 / WDD £1,500. Renames: brand name = clearer term (Paid Media, Ongoing Growth & Support), but title/
+H1/body keep the search term (PPC/Google Ads; website maintenance) per D41's "PPC stays in body" rule.
+
+**Stopped for Hassan to approve plan + prices + naming. Nothing pushed.**
+
+---
+
 ## Custom App Development built — eight P1 pages complete (21 August 2026)
 
 Migrated `custom-app-development` in place onto the modular layout. Verified 375/768/1440 (no overflow).
