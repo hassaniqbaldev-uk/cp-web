@@ -28,6 +28,12 @@ const nextConfig = {
         destination: "/services/growth-and-support",
         permanent: true,
       },
+      // CP-07: Scale Marketing merged into Increase Leads (D39).
+      {
+        source: "/solutions/scale-marketing",
+        destination: "/solutions/increase-leads",
+        permanent: true,
+      },
     ];
   },
 };

@@ -68,7 +68,34 @@ earlier "18/18" claim wrong; real count then was 17/18). Verified 375/768/1440 (
 **AGGREGATE QUERY RUN (the new standing rule): `*[_type=="services"]{slug, modularLayout}` → TOTAL 18,
 MODULAR 18, NOT 0. All modular, confirmed from the data.** The service-page migration is genuinely complete.
 
-**Next: CP-07 Solutions (hub + 4 goal pages + Scale Marketing merge/redirect).**
+## CP-07 — Solutions (hub + 4 goal pages + Scale Marketing merge) — COMPLETE
+
+Solutions brought onto the SAME modular pattern as services (shared components, data-driven). A GOAL page
+has no pricing (a goal is reached via services, not priced on its own) and no parent band, so the modular
+layout omits Investment and ParentServiceBand; `specialistLinks` point at the SERVICES that deliver the goal.
+
+- **Infrastructure:** `queries.solutions.js` `SOLUTIONS_DETAIL_QUERY` rewritten to the modular shape
+  (modularLayout, workSlugs, detailHero.label, heading objects, specialistLinks + specialistLinksHeading,
+  caseHighlight, projectShowcase fit/not-fit); `solutions/[slug]/page.jsx` rewritten to the modular gate
+  mirroring services minus Investment/parent; legacy fallback preserved.
+- **4 goal docs (all modularLayout:true):** increase-leads, replatform-rebuild, launch-new-product,
+  automate-operations.
+- **Scale Marketing merge (D39):** authored into increase-leads (covers lead-gen AND scaling marketing);
+  `scale-marketing` doc deleted; `/solutions/scale-marketing → /solutions/increase-leads` permanent 308 in
+  `next.config.mjs`; the stale static `GOAL_SOLUTION_NAV` footer entry removed from `navigation.js`.
+- **Evidence honesty:** increase-leads specialistLinks → SEO/Paid Media/CRO/Email (the services that deliver
+  leads); replatform-rebuild curated Work → Casa Botanica / Ayoa / Teleqo; automate-operations →
+  Biome4Pets caseHighlight (3-days→1-day, a fact Hassan confirmed); launch-new-product `workSlugs:[]`
+  (honest opt-out, no work section rather than padding).
+- **Goal.jsx guard:** `item.icon?.asset?.url` (was crashing the hub build when a goal doc's icon was
+  momentarily absent). Original goal-doc icon asset refs were also recovered from Sanity history and
+  patched back (patch, not replace) after a `createOrReplace` had dropped them.
+
+**AGGREGATE QUERY RUN (standing rule): `*[_type=="solutions"]{slug, modularLayout}` → TOTAL 4, MODULAR 4.
+All modular, confirmed from the data. scale-marketing gone.** Verified at 375/768/1440: no overflow on hub
+or any goal page; hub shows exactly 4 goal cards; scale-marketing 308-redirects.
+
+**Next: CP-08 Industries.**
 
 ---
 

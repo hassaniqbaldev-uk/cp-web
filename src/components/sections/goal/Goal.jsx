@@ -46,7 +46,7 @@ const Goal = ({ solutions = [] }) => {
   const slideData = solutions.map((item, idx) => {
     const theme = getThemeColor(idx);
     return {
-      icon: item.icon.asset.url,
+      icon: item.icon?.asset?.url,
       title: item.title,
       description: item.excerpt,
       link: `/solutions/${item.slug.current}`,
@@ -106,7 +106,7 @@ const Goal = ({ solutions = [] }) => {
                     }}
                   >
                     <GlassFeatureCard
-                      icon={item.icon.asset.url}
+                      icon={item.icon?.asset?.url}
                       title={item.title}
                       description={item.excerpt}
                       color={theme.color}

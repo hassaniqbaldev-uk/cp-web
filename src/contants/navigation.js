@@ -113,9 +113,4 @@ export const GOAL_SOLUTION_NAV = [
     excerpt: "Go-to-market strategy",
     href: "/solutions/replatform-rebuild",
   },
-  {
-    label: "Scale Marketing",
-    excerpt: "AI & workflow efficiency",
-    href: "/solutions/scale-marketing",
-  },
 ];

@@ -13,95 +13,42 @@ export const SOLUTIONS_QUERY = `
   }
 `;
 
+// CP-07: solutions use the SAME modular pattern as services (the components are shared, data-driven).
+// A GOAL page has no pricing (a goal is not priced; it is reached via services) and no parent band, so
+// there is no `options`/`parentService` here. `specialistLinks` point at the SERVICES that deliver the
+// goal (reframed via `specialistLinksHeading`). `modularLayout` gates the modular layout; absent = legacy.
 export const SOLUTIONS_DETAIL_QUERY = `
   *[_type == "solutions" && slug.current == $slug][0] {
     _id,
-    seo {
-    metaTitle,
-    metaDescription
-    },
+    modularLayout,
+    workSlugs,
+    seo { metaTitle, metaDescription },
     detailHero {
-    title,
-    description,
-    caseStudiesLink,
-    heroImage {
-        asset->{
-          url
-        }
-      }
+      label, title, description, caseStudiesLink,
+      heroImage { asset->{ url } }
     },
-
-     projectShowcase {
-      projects[] {
-        title,
-        excerpt,
-        image {
-          asset->{
-            url
-          }
-        }
-      },
-       fitCard[] {
-        label,
-      },
-       notFitCard[] {
-        label,
-      }
+    partnerWithUs {
+      heading { label, title, description },
+      card[] { title, description }
     },
-
-    partnerWithUs  {
-    card[] {
-        title,
-        description,
-      },
+    expertise {
+      heading { label, title, description },
+      card[] { icon { asset->{ url } }, title, description, listItem[] { label } }
     },
-
-    expertise  {
-    card[] {
-        icon {
-          asset->{
-            url
-          }
-        },
-        title,
-        description,
-        listItem[] {
-        label,
-       },
-      }
+    specialistLinks[] { label, href, description },
+    specialistLinksHeading { label, title, description },
+    methodology {
+      heading { label, title, description },
+      card[] { title, description, icon { asset->{ url } } }
     },
-
-    methodology  {
-    card[] {
-        title,
-        description,
-        icon {
-          asset->{
-            url
-          }
-        },
-      }
+    projectShowcase {
+      heading { label, title, description },
+      projects[] { title, excerpt, image { asset->{ url } } },
+      fitCard[] { label },
+      notFitCard[] { label }
     },
-
-    options  {
-    includeCard[] {
-        label,
-      },
-    pricingCard[] {
-        tag,
-        category,
-        price,
-        description,
-        features[] {
-        label,
-       },
-      }
-    },
-
-        faqs[] {
-      question,
-      answer
-      }
+    caseHighlight { eyebrow, title, context, points[] { label }, result, href },
+    faqs[] { question, answer }
   }
 `;
 
