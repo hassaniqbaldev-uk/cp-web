@@ -39,18 +39,28 @@ export const themeColors = {
 
 export const themeColorList = Object.values(themeColors);
 
-const Sector = ({ solutions = [] }) => {
+// CP-08: prop-driven so the Industries hub reuses the same grid. Defaults preserve the Solutions
+// behaviour exactly (basePath "/solutions", heading "By Sector", linkText "View Solution"), so the
+// Solutions hub is unchanged. `item.icon?.asset?.url` is guarded — an icon-less doc renders without one
+// instead of crashing the build.
+const Sector = ({
+  solutions = [],
+  basePath = "/solutions",
+  heading = "By Sector",
+  linkText = "View Solution",
+  id = "sector",
+}) => {
   const getThemeColor = (index) =>
     themeColorList[index % themeColorList.length];
 
   const slideData = solutions.map((item, idx) => {
     const theme = getThemeColor(idx);
     return {
-      icon: item.icon.asset.url,
+      icon: item.icon?.asset?.url,
       title: item.title,
       description: item.excerpt,
-      link: `/solutions/${item.slug.current}`,
-      linkText: "View Solution",
+      link: `${basePath}/${item.slug.current}`,
+      linkText,
       color: theme.color,
     };
   });
@@ -58,7 +68,7 @@ const Sector = ({ solutions = [] }) => {
   return (
     <>
       <section
-        id="sector"
+        id={id}
         className="relative px-[2rem] py-[5rem] xl:px-[0rem] xl:py-[10rem]"
       >
         {/* Background Elements */}
@@ -85,7 +95,7 @@ const Sector = ({ solutions = [] }) => {
               <div className="flex w-full items-center justify-center gap-[6rem]">
                 <hr className="hidden w-full border-t border-[#625c70]/20 md:block" />
                 <div className="min-w-max">
-                  <SectionTitle text="By Sector" textColor="#312749" />
+                  <SectionTitle text={heading} textColor="#312749" />
                 </div>
                 <hr className="hidden w-full border-t border-[#625c70]/20 md:block" />
               </div>
@@ -109,11 +119,11 @@ const Sector = ({ solutions = [] }) => {
                     }}
                   >
                     <LightFeatureCard1
-                      icon={item.icon.asset.url}
+                      icon={item.icon?.asset?.url}
                       title={item.title}
                       description={item.excerpt}
-                      link={`/solutions/${item.slug.current}`}
-                      linkText="View Solution"
+                      link={`${basePath}/${item.slug.current}`}
+                      linkText={linkText}
                       color={theme.color}
                       hoverShadow={theme.shadow}
                     />

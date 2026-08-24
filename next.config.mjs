@@ -34,6 +34,38 @@ const nextConfig = {
         destination: "/solutions/increase-leads",
         permanent: true,
       },
+      // CP-08: legacy industry-as-solution URLs redirect to their Industries pages (D4/D44, IA §4).
+      // Wired here as each target page goes live. Ecommerce Brands is live now; the other four
+      // shipping industries (b2b-services, technology-saas, charities-non-profits,
+      // home-improvement-interiors) are wired with their pages in the next batch.
+      {
+        source: "/solutions/ecommerce-brands",
+        destination: "/industries/ecommerce-brands",
+        permanent: true,
+      },
+      // The three HELD industries (hasPage:false) point at Web Design & Development until Hassan
+      // decides whether we chase those verticals; turning one on repoints it to its own page.
+      {
+        source: "/solutions/driving-schools",
+        destination: "/services/web-design-development",
+        permanent: true,
+      },
+      {
+        source: "/solutions/pharmacies",
+        destination: "/services/web-design-development",
+        permanent: true,
+      },
+      {
+        source: "/solutions/restaurants",
+        destination: "/services/web-design-development",
+        permanent: true,
+      },
+      // SME Founders is audience positioning, not an industry — no single page owns it.
+      {
+        source: "/solutions/sme-founders",
+        destination: "/solutions",
+        permanent: true,
+      },
     ];
   },
 };

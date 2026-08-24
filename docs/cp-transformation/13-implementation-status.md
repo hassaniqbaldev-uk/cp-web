@@ -104,6 +104,61 @@ or any goal page; hub shows exactly 4 goal cards; scale-marketing 308-redirects.
 
 ---
 
+## CP-08 — Industries (checkpoint: hub + ONE page) — STOP FOR REVIEW
+
+New route `/industries` (did not exist before). An industry is WHO the client is (their sector), not
+what we do (services) or what they want (solutions). Detail pages reuse the SAME modular components;
+copy is about understanding the sector. Only `hasPage == true` industries publish (hub, route static
+params and nav query all filter on it) — the expansion contract (D44): turning one on is content, not code.
+
+**Built this checkpoint (per "hub + one page first, then stop"):**
+- **Route infrastructure:** `queries.industries.js` (hub / detail / sitemap, all `hasPage==true`-scoped),
+  `sanity.industries.js`, `/industries` hub (`HubHero` + prop-driven `Sector` grid + Cta + Contact),
+  `/industries/[slug]` detail (modular, no Investment/parent, tagged-first work with newest fallback).
+- **Prop-driven refactors (defaults preserve existing behaviour):** `Sector` now takes
+  basePath/heading/linkText/id (Solutions hub unchanged) and guards `item.icon?.asset?.url`; new
+  `HubHero` (generalised SolutionsHero — SolutionsHero left untouched, can migrate later).
+- **One page fully authored — Ecommerce Brands** (`industry-ecommerce-brands`, slug already canonical,
+  `hasPage:true`): copy rewritten to CP standard + sector-understanding framing, **stripping invented
+  metrics** the legacy copy carried ("scale revenue beyond £1M+", "Every second = 7% conversion drop",
+  "90+ Lighthouse", "60% of traffic is mobile", "7-8 figures") and "world's best". Curated work
+  (D44 evidence): minnessak, fultons, mr-pickles, the-smokey-carter — all four render.
+- **Redirects wired (targets live now):** `/solutions/ecommerce-brands → /industries/ecommerce-brands`;
+  held three (`driving-schools`/`pharmacies`/`restaurants` → `/services/web-design-development`);
+  `sme-founders → /solutions`. The four whose targets are not built yet (b2b-services, technology-saas,
+  charities-non-profits, home-improvement-interiors) are wired **with their pages in the next batch**.
+- **Checkpoint hygiene:** the three other legacy-content industry docs that were `hasPage:true`
+  (b2b-services, saas-companies, charities-and-foundation) were flipped to `hasPage:false` so the hub
+  shows only the built page (they carry off-standard legacy copy; rewritten + reslugged + turned on next
+  batch). All by **patch**, never createOrReplace.
+
+**Verified (from data + render):** published industries `hasPage==true` = **{ecommerce-brands} only**
+(44 published docs total). Hub HTTP 200 shows one card; detail HTTP 200 renders all modular sections
+(partnerWithUs / expertise / methodology / curated work / fit-notfit / 8 FAQs / hub CTA); redirects 308;
+no banned phrases; no overflow at 375/768/1440.
+
+**Data findings to resolve in the NEXT (reviewed) batch — not touched yet:**
+1. **44 industry docs, two generations:** 9 curated `industry-*` docs (`category:"industry"`) + ~35 legacy
+   UUID tag docs (no category) that are the old unreliable taxonomy. Recommend a decision on the 35 before
+   any deletion (they may still be referenced; deletion is irreversible).
+2. **4 duplicate slugs** (all among `hasPage:false` docs, so harmless to the route which is
+   `hasPage==true`-scoped): driving-schools, interiors-and-furnishings, pharmacies, restaurants — each a
+   curated `industry-*` doc colliding with a legacy UUID doc. Keep the `industry-*`, resolve the UUID.
+3. **1 stale draft:** `drafts.industry-saas-companies` (hasPage:true) predates this work; invisible to the
+   site (all queries exclude drafts) but should be discarded in the cleanup.
+4. **Canonical slug/title changes for the other 6** (IA §3.4): saas-companies→technology-saas,
+   charities-and-foundation→charities-non-profits, retitle B2B, create education-edtech /
+   travel-hospitality / home-improvement-interiors docs. Zero SEO cost (no `/industries` route was live).
+5. **Industry images are unresolved import stubs** (`_sanityAsset` file refs → `asset->url` null) across
+   ALL industry docs: hero, hub-card icon, expertise/methodology icons. Components guard them (pages render
+   cleanly, icon-less). Real assets are a content/Studio-pass task.
+6. **Nav integration deferred:** no "Industries" item in the header yet, and the mega-menu sector column is
+   still empty-gated. Best switched on once all seven are live, so the menu is not half-populated.
+
+**Next: CP-08 batch 2 — the remaining six industries + the data cleanup above (after review).**
+
+---
+
 ## createOrReplace damage audit (24 Aug 2026) — COMPLETE, all recovered
 
 Queried all 22 authored docs (18 services + 4 solutions) on staging and diffed each against its
