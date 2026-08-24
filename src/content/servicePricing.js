@@ -32,6 +32,21 @@ export const SERVICE_PRICING = {
     framing:
       "Branding projects start from £1,000, from a logo and the essentials through to a full identity system with guidelines and collateral. Where yours lands depends on how much you need, and we scope it with you before anything starts.",
   },
+  accessibility: {
+    from: "From £1,000",
+    framing:
+      "An accessibility audit and the work that follows start from £1,000. The figure depends on the size of your site and how much needs fixing, and the audit tells us the scope before we commit to anything.",
+  },
+  speed: {
+    from: "From £1,000",
+    framing:
+      "Website speed work starts from £1,000. The figure depends on the state of your site and how much is dragging it down, and the audit tells us the scope before we commit.",
+  },
+  migrations: {
+    from: "From £1,500",
+    framing:
+      "Migrations start from £1,500. The figure depends on the size of your site, how much content moves and whether the new platform needs building too. We scope it from a look at your current site.",
+  },
   wordpress: {
     from: "From £1,500",
     framing:

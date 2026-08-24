@@ -42,6 +42,34 @@ complete and Hassan signs off final cutover.
 
 ---
 
+## Batch B — web specialists migrated (accessibility, migrations, speed) (21 August 2026)
+
+Migrated the three web specialists in place onto the modular pattern (WordPress pattern). All verified at
+375/768/1440 (no overflow). Approved naming/pricing applied; O18 placeholder showcase + unapproved pricing
+replaced with real content.
+
+- **Weak-name discipline applied:** titles + H1 lead with the search term, nav labels stay short.
+  Accessibility → "Web Accessibility & WCAG Compliance" / H1 "Web accessibility that meets WCAG standards".
+  Migrations → "Website & Platform Migration Services" / H1 "Website and platform migration, without the drop".
+  Speed → "Website Speed Optimisation & Core Web Vitals" / H1 matching.
+- **Parent band → Web Design & Development** on all three (read as part of the web offer).
+- **Pricing (approved):** accessibility from £1,000, speed from £1,000, migrations from £1,500.
+- **Warranty (my judgment, flagged):** migrations ON (a rebuild/launch); accessibility + speed OFF
+  (audit/optimisation on an existing site, not a launch — the "after launch" warranty doesn't fit).
+- **Evidence (honest, not padded):** migrations shows one genuine migration case (casa-botanica, "migrated
+  from"); accessibility + speed have zero standalone case studies → `workSlugs: []` (no work section).
+- **Specialist cross-links:** migrations → WordPress + Shopify ("Platforms we migrate to"); accessibility →
+  Speed + UI/UX; speed → Accessibility + WordPress ("Works well with").
+- **TAXONOMY FLAG:** `speed` **moved from Growth & Performance to Web & Ecommerce** (specialist), so it reads
+  as a web specialist alongside accessibility/migrations with the parent band → WDD. D43 had moved
+  migrations + accessibility but not speed. Confirmed in nav. Hassan to confirm the move or revert.
+
+**Batch B complete. Stopped for review before Batch A (the six growth services). Nothing pushed.**
+14 of 18 service docs now modular; 6 legacy remain (the growth pillar: seo, paid-media, email, analytics,
+maintenance, security).
+
+---
+
 ## Legacy services (P2/P3) migration — PLANNING, awaiting approval (21 August 2026)
 
 Before migrating the 10 legacy service pages, Hassan asked for: (a) the two renames now (ppc → paid-media,
