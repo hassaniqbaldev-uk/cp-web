@@ -129,34 +129,13 @@ const HomePage = ({ selectedWork, webEcommerceWork, navData }) => {
         }}
         ctaPosition="home-web-ecommerce"
       />
-      {/* The other three pillars — concise (no work cards), so Web & Ecommerce keeps its weight.
-          AI & Automation carries the one proof it has (Biome4Pets) so its block still earns its place. */}
+      {/* AI & Automation — the only other block that earns a standalone slot (it carries the one proof
+          that pillar has, Biome4Pets). Brand & Growth were dropped: they only restated the pillar
+          overview above. The #F7FAFF tint keeps the background alternating (pillars=dark, Web&Ecom=white,
+          AI=tint, Established=white) so the flow reads as one page, not sections dropped in. */}
       <PillarFeature
         variant="concise"
-        eyebrow="Brand & Experience"
-        eyebrowColor="#ED910C"
-        accentColor="#ED910C"
-        title="Brand and interfaces that make the right impression."
-        description="The identity people judge you on, and the interfaces they actually use. We shape both, so you look considered and feel easy to deal with."
-        cta={{
-          text: "Explore brand and experience",
-          href: "/services/branding",
-        }}
-      />
-      <PillarFeature
-        variant="concise"
-        eyebrow="Growth & Performance"
-        eyebrowColor="#FF37B3"
-        accentColor="#FF37B3"
-        title="Turn traffic into revenue."
-        description="Search, paid media, conversion and ongoing improvement, run with a clear view of what each channel does and where the next customer comes from."
-        cta={{
-          text: "Explore growth and performance",
-          href: "/services/seo",
-        }}
-      />
-      <PillarFeature
-        variant="concise"
+        background="tint"
         eyebrow="AI & Automation"
         eyebrowColor="#7C3AED"
         accentColor="#7C3AED"

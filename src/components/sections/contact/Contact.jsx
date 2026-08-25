@@ -40,7 +40,7 @@ const Contact = () => {
               transition={{ type: "tween", duration: 0.8, ease: "easeOut" }}
             >
               <div className="mt-[1rem] mb-[2rem]">
-                <SectionTitle text="Unlock your brand's hidden potential." />
+                <SectionTitle text="Let's grow your brand online." />
               </div>
             </MotionEffect>
 

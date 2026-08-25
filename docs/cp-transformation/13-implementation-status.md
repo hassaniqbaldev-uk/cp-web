@@ -290,8 +290,33 @@ distinct launch→improve→grow→automate arc tied to the pillars, else merge 
 H1 "Unlock your brand's hidden potential" uses the banned "Unlock" (fix at the final-conversion rework).
 Awaiting Hassan's cut/merge decision.
 
-**Next (after review + Hassan's cut decision):** Why (rework Established, fix date already done),
-lifecycle, founder, reviews, investment, final conversion.
+**Cuts approved + styling-alignment pass — DONE.**
+
+*Findings (how the site's sections are actually treated):* uniform section shell `relative overflow-hidden
+[bg] px-[2rem] py-[5rem] xl:px-[0rem] xl:py-[10rem]` + `relative z-[10] container`; centered heading stack
+(SectionLabel accent → SectionTitle → SectionDescription), each in a MotionEffect (slide-down + fade +
+zoom, inView, staggered 0.1/0.25/0.4, tween 0.8s easeOut); **background alternates** across three
+treatments — WHITE (Established, Methodology), LIGHT TINT (#F7FAFF blue on Expertise3/ProjectShowcase;
+#ffd900/13 yellow on Testimonials), DARK (ProcessBg full-bleed `<Image>` on Process/PartnerWithUs2/
+ServicesPillars) — and **adjacent sections never share a treatment**; light/dark sections carry a floating
+`ServicesLogoShape` for texture; cards are the shared white rounded-3rem `CaseStudyCard` or dark glass.
+
+*What the new sections got wrong:* Web & Ecommerce + the three concise blocks were FLAT WHITE with no
+decorative shape and no alternation, so after the dark pillar overview the page ran white→white→white→
+white→white — the "dropped in" feel. (Heading stack, container and animations already matched.)
+
+*Fixes:* dropped the Brand & Growth standalone blocks (approved — they restated the overview); Web &
+Ecommerce kept white but gained the `ServicesLogoShape` texture; AI given the #F7FAFF tint + shape +
+standard padding so the flow now alternates dark → white → tint → white → dark with no adjacent repeats;
+`PillarFeature` concise variant stays light by CONTENT (no work/capabilities) not by padding, so it sits on
+the site's uniform py rhythm. Fixed the banned "Unlock your brand's hidden potential" → "Let's grow your
+brand online." in `Contact.jsx` (homepage + /contact). Verified 375/768/1440: no overflow; weighting holds
+(AI ~30% of the Web & Ecommerce block); background alternation correct.
+
+**Lifecycle (slot 10):** still to build — only as the distinct launch→improve→grow→automate arc, else
+merged into Why (Hassan's call once seen).
+
+**Next (after review):** Why (rework Established), lifecycle, founder, reviews, investment, final conversion.
 
 ---
 

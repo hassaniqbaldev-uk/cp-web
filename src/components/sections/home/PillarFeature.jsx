@@ -1,12 +1,14 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import SectionLabel from "@/components/ui/SectionLabel";
 import SectionTitle from "@/components/ui/SectionTitle";
 import SectionDescription from "@/components/ui/SectionDescription";
 import PrimaryButton from "@/components/ui/PrimaryButton";
 import CaseStudyCard from "@/components/ui/CaseStudyCard";
 import TiltArrowIcon from "@/components/icons/TiltArrowIcon";
+import ServicesLogoShape from "@/assets/svgs/services-logo-shape.svg";
 import { MotionEffect } from "@/components/effects/motion-effect";
 
 // A per-pillar feature block. Prop-driven so it serves both the heavy Web & Ecommerce treatment (with
@@ -25,20 +27,33 @@ const PillarFeature = ({
   ctaPosition = "home-pillar",
   accentColor = "#3078FF",
   variant = "feature",
+  background = "white",
 }) => {
-  // The three light pillars use variant="concise": tighter padding, no capability links or work cards,
-  // and a text link instead of a filled button, so they stay visibly smaller than the Web & Ecommerce
-  // block and the weighting reads. `proof` is an optional single evidence line (AI & Automation uses it
+  // variant="concise" keeps the block light by CONTENT (no capability links or work cards, and a text
+  // link instead of a filled button) rather than by padding — the section padding stays on the site's
+  // uniform py rhythm so it does not read as dropped in. `background` alternates white / #F7FAFF tint the
+  // way the rest of the page does. `proof` is an optional single evidence line (AI & Automation uses it
   // for Biome4Pets — its only proof — so its block still earns its place without work cards).
   const concise = variant === "concise";
 
   return (
     <section
-      className={`px-[2rem] xl:px-[0rem] ${
-        concise ? "py-[4rem] xl:py-[6rem]" : "py-[5rem] xl:py-[10rem]"
+      className={`relative overflow-hidden px-[2rem] py-[5rem] xl:px-[0rem] xl:py-[10rem] ${
+        background === "tint" ? "bg-[#F7FAFF]" : ""
       }`}
     >
-      <div className="container">
+      {/* Decorative shape — the texture the site's light/tinted sections carry (matches Expertise3). */}
+      <div className="pointer-events-none absolute top-[7.8rem] right-[0rem] h-[17.7rem] w-[12.9rem] rotate-[-34deg] select-none">
+        <Image
+          src={ServicesLogoShape}
+          alt="Logo Shape"
+          width={129}
+          height={177}
+          unoptimized
+        />
+      </div>
+
+      <div className="relative z-[10] container">
         <div className="flex flex-col items-center text-center">
           {eyebrow && (
             <MotionEffect
