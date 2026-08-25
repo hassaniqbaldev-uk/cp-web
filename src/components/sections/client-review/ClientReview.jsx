@@ -21,7 +21,7 @@ const ClientReview = () => {
             {/*Background Image*/}
             <Image
               src={ClientReviewBg}
-              alt="Background Image"
+              alt=""
               fill
               priority
               className="pointer-events-none absolute inset-0 z-[1] object-cover select-none"

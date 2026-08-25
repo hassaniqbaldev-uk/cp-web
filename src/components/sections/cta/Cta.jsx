@@ -19,7 +19,7 @@ const Cta = () => {
           {/*Background Image*/}
           <Image
             src={CtaBg}
-            alt="Background Image"
+            alt=""
             fill
             priority
             className="pointer-events-none absolute inset-0 z-[1] rounded-[3rem] object-cover select-none"

@@ -25,7 +25,7 @@ const HubHero = ({
     <section className="relative w-full overflow-hidden px-[2rem] pt-[19rem] pb-[13rem] xl:px-[0rem]">
       <Image
         src={HeroBg}
-        alt="Background Image"
+        alt=""
         fill
         priority
         className="pointer-events-none absolute inset-0 z-[1] object-cover select-none"

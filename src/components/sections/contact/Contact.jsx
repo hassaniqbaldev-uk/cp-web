@@ -70,9 +70,9 @@ const Contact = () => {
                     <Image src={ClockIcon} alt="Icon" width={24} height={24} />
                   </i>
 
-                  <h4 className="text-[1.8rem] font-bold tracking-[-0.02em] text-[#312749] md:text-[2.2rem]">
+                  <h3 className="text-[1.8rem] font-bold tracking-[-0.02em] text-[#312749] md:text-[2.2rem]">
                     What happens next:
-                  </h4>
+                  </h3>
                 </div>
 
                 <ul className="grid grid-cols-1 gap-x-[3rem] gap-y-[.6rem] md:grid-cols-2 md:gap-y-[1.2rem]">

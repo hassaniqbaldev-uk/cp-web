@@ -64,7 +64,7 @@ const DifferenceSlider2 = () => {
         <div className="relative h-[32rem] w-[30rem]">
           <Image
             src={DifferenceGradientSlideBg2}
-            alt="Background Image"
+            alt=""
             fill
             priority
             className="pointer-events-none absolute inset-0 z-[1] select-none"

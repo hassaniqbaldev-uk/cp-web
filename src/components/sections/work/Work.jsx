@@ -163,9 +163,9 @@ const Work = ({
 
                     <div className="flex h-full items-center justify-between">
                       <div className="flex flex-col items-start text-left">
-                        <h4 className="text-[3.4rem] leading-[4.8rem] font-bold tracking-[-0.02em] text-[#312749]">
+                        <h3 className="text-[3.4rem] leading-[4.8rem] font-bold tracking-[-0.02em] text-[#312749]">
                           {primaryCase.title}
-                        </h4>
+                        </h3>
 
                         <span className="text-[1.6rem] leading-[2.6rem] font-semibold text-[#625C70]">
                           {primaryCase.excerpt}
@@ -220,9 +220,9 @@ const Work = ({
 
                   <div className="flex items-center justify-between">
                     <div className="flex flex-col items-start text-left">
-                      <h4 className="text-[2.6rem] leading-[4rem] font-bold tracking-[-0.02em] text-[#312749]">
+                      <h3 className="text-[2.6rem] leading-[4rem] font-bold tracking-[-0.02em] text-[#312749]">
                         {secondaryCase.title}
-                      </h4>
+                      </h3>
 
                       <span className="text-[1.6rem] leading-[2.6rem] font-semibold text-[#625C70]">
                         {secondaryCase.excerpt}
@@ -274,9 +274,9 @@ const Work = ({
 
                   <div className="flex items-center justify-between">
                     <div className="flex flex-col items-start text-left">
-                      <h4 className="text-[2.6rem] leading-[4rem] font-bold tracking-[-0.02em] text-[#312749]">
+                      <h3 className="text-[2.6rem] leading-[4rem] font-bold tracking-[-0.02em] text-[#312749]">
                         {tertiaryCase.title}
-                      </h4>
+                      </h3>
 
                       <span className="text-[1.6rem] leading-[2.6rem] font-semibold text-[#625C70]">
                         {tertiaryCase.excerpt}

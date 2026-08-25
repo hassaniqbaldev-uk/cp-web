@@ -61,7 +61,7 @@ const Lifecycle = () => {
       {/* Background Image */}
       <Image
         src={ProcessBg}
-        alt="Background Image"
+        alt=""
         fill
         className="pointer-events-none absolute inset-0 z-[1] object-cover select-none"
         sizes="100vw"
@@ -92,12 +92,12 @@ const Lifecycle = () => {
               delay={0.25}
               transition={{ type: "tween", duration: 0.8, ease: "easeOut" }}
             >
-              <h4 className="text-[3rem] leading-[3.5rem] font-bold tracking-[-0.02em] text-white md:text-[4.8rem] md:leading-[6rem]">
+              <h2 className="text-[3rem] leading-[3.5rem] font-bold tracking-[-0.02em] text-white md:text-[4.8rem] md:leading-[6rem]">
                 Launch, improve, grow,
                 <span className="bg-gradient-orange-pink block bg-clip-text text-transparent">
                   automate.
                 </span>
-              </h4>
+              </h2>
             </MotionEffect>
           </div>
 
@@ -164,12 +164,12 @@ const Lifecycle = () => {
 
                 <div className="process-card flex flex-col items-start justify-center gap-[3.5rem] py-[3rem]">
                   <div className="flex h-full flex-col items-start px-[2.8rem] text-left">
-                    <h5
+                    <h3
                       style={{ color: item.color }}
                       className="mb-[8px] text-[1.8rem] leading-[2.6rem] font-bold"
                     >
                       {item.title}
-                    </h5>
+                    </h3>
 
                     <p className="text-[1.6rem] leading-[2.4rem] font-normal text-white">
                       {item.description}

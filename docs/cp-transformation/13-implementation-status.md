@@ -529,6 +529,26 @@ at 375/768/1440.
 
 ---
 
+## A11y fixes batch 1 + GTM consent write-up (25 Aug 2026)
+
+- **GTM Clarity/Crisp consent** — wrote exact dashboard steps into `launch-external-tasks.md §1a` (which tags,
+  `analytics_storage` on each, publish, verify) + **§1b recommendation to remove Crisp** (perf + privacy, no
+  brief need for live chat). Confirmed Clarity/Crisp are GTM-injected (not in code), so this is dashboard work.
+- **Safe a11y fixes done (code):** skip link ("Skip to content" → `#main`) in both layouts + `id="main"`;
+  `aria-label` on the Radix service select (Contact + Audit forms); **38 decorative background alts → `alt=""`**
+  (via sed, the unambiguous ones only). Honeypot was already `aria-hidden`+`tabIndex=-1` (no fix needed).
+- **Heading hierarchy (approved):** Lifecycle title h4→h2 + stages h5→h3 (+ ProcessSlider h5→h3); Contact "What
+  happens next" h4→h3; testimonial author names h6→`<p>` (Testimonials, Testimonials2, + both sliders);
+  selected-work card titles h4→h3. Build clean; verified 375/1440: no overflow, **visual unchanged** (tag swaps
+  preserve the className, e.g. Lifecycle still 48px, Work card 34px).
+- **STILL OPEN (flagged, not done):** Footer heading levels (Legal/Ready-to-Start/Our-Brands inconsistent) and the
+  Header **mega-menu using headings for nav links** (before the h1) — a nav-semantics sub-pass; the "Pixel AI"
+  h5 jump is the Crisp widget (third-party, resolved by removing Crisp). Touch targets (33 < 24px) and the
+  icon/card/avatar generic alts (71/10/12 — some decorative, some are icon-only-link names) need per-context
+  work, not a blind sweep. Also noticed: shared `Testimonials.jsx` still has the OLD un-deduped data (Brendan dup,
+  "AYOA"/"Casabotanica") vs the cleaned `Testimonials2.jsx` — pre-existing, worth reconciling.
+- **Image pass (119 unoptimized): NOT started** — investigating why it was disabled first, per Hassan's gate.
+
 ## Blog stat fact-check + A11y/Perf AUDIT (report-only) (25 Aug 2026)
 
 ### Fact-check (blog external stats)

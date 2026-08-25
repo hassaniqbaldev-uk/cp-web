@@ -21,7 +21,7 @@ const Process = () => {
         {/*Background Image*/}
         <Image
           src={ProcessBg}
-          alt="Background Image"
+          alt=""
           fill
           className="pointer-events-none absolute inset-0 z-[1] object-cover select-none"
           sizes="100vw"

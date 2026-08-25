@@ -36,6 +36,52 @@ events should arrive **without** a client id / cookies (cookieless). Click Accep
 hits resume. Click Reject: back to cookieless. Confirm no non-Google pixel sets cookies in the denied state
 (DevTools → Application → Cookies).
 
+### 1a. URGENT — Clarity + Crisp fire without consent RIGHT NOW (live on production)
+
+Observed 25 Aug 2026: the container injects **Microsoft Clarity** (session recording) and **Crisp** (live chat,
+cookies) and **both load unconditionally**, bypassing the consent banner. Neither is in the codebase — they are
+GTM tags. Exact dashboard steps (no interpretation needed):
+
+**A. Microsoft Clarity — gate on analytics consent**
+1. GTM → open workspace for **GTM-B8FV6K69**.
+2. **Tags** → click the **Microsoft Clarity** tag (a "Microsoft Clarity" template tag, or a Custom HTML tag whose
+   code contains `clarity.ms`).
+3. **Advanced Settings** → **Consent Settings**.
+4. Set **"Require additional consent for tag to fire"** and add exactly one type: **`analytics_storage`**.
+5. **Save**.
+
+**B. Crisp chat — gate on analytics consent (only if you keep it; see recommendation below)**
+1. **Tags** → click the **Crisp** tag (a Custom HTML tag whose code contains `crisp.chat` / `CRISP_WEBSITE_ID`).
+2. **Advanced Settings** → **Consent Settings** → **"Require additional consent for tag to fire"** → add
+   **`analytics_storage`**. (Crisp sets identifying cookies, so it is not "strictly necessary"; gate it.)
+3. **Save**.
+
+**C. Publish**
+4. **Submit** (top right) → give the version a name ("Consent-gate Clarity + Crisp") → **Publish**. Nothing takes
+   effect until published.
+
+**D. Check afterwards (in this order)**
+5. GTM **Preview** → enter the site URL. On first load (banner not yet answered), in the Preview panel both the
+   Clarity and Crisp tags must show **"Not fired — consent not granted"** (or under the tag's Consent column).
+6. In the site's DevTools → **Network**: before answering the banner, there must be **no requests** to
+   `clarity.ms` or `crisp.chat`. → **Application → Cookies**: no `_clck` / `_clsk` (Clarity) and no `crisp-client…`
+   cookies.
+7. Click **Accept** on the banner → the requests/cookies now appear. Click **Reject** (clear storage first) → they
+   stay absent. That is the pass condition.
+
+**If a tag has no consent setting available** (older Custom HTML), wrap its trigger so it only fires on a
+consent-granted event, or move it behind a "Consent Initialization" + a custom `analytics_storage=granted`
+trigger. Simplest is to use the built-in Consent Settings above.
+
+### 1b. RECOMMENDATION — remove Crisp entirely
+My view: **drop Crisp live chat.** It is a performance cost (a heavy third-party widget on every page) and a
+privacy liability (cookies, currently un-consented), and **nothing in the brief calls for live chat** — the
+conversion route is the enquiry form plus a "reply within one working day" promise. An owner-led team rarely
+staffs chat fast enough for it to beat a form, and an unattended chat that does not answer is worse than none.
+Removing it is one action in GTM (pause or delete the Crisp tag, then Publish) and removes both the perf and the
+consent problem at once. **Clarity** is more defensible (session recordings genuinely help CRO) — keep it **only
+if you actually review the recordings**, and consent-gate it per §1a.A regardless.
+
 ---
 
 ## 2. Production email — SES identity, DNS, production access (**MTB**)

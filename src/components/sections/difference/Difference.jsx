@@ -123,7 +123,7 @@ const Difference = () => {
         {/*Background Image*/}
         <Image
           src={ProcessBg}
-          alt="Background Image"
+          alt=""
           fill
           priority
           className="pointer-events-none absolute inset-0 z-[1] object-cover select-none"
@@ -205,7 +205,7 @@ const Difference = () => {
                       <div className="relative mt-[5rem] hidden h-[32rem] w-full max-w-[120rem] grid-cols-6 gap-[2rem] rounded-[5rem] px-[3rem] xl:grid">
                         <Image
                           src={DifferenceGradientBg}
-                          alt="Background Image"
+                          alt=""
                           fill
                           priority
                           className="pointer-events-none absolute inset-0 z-[1] select-none"
@@ -254,7 +254,7 @@ const Difference = () => {
                       <div className="relative mt-[5rem] hidden h-[32rem] w-full max-w-[120rem] grid-cols-6 gap-[2rem] rounded-[5rem] px-[3rem] xl:grid">
                         <Image
                           src={DifferenceGradientBg2}
-                          alt="Background Image"
+                          alt=""
                           fill
                           priority
                           className="pointer-events-none absolute inset-0 z-[1] select-none"

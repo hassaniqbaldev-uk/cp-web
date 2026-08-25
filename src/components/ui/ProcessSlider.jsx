@@ -25,12 +25,12 @@ const ProcessSlider = ({ PROCESS_CARD }) => {
             </div>
 
             <div className="flex h-full flex-col items-start px-[2.8rem] py-[3rem] text-left">
-              <h5
+              <h3
                 style={{ color: item.color }}
                 className="mt-[12px] mb-[8px] text-[1.8rem] leading-[2.6rem] font-bold"
               >
                 {item.title}
-              </h5>
+              </h3>
 
               <p className="text-[1.6rem] leading-[2.4rem] font-normal text-white">
                 {item.description}

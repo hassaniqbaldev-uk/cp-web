@@ -240,9 +240,9 @@ const Testimonials = () => {
                   </div>
 
                   <div className="flex flex-col items-start text-left">
-                    <h6 className="text-[1.8rem] leading-[2.6rem] font-semibold tracking-normal text-[#312749]">
+                    <p className="text-[1.8rem] leading-[2.6rem] font-semibold tracking-normal text-[#312749]">
                       Brendan Torazzi
-                    </h6>
+                    </p>
 
                     <span className="text-[1.6rem] leading-[2.4rem] font-medium tracking-normal text-[#625C70]">
                       Alertforce
@@ -281,9 +281,9 @@ const Testimonials = () => {
                 </div>
 
                 <div className="flex flex-col items-start text-left">
-                  <h6 className="text-[1.8rem] leading-[2.6rem] font-semibold tracking-normal text-[#312749]">
+                  <p className="text-[1.8rem] leading-[2.6rem] font-semibold tracking-normal text-[#312749]">
                     Sandra
-                  </h6>
+                  </p>
 
                   <span className="text-[1.6rem] leading-[2.4rem] font-medium tracking-normal text-[#625C70]">
                     Homecare
@@ -321,9 +321,9 @@ const Testimonials = () => {
                 </div>
 
                 <div className="flex flex-col items-start text-left">
-                  <h6 className="text-[1.8rem] leading-[2.6rem] font-semibold tracking-normal text-[#312749]">
+                  <p className="text-[1.8rem] leading-[2.6rem] font-semibold tracking-normal text-[#312749]">
                     Ben
-                  </h6>
+                  </p>
 
                   <span className="text-[1.6rem] leading-[2.4rem] font-medium tracking-normal text-[#625C70]">
                     Little Astro
@@ -362,9 +362,9 @@ const Testimonials = () => {
                 </div>
 
                 <div className="flex flex-col items-start text-left">
-                  <h6 className="text-[1.8rem] leading-[2.6rem] font-semibold tracking-normal text-[#312749]">
+                  <p className="text-[1.8rem] leading-[2.6rem] font-semibold tracking-normal text-[#312749]">
                     Alex
-                  </h6>
+                  </p>
 
                   <span className="text-[1.6rem] leading-[2.4rem] font-medium tracking-normal text-[#625C70]">
                     Loop

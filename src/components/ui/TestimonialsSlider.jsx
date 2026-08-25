@@ -41,9 +41,9 @@ const TestimonialsSlider = ({ testimonials }) => {
             </div>
 
             <div className="flex flex-col items-start text-left">
-              <h6 className="text-[1.2rem] leading-[1.8rem] font-semibold tracking-normal text-[#312749]">
+              <p className="text-[1.2rem] leading-[1.8rem] font-semibold tracking-normal text-[#312749]">
                 {item.name}
-              </h6>
+              </p>
 
               <span className="text-[1.1rem] leading-[1.7rem] font-medium tracking-normal text-[#625C70]">
                 {item.company}
