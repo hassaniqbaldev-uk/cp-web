@@ -6,6 +6,7 @@ import ServicesPillars from "@/components/sections/services/ServicesPillars";
 import PillarFeature from "@/components/sections/home/PillarFeature";
 import Established from "@/components/sections/established/Established";
 import Lifecycle from "@/components/sections/home/Lifecycle";
+import Founder from "@/components/sections/home/Founder";
 import Work from "@/components/sections/work/Work";
 import Cta from "@/components/sections/cta/Cta";
 import Testimonials from "@/components/sections/testimonials/Testimonials";
@@ -155,6 +156,9 @@ const HomePage = ({ selectedWork, webEcommerceWork, navData }) => {
           AI (tint) -> Why (white) -> Lifecycle (dark) -> Cta (white). */}
       <Established />
       <Lifecycle />
+      {/* Founder — Hassan only (no team grid), owner-led message. Tint keeps the alternation:
+          Lifecycle (dark) -> Founder (tint) -> Cta (white). */}
+      <Founder />
       <section className="overflow-hidden px-[2rem] py-[5rem] xl:px-[0rem] xl:py-[10rem]">
         <Cta />
       </section>

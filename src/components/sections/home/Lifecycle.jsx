@@ -1,173 +1,199 @@
 "use client";
 
 import Image from "next/image";
-import SectionLabel from "@/components/ui/SectionLabel";
-import SectionTitle from "@/components/ui/SectionTitle";
-import SectionDescription from "@/components/ui/SectionDescription";
-import ServicesLogoShape from "@/components/decorative-elements/ServicesLogoShape";
 import ProcessBg from "@/assets/images/backgrounds/process-bg.webp";
+import SectionLabel from "@/components/ui/SectionLabel";
+import SectionDescription from "@/components/ui/SectionDescription";
+import PrimaryButton from "@/components/ui/PrimaryButton";
 import { MotionEffect } from "@/components/effects/motion-effect";
+import dynamic from "next/dynamic";
 
-// The lifecycle — deliberately NOT a second "we stick around" trust pitch (that lives in Why). It is the
-// launch -> improve -> grow -> automate arc, and each stage draws on a DIFFERENT pillar, so it shows the
-// four pillars working together over the life of the relationship — a story nothing else on the page tells.
-// Dark-glass treatment matches ServicesPillars / PartnerWithUs2, and keeps the section rhythm's dark slot
-// that Process used to hold.
+const ProcessSlider = dynamic(() => import("@/components/ui/ProcessSlider"), {
+  ssr: false,
+  loading: () => <div className="h-[35.6rem]" />, // placeholder height to prevent layout shift
+});
+
+// The lifecycle — the launch -> improve -> grow -> automate arc, each stage tied to a DIFFERENT pillar, so
+// it shows the four pillars working together over the relationship (distinct from Why's differentiators,
+// not a second trust pitch). It reuses the Process treatment exactly — the numbered tile + connecting-line
+// timeline, the shared ProcessSlider for mobile, and the dark ProcessBg — because the content is a sequence
+// and that presentation already reads as one on the site. (The old Process component is kept orphaned; this
+// is the arc, not the delivery method — the "how we work" method links out to /how-we-work below.)
+// Pillar names lead each description so they show on desktop and in the mobile slider alike.
 const STAGES = [
   {
-    no: "01",
-    stage: "Launch",
-    pillar: "Web & Ecommerce",
+    step: "1",
+    title: "Launch",
+    description:
+      "Web & Ecommerce. We design and build the website, store or app, done properly from the start.",
     color: "#3078FF",
-    text: "We design and build the website, store or app, done properly from the start.",
+    boxShadow: "5px 5px 44px 0px #3078FFCC",
   },
   {
-    no: "02",
-    stage: "Improve",
-    pillar: "Brand & Experience",
+    step: "2",
+    title: "Improve",
+    description:
+      "Brand & Experience. We sharpen the brand and the experience around it, so more of your visitors act.",
     color: "#ED910C",
-    text: "We sharpen the brand and the experience around it, so more of your visitors act.",
+    boxShadow: "5px 5px 44px 0px #ED910CCC",
   },
   {
-    no: "03",
-    stage: "Grow",
-    pillar: "Growth & Performance",
+    step: "3",
+    title: "Grow",
+    description:
+      "Growth & Performance. We bring the right people in through search, paid media and content, and keep refining what works.",
     color: "#FF37B3",
-    text: "We bring the right people in through search, paid media and content, and keep refining what works.",
+    boxShadow: "5px 5px 44px 0px #FF37B3CC",
   },
   {
-    no: "04",
-    stage: "Automate",
-    pillar: "AI & Automation",
+    step: "4",
+    title: "Automate",
+    description:
+      "AI & Automation. We take the repetitive work off your team, so growth does not mean more headcount.",
     color: "#7C3AED",
-    text: "We take the repetitive work off your team with automation and AI, so growth does not mean more headcount.",
+    boxShadow: "5px 5px 44px 0px #7C3AEDCC",
   },
 ];
 
-const StageCard = ({ item }) => (
-  <div className="relative h-full w-full rounded-[3rem]">
-    {/* Gradient border — the glass edge used across the dark sections. */}
-    <div
-      aria-hidden
-      style={{
-        background:
-          "linear-gradient(149.03deg, rgba(255,255,255,0.6) 0%, rgba(255,255,255,0) 51.06%, rgba(255,255,255,0.6) 98.34%)",
-        WebkitMask:
-          "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
-        WebkitMaskComposite: "xor",
-        maskComposite: "exclude",
-        padding: "1px",
-        borderRadius: "3rem",
-      }}
-      className="pointer-events-none absolute inset-0 z-[1]"
-    />
-
-    <div className="relative z-[2] flex h-full flex-col gap-[1.6rem] rounded-[3rem] bg-white/15 p-[3rem]">
-      <span
-        className="text-[3.4rem] leading-[3.4rem] font-bold tracking-[-0.02em]"
-        style={{ color: item.color }}
-      >
-        {item.no}
-      </span>
-
-      <div className="flex flex-col gap-[.6rem]">
-        <h3 className="text-[2.4rem] leading-[2.8rem] font-bold tracking-[-0.02em] text-white">
-          {item.stage}
-        </h3>
-        <span
-          className="text-[1.3rem] font-bold tracking-[0.04em] uppercase"
-          style={{ color: item.color }}
-        >
-          {item.pillar}
-        </span>
-      </div>
-
-      <p className="text-[1.6rem] leading-[2.6rem] font-normal text-white">
-        {item.text}
-      </p>
-    </div>
-  </div>
-);
-
 const Lifecycle = () => {
   return (
-    <section className="relative overflow-hidden px-[2rem] py-[5rem] xl:px-[0rem] xl:py-[10rem]">
+    <section className="relative px-[2rem] py-[5rem] xl:px-[0rem] xl:py-[10rem]">
+      {/* Background Image */}
       <Image
         src={ProcessBg}
         alt="Background Image"
         fill
-        priority
         className="pointer-events-none absolute inset-0 z-[1] object-cover select-none"
-        unoptimized
+        sizes="100vw"
+        quality={65}
       />
 
-      <div className="pointer-events-none absolute inset-0 z-[2] select-none">
-        <ServicesLogoShape className="absolute top-[2rem] right-[-1rem] h-[7.1rem] w-[5.2rem] rotate-[-34deg] md:top-[7.8rem] md:h-[17.7rem] md:w-[12.9rem]" />
-      </div>
-
       <div className="relative z-[10] container">
-        <div className="flex flex-col items-center text-center">
-          <MotionEffect
-            slide={{ direction: "down" }}
-            fade
-            zoom
-            inView
-            delay={0.1}
-            transition={{ type: "tween", duration: 0.8, ease: "easeOut" }}
-          >
-            <div>
-              <SectionLabel text="The lifecycle" textColor="#FF37B3" />
-            </div>
-          </MotionEffect>
+        <div className="flex flex-col items-center justify-between gap-[1.5rem] md:gap-[4rem] xl:flex-row xl:items-start">
+          <div className="flex w-[30rem] flex-col items-center gap-[1rem] text-center md:w-[58.5rem] xl:items-start xl:text-left">
+            <MotionEffect
+              slide={{ direction: "down" }}
+              fade
+              zoom
+              inView
+              delay={0.1}
+              transition={{ type: "tween", duration: 0.8, ease: "easeOut" }}
+            >
+              <div>
+                <SectionLabel text="The lifecycle" textColor="#FF37B3" />
+              </div>
+            </MotionEffect>
 
-          <MotionEffect
-            slide={{ direction: "down" }}
-            fade
-            zoom
-            inView
-            delay={0.25}
-            transition={{ type: "tween", duration: 0.8, ease: "easeOut" }}
-          >
-            <div className="mt-[5px] mb-[14px]">
-              <SectionTitle
-                text="Launch, improve, grow, automate."
-                textColor="#FFFFFF"
-              />
-            </div>
-          </MotionEffect>
+            <MotionEffect
+              slide={{ direction: "down" }}
+              fade
+              zoom
+              inView
+              delay={0.25}
+              transition={{ type: "tween", duration: 0.8, ease: "easeOut" }}
+            >
+              <h4 className="text-[3rem] leading-[3.5rem] font-bold tracking-[-0.02em] text-white md:text-[4.8rem] md:leading-[6rem]">
+                Launch, improve, grow,
+                <span className="bg-gradient-orange-pink block bg-clip-text text-transparent">
+                  automate.
+                </span>
+              </h4>
+            </MotionEffect>
+          </div>
 
-          <MotionEffect
-            slide={{ direction: "down" }}
-            fade
-            zoom
-            inView
-            delay={0.4}
-            transition={{ type: "tween", duration: 0.8, ease: "easeOut" }}
-          >
-            <div className="max-w-[70rem]">
-              <SectionDescription
-                text="Most agencies stop at launch. We are set up for everything after it. Each stage draws on a different part of what we do, and we are there for all of them."
-                textColor="#FFFFFF"
-              />
-            </div>
-          </MotionEffect>
+          <div className="flex w-[30rem] flex-col items-center gap-[3.2rem] text-center md:w-[58.5rem] xl:items-start xl:text-left">
+            <MotionEffect
+              slide={{ direction: "down" }}
+              fade
+              inView
+              delay={0.4}
+              transition={{ type: "tween", duration: 0.8, ease: "easeOut" }}
+            >
+              <div>
+                <SectionDescription
+                  text="Most agencies stop at launch. We are set up for everything after it. Each stage draws on a different part of what we do, and we are there for all of them."
+                  textColor="#ffffff"
+                />
+              </div>
+            </MotionEffect>
+
+            <MotionEffect
+              slide={{ direction: "down" }}
+              fade
+              inView
+              delay={0.55}
+              transition={{ type: "tween", duration: 0.8, ease: "easeOut" }}
+            >
+              <div>
+                <PrimaryButton
+                  text="See how we work"
+                  textColor="#312749"
+                  bGcolor="#ffffff"
+                  href="/how-we-work"
+                  ctaPosition="home-lifecycle"
+                />
+              </div>
+            </MotionEffect>
+          </div>
         </div>
 
-        <div className="mt-[5rem] grid grid-cols-1 gap-[3rem] md:grid-cols-2 xl:mt-[7rem] xl:grid-cols-4">
+        <div className="mt-[6.5rem] hidden grid-cols-4 xl:grid">
           {STAGES.map((item, idx) => (
             <MotionEffect
-              key={item.no}
+              key={item.step}
               slide={{ direction: "down" }}
               fade
               inView
               delay={0.4 + idx * 0.15}
               transition={{ type: "tween", duration: 1.0, ease: "easeOut" }}
-              className="h-full"
             >
-              <StageCard item={item} />
+              <div className="flex h-full flex-col items-center gap-[3.8rem]">
+                <div className="relative flex w-full justify-center">
+                  <hr className="absolute top-1/2 z-[0] w-full -translate-y-1/2 border-t border-white/30" />
+
+                  <div
+                    style={{
+                      boxShadow: item.boxShadow,
+                      backgroundColor: item.color,
+                    }}
+                    className="relative z-[1] inline-flex size-[7.9rem] items-center justify-center rounded-[1.6rem] text-center text-[3.5rem] font-extrabold tracking-[-0.02em] text-white"
+                  >
+                    0{item.step}
+                  </div>
+                </div>
+
+                <div className="process-card flex flex-col items-start justify-center gap-[3.5rem] py-[3rem]">
+                  <div className="flex h-full flex-col items-start px-[2.8rem] text-left">
+                    <h5
+                      style={{ color: item.color }}
+                      className="mb-[8px] text-[1.8rem] leading-[2.6rem] font-bold"
+                    >
+                      {item.title}
+                    </h5>
+
+                    <p className="text-[1.6rem] leading-[2.4rem] font-normal text-white">
+                      {item.description}
+                    </p>
+                  </div>
+                </div>
+              </div>
             </MotionEffect>
           ))}
         </div>
+
+        {/* Responsive — reuse the shared ProcessSlider (same mobile behaviour as the Process section). */}
+        <MotionEffect
+          slide={{ direction: "down" }}
+          fade
+          inView
+          delay={0.6}
+          transition={{ type: "tween", duration: 0.8, ease: "easeOut" }}
+          className="w-full"
+        >
+          <div className="block w-full xl:hidden">
+            <ProcessSlider PROCESS_CARD={STAGES} />
+          </div>
+        </MotionEffect>
       </div>
     </section>
   );

@@ -328,16 +328,43 @@ automate arc, each stage tied to a DIFFERENT pillar (Launch=Web & Ecommerce, Imp
 Grow=Growth & Performance, Automate=AI & Automation) — a "how the four pillars work together over the
 relationship" story, genuinely distinct from Why (differentiators), not a second trust pitch. Dark-glass
 treatment (ProcessBg + glass cards) matching ServicesPillars/PartnerWithUs2, keeping the dark rhythm slot
-that Process held. The old `Process` section is removed from the homepage (it is the delivery process and
-lives on How We Work via `Process2`; the homepage `Process` component is now unused).
+that Process held. The old `Process` section is removed from the homepage and is now **unused / orphaned
+(not moved, not deleted)**. CORRECTION to an earlier loose phrasing: `Process` was **homepage-only and was
+never on How We Work**. How We Work renders a **separate** component, `Process2` (different content
+`PROCESS_2_CARD`, different scroll-timeline layout), which I did not touch and which is unaffected. So
+removing `Process` from the homepage does not move it anywhere — it simply leaves it unused. Process and
+Lifecycle are also **different in kind** (Process = project delivery method: Discovery/Design/Develop/Launch;
+Lifecycle = ongoing relationship arc across the pillars) — Lifecycle does NOT replace what Process said.
 
 **Rhythm preserved:** AI (tint) → Why (white) → Lifecycle (dark) → Cta (white) → Testimonials (yellow) →
 Contact (dark) — same white→dark→Cta adjacency the original Established→Process→Cta had. Verified
 375/768/1440: no horizontal overflow; both sections carry proper weight (Why ~1030px, Lifecycle ~785px).
 
-**Next (after review):** founder (Hassan bio, owner-led message), reviews (give Testimonials weight; report
-genuine-review count), investment (light price signal from servicePricing), final conversion (Start a
-project + reassurance microcopy, no Book a Call).
+**Lifecycle restyle (Hassan chose option 3) — DONE.** Lifecycle now uses the **Process treatment exactly**:
+the numbered tile + connecting-line timeline (desktop `grid-cols-4`), the shared `ProcessSlider` for mobile
+(same behaviour), and the dark ProcessBg — so the launch→improve→grow→automate arc reads as a sequence.
+Pillar names lead each stage description so they show on desktop and in the slider. **"How do you work"
+(one of the brief's ten required answers, which Process used to carry) is handled by a "See how we work"
+button in the Lifecycle header → /how-we-work** (rather than restoring a second dark step-section).
+
+**ORPHANED COMPONENT — `src/components/sections/process/Process.jsx` is UNUSED (not imported anywhere).**
+It was homepage-only; removed when Lifecycle took its slot. Left in place deliberately (Hassan's call) — do
+NOT quietly delete or accidentally revive it; its disposition is decided during final cleanup (CP-1x). Note
+it still reads `PROCESS_CARD` + `ProcessSlider` (both still used by the live Lifecycle/other code, so those
+stay). How We Work uses a SEPARATE component `Process2` (unaffected).
+
+**Founder — BUILT (this step).** `Founder` component: Hassan only, no team grid (owner-led accountability +
+a wider specialist team as the message, not a personal profile). Static `hassan-avatar` photo (316×316),
+name "Hassan Iqbal", role "Founder & Managing Director", and a **draft bio (Hassan to correct)** — four
+sentences: founded in 2013 and leads every project personally; the accountable point of contact throughout,
+backed by a specialist team not a rotating cast of juniors; built to do the work properly and stay
+commercially useful, not chase awards; work with CreativePixels and you work with the owner. Tint (#F7FAFF)
+background keeps the rhythm: **Lifecycle (dark) → Founder (tint) → Cta (white)**. Verified 375/768/1440:
+no overflow; Lifecycle shows the desktop timeline grid at 1440 and the ProcessSlider at 768/375.
+
+**Next (after review):** reviews (give Testimonials weight, off the footer; report genuine-review count),
+investment (light price signal from servicePricing, not a menu), final conversion (Start a project +
+reassurance microcopy, no Book a Call).
 
 ---
 
