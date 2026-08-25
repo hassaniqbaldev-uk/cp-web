@@ -529,6 +529,18 @@ at 375/768/1440.
 
 ---
 
+## CP-12 case studies — PLAN drafted for approval (25 Aug 2026, nothing built)
+
+`cp-12-case-studies-plan.md`. Grounded findings: designation IS in the data (9 flagship / 21 supporting /
+2 archive / 1 none = ivy-and-duke); **service tags healthy (0 broken), industry tags BROKEN for the new IA**
+(32/33 tag legacy hasPage:false stubs, so canonical industry pages pull no related work); **0/33 have outcome
+data** (no outcome/review field). Hub HAS a light link-based service+industry filter but does NOT fetch/use
+`designation` (can't lead flagship or hide archive). Detail covers 5/12 brief parts (client context, challenge,
+strategy, delivered, CTA); technology + relevant-services + related-work have data but aren't rendered; design/
+technical-decisions have no field/content; outcome/review await O4. Plan: use designation on the hub, render the
+three data-backed cross-link sections, re-point industry tags stub→canonical (mapping for approval first), defer
+outcome/review/decisions. Awaiting Hassan's 5 decisions before building.
+
 ## CP-15 redirect map WIRED + verified; two bugs found & fixed (25 Aug 2026)
 
 Wired Hassan's six decisions into `next.config.mjs` and fixed the two Footer `/agencies` links → `/partner-with-us`
