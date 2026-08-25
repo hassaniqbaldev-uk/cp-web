@@ -529,6 +529,25 @@ at 375/768/1440.
 
 ---
 
+## CP-15 redirect map DRAFTED for review — not wired (25 Aug 2026, stop for approval)
+
+Mapped all 103 crawled legacy URLs → `docs/cp-transformation/redirect-map.md`. Key findings:
+- **Only ~16 need an actual redirect.** All 9 blog slugs, all 31 case-study slugs, all 7 legal pages, the core
+  pages, 12/15 services and the 4 kept solutions are UNCHANGED (same path). Verified slugs against live data.
+- 15 redirects already exist in next.config; **1 new** clearly needed (`/services/custom-apps-and-ai`, which half
+  is a judgement call); the rest of the deltas are casing/junk.
+- **No chains** — every destination is a final live page.
+- **Flagged judgement calls**: custom-apps-and-ai split (→ custom-app-development vs ai-automation);
+  sme-founders → hub (rule violation, recommend → increase-leads); driving-schools/pharmacies/restaurants →
+  web-design-development (industry-specificity SEO loss, since those industries are hasPage:false);
+  wordpress-web-development/thank-you → service page (recommend /thank-you); /About casing.
+- **Test/junk URLs** (`/hassan-test`, `/review-test`, `/testing-testimonials`, `/nope-404-xyz`): recommend NO
+  redirect (let 404), flagged for confirmation rather than defaulting to homepage.
+- **Internal links to fix at source**: `Footer.jsx` lines 233 + 494 `href="/agencies"` → `/partner-with-us`
+  (the only hardcoded links to a redirected path). To be changed at wiring time.
+- **Mechanism**: recommend KEEPING `next.config.mjs` — at ~16 redirects a middleware keyed-map is overkill (runs
+  JS per request); upgrade path documented if it ever exceeds ~50-100. NOTHING WIRED pending Hassan's approval.
+
 ## O-item answers actioned + external-tasks doc (25 Aug 2026)
 
 Hassan's decisions on the four genuinely-open items:
