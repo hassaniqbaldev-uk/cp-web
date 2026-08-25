@@ -529,6 +529,49 @@ at 375/768/1440.
 
 ---
 
+## Analytics fix + null-slug investigation + dead LP deleted + email spec (25 Aug 2026)
+
+### 1. Analytics "scale with confidence" — FIXED on staging
+It lived in the `excerpt` field (a plain string, the meta description) of the analytics service doc
+(`_id 5c72e50a-9847-4f9c-91c3-a9019708e96f`). Patched via the mutate API on the **staging** dataset:
+"...Measure what matters and **scale with confidence**." → "...Measure what matters and **make confident
+decisions**." Re-swept all service/solution/industry docs: **0** occurrences of the phrase remain. Meta field,
+so no layout change.
+
+### 2. Null-slug industries — INVESTIGATED, NO live problem (my earlier "dead routes" claim was WRONG)
+Report before fixing, as asked:
+- The industries route builds **only `hasPage == true && defined(slug.current)`** (`queries.industries.js`
+  lines 10/22/55), and the sitemap query filters the same way. So `hasPage:false` docs never route and are not
+  in the sitemap or nav.
+- `/industries/driving-schools` and `/industries/restaurants` both return **404** (correct — they were never
+  advertised). `/industries/technology-saas` (a real `hasPage:true` page) returns 200.
+- There are actually **4** null-slug industries, all `hasPage:false`: Restaurants, Driving Schools, Pharmacies,
+  Interiors and Furnishings.
+- **They are used as case-study tags**: the Restaurants stub is referenced by **3** case studies, the Driving
+  Schools stub by **1**. So they are NOT junk — they are `hasPage:false` taxonomy tags that categorise case
+  studies, and tags don't route, so **they should NOT have slugs** (a slug would be meaningless).
+- Root cause: a leftover parallel set of ~39 `hasPage:false` legacy stub industry docs (random-UUID ids) from
+  the pre-consolidation taxonomy, coexisting with the 7 real `industry-*` `hasPage:true` pages. Some near-dupes
+  exist (e.g. a full `industry-driving-schools` content doc held at `hasPage:false` alongside the stub).
+- **DECISION: no fix applied.** Nothing is broken; adding slugs is the wrong fix; deleting the stubs would break
+  the case-study references. The real cleanup is a proper CP-08 taxonomy reconciliation (re-point the case-study
+  references to the canonical docs, then retire the stubs) — a careful data task, not a quick fix. Recommend
+  scheduling it as CP-08, or leaving the stubs (harmless) until then.
+
+### 3. Dead LP route — DELETED (23 files)
+Confirmed nothing outside the LP set imports any of it, then removed: the whole `src/app/(lp)` route group
+(layout + wordpress-web-development + thank-you), all 17 `src/components/lp/Lp*` components, the LP-only
+`src/components/ui/LpResultSlider.jsx`, and the orphaned `Expertise2.jsx` + `Expertise2Slider.jsx`. Build
+compiles clean; `/wordpress-web-development` still **308-redirects** to `/services/web-design-development`
+(redirect kept in next.config), which renders 200 and is clean at 375/768/1440. Note: `Expertise.jsx` (v1) and
+`Expertise3.jsx` remain (only Expertise2 was in scope) — worth checking later if they are also orphaned.
+
+### 4. Production email — SPEC written for Hassan/MTB
+See `docs/cp-transformation/production-email-spec.md`. Summary: staging sends from `cpdev.uk`; production needs
+a `cp.agency` (recommend `mail.cp.agency`) SES identity with DKIM (3 CNAMEs) + custom MAIL FROM (MX + SPF) +
+DMARC, SES production access confirmed/out-of-sandbox, and production SMTP creds + env in Vercel. No production
+or DNS setting changed.
+
 ## Forms deliverability VERIFIED + LP/CMS truth sweep + doc drift fixed (25 Aug 2026)
 
 ### Doc drift corrected (in 00-context.md)
