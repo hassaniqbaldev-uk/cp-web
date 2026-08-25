@@ -365,13 +365,13 @@ export const getCustomerEmailTemplate = (
             your current one — our team is here to make it happen. <br />
             <br />
 
-            Want to skip the wait? You can book a quick discovery call with our
-            experts and get tailored recommendations for your project.
+            Want to move faster? Tell us a bit about your project and we'll come
+            back with clear next steps.
           </p>
 
-          <a href="https://creativepixels.agency/call" class="group">
+          <a href="https://creativepixels.agency/contact" class="group">
             <div class="button-container">
-              <span class="button-text">Schedule a Quick Call</span>
+              <span class="button-text">Start a project</span>
             </div>
           </a>
 

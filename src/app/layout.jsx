@@ -1,6 +1,7 @@
 import "@/styles/globals.css";
 import { Onest } from "next/font/google";
 import Script from "next/script";
+import ConsentBanner from "@/components/consent/ConsentBanner";
 
 const onest = Onest({
   subsets: ["latin"],
@@ -41,6 +42,20 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={`${onest.className} antialiased`}>
+        {/* Google Consent Mode v2 — DEFAULT DENIED, set BEFORE GTM loads.
+            Re-grants immediately on repeat visits if the visitor previously accepted,
+            so consent is correct before any tag fires. The visible choice is handled
+            by <ConsentBanner />. */}
+        <Script
+          id="consent-default"
+          strategy="beforeInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}window.gtag=gtag;
+              gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:'denied',functionality_storage:'granted',security_storage:'granted',wait_for_update:500});
+              try{if(localStorage.getItem('cp-consent')==='granted'){gtag('consent','update',{ad_storage:'granted',ad_user_data:'granted',ad_personalization:'granted',analytics_storage:'granted'});}}catch(e){}`,
+          }}
+        />
+
         {/* Google Tag Manager (noscript) */}
         <noscript>
           <iframe
@@ -67,6 +82,8 @@ export default function RootLayout({ children }) {
           }}
         />
         {/* End Google Tag Manager */}
+
+        <ConsentBanner />
       </body>
     </html>
   );

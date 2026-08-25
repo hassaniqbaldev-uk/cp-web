@@ -529,6 +529,85 @@ at 375/768/1440.
 
 ---
 
+## Consent Mode v2 + banner BUILT, email templates fixed (25 Aug 2026)
+
+### Email templates
+- `customer-template.js` (live on contact + audit thank-yous): the booking section is gone — "book a quick
+  discovery call" + "Schedule a Quick Call → /call" replaced with "Tell us a bit about your project…" +
+  **"Start a project" → /contact**. That was the last booking CTA anywhere.
+- Deleted the orphaned lp-audit endpoint entirely: `src/app/api/lp-audit/route.js`, `src/emails/lp-customer-template.js`,
+  `src/emails/lp-audit-template.js` (its LP frontend was deleted earlier; nothing posts to it). Build clean.
+
+### Google Consent Mode v2 (CP-16, the GDPR/PECR launch blocker)
+- **Default DENIED** for all v2 signals (`ad_storage`, `ad_user_data`, `ad_personalization`, `analytics_storage`;
+  functionality/security granted), set in a **`beforeInteractive`** script in `layout.jsx` that runs BEFORE the
+  GTM `afterInteractive` script — so no tag fires with consent until the user chooses. `wait_for_update:500`.
+- **Banner** (`components/consent/ConsentBanner.jsx`): site-styled (white card, rounded-[2rem], pink Accept /
+  outline Reject, link to `/legal/cookies-policy`), bottom-anchored. Accept → `gtag('consent','update', all
+  granted)`; Reject → all denied. Choice stored in `localStorage['cp-consent']`.
+- **Repeat visits**: the beforeInteractive script re-applies a stored `granted` immediately (before GTM), and the
+  banner does not re-show once a choice is stored.
+- **Change of mind**: a "Cookie Preferences" control in the Footer dispatches `cp:open-consent`, which reopens the
+  banner to choose again.
+- **Verified in-browser**: default denied confirmed in dataLayer; banner shows on first visit; Accept → all four
+  granted + stored + banner closes; Reject → all four denied + stored + closes; repeat visit → no banner +
+  consent re-granted; footer reopen works; a pushed event lands in dataLayer regardless of consent state.
+- **Layout**: 375 (205px, 25% vh, 44px touch targets) / 768 (144px, row) / 1440 (120px, centered card) — no page
+  overflow, within viewport, does not obscure content.
+
+**Data behaviour by state** (Consent Mode v2):
+- **Denied (default & Reject)**: Google tags run in cookieless mode — no `_ga`/ads cookies, no persistent user id.
+  GA4 still sends **cookieless pings** (used for Google's conversion/behaviour modelling); Ads signals are
+  limited/modelled. Our own `track()` events still push to `dataLayer` (they always do), but tags that require
+  consent do not set storage.
+- **Granted (Accept)**: full analytics + ads storage — cookies set, normal GA4/Ads measurement and identifiers.
+- Note: which GTM tags require which consent type is configured in the **GTM container UI** (GTM-B8FV6K69), not in
+  code. The code provides the correct default/update signals; the container must have consent checks enabled on its
+  tags for the denied state to actually suppress storage. Flag for whoever owns the GTM container to confirm.
+
+## FULL OPEN-LIST AUDIT — every O item checked against code/data (25 Aug 2026)
+
+Three stale items in a row (O8, security/O14, O20) triggered a full audit. Verdict per O item, checked against
+the actual staging code + data:
+
+**RESOLVED (verified now):**
+- **O8** — consolidation done, on `4m0eqoi1` (was already marked).
+- **O11** — taxonomy ruleset applied via the completed O8 migration (confirm-only).
+- **O12** [Claude's task] — all 32 PUBLISHED case-study slugs are clean/normalised (lowercase, hyphenated, no
+  spaces); case-study URLs use the case-study slug, and taxonomy slugs never appear in a URL. **No malformed
+  slug in any live URL.** RESOLVED.
+- **O14** — security stays a service (was already marked).
+- **O18** — the hidden low-quality service-doc data is GONE: **no service has `options.pricingCard`** (the
+  unapproved £1,995/£2,495 pricing is gone), and `projectShowcase` is now proper per-service "good fit / not
+  fit" cards with **no repeated Smokey-Carter/Game-Art/Ivy trio**. IMPORTANT: `modularLayout` is now `true` for
+  **all 18** services (it was "two new pages only" when O18 was written), so this data now renders — but it was
+  cleaned, so what renders is correct. RESOLVED.
+- **O19** — the `wordpress` doc contamination is GONE: fit/notFit/options now hold correct WordPress copy (no
+  "MVP design to raise capital" / "just a logo" UI-UX text). It now renders (modularLayout on) and renders
+  correctly. RESOLVED.
+- **O20** — Book a Call removed from all pages (only /call). Emails being fixed this session.
+- **O13** — field spec exists as `custom-fields-registry.md`; navLabel/navExcerpt etc. are defined and in use.
+  Treat as done (confirm if you wanted more).
+
+**RESOLVED IN PRACTICE (encoded in data, reversible):**
+- **O6** — which of Interiors/Driving Schools/Pharmacies/Restaurants survive: all four are `hasPage:false`
+  (no page, used as case-study tags). Decision is encoded and reversible (flip `hasPage`). No action needed
+  unless you want any to get a page.
+
+**GENUINELY OPEN (your calls / external data — not code-resolvable):**
+- **O4** — collecting real outcome data for CP-12 proof. Open until the data lands.
+- **O9** — Cal.com click analytics. **MOOT / closeable**: it existed to validate whether removing Book a Call
+  was right, but Book a Call is already removed. It no longer blocks anything.
+- **O15** — is `launch-new-product` a real delivered offering or aspirational? Your knowledge; the page exists.
+- **O16** — the 8 case studies: state UNCHANGED and verified — `biome4pets` published; `ivy-and-duke` + the 6
+  stubs (`loop`, `lola-blake`, `core-estates`, `amana-partnership`, `drive-uk`, `ofh-care`) are still
+  unpublished drafts. Brief-or-delete is yours.
+- **O17** — `dr-donuts`, `energy-angels`, `sorted`, `peekaboo`: confirmed **no live-site link in the CMS**
+  (all url fields null). Whether they're live is your knowledge.
+
+Net: of 13 O items, **8 resolved + O6 resolved-in-practice + O9 moot**; only **O4, O15, O16, O17** are
+genuinely open, and all four are your decisions or external data, not code.
+
 ## Book a Call sweep — pages already clean, only emails remain (25 Aug 2026, stop for review)
 
 Asked to replace the booking CTA on the service pages (Cta2) and case-study detail (TheSolution). Ran an

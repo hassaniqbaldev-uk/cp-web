@@ -273,6 +273,18 @@ const Footer = () => {
                           Cookies Policy
                         </Link>
                       </li>
+
+                      <li>
+                        <button
+                          type="button"
+                          onClick={() =>
+                            window.dispatchEvent(new Event("cp:open-consent"))
+                          }
+                          className="cursor-pointer text-left text-[1.8rem] leading-[4rem] font-medium tracking-normal text-white"
+                        >
+                          Cookie Preferences
+                        </button>
+                      </li>
                     </ul>
                   </div>
 
