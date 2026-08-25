@@ -529,6 +529,16 @@ at 375/768/1440.
 
 ---
 
+## STRUCTURAL FIX: createOrReplace field-loss can no longer recur (25 Aug 2026)
+
+`createOrReplace` dropped an omitted field FOUR times (case-study images, goal icons, solution excerpts,
+industry slugs); a "use patch" note did not hold. Made it structural: `scripts/sanity/safe-mutate.js` is now
+the only sanctioned way to author Sanity content. It exposes `patchSet` (updates — cannot drop unspecified
+fields), `create` (new docs), and `mergeReplace` (the ONLY full-write path — reads the existing doc and
+shallow-merges first). Its `run()` **rejects any raw `createOrReplace`/`replace`**, so a script physically
+cannot smuggle one in. Verified: the guard throws on raw createOrReplace; patchSet runs; mergeReplace preserves
+existing title/slug. All future authoring goes through this helper.
+
 ## CP-12 build 2 — 2 new industry pages + tag migration → 9 industries (25 Aug 2026)
 
 Hassan approved set A + B, and publishing Property Marketing + Media & Publishing.
