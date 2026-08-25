@@ -547,7 +547,14 @@ at 375/768/1440.
   icon/card/avatar generic alts (71/10/12 — some decorative, some are icon-only-link names) need per-context
   work, not a blind sweep. Also noticed: shared `Testimonials.jsx` still has the OLD un-deduped data (Brendan dup,
   "AYOA"/"Casabotanica") vs the cleaned `Testimonials2.jsx` — pre-existing, worth reconciling.
-- **Image pass (119 unoptimized): NOT started** — investigating why it was disabled first, per Hassan's gate.
+- **Image pass (119 unoptimized): STOPPED for review — a reason WAS found.** The majority (~151 SVG imports) are
+  `unoptimized` **correctly**: the config has NO `dangerouslyAllowSVG`, so Next refuses to optimize SVG — removing
+  it would break them for zero benefit (SVGs are already tiny vector). No global `unoptimized`, no `output:export`,
+  no custom loader — optimization IS available (Vercel); it was just applied blanket-style. **The real target is
+  the ~55 RASTER images (39 webp + 16 png)**: hero backgrounds, card images, avatars, testimonial photos.
+  **18 hero components carry priority `.webp` backgrounds = the LCP element on every page**, served full-size.
+  Proposed scoped pass (awaiting Hassan): remove `unoptimized` from the 55 raster images, **LCP hero backgrounds
+  first**, verify each page renders, leave SVGs and (low-priority) already-sized Sanity `urlFor` images as-is.
 
 ## Blog stat fact-check + A11y/Perf AUDIT (report-only) (25 Aug 2026)
 
