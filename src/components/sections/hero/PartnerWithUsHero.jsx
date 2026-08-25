@@ -83,10 +83,10 @@ const PartnerWithUsHero = () => {
               delay={0.45}
             >
               <PrimaryButton
-                text="How It Works"
+                text="Start a partnership"
                 textColor="#312749"
                 bGcolor="#FFFFFF"
-                href="/how-we-work"
+                href="/contact"
               />
             </MotionEffect>
           </div>
