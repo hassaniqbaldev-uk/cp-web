@@ -529,6 +529,23 @@ at 375/768/1440.
 
 ---
 
+## O-item answers actioned + external-tasks doc (25 Aug 2026)
+
+Hassan's decisions on the four genuinely-open items:
+- **O15** (launch-new-product): KEEP (Custom App Development is the service behind it). Recorded.
+- **O16** (the 8 case studies): **ACTIONED on staging** — the 6 Casa-Botanica clone stubs (`loop`, `lola-blake`,
+  `core-estates`, `amana-partnership`, `drive-uk`, `ofh-care`) DELETED (verified 0 references, draft-only); 
+  **`ivy-and-duke` PUBLISHED** (complete: thumbnail + excerpt + hero; live at /case-studies/ivy-and-duke, HTTP 200).
+  Published case-study count 32 → 33.
+- **O17** (dr-donuts/energy-angels/sorted/peekaboo): leave as-is, no outbound links — already the decision. Recorded.
+- **O4** (outcome data): remains Hassan's, he is actioning it.
+
+**New doc: `launch-external-tasks.md`** — the single list of things that CANNOT be done from the codebase, per
+Hassan's request. Includes the **GTM-B8FV6K69 consent configuration** written in full (which tags need consent
+checks, Google vs non-Google, what happens if skipped, how to verify), plus SES identity + DNS + production access
+(pointer to `production-email-spec.md`), Vercel prod env vars, Sanity content promotion at cutover, and DNS/Search
+Console. Nothing outside the repo has been changed.
+
 ## Consent Mode v2 + banner BUILT, email templates fixed (25 Aug 2026)
 
 ### Email templates
