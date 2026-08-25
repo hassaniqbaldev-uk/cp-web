@@ -5,6 +5,7 @@ import OurApproach from "@/components/sections/our-approach/OurApproach";
 import TheChallenge from "@/components/sections/the-challenge/TheChallenge";
 import TheSolution from "@/components/sections/the-solution/TheSolution";
 import CustomCode from "@/components/sections/custom-code/CustomCode";
+import CaseStudyDecisions from "@/components/sections/case-studies/CaseStudyDecisions";
 import CaseStudyEvidence from "@/components/sections/case-studies/CaseStudyEvidence";
 import RelatedWork from "@/components/sections/case-studies/RelatedWork";
 import TrackView from "@/components/analytics/TrackView";
@@ -121,6 +122,10 @@ const CaseStudiesDetailPage = async (props) => {
         <TheChallenge caseStudy={caseStudy} />
         <OurApproach caseStudy={caseStudy} />
         <TheSolution caseStudy={caseStudy} />
+        <CaseStudyDecisions
+          designDecisions={caseStudy.designDecisions}
+          technicalDecisions={caseStudy.technicalDecisions}
+        />
         <CustomCode caseStudy={caseStudy} />
         <CaseStudyEvidence
           services={caseStudy.services}

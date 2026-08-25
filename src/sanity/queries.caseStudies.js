@@ -84,6 +84,19 @@ export const caseStudiesDetailQuery = `
     cardImage,
   },
 
+  // Design & Technical decisions (CP-12). Render-when-populated: the sections show only when filled.
+  // Fields live in the Studio schema (separate project); null here until defined + populated there.
+  designDecisions {
+    title,
+    description,
+    points
+  },
+  technicalDecisions {
+    title,
+    description,
+    points
+  },
+
   // Custom Code Section
   customCode,
 

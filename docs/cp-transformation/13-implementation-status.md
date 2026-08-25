@@ -546,8 +546,14 @@ Hassan approved all 5 decisions. Built the parts that needed nothing from him:
     tags, leads), ndifo-safari, teleqo-tech.
 - **ivy-and-duke designation** set to `supporting` (approved).
 - Verified 375/768/1440: no page overflow, evidence + related sections present, 0 elements overflow, related = 3.
-- Still to do: industry tag migration (mapping below, for approval before mutating); design/technical-decisions
-  schema fields (render-when-populated).
+- **Design/technical-decisions (render-when-populated):** the Studio schema is a SEPARATE project, so the FIELD
+  DEFINITIONS must be added there (documented the exact shape in `custom-fields-registry.md` + `launch-external-
+  tasks.md` §5). The FRONTEND is ready: `designDecisions`/`technicalDecisions` added to the detail query, and a
+  `CaseStudyDecisions` section that renders each block only when populated. Verified: with the fields null the
+  section renders nothing (no empty "The decisions behind it" heading); detail page still 200.
+- **Industry tag migration**: mapping written for approval (`cp-12-industry-tag-map.md`) — NOT mutated. Clean 1:1
+  mappings cover 21 studies; 11 would end up untagged, clustering on Property Marketing (3) + Media & Publishing
+  (2), the argument for two more industry pages. Awaiting Hassan's approval before mutating.
 
 ## CP-12 case studies — PLAN drafted for approval (25 Aug 2026, nothing built)
 

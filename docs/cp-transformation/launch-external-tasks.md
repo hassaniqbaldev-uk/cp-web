@@ -73,7 +73,16 @@ before cutover.
 
 ---
 
-## 5. DNS + Search Console at cutover (**MTB / Hassan**)
+## 5. Sanity Studio — schema field definitions (**MTB / whoever owns the Studio repo**)
+
+The Studio is a **separate project** from this frontend, so new field definitions must be added there. The
+frontend already queries these and renders them **only when populated** (no empty sections):
+- `caseStudies.designDecisions` — object `{ title: string, description: text, points: array of {label} }`
+  ("Design decisions" section, CP-12).
+- `caseStudies.technicalDecisions` — same shape ("Technical decisions" section, CP-12).
+Full spec in `custom-fields-registry.md`. Until these exist in the Studio, the sections simply don't render.
+
+## 6. DNS + Search Console at cutover (**MTB / Hassan**)
 
 - **Domain/DNS:** point `creativepixels.agency` at the new deployment (Vercel) when ready.
 - **Google Search Console:** verify the domain, submit `/sitemap.xml`, and watch coverage after the redirects go

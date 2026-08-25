@@ -48,6 +48,8 @@ for them yet, **editors cannot see or change them in Sanity Studio** until the s
 | Field | Type | Controls | Required? | Fallback if absent |
 | --- | --- | --- | --- | --- |
 | `designation` | string enum: `flagship` \| `supporting` \| `archive` | Relevant-work fallback order (tagged → flagship → supporting → newest). `archive` never surfaces via fallback | Optional | Treated as un-designated (sorts after flagship/supporting) |
+| `designDecisions` | object `{ title: string, description: text, points: array of {label} }` | The "Design decisions" section on the detail page (CP-12) — the key design choices and why. **Render-when-populated**: the section shows only when this is filled | Optional | Section not rendered |
+| `technicalDecisions` | object `{ title: string, description: text, points: array of {label} }` | The "Technical decisions" section on the detail page (CP-12) — the key technical/architecture choices and why. **Render-when-populated** | Optional | Section not rendered |
 
 ## `industries`
 
