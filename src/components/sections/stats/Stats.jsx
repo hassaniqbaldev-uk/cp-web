@@ -5,7 +5,7 @@ import { YEARS_IN_BUSINESS, PROJECTS_DELIVERED } from "@/content/company";
 
 const Stats = () => {
   return (
-    <section className="px-[2rem] pt-[5rem] md:pt-[22rem] xl:px-[0rem]">
+    <section className="px-[2rem] py-[5rem] md:py-[10rem] xl:px-[0rem]">
       <div className="container flex flex-col items-center justify-center gap-[5rem] xl:flex-row">
         <div className="grid w-full gap-[2.4rem] md:grid-cols-3">
           <MotionEffect
