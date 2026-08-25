@@ -39,6 +39,22 @@ complete and Hassan signs off final cutover.
   cannot drop an unlisted one.** `create` / `createOrReplace` is allowed ONLY for a genuinely new document
   authored from a complete template (nothing to drop). Every field-level edit to an existing doc is a patch.
   This is the single rule that would have prevented all three incidents below.
+- **Layout / UI-preservation verification rule (25 Aug 2026, after the About-hero slider clipped):** a page
+  overflow check (`scrollWidth - clientWidth === 0`) does NOT catch content clipped INSIDE a fixed-height or
+  `overflow-hidden` container — cut-off carousels, wrong widths and clipping all pass it. When a page is
+  changed, ALSO verify:
+  1. **Content vs container, not just page.** For changed sections, measure that key content (sliders, cards,
+     images, text blocks) fits WITHIN its container: content bottom/right ≤ container bottom/right. A section
+     with a fixed `h-[…]` is a red flag — adding content pushes the rest past the fixed height and it clips.
+  2. **Carousels/sliders:** each slide AND its controls (arrows) must fit the container/viewport.
+  3. **Measure LAYOUT, not just `getBoundingClientRect`.** `MotionEffect` slide/zoom transforms and
+     scroll/inView animations don't settle in the headless pane, so `getBoundingClientRect` reads the shifted
+     visual box (false positives/negatives). Use `offsetTop`/`offsetHeight` (transform-independent) for
+     fit checks, and WAIT for `ssr:false` dynamic components (sliders) to mount before measuring.
+  4. **Reference comparison:** to tell "I broke it" from "already broken", measure the unchanged version
+     (git-stash the change, or a sibling page) and compare the delta — do not guess; check the diff.
+  This sits alongside the aggregate-query rule. **Standing rule (Hassan, 25 Aug): when you change a page,
+  check you have not broken the existing layout or UI on it — preserving what works is part of the job.**
 - **Batch-completion verification rule (24 Aug 2026, after the count drifted):** at the end of EVERY batch,
   run an **aggregate query across the whole set** (e.g. `*[_type=="services"]{slug, modularLayout}`) and
   report the actual count **from the data**, never from Claude's own tracking. Never claim a batch complete
