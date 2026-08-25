@@ -1,50 +1,56 @@
-import Image from "next/image";
-import TiltArrowIcon from "../icons/TiltArrowIcon";
-import Link from "next/link";
+"use client";
 
-const CaseStudyCard = ({
-  href = "",
-  img,
-  title,
-  excerpt,
-  iconColor = "#ffffff",
-  iconBg = "#000000",
-}) => {
+import Link from "next/link";
+import Image from "next/image";
+import TiltArrowIcon from "@/components/icons/TiltArrowIcon";
+import { urlFor } from "@/sanity/caseStudies.image";
+
+// Shared case-study card (thumbnail + title + excerpt + arrow), extracted from CuratedWorkGrid so every
+// surface that lists case studies uses one card, not a copy. Used by CuratedWorkGrid and the homepage
+// per-pillar feature blocks.
+const CaseStudyCard = ({ caseStudy: cs }) => {
+  if (!cs) return null;
   return (
-    <>
-      <Link href={href} className="flex w-full flex-col gap-[2.7rem]">
-        <div className="flex h-[28.9rem] w-full overflow-hidden rounded-[1.1rem]">
+    <Link
+      href={`/case-studies/${cs.slug}`}
+      style={{ boxShadow: "11px 11px 65px 0px #00000012" }}
+      className="flex h-full flex-col gap-[2rem] rounded-[3rem] bg-white px-[2rem] pt-[2rem] pb-[3rem]"
+    >
+      {cs.thumbnailImage && (
+        <div className="flex h-[26rem] w-full overflow-hidden rounded-[2rem]">
           <Image
-            src={img}
-            alt="Card Image"
-            width={429}
-            height={289}
-            className="object-cover object-center"
+            src={urlFor(cs.thumbnailImage)?.width(737).height(497).fit("crop").url()}
+            alt={cs.title || "Case study"}
+            width={737}
+            height={497}
+            className="size-full object-cover"
+            unoptimized
           />
         </div>
+      )}
 
-        <div className="flex items-center justify-between">
-          <div className="flex flex-col items-start text-left">
-            <h4 className="text-[3.4rem] leading-[4.8rem] font-bold tracking-[-0.02em] text-[#312749]">
-              {title}
-            </h4>
-
-            <span className="text-[1.6rem] leading-[2.6rem] font-semibold text-[#625C70]">
-              {excerpt}
-            </span>
+      <div className="flex flex-col px-[1rem]">
+        <hr className="my-[2rem] w-full border-t border-black/10" />
+        <div className="flex items-center justify-between gap-[1.5rem]">
+          <div className="flex flex-col gap-[.6rem] text-left">
+            <h3 className="text-[2rem] leading-[2.6rem] font-bold tracking-[-0.02em] text-[#312749]">
+              {cs.title}
+            </h3>
+            {cs.excerpt && (
+              <p className="text-[1.5rem] leading-[2.2rem] text-[#625C70]">
+                {cs.excerpt}
+              </p>
+            )}
           </div>
-
           <i
-            className="inline-flex size-[6rem] items-center justify-center rounded-full"
-            style={{
-              background: iconBg,
-            }}
+            className="inline-flex size-[4.4rem] min-w-[4.4rem] items-center justify-center rounded-full"
+            style={{ background: cs.iconBg || "#FF37B3" }}
           >
-            <TiltArrowIcon color={iconColor} />
+            <TiltArrowIcon color={cs.iconColor || "#ffffff"} />
           </i>
         </div>
-      </Link>
-    </>
+      </div>
+    </Link>
   );
 };
 

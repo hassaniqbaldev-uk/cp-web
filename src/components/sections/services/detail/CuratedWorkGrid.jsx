@@ -1,12 +1,9 @@
 "use client";
 
-import Link from "next/link";
-import Image from "next/image";
 import SectionLabel from "@/components/ui/SectionLabel";
 import SectionTitle from "@/components/ui/SectionTitle";
 import SectionDescription from "@/components/ui/SectionDescription";
-import TiltArrowIcon from "@/components/icons/TiltArrowIcon";
-import { urlFor } from "@/sanity/caseStudies.image";
+import CaseStudyCard from "@/components/ui/CaseStudyCard";
 import { MotionEffect } from "@/components/effects/motion-effect";
 
 // CP-05 module — a flexible curated-work grid for pages whose curated set is NOT exactly three (the shared
@@ -62,46 +59,7 @@ const CuratedWorkGrid = ({ caseStudies = [], label, title, description }) => {
               transition={{ type: "tween", duration: 1.0, ease: "easeOut" }}
               className="h-full"
             >
-              <Link
-                href={`/case-studies/${cs.slug}`}
-                style={{ boxShadow: "11px 11px 65px 0px #00000012" }}
-                className="flex h-full flex-col gap-[2rem] rounded-[3rem] bg-white px-[2rem] pt-[2rem] pb-[3rem]"
-              >
-                {cs.thumbnailImage && (
-                  <div className="flex h-[26rem] w-full overflow-hidden rounded-[2rem]">
-                    <Image
-                      src={urlFor(cs.thumbnailImage)?.width(737).height(497).fit("crop").url()}
-                      alt={cs.title || "Case study"}
-                      width={737}
-                      height={497}
-                      className="size-full object-cover"
-                      unoptimized
-                    />
-                  </div>
-                )}
-
-                <div className="flex flex-col px-[1rem]">
-                  <hr className="my-[2rem] w-full border-t border-black/10" />
-                  <div className="flex items-center justify-between gap-[1.5rem]">
-                    <div className="flex flex-col gap-[.6rem] text-left">
-                      <h3 className="text-[2rem] leading-[2.6rem] font-bold tracking-[-0.02em] text-[#312749]">
-                        {cs.title}
-                      </h3>
-                      {cs.excerpt && (
-                        <p className="text-[1.5rem] leading-[2.2rem] text-[#625C70]">
-                          {cs.excerpt}
-                        </p>
-                      )}
-                    </div>
-                    <i
-                      className="inline-flex size-[4.4rem] min-w-[4.4rem] items-center justify-center rounded-full"
-                      style={{ background: cs.iconBg || "#FF37B3" }}
-                    >
-                      <TiltArrowIcon color={cs.iconColor || "#ffffff"} />
-                    </i>
-                  </div>
-                </div>
-              </Link>
+              <CaseStudyCard caseStudy={cs} />
             </MotionEffect>
           ))}
         </div>

@@ -248,8 +248,31 @@ rentals) should not hold the largest card — it reads as holiday rentals, not t
 brief targets; lead with Ayoa (recognised SaaS/app, ties to the Web & Ecommerce apps weight), AlertForce
 strong second, Minnessak an ecommerce-forward alternative. Awaiting Hassan's decision before wiring.
 
-**Next section (after review):** per-pillar feature blocks — Web & Ecommerce heaviest (websites, ecommerce,
-apps and platforms, with relevant work); the other three concise.
+**Selected work — curated (Hassan's three).** New `src/content/homepage.js` `SELECTED_WORK_SLUGS =
+["ayoa","alertforce","minnessak"]` (SaaS lead, B2B, ecommerce — all on-target). Query switched from the
+flagship-sort to `caseStudiesBySlugsQuery` (curated by slug, order preserved), so the homepage three are a
+deliberate decision, not inherited from the /case-studies listing sort. Casa Botanica is off the homepage
+(0 mentions), stays in the work hub. Verified: **Ayoa is the large lead card** at desktop (777px vs 393px).
+
+**Web & Ecommerce feature block — DONE (this step, the heaviest block).** New prop-driven
+`PillarFeature` component (reused for the concise pillars later): eyebrow "Web & Ecommerce", title
+"Websites, stores, apps and platforms.", four capability links (Websites/Ecommerce/Apps/Platforms →
+service pages), three relevant work cards, and a CTA. Placed after the four-pillars overview. Verified
+375/768/1440: renders, sits after the pillars, no horizontal overflow.
+
+**Repetition handled (Hassan's watch-point).** The Web & Ecommerce work is a DISTINCT curated set —
+`WEB_ECOMMERCE_WORK_SLUGS = ["fultons","mr-pickles","teleqo-tech"]` (2 ecommerce + 1 platform) — with two
+guarantees: (1) the two lists are deliberately disjoint, and (2) `page.jsx` filters the block's slugs to
+exclude `SELECTED_WORK_SLUGS` defensively, so even an accidental overlap can't repeat a case study.
+Verified: the six case studies (Ayoa/AlertForce/Minnessak + Fultons/Mr Pickles/Teleqo) are all distinct;
+no case study appears in both sections.
+
+**Card de-duplication.** Extracted the case-study card into a shared `src/components/ui/CaseStudyCard.jsx`;
+`CuratedWorkGrid` and `PillarFeature` both use it (one card, not a copy). Verified a CuratedWorkGrid
+consumer (ecommerce-brands) still renders all four cards.
+
+**Next section (after review):** the three concise pillar blocks — Brand & Experience, Growth &
+Performance, AI & Automation (no work cards; the lighter treatment via `PillarFeature`).
 
 ---
 

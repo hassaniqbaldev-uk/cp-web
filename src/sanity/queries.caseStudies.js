@@ -11,11 +11,11 @@ export const caseStudiesListingQuery = `
 }
 `;
 
-// Homepage "selected work" — FLAGSHIP case studies only, never archive or drafts, must have a thumbnail.
-// Ordered the same way as the listing. The homepage shows the first three of these.
-export const caseStudiesFlagshipQuery = `
-*[_type == "caseStudies" && designation == "flagship" && !(_id in path("drafts.**")) && defined(thumbnailImage)]
-| order(order asc, _createdAt desc) {
+// Homepage curated work — fetch a specific set of case studies by slug (never archive/drafts, must have a
+// thumbnail). The caller re-orders to the slug list and controls the selection, so the homepage's work
+// slots are a deliberate decision (see src/content/homepage.js) rather than inherited from a sort field.
+export const caseStudiesBySlugsQuery = `
+*[_type == "caseStudies" && !(_id in path("drafts.**")) && slug.current in $slugs && defined(thumbnailImage)]{
   _id,
   title,
   "slug": slug.current,

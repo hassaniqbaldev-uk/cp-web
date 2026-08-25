@@ -3,6 +3,7 @@
 import HomeHeader from "@/components/layout/HomeHeader";
 import HomeHero from "@/components/sections/hero/HomeHero";
 import ServicesPillars from "@/components/sections/services/ServicesPillars";
+import PillarFeature from "@/components/sections/home/PillarFeature";
 import Established from "@/components/sections/established/Established";
 import Process from "@/components/sections/process/Process";
 import Work from "@/components/sections/work/Work";
@@ -25,7 +26,7 @@ const CONTENT_VARIANTS = {
   },
 };
 
-const HomePage = ({ caseStudies, navData }) => {
+const HomePage = ({ selectedWork, webEcommerceWork, navData }) => {
   const [transition, setTransition] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
 
@@ -97,7 +98,7 @@ const HomePage = ({ caseStudies, navData }) => {
       {/* Selected work sits high so the page shows capability rather than describing it.
           Flagship-only (fetched in page.jsx), so archive work never surfaces. */}
       <Work
-        caseStudies={caseStudies}
+        caseStudies={selectedWork}
         label="Selected work"
         title="Work we've delivered."
         description="A selection of recent projects across brand, web and ecommerce."
@@ -106,6 +107,27 @@ const HomePage = ({ caseStudies, navData }) => {
           Web & Ecommerce leads by order and carries the weight. Replaces the old generic
           Expertise + Services sections, which predated the pillar model. */}
       <ServicesPillars columns={navData.serviceColumns} />
+      {/* Web & Ecommerce — the heaviest per-pillar block (45-50% of the business). Its work is a
+          DISTINCT curated set (page.jsx guarantees no overlap with Selected work above), so the two
+          work sections never repeat. The other three pillars follow as concise blocks (no work). */}
+      <PillarFeature
+        eyebrow="Web & Ecommerce"
+        eyebrowColor="#3078FF"
+        accentColor="#3078FF"
+        title="Websites, stores, apps and platforms."
+        description="The core of what we do, and the largest part of our business. Fast, search-friendly websites, Shopify and WooCommerce stores, custom apps, and the platforms behind them."
+        capabilities={[
+          { label: "Websites", href: "/services/web-design-development" },
+          { label: "Ecommerce", href: "/services/ecommerce" },
+          { label: "Apps", href: "/services/custom-app-development" },
+          { label: "Platforms", href: "/services/wordpress" },
+        ]}
+        work={webEcommerceWork}
+        cta={{
+          text: "Explore web and ecommerce",
+          href: "/services/web-design-development",
+        }}
+      />
       <Established />
       <Process />
       <section className="overflow-hidden px-[2rem] pb-[5rem] xl:px-[0rem] xl:pb-[10rem]">
