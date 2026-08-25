@@ -88,6 +88,7 @@ const Header = ({ navData }) => {
     "/legal",
     "/testimonials",
     "/agencies",
+    "/industries",
   ];
 
   const isHeaderSecondary = headerSecondaryPaths.some(
