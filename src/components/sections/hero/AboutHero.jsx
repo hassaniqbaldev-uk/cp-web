@@ -3,6 +3,8 @@ import Image from "next/image";
 import HeroBg from "@/assets/images/backgrounds/contact-hero-bg.webp";
 import HeroCpLogo from "@/assets/images/hero/hero-cp-logo.svg";
 import SectionLabel from "@/components/ui/SectionLabel";
+import SectionDescription from "@/components/ui/SectionDescription";
+import { YEARS_IN_BUSINESS } from "@/content/company";
 import HomeHeroLogoShape1 from "@/components/decorative-elements/HomeHeroLogoShape1";
 import ContactHeroLogoShape1 from "@/components/decorative-elements/ContactHeroLogoShape1";
 import AboutHeroLogoShape1 from "@/components/decorative-elements/AboutHeroLogoShape1";
@@ -17,7 +19,7 @@ const AboutHeroSlider = dynamic(
 const AboutHero = () => {
   return (
     <>
-      <section className="relative h-[63rem] w-full px-[2rem] pt-[10rem] md:h-[75rem] md:pt-[18rem] lg:h-[90rem] xl:px-[0rem]">
+      <section className="relative min-h-[63rem] w-full px-[2rem] pt-[10rem] pb-[6rem] md:min-h-[75rem] md:pt-[18rem] md:pb-[8rem] lg:min-h-[90rem] xl:px-[0rem]">
         {/*Background Image*/}
         <Image
           src={HeroBg}
@@ -68,6 +70,20 @@ const AboutHero = () => {
                     gives a damn.
                   </span>
                 </h1>
+              </MotionEffect>
+
+              <MotionEffect
+                slide={{ direction: "down" }}
+                transition={{ type: "spring", stiffness: 120, damping: 20 }}
+                fade
+                delay={0.3}
+              >
+                <div className="mt-[2rem] max-w-[60rem]">
+                  <SectionDescription
+                    text={`Manchester-based, working with clients across the UK, US and Australia. ${YEARS_IN_BUSINESS} years, owner-led from day one.`}
+                    textColor="#FFFFFF"
+                  />
+                </div>
               </MotionEffect>
             </div>
           </div>

@@ -529,6 +529,19 @@ at 375/768/1440.
 
 ---
 
+## About hero — carousel clip FIXED + subhead reapplied (25 Aug 2026)
+
+Diagnosis (layout-measured, transform-independent): the AboutHero is a fixed-height section with the text
+stacked above the carousel (`mt-[6.6rem] h-[30/45/60rem]`). The full 60rem slider + the text exceeded the
+fixed `h-[90rem]`, so the slider's layout-bottom (1055) fell ~155px past the section (the earlier "255px"
+included ~100px of unsettled slide-animation transform in the rect read). Pre-existing; not introduced this
+session. Fix (respects the layout, no structural rework): `h-[…]` → `min-h-[…]` + bottom padding, so the
+section grows to contain the full slider. **Subhead reapplied** (concise): "Manchester-based, working with
+clients across the UK, US and Australia. 12 years, owner-led from day one." — the D6 local-entity signal.
+Verified 375/768/1440 by LAYOUT: slider fits with 60-80px spare, each slide fits its viewport, no overflow.
+The hero is taller now (1219/1069/728px) because it shows the full carousel + subhead — flagged; can trade
+for a shorter slider if Hassan prefers.
+
 ## CP-09/11 — Company & conversion pages: Tier 1 fixes + About — DONE (stop for review)
 
 **Tier 1 live-problem fixes (before any rewriting):**
