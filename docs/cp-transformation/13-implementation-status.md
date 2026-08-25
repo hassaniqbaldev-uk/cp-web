@@ -529,6 +529,19 @@ at 375/768/1440.
 
 ---
 
+## Image pass — raster optimization (approved, scoped) (25 Aug 2026, stop for review)
+
+Removed `unoptimized` from the **33 raster `<Image>` tags** (webp/png local imports) via a targeted script that
+maps each `src` to its import extension — so **only raster is touched; SVGs are left `unoptimized`** (correct, no
+`dangerouslyAllowSVG`) and Sanity `urlFor` images are untouched. **LCP hero backgrounds done first** and given
+`sizes="100vw"` (the fill images had none, so mobile was pulling desktop-size). Now served through Next's
+optimizer (AVIF + resize): the hero background dropped **77 KB → 13 KB (~83%)** at 1920w.
+Verified 375/768/1440 on multiple pages: all routes 200, **0 broken images, no overflow**, hero backgrounds load
+via `/_next/image`. (Mobile occasionally shows a cached 1920 variant in-pane from an earlier desktop visit — a
+test artifact; the `sizes`/preload is correct, so a fresh mobile load picks the right size.) HomeHero uses a
+different bg mechanism (no HeroBg fill) — untouched. Standing rules honoured; stopped for review before the
+a11y sub-pass + Testimonials reconcile + Crisp removal.
+
 ## A11y fixes batch 1 + GTM consent write-up (25 Aug 2026)
 
 - **GTM Clarity/Crisp consent** — wrote exact dashboard steps into `launch-external-tasks.md §1a` (which tags,

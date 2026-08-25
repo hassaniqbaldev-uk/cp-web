@@ -102,8 +102,7 @@ const Values = () => {
                 width={580}
                 height={677}
                 alt="Card Image"
-                className="size-full object-cover object-center"
-                unoptimized
+                className="size-full object-cover object-center"
               />
             </MotionEffect>
 

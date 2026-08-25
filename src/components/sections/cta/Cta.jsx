@@ -23,7 +23,6 @@ const Cta = () => {
             fill
             priority
             className="pointer-events-none absolute inset-0 z-[1] rounded-[3rem] object-cover select-none"
-            unoptimized
           />
 
           <div className="pointer-events-none absolute top-[35rem] right-[-3rem] z-[2] select-none xl:top-[3.6rem]">
@@ -92,7 +91,6 @@ const Cta = () => {
                     className=""
                     width={99}
                     height={99}
-                    unoptimized
                   />
                 </div>
 

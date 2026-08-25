@@ -18,9 +18,9 @@ const HowWeWorkHero = () => {
           src={HeroBg}
           alt=""
           fill
+          sizes="100vw"
           priority
           className="pointer-events-none absolute inset-0 z-[1] object-cover select-none"
-          unoptimized
         />
 
         {/*Background Element*/}
@@ -87,7 +87,6 @@ const HowWeWorkHero = () => {
                   width={484}
                   height={484}
                   alt="Card Image"
-                  unoptimized
                 />
               </div>
             </MotionEffect>

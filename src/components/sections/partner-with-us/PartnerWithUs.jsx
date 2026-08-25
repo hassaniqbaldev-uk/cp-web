@@ -22,7 +22,6 @@ const PartnerWithUs = () => {
           fill
           priority
           className="pointer-events-none absolute inset-0 z-[1] object-cover select-none"
-          unoptimized
         />
 
         <div className="relative z-[10] container">
@@ -142,7 +141,6 @@ const PartnerWithUs = () => {
                   fill
                   priority
                   className="pointer-events-none absolute inset-0 z-[1] object-cover select-none"
-                  unoptimized
                 />
 
                 <div className="relative z-[10] flex flex-col items-start text-left">

@@ -63,8 +63,7 @@ const Estimate = () => {
                   width={535}
                   height={512}
                   alt="Card Image"
-                  className="size-full object-cover object-center"
-                  unoptimized
+                  className="size-full object-cover object-center"
                 />
               </div>
             </MotionEffect>

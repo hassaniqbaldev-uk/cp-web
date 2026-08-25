@@ -204,7 +204,6 @@ const Testimonials = () => {
                   width={319}
                   height={319}
                   className="size-full object-cover object-top-left"
-                  unoptimized
                 />
               </div>
 

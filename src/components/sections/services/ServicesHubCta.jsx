@@ -41,7 +41,6 @@ const ServicesHubCta = ({
             fill
             priority
             className="pointer-events-none absolute inset-0 z-[1] rounded-[3rem] object-cover select-none"
-            unoptimized
           />
 
           {/* Decorative stroke */}

@@ -146,8 +146,7 @@ const AboutDropdown = ({ className, isOpen, setIsOpen, onToggle }) => {
                     alt="Case Study Thumbnail Image"
                     width={411}
                     height={303}
-                    className="size-full object-cover"
-                    unoptimized
+                    className="size-full object-cover"
                   />
                 </div>
 
@@ -167,8 +166,7 @@ const AboutDropdown = ({ className, isOpen, setIsOpen, onToggle }) => {
                     alt="Case Study Thumbnail Image"
                     width={411}
                     height={303}
-                    className="size-full object-cover"
-                    unoptimized
+                    className="size-full object-cover"
                   />
                 </div>
 

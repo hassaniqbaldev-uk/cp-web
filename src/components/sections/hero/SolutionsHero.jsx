@@ -20,9 +20,9 @@ const SolutionsHero = () => {
           src={HeroBg}
           alt=""
           fill
+          sizes="100vw"
           priority
           className="pointer-events-none absolute inset-0 z-[1] object-cover select-none"
-          unoptimized
         />
 
         {/*Background Element*/}

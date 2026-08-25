@@ -18,7 +18,6 @@ const WhatClientsSay = () => {
           fill
           priority
           className="pointer-events-none absolute inset-0 z-[1] object-cover select-none"
-          unoptimized
         />
 
         <div className="relative z-[10] container">
@@ -120,7 +119,6 @@ const WhatClientsSay = () => {
                     height={245}
                     alt="icon"
                     className="w-[20rem] md:h-[24.5rem] md:w-[28.2rem]"
-                    unoptimized
                   />
                 </div>
               </div>
