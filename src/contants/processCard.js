@@ -49,18 +49,24 @@ export const PROCESS_CARD = [
   },
 ];
 
+// The delivery method for EVERY project, not just websites. Whether the work is a
+// brand, a website or store, a growth retainer or an automation, it runs through the
+// same five stages; what changes is what happens inside each one. Stage 5 names the
+// launch -> improve -> grow -> automate arc, so it closes the loop with the homepage
+// Lifecycle section that links here. Copy rewritten; structure, images, colours and
+// layout props are unchanged.
 export const PROCESS_2_CARD = [
   {
     step: "1",
-    title: "Discovery & Strategy",
-    subTitle: "We don't guess. We research.",
+    title: "Discovery & scope",
+    subTitle: "We understand the business before we quote.",
     description:
-      "Before we design a single pixel, we dive deep into your business. We analyse your competitors, interview your stakeholders, & map out a digital strategy that aligns with your revenue goals.",
+      "Every project starts the same way, whether it is a website, a rebrand, a growth retainer or an automation. We learn how your business works, what you are trying to achieve and what a good outcome looks like, then agree a clear scope and a fixed price before any work begins. No open-ended hourly billing.",
     list: [
-      "Competitor Analysis",
-      "Sitemap & Architecture",
-      "User Personas",
-      "Technical Scope",
+      "Scope document",
+      "Fixed price",
+      "Timeline",
+      "One point of contact",
     ],
     cardImage: Process2CardImg1,
     cardImageWidth: 474,
@@ -74,15 +80,15 @@ export const PROCESS_2_CARD = [
   },
   {
     step: "2",
-    title: "UX & Design",
-    subTitle: "Form follows function.",
+    title: "Plan & design",
+    subTitle: "You sign off the shape of the work first.",
     description:
-      "We create interactive wireframes to validate user flows, then apply a bespoke visual identity. No templates. Every screen is crafted to guide your users towards conversion.",
+      "What this stage looks like depends on the work. For a website it is structure and interface design; for a brand it is identity and messaging; for growth it is the channel plan; for automation it is mapping the process we are going to take off your team. You see and approve the plan before we commit to building anything.",
     list: [
-      "Wireframes",
-      "High-Fidelity UI",
-      "Moodboards",
-      "Interactive Prototype",
+      "Wireframes or identity",
+      "Channel or process map",
+      "A sign-off stage",
+      "No surprises later",
     ],
     cardImage: Process2CardImg2,
     cardImageWidth: 489,
@@ -96,15 +102,15 @@ export const PROCESS_2_CARD = [
   },
   {
     step: "3",
-    title: "Development",
-    subTitle: "Clean code. Fast performance.",
+    title: "Build & deliver",
+    subTitle: "Senior people do the actual work.",
     description:
-      "Our developers build your site using modern, scalable tech stacks. We focus on speed, security, and accessibility (WCAG 2.1) to ensure your site performs perfectly on every device.",
+      "This is the build. Sites and stores are developed and tested, brands are produced and rolled out, campaigns go live, automations are built and connected to your tools. The same senior people who scoped the project deliver it, and you get regular updates rather than silence until the end.",
     list: [
-      "Frontend Build",
-      "Animations",
-      "CMS Integration",
-      "Performance Optimisation",
+      "Regular updates",
+      "Senior delivery",
+      "Tested as we go",
+      "Connected to your tools",
     ],
     cardImage: Process2CardImg3,
     cardImageWidth: 391,
@@ -118,15 +124,15 @@ export const PROCESS_2_CARD = [
   },
   {
     step: "4",
-    title: "Launch & Training",
-    subTitle: "Handing over the keys.",
+    title: "Launch & handover",
+    subTitle: "Live, tested, and yours to run.",
     description:
-      "We handle the complex deployment process, DNS updates, and testing. Then, we record custom training videos so your team feels confident managing the new site.",
+      "We handle the parts that go wrong when they are rushed: deployment, DNS, quality checks across devices, and a proper handover. Where it helps, we record short training videos so your team can manage what we have built without depending on us for every small change.",
     list: [
-      "QA Testing",
-      "Training Library",
-      "Live Deployment",
-      "Source Code Handoff",
+      "Checks across devices",
+      "Clean deployment",
+      "Training videos",
+      "Full handover",
     ],
     cardImage: Process2CardImg4,
     cardImageWidth: 402,
@@ -140,15 +146,15 @@ export const PROCESS_2_CARD = [
   },
   {
     step: "5",
-    title: "Growth & Optimisation",
-    subTitle: "Launch is just day one.",
+    title: "Support & grow",
+    subTitle: "Where launch, improve, grow and automate come in.",
     description:
-      "We monitor your site's performance post-launch. We use real user data to make iterative improvements, improving your conversion rate and SEO rankings month over month.",
+      "Launch is the start, not the end. This is where the four parts of what we do work together over time. We improve the experience, grow traffic and revenue through search and paid media, and automate the repetitive work so growing does not mean more headcount. You keep the same team throughout.",
     list: [
-      "Security Patches",
-      "Monthly Reporting",
-      "Content Updates",
-      "A/B Testing",
+      "Ongoing support",
+      "Search & paid media",
+      "Conversion work",
+      "Automation",
     ],
     cardImage: Process2CardImg5,
     cardImageWidth: 362,

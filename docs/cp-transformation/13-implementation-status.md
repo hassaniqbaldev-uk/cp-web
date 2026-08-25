@@ -529,6 +529,27 @@ at 375/768/1440.
 
 ---
 
+## How We Work — rewritten to support all four pillars (25 Aug 2026, stop for review)
+
+Was website-delivery-only: hero "We bring order to digital chaos" + a 5-step website-build timeline
+(Discovery & Strategy → UX & Design → Development → Launch & Training → Growth & Optimisation), plus the
+generic "minimises risk and maximises ROI" hero line. Rewritten (copy only; components, images, colours and
+layout untouched) so the page is the delivery method for EVERY project, not just websites — the homepage
+Lifecycle ("launch, improve, grow, automate") links here for exactly this.
+- **Hero** (`HowWeWorkHero.jsx`): H1 "How a project with us / actually runs."; subhead names all four kinds
+  of work + the three promises (fixed scope up front, senior people, stays after launch). Generic ROI line gone.
+- **Process2 timeline** (`PROCESS_2_CARD` in `contants/processCard.js`): five universal delivery stages, each
+  written to span the four pillars with concrete specifics — 1 Discovery & scope (fixed price before work),
+  2 Plan & design (sign-off; pillar-specific shape), 3 Build & deliver (senior delivery, regular updates),
+  4 Launch & handover (QA, deployment, training videos), 5 Support & grow (explicitly the launch→improve→grow
+  →automate arc, closing the loop with Lifecycle).
+- **Metadata**: title/description broadened from "Website Design Process" to the four-pillar delivery process.
+- Verified 375/768/1440 (layout method): pageOverflowX=0, no Key-Deliverables box clipped, all five stages
+  render, subhead present. Only "overflow" hits are pointer-events-none decorative shapes inside overflow-hidden
+  sections (pre-existing). Layout unchanged vs the prior version — copy-only diff, so no structural regression.
+- Untouched here (flagged elsewhere): shared Cta "projects for August" banner; Testimonials "4.9/5 from 47+"
+  rating (Hassan to verify) — both handled in the Testimonials step.
+
 ## About hero — carousel clip FIXED + subhead reapplied (25 Aug 2026)
 
 Diagnosis (layout-measured, transform-independent): the AboutHero is a fixed-height section with the text

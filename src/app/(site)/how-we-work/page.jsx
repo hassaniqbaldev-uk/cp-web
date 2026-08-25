@@ -1,7 +1,7 @@
 export async function generateMetadata() {
-  const title = "Our Website Design Process | CreativePixels";
+  const title = "How We Work | Our Delivery Process | CreativePixels";
   const description =
-    "Our proven website design process, from discovery to launch and growth. See how we work, reduce risk and start your project with CreativePixels.";
+    "How a project with CreativePixels runs, from scope and fixed price to design, build, launch and ongoing growth across web, brand, growth and automation.";
 
   return {
     title,

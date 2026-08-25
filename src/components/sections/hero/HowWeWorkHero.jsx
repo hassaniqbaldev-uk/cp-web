@@ -54,9 +54,9 @@ const HowWeWorkHero = () => {
                 delay={0.15}
               >
                 <h1 className="mt-[1rem] mb-[2rem] max-w-[63rem] text-[3rem] leading-[3.7rem] font-bold tracking-[-0.03em] text-white md:text-[7rem] md:leading-[8.5rem]">
-                  <span className="block">We bring order to</span>
+                  <span className="block">How a project with us</span>
                   <span className="bg-gradient-yellow-pink block bg-clip-text text-transparent">
-                    digital chaos.
+                    actually runs.
                   </span>
                 </h1>
               </MotionEffect>
@@ -68,7 +68,7 @@ const HowWeWorkHero = () => {
               >
                 <div className="max-w-[54rem]">
                   <SectionDescription
-                    text="Great products aren't born by accident. They are the result of a rigorous, proven process that minimises risk and maximises ROI."
+                    text="Whether it is a website, a brand, a growth campaign or an automation, every project runs the same way: a clear scope and price up front, senior people doing the work, and a team that stays after launch."
                     textColor="#ffffff"
                   />
                 </div>
