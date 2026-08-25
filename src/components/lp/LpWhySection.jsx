@@ -66,7 +66,7 @@ const LpWhySection = () => {
               {[
                 "We fix the root cause, not just the symptoms. No band-aid solutions that break again in 3 months",
                 "You'll never be left in the dark. Clear timelines, honest quotes, and plain-English updates throughout",
-                "We've handled 150+ WordPress projects. chances are, we've seen your exact problem and already know how to fix it",
+                "After years of WordPress projects, chances are we've seen your exact problem and already know how to fix it",
                 "Your site is built to grow, easy for you to manage, and ready to scale as your business does",
               ].map((item, idx) => (
                 <li key={idx} className="flex gap-[1.2rem]">

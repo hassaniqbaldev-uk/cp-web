@@ -73,7 +73,7 @@ const LpResultSlider = () => {
             </i>
 
             <span className="max-w-[20rem] text-[1.2rem] leading-[1.4rem] font-bold tracking-normal text-[#312749] lg:text-[1.4rem] lg:leading-[1.7rem]">
-              Increase lead generation by 40% within 3 months
+              Turn more of your visitors into leads
             </span>
           </div>
 

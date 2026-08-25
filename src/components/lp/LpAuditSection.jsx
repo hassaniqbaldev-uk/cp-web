@@ -37,7 +37,7 @@ const LpAuditSection = () => {
               </div>
 
               <h5 className="mt-[3rem] text-[1.8rem] leading-[2.2rem] font-bold tracking-normal md:text-[2rem] md:leading-[2.5rem]">
-                No spam. Your information is 100% secure.
+                No spam. Your details stay private.
               </h5>
             </div>
           </MotionEffect>

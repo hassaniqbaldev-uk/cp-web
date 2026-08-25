@@ -32,7 +32,7 @@ export const expertiseData = [
     step: "3",
     title: "Outcome Focused",
     description:
-      "We don't just deliver 'code'. We deliver leads, sales, and efficiency. If it doesn't move the needle for your business, we don't build it.",
+      "We don't just deliver 'code'. We deliver leads, sales, and efficiency. If it doesn't help your business grow, we don't build it.",
   },
 ];
 

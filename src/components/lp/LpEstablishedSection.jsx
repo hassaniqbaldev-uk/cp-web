@@ -38,8 +38,8 @@ const LpEstablishedSection = () => {
                   just ship code we solve business problems and stick around to
                   make sure they stay solved. <br /> <br />
                   CreativePixels is a human-led agency that combines data-driven
-                  strategy with world-class design. No jargon, no hidden fees —
-                  just real results.
+                  strategy with design that works. No jargon, no hidden fees,
+                  just clear results.
                 </p>
               </div>
 
