@@ -17,7 +17,7 @@ const AboutHeroSlider = dynamic(
 const AboutHero = () => {
   return (
     <>
-      <section className="relative min-h-[63rem] w-full px-[2rem] pt-[10rem] pb-[6rem] md:min-h-[75rem] md:pt-[18rem] md:pb-[8rem] lg:min-h-[90rem] xl:px-[0rem]">
+      <section className="relative h-[63rem] w-full px-[2rem] pt-[10rem] md:h-[75rem] md:pt-[18rem] lg:h-[90rem] xl:px-[0rem]">
         {/*Background Image*/}
         <Image
           src={HeroBg}
