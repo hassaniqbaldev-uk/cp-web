@@ -95,8 +95,12 @@ const CaseStudiesDetailPage = async (props) => {
   }
 
   // Related work: score candidates by services/industries shared with THIS study (ordering is in the query).
-  const serviceSlugs = (caseStudy.services || []).map((s) => s.slug).filter(Boolean);
-  const industrySlugs = (caseStudy.industries || []).map((i) => i.slug).filter(Boolean);
+  const serviceSlugs = (caseStudy.services || [])
+    .map((s) => s.slug)
+    .filter(Boolean);
+  const industrySlugs = (caseStudy.industries || [])
+    .map((i) => i.slug)
+    .filter(Boolean);
   let relatedWork = [];
   if (serviceSlugs.length || industrySlugs.length) {
     try {
