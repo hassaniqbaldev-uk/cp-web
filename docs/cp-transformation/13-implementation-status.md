@@ -529,6 +529,30 @@ at 375/768/1440.
 
 ---
 
+## CP-12 build 2 — 2 new industry pages + tag migration → 9 industries (25 Aug 2026)
+
+Hassan approved set A + B, and publishing Property Marketing + Media & Publishing.
+- **2 new canonical industry pages** created by repurposing the empty stubs (`property-marketing`,
+  `media-and-publishing`): flipped `hasPage:true`, written to the same standard as the other 7 (detailHero,
+  6 expertise + 4 methodology + 4 partnerWithUs cards, fit/not-fit, 6 FAQs, workSlugs). Both render 200 with
+  "Selected work". (Bug caught + fixed: my first `createOrReplace` omitted `slug`, nulling it → 404; restored
+  the slugs. Also had to clear `.next/cache` — the stale Next data cache had baked a 404.)
+- **Industry tag migration** (set A clean + set B restaurants/food → travel-hospitality): 27 studies re-tagged
+  stub→canonical; unmappable stubs dropped per Hassan's rule. **4 one-offs left untagged** (ao-arena,
+  game-art-brain, energy-angels, manzar) as intended; biome4pets also untagged (never had an industry tag).
+- **Property/Media studies** kept their tags (they reference the now-canonical repurposed docs) — no migration
+  needed for them; the 5 map to the 2 new pages.
+- **All 9 industries now have genuinely tagged work** (references ≥ 1): travel-hospitality 7, property-marketing
+  5, technology-saas 5, b2b 4, charities 4, ecommerce 4, education 4, media-and-publishing 2,
+  home-improvement-interiors 1. None relies on the "Recent work" fallback (all have workSlugs → all show
+  "Selected work"). The hub industry filter now lists only the 9 canonical industries (stubs gone from it).
+- **9-industry layout verified 375/768/1440**: `Sector` maps all items — desktop 3-col grid (9 = 3 clean rows),
+  tablet/mobile slider (swipes all 9); pageOverflowX=0 everywhere, active slide fits. No hardcoded 7.
+- **Property redirect**: there is NO property legacy URL/redirect to repoint (property was never a legacy
+  /solutions URL and isn't in the crawl). The new page earns its own ranking via the sitemap. NOTE: now that
+  restaurants maps to travel-hospitality, `/solutions/restaurants` (currently → web-design-development) could be
+  repointed to `/industries/travel-hospitality` to recover that search value — flagged, not changed.
+
 ## CP-12 build 1 — hub designation + detail cross-links (25 Aug 2026)
 
 Hassan approved all 5 decisions. Built the parts that needed nothing from him:
