@@ -78,9 +78,11 @@ const nextConfig = {
         destination: "/services/web-design-development",
         permanent: true,
       },
+      // Restaurants now has an honest industry home: Travel, Hospitality & Leisure covers food/drink
+      // (CP-12, 25 Aug 2026), so it points there instead of the generic service, recovering sector value.
       {
         source: "/solutions/restaurants",
-        destination: "/services/web-design-development",
+        destination: "/industries/travel-hospitality",
         permanent: true,
       },
       // SME Founders is audience positioning, not an industry — no single page owns it. Points at the
