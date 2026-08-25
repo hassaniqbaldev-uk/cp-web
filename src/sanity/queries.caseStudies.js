@@ -112,6 +112,44 @@ export const caseStudiesDetailQuery = `
 }
 `;
 
+// The hub grid. Designation drives prominence: flagship leads, then supporting, then archive.
+// ARCHIVE is hidden from the DEFAULT grid but surfaces when a service/industry filter is active
+// (archive = not shown by default, not deleted). Ordering: designation rank, then the manual
+// `order` field, then recency — so flagship work always leads regardless of when it was added.
+// Related work for a detail page. Ordering (per Hassan): RELATEDNESS first — the number of services + industries
+// a candidate SHARES with the current study — then flagship-first, then the manual order / recency. Never the
+// newest-by-default. Excludes the study itself, archive studies, drafts, and anything without a thumbnail. Top 3.
+export const relatedWorkQuery = `
+*[
+  _type == "caseStudies"
+  && !(_id in path("drafts.**"))
+  && defined(slug.current)
+  && defined(thumbnailImage)
+  && slug.current != $slug
+  && designation != "archive"
+  && (
+    count((services[]->slug.current)[@ in $serviceSlugs]) > 0
+    || count((industries[]->slug.current)[@ in $industrySlugs]) > 0
+  )
+]{
+  _id,
+  title,
+  "slug": slug.current,
+  excerpt,
+  thumbnailImage,
+  iconBg,
+  iconColor,
+  designation,
+  "shared": count((services[]->slug.current)[@ in $serviceSlugs])
+    + count((industries[]->slug.current)[@ in $industrySlugs])
+} | order(
+  shared desc,
+  select(designation == "flagship" => 0, designation == "supporting" => 1, 2),
+  order asc,
+  _createdAt desc
+)[0..2]
+`;
+
 export const caseStudiesFilteredQuery = `
 *[
   _type == "caseStudies"
@@ -120,14 +158,20 @@ export const caseStudiesFilteredQuery = `
   && defined(thumbnailImage)
   && ($service == null || $service in services[]->slug.current)
   && ($industry == null || $industry in industries[]->slug.current)
-] | order(order asc, _createdAt desc) {
+  && ($service != null || $industry != null || designation != "archive")
+] | order(
+  select(designation == "flagship" => 0, designation == "supporting" => 1, 2),
+  order asc,
+  _createdAt desc
+) {
   _id,
   title,
   "slug": slug.current,
   excerpt,
   thumbnailImage,
   iconBg,
-  iconColor
+  iconColor,
+  designation
 }
 `;
 

@@ -529,6 +529,26 @@ at 375/768/1440.
 
 ---
 
+## CP-12 build 1 — hub designation + detail cross-links (25 Aug 2026)
+
+Hassan approved all 5 decisions. Built the parts that needed nothing from him:
+- **Hub uses designation** (`caseStudiesFilteredQuery`): flagship leads, then supporting; **archive hidden from
+  the default grid** but **surfaces when a service/industry filter is active**. Verified: first 9 cards all
+  flagship; default grid = 30 (2 archive + biome4pets-no-thumb excluded); filtering by `ui-ux-design` surfaces
+  the two archive studies (ao-arena, peekaboo); default excludes them. Ordering: designation rank → manual order
+  → recency.
+- **Detail cross-links** (three sections using existing, valid data):
+  - `CaseStudyEvidence` — **Relevant services** as links to the service pages (the evidence loop) + **Technology**
+    (from the `technologies` refs, previously unrendered). Renders only what is present.
+  - `RelatedWork` — new `relatedWorkQuery`. **Ordering (per Hassan's watch-point): RELATEDNESS first** — the count
+    of services + industries a candidate SHARES with this study — **then flagship-first, then order/recency, never
+    newest-by-default; archive excluded.** Top 3. Verified on casa-botanica: related = game-art-brain (most shared
+    tags, leads), ndifo-safari, teleqo-tech.
+- **ivy-and-duke designation** set to `supporting` (approved).
+- Verified 375/768/1440: no page overflow, evidence + related sections present, 0 elements overflow, related = 3.
+- Still to do: industry tag migration (mapping below, for approval before mutating); design/technical-decisions
+  schema fields (render-when-populated).
+
 ## CP-12 case studies — PLAN drafted for approval (25 Aug 2026, nothing built)
 
 `cp-12-case-studies-plan.md`. Grounded findings: designation IS in the data (9 flagship / 21 supporting /
