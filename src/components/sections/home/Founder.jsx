@@ -6,13 +6,13 @@ import ServicesLogoShape from "@/assets/svgs/services-logo-shape.svg";
 import SectionLabel from "@/components/ui/SectionLabel";
 import SectionTitle from "@/components/ui/SectionTitle";
 import { MotionEffect } from "@/components/effects/motion-effect";
-import { FOUNDED_YEAR } from "@/content/company";
+import { FOUNDED_YEAR, YEARS_IN_BUSINESS } from "@/content/company";
 
 // Founder — Hassan only, no team grid (Hassan's instruction). The message is owner-led accountability with
 // a wider specialist team behind it, not a personal profile. Draft bio (Hassan will correct). Photo is the
 // static hassan-avatar asset; name/role are fixed. Tint background keeps the rhythm (Lifecycle dark ->
 // Founder tint -> Cta white).
-const Founder = () => {
+const Founder = ({ image }) => {
   return (
     <section className="relative overflow-hidden bg-[#F7FAFF] px-[2rem] py-[5rem] xl:px-[0rem] xl:py-[10rem]">
       {/* Decorative shape — texture the site's light sections carry (matches Expertise3). */}
@@ -42,11 +42,12 @@ const Founder = () => {
                 className="overflow-hidden rounded-[3rem] bg-white p-[1.2rem]"
               >
                 <Image
-                  src={HassanAvatar}
+                  src={image || HassanAvatar}
                   alt="Hassan Iqbal, Managing Director of CreativePixels"
                   width={396}
                   height={396}
-                  className="w-full rounded-[2.2rem] object-cover"
+                  className="aspect-square w-full rounded-[2.2rem] object-cover"
+                  unoptimized={Boolean(image)}
                 />
               </div>
               <div className="mt-[2rem] text-center xl:text-left">
@@ -99,14 +100,11 @@ const Founder = () => {
               transition={{ type: "tween", duration: 0.8, ease: "easeOut" }}
             >
               <p className="max-w-[62rem] text-[1.8rem] leading-[2.9rem] font-normal text-[#625C70]">
-                Hassan founded CreativePixels in {FOUNDED_YEAR} and still leads
-                every project personally, from the first conversation to what
-                happens after launch. He stays the accountable point of contact
-                throughout, backed by a specialist team of designers, developers
-                and growth people, not a rotating cast of juniors. He built the
-                agency to do the work properly and stay commercially useful to
-                clients, rather than to chase awards. Work with CreativePixels
-                and you work with the owner.
+                Hassan founded CreativePixels in December {FOUNDED_YEAR} and,{" "}
+                {YEARS_IN_BUSINESS} years on, still leads projects personally and
+                stays your point of contact from the first conversation through
+                to launch. Behind him is a specialist team of designers,
+                developers and growth people.
               </p>
             </MotionEffect>
           </div>

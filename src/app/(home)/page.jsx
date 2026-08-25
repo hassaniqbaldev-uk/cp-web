@@ -70,6 +70,20 @@ const SitePage = async () => {
     console.error("Failed to fetch case studies data:", error);
   }
 
+  // Founder photo from the Sanity author doc. `fit=max` caps at the source dimensions, so it is crisp now
+  // and automatically serves a larger image the day a higher-resolution photo is uploaded (no code change).
+  let founderImage = null;
+  try {
+    const author = await caseStudiesClient.fetch(
+      `*[_type == "author"][0]{ "img": image.asset->url }`,
+      {},
+      options,
+    );
+    if (author?.img) founderImage = `${author.img}?w=640&fit=max&auto=format&q=80`;
+  } catch (error) {
+    console.error("Failed to fetch founder image:", error);
+  }
+
   const navData = await getNavData();
 
   return (
@@ -77,6 +91,7 @@ const SitePage = async () => {
       <HomePage
         selectedWork={selectedWork}
         webEcommerceWork={webEcommerceWork}
+        founderImage={founderImage}
         navData={navData}
       />
     </>

@@ -27,7 +27,7 @@ const Contact = () => {
               transition={{ type: "tween", duration: 0.8, ease: "easeOut" }}
             >
               <div>
-                <SectionLabel text="Book a call" textColor="#FF37B3" />
+                <SectionLabel text="Start a project" textColor="#FF37B3" />
               </div>
             </MotionEffect>
 
@@ -53,7 +53,7 @@ const Contact = () => {
               transition={{ type: "tween", duration: 0.8, ease: "easeOut" }}
             >
               <div>
-                <SectionDescription text="Stop guessing. Let's build a roadmap to scale your digital presence with a custom strategy." />
+                <SectionDescription text="Tell us what you are building and we will come back with clear next steps. No obligation, and a senior person reads every enquiry." />
               </div>
             </MotionEffect>
 
@@ -71,16 +71,16 @@ const Contact = () => {
                   </i>
 
                   <h4 className="text-[1.8rem] font-bold tracking-[-0.02em] text-[#312749] md:text-[2.2rem]">
-                    Included in your free strategy:
+                    What happens next:
                   </h4>
                 </div>
 
                 <ul className="grid grid-cols-1 gap-x-[3rem] gap-y-[.6rem] md:grid-cols-2 md:gap-y-[1.2rem]">
                   {[
-                    "SEO Missed Opportunities",
-                    "Site Speed Analysis",
-                    "Competitor Benchmarking",
-                    "Conversion Roadmap",
+                    "We reply within one working day",
+                    "A senior person reviews your project",
+                    "Clear next steps, no obligation",
+                    "Your details stay private",
                   ].map((item, idx) => (
                     <li key={idx} className="flex items-center gap-[1.2rem]">
                       <i className="inline-flex size-[2.4rem] items-center justify-center rounded-full bg-[#44b276]/20">

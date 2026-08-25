@@ -8,7 +8,7 @@ import Established from "@/components/sections/established/Established";
 import Lifecycle from "@/components/sections/home/Lifecycle";
 import Founder from "@/components/sections/home/Founder";
 import Work from "@/components/sections/work/Work";
-import Cta from "@/components/sections/cta/Cta";
+import Investment from "@/components/sections/home/Investment";
 import Testimonials from "@/components/sections/testimonials/Testimonials";
 import Contact from "@/components/sections/contact/Contact";
 import { useEffect, useState } from "react";
@@ -27,7 +27,7 @@ const CONTENT_VARIANTS = {
   },
 };
 
-const HomePage = ({ selectedWork, webEcommerceWork, navData }) => {
+const HomePage = ({ selectedWork, webEcommerceWork, founderImage, navData }) => {
   const [transition, setTransition] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
 
@@ -156,15 +156,17 @@ const HomePage = ({ selectedWork, webEcommerceWork, navData }) => {
           AI (tint) -> Why (white) -> Lifecycle (dark) -> Cta (white). */}
       <Established />
       <Lifecycle />
-      {/* Founder — Hassan only (no team grid), owner-led message. Tint keeps the alternation:
-          Lifecycle (dark) -> Founder (tint) -> Cta (white). */}
-      <Founder />
-      <section className="overflow-hidden px-[2rem] py-[5rem] xl:px-[0rem] xl:py-[10rem]">
-        <Cta />
-      </section>
-      <section className="bg-[#ffd900]/13 px-[2rem] py-[5rem] xl:px-[0rem] xl:py-[10rem]">
+      {/* Founder — Hassan only (no team grid), owner-led message. Tint. */}
+      <Founder image={founderImage} />
+      {/* Reviews — moved up, off the footer. With no quotes in the case studies, the real client
+          reviews are our strongest proof, so they get weight here. White keeps the rhythm
+          (Founder tint -> Reviews white -> Investment tint). */}
+      <section className="px-[2rem] py-[5rem] xl:px-[0rem] xl:py-[10rem]">
         <Testimonials />
       </section>
+      {/* Investment — a light price signal from the single pricing source (tint). */}
+      <Investment />
+      {/* Final conversion — Start a project + the enquiry form (dark hero bg). No Book a Call. */}
       <section className="relative px-[2rem] py-[5rem] xl:px-[0rem] xl:py-[10rem]">
         {/*Background Image*/}
         <Image

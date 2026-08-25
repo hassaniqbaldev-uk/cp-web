@@ -362,9 +362,35 @@ commercially useful, not chase awards; work with CreativePixels and you work wit
 background keeps the rhythm: **Lifecycle (dark) → Founder (tint) → Cta (white)**. Verified 375/768/1440:
 no overflow; Lifecycle shows the desktop timeline grid at 1440 and the ProcessSlider at 768/375.
 
-**Next (after review):** reviews (give Testimonials weight, off the footer; report genuine-review count),
-investment (light price signal from servicePricing, not a menu), final conversion (Start a project +
-reassurance microcopy, no Book a Call).
+**Founder fixes + reviews + investment + final conversion — DONE. Homepage structurally complete.**
+- **Bio reworked** (Hassan's corrections): removed the unsupported "do the work properly / not chase
+  awards" positioning claim, the "not a rotating cast of juniors" competitor swipe, and the "work with the
+  owner" slogan. Now factual only: "Hassan founded CreativePixels in December 2013 and, 12 years on, still
+  leads projects personally and stays your point of contact from the first conversation through to launch.
+  Behind him is a specialist team of designers, developers and growth people." (dates from the single source.)
+- **Founder photo → Sanity author image** (was static). NOTE: both the static avatar and the Sanity image
+  are 396×396 — the SAME resolution — so this does not make it sharper; `fit=max` means the day a higher-res
+  photo is uploaded it flows through with no code change. A genuinely crisp large headshot needs a
+  higher-res upload (flagged to Hassan). Static avatar kept as fallback.
+- **Reviews — moved up, off the footer** (Founder → Reviews → Investment → Final). With no quotes in the case
+  studies, the real reviews are our strongest proof. **Count: 15 written reviews on the homepage** (16 on
+  /testimonials), from 11+ named client companies, plus a "4.9/5 from 47+ Clients" aggregate — existing
+  published reviews (permission confirmed by Hassan). White background.
+- **Investment — new light price signal** from `servicePricing.js` (never hardcoded): four representative
+  starting points (Websites & ecommerce From £1,500, Branding From £1,000, Custom & AI builds From £5,000,
+  Ongoing growth From £300/month), framed "a starting point, not a price list" + "we agree the figure before
+  anything starts" + a link to per-service pricing. Build/high-value figures lead so it does not undercut.
+- **Final conversion (Contact)** — "Book a call" label → **"Start a project"**; audit-pitch card
+  ("Included in your free strategy" + SEO/speed/competitor items) → **reassurance microcopy** ("What happens
+  next": reply within one working day / a senior person reviews it / clear next steps, no obligation / your
+  details stay private); description reworked. **No "Book a Call" anywhere** (verified 0). Fixes apply to
+  the /contact page too (shared component).
+- **Dropped the mid-page `Cta` section** (not in the CP-10 tail; the final conversion carries it).
+
+**FULL SECTION LIST + BACKGROUND (11 sections, alternating, verified 375/768/1440, no overflow):**
+1. Hero — dark · 2. Selected work — white · 3. Four pillars — dark · 4. Web & Ecommerce — white ·
+5. AI & Automation — tint · 6. Why CreativePixels — white · 7. Lifecycle — dark · 8. Founder — tint ·
+9. Reviews — white · 10. Investment — tint · 11. Final conversion — dark. No two adjacent share a treatment.
 
 ---
 
