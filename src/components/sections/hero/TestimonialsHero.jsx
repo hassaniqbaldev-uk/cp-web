@@ -60,7 +60,7 @@ const TestimonialsHero = () => {
               delay={0.15}
             >
               <h1 className="mt-[1.5rem] mb-[2.5rem] max-w-[89rem] text-[3rem] leading-[3.7rem] font-bold tracking-[-0.03em] text-[#312749] md:text-[7rem] md:leading-[8rem]">
-                Let&apos;s simplify your growth strategy.
+                In our clients&apos; own words.
               </h1>
             </MotionEffect>
 
@@ -72,7 +72,7 @@ const TestimonialsHero = () => {
             >
               <div className="max-w-[76rem]">
                 <SectionDescription
-                  text="No high-pressure sales tactics. Just a friendly chat with Hassan to see if we're a good fit to help you scale."
+                  text="Every review below is from a real, named client, on a real project we designed, built or grew. Read what it is like to work with us, in their words."
                   textColor="#625C70"
                 />
               </div>

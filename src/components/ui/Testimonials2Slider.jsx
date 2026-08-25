@@ -46,7 +46,7 @@ const Testimonials2Slider = ({ testimonials }) => {
               </h6>
 
               <span className="text-[1.1rem] leading-[1.7rem] font-medium tracking-normal text-[#625C70]">
-                {testimonial.role}
+                {testimonial.company}
               </span>
             </div>
           </div>

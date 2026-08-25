@@ -529,6 +529,40 @@ at 375/768/1440.
 
 ---
 
+## Unverified 4.9/5 rating REMOVED everywhere + Testimonials page reworked (25 Aug 2026, stop for review)
+
+Per Hassan (option 1): drop the number, lead with the real reviews. No aggregateRating schema added (no
+verified source to point at).
+- **Rating removed in all 5 components**: `LpHero`, `LpTestimonialSection`, `LpWhySection`, `Testimonials`,
+  `Testimonials2`. Replaced the "4.9/5 from 47+ Clients" badges with the plain factual label **"Real reviews
+  from real clients"**; rewrote the LpWhySection sentence to drop "and a 4.9/5 rating". Also removed the
+  AGGREGATE star rows next to those badges (5 stars = the same unverifiable rating in visual form) — but kept
+  the PER-CARD stars, which belong to specific named, attributable reviews. Verified: no "4.9/5"/"47+"/
+  "satisfied clients" strings remain anywhere in src. Removed the now-unused StarIcon import from LpHero.
+- **Testimonials page (`/testimonials`)**:
+  - **H1 mismatch fixed**: "Let's simplify your growth strategy." → **"In our clients' own words."** Hero
+    description rewritten to introduce the reviews (real, named clients, real projects) instead of a
+    contact-page "friendly chat with Hassan" line.
+  - **Fixed a real bug**: grid cards and the mobile slider rendered `{testimonial.role}`, but the data uses
+    `company` — so EVERY company name was rendering blank. Now `{testimonial.company}`; all 11 companies show.
+  - **Removed a duplicate**: Brendan/Alertforce was both the featured card AND a grid card. Removed the grid dup
+    → 11 unique reviews (1 featured + 10 grid).
+  - **Reordered to lead with the strongest**: grid now opens with Gareth/3DCAD Visuals ("new enquiry the day it
+    went live") and Scott/Casa Botanica; Ahmed/Game Art Brain (long) closes the wide col-span-2 card.
+  - **Cleaned company display names**: "Express-conveyancing." → "Express Conveyancing", "Casabotanica" → "Casa
+    Botanica", "3dcad visuals" → "3DCAD Visuals", "AYOA" → "Ayoa".
+  - **Mobile parity**: the slider showed only 4 of 11; now shows all 11 (featured + grid via spread).
+  - Verified 375/768/1440 (layout method): pageOverflowX=0, hero zero overflow, desktop bento = 11 cards with
+    NO bottom gap, 0 empty-company cards, mobile slider = 11 slides all with companies, active slide fits viewport.
+
+### Does 11 reviews justify a standalone page? MY HONEST VIEW: yes, keep it (matches the brief's keep+fix).
+11 genuine, named, specific reviews is at the lower-but-sufficient end. Several are strong and results-oriented
+(Gareth's new-enquiry-day-one, Abdul/Scott/Ahmed detailed). Now that companies render, names are prominent, the
+duplicate is gone and the strongest lead, the bento layout fills cleanly (no gap) and the page carries itself
+without the number. It is also a destination users and search expect. RECOMMENDATION: keep as a standalone page;
+gathering even 4-6 more genuine reviews would strengthen it but is not required to justify it. Folding it into a
+section is unnecessary now that it presents properly.
+
 ## Audit — full rewrite as an honest lower-intent lead magnet (25 Aug 2026, stop for review)
 
 Was a thin page (hero-with-AuditForm → Testimonials → the "Start a project" Contact section) carrying

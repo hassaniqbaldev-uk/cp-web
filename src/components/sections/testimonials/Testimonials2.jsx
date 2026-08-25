@@ -39,6 +39,20 @@ const featuredTestimonial = {
 const testimonials = [
   {
     rating: 5,
+    text: "CreativePixels are the best website developers I have ever worked with! That is saying a lot as I have had circa 10 websites built in the last 7 years, with many different developers. Their design skills are amazing and they gave me better ideas than my own for the new website they built. They listen well to a brief and give honest feedback and improvements. The site they produced for our company is truly stunning! We got a new enquiry the day it went live! That has never happened before. CreativePixels are the best :). Highly recommend.",
+    name: "Gareth",
+    company: "3DCAD Visuals",
+    avatar: CadVisualsAvatar,
+  },
+  {
+    rating: 5,
+    text: "CreativePixels were fantastic to work with. Nothing ever felt like too much trouble, and the team went above and beyond to keep the project moving. They delivered the website on time and within budget, while also helping create missing content where needed to keep everything on schedule. We would absolutely work with CreativePixels again and are continuing to use their services for ongoing maintenance and SEO support.",
+    name: "Scott Burkhardt",
+    company: "Casa Botanica",
+    avatar: CasabotanicaAvatar,
+  },
+  {
+    rating: 5,
     text: "Fantastic! One of the best! Hassan and his team are really very talented and built an outstanding website",
     name: "Ben",
     company: "Little Astro",
@@ -62,14 +76,14 @@ const testimonials = [
     rating: 5,
     text: "I would highly recommend CreativePixels, they were excellent throughout the process of designing and developing our new website.",
     name: "James Brian",
-    company: "AYOA",
+    company: "Ayoa",
     avatar: AyoaAvatar,
   },
   {
     rating: 5,
     text: "CreativePixels have been exceptional. They followed a less than ideal brief so well and came up with an end result of exactly what we had in mind. Highly recommended, and we will be continuing to use CreativePixels for our ongoing projects.",
     name: "Anthony",
-    company: "Express-conveyancing.",
+    company: "Express Conveyancing",
     avatar: ExpressAvatar,
   },
   {
@@ -81,31 +95,10 @@ const testimonials = [
   },
   {
     rating: 5,
-    text: "CreativePixels are a real professional and an absolute pleasure to work with. Great guiding advice, exceeded my expectations and overall an absolute treasure and asset for our business. Thank you, we truly appreciate all of your contributions and we look forward to continuing to work together.",
-    name: "Brendan Torazzi",
-    company: "Alertforce",
-    avatar: AlertforceAvatar,
-  },
-  {
-    rating: 5,
     text: "I had the pleasure of working with CreativePixels on the development of my health and safety consultancy website, and I couldn’t be more pleased with the outcome. CreativePixels developed the site in WordPress, and from start to finish, the team were incredibly helpful, friendly, and professional. They took the time to understand my needs and provided valuable insights that helped bring the vision of my website to life. Their attention to detail and dedication to making sure everything was perfect really stood out. I highly recommend CreativePixels for anyone looking for a talented and approachable web design team!",
     name: "Abdul",
     company: "Safety Rac",
     avatar: SafetyRacAvatar,
-  },
-  {
-    rating: 5,
-    text: "CreativePixels were fantastic to work with. Nothing ever felt like too much trouble, and the team went above and beyond to keep the project moving. They delivered the website on time and within budget, while also helping create missing content where needed to keep everything on schedule. We would absolutely work with CreativePixels again and are continuing to use their services for ongoing maintenance and SEO support.",
-    name: "Scott Burkhardt",
-    company: "Casabotanica",
-    avatar: CasabotanicaAvatar,
-  },
-  {
-    rating: 5,
-    text: "CreativePixels are the best website developers I have ever worked with! That is saying a lot as I have had circa 10 websites built in the last 7 years, with many different developers. Their design skills are amazing and they gave me better ideas than my own for the new website they built. They listen well to a brief and give honest feedback and improvements. The site they produced for our company is truly stunning! We got a new enquiry the day it went live! That has never happened before. CreativePixels are the best :). Highly recommend.",
-    name: "Gareth",
-    company: "3dcad visuals",
-    avatar: CadVisualsAvatar,
   },
   {
     rating: 5,
@@ -116,35 +109,17 @@ const testimonials = [
   },
 ];
 
+// Mobile slider shows every review: the featured one plus the full grid set,
+// so mobile users see the same 11 reviews as desktop (not just a handful).
 const responsiveTestimonials = [
   {
     rating: 5,
-    text: "Fantastic! One of the best! Hassan and his team are really very talented and built an outstanding website",
-    name: "Ben",
-    company: "Little Astro",
-    avatar: LittleAstroAvatar,
+    text: featuredTestimonial.quote,
+    name: featuredTestimonial.name,
+    company: featuredTestimonial.role,
+    avatar: featuredTestimonial.avatar,
   },
-  {
-    rating: 5,
-    text: "It was a pleasure working with CreativePixels on designing our brand new website. I highly recommend his service.",
-    name: "Sandra",
-    company: "Homecare",
-    avatar: HomecareAvatar,
-  },
-  {
-    rating: 5,
-    text: "CreativePixels did an incredible job helping us to create branding material from scratch. They were extremely flexible, and exceeded our expectations.",
-    name: "Alex",
-    company: "Loop",
-    avatar: LoopAvatar,
-  },
-  {
-    rating: 5,
-    text: "I would highly recommend CreativePixels, they were excellent throughout the process of designing and developing our new website.",
-    name: "James Brian",
-    company: "AYOA",
-    avatar: AyoaAvatar,
-  },
+  ...testimonials,
 ];
 
 const Testimonials2 = () => {
@@ -192,16 +167,9 @@ const Testimonials2 = () => {
             delay={0.4}
             transition={{ type: "tween", duration: 0.8, ease: "easeOut" }}
           >
-            <div className="flex items-center justify-center gap-[1.2rem]">
-              <ul className="flex items-center gap-[3px]">
-                {Array.from({ length: 5 }).map((_, index) => (
-                  <li key={index}>
-                    <StarIcon color="#FF37B3" className="size-[1.5rem]" />
-                  </li>
-                ))}
-              </ul>
+            <div className="flex items-center justify-center">
               <span className="text-[1.4rem] leading-[3.2rem] font-bold text-[#625C70] md:text-[2rem]">
-                4.9/5 from 47+ Clients
+                Real reviews from real clients
               </span>
             </div>
           </MotionEffect>
@@ -305,7 +273,7 @@ const Testimonials2 = () => {
                     </h6>
 
                     <span className="text-[1.6rem] leading-[2.4rem] font-medium tracking-normal text-[#625C70]">
-                      {testimonial.role}
+                      {testimonial.company}
                     </span>
                   </div>
                 </div>
