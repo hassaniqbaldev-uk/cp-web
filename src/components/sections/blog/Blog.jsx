@@ -1,45 +1,6 @@
 "use client";
 import BlogCard from "@/components/ui/BlogCard";
-import BlogCardImg1 from "@/assets/images/cards/blog-card-img-1.webp";
-import BlogCardImg2 from "@/assets/images/cards/blog-card-img-2.webp";
-import BlogCardImg3 from "@/assets/images/cards/blog-card-img-3.webp";
-import BlogCardImg4 from "@/assets/images/cards/blog-card-img-4.webp";
 import { MotionEffect } from "@/components/effects/motion-effect";
-
-export const CardData = [
-  {
-    category: "GROWTH",
-    img: BlogCardImg1,
-    title: "The SEO Checklist for 2025: What's Changed?",
-    excerpt:
-      "Google's latest core update has shifted the landscape again. Here are the 5 things you need to audit on your site today.",
-    link: "",
-  },
-  {
-    category: "Technology",
-    img: BlogCardImg2,
-    title: "Headless CMS vs WordPress: Making the Right Choice",
-    excerpt:
-      "Decoupling your frontend from your backend offers speed and security, but is it right for your marketing team?",
-    link: "",
-  },
-  {
-    category: "Design",
-    img: BlogCardImg3,
-    title: "The Psychology of Conversion: Beyond the Button Color",
-    excerpt:
-      "True CRO isn't about red vs green buttons. It's about understanding cognitive load, trust signals, and user motivation.",
-    link: "",
-  },
-  {
-    category: "Engineering",
-    img: BlogCardImg4,
-    title: "Scaling React Applications: Lessons from 1M+ Users",
-    excerpt:
-      "Technical deep dive into state management, code splitting, and performance optimisation for large-scale web apps.",
-    link: "",
-  },
-];
 
 const Blog = ({ blogs }) => {
   return (

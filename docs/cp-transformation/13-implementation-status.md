@@ -529,6 +529,21 @@ at 375/768/1440.
 
 ---
 
+## CP-14 blog — re-pillared + placeholder removed + assessed (25 Aug 2026)
+
+- **Re-pillared the 9 posts** (via `safe-mutate patchSet` — first use of the new helper) from the old
+  DESIGN/DEVELOPMENT/GROWTH/STRATEGY categories to the four pillars. Distribution: **Web & Ecommerce 4,
+  Growth & Performance 3, AI & Automation 1, Brand & Experience 1.** GAPS: Brand & Experience and AI &
+  Automation are thin (1 each) — where new posts would help. Two debatable calls flagged (10-signs → Growth
+  vs Web; template → Web vs Brand).
+- **Removed the hardcoded placeholder**: the `CardData` export (the "Scaling React / 1M+ Users" fake posts)
+  in `Blog.jsx` and `RelatedBlogs.jsx` was a DEAD export (both components render the Sanity `blogs` prop; nothing
+  imports CardData). Removed it and its now-unused image imports. Blog page still 200, real posts + pillar chips.
+- **Quality assessment (read excerpts + sampled bodies): KEEP all 9.** Bodies are substantial (≈700–2,100 words),
+  specific, opinionated and UK-focused — genuinely good, NOT generic AI volume. No archiving or rewriting needed.
+  Minor: a couple cite external market stats (e.g. "7% conversion drop per second") worth a quick fact-check
+  before launch, but they are general facts, not fabricated CP results. Did NOT write any new posts (assess-only).
+
 ## STRUCTURAL FIX: createOrReplace field-loss can no longer recur (25 Aug 2026)
 
 `createOrReplace` dropped an omitted field FOUR times (case-study images, goal icons, solution excerpts,

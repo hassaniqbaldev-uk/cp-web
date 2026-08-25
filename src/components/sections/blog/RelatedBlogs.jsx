@@ -1,27 +1,6 @@
 import BlogCard from "@/components/ui/BlogCard";
 import SectionTitle from "@/components/ui/SectionTitle";
-import BlogCardImg1 from "@/assets/images/cards/blog-card-img-1.webp";
-import BlogCardImg2 from "@/assets/images/cards/blog-card-img-2.webp";
 import { MotionEffect } from "@/components/effects/motion-effect";
-
-export const CardData = [
-  {
-    category: "GROWTH",
-    img: BlogCardImg1,
-    title: "The SEO Checklist for 2025: What's Changed?",
-    excerpt:
-      "Google's latest core update has shifted the landscape again. Here are the 5 things you need to audit on your site today.",
-    link: "",
-  },
-  {
-    category: "Technology",
-    img: BlogCardImg2,
-    title: "Headless CMS vs WordPress: Making the Right Choice",
-    excerpt:
-      "Decoupling your frontend from your backend offers speed and security, but is it right for your marketing team?",
-    link: "",
-  },
-];
 
 const RelatedBlogs = ({ blogs }) => {
   return (
