@@ -12,8 +12,6 @@ import { motion } from "framer-motion";
 import { MotionEffect } from "@/components/effects/motion-effect";
 
 const Cta = () => {
-  const currentMonth = new Date().toLocaleString("default", { month: "long" });
-
   return (
     <>
       <MotionEffect slide={{ direction: "down" }} fade inView delay={0.1} transition={{ type: "tween", duration: 0.8, ease: "easeOut" }}>
@@ -41,7 +39,7 @@ const Cta = () => {
                 </div>
 
                 <span className="text-[1.2rem] leading-[2.4rem] font-medium text-white md:text-[1.6rem]">
-                  Now taking on projects for {currentMonth}
+                  Now taking on new projects
                 </span>
               </div>
 

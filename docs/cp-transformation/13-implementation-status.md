@@ -529,6 +529,24 @@ at 375/768/1440.
 
 ---
 
+## "Taking on projects" banner — de-dated site-wide (25 Aug 2026)
+
+Two availability badges carried a date. `Cta.jsx` was already driven from `new Date()` (so not stale, but a
+month-scarcity device that reads awkwardly at month-end); `HomeHero.jsx` was hardcoded "for 2026" (genuinely
+goes stale in 2027). Both changed to a non-dating "Now taking on new projects" — never wrong, and drops the
+month/year scarcity framing that leans toward the banned "manufactured urgency". Verified live: home badge and
+shared Cta both read the new copy, no "for August"/"for 2026" anywhere.
+
+## 4.9/5 from 47+ Clients rating — NO SOURCE FOUND, flagged for Hassan (25 Aug 2026)
+
+The claim appears in 5 components (`LpHero`, `LpTestimonialSection`, `LpWhySection`, `Testimonials`,
+`Testimonials2`) and is now live on the homepage, /testimonials and the landing page. Traced it: there is NO
+source in the codebase — no `aggregateRating`/schema markup, and no Google Business / Trustpilot / Clutch / G2
+link anywhere. The written testimonials that DO exist number ~11 unique genuine reviews (Safety Rac, Express
+Conveyancing, PolyMax, Little Astro, Homecare, Loop, 3dcad Visuals, Ayoa, AlertForce, Game Art Brain,
+Casa Botanica), not 47. So both the "4.9/5" and the "47+" are unverified in-code. Left unchanged per instruction;
+Hassan to confirm a real source (and its URL, so we can cite it) or decide to soften/remove. NOT changed.
+
 ## How We Work — rewritten to support all four pillars (25 Aug 2026, stop for review)
 
 Was website-delivery-only: hero "We bring order to digital chaos" + a 5-step website-build timeline

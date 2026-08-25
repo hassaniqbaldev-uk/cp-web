@@ -80,7 +80,7 @@ const HomeHero = () => {
                     </div>
 
                     <span className="text-[1.1rem] leading-[2.4rem] font-medium text-white md:text-[1.6rem]">
-                      Now taking on new projects for 2026
+                      Now taking on new projects
                     </span>
                   </Link>
                 </div>
