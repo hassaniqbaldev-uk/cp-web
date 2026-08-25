@@ -4,6 +4,8 @@ import AboutHero from "@/components/sections/hero/AboutHero";
 import Stats from "@/components/sections/stats/Stats";
 import Testimonials from "@/components/sections/testimonials/Testimonials";
 import Values from "@/components/sections/values/Values";
+import Founder from "@/components/sections/home/Founder";
+import { getFounderImage } from "@/sanity/founder";
 
 export async function generateMetadata() {
   const title = "About CreativePixels | Manchester Digital Agency That Cares";
@@ -41,14 +43,18 @@ export async function generateMetadata() {
   };
 }
 
-const AboutPage = () => {
+const AboutPage = async () => {
+  const founderImage = await getFounderImage();
   return (
     <>
       <div className="overflow-hidden">
         <AboutHero />
         <Stats />
       </div>
+      {/* Estimate (story) tint, Founder white, so the rhythm alternates:
+          hero dark -> Stats white -> Estimate tint -> Founder white -> Values -> Cta -> Testimonials. */}
       <Estimate />
+      <Founder image={founderImage} background="white" />
       <Values />
       <section className="overflow-hidden px-[2rem] py-[5rem] xl:px-[0rem] xl:py-[10rem]">
         <Cta />

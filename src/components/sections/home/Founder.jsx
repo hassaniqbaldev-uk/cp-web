@@ -12,9 +12,13 @@ import { FOUNDED_YEAR, YEARS_IN_BUSINESS } from "@/content/company";
 // a wider specialist team behind it, not a personal profile. Draft bio (Hassan will correct). Photo is the
 // static hassan-avatar asset; name/role are fixed. Tint background keeps the rhythm (Lifecycle dark ->
 // Founder tint -> Cta white).
-const Founder = ({ image }) => {
+const Founder = ({ image, background = "tint" }) => {
   return (
-    <section className="relative overflow-hidden bg-[#F7FAFF] px-[2rem] py-[5rem] xl:px-[0rem] xl:py-[10rem]">
+    <section
+      className={`relative overflow-hidden px-[2rem] py-[5rem] xl:px-[0rem] xl:py-[10rem] ${
+        background === "tint" ? "bg-[#F7FAFF]" : ""
+      }`}
+    >
       {/* Decorative shape — texture the site's light sections carry (matches Expertise3). */}
       <div className="pointer-events-none absolute top-[7.8rem] right-[0rem] h-[17.7rem] w-[12.9rem] rotate-[-34deg] select-none">
         <Image

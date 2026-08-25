@@ -86,6 +86,23 @@ const nextConfig = {
         destination: "/solutions",
         permanent: true,
       },
+      // Retired pages (IA §4). Agencies folds into Partner With Us; the WordPress landing page is
+      // superseded by the Web Design & Development service page.
+      {
+        source: "/agencies",
+        destination: "/partner-with-us",
+        permanent: true,
+      },
+      {
+        source: "/wordpress-web-development",
+        destination: "/services/web-design-development",
+        permanent: true,
+      },
+      {
+        source: "/wordpress-web-development/thank-you",
+        destination: "/services/web-design-development",
+        permanent: true,
+      },
     ];
   },
 };

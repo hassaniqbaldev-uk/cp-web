@@ -57,9 +57,9 @@ const AuditHero = () => {
                 delay={0.15}
               >
                 <h1 className="mt-[1.3rem] mb-[2rem] text-[3rem] leading-[3.7rem] font-bold tracking-[-0.03em] text-[#312749] md:text-[7rem] md:leading-[8.5rem]">
-                  Unlock your website&apos;s{" "}
+                  See what your website{" "}
                   <span className="bg-gradient-orange-yellow bg-clip-text text-transparent">
-                    hidden revenue.
+                    could be doing better.
                   </span>
                 </h1>
               </MotionEffect>
@@ -73,7 +73,7 @@ const AuditHero = () => {
               >
                 <div className="max-w-[58.5rem]">
                   <SectionDescription
-                    text="Stop guessing why you aren't growing. We'll manually analyse your site's UX, SEO, and Performance and send you a custom video report."
+                    text="We manually analyse your site's UX, SEO and performance, then send you a short video report with the specific things worth fixing."
                     textColor="#625C70"
                   />
                 </div>

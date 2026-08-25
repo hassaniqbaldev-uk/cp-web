@@ -513,6 +513,42 @@ at 375/768/1440.
 
 ---
 
+## CP-09/11 — Company & conversion pages: Tier 1 fixes + About — DONE (stop for review)
+
+**Tier 1 live-problem fixes (before any rewriting):**
+- **Two redirects wired** (`next.config.mjs`, permanent 308): `/agencies → /partner-with-us`,
+  `/wordpress-web-development → /services/web-design-development` (+ its `/thank-you`). Both retired pages
+  were still live; the redirects retire them (the page files remain, dead, until final cleanup).
+- **Invented metrics removed from `/partner-with-us`** (`Growth.jsx`): "2x Faster Delivery" AND
+  "Save ~60% vs In-House" (the same fabricated-metric problem — caught the second while there) →
+  "Delivery capacity on demand" / "Lower than hiring in-house".
+- **Banned phrases fixed on `/audit`** (`AuditHero.jsx`): H1 "**Unlock** your website's hidden revenue." →
+  "See what your website could be doing better."; "**Stop guessing** why you aren't growing…" → "We manually
+  analyse your site's UX, SEO and performance, then send you a short video report with the specific things
+  worth fixing." (These are the Tier 1 phrase fixes; the full /audit rewrite is still to come.)
+
+**ABOUT — rewritten (major).** Found a **fifth founding-date version, "Est. 2012"** in the story section —
+now driven from the single source like the rest. Changes:
+- `AboutHero`: added a substantive subhead — "Manchester-based, working with clients across the UK, US and
+  Australia. 12 years of brand, web and ecommerce, growth and automation, owner-led from day one." (kept the
+  "gives a damn" headline — brand personality, flagged for Hassan's view). Manchester = the D6 local entity
+  signal, truthful.
+- `Estimate` (story): "Est. 2012" → "Est. December 2013"; story broadened from web/WordPress-only to the
+  **four pillars + the company story** — Manchester agency, clients across the UK/US/Australia, founded by
+  Hassan Iqbal in December 2013, 12 years, "what began as one person is now a specialist team", post-launch
+  support. Tinted for rhythm.
+- **Founder section reused** on About (Hassan, owner-led message) — `Founder` gained a `background` prop so it
+  is white here (tint on the homepage) to keep the alternation.
+- `getFounderImage()` extracted to `src/sanity/founder.js` (shared by homepage + About, DRY).
+- Stats/Values/Testimonials kept. Rhythm: hero dark → Stats white → Estimate tint → Founder white → Values
+  tint → Cta white → Testimonials orange-tint. **No adjacent repeats.** Verified 375/768/1440: no overflow.
+
+**Next (after review):** How We Work (four pillars + delivery process), Partner With Us (absorb agencies),
+Audit (full rewrite), Testimonials (H1 fix + weight). Open flag: the **"4.9/5 from 47+ Clients"** rating still
+needs verification (live on homepage/testimonials).
+
+---
+
 ## createOrReplace damage audit (24 Aug 2026) — COMPLETE, all recovered
 
 Queried all 22 authored docs (18 services + 4 solutions) on staging and diffed each against its

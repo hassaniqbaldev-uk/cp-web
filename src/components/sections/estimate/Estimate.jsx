@@ -6,11 +6,12 @@ import SectionTitle from "@/components/ui/SectionTitle";
 import { MotionEffect } from "@/components/effects/motion-effect";
 import AboutHeroLogoShape1 from "@/components/decorative-elements/AboutHeroLogoShape1";
 import ContactHeroLogoShape1 from "@/components/decorative-elements/ContactHeroLogoShape1";
+import { FOUNDED_YEAR, YEARS_IN_BUSINESS } from "@/content/company";
 
 const Estimate = () => {
   return (
     <>
-      <section className="relative overflow-hidden px-[2rem] py-[5rem] xl:px-[0rem] xl:py-[10rem]">
+      <section className="relative overflow-hidden bg-[#F7FAFF] px-[2rem] py-[5rem] xl:px-[0rem] xl:py-[10rem]">
         {/*Background Element*/}
         <div className="pointer-events-none absolute inset-0 z-[2] select-none">
           <AboutHeroLogoShape1 className="absolute top-[20rem] left-[5rem] h-[18.5rem] w-[9.2rem] rotate-[35deg] opacity-50" />
@@ -26,7 +27,7 @@ const Estimate = () => {
               <MotionEffect slide={{ direction: "down" }} fade zoom inView delay={0.1} transition={{ type: "tween", duration: 0.8, ease: "easeOut" }}>
                 <div>
                   <SectionLabel
-                    text="Est. 2012 • Manchester, UK"
+                    text={`Est. December ${FOUNDED_YEAR} • Manchester, UK`}
                     textColor="#3078FF"
                   />
                 </div>
@@ -44,12 +45,13 @@ const Estimate = () => {
               <MotionEffect slide={{ direction: "down" }} fade inView delay={0.4} transition={{ type: "tween", duration: 0.8, ease: "easeOut" }}>
                 <p className="text-[1.8rem] leading-[3rem] font-normal tracking-normal text-[#625C70] md:text-[2.2rem] md:leading-[3.6rem]">
                   <span className="font-bold text-[#FF37B3]">CreativePixels</span>{" "}
-                  is a UK digital agency focused on web design, WordPress
-                  development, and performance-driven websites. We help businesses
-                  turn their online presence into a practical growth tool by
-                  combining clear strategy, thoughtful design, and solid technical
-                  delivery. From brochure sites to complex builds, our work is
-                  built to be fast, search-friendly, and easy for teams to manage.
+                  is a Manchester digital agency, working with businesses across
+                  the UK and further afield in the US and Australia. Hassan Iqbal
+                  founded the studio in December {FOUNDED_YEAR}, and{" "}
+                  {YEARS_IN_BUSINESS} years on we build brands, websites and
+                  ecommerce stores, and the growth and automation that keep them
+                  working. What began as one person is now a specialist team of
+                  designers, developers and growth people.
                 </p>
               </MotionEffect>
             </div>
@@ -72,13 +74,12 @@ const Estimate = () => {
             <div className="w-full rounded-[3rem] border border-[#EE7621] bg-[#FDF4E7] p-[2rem] md:p-[4rem]">
               <p className="text-center text-[1.8rem] leading-[3rem] font-bold tracking-normal text-[#625C70] md:text-[2.2rem] md:leading-[3.6rem] xl:text-left">
                 <span className="text-[#3078FF]">Over the years,</span> we’ve
-                partnered with startups, growing companies, and established
-                organisations that need more than just a good-looking website.
-                They want reliability, long-term support, and measurable
-                improvement. Alongside design and development, we strengthen SEO
-                foundations, improve user experience, and provide ongoing website
-                support to help businesses generate leads, increase conversions,
-                and grow with confidence.
+                partnered with startups, growing companies and established
+                organisations that want more than a good-looking website. They
+                want reliability, senior people and a partner who stays after
+                launch. Alongside design and development, we run SEO, paid media,
+                conversion work and automation, and we support the sites we build
+                for the long term.
               </p>
             </div>
           </MotionEffect>

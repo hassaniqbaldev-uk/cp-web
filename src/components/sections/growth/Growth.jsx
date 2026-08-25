@@ -41,15 +41,15 @@ export const growthData = {
   comparison: [
     {
       label: "Cost Efficiency",
-      value: "Save ~60% vs In-House",
+      value: "Lower than hiring in-house",
     },
     {
       label: "Turnaround Time",
-      value: "2x Faster Delivery",
+      value: "Delivery capacity on demand",
     },
     {
       label: "Client Retention",
-      value: "Higher (Expanded Services)",
+      value: "Offer more, keep more",
     },
   ],
 };
