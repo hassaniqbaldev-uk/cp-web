@@ -65,6 +65,9 @@ const nextConfig = {
       },
       // The three HELD industries (hasPage:false) point at Web Design & Development until Hassan
       // decides whether we chase those verticals; turning one on repoints it to its own page.
+      // KNOWN SEO LOSS (CP-15, accepted 25 Aug 2026): these three legacy industry-solution URLs carry
+      // sector-specific search value that a generic service page does not recover. Publishing the three
+      // industry pages (hasPage:true) and repointing here would recover it. See redirect-map.md flag 3.
       {
         source: "/solutions/driving-schools",
         destination: "/services/web-design-development",
@@ -80,12 +83,23 @@ const nextConfig = {
         destination: "/services/web-design-development",
         permanent: true,
       },
-      // SME Founders is audience positioning, not an industry — no single page owns it.
+      // SME Founders is audience positioning, not an industry — no single page owns it. Points at the
+      // Increase Leads goal solution (the most common SME intent), not the hub (CP-15, 25 Aug 2026).
       {
         source: "/solutions/sme-founders",
-        destination: "/solutions",
+        destination: "/solutions/increase-leads",
         permanent: true,
       },
+      // Legacy combined "Custom Apps & AI" page split into two services; the head term (custom apps)
+      // is the page a prospect on the old URL most likely wanted (CP-15, 25 Aug 2026).
+      {
+        source: "/services/custom-apps-and-ai",
+        destination: "/services/custom-app-development",
+        permanent: true,
+      },
+      // NOTE: /About cannot be handled here — Next matches redirect sources case-INSENSITIVELY, so a
+      // "/About" -> "/about" entry also matches "/about" and creates an infinite loop. A case-only redirect
+      // needs middleware (case-sensitive) or is left to 404. Flagged for Hassan (see redirect-map.md).
       // Retired pages (IA §4). Agencies folds into Partner With Us; the WordPress landing page is
       // superseded by the Web Design & Development service page.
       {
@@ -98,9 +112,10 @@ const nextConfig = {
         destination: "/services/web-design-development",
         permanent: true,
       },
+      // The retired LP's form-confirmation page goes to the generic thank-you, not a service page.
       {
         source: "/wordpress-web-development/thank-you",
-        destination: "/services/web-design-development",
+        destination: "/thank-you",
         permanent: true,
       },
     ];

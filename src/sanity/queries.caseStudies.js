@@ -115,6 +115,9 @@ export const caseStudiesDetailQuery = `
 export const caseStudiesFilteredQuery = `
 *[
   _type == "caseStudies"
+  && !(_id in path("drafts.**"))
+  && defined(slug.current)
+  && defined(thumbnailImage)
   && ($service == null || $service in services[]->slug.current)
   && ($industry == null || $industry in industries[]->slug.current)
 ] | order(order asc, _createdAt desc) {

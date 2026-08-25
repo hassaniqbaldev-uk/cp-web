@@ -529,6 +529,32 @@ at 375/768/1440.
 
 ---
 
+## CP-15 redirect map WIRED + verified; two bugs found & fixed (25 Aug 2026)
+
+Wired Hassan's six decisions into `next.config.mjs` and fixed the two Footer `/agencies` links → `/partner-with-us`
+at source. Applied: custom-apps-and-ai → custom-app-development; sme-founders → increase-leads (not the hub);
+wordpress-web-development/thank-you → /thank-you; driving-schools/pharmacies/restaurants → web-design-development
+(known SEO loss, recorded in-config); test/junk URLs left to 404.
+
+**Full verification (all 103 legacy URLs, following redirects):**
+- **18 redirects**, every one resolving in **exactly 1 hop** to a 200 destination — **no chains**.
+- **80 unchanged** 200 pages (0-hop).
+- **5 expected 404s**: `/hassan-test`, `/review-test`, `/testing-testimonials`, `/nope-404-xyz`, `/About`.
+- **No unexpected 404s, no 500s, no chains.**
+
+**Two bugs surfaced during verification and FIXED:**
+1. **`/About` created an infinite redirect loop on `/about`.** Next.js matches redirect `source` values
+   **case-INSENSITIVELY**, so a `/About` → `/about` entry also matched `/about` → looped (50 hops). Removed the
+   entry; `/about` is 200 again. **`/About` now 404s.** A case-only redirect needs middleware (case-sensitive) —
+   FLAGGED for Hassan: accept the 404, or add a tiny case-normalising middleware.
+2. **`/case-studies` index returned 500** (`urlFor(null)`): **`biome4pets` is published but has no
+   `thumbnailImage`** (it is "awaiting images"), and the index query — unlike the service-page WORK_QUERY — did not
+   filter `defined(thumbnailImage)`, so the null image crashed the whole grid. Added
+   `!(_id in path("drafts.**")) && defined(slug.current) && defined(thumbnailImage)` to `caseStudiesFilteredQuery`.
+   Index is 200 again. **FLAG for Hassan: `biome4pets` (the AI & Automation pillar's only proof) will NOT appear in
+   the case-studies grid until it gets a thumbnail image.** Pre-existing (biome4pets was published before this
+   session); not caused by the redirect work.
+
 ## CP-15 redirect map DRAFTED for review — not wired (25 Aug 2026, stop for approval)
 
 Mapped all 103 crawled legacy URLs → `docs/cp-transformation/redirect-map.md`. Key findings:
