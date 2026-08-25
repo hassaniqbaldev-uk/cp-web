@@ -529,6 +529,29 @@ at 375/768/1440.
 
 ---
 
+## Blog stat fact-check + A11y/Perf AUDIT (report-only) (25 Aug 2026)
+
+### Fact-check (blog external stats)
+- **"one-second delay reduces conversions ~7%"** (wordpress-slow): traces only to a dated, endlessly-recycled
+  Akamai/Aberdeen figure the post stated with no citation → REWORDED to drop the number (qualitative). Done via
+  safe-mutate patchSet.
+- **"more than half of UK web traffic on mobile"** and **"WordPress powers over 40% of the web"**: current,
+  well-established (Ofcom/Statista; W3Techs ~43%) → kept. Other numbers in the posts are illustrative/hypothetical.
+
+### A11y + Performance audit — report only, nothing fixed yet. Full detail given to Hassan; scale:
+**Performance:** biggest lever = **119 `unoptimized` <Image> across 72 files** (defeats Next optimization; hero
+LCP images served full-size). **3 third-party scripts via GTM — GTM + Microsoft Clarity (session recording) +
+Crisp chat — all load UNCONDITIONALLY** (not in code; injected by the GTM container; the consent banner does not
+stop them → confirms the launch-external-tasks §1 GTM-config risk, and Crisp is a heavy widget). JS ≈ 384 KB
+(framer-motion + swiper). GOOD: CLS = 0 on homepage. LCP time not measurable in the pane (needs Lighthouse).
+**Accessibility (WCAG 2.2 AA):** heading hierarchy jumps h1→h3 (no h2, 6 skips); **51/106 images have generic alt**
+("Icon"/"Image"/"Card Image"); **33 touch targets < 24px** (2.5.8 fail); **no skip link** (2.4.1); the Radix
+service `select` has no accessible name; honeypot input unlabelled. GOOD: single h1, landmarks (main/nav/header/
+footer), lang=en, focus-visible CSS present, no positive tabindex, contact form has labels + aria-invalid +
+visible errors, consent banner is keyboard-operable. NOT yet measured: colour contrast (needs a tool), full
+keyboard trace of the mega-menu/mobile-nav/modal, LCP field time. Prioritised list + safe-vs-structural split
+delivered to Hassan for approval before any fixes.
+
 ## CP-14 blog — re-pillared + placeholder removed + assessed (25 Aug 2026)
 
 - **Re-pillared the 9 posts** (via `safe-mutate patchSet` — first use of the new helper) from the old
