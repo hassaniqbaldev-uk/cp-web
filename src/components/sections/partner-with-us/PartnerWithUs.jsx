@@ -172,8 +172,8 @@ const PartnerWithUs = () => {
                       "Pay only for work delivered",
                       "Full team access (Dev, Design, SEO, Strategy)",
                       "Zero management or HR required",
-                      "Infinite scalability on demand",
-                      "White label - we are YOUR team",
+                      "Scale up or down as demand changes",
+                      "White label, delivered as your team",
                     ].map((item, idx) => (
                       <li key={idx} className="flex items-center gap-[1.6rem]">
                         <i className="min-w-max">

@@ -220,7 +220,7 @@ export const PROCESS_3_CARD = [
     iconHeight: 30,
     title: "Quality & Ongoing Support",
     description:
-      "We hand over files, code, and assets in your preferred format, ready for you to present to the client.",
+      "We test everything before handover, then offer ongoing support and maintenance so your client's project keeps running smoothly after launch.",
     color: "#F14A58",
     boxShadow: "5px 5px 44px 0px #F14A582E",
   },

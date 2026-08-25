@@ -45,7 +45,7 @@ const PartnerWithUsHero = () => {
               zoom
             >
               <SectionLabel
-                text="White Label Web Design & Branding"
+                text="White Label Delivery for Agencies"
                 textColor="#FF37B3"
               />
             </MotionEffect>
@@ -69,9 +69,9 @@ const PartnerWithUsHero = () => {
               fade
               delay={0.3}
             >
-              <div className="mb-[4rem] max-w-[76rem]">
+              <div className="mb-[4rem] max-w-[78rem]">
                 <SectionDescription
-                  text={`Since ${FOUNDED_YEAR}, CreativePixels has supported agencies across the UK, US & Australia with WordPress websites, branding, and ongoing support, all delivered under your brand.`}
+                  text={`We work as an extra team behind your agency: white-label delivery start to finish, extra capacity when you are stretched, and the specialist skills you do not keep in-house. Your clients only ever see your brand. Supporting agencies across the UK, US and Australia since ${FOUNDED_YEAR}.`}
                   textColor="#ffffff"
                 />
               </div>

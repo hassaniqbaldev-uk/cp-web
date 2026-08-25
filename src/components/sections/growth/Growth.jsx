@@ -3,6 +3,7 @@ import CheckMarkIcon3 from "@/components/icons/CheckMarkIcon3";
 import SectionDescription from "@/components/ui/SectionDescription";
 import SectionTitle from "@/components/ui/SectionTitle";
 import { MotionEffect } from "@/components/effects/motion-effect";
+import { YEARS_IN_BUSINESS } from "@/content/company";
 
 export const growthData = {
   heading: "Expand your services, take on more clients.",
@@ -18,7 +19,7 @@ export const growthData = {
     {
       title: "Scalable Capacity",
       description:
-        "Scale up or down instantly based on client demand. No idle staff costs.",
+        "Scale up or down as client demand changes, with no idle staff costs.",
     },
     {
       title: "Seamless Branding",
@@ -27,14 +28,17 @@ export const growthData = {
     },
   ],
 
+  // Stats are single-source company facts, not invented counts. The previous
+  // "8+ Partner Agencies / 500+ White Label Projects" was unverified and the 500+
+  // contradicted the ~200 total projects delivered figure used elsewhere.
   stats: [
     {
-      value: "8+",
-      label: "Partner Agencies",
+      value: `${YEARS_IN_BUSINESS}+`,
+      label: "Years in business",
     },
     {
-      value: "500+",
-      label: "White Label Projects",
+      value: "3",
+      label: "Countries served",
     },
   ],
 

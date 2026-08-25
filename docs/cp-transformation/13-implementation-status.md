@@ -529,6 +529,34 @@ at 375/768/1440.
 
 ---
 
+## Partner With Us — offer sharpened + agencies content absorbed (25 Aug 2026, stop for review)
+
+/agencies now redirects here, so this is the definitive white-label page. Checked the agencies-only
+components (Message, Difference, Process4, ClientReview): all their content is already represented on Partner
+With Us (Message's "An agency, for your agency" is the hero H1; its subhead and Difference's points are the
+Growth heading + features + comparison). Nothing valuable is lost by the redirect.
+Changes (copy-only within existing components; layout untouched):
+- **Hero** (`PartnerWithUsHero.jsx`): label → "White Label Delivery for Agencies" (covers all work, not just
+  web+branding); subhead rewritten to name the three things an agency is buying — white-label delivery,
+  overflow capacity, specialist skills they lack — plus the distinct-from-direct-work signal ("an extra team
+  behind your agency", "your clients only ever see your brand").
+- **Growth** (`growth/Growth.jsx`): removed INVENTED/INCONSISTENT stats "8+ Partner Agencies" and "500+ White
+  Label Projects" (the 500+ contradicted the ~200 total-projects figure). Replaced with single-source company
+  facts: `${YEARS_IN_BUSINESS}+` Years in business, 3 Countries served (UK/US/AU). Dropped "instantly"
+  hyperbole. The three features (Expertise on Demand / Scalable Capacity / Seamless Branding) already map to
+  the three buying reasons — kept.
+- **PartnerWithUs** comparison (`partner-with-us/PartnerWithUs.jsx`): "Infinite scalability on demand" →
+  "Scale up or down as demand changes"; "White label - we are YOUR team" → "White label, delivered as your team".
+- **Process3** (`PROCESS_3_CARD` step 5): fixed a pre-existing bug — step 5 "Quality & Ongoing Support" had the
+  IDENTICAL description to step 4; rewrote it to describe QA + ongoing support (aligns with the FAQ's post-launch
+  support answer).
+- Verified 375/768/1440 (layout method): pageOverflowX=0 at all three, hero subhead within viewport, stat cells
+  ("12+"/"3") within viewport, no content clipped. The right=690/1446 elements at 768/375 are off-screen
+  process-carousel slides (clipped by the slider's overflow-hidden; slider untouched), not a page break.
+- OPEN QUESTION for Hassan (not changed, per the wait-on-CTA rule): the hero CTA is "How It Works" → /how-we-work,
+  but the agency-specific process (Process3) sits on this page and /how-we-work is now the general four-pillar
+  process. Consider pointing the CTA at /contact ("Start a partnership") instead. Left as-is pending your call.
+
 ## "Taking on projects" banner — de-dated site-wide (25 Aug 2026)
 
 Two availability badges carried a date. `Cta.jsx` was already driven from `new Date()` (so not stale, but a
