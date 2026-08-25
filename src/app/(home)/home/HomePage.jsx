@@ -5,7 +5,7 @@ import HomeHero from "@/components/sections/hero/HomeHero";
 import ServicesPillars from "@/components/sections/services/ServicesPillars";
 import PillarFeature from "@/components/sections/home/PillarFeature";
 import Established from "@/components/sections/established/Established";
-import Process from "@/components/sections/process/Process";
+import Lifecycle from "@/components/sections/home/Lifecycle";
 import Work from "@/components/sections/work/Work";
 import Cta from "@/components/sections/cta/Cta";
 import Testimonials from "@/components/sections/testimonials/Testimonials";
@@ -150,9 +150,12 @@ const HomePage = ({ selectedWork, webEcommerceWork, navData }) => {
           href: "/services/ai-automation",
         }}
       />
+      {/* Why CreativePixels (Established) — white. Lifecycle — dark (launch/improve/grow/automate arc,
+          each stage tied to a pillar; not a second trust pitch). Keeps the alternation:
+          AI (tint) -> Why (white) -> Lifecycle (dark) -> Cta (white). */}
       <Established />
-      <Process />
-      <section className="overflow-hidden px-[2rem] pb-[5rem] xl:px-[0rem] xl:pb-[10rem]">
+      <Lifecycle />
+      <section className="overflow-hidden px-[2rem] py-[5rem] xl:px-[0rem] xl:py-[10rem]">
         <Cta />
       </section>
       <section className="bg-[#ffd900]/13 px-[2rem] py-[5rem] xl:px-[0rem] xl:py-[10rem]">

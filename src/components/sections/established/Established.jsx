@@ -1,174 +1,156 @@
 "use client";
-import SectionTitle from "@/components/ui/SectionTitle";
-import PrimaryButton from "@/components/ui/PrimaryButton";
 import SectionLabel from "@/components/ui/SectionLabel";
-import SendIcon from "@/assets/icons/ui/send-icon.svg";
-import BusinessIcon from "@/assets/icons/ui/business-icon.svg";
+import SectionTitle from "@/components/ui/SectionTitle";
+import SectionDescription from "@/components/ui/SectionDescription";
+import PrimaryButton from "@/components/ui/PrimaryButton";
+import CheckMarkIcon from "@/components/icons/CheckMarkIcon";
+import ServicesLogoShape from "@/assets/svgs/services-logo-shape.svg";
 import Image from "next/image";
-import Counter from "@/components/ui/Counter";
 import { MotionEffect } from "@/components/effects/motion-effect";
 import { FOUNDED_YEAR, YEARS_IN_BUSINESS } from "@/content/company";
 
+// Why CreativePixels. The brief wants specific, concrete differences rather than generic agency claims:
+// twelve years, owner involvement, a specialist team, commercial focus, custom where needed, post-launch
+// support, technical depth. The old version leaned on a generic "long-term partner" line plus an invented
+// "£10M+ client revenue generated" stat — that fabricated outcome is removed (we never invent client results).
+const DIFFERENCES = [
+  {
+    title: "Owner-led",
+    text: "Hassan is hands-on from the first call to after launch, not just for the pitch.",
+  },
+  {
+    title: "A specialist team",
+    text: "Designers, developers and growth people who each do one thing well, not generalists stretched thin.",
+  },
+  {
+    title: "Commercially focused",
+    text: "We build for revenue and growth, measured on what your site does for the business, not on awards.",
+  },
+  {
+    title: "Custom where it counts",
+    text: "WordPress and Shopify when they serve you, bespoke builds when they do not.",
+  },
+  {
+    title: "Here after launch",
+    text: "Support, improvements and a warranty on what we build, not a handover and goodbye.",
+  },
+  {
+    title: "Real technical depth",
+    text: "From Core Web Vitals to custom applications and integrations, engineering that holds up.",
+  },
+];
+
 const Established = () => {
   return (
-    <>
-      <section className="px-[2rem] py-[5rem] xl:px-[0rem] xl:py-[10rem]">
-        <div className="container">
-          <div className="flex flex-col items-center gap-[4.6rem] md:gap-[8rem] xl:flex-row">
-            <div className="flex w-[30rem] flex-col items-center text-center md:w-[58.5rem] xl:items-start xl:text-left">
-              <MotionEffect
-                slide={{ direction: "down" }}
-                fade
-                zoom
-                inView
-                delay={0.1}
-                transition={{ type: "tween", duration: 0.8, ease: "easeOut" }}
-              >
-                <div>
-                  <SectionLabel
-                    text={`Established in ${FOUNDED_YEAR}`}
-                    textColor="#3078FF"
-                  />
-                </div>
-              </MotionEffect>
+    <section className="relative overflow-hidden px-[2rem] py-[5rem] xl:px-[0rem] xl:py-[10rem]">
+      {/* Decorative shape — the texture the site's light sections carry (matches Expertise3). */}
+      <div className="pointer-events-none absolute top-[7.8rem] right-[0rem] h-[17.7rem] w-[12.9rem] rotate-[-34deg] select-none">
+        <Image
+          src={ServicesLogoShape}
+          alt="Logo Shape"
+          width={129}
+          height={177}
+          unoptimized
+        />
+      </div>
 
-              <MotionEffect
-                slide={{ direction: "down" }}
-                fade
-                zoom
-                inView
-                delay={0.25}
-                transition={{ type: "tween", duration: 0.8, ease: "easeOut" }}
-              >
-                <div className="mt-[1rem] mb-[2rem]">
-                  <SectionTitle text="Not just another agency. Your long-term digital partner." />
-                </div>
-              </MotionEffect>
-
-              <MotionEffect
-                slide={{ direction: "down" }}
-                fade
-                inView
-                delay={0.4}
-                transition={{ type: "tween", duration: 0.8, ease: "easeOut" }}
-              >
-                <p className="mb-[4rem] text-[1.8rem] leading-[2.8rem] font-normal text-[#625C70]">
-                  In an industry of &quot;churn and burn,&quot; we&apos;ve been
-                  building lasting relationships for over {YEARS_IN_BUSINESS}{" "}
-                  years. We
-                  don&apos;t just ship code; we solve business problems. <br />{" "}
-                  <br /> Founded by Hassan Iqbal, CreativePixels is a human-led
-                  agency that pairs clear strategy with senior design and
-                  development. No jargon, no hidden fees, and we stay with you
-                  long after launch.
-                </p>
-              </MotionEffect>
-
-              <MotionEffect
-                slide={{ direction: "down" }}
-                fade
-                inView
-                delay={0.55}
-                transition={{ type: "tween", duration: 0.8, ease: "easeOut" }}
-              >
-                <div>
-                  <PrimaryButton
-                    color="#312749"
-                    text="Read Our Story"
-                    href="/about"
-                    textColor="#ffffff"
-                  />
-                </div>
-              </MotionEffect>
+      <div className="relative z-[10] container">
+        <div className="flex flex-col items-center text-center">
+          <MotionEffect
+            slide={{ direction: "down" }}
+            fade
+            zoom
+            inView
+            delay={0.1}
+            transition={{ type: "tween", duration: 0.8, ease: "easeOut" }}
+          >
+            <div>
+              <SectionLabel text="Why CreativePixels" textColor="#3078FF" />
             </div>
+          </MotionEffect>
 
+          <MotionEffect
+            slide={{ direction: "down" }}
+            fade
+            zoom
+            inView
+            delay={0.25}
+            transition={{ type: "tween", duration: 0.8, ease: "easeOut" }}
+          >
+            <div className="mt-[5px] mb-[14px]">
+              <SectionTitle
+                text="Owner-led, senior, and here after launch."
+                textColor="#312749"
+              />
+            </div>
+          </MotionEffect>
+
+          <MotionEffect
+            slide={{ direction: "down" }}
+            fade
+            zoom
+            inView
+            delay={0.4}
+            transition={{ type: "tween", duration: 0.8, ease: "easeOut" }}
+          >
+            <div className="max-w-[70rem]">
+              <SectionDescription
+                text={`In business since ${FOUNDED_YEAR}, ${YEARS_IN_BUSINESS} years of it, and set up differently from most agencies. Here is what that means for your project.`}
+                textColor="#625C70"
+              />
+            </div>
+          </MotionEffect>
+        </div>
+
+        <div className="mt-[5rem] grid grid-cols-1 gap-[3rem] md:grid-cols-2 xl:mt-[6rem] xl:grid-cols-3">
+          {DIFFERENCES.map((item, idx) => (
             <MotionEffect
+              key={item.title}
               slide={{ direction: "down" }}
               fade
               inView
-              delay={0.4}
-              transition={{ type: "tween", duration: 0.8, ease: "easeOut" }}
+              delay={0.4 + idx * 0.1}
+              transition={{ type: "tween", duration: 1.0, ease: "easeOut" }}
+              className="h-full"
             >
-              <div className="relative h-[27.3rem] w-[27.5rem] md:h-[53.6rem] md:w-[53.8rem]">
-                <div className="absolute top-0 left-0 inline-flex size-[13.6rem] flex-col items-center justify-center gap-[.7rem] rounded-full bg-[#0073F8] text-center md:size-[26.8rem] md:gap-[1.4rem]">
-                  <span className="text-[3.4rem] leading-[3rem] font-semibold tracking-[-0.02em] text-white md:text-[6.8rem] md:leading-[6rem]">
-                    <Counter value={10} prefix="£" suffix="M+" />
-                  </span>
-
-                  <span className="text-[.8rem] leading-[1rem] font-bold tracking-normal text-white md:text-[1.6rem] md:leading-[2rem]">
-                    Client Revenue <br /> Generated
-                  </span>
-                </div>
-
-                <div className="absolute top-0 right-0 h-[14.7rem] w-[13.8rem] md:h-[28.9rem] md:w-[27rem]">
-                  <div className="absolute inset-0 rounded-[1.5rem] bg-[#FFD900] md:rounded-[3rem]" />
-
-                  <div className="absolute bottom-0 left-0 z-[1] flex h-[13.6rem] w-full flex-col items-start justify-between rounded-[1.5rem] bg-[#ED910C] px-[1.4rem] pt-[1.4rem] pb-[1.7rem] text-left md:h-[26.8rem] md:rounded-[3rem] md:px-[3rem] md:pt-[2.8rem] md:pb-[3.3rem]">
-                    <i>
-                      <Image
-                        src={SendIcon}
-                        alt="Icon"
-                        width={44}
-                        height={44}
-                        className="size-[2.2rem] md:size-[4.4rem]"
-                        unoptimized
-                      />
-                    </i>
-
-                    <div className="flex flex-col items-start">
-                      <span className="text-[3.4rem] leading-[3rem] font-semibold tracking-[-0.02em] text-white md:text-[6.8rem] md:leading-[6rem]">
-                        <Counter value={200} suffix="+" />
-                      </span>
-
-                      <span className="text-[.8rem] leading-[1rem] font-bold tracking-normal text-white md:text-[1.6rem] md:leading-[2rem]">
-                        Projects Delivered
-                      </span>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="absolute bottom-0 left-0 h-[14.7rem] w-[13.8rem] md:h-[28.9rem] md:w-[27rem]">
-                  <div className="absolute inset-0 rounded-[1.5rem] bg-[#B21F81] md:rounded-[3rem]" />
-
-                  <div className="absolute top-0 left-0 z-[1] flex h-[13.6rem] w-full flex-col items-start justify-between rounded-[1.5rem] bg-[#FF12A4] px-[1.5rem] pt-[1.6rem] pb-[1.8rem] text-left md:h-[26.8rem] md:rounded-[3rem] md:px-[3rem] md:pt-[2.8rem] md:pb-[3.3rem]">
-                    <i>
-                      <Image
-                        src={BusinessIcon}
-                        alt="Icon"
-                        width={44}
-                        height={44}
-                        className="size-[2.2rem] md:size-[4.4rem]"
-                        unoptimized
-                      />
-                    </i>
-
-                    <div className="flex flex-col items-start">
-                      <span className="text-[3.4rem] leading-[3rem] font-semibold tracking-[-0.02em] text-white md:text-[6.8rem] md:leading-[6rem]">
-                        <Counter value={YEARS_IN_BUSINESS} suffix="+" />
-                      </span>
-
-                      <span className="text-[.8rem] leading-[1rem] font-bold tracking-normal text-white md:text-[1.6rem] md:leading-[2rem]">
-                        Years in Business
-                      </span>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="absolute right-0 bottom-0 inline-flex size-[13.6rem] flex-col items-center justify-center gap-[.7rem] rounded-full bg-[#618402] text-center md:size-[26.8rem] md:gap-[1.4rem]">
-                  <span className="text-[3.4rem] leading-[3rem] font-semibold tracking-[-0.02em] text-white md:text-[6.8rem] md:leading-[6rem]">
-                    <Counter value={100} suffix="%" />
-                  </span>
-
-                  <span className="text-[.8rem] leading-[1rem] font-bold tracking-normal text-white md:text-[1.6rem] md:leading-[2rem]">
-                    Human-Led Strategy
-                  </span>
-                </div>
+              <div
+                style={{ boxShadow: "11px 11px 65px 0px #00000012" }}
+                className="flex h-full flex-col gap-[1.4rem] rounded-[2.4rem] bg-white p-[3rem]"
+              >
+                <span className="inline-flex size-[4.4rem] min-w-[4.4rem] items-center justify-center rounded-full bg-[#3078FF]/10">
+                  <CheckMarkIcon color="#3078FF" />
+                </span>
+                <h3 className="text-[2rem] leading-[2.6rem] font-bold tracking-[-0.02em] text-[#312749]">
+                  {item.title}
+                </h3>
+                <p className="text-[1.6rem] leading-[2.5rem] text-[#625C70]">
+                  {item.text}
+                </p>
               </div>
             </MotionEffect>
-          </div>
+          ))}
         </div>
-      </section>
-    </>
+
+        <MotionEffect
+          slide={{ direction: "down" }}
+          fade
+          inView
+          delay={0.5}
+          transition={{ type: "tween", duration: 0.8, ease: "easeOut" }}
+        >
+          <div className="mt-[5rem] flex justify-center">
+            <PrimaryButton
+              text="Read our story"
+              href="/about"
+              bGcolor="#312749"
+              textColor="#ffffff"
+              ctaPosition="home-why"
+            />
+          </div>
+        </MotionEffect>
+      </div>
+    </section>
   );
 };
+
 export default Established;

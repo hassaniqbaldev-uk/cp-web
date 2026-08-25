@@ -316,7 +316,28 @@ brand online." in `Contact.jsx` (homepage + /contact). Verified 375/768/1440: no
 **Lifecycle (slot 10):** still to build — only as the distinct launch→improve→grow→automate arc, else
 merged into Why (Hassan's call once seen).
 
-**Next (after review):** Why (rework Established), lifecycle, founder, reviews, investment, final conversion.
+**Why CreativePixels — reworked (this step).** Established rewritten from a generic "long-term partner"
+line into six CONCRETE differentiators (owner-led; a specialist team; commercially focused; custom where it
+counts; here after launch with a warranty; real technical depth), on a white section with the standard
+heading stack + decorative shape. **Removed a fabricated metric that was live on the homepage:
+"£10M+ Client Revenue Generated"** (an invented client outcome), plus the "100% Human-Led Strategy" stat.
+Twelve-years / founding still read from the single source. CTA "Read our story" → /about.
+
+**Lifecycle — BUILT (it earns its place).** New `Lifecycle` component: the launch → improve → grow →
+automate arc, each stage tied to a DIFFERENT pillar (Launch=Web & Ecommerce, Improve=Brand & Experience,
+Grow=Growth & Performance, Automate=AI & Automation) — a "how the four pillars work together over the
+relationship" story, genuinely distinct from Why (differentiators), not a second trust pitch. Dark-glass
+treatment (ProcessBg + glass cards) matching ServicesPillars/PartnerWithUs2, keeping the dark rhythm slot
+that Process held. The old `Process` section is removed from the homepage (it is the delivery process and
+lives on How We Work via `Process2`; the homepage `Process` component is now unused).
+
+**Rhythm preserved:** AI (tint) → Why (white) → Lifecycle (dark) → Cta (white) → Testimonials (yellow) →
+Contact (dark) — same white→dark→Cta adjacency the original Established→Process→Cta had. Verified
+375/768/1440: no horizontal overflow; both sections carry proper weight (Why ~1030px, Lifecycle ~785px).
+
+**Next (after review):** founder (Hassan bio, owner-led message), reviews (give Testimonials weight; report
+genuine-review count), investment (light price signal from servicePricing), final conversion (Start a
+project + reassurance microcopy, no Book a Call).
 
 ---
 
