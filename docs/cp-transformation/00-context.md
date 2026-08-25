@@ -151,7 +151,7 @@ All confirmed by Hassan, 12 August 2026.
 | ID | Decision | Rationale |
 | --- | --- | --- |
 | D35 | **Service URLs stay flat** — `/services/wordpress`, `/services/shopify` are NOT nested under a parent path | Nesting adds depth, complicates the redirect map and buries the pages. WordPress and Shopify belong to **Web & Ecommerce** *conceptually*, but sit at the same URL depth as every other service. The hierarchy lives in the **mega-menu grouping + internal linking**, as CP-15 describes — not in the URL. Applies to all platform/service pages. Inherited by CP-02/CP-03. |
-| D36 | **Growth & Support consolidation** — `maintenance` becomes the parent proposition **"Ongoing Growth & Support"** (covering maintenance, security, performance and ongoing improvement). **Speed kept** as a supporting specialist page. **Security demoted to a capability** within Growth & Support — *pending confirmation* | Reduces the thin "support" cluster to one strong parent + one justified specialist. Speed stays because there is **real search demand** for site-speed work. Security is demoted because the brief warns against promising services we do not actually provide and security is the easiest to overclaim — **OPEN: confirm we do not deliver standalone security work; if we do, it stays a service.** Do not assume; see O14. Inherited by CP-02/CP-03. |
+| D36 | **Growth & Support consolidation** — `maintenance` becomes the parent proposition **"Ongoing Growth & Support"** (covering maintenance, security, performance and ongoing improvement). **Speed kept** as a supporting specialist page. ~~**Security demoted to a capability**~~ **SUPERSEDED by O14 (closed 19 Aug 2026): security STAYS a service page.** | Reduces the thin "support" cluster to one strong parent + one justified specialist. Speed stays because there is **real search demand** for site-speed work. ~~Security is demoted...~~ **RESOLVED by O14: we DO deliver standalone security (malware removal, firewall configuration, monitoring), so `/services/security` stays a service page under Growth & Performance.** Inherited by CP-02/CP-03. |
 | D37 | **AI & Automation page built at CP-05** as a P1 pillar page; its **sub-pages** (Workflow Automation, AI Agents, AI Integrations) **wait** for more delivery proof | It is one of the four pillars and now has real evidence behind it (the Biome4Pets case study). The sub-pages hold until there is more delivery proof, exactly as the brief states. Inherited by CP-03/CP-05. |
 
 ### Added after the CP-01 services/solutions review, 19 August 2026
@@ -180,8 +180,8 @@ All confirmed by Hassan, 12 August 2026.
 
 | ID | Question | Owner | Blocks |
 | --- | --- | --- | --- |
-| **O8** | **Content platform consolidation. Recommendation is Option A, validated at 8–10 days.** See `CP-00K-content-platform-decision.md` | **Hassan** | **CP-01 onward** |
-| **O11** | **Taxonomy reconciliation ruleset. Must be approved before migration scripting.** See `CP-00K-taxonomy-reconciliation.md` | **Hassan** | **The O8 migration itself** |
+| ~~**O8**~~ | **CLOSED — approved and COMPLETED (weeks ago).** The site now runs on the single consolidated CreativePixels project `4m0eqoi1` with private `production` and `staging` datasets (Option A, as recommended). See `CP-00K-content-platform-decision.md`. | Hassan | Done |
+| **O11** | **Taxonomy reconciliation ruleset. Must be approved before migration scripting.** The O8 migration it gated is now COMPLETE, so the ruleset was necessarily applied — treat as resolved unless Hassan flags the ruleset needs a final review. See `CP-00K-taxonomy-reconciliation.md` | **Hassan (confirm only)** | Done via O8 |
 | O4 | Approach clients for real outcome data. **DECIDED 18 Aug 2026: yes — collecting; no estimating.** Until the data returns, proof is delivery facts + testimonials only (section 8). **Stays open until the data lands** (for CP-12). | Hassan / data collection | CP-12 flagship quality |
 | O6 | Which industry pages survive: Interiors & Furnishings, Driving Schools, Pharmacies, Restaurants | Hassan | **Pulled forward by D28.** Now expressed as `hasPage` flags, so it is reversible and no longer blocks the migration |
 | O9 | Cal.com link views on the booking page. Did prospects click and abandon, or never click? See section 6 | Hassan | Whether D8 is the right fix |
@@ -713,8 +713,9 @@ Evidence that the workaround already fails: the case-studies project has grown i
 duplicate `services` and `industries` document types for tagging, and they have
 already diverged from the real ones.
 
-**Open as O8.** See `CP-00K-content-platform-decision.md` for options, recommendation,
-effort and risk. Nothing in CP-01 onward should proceed until this is decided.
+**CLOSED as O8 — approved and completed.** The consolidation is done: the site runs on the
+single CreativePixels project `4m0eqoi1` with private `production` and `staging` datasets.
+See `CP-00K-content-platform-decision.md` for the original options, recommendation and risk.
 
 ---
 

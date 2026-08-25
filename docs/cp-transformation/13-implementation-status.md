@@ -529,6 +529,64 @@ at 375/768/1440.
 
 ---
 
+## Forms deliverability VERIFIED + LP/CMS truth sweep + doc drift fixed (25 Aug 2026)
+
+### Doc drift corrected (in 00-context.md)
+- **O8 (content-platform consolidation): CLOSED.** Approved + completed weeks ago; site runs on the single
+  consolidated project `4m0eqoi1` with private `production` + `staging` datasets. Updated the O-item row and the
+  "Open as O8" note.
+- **Security: my tracking was stale — O14 already CLOSED it (19 Aug).** We DO deliver standalone security
+  (malware removal, firewall config, monitoring); `/services/security` stays a service page. Updated the stale
+  D36 clause ("demote to capability / pending confirmation") to point to O14's resolution.
+- **O11** (taxonomy ruleset) annotated: its gate (the O8 migration) is complete, so treat as resolved unless
+  Hassan flags a final review.
+- Not stale (genuinely open, Hassan handling): audit SLA/reviewer/deliverables, rating source, founder photo.
+  Resolved: "gives a damn" (keep), Stats.jsx (his — committed).
+
+### FORMS — all four deliver (tested live on staging against SES)
+Config: nodemailer over **SES SMTP `email-smtp.eu-west-2.amazonaws.com:587`**, from **`website@cpdev.uk`**
+(a verified SES identity — sends from it succeed). Recipients: contact/audit → `hello@cp.agency, afzal@cp.agency`;
+lp-audit → `LP_AUDIT_RECIPIENTS` (set: hello@ + afzal@); job-application → `join@cp.agency` (+ CV attachment).
+Each also sends a thank-you to the submitter. Submitted a real marked test through **all four** endpoints
+(`/api/contact`, `/api/audit`, `/api/lp-audit`, `/api/job-application`) with the submitter set to
+`hassan.iqbal@cp.agency`:
+- **All four returned `{"success":true}` HTTP 200**, and the server log has **zero SES errors** — SES accepted
+  both the team notification and the thank-you for each, including the job form's file attachment.
+- **No sandbox rejection observed** (a send to `hassan.iqbal@cp.agency` succeeded alongside the cp.agency team
+  addresses), so the account either has production access or all recipients are verified — confirm in the SES
+  console. Could NOT query SES directly (no AWS API creds locally, only SMTP creds).
+- **What I verified**: the app→SES pipeline works end to end (auth OK, from-identity accepted, recipients not
+  rejected, attachment accepted). **What needs Hassan**: open inbox confirmation — the 4 test emails should be in
+  hello@/afzal@/join@ + 3 thank-yous + 1 applicant confirmation in hassan.iqbal@. **Check spam too**: the sender
+  is `cpdev.uk` (staging) while recipients are `cp.agency`; for production, sending from a `cp.agency` identity
+  with DKIM/SPF/DMARC will improve inbox placement.
+
+### Landing-page cleanup — done in source, but the LP is REDIRECTED (not user-facing)
+The three claims and the banned phrase were removed from the LP components:
+- `LpWhySection` "150+ WordPress projects" → "After years of WordPress projects…"
+- `LpAuditSection` "your information is 100% secure" → "Your details stay private." (also this section is
+  commented out on the LP)
+- `LpResultSlider` "Increase lead generation by 40% within 3 months" → "Turn more of your visitors into leads"
+- `LpEstablishedSection` "world-class design" → "design that works" (also fixed an em-dash)
+- `Expertise2` "move the needle" → "help your business grow"
+**BUT**: `/wordpress-web-development` returns **308 → /services/web-design-development** (redirect I added
+earlier). Every `Lp*` component lives only on that retired route, and `Expertise2` is orphaned (rendered
+nowhere). So none of these were actually user-facing — my earlier "unverified metrics live on the landing
+pages" gap was OVERSTATED; corrected here. Source is cleaned regardless (safe if ever revived). The redirect
+DESTINATION (the web-design-development service page) is clean and compliant. **Dead-code cleanup candidate**:
+the retired `(lp)` route + `Lp*` components + orphaned `Expertise2` could be deleted (separate decision).
+
+### CMS sweep (service / solution / industry bodies in Sanity staging)
+Queried all `services`/`solutions`/`industries` docs. Largely clean. Findings:
+- **1 genuine banned phrase (USER-FACING): "scale with confidence"** on the **Analytics** service page
+  ("Measure what matters and scale with confidence"). RECOMMEND → "Measure what matters and make confident
+  decisions." NOT changed — it is CMS copy; awaiting Hassan's go-ahead to patch staging.
+- Percentages are LEGITIMATE, not invented CP results: "30% to UberEats" (delivery-app commission fact),
+  "100% yours"/"100%" (ownership/FAQ), "60% … on their phones" (general mobile-usage stat). Kept.
+- Minor fluff (not hard-banned): "seamless" ×5, "Leverage" ×1 — optional polish, left.
+- **Confirmed live: two industries have `slug: null`** ("Restaurants", "Driving Schools") — the CP-08
+  duplicate/null-slug issue is CURRENT, not stale. Broken pages.
+
 ## Unverified 4.9/5 rating REMOVED everywhere + Testimonials page reworked (25 Aug 2026, stop for review)
 
 Per Hassan (option 1): drop the number, lead with the real reviews. No aggregateRating schema added (no
