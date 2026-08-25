@@ -1,7 +1,7 @@
 export async function generateMetadata() {
-  const title = "Free Website Audit & Conversion Review | Claim Yours Now";
+  const title = "Free Website Audit | CreativePixels";
   const description =
-    "Get a free website audit covering UX, SEO, speed and conversions with a custom video report. Claim your free audit from CreativePixels online today now!";
+    "A free, no-obligation website audit. A real person reviews your site's UX, SEO and speed and sends you a short video with the specific things worth fixing.";
 
   return {
     title,
@@ -34,19 +34,18 @@ export async function generateMetadata() {
   };
 }
 
-import Contact from "@/components/sections/contact/Contact";
 import AuditHero from "@/components/sections/hero/AuditHero";
 import Testimonials from "@/components/sections/testimonials/Testimonials";
 
+// Lower-intent lead magnet: the audit form in the hero is the ONLY conversion.
+// The "Start a project" Contact section was removed so the page does not compete
+// with the higher-intent Start-a-project flow.
 const AuditPage = () => {
   return (
     <>
       <AuditHero />
-      <section className="bg-white px-[2rem] pt-[5rem] xl:px-[0rem] xl:pt-[10rem]">
+      <section className="bg-white px-[2rem] py-[5rem] xl:px-[0rem] xl:py-[10rem]">
         <Testimonials />
-      </section>
-      <section className="px-[2rem] py-[5rem] xl:px-[0rem] xl:py-[10rem]">
-        <Contact />
       </section>
     </>
   );

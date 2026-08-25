@@ -44,7 +44,7 @@ const AuditHero = () => {
                 zoom
               >
                 <SectionLabel
-                  text="Only 3 Free Audit Slots Left This Week"
+                  text="Free Website Audit"
                   textColor="#FF37B3"
                 />
               </MotionEffect>
@@ -73,7 +73,7 @@ const AuditHero = () => {
               >
                 <div className="max-w-[58.5rem]">
                   <SectionDescription
-                    text="We manually analyse your site's UX, SEO and performance, then send you a short video report with the specific things worth fixing."
+                    text="A real person reviews your site's UX, SEO and performance, then sends you a short video with the specific things worth fixing. No obligation, and no sales call unless you ask for one."
                     textColor="#625C70"
                   />
                 </div>
@@ -104,12 +104,12 @@ const AuditHero = () => {
 
                   <ul className="grid grid-cols-1 gap-x-[2.8rem] gap-y-[.6rem] md:grid-cols-2 md:gap-y-[1.2rem]">
                     {[
-                      "Video walkthrough of issues",
-                      "Detailed Conversion Roadmap",
-                      "SEO Missed Opportunities",
-                      "Site Speed Analysis",
-                      "Competitor Benchmarking",
-                      "3 Quick-Win Fixes",
+                      "A short video, recorded for your site",
+                      "UX and user-journey issues",
+                      "SEO gaps worth fixing",
+                      "Speed and performance checks",
+                      "A few quick wins to action now",
+                      "Where we would focus first",
                     ].map((item, idx) => (
                       <li key={idx} className="flex items-center gap-[1.2rem]">
                         <i className="inline-flex size-[2.4rem] min-w-[2.4rem] items-center justify-center rounded-full bg-[#44b276]/20">
@@ -147,7 +147,8 @@ const AuditHero = () => {
                   </i>
 
                   <span className="text-[1.6rem] leading-[2rem] font-normal tracking-normal text-[#625C70]">
-                    Delivered to your inbox within 48 hours.
+                    Reviewed by a real person, not an automated scan, and sent to
+                    your inbox within a few working days.
                   </span>
                 </div>
               </MotionEffect>

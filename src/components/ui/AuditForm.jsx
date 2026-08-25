@@ -52,11 +52,11 @@ const AuditForm = () => {
           {/* Header */}
           <div className="flex w-full flex-col gap-[1rem] border-b border-[#D6D6D6] pb-[2.5rem]">
             <h4 className="text-[2.6rem] leading-[3rem] font-bold tracking-[-0.02em] text-[#312749]">
-              Claim Your Free Audit
+              Get your free audit
             </h4>
 
             <p className="text-[1.6rem] font-normal tracking-normal text-[#625C70]">
-              Join 150+ companies we&apos;ve helped.
+              Free, with no obligation. Your details stay private.
             </p>
           </div>
           {/* Main */}

@@ -529,6 +529,41 @@ at 375/768/1440.
 
 ---
 
+## Audit — full rewrite as an honest lower-intent lead magnet (25 Aug 2026, stop for review)
+
+Was a thin page (hero-with-AuditForm → Testimonials → the "Start a project" Contact section) carrying
+manufactured urgency, an invented metric, over-promised deliverables, and an unverifiable SLA. Rewrite:
+- **Removed the competing "Start a project" Contact section** (`audit/page.jsx`). The AuditForm in the hero
+  (posts to /api/audit, needs website URL + email) is now the ONLY conversion, so the page no longer competes
+  with the higher-intent Start-a-project flow. Page is now AuditHero → Testimonials.
+- **Killed manufactured urgency**: hero label "Only 3 Free Audit Slots Left This Week" → "Free Website Audit".
+- **Removed invented metric**: AuditForm subline "Join 150+ companies we've helped" → "Free, with no obligation.
+  Your details stay private." (AuditForm is used only by AuditHero; LP pages use a separate LpAuditForm, so the
+  change is scoped to /audit.)
+- **Honest deliverables**: dropped over-promises for a free short video ("Detailed Conversion Roadmap",
+  "Competitor Benchmarking") and rewrote the "what you get" list to what a manual short video genuinely contains
+  (UX/journey issues, SEO gaps, speed checks, a few quick wins, where to focus first).
+- **What / who / when**: description now says a real person (not an automated scan) reviews the site; reassurance
+  line states "sent to your inbox within a few working days".
+- **Metadata** de-spammed ("Claim Yours Now"/"today now!" removed).
+- Verified 375/768/1440 (layout method): pageOverflowX=0, AuditHero section has ZERO overflow at all widths,
+  "what you get" box contains all 6 items (offsetH ≥ scrollH, overflow visible), form + inputs within viewport.
+  Off-screen elements are the pre-existing Testimonials carousel only.
+
+### FLAGGED COMMITMENTS for Hassan (brief said flag rather than write what we cannot keep):
+1. **Turnaround**: original said "within 48 hours". Softened to "within a few working days" because I cannot
+   verify the SLA. A specific promise converts better — if you can reliably hit 48h / 2 working days, tell me and
+   I'll state it precisely.
+2. **Who reviews it**: written as "a real person, not an automated scan" (defensible). If it is actually you /
+   a senior person specifically, confirm and I'll make it stronger ("reviewed by Hassan" / "a senior member").
+3. **Deliverables trimmed**: I removed "Detailed Conversion Roadmap" and "Competitor Benchmarking" as over-promises
+   for a free short video. If you DO deliver those, say so and I'll add them back.
+
+## Partner With Us — hero CTA now points to /contact (25 Aug 2026)
+
+Per Hassan: hero CTA changed from "How It Works" → /how-we-work to **"Start a partnership" → /contact**. The
+agency-specific process now lives on this page, so routing agencies to the general four-pillar process was a detour.
+
 ## Partner With Us — offer sharpened + agencies content absorbed (25 Aug 2026, stop for review)
 
 /agencies now redirects here, so this is the definitive white-label page. Checked the agencies-only
