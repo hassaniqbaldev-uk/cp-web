@@ -271,8 +271,27 @@ no case study appears in both sections.
 `CuratedWorkGrid` and `PillarFeature` both use it (one card, not a copy). Verified a CuratedWorkGrid
 consumer (ecommerce-brands) still renders all four cards.
 
-**Next section (after review):** the three concise pillar blocks — Brand & Experience, Growth &
-Performance, AI & Automation (no work cards; the lighter treatment via `PillarFeature`).
+**Three concise pillar blocks — DONE (this step).** `PillarFeature` given a `variant="concise"` (tighter
+padding, no capabilities/work, text-link CTA) + an optional `proof` line. Brand & Experience, Growth &
+Performance, AI & Automation built concise. **AI & Automation carries the Biome4Pets proof** ("200 reports
+that took three days now take one", linking to the case study) — its only evidence, so its block still
+earns its place without work cards. Verified 375/768/1440: **weighting reads** — concise blocks are 345–474px
+vs the Web & Ecommerce block's 1112px (~31% at desktop), no horizontal overflow.
+
+**Page-length assessment (Hassan asked before more sections):** measured at 1440 — **1,002 words of main
+content, ~9,900px (~11 screens), 12 content sections.** With founder + investment still to add, estimate
+**~1,200 words, ~12-13 screens, ~14 sections.** Verdict: **word count is NOT the problem** (nowhere near
+the 6,000-word SEO-page trap the brief warns about); the risk is section count / redundancy. Both of
+Hassan's suspicions confirmed: (1) the four-pillar overview + four per-pillar blocks partly repeat —
+Web & Ecommerce and AI earn their blocks (capabilities+work; Biome4Pets proof) but **Brand & Growth mostly
+restate the overview card** (recommend dropping their standalone blocks, keeping the overview + Web & Ecom +
+AI); (2) **lifecycle overlaps Why** thematically ("long-term partner") — keep it only if reframed as the
+distinct launch→improve→grow→automate arc tied to the pillars, else merge into Why. Also flagged: Contact
+H1 "Unlock your brand's hidden potential" uses the banned "Unlock" (fix at the final-conversion rework).
+Awaiting Hassan's cut/merge decision.
+
+**Next (after review + Hassan's cut decision):** Why (rework Established, fix date already done),
+lifecycle, founder, reviews, investment, final conversion.
 
 ---
 

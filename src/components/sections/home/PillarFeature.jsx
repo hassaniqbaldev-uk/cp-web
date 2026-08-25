@@ -20,11 +20,24 @@ const PillarFeature = ({
   description,
   capabilities = [],
   work = [],
+  proof,
   cta,
+  ctaPosition = "home-pillar",
   accentColor = "#3078FF",
+  variant = "feature",
 }) => {
+  // The three light pillars use variant="concise": tighter padding, no capability links or work cards,
+  // and a text link instead of a filled button, so they stay visibly smaller than the Web & Ecommerce
+  // block and the weighting reads. `proof` is an optional single evidence line (AI & Automation uses it
+  // for Biome4Pets — its only proof — so its block still earns its place without work cards).
+  const concise = variant === "concise";
+
   return (
-    <section className="px-[2rem] py-[5rem] xl:px-[0rem] xl:py-[10rem]">
+    <section
+      className={`px-[2rem] xl:px-[0rem] ${
+        concise ? "py-[4rem] xl:py-[6rem]" : "py-[5rem] xl:py-[10rem]"
+      }`}
+    >
       <div className="container">
         <div className="flex flex-col items-center text-center">
           {eyebrow && (
@@ -116,6 +129,34 @@ const PillarFeature = ({
           </div>
         )}
 
+        {proof && (
+          <MotionEffect
+            slide={{ direction: "down" }}
+            fade
+            inView
+            delay={0.5}
+            transition={{ type: "tween", duration: 0.8, ease: "easeOut" }}
+          >
+            <div className="mt-[2.6rem] flex justify-center">
+              <Link
+                href={proof.href}
+                className="group inline-flex items-center gap-[1rem] rounded-[20rem] border border-black/10 bg-white px-[2.2rem] py-[1.2rem] text-center text-[1.5rem] leading-[2rem] font-medium text-[#312749]"
+              >
+                <span
+                  className="text-[1.2rem] font-bold tracking-[0.08em] uppercase"
+                  style={{ color: accentColor }}
+                >
+                  Proof
+                </span>
+                <span>{proof.text}</span>
+                <i className="min-w-max transition-transform duration-200 group-hover:translate-x-[3px]">
+                  <TiltArrowIcon color={accentColor} width="12" height="12" />
+                </i>
+              </Link>
+            </div>
+          </MotionEffect>
+        )}
+
         {cta && (
           <MotionEffect
             slide={{ direction: "down" }}
@@ -124,14 +165,27 @@ const PillarFeature = ({
             delay={0.6}
             transition={{ type: "tween", duration: 0.8, ease: "easeOut" }}
           >
-            <div className="mt-[5rem] flex justify-center">
-              <PrimaryButton
-                text={cta.text}
-                href={cta.href}
-                bGcolor="#312749"
-                textColor="#FFFFFF"
-                ctaPosition="home-web-ecommerce"
-              />
+            <div className={`flex justify-center ${concise ? "mt-[2.6rem]" : "mt-[5rem]"}`}>
+              {concise ? (
+                <Link
+                  href={cta.href}
+                  className="group inline-flex items-center gap-[.8rem] text-[1.7rem] font-semibold"
+                  style={{ color: accentColor }}
+                >
+                  {cta.text}
+                  <i className="min-w-max transition-transform duration-200 group-hover:translate-x-[3px]">
+                    <TiltArrowIcon color={accentColor} width="12" height="12" />
+                  </i>
+                </Link>
+              ) : (
+                <PrimaryButton
+                  text={cta.text}
+                  href={cta.href}
+                  bGcolor="#312749"
+                  textColor="#FFFFFF"
+                  ctaPosition={ctaPosition}
+                />
+              )}
             </div>
           </MotionEffect>
         )}

@@ -127,6 +127,49 @@ const HomePage = ({ selectedWork, webEcommerceWork, navData }) => {
           text: "Explore web and ecommerce",
           href: "/services/web-design-development",
         }}
+        ctaPosition="home-web-ecommerce"
+      />
+      {/* The other three pillars — concise (no work cards), so Web & Ecommerce keeps its weight.
+          AI & Automation carries the one proof it has (Biome4Pets) so its block still earns its place. */}
+      <PillarFeature
+        variant="concise"
+        eyebrow="Brand & Experience"
+        eyebrowColor="#ED910C"
+        accentColor="#ED910C"
+        title="Brand and interfaces that make the right impression."
+        description="The identity people judge you on, and the interfaces they actually use. We shape both, so you look considered and feel easy to deal with."
+        cta={{
+          text: "Explore brand and experience",
+          href: "/services/branding",
+        }}
+      />
+      <PillarFeature
+        variant="concise"
+        eyebrow="Growth & Performance"
+        eyebrowColor="#FF37B3"
+        accentColor="#FF37B3"
+        title="Turn traffic into revenue."
+        description="Search, paid media, conversion and ongoing improvement, run with a clear view of what each channel does and where the next customer comes from."
+        cta={{
+          text: "Explore growth and performance",
+          href: "/services/seo",
+        }}
+      />
+      <PillarFeature
+        variant="concise"
+        eyebrow="AI & Automation"
+        eyebrowColor="#7C3AED"
+        accentColor="#7C3AED"
+        title="Take the manual work off your team."
+        description="We apply AI and automation to the operational bottlenecks that slow a business down, so people spend less time on process and more on the work that matters."
+        proof={{
+          text: "Biome4Pets: 200 reports that took three days now take one.",
+          href: "/case-studies/biome4pets",
+        }}
+        cta={{
+          text: "Explore AI and automation",
+          href: "/services/ai-automation",
+        }}
       />
       <Established />
       <Process />
