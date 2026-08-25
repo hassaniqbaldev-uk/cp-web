@@ -6,7 +6,6 @@ import { MotionEffect } from "../effects/motion-effect";
 import SectionLabel from "../ui/SectionLabel";
 import SectionDescription from "../ui/SectionDescription";
 import RightArrowIcon from "../icons/RightArrowIcon";
-import StarIcon from "../icons/StarIcon";
 import LpHeroCardImg from "@/assets/images/cards/lp-wordpress-hero-img.png";
 import CpLogo from "@/assets/images/cards/3d-cp-logo.png";
 import NdifoImg from "@/assets/images/cards/ndifo.png";
@@ -162,16 +161,8 @@ const LpHero = () => {
                 </a>
 
                 <div className="flex flex-col">
-                  <div className="flex items-center justify-center gap-[.3rem] md:justify-start">
-                    <StarIcon height="21" width="21" color="#FFE400" />
-                    <StarIcon height="21" width="21" color="#FFE400" />
-                    <StarIcon height="21" width="21" color="#FFE400" />
-                    <StarIcon height="21" width="21" color="#FFE400" />
-                    <StarIcon height="21" width="21" color="#FFE400" />
-                  </div>
-
                   <span className="text-[2rem] leading-[3.2rem] font-bold tracking-normal text-white">
-                    4.9/5 from 47+ Clients
+                    Real reviews from real clients
                   </span>
                 </div>
               </div>

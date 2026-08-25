@@ -82,9 +82,8 @@ const LpWhySection = () => {
             </ul>
 
             <h4 className="mb-[5rem] max-w-[63rem] text-[2.2rem] leading-[3rem] font-semibold tracking-[-0.02em] text-[#312749] md:text-[2.6rem] md:leading-[3.4rem]">
-              With over {YEARS_IN_BUSINESS} years in the industry and a 4.9/5
-              rating, we
-              don&apos;t just build websites. We build websites that work.
+              With over {YEARS_IN_BUSINESS} years in the industry, we don&apos;t
+              just build websites. We build websites that work.
             </h4>
 
             <div>

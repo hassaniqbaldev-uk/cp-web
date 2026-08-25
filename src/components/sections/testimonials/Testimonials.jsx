@@ -178,17 +178,9 @@ const Testimonials = () => {
             delay={0.4}
             transition={{ type: "tween", duration: 0.8, ease: "easeOut" }}
           >
-            <div className="flex items-center justify-center gap-[1.2rem]">
-              <ul className="flex items-center gap-[3px]">
-                {Array.from({ length: 5 }).map((_, index) => (
-                  <li key={index}>
-                    <StarIcon color="#FF37B3" className="size-[1.5rem]" />
-                  </li>
-                ))}
-              </ul>
-
+            <div className="flex items-center justify-center">
               <span className="text-[1.4rem] leading-[3.2rem] font-bold text-[#625C70] md:text-[2rem]">
-                4.9/5 from 47+ Clients
+                Real reviews from real clients
               </span>
             </div>
           </MotionEffect>

@@ -76,17 +76,9 @@ const LpTestimonialSection = () => {
               <SectionTitle text="Trusted by Businesses That Want Results" />
             </div>
 
-            <div className="flex items-center justify-center gap-[1.2rem]">
-              <ul className="flex items-center gap-[3px]">
-                {Array.from({ length: 5 }).map((_, index) => (
-                  <li key={index}>
-                    <StarIcon color="#FF37B3" className="size-[1.5rem]" />
-                  </li>
-                ))}
-              </ul>
-
+            <div className="flex items-center justify-center">
               <span className="text-[1.2rem] leading-[3.2rem] font-semibold text-[#625C70] md:text-[2rem] md:font-bold">
-                4.9/5 ratings from our satisfied clients
+                Real reviews from real clients
               </span>
             </div>
           </div>
