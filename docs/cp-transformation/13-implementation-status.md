@@ -529,6 +529,40 @@ at 375/768/1440.
 
 ---
 
+## Book a Call sweep — pages already clean, only emails remain (25 Aug 2026, stop for review)
+
+Asked to replace the booking CTA on the service pages (Cta2) and case-study detail (TheSolution). Ran an
+ACTUAL sweep (not a claim) before changing anything — and found they are ALREADY done; the O20 note was stale
+(third doc-drift retraction after O8 and security).
+
+**Full render sweep — 19 routes, SSR + live browser DOM after hydration:**
+| Surface | Booking CTA? |
+| --- | --- |
+| / /about /how-we-work /partner-with-us /audit /testimonials /contact | none |
+| /services + /services/[slug] (18 service pages, via Cta2) | none — 10× "Start a project" → /contact |
+| /solutions + /solutions/[slug] (via Cta2) | none |
+| /industries + /industries/[slug] | none |
+| /case-studies + /case-studies/[slug] (via TheSolution) | none — 9× "Start a project" → /contact |
+| /blog + /blog/[slug], /careers | none |
+| **/call** | **the Cal.com embed (ALLOWED — this is the booking page)** |
+
+Live-DOM checks on a service detail and a case-study detail page confirmed **no `data-cal-*` element, no
+@calcom/embed, no cal.com script** hydrates in — so it is not a client-only embed hiding from SSR either.
+
+- **Pages changed: 0.** Cta2 (`buttonText="Start a project"`, `href="/contact"`) and TheSolution
+  (PrimaryButton → /contact) were already converted in prior D40/O20 work. `Cta.jsx` (the shared closing CTA)
+  is also already "Start a project". The wordpress LP that O20 listed was deleted this session.
+- **One remaining booking CTA (FLAGGED, not changed): the email templates.** `customer-template.js` (used by
+  the LIVE contact + audit thank-you emails) and `lp-customer-template.js` (orphaned) have a section built
+  around booking: "Want to skip the wait? You can book a quick discovery call…" + a **"Schedule a Quick Call"**
+  button → `/call`. Because the section is built around booking as a concept, per Hassan's rule I flagged it
+  rather than rewriting. Proposed: button → "Start a project" / `/contact`; reword the sentence off "discovery
+  call". Awaiting go-ahead.
+- **Why it looks like it keeps resurfacing:** production still runs the old code (Book a Call). The removal is
+  on `development`; it reaches users at cutover. Nothing to fix on the pages themselves.
+- Verify-at-3-widths: N/A for pages (zero page changes). The service/case-study pages render clean and
+  unchanged; earlier this turn /services/web-design-development was confirmed clean at 375/768/1440.
+
 ## Analytics fix + null-slug investigation + dead LP deleted + email spec (25 Aug 2026)
 
 ### 1. Analytics "scale with confidence" — FIXED on staging
