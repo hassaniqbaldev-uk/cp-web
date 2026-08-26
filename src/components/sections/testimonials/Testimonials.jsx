@@ -54,7 +54,7 @@ const testimonials = [
     rating: 5,
     text: "Fantastic! One of the best! Hassan and his team are really very talented and built an outstanding website",
     name: "Ben",
-    company: "Little Astro",
+    company: "Little Astronauts",
     avatar: LittleAstroAvatar,
   },
   {
@@ -89,7 +89,7 @@ const testimonials = [
     rating: 5,
     text: "I would highly recommend CreativePixels, they were excellent throughout the process of designing and developing our new website.",
     name: "James Brian",
-    company: "AYOA",
+    company: "Ayoa",
     avatar: AyoaAvatar,
   },
   {
@@ -113,7 +113,7 @@ const responsiveTestimonials = [
     rating: 5,
     text: "Fantastic! One of the best! Hassan and his team are really very talented and built an outstanding website",
     name: "Ben",
-    company: "Little Astro",
+    company: "Little Astronauts",
     avatar: LittleAstroAvatar,
   },
   {
@@ -134,7 +134,7 @@ const responsiveTestimonials = [
     rating: 5,
     text: "I would highly recommend CreativePixels, they were excellent throughout the process of designing and developing our new website.",
     name: "James Brian",
-    company: "AYOA",
+    company: "Ayoa",
     avatar: AyoaAvatar,
   },
 ];
@@ -244,7 +244,7 @@ const Testimonials = () => {
                     </p>
 
                     <span className="text-[1.6rem] leading-[2.4rem] font-medium tracking-normal text-[#625C70]">
-                      Alertforce
+                      AlertForce
                     </span>
                   </div>
                 </div>
@@ -325,7 +325,7 @@ const Testimonials = () => {
                   </p>
 
                   <span className="text-[1.6rem] leading-[2.4rem] font-medium tracking-normal text-[#625C70]">
-                    Little Astro
+                    Little Astronauts
                   </span>
                 </div>
               </div>

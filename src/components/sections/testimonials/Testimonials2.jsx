@@ -32,7 +32,7 @@ const featuredTestimonial = {
   quote:
     "CreativePixels are a real professional and an absolute pleasure to work with. Great guiding advice, exceeded my expectations and overall an absolute treasure and asset for our business. Thank you, we truly appreciate all of your contributions and we look forward to continuing to work together.",
   name: "Brendan Torazzi",
-  role: "Alertforce",
+  role: "AlertForce",
   avatar: AlertforceAvatar,
 };
 
@@ -41,7 +41,7 @@ const testimonials = [
     rating: 5,
     text: "CreativePixels are the best website developers I have ever worked with! That is saying a lot as I have had circa 10 websites built in the last 7 years, with many different developers. Their design skills are amazing and they gave me better ideas than my own for the new website they built. They listen well to a brief and give honest feedback and improvements. The site they produced for our company is truly stunning! We got a new enquiry the day it went live! That has never happened before. CreativePixels are the best :). Highly recommend.",
     name: "Gareth",
-    company: "3DCAD Visuals",
+    company: "3D CAD Visuals",
     avatar: CadVisualsAvatar,
   },
   {
@@ -55,7 +55,7 @@ const testimonials = [
     rating: 5,
     text: "Fantastic! One of the best! Hassan and his team are really very talented and built an outstanding website",
     name: "Ben",
-    company: "Little Astro",
+    company: "Little Astronauts",
     avatar: LittleAstroAvatar,
   },
   {
@@ -90,14 +90,14 @@ const testimonials = [
     rating: 5,
     text: "We couldn't be happier with the work CreativePixels produced, they took our brief and elevated it to the next level. They were great to work with, and delivered everything on time. I am very happy to recommend CreativePixels.",
     name: "Tim",
-    company: "PolyMax",
+    company: "Polymax",
     avatar: PolymaxAvatar,
   },
   {
     rating: 5,
     text: "I had the pleasure of working with CreativePixels on the development of my health and safety consultancy website, and I couldn’t be more pleased with the outcome. CreativePixels developed the site in WordPress, and from start to finish, the team were incredibly helpful, friendly, and professional. They took the time to understand my needs and provided valuable insights that helped bring the vision of my website to life. Their attention to detail and dedication to making sure everything was perfect really stood out. I highly recommend CreativePixels for anyone looking for a talented and approachable web design team!",
     name: "Abdul",
-    company: "Safety Rac",
+    company: "SafetyRAC",
     avatar: SafetyRacAvatar,
   },
   {

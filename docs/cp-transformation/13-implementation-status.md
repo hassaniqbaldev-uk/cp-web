@@ -70,6 +70,32 @@ complete and Hassan signs off final cutover.
 
 ---
 
+## Testimonials — client-name fixes (26 Aug 2026, STOP for review; Sanity move planned next)
+
+Fixed every RENDERED misspelled client name across both testimonial components. Verified 375/768/1440,
+no overflow, no layout regression. Not pushed.
+
+**Names corrected** (checked against each client's own usage, not assumed):
+- Casabotanica → **Casa Botanica**; AYOA → **Ayoa**; Alertforce → **AlertForce**; 3DCAD/3dcad visuals →
+  **3D CAD Visuals**; Little Astro → **Little Astronauts**; Express-conveyancing. → **Express Conveyancing**.
+- Web-verified: Safety Rac → **SafetyRAC** (safetyrac.co.uk); PolyMax → **Polymax** (polymax.co.uk casing).
+- **FLAGGED, unresolved:** "Homecare" and "Loop" are too generic to verify from public search — left as-is,
+  Hassan to confirm against client records.
+
+**Two components, and why the Sanity move is a rebuild not a swap:**
+- `Testimonials2.jsx` (`/testimonials`) is array-driven (featured + grid) → easy to make Sanity-driven.
+- `Testimonials.jsx` (homepage Reviews + about/audit/how-we-work/partner-with-us/service+solution detail)
+  renders a **hardcoded bespoke bento grid** (4 hand-coded cards with row/col spans + 2 featured images) for
+  desktop, plus an array-driven mobile slider. Its 10-item `testimonials` array is DEAD (only
+  `responsiveTestimonials` feeds the slider). The two components' datasets had **diverged** (different
+  spellings) — exactly the argument for one Sanity source.
+- So "move to Sanity" = author a `testimonial` doc type, upload the 11 avatars (+2 featured images) as
+  assets, create 11 corrected docs, add a GROQ query + a cached server wrapper, and **rebuild the hardcoded
+  bento data-driven** while preserving the layout, then wire ~10 render sites. That touches a tuned layout,
+  so per the flag-structural-changes rule it is presented for approval as the reviewed next step, with the
+  schema below, rather than rushed into a stop-for-review checkpoint. The dead array + stale strings get
+  deleted as part of that rewrite (left untouched for now to avoid churning code about to be replaced).
+
 ## "What We Do" tightening — 6 cards → 4 on all 18 services (26 Aug 2026)
 
 Approved density fix. Cut 2 of the 6 `expertise.card` items on each service (safe-mutate patchUnset by
