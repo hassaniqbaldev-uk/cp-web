@@ -26,7 +26,7 @@ const CONTENT_VARIANTS = {
   },
 };
 
-const HomePage = ({ selectedWork, founderImage, navData }) => {
+const HomePage = ({ selectedWork, founderImage, navData, testimonials }) => {
   const [transition, setTransition] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
 
@@ -139,7 +139,7 @@ const HomePage = ({ selectedWork, founderImage, navData }) => {
           reviews are our strongest proof, so they get weight here. White keeps the rhythm
           (Founder tint -> Reviews white -> Investment tint). */}
       <section className="px-[2rem] py-[5rem] xl:px-[0rem] xl:py-[10rem]">
-        <Testimonials />
+        <Testimonials testimonials={testimonials} />
       </section>
       {/* Investment — a light price signal from the single pricing source (tint). */}
       <Investment />

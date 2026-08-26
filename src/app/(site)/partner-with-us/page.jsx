@@ -40,7 +40,7 @@ import PartnerWithUsHero from "@/components/sections/hero/PartnerWithUsHero";
 import PartnerWithUs from "@/components/sections/partner-with-us/PartnerWithUs";
 import Process3 from "@/components/sections/process/Process3";
 import Questions from "@/components/sections/questions/Questions";
-import Testimonials from "@/components/sections/testimonials/Testimonials";
+import TestimonialsSection from "@/components/sections/testimonials/TestimonialsSection";
 import WhatClientsSay from "@/components/sections/what-clients-say/WhatClientsSay";
 
 export const questionsData = [
@@ -99,7 +99,7 @@ const PartnerWithUsPage = () => {
         <Cta />
       </section>
       <section className="bg-[#ed910c]/13 px-[2rem] py-[5rem] xl:px-[0rem] xl:py-[10rem]">
-        <Testimonials />
+        <TestimonialsSection />
       </section>
     </>
   );

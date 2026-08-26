@@ -2,6 +2,7 @@ import { caseStudiesBySlugsQuery } from "@/sanity/queries.caseStudies";
 import { caseStudiesClient } from "@/sanity/sanity.caseStudies";
 import { getNavData } from "@/sanity/nav";
 import { getFounderImage } from "@/sanity/founder";
+import { getTestimonials } from "@/sanity/testimonials";
 import { SELECTED_WORK_SLUGS } from "@/content/homepage";
 import HomePage from "./home/HomePage";
 
@@ -64,12 +65,15 @@ const SitePage = async () => {
 
   const navData = await getNavData();
 
+  const testimonials = await getTestimonials();
+
   return (
     <>
       <HomePage
         selectedWork={selectedWork}
         founderImage={founderImage}
         navData={navData}
+        testimonials={testimonials}
       />
     </>
   );

@@ -2,7 +2,7 @@ import Cta from "@/components/sections/cta/Cta";
 import Estimate from "@/components/sections/estimate/Estimate";
 import AboutHero from "@/components/sections/hero/AboutHero";
 import Stats from "@/components/sections/stats/Stats";
-import Testimonials from "@/components/sections/testimonials/Testimonials";
+import TestimonialsSection from "@/components/sections/testimonials/TestimonialsSection";
 import Values from "@/components/sections/values/Values";
 import Founder from "@/components/sections/home/Founder";
 import { getFounderImage } from "@/sanity/founder";
@@ -60,7 +60,7 @@ const AboutPage = async () => {
         <Cta />
       </section>
       <section className="bg-[#ed910c]/10 px-[2rem] py-[5rem] xl:px-[0rem] xl:py-[10rem]">
-        <Testimonials />
+        <TestimonialsSection />
       </section>
     </>
   );

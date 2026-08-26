@@ -36,12 +36,15 @@ export async function generateMetadata() {
 
 import TestimonialsHero from "@/components/sections/hero/TestimonialsHero";
 import Testimonials2 from "@/components/sections/testimonials/Testimonials2";
+import { getTestimonials } from "@/sanity/testimonials";
 
-const TestimonialsPage = () => {
+const TestimonialsPage = async () => {
+  const testimonials = await getTestimonials();
+
   return (
     <>
       <TestimonialsHero />
-      <Testimonials2 />
+      <Testimonials2 testimonials={testimonials} />
     </>
   );
 };

@@ -70,6 +70,39 @@ complete and Hassan signs off final cutover.
 
 ---
 
+## Sanity batch — testimonial migration + Studio schema pack (26 Aug 2026, HOLD commit for bento review)
+
+Built but NOT yet committed — awaiting Hassan's before/after sign-off on the bento rebuild.
+
+**Testimonial migration (item 4a):**
+- New `testimonial` type authored; 11 corrected docs created in `staging` with 11 avatars + the AlertForce
+  featured image uploaded as Sanity assets (via the assets API + safe-mutate `create`).
+- New `src/sanity/queries.testimonials.js` + `src/sanity/testimonials.js` (`getTestimonials`, cached,
+  resolves image URLs server-side so the client components never bundle the Sanity client).
+- Rewrote `Testimonials.jsx` (homepage bento data-driven) and `Testimonials2.jsx` (/testimonials, was already
+  array-mapped) to be prop-driven; sliders unchanged (data normalised to their `{text, avatar}` shape).
+- New server wrapper `TestimonialsSection.jsx` fetches + renders for the 6 server pages (about, audit,
+  how-we-work, partner-with-us, service detail, solution detail). Homepage (client) gets the data threaded
+  from `(home)/page.jsx`; `/testimonials` fetches in its page. All hardcoded testimonial arrays removed.
+- **Before/after measured at all three widths.** Homepage bento at 1440 is **pixel-identical**: grid
+  391.328×391.328×391.344 / rows 315.5×315.5 / gap 13 / width 1200; card 0 (Brendan) L0 T0 391×644 row-span-2
+  with featured image, card 1 (Sandra) L404 T0 391×315, card 2 (Ben) L809 T0 391×315, card 3 (Alex) L404 T329
+  796×315 col-span-2 — every value matches the pre-rebuild capture. Sliders: per-slide width identical
+  (768→364, 375→335), no overflow. `/testimonials` featured+grid intact (row-span-2 + last col-span-2).
+  Images verified to load (avatar SVG 100×100, featured PNG 640×400).
+- **ONE deliberate change, flagged:** the mobile slider previously showed a hardcoded arbitrary 4; data-driven
+  it now shows all 11 (swipeable). The arbitrary subset wasn't derivable from clean data. Per-slide layout
+  unchanged; awaiting Hassan's ok (or a slice-to-4 if preferred).
+
+**Studio schema pack (item 4b):** `docs/cp-transformation/studio-schemas/` — paste-ready v3 files:
+`objectTypes.js` (5 reusable objects), `testimonial.js`, `customFields.{services,solutions,industries,
+caseStudies}.js`, and a `README.md` handover (how to apply, which type gets which fields, desk structure,
+data-population, cross-field deps, and the honest editable-vs-needs-a-dev summary). **Registry correction
+captured:** industries + solutions use the full shared content field set (registry listed only `hasPage`
+for industries and omitted solutions). Editability answer: per-page document content becomes editable;
+the whole homepage, footer/mobile nav + contact details, pricing, company facts, section default copy,
+route metadata and redirects stay in code and need a developer.
+
 ## Null-slug cleanup + industries "What we build" tightening (26 Aug 2026, STOP before Sanity batch)
 
 **Item 2 — deleted 4 null-slug industry docs** (safe-mutate delete; `run()` allows delete, only rejects

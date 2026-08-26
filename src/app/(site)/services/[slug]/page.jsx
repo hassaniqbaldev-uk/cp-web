@@ -4,7 +4,7 @@ import ServicesDetailHero from "@/components/sections/hero/ServicesDetailHero";
 import Methodology from "@/components/sections/methodology/Methodology";
 import PartnerWithUs2 from "@/components/sections/partner-with-us/PartnerWithUs2";
 import DynamicQuestions from "@/components/sections/questions/DynamicQuestions";
-import Testimonials from "@/components/sections/testimonials/Testimonials";
+import TestimonialsSection from "@/components/sections/testimonials/TestimonialsSection";
 import Work from "@/components/sections/work/Work";
 import SpecialistLinks from "@/components/sections/services/detail/SpecialistLinks";
 import ParentServiceBand from "@/components/sections/services/detail/ParentServiceBand";
@@ -189,7 +189,7 @@ const ServicesDetailPage = async (props) => {
         <Expertise3 service={service.expertise} />
         <Methodology service={service.methodology} />
         <section className="bg-[#ed910c]/13 px-[2rem] py-[5rem] xl:px-[0rem] xl:py-[10rem]">
-          <Testimonials />
+          <TestimonialsSection />
         </section>
         <DynamicQuestions service={service.faqs} />
       </>

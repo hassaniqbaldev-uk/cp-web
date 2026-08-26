@@ -35,7 +35,7 @@ export async function generateMetadata() {
 }
 
 import AuditHero from "@/components/sections/hero/AuditHero";
-import Testimonials from "@/components/sections/testimonials/Testimonials";
+import TestimonialsSection from "@/components/sections/testimonials/TestimonialsSection";
 
 // Lower-intent lead magnet: the audit form in the hero is the ONLY conversion.
 // The "Start a project" Contact section was removed so the page does not compete
@@ -45,7 +45,7 @@ const AuditPage = () => {
     <>
       <AuditHero />
       <section className="bg-white px-[2rem] py-[5rem] xl:px-[0rem] xl:py-[10rem]">
-        <Testimonials />
+        <TestimonialsSection />
       </section>
     </>
   );
