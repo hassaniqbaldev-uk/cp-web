@@ -164,7 +164,7 @@ const IndustryDetailPage = async (props) => {
       )}
       <ProjectShowcase service={industry.projectShowcase} />
       <DynamicQuestions service={industry.faqs} />
-      <ServicesHubCta ctaPosition="industry-detail-outro" />
+      <ServicesHubCta ctaPosition="industry-detail-outro" secondaryAudit />
     </>
   );
 };

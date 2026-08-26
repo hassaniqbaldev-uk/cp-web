@@ -2,10 +2,7 @@ import { caseStudiesBySlugsQuery } from "@/sanity/queries.caseStudies";
 import { caseStudiesClient } from "@/sanity/sanity.caseStudies";
 import { getNavData } from "@/sanity/nav";
 import { getFounderImage } from "@/sanity/founder";
-import {
-  SELECTED_WORK_SLUGS,
-  WEB_ECOMMERCE_WORK_SLUGS,
-} from "@/content/homepage";
+import { SELECTED_WORK_SLUGS } from "@/content/homepage";
 import HomePage from "./home/HomePage";
 
 const options = { next: { revalidate: 3600 } };
@@ -52,21 +49,13 @@ const SitePage = async () => {
     slugs.map((s) => rows.find((r) => r.slug === s)).filter(Boolean);
 
   let selectedWork = [];
-  let webEcommerceWork = [];
   try {
-    // Web & Ecommerce block never repeats a selected-work case study (defensive filter, on top of the
-    // lists already being distinct), so the two sections can't overlap and the page can't look thin.
-    const webSlugs = WEB_ECOMMERCE_WORK_SLUGS.filter(
-      (s) => !SELECTED_WORK_SLUGS.includes(s),
-    );
-    const allSlugs = [...new Set([...SELECTED_WORK_SLUGS, ...webSlugs])];
     const rows = await caseStudiesClient.fetch(
       caseStudiesBySlugsQuery,
-      { slugs: allSlugs },
+      { slugs: SELECTED_WORK_SLUGS },
       options,
     );
     selectedWork = orderBy(rows, SELECTED_WORK_SLUGS);
-    webEcommerceWork = orderBy(rows, webSlugs);
   } catch (error) {
     console.error("Failed to fetch case studies data:", error);
   }
@@ -79,7 +68,6 @@ const SitePage = async () => {
     <>
       <HomePage
         selectedWork={selectedWork}
-        webEcommerceWork={webEcommerceWork}
         founderImage={founderImage}
         navData={navData}
       />

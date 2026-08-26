@@ -13,8 +13,8 @@ export async function POST(req) {
       return NextResponse.json({ success: true });
     }
 
-    // 1️⃣ Validate basic fields
-    if (!name || !email || !service || !message) {
+    // 1️⃣ Validate basic fields (message is optional)
+    if (!name || !email || !service) {
       return NextResponse.json(
         { success: false, error: "Missing required fields" },
         { status: 400 },

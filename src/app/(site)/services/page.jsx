@@ -101,7 +101,7 @@ const ServicesPage = async () => {
       <ServicesRoutes />
 
       {/* 9 closing CTA — "Start a project", proper weight, no Book a Call */}
-      <ServicesHubCta />
+      <ServicesHubCta secondaryAudit />
     </>
   );
 };

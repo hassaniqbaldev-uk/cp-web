@@ -32,7 +32,7 @@ export const getContactEmailTemplate = (name, email, service, message) => `
     
     <div class="field">
       <span class="label">Message:</span>
-      <div class="message">${message}</div>
+      <div class="message">${message?.trim() ? message : "<em>No message provided</em>"}</div>
     </div>
     
     <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid #eee; color: #666;">

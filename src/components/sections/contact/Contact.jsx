@@ -11,7 +11,7 @@ import Image from "next/image";
 import ContactForm from "@/components/ui/ContactForm";
 import { MotionEffect } from "@/components/effects/motion-effect";
 
-const Contact = () => {
+const Contact = ({ secondaryAudit = false }) => {
   return (
     <>
       {/* Anchor target for the "Start a project" card in the contact hero */}
@@ -100,6 +100,26 @@ const Contact = () => {
                 </ul>
               </div>
             </MotionEffect>
+
+            {secondaryAudit && (
+              <MotionEffect
+                slide={{ direction: "down" }}
+                fade
+                inView
+                delay={0.7}
+                transition={{ type: "tween", duration: 1.0, ease: "easeOut" }}
+              >
+                <p className="text-[1.5rem] leading-[2.1rem] text-[#625C70]">
+                  Not ready to commit?{" "}
+                  <a
+                    href="/audit"
+                    className="font-semibold whitespace-nowrap text-[#312749] underline decoration-[#312749]/40 decoration-1 underline-offset-[4px] transition-colors hover:decoration-[#312749]"
+                  >
+                    Get a free website audit&nbsp;→
+                  </a>
+                </p>
+              </MotionEffect>
+            )}
           </div>
 
           <div

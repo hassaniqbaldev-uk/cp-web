@@ -19,7 +19,6 @@ const validate = (v) => {
   if (!v.email?.trim()) e.email = "Please enter your email.";
   else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.email))
     e.email = "Please enter a valid email.";
-  if (!v.message?.trim()) e.message = "Please enter a message.";
   return e;
 };
 
@@ -172,7 +171,8 @@ const ContactForm = () => {
                 htmlFor="message"
                 className="text-[1.6rem] leading-[3rem] font-bold tracking-[-0.02em] text-[#312749]"
               >
-                And message <span className="text-[#F14A58]">*</span>{" "}
+                And message{" "}
+                <span className="font-normal text-[#625C70]">(optional)</span>{" "}
               </label>
 
               <div className="w-full overflow-hidden rounded-[1.6rem] border border-[#E5E7EB] bg-[#F9FAFB]">
@@ -183,7 +183,6 @@ const ContactForm = () => {
                   placeholder="Enter your message"
                   value={formData.message}
                   onChange={handleChange}
-                  required
                   {...fieldProps("message")}
                 />
               </div>

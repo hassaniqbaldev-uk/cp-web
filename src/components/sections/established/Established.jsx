@@ -9,10 +9,11 @@ import Image from "next/image";
 import { MotionEffect } from "@/components/effects/motion-effect";
 import { FOUNDED_YEAR, YEARS_IN_BUSINESS } from "@/content/company";
 
-// Why CreativePixels. The brief wants specific, concrete differences rather than generic agency claims:
-// twelve years, owner involvement, a specialist team, commercial focus, custom where needed, post-launch
-// support, technical depth. The old version leaned on a generic "long-term partner" line plus an invented
-// "£10M+ client revenue generated" stat — that fabricated outcome is removed (we never invent client results).
+// Why CreativePixels. The brief wants specific, concrete differences rather than generic agency claims.
+// Trimmed to four (CRO P1) that map directly to the section title (owner-led, senior, here after launch)
+// so the section makes one clean argument instead of a wall of six. "Custom where it counts" and
+// "Real technical depth" were dropped — the pillars and AI feature already carry those. No invented
+// client results (the old "£10M+ revenue generated" stat stays removed).
 const DIFFERENCES = [
   {
     title: "Owner-led",
@@ -27,16 +28,8 @@ const DIFFERENCES = [
     text: "We build for revenue and growth, measured on what your site does for the business, not on awards.",
   },
   {
-    title: "Custom where it counts",
-    text: "WordPress and Shopify when they serve you, bespoke builds when they do not.",
-  },
-  {
     title: "Here after launch",
     text: "Support, improvements and a warranty on what we build, not a handover and goodbye.",
-  },
-  {
-    title: "Real technical depth",
-    text: "From Core Web Vitals to custom applications and integrations, engineering that holds up.",
   },
 ];
 
@@ -102,7 +95,7 @@ const Established = () => {
           </MotionEffect>
         </div>
 
-        <div className="mt-[5rem] grid grid-cols-1 gap-[3rem] md:grid-cols-2 xl:mt-[6rem] xl:grid-cols-3">
+        <div className="mt-[5rem] grid grid-cols-1 gap-[3rem] md:grid-cols-2 xl:mt-[6rem]">
           {DIFFERENCES.map((item, idx) => (
             <MotionEffect
               key={item.title}

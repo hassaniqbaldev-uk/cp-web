@@ -5,7 +5,6 @@ import HomeHero from "@/components/sections/hero/HomeHero";
 import ServicesPillars from "@/components/sections/services/ServicesPillars";
 import PillarFeature from "@/components/sections/home/PillarFeature";
 import Established from "@/components/sections/established/Established";
-import Lifecycle from "@/components/sections/home/Lifecycle";
 import Founder from "@/components/sections/home/Founder";
 import Work from "@/components/sections/work/Work";
 import Investment from "@/components/sections/home/Investment";
@@ -27,7 +26,7 @@ const CONTENT_VARIANTS = {
   },
 };
 
-const HomePage = ({ selectedWork, webEcommerceWork, founderImage, navData }) => {
+const HomePage = ({ selectedWork, founderImage, navData }) => {
   const [transition, setTransition] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
 
@@ -105,35 +104,15 @@ const HomePage = ({ selectedWork, webEcommerceWork, founderImage, navData }) => 
         description="A selection of recent projects across brand, web and ecommerce."
       />
       {/* Four pillars — reuses the services-hub ServicesPillars (one source, no second version).
-          Web & Ecommerce leads by order and carries the weight. Replaces the old generic
-          Expertise + Services sections, which predated the pillar model. */}
+          Web & Ecommerce leads by order and carries the weight there. Replaces the old generic
+          Expertise + Services sections, which predated the pillar model. The standalone Web & Ecommerce
+          feature block was cut (CRO P1): it duplicated coverage the pillars + Selected work already give,
+          and Selected work is itself web/ecommerce work (Ayoa, AlertForce, Minnessak). */}
       <ServicesPillars columns={navData.serviceColumns} />
-      {/* Web & Ecommerce — the heaviest per-pillar block (45-50% of the business). Its work is a
-          DISTINCT curated set (page.jsx guarantees no overlap with Selected work above), so the two
-          work sections never repeat. The other three pillars follow as concise blocks (no work). */}
-      <PillarFeature
-        eyebrow="Web & Ecommerce"
-        eyebrowColor="#3078FF"
-        accentColor="#3078FF"
-        title="Websites, stores, apps and platforms."
-        description="The core of what we do, and the largest part of our business. Fast, search-friendly websites, Shopify and WooCommerce stores, custom apps, and the platforms behind them."
-        capabilities={[
-          { label: "Websites", href: "/services/web-design-development" },
-          { label: "Ecommerce", href: "/services/ecommerce" },
-          { label: "Apps", href: "/services/custom-app-development" },
-          { label: "Platforms", href: "/services/wordpress" },
-        ]}
-        work={webEcommerceWork}
-        cta={{
-          text: "Explore web and ecommerce",
-          href: "/services/web-design-development",
-        }}
-        ctaPosition="home-web-ecommerce"
-      />
-      {/* AI & Automation — the only other block that earns a standalone slot (it carries the one proof
-          that pillar has, Biome4Pets). Brand & Growth were dropped: they only restated the pillar
-          overview above. The #F7FAFF tint keeps the background alternating (pillars=dark, Web&Ecom=white,
-          AI=tint, Established=white) so the flow reads as one page, not sections dropped in. */}
+      {/* AI & Automation — the one pillar that earns a standalone slot (it carries the single proof that
+          pillar has, Biome4Pets). Brand & Growth were dropped: they only restated the pillar overview
+          above. The #F7FAFF tint keeps the background alternating (pillars dark, AI tint, Established
+          white) so the flow reads as one page, not sections dropped in. */}
       <PillarFeature
         variant="concise"
         background="tint"
@@ -151,11 +130,9 @@ const HomePage = ({ selectedWork, webEcommerceWork, founderImage, navData }) => 
           href: "/services/ai-automation",
         }}
       />
-      {/* Why CreativePixels (Established) — white. Lifecycle — dark (launch/improve/grow/automate arc,
-          each stage tied to a pillar; not a second trust pitch). Keeps the alternation:
-          AI (tint) -> Why (white) -> Lifecycle (dark) -> Cta (white). */}
+      {/* Why CreativePixels (Established) — white, trimmed to four reasons (CRO P1). The Lifecycle
+          section was cut: it restated the pillar model as an arc without adding proof. */}
       <Established />
-      <Lifecycle />
       {/* Founder — Hassan only (no team grid), owner-led message. Tint. */}
       <Founder image={founderImage} />
       {/* Reviews — moved up, off the footer. With no quotes in the case studies, the real client
@@ -177,7 +154,7 @@ const HomePage = ({ selectedWork, webEcommerceWork, founderImage, navData }) => 
           className="pointer-events-none absolute inset-0 z-[1] object-cover select-none"
         />
 
-        <Contact />
+        <Contact secondaryAudit />
       </section>
       <Footer />
     </>

@@ -201,7 +201,7 @@ const SolutionsDetailPage = async (props) => {
       )}
       <ProjectShowcase service={solution.projectShowcase} />
       <DynamicQuestions service={solution.faqs} />
-      <ServicesHubCta ctaPosition="solution-detail-outro" />
+      <ServicesHubCta ctaPosition="solution-detail-outro" secondaryAudit />
     </>
   );
 };

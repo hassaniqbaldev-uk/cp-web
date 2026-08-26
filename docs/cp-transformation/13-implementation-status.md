@@ -70,6 +70,47 @@ complete and Hassan signs off final cutover.
 
 ---
 
+## CRO revision P1 — approved batch built (26 Aug 2026)
+
+Hassan approved all three gates. Built on `development` / staging; verified 375 / 768 / 1440; not pushed.
+
+**1. Four industry meta titles fixed** (safe-mutate patchSet on `seo.metaTitle`): b2b-services, charities-non-profits,
+driving-schools, sme-founders — dropped the "Free Consultation/Strategy Call" tail (title promising a call the
+site does not offer), reframed to `keyword | benefit`. No description now, and no title, promises a call.
+
+**2. Two-tier CTA rolled site-wide.** `ServicesHubCta` `secondaryAudit` prop enabled at every approved call
+site — services hub (`services/page.jsx`), service detail (`services/[slug]`, all slugs — removed the
+wordpress-only guard), solution detail, industry detail. Homepage final CTA handled separately: `Contact`
+got a `secondaryAudit` prop (default off) rendering the same subordinate audit line at the bottom of its
+left column (dark text, since the homepage Contact sits on the light audit-hero bg); passed ONLY from
+`HomePage.jsx`. Confirmed the link is ABSENT on `/contact` and `/audit` (Hassan's guard — offering an audit
+on the audit page, or a second CTA on the enquiry page, is nonsense) and on `/call` and the hub pages.
+
+**3. Homepage restructured to 8 sections below the hero.** Cut the standalone Web & Ecommerce `PillarFeature`
+block (duplicated the pillars + Selected work; the three Selected-work studies — Ayoa, AlertForce, Minnessak —
+are themselves web/ecommerce) and the `Lifecycle` section; Web & Ecommerce keeps its weight by leading the
+pillar order. Removed the now-unused `webEcommerceWork` fetch + `WEB_ECOMMERCE_WORK_SLUGS` import in
+`(home)/page.jsx`. Order: Selected work → four pillars → AI & Automation feature → Why (trimmed to four) →
+Founder → Reviews → Investment → Contact. **Why (Established) trimmed 6 → 4** reasons (Owner-led, A
+specialist team, Commercially focused, Here after launch; dropped Custom-where-it-counts + Real-technical-depth,
+already carried by the pillars/AI). Grid now 2×2 (`md:grid-cols-2`, was `xl:grid-cols-3`) — verified 2 cols
+at 1440/768, 1 col at 375, no orphan card.
+
+**4. Case study cards reframed to transformation.** All **33** `excerpt` fields rewritten to
+"starting point → what we built" (safe-mutate patchSet). Facts drawn ONLY from the existing excerpt/title —
+no invented before-states or outcomes; biome4pets keeps its Hassan-confirmed "200 reports, 3 days → 1".
+Updates every card surface at once (homepage Selected work, service/industry curated grids, the /case-studies
+hub). Verified on the hub at 375: 30+ arrow excerpts render, no overflow.
+
+**5. Contact message field made optional.** Removed the `required` attr + the client `validate` rule + the
+server `!message` 400 check (`api/contact/route.js`); label now "And message (optional)". Team email template
+falls back to "No message provided" when blank (customer template already guarded).
+
+Verified 375 / 768 / 1440: homepage no overflow at any width, Why grid correct, audit link scoped correctly,
+transformation excerpts render. Clean `npm run build`.
+
+---
+
 ## CRO revision P1 gate 1 — two-tier CTA treatment (26 Aug 2026, awaiting approval to roll wide)
 
 Built the audit-as-secondary-step into the real closing CTA, `ServicesHubCta` (NOT `Cta2` — all services
