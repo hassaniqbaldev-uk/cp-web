@@ -70,6 +70,20 @@ complete and Hassan signs off final cutover.
 
 ---
 
+## Full site audit written (26 Aug 2026, review only, nothing changed)
+
+Reviewed every page on staging-cp.vercel.app against "premium £5k agency?" and wrote
+`docs/cp-transformation/full-site-audit.md`. Gathered via 4 parallel subagents + direct HTML checks.
+Headline: strong structure/copy, but held at "very competent" by (1) low price anchor, (2) missing
+case-study outcomes vs the "measurable impact" promise, (3) unfinished edges — "0+" stat counters
+(homepage + About), dead Careers "Apply Now" buttons, and 3 legacy industry pages (driving-schools,
+pharmacies, restaurants) showing wrong-sector fallback work under a specialism claim. Corrected two
+subagent false-alarms: meta descriptions ARE present site-wide and FAQ answers DO render (fetcher
+artifacts). Cutover risk is mostly redirect gaps (brand-query/homepage traffic is otherwise resilient).
+Doc includes per-page notes, the 3 cross-cutting assessments (paid readiness, SEO coverage, cutover risk),
+prioritised P0–P3 recommendations, and 6 questions for Hassan (chief: the £5k-vs-from-£1,500 positioning
+call). No code/data/site changes.
+
 ## Homepage → Sanity migration PLAN drafted (26 Aug 2026, plan only, awaiting approval)
 
 Wrote `docs/cp-transformation/homepage-migration-plan.md` per Hassan's request (plan, not build).
