@@ -70,6 +70,29 @@ complete and Hassan signs off final cutover.
 
 ---
 
+## CRO revision P1 gate 1 — two-tier CTA treatment (26 Aug 2026, awaiting approval to roll wide)
+
+Built the audit-as-secondary-step into the real closing CTA, `ServicesHubCta` (NOT `Cta2` — all services
+are `modularLayout:true`, so the legacy `Cta2` branch is dead; `ServicesHubCta` is the actual closing CTA
+on the services hub, every service detail, every solution detail, every industry detail).
+
+- New `secondaryAudit` prop (default **false**). When on, renders beneath the primary "Start a project"
+  button + reassurance line: a muted lead-in "Not ready to commit?" + a small underlined white text link
+  "Get a free website audit →" to `/audit`. Deliberately NOT a second equal-weight button — solid pink
+  primary vs. 15px underlined text link, so the hierarchy is unmistakable (Hassan's constraint: the
+  fragmentation from competing equal CTAs is exactly what kept the audit off these pages before).
+- Enabled on **only** `/services/wordpress` (`secondaryAudit={slug === "wordpress"}`) so the treatment can
+  be reviewed before site-wide rollout. Confirmed every other page is unaffected (e.g. /services/security = 0).
+- Verified 1440 / 768 / 375: link present, stacks below the button + reassurance, no overflow at any width.
+- `/audit` ("Free Website Audit") is a live page linked site-wide, so this points to a real offer.
+
+**Gate:** awaiting Hassan's approval to (a) roll `secondaryAudit` across service + solution + industry
+detail pages + the services hub, and (b) add the same treatment to the homepage final CTA.
+
+**Also queued for approval:** the homepage restructure section order (below), before any build.
+
+---
+
 ## CRO revision — 11 "free call" meta descriptions fixed (26 Aug 2026)
 
 Hassan pulled this forward from P2: meta descriptions promising a call are broken promises at the point
