@@ -70,6 +70,37 @@ complete and Hassan signs off final cutover.
 
 ---
 
+## Industries launch — 9 → 12 live (26 Aug 2026)
+
+Hassan approved launching restaurants, pharmacies, driving-schools (sme-founders stays off — audience
+positioning, would compete with the solutions layer). Built on `development` / staging, not pushed.
+
+- **hasPage flipped true** on the three (safe-mutate patchSet). Now HTTP 200; the hub (`INDUSTRIES_QUERY`
+  filters `hasPage==true`) auto-lists 12; nav links to the `/industries` hub as one item (no per-industry
+  dropdown), so no nav code change. Hub verified at 1440 (3-col grid, 12 = 4 clean rows), 768 and 375
+  (swiper slider below xl) — 12 unique cards, no overflow at any width.
+- **Legacy redirects repointed** (`next.config.mjs`): `/solutions/{driving-schools,pharmacies,restaurants}`
+  were → `/services/web-design-development` (generic) / `/industries/travel-hospitality`; now → their own
+  `/industries/<slug>` (308 verified), recovering the sector search value. CP-15 flag 3 closed.
+- **Titles/descriptions confirmed** correct on all three (some were fixed in P1/P2 while the docs 404'd):
+  restaurant/pharmacy/driving-school website-design titles + audit-based descriptions, no dead CTA.
+- **Curated vs fallback work:** restaurants was curated with dr-donuts + the-smokey-carter, but on review
+  that OVERCLAIMED — the curated heading asserts "we did exactly this kind of work in this sector", and
+  neither is a restaurant booking/ordering build (a donut-shop brand site + a BBQ product brand). Reverted
+  restaurants to the honest fallback ("Recent work… across sectors"), same as pharmacies + driving-schools.
+  So all three new pages rely on the fallback — evidence for these three sectors is genuinely thin.
+- **Honest content read (Hassan asked):** all three read WELL now live — sharp, sector-specific problem/
+  build/FAQ copy (restaurant delivery-tax + HTML menus; pharmacy NHS/EPS/GPhC; driving-school automated
+  bookings + catchment SEO). No client-outcome invention (capability copy only). Minor shared-default nit:
+  the Expertise3 sub-heading reads "we don't just 'install themes' we engineer solutions" (missing a dash) —
+  site-wide default, not specific to these three.
+
+**Tagged/curated work across the 12 (answer to "where is the evidence thin"):**
+- Genuinely curated (own tagged sector work): b2b-services, charities-non-profits, ecommerce-brands,
+  education-edtech, home-improvement-interiors, media-and-publishing, property-marketing, technology-saas,
+  travel-hospitality (9).
+- Fallback "Recent work" (thin/no sector work): restaurants, pharmacies, driving-schools (3).
+
 ## CRO revision P2 item 1 — service template reorder (26 Aug 2026, STOP for review)
 
 Approved order built in `services/[slug]/page.jsx` (modular branch, affects all 18 service pages at once).

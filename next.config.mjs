@@ -63,26 +63,22 @@ const nextConfig = {
         destination: "/industries/home-improvement-interiors",
         permanent: true,
       },
-      // The three HELD industries (hasPage:false) point at Web Design & Development until Hassan
-      // decides whether we chase those verticals; turning one on repoints it to its own page.
-      // KNOWN SEO LOSS (CP-15, accepted 25 Aug 2026): these three legacy industry-solution URLs carry
-      // sector-specific search value that a generic service page does not recover. Publishing the three
-      // industry pages (hasPage:true) and repointing here would recover it. See redirect-map.md flag 3.
+      // Industries launch (26 Aug 2026): driving-schools, pharmacies and restaurants are now live
+      // industry pages (hasPage:true), so these legacy solution URLs point at their own sector page,
+      // recovering the sector-specific search value the generic service page did not (CP-15 flag 3 closed).
       {
         source: "/solutions/driving-schools",
-        destination: "/services/web-design-development",
+        destination: "/industries/driving-schools",
         permanent: true,
       },
       {
         source: "/solutions/pharmacies",
-        destination: "/services/web-design-development",
+        destination: "/industries/pharmacies",
         permanent: true,
       },
-      // Restaurants now has an honest industry home: Travel, Hospitality & Leisure covers food/drink
-      // (CP-12, 25 Aug 2026), so it points there instead of the generic service, recovering sector value.
       {
         source: "/solutions/restaurants",
-        destination: "/industries/travel-hospitality",
+        destination: "/industries/restaurants",
         permanent: true,
       },
       // SME Founders is audience positioning, not an industry — no single page owns it. Points at the
