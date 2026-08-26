@@ -70,6 +70,34 @@ complete and Hassan signs off final cutover.
 
 ---
 
+## "What We Do" tightening — 6 cards → 4 on all 18 services (26 Aug 2026)
+
+Approved density fix. Cut 2 of the 6 `expertise.card` items on each service (safe-mutate patchUnset by
+`_key`), keeping the four strongest, most-distinct capabilities. Principle for cuts: drop the card that
+(a) overlaps another card, (b) restates a quality/cadence rather than a capability, or (c) repeats a
+site-wide promise (post-launch "support" cards appear on 5 services and are covered by the warranty +
+growth-and-support service + CTA). `Expertise3` desktop grid now adapts: 4 cards → `grid-cols-2` (2×2),
+6 cards (industries, untouched) → `grid-cols-3`. Verified: service = 4 in 2×2 (no orphan), industries = 6
+in 3-col, no overflow at 1440/768/375. Cuts per service (kept → cut):
+- accessibility: cut "Documentation and evidence" (admin detail), "Built in, not bolted on" (positioning).
+- ai-automation: cut "Speed up the work you already do" (⊂ Automate your processes), "Set you up to use AI well" (advisory).
+- analytics: cut "Data you can act on" (⊂ Reporting), "Privacy and consent" (compliance detail).
+- branding: cut "Brand collateral" (minor output), "Ready for the web" (cross-sell bridge).
+- cro: cut "User behaviour insight" (⊂ Conversion audit), "Ongoing improvement" (cadence).
+- custom-app-development: cut "Built to last" (quality), "Supported after launch" (site-wide promise).
+- ecommerce: cut "Connected to your operations" (integration detail), "Supported after launch" (site-wide).
+- email: cut "Deliverability" (hygiene), "Testing and reporting" (measurement).
+- growth-and-support: cut "Performance upkeep" (⊂ maintenance + speed service), "Priority support" (restates premise).
+- migrations: cut "Testing and launch" (universal step), "Supported after the move" (site-wide promise).
+- paid-media: cut "Conversion tracking" (⊂ analytics service), "Reporting on ROI" (measurement).
+- security: cut "Updates and patching" (⊂ hardening/maintenance), "Backups and recovery" (⊂ growth-and-support).
+- seo: cut "Content that ranks" (⊂ keyword strategy + on-page), "Reporting and strategy" (measurement).
+- shopify: cut "Apps and integrations" (add-on), "Supported after launch" (site-wide promise).
+- speed: cut "Core Web Vitals" (the measured outcome of the other four; still in title/H1), "Keeping it fast" (maintenance).
+- ui-ux-design: cut "Ecommerce and product pages" (⊂ interfaces), "Usability" (cross-cutting principle).
+- web-design-development: cut "Connected to your tools" (integration detail), "Supported after launch" (site-wide).
+- wordpress: cut "The right editing experience" (⊂ Content your team can run), "Security and maintenance" (own services).
+
 ## Industries launch — 9 → 12 live (26 Aug 2026)
 
 Hassan approved launching restaurants, pharmacies, driving-schools (sme-founders stays off — audience

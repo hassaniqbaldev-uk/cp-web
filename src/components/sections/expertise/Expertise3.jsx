@@ -61,6 +61,12 @@ const Expertise3 = ({ service }) => {
 
   const heading = { ...DEFAULT_HEADING, ...(service.heading || {}) };
 
+  // Desktop column count adapts to how many cards there are so a tightened set never orphans a
+  // row: 4 cards → 2×2, everything else (6 on industries) → 3 across. Shared component, so this
+  // keeps services (4 after the CRO tightening) and industries (6) both balanced.
+  const desktopGridCols =
+    service.card?.length === 4 ? "grid-cols-2" : "grid-cols-3";
+
   const slideData = service.card.map((item, idx) => {
     const theme = getThemeColor(idx);
     return {
@@ -132,7 +138,7 @@ const Expertise3 = ({ service }) => {
           </div>
 
           {/* Desktop cards */}
-          <div className="mt-[5rem] hidden w-full grid-cols-3 gap-[3rem] xl:grid">
+          <div className={`mt-[5rem] hidden w-full ${desktopGridCols} gap-[3rem] xl:grid`}>
             {service.card.map((item, idx) => {
               const theme = getThemeColor(idx);
 
