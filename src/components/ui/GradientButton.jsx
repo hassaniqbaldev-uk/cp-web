@@ -43,7 +43,7 @@ const GradientButton = ({
 
         <Image
           src={HassanAvatar}
-          alt="Avatar Image"
+          alt=""
           className=""
           width={99}
           height={99}

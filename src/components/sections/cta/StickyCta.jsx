@@ -54,7 +54,7 @@ const StickyCta = () => {
                 <i className="hidden min-w-max xl:block">
                   <Image
                     src={WaveHandIcon}
-                    alt="Icon"
+                    alt=""
                     width={58}
                     height={58}
                     unoptimized

@@ -122,7 +122,7 @@ const ServicesDropdown = ({
                   src={ServicesDropdownStroke}
                   width={348}
                   height={220}
-                  alt="Bg Stroke"
+                  alt=""
                   className="absolute bottom-[6rem] left-1/2 -translate-x-1/2"
                 />
               </div>

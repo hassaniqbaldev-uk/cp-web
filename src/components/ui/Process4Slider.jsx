@@ -48,7 +48,7 @@ const Process4Slider = ({ steps, getThemeColor }) => {
                   src={step.icon}
                   width={130}
                   height={140}
-                  alt="Icon"
+                  alt=""
                   unoptimized
                 />
               </div>

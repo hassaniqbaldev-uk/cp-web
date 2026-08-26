@@ -101,7 +101,7 @@ const TheSolution = ({ caseStudy }) => {
           <div className="mx-auto my-[3rem] flex max-w-[120rem] flex-col items-start justify-start gap-[3.5rem] rounded-[1.5rem] bg-[#f14a58]/15 px-[3rem] py-[2.5rem] md:my-[5rem] md:flex-row md:items-center md:px-[4.5rem]">
             <div className="relative size-[6.3rem] min-w-[6.3rem]">
               <div className="absolute top-0 left-0 z-[1] inline-flex size-[5.8rem] items-center justify-center rounded-[1.3rem] border border-white/20 bg-white/35 backdrop-blur-[10px]">
-                <Image src={AlertLogo} alt="Icon" width={32} height={32} />
+                <Image src={AlertLogo} alt="" width={32} height={32} />
               </div>
 
               <div

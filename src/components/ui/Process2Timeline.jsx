@@ -68,7 +68,7 @@ const Process2Timeline = ({
             src={item.cardImage}
             width={1098}
             height={960}
-            alt="Image"
+            alt=""
             unoptimized
           />
         </div>
@@ -175,7 +175,7 @@ const Process2Timeline = ({
               src={item.cardImage}
               width={1098}
               height={960}
-              alt="Card Image"
+              alt=""
               unoptimized
             />
           </div>
@@ -186,7 +186,7 @@ const Process2Timeline = ({
                 <i>
                   <Image
                     src={item.icon}
-                    alt="Icon"
+                    alt=""
                     width={30}
                     height={30}
                     unoptimized

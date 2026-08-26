@@ -83,7 +83,7 @@ const WhatClientsSay = () => {
                   <div className="flex inline-flex size-[5.6rem] min-w-[5.6rem] items-center justify-center overflow-hidden rounded-full bg-white">
                     <Image
                       src={EyeAvatarIcon}
-                      alt="Avatar Image"
+                      alt=""
                       width={40}
                       height={30}
                       unoptimized

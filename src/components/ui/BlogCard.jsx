@@ -25,7 +25,7 @@ const BlogCard = ({
             src={img}
             width={583}
             height={336}
-            alt="Card Image"
+            alt=""
             className="size-full object-cover"
             unoptimized
           />
@@ -35,7 +35,7 @@ const BlogCard = ({
           <div className="flex items-center gap-[2.4rem]">
             <div className="inline-flex items-center gap-[6px]">
               <i>
-                <Image src={CalenderIcon} width={12} height={14} alt="Icon" />
+                <Image src={CalenderIcon} width={12} height={14} alt="" />
               </i>
               <span className="text-[1.1rem] leading-[2.4rem] font-bold tracking-normal text-[#625C70] xl:text-[1.4rem]">
                 {new Date(publishedDate).toLocaleDateString("en-GB")}

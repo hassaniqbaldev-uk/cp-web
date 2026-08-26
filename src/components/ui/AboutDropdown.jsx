@@ -94,14 +94,14 @@ const AboutDropdown = ({ className, isOpen, setIsOpen, onToggle }) => {
                     src={GroupIcon}
                     width={24}
                     height={24}
-                    alt="Icon"
+                    alt=""
                     unoptimized
                   />
                 </i>
 
-                <span className="text-left text-[1.6rem] leading-[2.4rem] font-bold tracking-[-0.02em] text-[#263238] uppercase">
+                <h3 className="text-left text-[1.6rem] leading-[2.4rem] font-bold tracking-[-0.02em] text-[#263238] uppercase">
                   company
-                </span>
+                </h3>
               </div>
 
               <ul className="flex flex-col gap-[1.5rem]">
@@ -116,9 +116,9 @@ const AboutDropdown = ({ className, isOpen, setIsOpen, onToggle }) => {
                       className="flex items-start justify-between gap-[1rem]"
                     >
                       <div className="flex flex-col items-start text-left">
-                        <h5 className="text-[1.8rem] leading-[2rem] font-semibold tracking-[-0.02em] text-[#263238]">
+                        <span className="text-[1.8rem] leading-[2rem] font-semibold tracking-[-0.02em] text-[#263238]">
                           {item.label}
-                        </h5>
+                        </span>
 
                         <span className="text-[1.4rem] leading-[2.4rem] font-normal tracking-normal text-[#625C70]">
                           {item.excerpt}
@@ -138,15 +138,16 @@ const AboutDropdown = ({ className, isOpen, setIsOpen, onToggle }) => {
               <Link
                 onClick={() => setIsOpen(false)}
                 href="/case-studies/game-art-brain"
+                aria-label="Case study: Game Art Brain"
                 className="relative flex h-[30.3rem] w-full items-end justify-end overflow-hidden rounded-[2rem] bg-amber-300 p-[1rem]"
               >
                 <div className="absolute inset-0 z-[1]">
                   <Image
                     src={CardImg1}
-                    alt="Case Study Thumbnail Image"
+                    alt=""
                     width={411}
                     height={303}
-                    className="size-full object-cover"
+                    className="size-full object-cover"
                   />
                 </div>
 
@@ -158,15 +159,16 @@ const AboutDropdown = ({ className, isOpen, setIsOpen, onToggle }) => {
               <Link
                 onClick={() => setIsOpen(false)}
                 href="/case-studies/ndifo-safari"
+                aria-label="Case study: Ndifo Safari"
                 className="relative flex h-[30.3rem] w-full items-end justify-end overflow-hidden rounded-[2rem] bg-amber-300 p-[1rem]"
               >
                 <div className="absolute inset-0 z-[1]">
                   <Image
                     src={CardImg2}
-                    alt="Case Study Thumbnail Image"
+                    alt=""
                     width={411}
                     height={303}
-                    className="size-full object-cover"
+                    className="size-full object-cover"
                   />
                 </div>
 

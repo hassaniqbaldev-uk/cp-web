@@ -35,7 +35,7 @@ const ClientReview = () => {
               <div className="xl:w-[70rem]">
                 <div className="flex flex-col items-start gap-[2.8rem] md:flex-row">
                   <div className="relative top-[.6rem] inline-flex min-w-max items-center justify-center">
-                    <Image src={Quote} width={27} height={24} alt="Icon" />
+                    <Image src={Quote} width={27} height={24} alt="" />
                   </div>
 
                   <p className="text-[1.8rem] leading-[2.4rem] font-medium tracking-normal text-[#263238] md:text-[2.2rem] md:leading-[3.3rem]">

@@ -190,7 +190,7 @@ const Testimonials2 = () => {
                 <div className="flex h-[20rem] w-full overflow-hidden rounded-[1.2rem]">
                   <Image
                     src={featuredTestimonial.image}
-                    alt="Card Image"
+                    alt=""
                     width={319}
                     height={319}
                     className="size-full object-cover object-top-left"
@@ -217,7 +217,7 @@ const Testimonials2 = () => {
                 <div className="flex overflow-hidden rounded-full">
                   <Image
                     src={featuredTestimonial.avatar}
-                    alt="Avatar Image"
+                    alt=""
                     width={56}
                     height={56}
                     unoptimized
@@ -260,7 +260,7 @@ const Testimonials2 = () => {
                   <div className="flex overflow-hidden rounded-full">
                     <Image
                       src={testimonial.avatar}
-                      alt="Avatar Image"
+                      alt=""
                       width={56}
                       height={56}
                       unoptimized

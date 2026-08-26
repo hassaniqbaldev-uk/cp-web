@@ -62,6 +62,7 @@ const MobileMenu = () => {
           <Link
             onClick={closeMenu}
             href="/"
+            aria-label="CreativePixels, home"
             className="inline-flex items-center justify-center"
           >
             <Logo
@@ -82,20 +83,21 @@ const MobileMenu = () => {
 
             <button
               onClick={closeMenu}
-              className="inline-flex size-[3.3rem] min-w-[3.3rem] items-center justify-center rounded-full bg-[#FF37B3] xl:hidden"
+              aria-label="Close menu"
+              className="inline-flex size-[4.4rem] min-w-[4.4rem] items-center justify-center rounded-full bg-[#FF37B3] xl:hidden"
             >
               <Image
                 src={CloseIcon}
                 width={8.5}
                 height={8.5}
-                alt="Icon"
+                alt=""
                 unoptimized
               />
             </button>
           </div>
         </div>
         {/* Main */}
-        <nav className="my-[2.2rem] w-full">
+        <nav aria-label="Mobile" className="my-[2.2rem] w-full">
           <ul className="flex w-full flex-col items-start gap-[2.2rem] text-left">
             <li className="w-full">
               <Accordion type="single" collapsible>
@@ -121,7 +123,7 @@ const MobileMenu = () => {
                                     src={DesignIcon}
                                     width={20}
                                     height={20}
-                                    alt="Icon"
+                                    alt=""
                                     unoptimized
                                   />
                                 </i>
@@ -173,7 +175,7 @@ const MobileMenu = () => {
                                     src={GrowthIcon}
                                     width={20}
                                     height={20}
-                                    alt="Icon"
+                                    alt=""
                                     unoptimized
                                   />
                                 </i>
@@ -225,7 +227,7 @@ const MobileMenu = () => {
                                     src={SupportIcon}
                                     width={20}
                                     height={20}
-                                    alt="Icon"
+                                    alt=""
                                     unoptimized
                                   />
                                 </i>
@@ -297,7 +299,7 @@ const MobileMenu = () => {
                                     src={SuitcaseIcon}
                                     width={20}
                                     height={20}
-                                    alt="Icon"
+                                    alt=""
                                     unoptimized
                                   />
                                 </i>
@@ -350,7 +352,7 @@ const MobileMenu = () => {
                                     src={GrowthIcon}
                                     width={20}
                                     height={20}
-                                    alt="Icon"
+                                    alt=""
                                     unoptimized
                                   />
                                 </i>
@@ -498,7 +500,7 @@ const MobileMenu = () => {
                   }}
                   className="inline-flex size-[5.2rem] items-center justify-center rounded-[.9rem] bg-[#FF37B3]"
                 >
-                  <Image src={PhoneIcon} width={28} height={28} alt="Icon" />
+                  <Image src={PhoneIcon} width={28} height={28} alt="" />
                 </i>
 
                 <div className="flex flex-col items-start text-left">
@@ -525,7 +527,7 @@ const MobileMenu = () => {
                   }}
                   className="inline-flex size-[5.2rem] items-center justify-center rounded-[.9rem] bg-[#3078FF]"
                 >
-                  <Image src={EmailIcon} width={28} height={28} alt="Icon" />
+                  <Image src={EmailIcon} width={28} height={28} alt="" />
                 </i>
 
                 <div className="flex flex-col items-start text-left">
@@ -549,13 +551,14 @@ const MobileMenu = () => {
               <Link
                 onClick={closeMenu}
                 href="https://www.facebook.com/CPAgencyUK"
-                className="inline-flex size-[3.9rem] items-center justify-center rounded-full bg-[#312749]/15"
+                aria-label="CreativePixels on Facebook"
+                className="inline-flex size-[4.4rem] items-center justify-center rounded-full bg-[#312749]/15"
               >
                 <Image
                   src={FacebookDarkIcon}
                   width={23}
                   height={23}
-                  alt="Icon"
+                  alt=""
                   unoptimized
                 />
               </Link>
@@ -565,13 +568,14 @@ const MobileMenu = () => {
               <Link
                 onClick={closeMenu}
                 href="https://www.instagram.com/cpagencyuk/"
-                className="inline-flex size-[3.9rem] items-center justify-center rounded-full bg-[#312749]/15"
+                aria-label="CreativePixels on Instagram"
+                className="inline-flex size-[4.4rem] items-center justify-center rounded-full bg-[#312749]/15"
               >
                 <Image
                   src={InstagramDarkIcon}
                   width={23}
                   height={23}
-                  alt="Icon"
+                  alt=""
                   unoptimized
                 />
               </Link>
@@ -581,13 +585,14 @@ const MobileMenu = () => {
               <Link
                 onClick={closeMenu}
                 href="https://www.linkedin.com/company/creativepixels/"
-                className="inline-flex size-[3.9rem] items-center justify-center rounded-full bg-[#312749]/15"
+                aria-label="CreativePixels on LinkedIn"
+                className="inline-flex size-[4.4rem] items-center justify-center rounded-full bg-[#312749]/15"
               >
                 <Image
                   src={LinkedinDarkIcon}
                   width={23}
                   height={23}
-                  alt="Icon"
+                  alt=""
                   unoptimized
                 />
               </Link>

@@ -67,7 +67,7 @@ const Contact = ({ secondaryAudit = false }) => {
               <div className="mt-[3.2rem] mb-[2.2rem] flex w-full flex-col items-start gap-[1.2rem] rounded-[2rem] border border-[#3078FF] bg-white px-[3rem] py-[3.5rem] text-left md:mt-[4rem] md:mb-[2rem] md:gap-[2.5rem]">
                 <div className="flex items-start gap-[1.2rem] md:items-center">
                   <i>
-                    <Image src={ClockIcon} alt="Icon" width={24} height={24} />
+                    <Image src={ClockIcon} alt="" width={24} height={24} />
                   </i>
 
                   <h3 className="text-[1.8rem] font-bold tracking-[-0.02em] text-[#312749] md:text-[2.2rem]">
@@ -86,7 +86,7 @@ const Contact = ({ secondaryAudit = false }) => {
                       <i className="inline-flex size-[2.4rem] items-center justify-center rounded-full bg-[#44b276]/20">
                         <Image
                           src={CheckmarkIcon2}
-                          alt="Icon"
+                          alt=""
                           width={14}
                           height={14}
                         />
@@ -123,6 +123,7 @@ const Contact = ({ secondaryAudit = false }) => {
           </div>
 
           <div
+            aria-hidden="true"
             style={{
               boxShadow: "17px 21px 34px 0px #6D6D6D1A",
             }}
@@ -151,9 +152,12 @@ const Contact = ({ secondaryAudit = false }) => {
                 </div>
               </div>
 
-              <button className="inline-flex size-[2rem] cursor-pointer items-center justify-center">
+              <button
+                tabIndex={-1}
+                className="inline-flex size-[2rem] cursor-pointer items-center justify-center"
+              >
                 <i>
-                  <Image src={RefreshIcon} width={20} height={20} alt="Icon" />
+                  <Image src={RefreshIcon} width={20} height={20} alt="" />
                 </i>
               </button>
             </div>
@@ -163,7 +167,7 @@ const Contact = ({ secondaryAudit = false }) => {
                 src={ContactAssistantImg}
                 width={594}
                 height={329}
-                alt="Image"
+                alt=""
               />
             </div>
             {/* Footer */}
@@ -171,13 +175,17 @@ const Contact = ({ secondaryAudit = false }) => {
               <fieldset className="relative h-full w-full overflow-hidden rounded-[1.2rem] border border-[#B0ADB7] bg-white">
                 <input
                   type="text"
+                  tabIndex={-1}
                   className="h-full w-full bg-[transparent] p-[1.5rem] outline-0"
                   placeholder="Type your answer..."
                 />
 
-                <button className="absolute top-1/2 right-0 inline-flex h-full w-[5rem] -translate-y-1/2 cursor-pointer items-center justify-center bg-white">
+                <button
+                  tabIndex={-1}
+                  className="absolute top-1/2 right-0 inline-flex h-full w-[5rem] -translate-y-1/2 cursor-pointer items-center justify-center bg-white"
+                >
                   <i>
-                    <Image src={SendIcon2} width={24} height={24} alt="Icon" />
+                    <Image src={SendIcon2} width={24} height={24} alt="" />
                   </i>
                 </button>
               </fieldset>

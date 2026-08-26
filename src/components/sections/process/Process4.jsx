@@ -176,7 +176,7 @@ const Process4 = () => {
                           src={step.icon}
                           width={130}
                           height={140}
-                          alt="Icon"
+                          alt=""
                           unoptimized
                         />
                       </div>

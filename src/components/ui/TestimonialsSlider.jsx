@@ -33,7 +33,7 @@ const TestimonialsSlider = ({ testimonials }) => {
             <div className="flex overflow-hidden rounded-full">
               <Image
                 src={item.avatar}
-                alt="Avatar Image"
+                alt=""
                 width={40}
                 height={40}
                 unoptimized

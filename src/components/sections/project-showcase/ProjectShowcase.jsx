@@ -26,7 +26,7 @@ const ProjectShowcase = ({ service }) => {
                     src={item.image.asset.url}
                     width={585}
                     height={390}
-                    alt="Card Image"
+                    alt=""
                     className="size-full object-cover"
                   />
                 </div>
@@ -53,7 +53,7 @@ const ProjectShowcase = ({ service }) => {
                   <i>
                     <Image
                       src={CopyCheckIcon}
-                      alt="Icon"
+                      alt=""
                       width={35}
                       height={35}
                     />
@@ -90,7 +90,7 @@ const ProjectShowcase = ({ service }) => {
               <div className="relative size-[6.3rem]">
                 <div className="absolute top-0 left-0 z-[1] inline-flex size-[5.8rem] items-center justify-center rounded-[1.3rem] border border-white/20 bg-white/35 backdrop-blur-[10px]">
                   <i>
-                    <Image src={CancelIcon} alt="Icon" width={35} height={35} />
+                    <Image src={CancelIcon} alt="" width={35} height={35} />
                   </i>
                 </div>
                 <div

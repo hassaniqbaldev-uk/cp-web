@@ -23,7 +23,7 @@ const CaseStudiesHeroSlider = () => {
               <i>
                 <Image
                   src={GraphicDesignIcon}
-                  alt="Icon"
+                  alt=""
                   width={28}
                   height={28}
                 />
@@ -47,7 +47,7 @@ const CaseStudiesHeroSlider = () => {
           <div className="relative size-[6.3rem]">
             <div className="absolute top-0 left-0 z-[1] inline-flex size-[5.8rem] items-center justify-center rounded-[1.3rem] border border-white/20 bg-white/35 backdrop-blur-[10px]">
               <i>
-                <Image src={SentIcon} alt="Icon" width={30} height={30} />
+                <Image src={SentIcon} alt="" width={30} height={30} />
               </i>
             </div>
             <div className="absolute right-0 bottom-0 z-[0] size-[5.8rem] rounded-[1.3rem] bg-[#3078FF]" />
@@ -68,7 +68,7 @@ const CaseStudiesHeroSlider = () => {
           <div className="relative size-[6.3rem]">
             <div className="absolute top-0 left-0 z-[1] inline-flex size-[5.8rem] items-center justify-center rounded-[1.3rem] border border-white/20 bg-white/35 backdrop-blur-[10px]">
               <i>
-                <Image src={LoadingIcon} alt="Icon" width={30} height={30} />
+                <Image src={LoadingIcon} alt="" width={30} height={30} />
               </i>
             </div>
             <div className="absolute right-0 bottom-0 z-[0] size-[5.8rem] rounded-[1.3rem] bg-[#FF37B3]" />

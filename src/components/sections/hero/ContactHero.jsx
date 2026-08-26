@@ -111,7 +111,7 @@ const ContactHero = () => {
                         src={TimelineIcon}
                         width={34}
                         height={34}
-                        alt="Icon"
+                        alt=""
                       />
                     </i>
 
@@ -153,7 +153,7 @@ const ContactHero = () => {
                         src={EmailIcon}
                         width={34}
                         height={34}
-                        alt="Icon"
+                        alt=""
                       />
                     </i>
 
@@ -195,7 +195,7 @@ const ContactHero = () => {
                         src={HeadphoneIcon}
                         width={34}
                         height={34}
-                        alt="Icon"
+                        alt=""
                       />
                     </i>
 

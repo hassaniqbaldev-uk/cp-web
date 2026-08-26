@@ -17,7 +17,7 @@ const Header = ({ navData }) => {
   const [isHidden, setIsHidden] = useState(false);
   const [lastScrollY, setLastScrollY] = useState(0);
   const pathname = usePathname();
-  const { toggleMenu } = useMenuStore();
+  const { toggleMenu, isOpen } = useMenuStore();
   const [isServicesOpen, setIsServicesOpen] = useState(false);
   const [isSolutionsOpen, setIsSolutionsOpen] = useState(false);
   const [isAboutOpen, setIsAboutOpen] = useState(false);
@@ -112,6 +112,7 @@ const Header = ({ navData }) => {
           >
             <Link
               href="/"
+              aria-label="CreativePixels, home"
               className="inline-flex items-center justify-center"
               onClick={closeAllDropdowns}
             >
@@ -122,7 +123,10 @@ const Header = ({ navData }) => {
               />
             </Link>
 
-            <nav className="mx-[4.8rem] hidden items-center justify-center gap-[3rem] xl:flex">
+            <nav
+              aria-label="Primary"
+              className="mx-[4.8rem] hidden items-center justify-center gap-[3rem] xl:flex"
+            >
               <ServicesDropdown
                 className="nav-link"
                 isOpen={isServicesOpen}
@@ -210,9 +214,11 @@ const Header = ({ navData }) => {
               {/* Hamburger Button */}
               <button
                 onClick={toggleMenu}
-                className="inline-flex size-[3.3rem] min-w-[3.3rem] items-center justify-center rounded-full bg-[#FF37B3] xl:hidden"
+                aria-label="Menu"
+                aria-expanded={isOpen}
+                className="inline-flex size-[4.4rem] min-w-[4.4rem] items-center justify-center rounded-full bg-[#FF37B3] xl:hidden"
               >
-                <Image src={HamburgerIcon} width={12} height={9} alt="Icon" />
+                <Image src={HamburgerIcon} width={12} height={9} alt="" />
               </button>
             </div>
 

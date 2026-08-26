@@ -36,7 +36,7 @@ const Policies = ({ legal = [] }) => {
         <div className="pointer-events-none absolute inset-0 z-[2] overflow-hidden select-none">
           <Image
             src={AboutHeroLogoShape2}
-            alt="Logo Shape"
+            alt=""
             width={106}
             height={98}
             className="absolute right-[5rem] bottom-[6rem] rotate-[35deg]"

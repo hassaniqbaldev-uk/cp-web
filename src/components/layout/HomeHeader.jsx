@@ -15,7 +15,7 @@ const HomeHeader = ({ transition, navData }) => {
   const [isSticky, setIsSticky] = useState(false);
   const [isHidden, setIsHidden] = useState(false);
   const [lastScrollY, setLastScrollY] = useState(0);
-  const { toggleMenu } = useMenuStore();
+  const { toggleMenu, isOpen } = useMenuStore();
   const [isServicesOpen, setIsServicesOpen] = useState(false);
   const [isSolutionsOpen, setIsSolutionsOpen] = useState(false);
   const [isAboutOpen, setIsAboutOpen] = useState(false);
@@ -109,6 +109,7 @@ const HomeHeader = ({ transition, navData }) => {
             </div>
 
             <motion.nav
+              aria-label="Primary"
               initial={{
                 opacity: 0,
               }}
@@ -226,9 +227,11 @@ const HomeHeader = ({ transition, navData }) => {
               {/* Hamburger Button */}
               <button
                 onClick={toggleMenu}
-                className="inline-flex size-[3.3rem] min-w-[3.3rem] items-center justify-center rounded-full bg-[#FF37B3] xl:hidden"
+                aria-label="Menu"
+                aria-expanded={isOpen}
+                className="inline-flex size-[4.4rem] min-w-[4.4rem] items-center justify-center rounded-full bg-[#FF37B3] xl:hidden"
               >
-                <Image src={HamburgerIcon} width={12} height={9} alt="Icon" />
+                <Image src={HamburgerIcon} width={12} height={9} alt="" />
               </button>
             </motion.div>
 

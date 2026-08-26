@@ -97,14 +97,14 @@ const SolutionsDropdown = ({ className, isOpen, setIsOpen, onToggle }) => {
                     src={SuitcaseIcon}
                     width={24}
                     height={24}
-                    alt="Icon"
+                    alt=""
                     unoptimized
                   />
                 </i>
 
-                <span className="text-left text-[1.6rem] leading-[2.4rem] font-bold tracking-[-0.02em] text-[#263238] uppercase">
+                <h3 className="text-left text-[1.6rem] leading-[2.4rem] font-bold tracking-[-0.02em] text-[#263238] uppercase">
                   by sector
-                </span>
+                </h3>
               </div>
 
               <ul className="flex flex-col gap-[1.5rem]">
@@ -119,9 +119,9 @@ const SolutionsDropdown = ({ className, isOpen, setIsOpen, onToggle }) => {
                       className="flex items-start justify-between gap-[1rem]"
                     >
                       <div className="flex flex-col items-start text-left">
-                        <h5 className="text-[1.8rem] leading-[2rem] font-semibold tracking-[-0.02em] text-[#263238]">
+                        <span className="text-[1.8rem] leading-[2rem] font-semibold tracking-[-0.02em] text-[#263238]">
                           {item.label}
-                        </h5>
+                        </span>
                       </div>
 
                       <i className="min-w-max">
@@ -146,14 +146,14 @@ const SolutionsDropdown = ({ className, isOpen, setIsOpen, onToggle }) => {
                     src={GrowthIcon}
                     width={24}
                     height={24}
-                    alt="Icon"
+                    alt=""
                     unoptimized
                   />
                 </i>
 
-                <span className="text-left text-[1.6rem] leading-[2.4rem] font-bold tracking-[-0.02em] text-[#263238] uppercase">
+                <h3 className="text-left text-[1.6rem] leading-[2.4rem] font-bold tracking-[-0.02em] text-[#263238] uppercase">
                   By goal
-                </span>
+                </h3>
               </div>
 
               <ul className="flex flex-col gap-[1.5rem]">
@@ -173,9 +173,9 @@ const SolutionsDropdown = ({ className, isOpen, setIsOpen, onToggle }) => {
                       className="flex items-start justify-between gap-[1rem]"
                     >
                       <div className="flex flex-col items-start text-left">
-                        <h5 className="text-[1.8rem] leading-[2rem] font-semibold tracking-[-0.02em] text-[#263238]">
+                        <span className="text-[1.8rem] leading-[2rem] font-semibold tracking-[-0.02em] text-[#263238]">
                           {item.label}
-                        </h5>
+                        </span>
                       </div>
 
                       <i className="min-w-max">
@@ -195,7 +195,7 @@ const SolutionsDropdown = ({ className, isOpen, setIsOpen, onToggle }) => {
                   src={ServicesDropdownStroke}
                   width={348}
                   height={220}
-                  alt="Bg Stroke"
+                  alt=""
                   className="absolute bottom-[6rem] left-1/2 -translate-x-1/2"
                 />
               </div>

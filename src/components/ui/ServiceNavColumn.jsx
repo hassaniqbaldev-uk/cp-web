@@ -44,14 +44,14 @@ const ServiceNavColumn = ({ column, isLast = false, onSelect }) => {
             src={theme.icon}
             width={24}
             height={24}
-            alt="Icon"
+            alt=""
             unoptimized
           />
         </i>
 
-        <span className="text-left text-[1.6rem] leading-[2.4rem] font-bold tracking-[-0.02em] text-[#263238] uppercase">
+        <h3 className="text-left text-[1.6rem] leading-[2.4rem] font-bold tracking-[-0.02em] text-[#263238] uppercase">
           {column.heading}
-        </span>
+        </h3>
       </div>
 
       <ul className="flex flex-col gap-[1.5rem]">
@@ -71,9 +71,9 @@ const ServiceNavColumn = ({ column, isLast = false, onSelect }) => {
               className="flex items-start justify-between gap-[1rem]"
             >
               <div className="flex flex-col items-start text-left">
-                <h5 className="text-[1.8rem] leading-[2rem] font-semibold tracking-[-0.02em] text-[#263238]">
+                <span className="text-[1.8rem] leading-[2rem] font-semibold tracking-[-0.02em] text-[#263238]">
                   {item.label}
-                </h5>
+                </span>
               </div>
 
               <i className="min-w-max">

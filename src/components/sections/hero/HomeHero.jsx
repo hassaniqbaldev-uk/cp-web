@@ -161,7 +161,7 @@ const HomeHero = () => {
                 >
                   <Image
                     src={HomeHeroCardImg}
-                    alt="Card Image"
+                    alt=""
                     width={424}
                     height={415}
                     className="h-[20.7rem] w-[21.1rem] md:h-[41.5rem] md:w-[42.4rem]"

@@ -71,7 +71,7 @@ const Footer = () => {
                       src={PhoneIcon}
                       width={45}
                       height={45}
-                      alt="Icon"
+                      alt=""
                       className="absolute z-[10] size-[2.8rem] md:size-[4.5rem]"
                     />
                   </i>
@@ -103,7 +103,7 @@ const Footer = () => {
                       src={EmailIcon}
                       width={45}
                       height={45}
-                      alt="Icon"
+                      alt=""
                       className="absolute z-[10] h-[2.2rem] w-[2.8rem] md:h-[4.5rem] md:w-[4.5rem]"
                     />
                   </i>
@@ -121,7 +121,11 @@ const Footer = () => {
 
               </div>
 
-              <div className="footer-nav my-[5rem] hidden grid-cols-4 xl:grid">
+              <div
+                role="navigation"
+                aria-label="Footer"
+                className="footer-nav my-[5rem] hidden grid-cols-4 xl:grid"
+              >
                 <div className="flex flex-col gap-[2rem]">
                   <h5 className="text-[2.2rem] leading-[3.2rem] font-extrabold tracking-normal text-white">
                     Quick Links
@@ -372,13 +376,14 @@ const Footer = () => {
                     <div>
                       <Link
                         href="https://www.facebook.com/CPAgencyUK"
+                        aria-label="CreativePixels on Facebook"
                         className="inline-flex size-[5.7rem] items-center justify-center rounded-full bg-white/15"
                       >
                         <Image
                           src={FacebookIcon}
                           width={34}
                           height={34}
-                          alt="Icon"
+                          alt=""
                         />
                       </Link>
                     </div>
@@ -386,13 +391,14 @@ const Footer = () => {
                     <div>
                       <Link
                         href="https://www.instagram.com/cpagencyuk/"
+                        aria-label="CreativePixels on Instagram"
                         className="inline-flex size-[5.7rem] items-center justify-center rounded-full bg-white/15"
                       >
                         <Image
                           src={InstagramIcon}
                           width={34}
                           height={34}
-                          alt="Icon"
+                          alt=""
                         />
                       </Link>
                     </div>
@@ -400,13 +406,14 @@ const Footer = () => {
                     <div>
                       <Link
                         href="https://www.linkedin.com/company/creativepixels/"
+                        aria-label="CreativePixels on LinkedIn"
                         className="inline-flex size-[5.7rem] items-center justify-center rounded-full bg-white/15"
                       >
                         <Image
                           src={LinkedinIcon}
                           width={34}
                           height={34}
-                          alt="Icon"
+                          alt=""
                         />
                       </Link>
                     </div>
@@ -415,7 +422,11 @@ const Footer = () => {
               </div>
 
               {/* Responsive */}
-              <div className="footer-nav my-[3.6rem] block w-full xl:hidden">
+              <div
+                role="navigation"
+                aria-label="Footer"
+                className="footer-nav my-[3.6rem] block w-full xl:hidden"
+              >
                 <Accordion
                   type="single"
                   className="flex flex-col gap-[1rem]"
@@ -585,13 +596,14 @@ const Footer = () => {
                 <li>
                   <Link
                     href="https://www.facebook.com/CPAgencyUK"
+                    aria-label="CreativePixels on Facebook"
                     className="inline-flex size-[5.7rem] items-center justify-center rounded-full bg-white/15"
                   >
                     <Image
                       src={FacebookIcon}
                       width={34}
                       height={34}
-                      alt="Icon"
+                      alt=""
                     />
                   </Link>
                 </li>
@@ -599,13 +611,14 @@ const Footer = () => {
                 <li>
                   <Link
                     href="https://www.instagram.com/cpagencyuk/"
+                    aria-label="CreativePixels on Instagram"
                     className="inline-flex size-[5.7rem] items-center justify-center rounded-full bg-white/15"
                   >
                     <Image
                       src={InstagramIcon}
                       width={34}
                       height={34}
-                      alt="Icon"
+                      alt=""
                     />
                   </Link>
                 </li>
@@ -613,13 +626,14 @@ const Footer = () => {
                 <li>
                   <Link
                     href="https://www.linkedin.com/company/creativepixels/"
+                    aria-label="CreativePixels on LinkedIn"
                     className="inline-flex size-[5.7rem] items-center justify-center rounded-full bg-white/15"
                   >
                     <Image
                       src={LinkedinIcon}
                       width={34}
                       height={34}
-                      alt="Icon"
+                      alt=""
                     />
                   </Link>
                 </li>
@@ -684,12 +698,12 @@ const Footer = () => {
 
                   <ul className="flex items-center gap-[1.4rem] md:gap-[2rem]">
                     <li>
-                      <Link href="https://creativehosting.io/">
+                      <Link href="https://creativehosting.io/" aria-label="Creative Hosting">
                         <Image
                           src={HostingIcon}
                           width={73}
                           height={34}
-                          alt="Logo"
+                          alt=""
                           className="h-[2.5rem] w-[5.4rem] md:h-[3.4rem] md:w-[7.3rem]"
                         />
                       </Link>
@@ -698,12 +712,12 @@ const Footer = () => {
                     <li className="h-[24px] w-[1px] bg-white md:h-[32px]" />
 
                     <li>
-                      <Link href="">
+                      <Link href="" aria-label="WP Fixed">
                         <Image
                           src={WpFixedIcon}
                           width={75}
                           height={31}
-                          alt="Logo"
+                          alt=""
                           className="h-[2.3rem] w-[5.5rem] md:h-[3.1rem] md:w-[7.5rem]"
                         />
                       </Link>
@@ -712,12 +726,12 @@ const Footer = () => {
                     <li className="h-[24px] w-[1px] bg-white md:h-[32px]" />
 
                     <li>
-                      <Link href="https://monthlydesigns.com">
+                      <Link href="https://monthlydesigns.com" aria-label="Monthly Designs">
                         <Image
                           src={MonthlyIcon}
                           width={137}
                           height={23}
-                          alt="Logo"
+                          alt=""
                           className="h-[1.7rem] w-[10.2rem] md:h-[2.3rem] md:w-[13.7rem]"
                         />
                       </Link>

@@ -91,7 +91,7 @@ const AuditHero = () => {
                     <i>
                       <Image
                         src={ClockIcon}
-                        alt="Icon"
+                        alt=""
                         width={24}
                         height={24}
                         className="size-[1.8rem] md:size-[2.4rem]"
@@ -116,7 +116,7 @@ const AuditHero = () => {
                         <i className="inline-flex size-[2.4rem] min-w-[2.4rem] items-center justify-center rounded-full bg-[#44b276]/20">
                           <Image
                             src={CheckmarkIcon2}
-                            alt="Icon"
+                            alt=""
                             width={14}
                             height={14}
                           />
@@ -141,7 +141,7 @@ const AuditHero = () => {
                   <i>
                     <Image
                       src={ShieldCheckIcon}
-                      alt="Icon"
+                      alt=""
                       width={18}
                       height={21}
                     />

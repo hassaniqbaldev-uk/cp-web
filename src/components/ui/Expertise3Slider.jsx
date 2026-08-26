@@ -28,7 +28,7 @@ const Expertise3Slider = ({ service, getThemeColor }) => {
               <div className="absolute top-0 left-0 z-[1] inline-flex size-[5.8rem] items-center justify-center rounded-[1.3rem] border border-white/20 bg-white/35 backdrop-blur-[10px]">
                 <Image
                   src={item.icon.asset.url}
-                  alt="Icon"
+                  alt=""
                   width={35}
                   height={35}
                   unoptimized

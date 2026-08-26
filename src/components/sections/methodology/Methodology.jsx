@@ -177,7 +177,7 @@ const Methodology = ({ service }) => {
                             src={step.icon.asset.url}
                             width={130}
                             height={140}
-                            alt="Icon"
+                            alt=""
                             unoptimized
                           />
                         </div>
@@ -243,7 +243,7 @@ const Methodology = ({ service }) => {
                               src={step.icon.asset.url}
                               width={130}
                               height={140}
-                              alt="Icon"
+                              alt=""
                               unoptimized
                             />
                           </div>

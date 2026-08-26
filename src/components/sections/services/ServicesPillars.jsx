@@ -82,7 +82,7 @@ const PillarCard = ({ column }) => {
             }}
             className="relative inline-flex size-[5.8rem] min-w-[5.8rem] items-center justify-center rounded-[1.3rem]"
           >
-            <Image src={t.icon} width={30} height={30} alt="Icon" unoptimized />
+            <Image src={t.icon} width={30} height={30} alt="" unoptimized />
           </i>
 
           <h3 className="text-[2.2rem] leading-[2.8rem] font-bold tracking-[-0.02em] text-white xl:text-[2.6rem] xl:leading-[3rem]">

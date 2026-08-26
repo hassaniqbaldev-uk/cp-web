@@ -67,7 +67,7 @@ const Cta = () => {
                 >
                   <Image
                     src={WaveHandIcon}
-                    alt="Icon"
+                    alt=""
                     width={58}
                     height={58}
                     unoptimized
@@ -87,7 +87,7 @@ const Cta = () => {
 
                   <Image
                     src={HassanAvatar}
-                    alt="Avatar Image"
+                    alt=""
                     className=""
                     width={99}
                     height={99}

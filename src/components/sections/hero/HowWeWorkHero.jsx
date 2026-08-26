@@ -86,7 +86,7 @@ const HowWeWorkHero = () => {
                   src={HowWeWorkHeroCardImg}
                   width={484}
                   height={484}
-                  alt="Card Image"
+                  alt=""
                 />
               </div>
             </MotionEffect>

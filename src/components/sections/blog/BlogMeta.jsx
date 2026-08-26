@@ -26,7 +26,7 @@ const BlogMeta = ({ post }) => {
                     src={post.author.image.asset.url}
                     width={50}
                     height={50}
-                    alt="Avatar Image"
+                    alt=""
                     className="size-full object-cover"
                     unoptimized
                   />
@@ -98,7 +98,7 @@ const BlogMeta = ({ post }) => {
                     src={FacebookIcon}
                     width={34}
                     height={34}
-                    alt="Icon"
+                    alt=""
                     className="size-[2.5rem] md:size-[3.4rem]"
                   />
                 </Link>
@@ -113,7 +113,7 @@ const BlogMeta = ({ post }) => {
                     src={InstagramIcon}
                     width={34}
                     height={34}
-                    alt="Icon"
+                    alt=""
                     className="size-[2.5rem] md:size-[3.4rem]"
                   />
                 </Link>
@@ -128,7 +128,7 @@ const BlogMeta = ({ post }) => {
                     src={LinkedinIcon}
                     width={34}
                     height={34}
-                    alt="Icon"
+                    alt=""
                     className="size-[2.5rem] md:size-[3.4rem]"
                   />
                 </Link>

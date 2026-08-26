@@ -62,8 +62,8 @@ const Estimate = () => {
                   src={EstimateCardImg}
                   width={535}
                   height={512}
-                  alt="Card Image"
-                  className="size-full object-cover object-center"
+                  alt=""
+                  className="size-full object-cover object-center"
                 />
               </div>
             </MotionEffect>

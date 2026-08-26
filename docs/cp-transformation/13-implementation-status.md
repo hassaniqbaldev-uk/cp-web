@@ -70,6 +70,36 @@ complete and Hassan signs off final cutover.
 
 ---
 
+## A11y sub-pass — footer/nav headings, touch targets, icon alt (26 Aug 2026, STOP for review)
+
+The queued a11y sub-pass. Verified 375/768/1440 — no overflow, no layout regression, and a DOM audit
+found **0 unnamed interactive controls** afterwards. Not pushed.
+
+**Nav headings + landmarks:**
+- Mega-menu headings were INVERTED — each column's pillar/group name was a plain `<span>` while every link
+  label was an `<h5>` (polluting the heading outline, no group headings for AT). Fixed across all three
+  dropdowns (`ServiceNavColumn`, `SolutionsDropdown`, `AboutDropdown`): group name → `<h3>`, link label → `<span>`.
+- Header + HomeHeader main `<nav>` → `aria-label="Primary"`; MobileMenu `<nav>` → `aria-label="Mobile"`;
+  both footer nav grids → `role="navigation" aria-label="Footer"`. (Footer already had `<h5>` column headings
+  and Radix accordions, which are accessible.)
+
+**Touch targets (WCAG 2.5.5 44px):**
+- Hamburger (Header + HomeHeader) and mobile close button: 33px → 44px.
+- MobileMenu social links: 39px → 44px. (Footer social already 57px; carousel arrows/autoplay already labeled.)
+
+**Per-context icon alt + names:**
+- Emptied all decorative alts site-wide (`alt="Icon"` ×71, plus Card Image / Avatar Image / Logo Shape /
+  Image / Bg Stroke → `alt=""`) so screen readers skip them.
+- Named every icon-only control: social links (`aria-label` ×9), sister-brand footer logos (Creative
+  Hosting / WP Fixed / Monthly Designs), logo links ("CreativePixels, home"), hamburger ("Menu" +
+  `aria-expanded`), close ("Close menu"), and the two image-only case-study previews in the About dropdown.
+- The decorative "Pixel AI" chat mockup in `Contact.jsx` is now `aria-hidden` with its fake input/buttons
+  `tabIndex={-1}` (was exposing an unnamed button + fake input to AT and the tab order).
+
+**Flagged (not fixed):** the footer "WP Fixed" sister-brand link has an empty `href=""` (resolves to the
+current page) — needs the real URL from Hassan. Lower-priority: some case-study card links inside marquees/
+sliders measure under 44px tall; those are content links in a scrolling strip, not the icon controls in scope.
+
 ## Testimonials — client-name fixes (26 Aug 2026, STOP for review; Sanity move planned next)
 
 Fixed every RENDERED misspelled client name across both testimonial components. Verified 375/768/1440,

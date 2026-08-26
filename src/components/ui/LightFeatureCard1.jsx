@@ -36,7 +36,7 @@ const LightFeatureCard1 = ({
           {icon && (
             <i className="relative h-[6.3rem] w-[6.3rem] rounded-[1.5rem]">
               <div className="absolute top-0 left-0 z-[1] inline-flex h-[5.8rem] w-[5.8rem] items-center justify-center rounded-[1.3rem] border-white/20 bg-white/35 backdrop-blur-[1rem]">
-                <img src={icon} className="h-[3rem] w-[3rem]" alt="Icon" />
+                <img src={icon} className="h-[3rem] w-[3rem]" alt="" />
               </div>
 
               <div

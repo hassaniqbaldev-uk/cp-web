@@ -144,7 +144,7 @@ const ServicesDetailHero = ({ service }) => {
                   src={service.heroImage.asset.url}
                   width={1098}
                   height={960}
-                  alt="Card Image"
+                  alt=""
                   unoptimized
                 />
               </div>

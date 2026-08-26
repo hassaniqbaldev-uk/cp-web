@@ -200,7 +200,7 @@ const Testimonials = () => {
               <div className="flex h-[20rem] w-full overflow-hidden rounded-[1.2rem]">
                 <Image
                   src={AlertForceTestimonialImg}
-                  alt="Card Image"
+                  alt=""
                   width={319}
                   height={319}
                   className="size-full object-cover object-top-left"
@@ -231,7 +231,7 @@ const Testimonials = () => {
                   <div className="flex overflow-hidden rounded-full">
                     <Image
                       src={AlertforceAvatar}
-                      alt="Avatar Image"
+                      alt=""
                       width={56}
                       height={56}
                       unoptimized
@@ -272,7 +272,7 @@ const Testimonials = () => {
                 <div className="flex overflow-hidden rounded-full">
                   <Image
                     src={HomecareAvatar}
-                    alt="Avatar Image"
+                    alt=""
                     width={56}
                     height={56}
                     unoptimized
@@ -312,7 +312,7 @@ const Testimonials = () => {
                 <div className="flex overflow-hidden rounded-full">
                   <Image
                     src={LittleAstroAvatar}
-                    alt="Avatar Image"
+                    alt=""
                     width={56}
                     height={56}
                     unoptimized
@@ -353,7 +353,7 @@ const Testimonials = () => {
                 <div className="flex overflow-hidden rounded-full">
                   <Image
                     src={LoopAvatar}
-                    alt="Avatar Image"
+                    alt=""
                     width={56}
                     height={56}
                     unoptimized

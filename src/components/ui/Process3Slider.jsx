@@ -40,7 +40,7 @@ const Process3Slider = ({ PROCESS_3_CARD }) => {
                 src={item.icon}
                 width={item.iconWidth}
                 height={item.iconHeight}
-                alt="Icon"
+                alt=""
                 unoptimized
               />
             </i>

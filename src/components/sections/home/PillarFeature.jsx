@@ -46,7 +46,7 @@ const PillarFeature = ({
       <div className="pointer-events-none absolute top-[7.8rem] right-[0rem] h-[17.7rem] w-[12.9rem] rotate-[-34deg] select-none">
         <Image
           src={ServicesLogoShape}
-          alt="Logo Shape"
+          alt=""
           width={129}
           height={177}
           unoptimized

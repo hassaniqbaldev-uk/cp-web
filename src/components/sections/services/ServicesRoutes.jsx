@@ -113,7 +113,7 @@ const RouteCard = ({
           }}
           className="inline-flex size-[6.3rem] items-center justify-center rounded-[1.5rem]"
         >
-          <Image src={icon} width={32} height={32} alt="Icon" unoptimized />
+          <Image src={icon} width={32} height={32} alt="" unoptimized />
         </i>
 
         <span

@@ -25,7 +25,7 @@ const Values2Slider = ({ valuesCards }) => {
               <i>
                 <Image
                   src={item.icon}
-                  alt="Icon"
+                  alt=""
                   width={30}
                   height={30}
                   unoptimized

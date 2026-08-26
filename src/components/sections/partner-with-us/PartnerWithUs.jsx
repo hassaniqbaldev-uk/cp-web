@@ -79,7 +79,7 @@ const PartnerWithUs = () => {
                     <i>
                       <Image
                         src={PenIcon}
-                        alt="Icon"
+                        alt=""
                         width={35}
                         height={35}
                         unoptimized
@@ -110,7 +110,7 @@ const PartnerWithUs = () => {
                       <i className="min-w-max">
                         <Image
                           src={XIcon}
-                          alt="Icon"
+                          alt=""
                           width={12}
                           height={12}
                           unoptimized
@@ -153,7 +153,7 @@ const PartnerWithUs = () => {
                     <i>
                       <Image
                         src={CpIcon}
-                        alt="Icon"
+                        alt=""
                         width={35}
                         height={35}
                         unoptimized

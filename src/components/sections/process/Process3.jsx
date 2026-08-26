@@ -97,7 +97,7 @@ const Process3 = () => {
                         src={item.icon}
                         width={item.iconWidth}
                         height={item.iconHeight}
-                        alt="Icon"
+                        alt=""
                         unoptimized
                       />
                     </i>

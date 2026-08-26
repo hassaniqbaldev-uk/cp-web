@@ -26,7 +26,7 @@ const ContactHeroSlider = () => {
                 }}
                 className="inline-flex size-[6.5rem] min-w-max items-center justify-center rounded-[1.5rem] bg-[#3078FF]"
               >
-                <Image src={TimelineIcon} width={34} height={34} alt="Icon" />
+                <Image src={TimelineIcon} width={34} height={34} alt="" />
               </i>
 
               <h4 className="mt-[2rem] text-[2.6rem] font-semibold tracking-[-0.02em] text-white">
@@ -60,7 +60,7 @@ const ContactHeroSlider = () => {
                 }}
                 className="inline-flex size-[6.5rem] min-w-max items-center justify-center rounded-[1.5rem] bg-[#ED910C]"
               >
-                <Image src={EmailIcon} width={34} height={34} alt="Icon" />
+                <Image src={EmailIcon} width={34} height={34} alt="" />
               </i>
 
               <h4 className="mt-[2rem] text-[2.6rem] font-semibold tracking-[-0.02em] text-white">
@@ -94,7 +94,7 @@ const ContactHeroSlider = () => {
                 }}
                 className="inline-flex size-[6.5rem] min-w-max items-center justify-center rounded-[1.5rem] bg-[#FF37B3]"
               >
-                <Image src={HeadphoneIcon} width={34} height={34} alt="Icon" />
+                <Image src={HeadphoneIcon} width={34} height={34} alt="" />
               </i>
 
               <h4 className="mt-[2rem] text-[2.6rem] font-semibold tracking-[-0.02em] text-white">
