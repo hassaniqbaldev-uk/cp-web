@@ -6,6 +6,7 @@ import Image from "next/image";
 import GraphicDesignIcon from "@/assets/icons/ui/graphic-design-icon.svg";
 import SentIcon from "@/assets/icons/ui/sent-icon.svg";
 import LoadingIcon from "@/assets/icons/ui/loading-icon.svg";
+import { PROJECTS_DELIVERED, YEARS_IN_BUSINESS } from "@/content/company";
 
 const CaseStudiesHeroSlider = () => {
   return (
@@ -53,7 +54,7 @@ const CaseStudiesHeroSlider = () => {
           </div>
           <div className="flex flex-col gap-[1rem]">
             <h4 className="text-[5rem] leading-[5rem] font-bold tracking-normal text-[#3078FF]">
-              200+
+              {PROJECTS_DELIVERED}+
             </h4>
             <span className="text-[1.4rem] font-bold tracking-normal text-[#625C70]">
               Projects Delivered
@@ -74,10 +75,10 @@ const CaseStudiesHeroSlider = () => {
           </div>
           <div className="flex flex-col gap-[1rem]">
             <h4 className="text-[5rem] leading-[5rem] font-bold tracking-normal text-[#FF37B3]">
-              65%
+              {YEARS_IN_BUSINESS}+
             </h4>
             <span className="text-[1.4rem] font-bold tracking-normal text-[#625C70]">
-              Faster Load Times
+              Years of Delivery
             </span>
           </div>
         </div>

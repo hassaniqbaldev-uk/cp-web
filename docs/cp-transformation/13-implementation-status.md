@@ -70,6 +70,50 @@ complete and Hassan signs off final cutover.
 
 ---
 
+## CRO revision P0 — CaseStudiesHero honesty + stale meta titles (26 Aug 2026, STOP for review)
+
+From the approved CRO review (`cro-review.md`). P0 only; P1/P2 not started. On `development` / staging.
+
+**1. CaseStudiesHero rewritten (`/case-studies` hub hero).** Two files, kept in sync:
+`src/components/sections/hero/CaseStudiesHero.jsx` (desktop `grid-cols-3`) and
+`src/components/ui/CaseStudiesHeroSlider.jsx` (mobile swiper, `ssr:false`).
+- **Removed the fabricated "65% Faster Load Times" stat** (no evidence exists) from both. Replaced the
+  third card with **"12+ Years of Delivery"** — a true, defensible figure single-sourced from
+  `YEARS_IN_BUSINESS` (`FOUNDED_YEAR = 2013`). Also single-sourced the "200+" card to `PROJECTS_DELIVERED`
+  so the two numbers can no longer drift from the homepage.
+- **H1: "Real work. / Real results." → "Real work. / Real clients."** — drops the unsupportable "results"
+  claim, keeps the two-part gradient structure; "real clients" is literally true (named clients on the page).
+- **Subhead replaced** the generic "helped ambitious brands… scale their digital presence" with work/scope
+  framing: "Named clients, real briefs, and the work behind each one. Explore projects across brand, web,
+  ecommerce and growth — what we set out to do and how we built it." No metric/outcome claims.
+- **Surviving stats are all defensible:** 100% Custom Designed Sites, 200+ Projects Delivered, 12+ Years.
+
+**2. `/case-studies` route metadata fixed** (`src/app/(site)/case-studies/page.jsx`) — same unsupportable
+claims were in the SEO tags: title "…& Real Results" → **"Website Case Studies & Client Work | CreativePixels"**;
+description "…strategy and **measurable growth**…" reworded to work/scope, no metric claim.
+
+**3. Stale "Free Strategy Call" case-study meta titles fixed** in Sanity via `safe-mutate` `patchSet`
+(never raw createOrReplace). Three docs carried a dead CTA offer in `seo.metaTitle`; reframed to the site's
+`Client | keyword phrase` convention:
+- the-smokey-carter → "The Smokey Carter | BBQ Restaurant Website Design Case Study"
+- casa-botanica-panama → "Casa Botanica | Luxury Villa Website Design Case Study"
+- ndifo-safari → "Ndifo Safari | Luxury Safari Website Redesign Case Study"
+
+**4. "15+" homepage stat — verified.** `src/components/sections/stats/Stats.jsx`: `<Counter value={15} />`
+labels **"Team Members"**. It counts team/staff size, not projects or clients. It is a self-reported
+company figure, not a client outcome — flagged to Hassan to confirm the headcount is current (see report).
+
+**Flagged, NOT actioned (out of P0 scope):** 10 docs (caseStudies + legalPage + industries) still carry
+"book a free call / free strategy call" boilerplate in `seo.metaDescription`. Same dead-CTA pattern as the
+titles but broader; slotted into the **P2 SEO ownership pass**, not fixed now.
+
+**Verified** at 1440 / 768 / 375: no "65%"/"Faster Load Times" anywhere in DOM; desktop `grid-cols-3` holds
+exactly 3 cards with no overflow; mobile slider (after mount wait) shows the corrected trio; H1 and both
+meta titles serve correctly; `docScrollW ≤ vw` at all three widths. Clean `npm run build`. Committed to
+`development`, not pushed.
+
+---
+
 ## Batch C — UI/UX Design built; 18/18 confirmed FROM THE DATA (24 August 2026)
 
 Built the missing brand page (ui-ux-design, Batch C — the one skipped when we went B → A, which made the

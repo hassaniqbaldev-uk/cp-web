@@ -1,7 +1,7 @@
 export async function generateMetadata() {
-  const title = "Website Case Studies & Real Results | CreativePixels";
+  const title = "Website Case Studies & Client Work | CreativePixels";
   const description =
-    "Case studies showcasing real projects, strategy and measurable growth. See the work we have delivered for businesses like yours at CreativePixels.";
+    "Case studies of real projects for named clients across brand, web, ecommerce and growth — the brief, the work, and how we built it, from CreativePixels.";
 
   return {
     title,

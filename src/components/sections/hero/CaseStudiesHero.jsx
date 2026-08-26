@@ -9,6 +9,7 @@ import SentIcon from "@/assets/icons/ui/sent-icon.svg";
 import LoadingIcon from "@/assets/icons/ui/loading-icon.svg";
 import { MotionEffect } from "@/components/effects/motion-effect";
 import HomeHeroLogoShape2 from "@/components/decorative-elements/HomeHeroLogoShape2";
+import { PROJECTS_DELIVERED, YEARS_IN_BUSINESS } from "@/content/company";
 import dynamic from "next/dynamic";
 
 const CaseStudiesHeroSlider = dynamic(
@@ -61,7 +62,7 @@ const CaseStudiesHero = () => {
               <h1 className="mt-[1rem] text-[3rem] leading-[3.7rem] font-bold tracking-[-0.03em] text-[#312749] md:text-[7rem] md:leading-[8.5rem]">
                 <span className="block">Real work.</span>{" "}
                 <span className="bg-gradient-pink-orange bg-clip-text text-transparent">
-                  Real results.
+                  Real clients.
                 </span>
               </h1>
             </MotionEffect>
@@ -75,7 +76,7 @@ const CaseStudiesHero = () => {
             >
               <div className="max-w-[70.6rem]">
                 <SectionDescription
-                  text="Explore how we've helped ambitious brands across industries scale their digital presence through strategy, design, and technology."
+                  text="Named clients, real briefs, and the work behind each one. Explore projects across brand, web, ecommerce and growth — what we set out to do and how we built it."
                   textColor="#625C70"
                 />
               </div>
@@ -132,7 +133,7 @@ const CaseStudiesHero = () => {
                 </div>
                 <div className="flex flex-col gap-[1rem] xl:gap-[1.4rem]">
                   <h4 className="text-[5rem] leading-[5rem] font-bold tracking-normal text-[#3078FF] xl:text-[6.8rem] xl:leading-[6rem]">
-                    200+
+                    {PROJECTS_DELIVERED}+
                   </h4>
                   <span className="text-[1.4rem] font-bold tracking-normal text-[#625C70] xl:text-[1.6rem]">
                     Projects Delivered
@@ -163,10 +164,10 @@ const CaseStudiesHero = () => {
                 </div>
                 <div className="flex flex-col gap-[1rem] xl:gap-[1.4rem]">
                   <h4 className="text-[5rem] leading-[5rem] font-bold tracking-normal text-[#FF37B3] xl:text-[6.8rem] xl:leading-[6rem]">
-                    65%
+                    {YEARS_IN_BUSINESS}+
                   </h4>
                   <span className="text-[1.4rem] font-bold tracking-normal text-[#625C70] xl:text-[1.6rem]">
-                    Faster Load Times
+                    Years of Delivery
                   </span>
                 </div>
               </div>
