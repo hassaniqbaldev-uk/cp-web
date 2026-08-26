@@ -70,6 +70,36 @@ complete and Hassan signs off final cutover.
 
 ---
 
+## CRO revision — 11 "free call" meta descriptions fixed (26 Aug 2026)
+
+Hassan pulled this forward from P2: meta descriptions promising a call are broken promises at the point
+of first contact (a Google click-through lands on a page with no call anywhere).
+
+**Key finding that scoped it correctly:** there **is** a live `/audit` page ("Free Website Audit"), linked
+from the global header/nav on every page (`Header.jsx`, `HomeHeader.jsx`, `MobileMenu.jsx`, dropdowns).
+So descriptions promising a **free audit** are NOT broken — that offer exists and is one click away; they
+stay. The genuinely broken set is descriptions promising a **call / consultation / strategy call**, an offer
+that exists nowhere. That set is **11 docs** (Hassan's "ten" + one).
+
+Rewritten via `safe-mutate` `patchSet` on `seo.metaDescription` (all 140–158 chars, service-desc rules):
+- **Case studies** (casa-botanica-panama, ndifo-safari, now-press-play): describe the work + "Explore the
+  case study"; removed invented-outcome tails ("more trial enquiries", "results") in the process.
+- **Legal pages** (support-and-maintenance-schedule, data-processing-agreement, terms-of-service): describe
+  the document, no sales CTA (a legal page should not push an offer).
+- **Industries** (restaurants, sme-founders, b2b-services, charities-non-profits, driving-schools): point to
+  the live **free website audit** (the real lesser-commitment offer) instead of a call.
+
+Verified: 0 descriptions now match free call / strategy call / free consultation / 15-minute consultation.
+
+**FLAGGED for Hassan, NOT changed (explicit scope was descriptions):** 4 industry meta **titles** still
+promise a call in the more-prominent SERP line — `b2b-services` ("Book Free Consultation Online"),
+`charities-non-profits` ("Free Consultation Call"), `driving-schools` ("Free Consultation Call Now"),
+`sme-founders` ("Free Strategy Call"). Fixing the description but leaving the title promising a call is
+incoherent. Proposed replacements ready; awaiting go. (The 3 "Free Audit" industry titles are fine — audit
+is live.)
+
+---
+
 ## CRO revision P0 — CaseStudiesHero honesty + stale meta titles (26 Aug 2026, STOP for review)
 
 From the approved CRO review (`cro-review.md`). P0 only; P1/P2 not started. On `development` / staging.
