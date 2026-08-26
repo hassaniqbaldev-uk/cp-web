@@ -70,7 +70,20 @@ complete and Hassan signs off final cutover.
 
 ---
 
-## Sanity batch — testimonial migration + Studio schema pack (26 Aug 2026, HOLD commit for bento review)
+## Homepage → Sanity migration PLAN drafted (26 Aug 2026, plan only, awaiting approval)
+
+Wrote `docs/cp-transformation/homepage-migration-plan.md` per Hassan's request (plan, not build).
+Recommends a **structured `homepage` singleton with fixed sections (copy-only fields), NOT a page builder** —
+so section order/layout stay structural in code and only text/links become editable (preserves the tuned
+design). Covers: the singleton shape + why; editable-vs-structural per section; effort (~1 reviewed session,
+section-by-section with checkpoints); layout risk (low for the migration itself — string-for-prop swap;
+guard editor-entered copy with length/count validation, keep the hero gradient line its own field). Triage
+of the rest of the developer-only list: migrate homepage (first), pricing, company facts + footer details
+(one small siteSettings singleton); unify nav eventually (Services menu is Sanity, footer/mobile/Solutions/
+About are hardcoded — a drift risk); keep section-default copy, metadata mechanics and redirects in code
+(only the homepage's own title/description move to the singleton). Nothing built.
+
+## Sanity batch — testimonial migration + Studio schema pack (26 Aug 2026, committed)
 
 Built but NOT yet committed — awaiting Hassan's before/after sign-off on the bento rebuild.
 
