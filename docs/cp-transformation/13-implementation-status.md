@@ -2552,3 +2552,16 @@ keyboard focus leaves. No dedicated click-outside handler was added (there was n
 - **O9** (Hassan): Cal.com link views before treating D8 as settled.
 - **www → apex (D21)**, secrets rotation, `/solutions/saas-companies` blank meta
   description (content edit, deferred to the D23/D24 workstream): Hassan / later phases.
+
+## CRO review of CP-10/11/12 written (26 Aug 2026, stop for approval)
+Reviewed homepage, service template and case studies on live staging as a conversion specialist →
+`cro-review.md`. Headline findings: (P0) the case-studies hub hero (`CaseStudiesHero`) fabricates "65% Faster
+Load Times" + promises "Real results / measurable impact" with no outcome data, and carries the site's one
+generic subhead — missed by CP-12 (which reworked the grid/detail, not this hero); plus stale "| Free Strategy
+Call" case-study meta titles. (Conversion) one high-intent route only — the audit is kept off service pages and
+the homepage, leaving the not-ready visitor with no step; recommend a two-tier CTA. (Homepage) the four-pillar
+argument is made 3× (overview + pillar blocks + Lifecycle) — cut the Lifecycle + duplicate Web&Ecom block, ~8
+sections. (Service template) strong; move specialisms down, proof up, tighten the What-We-Do wall. (Case studies)
+detail pages good but resolve qualitatively — reframe cards from work-description to transformation + add a
+factual scope block. (SEO) web-build cannibalisation risk + stale meta titles. Prioritised plan P0→P2 in the doc.
+Nothing built; awaiting approval.
