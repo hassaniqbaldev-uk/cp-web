@@ -52,7 +52,7 @@ const DEFAULT_HEADING = {
   label: "Specialised Expertise",
   title: "What we build",
   description:
-    "Deep expertise across the entire ecosystem. We don't just 'install themes' we engineer solutions.",
+    "Deep expertise across the entire ecosystem. We don't just 'install themes' — we engineer solutions.",
 };
 
 const Expertise3 = ({ service }) => {
