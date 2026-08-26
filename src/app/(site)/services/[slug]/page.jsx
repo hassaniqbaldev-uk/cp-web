@@ -198,21 +198,16 @@ const ServicesDetailPage = async (props) => {
 
   return (
     <>
+      {/* CRO P2 reorder (26 Aug 2026): specialisms down, proof up. Recent Work moves above "What We Do"
+          (show, then explain), and the SpecialistLinks cross-links move to the end (after the sell, before
+          FAQs) so they no longer send a buyer off the page mid-argument. */}
       <ServicesDetailHero service={service.detailHero} />
       {service.parentService && (
         <ParentServiceBand parent={service.parentService} />
       )}
+      {/* 3 — Why it matters */}
       <PartnerWithUs2 service={service.partnerWithUs} />
-      <Expertise3 service={service.expertise} />
-      {service.specialistLinks?.length > 0 && (
-        <SpecialistLinks
-          links={service.specialistLinks}
-          label={service.specialistLinksHeading?.label}
-          title={service.specialistLinksHeading?.title}
-          description={service.specialistLinksHeading?.description}
-        />
-      )}
-      <Methodology service={service.methodology} />
+      {/* 4 — Recent Work (proof, moved UP from position 7) */}
       {caseStudies.length > 0 &&
         (useCuratedGrid ? (
           <CuratedWorkGrid
@@ -229,17 +224,35 @@ const ServicesDetailPage = async (props) => {
             description="A few recent projects that show the range and the standard we hold across every build."
           />
         ))}
+      {/* 5 — What We Do */}
+      <Expertise3 service={service.expertise} />
+      {/* 6 — How It Works */}
+      <Methodology service={service.methodology} />
+      {/* 7 — Focused case highlight */}
       {service.caseHighlight && (
         <ServiceCaseHighlight highlight={service.caseHighlight} />
       )}
+      {/* 8 — Is this right for you */}
       <ProjectShowcase service={service.projectShowcase} />
+      {/* 9 — Investment */}
       <Investment
         slug={slug}
         includes={service.options?.includeCard}
         heading={service.options?.heading}
         showWarranty={warrantyApplies}
       />
+      {/* 10 — Part of the Offer (specialist cross-links, moved DOWN from position 5) */}
+      {service.specialistLinks?.length > 0 && (
+        <SpecialistLinks
+          links={service.specialistLinks}
+          label={service.specialistLinksHeading?.label}
+          title={service.specialistLinksHeading?.title}
+          description={service.specialistLinksHeading?.description}
+        />
+      )}
+      {/* 11 — FAQs */}
       <DynamicQuestions service={service.faqs} />
+      {/* 12 — Closing CTA (two-tier) */}
       <ServicesHubCta
         ctaPosition="service-detail-outro"
         description={

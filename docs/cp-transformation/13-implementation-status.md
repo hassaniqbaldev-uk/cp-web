@@ -70,6 +70,21 @@ complete and Hassan signs off final cutover.
 
 ---
 
+## CRO revision P2 item 1 — service template reorder (26 Aug 2026, STOP for review)
+
+Approved order built in `services/[slug]/page.jsx` (modular branch, affects all 18 service pages at once).
+Two moves, per the CRO review: **Recent Work (proof) up from position 7 → 4** (above "What We Do", so the
+page shows before it explains), and **SpecialistLinks (specialist cross-links) down from 5 → 10** (after
+the sell, before FAQs, so it no longer sends a buyer off-page mid-argument). New order:
+Hero → Parent band (if child) → Why it matters → Recent Work → What We Do → How It Works → Case highlight
+(if one) → Is this right for you → Investment → Part of the Offer → FAQs → Closing CTA (two-tier).
+Verified on `/services/web-design-development` at 1440/768/375 by section offsetTop: proof(1589) → What we
+do(2822) → How it works(3871) → fit(5286) → Investment(6018) → Part of the offer(6973) → FAQs(7680) →
+CTA(8387); proof-before-what-we-do and specialisms-before-FAQs hold at all three widths, no overflow.
+STOPPED for Hassan's review before industries. Queued next (approved): launch 3 of the 4 industries
+(restaurants, pharmacies, driving-schools; NOT sme-founders) → 12 industries; then the "What We Do"
+6→4 tightening pass (report cuts + reasons per service).
+
 ## CRO revision P2 — SEO ownership (CP-09) + stat animation (26 Aug 2026)
 
 Two of the three P2 items done; the service-template reorder (item 1) is STOPPED for Hassan's approval
