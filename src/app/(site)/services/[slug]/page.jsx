@@ -247,6 +247,7 @@ const ServicesDetailPage = async (props) => {
             ? undefined
             : "Tell us what you are working on and we will point you to the right place to start. No obligation, no hard sell."
         }
+        secondaryAudit={slug === "wordpress"}
       />
     </>
   );

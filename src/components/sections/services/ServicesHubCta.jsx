@@ -23,6 +23,10 @@ const ServicesHubCta = ({
   description = "Tell us what you are working on and we will point you to the right place to start. Every website we build includes three months of free support after launch, so you are looked after once you go live.",
   reassurance = "No obligation, just a conversation.",
   ctaPosition = "services-outro",
+  // Two-tier CTA (CRO P1): the audit as an explicit, clearly-subordinate second step beneath the
+  // primary "Start a project" action — for a visitor who is not ready to enquire. Default off; opted in
+  // per page so the hierarchy can be reviewed before it rolls out.
+  secondaryAudit = false,
 }) => {
   return (
     <section className="overflow-hidden px-[2rem] py-[5rem] xl:px-[0rem] xl:py-[10rem]">
@@ -66,6 +70,18 @@ const ServicesHubCta = ({
               <span className="text-[1.4rem] leading-[2.2rem] font-medium text-white/80">
                 {reassurance}
               </span>
+
+              {secondaryAudit && (
+                <p className="mt-[1.2rem] text-[1.5rem] leading-[2.1rem] text-white/60">
+                  Not ready to commit?{" "}
+                  <a
+                    href="/audit"
+                    className="font-semibold whitespace-nowrap text-white underline decoration-white/40 decoration-1 underline-offset-[4px] transition-colors hover:decoration-white"
+                  >
+                    Get a free website audit&nbsp;→
+                  </a>
+                </p>
+              )}
             </div>
           </div>
         </div>
