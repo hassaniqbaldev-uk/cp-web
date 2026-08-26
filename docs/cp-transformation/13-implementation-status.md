@@ -70,6 +70,43 @@ complete and Hassan signs off final cutover.
 
 ---
 
+## CRO revision P2 — SEO ownership (CP-09) + stat animation (26 Aug 2026)
+
+Two of the three P2 items done; the service-template reorder (item 1) is STOPPED for Hassan's approval
+(structural, changes every service page at once). Built on `development` / staging, not pushed.
+
+**Item 2 — SEO keyword-ownership pass (CP-09).** Wrote the ownership map the brief specified to
+`docs/cp-transformation/07-keyword-ownership.md`: one primary intent per page across a three-layer model
+(services = capability, solutions = goal, industries = audience), so pages in different layers can touch
+the same topic without competing. Web-build cluster resolved: the 4 service pages already differentiate
+cleanly (no change); the real collision was `industries/ecommerce-brands` ("Ecommerce Web Designing
+Company") competing with the `services/ecommerce` capability page — retargeted to the audience term.
+Sanity fixes (safe-mutate patchSet), all on the 9 LIVE (`hasPage==true`) industry pages except where noted:
+- `ecommerce-brands` title retargeted (+ dropped dead "Call").
+- `home-improvement-interiors`, `pharmacies` titles reframed off CTA-in-title suffixes.
+- `education-edtech`, `media-and-publishing`, `property-marketing`, `technology-saas`, `travel-hospitality`
+  — were live with NO metaTitle AND NO metaDescription; authored both for each (~150-char descs).
+- Services (18) + solutions (4) titles/H1s audited — already keyword-led title + benefit-led H1; no change.
+
+**⚠ Biggest finding (flagged, NOT actioned — needs Hassan):** four industry docs — `restaurants`,
+`pharmacies`, `driving-schools`, `sme-founders` — have complete, polished content + SEO but `hasPage:false`,
+so the route `notFound()`s them: **they 404.** They own strong commercial audience intents (restaurant /
+pharmacy / driving-school / small-business website design) that nothing currently serves. Nothing links to
+them (not broken links, just orphaned launch-ready content). Decision needed: launch (flip `hasPage` + add
+to hub/mega-menu + curate work) or keep deferred. Did not flip `hasPage` — launching pages is a
+content/IA call under the standing rules. NOTE: some P1/P2 title/desc "fixes" (driving-schools, sme-founders
+titles; restaurants desc; pharmacies title) landed on these 404 docs — harmless, staged-correct for launch.
+
+**Item 3 — stat animation trigger fixed.** `Counter` (`components/ui/Counter.jsx`, used by `Stats` on
+`/about`) left the number stuck at **0** for reduced-motion users and any case where the in-view observer
+never fires, because both the animation and the value were gated behind `isInView`. Split into two effects:
+reduced-motion now `count.set(value)` immediately, ungated from scroll; full motion animates on in-view
+(added a `-15%` bottom root-margin so it lands as the section settles). Build clean; no runtime errors.
+Count-up itself could not be scroll-triggered in the headless pane (pane scroll is inert) — flagged for a
+visual check on staging; reduced-motion path verified by code + no-overflow at 1440.
+
+---
+
 ## CRO revision P1 — approved batch built (26 Aug 2026)
 
 Hassan approved all three gates. Built on `development` / staging; verified 375 / 768 / 1440; not pushed.
