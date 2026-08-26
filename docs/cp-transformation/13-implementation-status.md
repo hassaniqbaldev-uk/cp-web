@@ -70,6 +70,30 @@ complete and Hassan signs off final cutover.
 
 ---
 
+## Null-slug cleanup + industries "What we build" tightening (26 Aug 2026, STOP before Sanity batch)
+
+**Item 2 — deleted 4 null-slug industry docs** (safe-mutate delete; `run()` allows delete, only rejects
+createOrReplace/replace). They were orphan duplicates of live industries ("Restaurants", "Driving Schools",
+"Pharmacies", "Interiors and Furnishings"), all `hasPage:false`, no slug, **0 references** — so they never
+routed or appeared anywhere. After: 0 null-slug docs; industries 46 → 42; live (hasPage) still 12.
+
+**Item 3 — tightened all 12 industries' "What we build" wall 6 → 4** (safe-mutate patchUnset by `_key`),
+same principle as services (cut overlap, cross-cutting/generic, or secondary add-ons; keep the four most
+sector-defining). Expertise3 grid already adapts (4 → 2×2). Verified restaurants/pharmacies/b2b at
+1440/768/375: 2×2, cuts gone, no overflow. Cuts per industry (what was removed):
+- b2b-services: Interactive tools (sub-feature), Events and webinars (secondary channel).
+- charities-non-profits: Accessibility (cross-cutting standard + own service), Content your team controls (generic CMS).
+- driving-schools: Student Apps/Portals (add-on), Review Automation (tactic).
+- ecommerce-brands: Complex migrations (own migrations service), Headless commerce (niche).
+- education-edtech: Accessibility (cross-cutting + own service), Content management (generic CMS).
+- home-improvement-interiors: Configurators and tools (conditional add-on), Content you control (generic CMS).
+- media-and-publishing: Rich media and galleries (⊂ article pages), Search and discovery (feature); kept both monetisation pillars.
+- pharmacies: Mobile App (add-on), Track & Trace (secondary feature).
+- property-marketing: Location and area detail (⊂ showcase), Portfolio and past projects (overlaps showcases).
+- restaurants: Social Proof (widget), Event Ticketing (niche/venue-only).
+- technology-saas: Headless and modern stacks (implementation detail), Analytics and integration (generic + own service).
+- travel-hospitality: Performance (cross-cutting + own speed service), Content management (generic CMS).
+
 ## A11y sub-pass — footer/nav headings, touch targets, icon alt (26 Aug 2026, STOP for review)
 
 The queued a11y sub-pass. Verified 375/768/1440 — no overflow, no layout regression, and a DOM audit
