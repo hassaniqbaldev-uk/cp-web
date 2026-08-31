@@ -19,6 +19,20 @@ import { cache } from "react";
 
 const options = { next: { revalidate: 3600 } };
 
+// Industries whose curated work is ADJACENT (related sectors), not in-sector delivery. Labelled honestly
+// so the page never claims sector-specific work we cannot show. Restaurants: we have food & hospitality
+// brands (Dr Donuts, The Smokey Carter) but no restaurant builds yet, so the work is shown as related,
+// not "exactly this kind of work". Pharmacies and driving-schools have neither in-sector nor credible
+// adjacent work, so their workSlugs are set to [] (explicit opt-out → no work section) rather than a stretch.
+const ADJACENT_WORK = {
+  restaurants: {
+    label: "Related work",
+    title: "Related food & hospitality work.",
+    description:
+      "We have not built for a restaurant yet, so here is closely related work from food and hospitality brands — an honest look at the standard we hold, not a claim of sector-specific delivery.",
+  },
+};
+
 // Newest-as-fallback: most recent published case studies (flagship/supporting first, then newest).
 const WORK_QUERY = `
   *[_type == "caseStudies" && !(_id in path("drafts.**")) && defined(slug.current) && defined(thumbnailImage) && !(designation in ["archive"])]
@@ -121,21 +135,35 @@ const IndustryDetailPage = async (props) => {
     notFound();
   }
 
-  // Work rule (D44): tagged evidence shows first; where an industry has none, fall back to the newest
-  // case studies, labelled "Recent work" so it stays honest (never a fake vertical, never an empty page).
-  const curated = Array.isArray(industry.workSlugs) && industry.workSlugs.length > 0;
-  const caseStudies = curated
-    ? await getCuratedWork(industry.workSlugs.join(","))
-    : await getWork();
+  // Work rule (D44 + opt-out):
+  //  - workSlugs present & non-empty -> curated evidence (in-sector, or ADJACENT where flagged above)
+  //  - workSlugs present but EMPTY   -> intentionally NO work section (honest opt-out where there is no
+  //    credible in-sector or adjacent work, e.g. pharmacies, driving-schools — never pad with wrong-sector
+  //    work that would bounce a paid click)
+  //  - workSlugs absent (null)       -> fall back to the newest case studies, labelled "Recent work"
+  const hasWorkSlugs = Array.isArray(industry.workSlugs);
+  const optedOut = hasWorkSlugs && industry.workSlugs.length === 0;
+  const curated = hasWorkSlugs && industry.workSlugs.length > 0;
+  const caseStudies = optedOut
+    ? []
+    : curated
+      ? await getCuratedWork(industry.workSlugs.join(","))
+      : await getWork();
   const useCuratedGrid = curated && caseStudies.length !== 3;
 
-  const workLabel = curated ? "Selected work" : "Recent work";
-  const workTitle = curated
-    ? "Work we have delivered in this sector."
-    : "Recent work.";
-  const workDescription = curated
-    ? "A few projects where we did exactly this kind of work."
-    : "A selection of our most recent projects across sectors.";
+  // Adjacent industries relabel the curated set so it never overclaims sector-specific delivery.
+  const adjacent = ADJACENT_WORK[slug];
+  const workLabel = adjacent ? adjacent.label : curated ? "Selected work" : "Recent work";
+  const workTitle = adjacent
+    ? adjacent.title
+    : curated
+      ? "Work we have delivered in this sector."
+      : "Recent work.";
+  const workDescription = adjacent
+    ? adjacent.description
+    : curated
+      ? "A few projects where we did exactly this kind of work."
+      : "A selection of our most recent projects across sectors.";
 
   return (
     <>

@@ -129,8 +129,10 @@ const Methodology = ({ service }) => {
             </MotionEffect>
           </div>
 
-          {/* Desktop cards */}
-          <div className="mt-[5rem] hidden flex-col gap-[3.5rem] xl:flex">
+          {/* Desktop cards. Tightened (CRO): the giant index and heavy padding made this block one of the
+              tallest on the money pages. Denser rows — smaller index, tighter padding/leading — so the page
+              reaches the ask faster while keeping the numbered, scannable structure. */}
+          <div className="mt-[4rem] hidden flex-col gap-[1.8rem] xl:flex">
             {service.card.map((step, idx) => {
               const theme = getThemeColor(idx);
 
@@ -144,7 +146,7 @@ const Methodology = ({ service }) => {
                   transition={{ type: "tween", duration: 1.0, ease: "easeOut" }}
                 >
                   <div
-                    className="flex items-center justify-between rounded-[2rem] border px-[5rem] py-[3.4rem]"
+                    className="flex items-center justify-between rounded-[2rem] border px-[4rem] py-[2.4rem]"
                     style={{ borderColor: theme.color }}
                   >
                     <h3
@@ -155,30 +157,31 @@ const Methodology = ({ service }) => {
                         WebkitTextFillColor: "transparent",
                         display: "inline-block",
                       }}
-                      className="block text-[16rem] leading-[16rem] font-bold tracking-[-0.03em]"
+                      className="block text-[9rem] leading-[9rem] font-bold tracking-[-0.03em]"
                     >
                       0{idx + 1}
                     </h3>
 
-                    <div className="flex items-center gap-[8rem] text-left">
-                      <div className="flex max-w-[60rem] flex-col gap-[1rem]">
-                        <h4 className="text-[3.4rem] leading-[4.8rem] font-bold tracking-[-0.02em] text-[#312749]">
+                    <div className="flex items-center gap-[5rem] text-left">
+                      <div className="flex max-w-[62rem] flex-col gap-[0.6rem]">
+                        <h4 className="text-[2.6rem] leading-[3.4rem] font-bold tracking-[-0.02em] text-[#312749]">
                           {step.title}
                         </h4>
 
-                        <p className="text-[2.2rem] leading-[2.8rem] tracking-normal text-[#625C70]">
+                        <p className="text-[1.8rem] leading-[2.6rem] tracking-normal text-[#625C70]">
                           {step.description}
                         </p>
                       </div>
 
                       {step.icon?.asset?.url && (
-                        <div className="h-[14rem] min-w-[13rem]">
+                        <div className="h-[8rem] min-w-[7.4rem]">
                           <Image
                             src={step.icon.asset.url}
                             width={130}
                             height={140}
                             alt=""
                             unoptimized
+                            className="h-[8rem] w-auto"
                           />
                         </div>
                       )}

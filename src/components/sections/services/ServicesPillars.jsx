@@ -25,17 +25,18 @@ const THEME = {
   ai: { color: "#7C3AED", icon: DesignIcon },
 };
 
-// One positioning line per pillar. Web & Ecommerce carries the most weight (it is
-// 45-50% of the business), so its copy reads as the core offering.
+// One positioning line per pillar. Tightened (CRO) to a single scannable sentence each so the four cards
+// read fast and the block stays compact. Web & Ecommerce carries the most weight (it is 45-50% of the
+// business), so its line stays a touch fuller and names the build types.
 const PILLAR_BLURB = {
   "brand-experience":
-    "The work that makes a first impression count. We shape brand identities and design the interfaces people use, so your business looks considered and feels easy to deal with from the first click.",
+    "Brand identities and the interfaces people use, so you look considered and feel easy to deal with from the first click.",
   "web-ecommerce":
-    "The core of what we do, and the largest part of our business. We design and build websites and ecommerce stores that load quickly, read clearly to search engines and turn visitors into customers, from WordPress and Shopify builds to bespoke applications.",
+    "The core of what we do: fast, search-friendly websites and stores that turn visitors into customers, from WordPress and Shopify to bespoke builds.",
   "growth-performance":
-    "The work that turns traffic into revenue. Search, paid media, conversion and ongoing improvement, run with a clear view of what each channel is doing and where the next customer comes from.",
+    "Search, paid media and conversion work that turns traffic into revenue, with a clear view of where the next customer comes from.",
   "ai-automation":
-    "The work that takes manual, repetitive tasks off your team. We build automations and apply AI to real operational bottlenecks, so people spend less time on process and more on the work that matters.",
+    "Automations and AI applied to real operational bottlenecks, so your team spends less time on process.",
 };
 
 // One pillar card — EQUAL to every other. COLOUR TREATMENT brought in line with the
@@ -72,33 +73,33 @@ const PillarCard = ({ column }) => {
       {/* Glass content — the Partner With Us white/15 fill */}
       <div
         style={{ boxShadow: hover ? `0 0 30px 0px ${t.color}55` : "none" }}
-        className="relative z-[2] flex h-full flex-col gap-[2.4rem] rounded-[3rem] bg-white/15 p-[3rem] transition-all duration-200"
+        className="relative z-[2] flex h-full flex-col gap-[1.8rem] rounded-[3rem] bg-white/15 p-[2.6rem] transition-all duration-200"
       >
-        <div className="flex items-center gap-[2rem]">
+        <div className="flex items-center gap-[1.6rem]">
           <i
             style={{
               backgroundColor: t.color,
               boxShadow: `5px 5px 44px 0px ${t.color}CC`,
             }}
-            className="relative inline-flex size-[5.8rem] min-w-[5.8rem] items-center justify-center rounded-[1.3rem]"
+            className="relative inline-flex size-[5rem] min-w-[5rem] items-center justify-center rounded-[1.2rem]"
           >
-            <Image src={t.icon} width={30} height={30} alt="" unoptimized />
+            <Image src={t.icon} width={28} height={28} alt="" unoptimized />
           </i>
 
-          <h3 className="text-[2.2rem] leading-[2.8rem] font-bold tracking-[-0.02em] text-white xl:text-[2.6rem] xl:leading-[3rem]">
+          <h3 className="text-[2.2rem] leading-[2.8rem] font-bold tracking-[-0.02em] text-white xl:text-[2.4rem] xl:leading-[2.9rem]">
             {column.heading}
           </h3>
         </div>
 
-        <p className="text-[1.6rem] leading-[2.6rem] font-normal tracking-normal text-white">
+        <p className="text-[1.6rem] leading-[2.4rem] font-normal tracking-normal text-white/90">
           {PILLAR_BLURB[column.key] || ""}
         </p>
 
-        <ul className="mt-auto flex h-full flex-col gap-[1.4rem]">
+        <ul className="mt-auto flex h-full flex-col gap-[1rem]">
           {column.items.map((item) => (
             <li
               key={item.slug}
-              className="border-t border-white/15 pt-[1.4rem]"
+              className="border-t border-white/15 pt-[1.2rem]"
             >
               <Link
                 href={item.href}
@@ -215,7 +216,7 @@ const ServicesPillars = ({ columns = [] }) => {
             to a second row and, because each column is 1fr, keeps the same 1/3 card width and aligns left
             rather than stretching. Works for any count from the data — 3 → one row; 4 → 3 + 1; 5 → 3 + 2;
             6 → 3 + 3. Stacks to 2 columns at md and 1 at mobile. */}
-        <div className="mt-[5rem] grid grid-cols-1 gap-[3.3rem] md:grid-cols-2 xl:mt-[7rem] xl:grid-cols-3">
+        <div className="mt-[4rem] grid grid-cols-1 gap-[2.6rem] md:grid-cols-2 xl:mt-[5rem] xl:grid-cols-3">
           {ordered.map((column, idx) => (
             <MotionEffect
               key={column.key}

@@ -13,8 +13,11 @@ export const BLOG_HERO_QUERY = `
 }
 `;
 
+// Excludes the featured post — it is already shown in the BlogHero, so listing it again here duplicated
+// the same post on the page (duplicate-in-DOM / crawl-noise). When no post is featured, nothing is
+// excluded and the full list renders.
 export const BLOG_LIST_QUERY = `
-*[_type == "blog"] | order(publishedAt desc) {
+*[_type == "blog" && featured != true] | order(publishedAt desc) {
   title,
   excerpt,
   category,

@@ -59,7 +59,7 @@ const SolutionsHero = () => {
               delay={0.15}
             >
               <h1 className="mt-[1.5rem] mb-[2.5rem] text-[3rem] leading-[3.7rem] font-bold tracking-[-0.03em] text-[#312749] md:text-[7rem] md:leading-[8rem]">
-                Solutions <br /> tailored to your Reality.
+                Solutions <br /> tailored to your reality.
               </h1>
             </MotionEffect>
 

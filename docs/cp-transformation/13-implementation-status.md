@@ -91,6 +91,48 @@ Next in order (after review): /audit rebuild, tighten How-It-Works + four-pillar
 (3 thin industries — restaurants curate-adjacent food work honestly labelled, pharmacies + driving-schools
 no work section; Careers "Apply Now" → job application form).
 
+## Money-page tightening + polish batch (29 Aug 2026, STOP for review — final pre-handover pass)
+
+### 1. Tightened the two tallest blocks on the money pages (denser + scannable, measured @1440)
+- **How It Works (Methodology)** — shrank the giant index (16rem→9rem), tighter card padding/leading,
+  smaller step icon. Height on /industries/restaurants: **1415px → 1002px (−413px, ~29%)**. 4 steps.
+- **Four-pillar block (ServicesPillars)** — cut each pillar blurb to one scannable sentence (Web &
+  Ecommerce kept a touch fuller for weight), tighter card padding/gaps/grid. Height on /services:
+  **1340px → 1115px (−225px, ~17%)**; each card 502px → 418px. Same on the homepage (same component).
+- Verified 375/768/1440: no overflow; grids collapse 3→2→1 as before; copy intact.
+
+### 2. Polish batch
+Content (Sanity, staging, via safe-mutate patchSet — no field loss, seo siblings preserved):
+- **restaurants** → adjacent food work, honestly labelled. workSlugs = [dr-donuts, the-smokey-carter];
+  new `ADJACENT_WORK` map in the industries page relabels it "Related work / Related food & hospitality
+  work / …not a claim of sector-specific delivery." (never claims restaurant delivery).
+- **pharmacies + driving-schools** → workSlugs = [] and the industries page now treats an EMPTY array as
+  an explicit opt-out (no work section) instead of falling back to wrong-sector work. Verified: no work
+  section on either.
+- **ppc internal link** → CRO's "Paid Media" specialist link /services/ppc (308) → /services/paid-media.
+- **Ayoa / AlertForce claim titles** (they live in seo.metaTitle, not the visible H1): softened to describe
+  the work — "Ayoa Case Study | SaaS Website Redesign", "AlertForce Case Study | Compliance Trainer
+  Website Rebuild". No more "SEO Migration" / "Conversion Growth" outcome claims the pages can't back.
+- **Legal hub duplicate blurb** → the Data Processing Agreement card had generic filler ("These policies
+  explain how we operate…"); rewritten as a real DPA blurb. Also tidied the Paid Ads Schedule fragment.
+- **travel-hospitality** → meta title now includes "Leisure" (was "Travel & Hospitality"), matching the
+  page label + hub name.
+
+Code:
+- **Solutions "Reality" typo** → "Solutions tailored to your reality." (SolutionsHero).
+- **Blog duplication** → BLOG_LIST_QUERY now excludes the `featured` post (it was shown in the hero AND
+  again in the list). Note: the list's mobile/desktop dual-render is a DELIBERATE responsive pattern
+  (explicit in-code "do not convert to a slider" + a sticky mobile treatment), so it was left as-is.
+
+### Already resolved in a prior pass (verified, no change needed)
+- **H1 outliers custom-app / ui-ux** — H1s already read as outcome lines ("Bespoke software built around
+  how your business works.", "Interfaces people find easy, across every screen you ship."), not labels.
+- **migrations title** — already a clean single-pipe "Website & Platform Migration Services | CreativePixels".
+- **Careers "Apply Now"** — already wired: hero "View Open Roles" → #open-roles, each role's "Apply Now"
+  opens the JobApplicationForm modal (posts to /api/job-application, which exists).
+
+development only, staging, main untouched, not pushed. Build compiles clean.
+
 ## /audit rebuilt as a proper landing page (28 Aug 2026, STOP for review)
 
 The page was a hero-with-form + generic site testimonials ("three screens of nothing"). It is the
