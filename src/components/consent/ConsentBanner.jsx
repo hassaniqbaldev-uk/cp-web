@@ -58,6 +58,8 @@ const ConsentBanner = () => {
       /* storage blocked — consent still applied for this session */
     }
     setVisible(false);
+    // Let other bottom-anchored UI (the persistent StickyCta) know the banner has closed.
+    window.dispatchEvent(new Event("cp:consent-decided"));
   };
 
   if (!visible) return null;

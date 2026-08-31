@@ -70,6 +70,37 @@ complete and Hassan signs off final cutover.
 
 ---
 
+## Conversion fixes batch 1 — persistent CTA + "0+" counters (27 Aug 2026, STOP for review)
+
+First two conversion fixes from the audit. On `development`/staging, not pushed.
+
+**"0+" counters — fixed.** Rewrote `Counter` so it renders the REAL number by default (server-side +
+first paint) and can never show a visible 0. Count-up now runs only for a stat that starts BELOW the fold:
+it is primed to 0 while off-screen and animates up when scrolled in; a stat already visible (the hero)
+shows its real figure with no reset-to-zero flash; reduced-motion / no-JS always show the figure. Values
+unchanged (12 years, 200 projects from constants; team stays 15 until Hassan confirms). Also fixed the hero
+badge grammar ("Project Completed" → "Projects Completed"). Verified: hero shows 200, /about shows 12/200/15
+in SSR, at 375/768/1440.
+
+**Persistent CTA — chose StickyCta (not the header).** Reason: only StickyCta gives a persistent CTA on
+MOBILE (the header's "Start a project" is `hidden xl:block`, desktop-only) — and mobile is where the CTA
+desert hurts most. Wired the previously-unused `StickyCta` into the root layout, and engineered it to:
+appear only after the hero scrolls away (`scrollY > 600`, so it never covers the first screen); hide when
+`#site-footer` is in view (never blocks the closing CTA/form); yield to the cookie-consent banner (added a
+`cp:consent-decided` event to `ConsentBanner` so the two bottom bars never clash); and stay OFF `/contact`
+and `/audit` (they are the destination). Made the bar a compact single row on mobile/tablet so it doesn't
+obscure content: heights now 60px (375) / 70px (768) / 78px (1440), ~7% of the mobile viewport.
+Verified initial-hidden state, off-contact/audit, and no overflow at all three widths.
+
+**Could NOT verify headlessly (flagged, needs a real-browser check):** the scroll-triggered APPEARANCE of
+the sticky bar and its hide-at-footer — the preview pane can't scroll (same limit that blocked the count-up
+animation). The logic is standard (scroll listener + IntersectionObserver) and the initial/hidden states are
+correct; worth a 30-second scroll on staging to confirm it reveals after the hero and tucks away at the footer.
+
+Next in the approved order (after review): inline CTAs at decision points, `/audit` rebuild, tighten the
+money pages, polish batch. Plus the flagged industries work (restaurants curate-adjacent; pharmacies +
+driving-schools no work section) and Careers "Apply Now" → job application form.
+
 ## Full site audit written (26 Aug 2026, review only, nothing changed)
 
 Reviewed every page on staging-cp.vercel.app against "premium £5k agency?" and wrote

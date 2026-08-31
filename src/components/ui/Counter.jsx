@@ -9,42 +9,45 @@ import {
 } from "framer-motion";
 import { useEffect, useRef } from "react";
 
-const Counter = ({
-  value,
-  prefix = "",
-  suffix = "",
-  duration = 1.6,
-}) => {
+// Renders the REAL number by default (server-side + first paint) so a stat is NEVER shown
+// as 0 to a visitor. The count-up runs only for a stat that starts BELOW the fold: it is
+// primed to 0 while off-screen (invisible to the user) and animates up when scrolled into
+// view. A stat already on-screen at load (e.g. the hero) shows its real figure with no
+// reset-to-zero flash; reduced-motion and no-JS always show the real figure.
+const Counter = ({ value, prefix = "", suffix = "", duration = 1.6 }) => {
   const ref = useRef(null);
-  const count = useMotionValue(0);
-  // Fire slightly before fully in view so the count lands as the section settles.
-  const isInView = useInView(ref, { once: true, margin: "0px 0px -15% 0px" });
   const prefersReducedMotion = useReducedMotion();
+  const count = useMotionValue(value); // start at the real number, never 0
+  const rounded = useTransform(count, (latest) => Math.round(latest));
+  const isInView = useInView(ref, { once: true, margin: "0px 0px -15% 0px" });
 
-  const rounded = useTransform(count, (latest) =>
-    Math.round(latest)
-  );
+  const primedRef = useRef(false); // captured the initial state once
+  const belowFoldRef = useRef(false);
+  const ranRef = useRef(false);
 
-  // Reduced motion: show the real number immediately, independent of scroll/inView —
-  // otherwise the counter is stuck at 0 for reduced-motion users (and any environment
-  // where the in-view observer never fires). This is the trigger bug being fixed.
   useEffect(() => {
-    if (prefersReducedMotion) {
-      count.set(value);
+    if (!ref.current) return;
+
+    // Capture, once, whether the stat was off-screen at first paint.
+    if (!primedRef.current) {
+      primedRef.current = true;
+      const r = ref.current.getBoundingClientRect();
+      belowFoldRef.current = !(r.top < window.innerHeight && r.bottom > 0);
+      // Prime a below-the-fold stat to 0 while it is still off-screen so it can count up.
+      if (!prefersReducedMotion && belowFoldRef.current) {
+        count.set(0);
+      }
     }
-  }, [prefersReducedMotion, value, count]);
 
-  // Full motion: run the count-up once the element scrolls into view.
-  useEffect(() => {
-    if (prefersReducedMotion || !isInView) return;
+    // Above the fold, reduced motion, or no animation needed → keep the real number.
+    if (prefersReducedMotion || !belowFoldRef.current) return;
 
-    const controls = animate(count, value, {
-      duration,
-      ease: "easeOut",
-    });
-
-    return controls.stop;
-  }, [isInView, value, duration, count, prefersReducedMotion]);
+    if (isInView && !ranRef.current) {
+      ranRef.current = true;
+      const controls = animate(count, value, { duration, ease: "easeOut" });
+      return controls.stop;
+    }
+  }, [isInView, prefersReducedMotion, value, duration, count]);
 
   return (
     <motion.span ref={ref}>

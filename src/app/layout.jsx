@@ -2,6 +2,7 @@ import "@/styles/globals.css";
 import { Onest } from "next/font/google";
 import Script from "next/script";
 import ConsentBanner from "@/components/consent/ConsentBanner";
+import StickyCta from "@/components/sections/cta/StickyCta";
 
 const onest = Onest({
   subsets: ["latin"],
@@ -83,6 +84,7 @@ export default function RootLayout({ children }) {
         />
         {/* End Google Tag Manager */}
 
+        <StickyCta />
         <ConsentBanner />
       </body>
     </html>

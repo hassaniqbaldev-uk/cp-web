@@ -229,7 +229,7 @@ const HomeHero = () => {
                     </div>
 
                     <span className="text-[.5rem] font-medium text-white md:text-[1.2rem]">
-                      Project Completed
+                      Projects Completed
                     </span>
                   </div>
 
