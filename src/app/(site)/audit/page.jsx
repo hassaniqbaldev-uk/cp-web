@@ -35,18 +35,18 @@ export async function generateMetadata() {
 }
 
 import AuditHero from "@/components/sections/hero/AuditHero";
-import TestimonialsSection from "@/components/sections/testimonials/TestimonialsSection";
+import AuditDetails from "@/components/sections/audit/AuditDetails";
 
-// Lower-intent lead magnet: the audit form in the hero is the ONLY conversion.
-// The "Start a project" Contact section was removed so the page does not compete
-// with the higher-intent Start-a-project flow.
+// Free-audit landing page (the destination for every secondary CTA + the mega-menu, and the page most
+// likely to take paid traffic). The audit form in the hero is the SINGLE conversion — no competing CTA.
+// The body lowers the barrier rather than just collecting an email: what we review, how it works, who
+// does it, honest proof, and an audit-specific FAQ. Generic site testimonials were removed in favour of
+// proof that is true and specific to the audit (see AuditDetails + src/content/audit.js).
 const AuditPage = () => {
   return (
     <>
       <AuditHero />
-      <section className="bg-white px-[2rem] py-[5rem] xl:px-[0rem] xl:py-[10rem]">
-        <TestimonialsSection />
-      </section>
+      <AuditDetails />
     </>
   );
 };

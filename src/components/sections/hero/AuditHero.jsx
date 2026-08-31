@@ -11,6 +11,16 @@ import { MotionEffect } from "@/components/effects/motion-effect";
 import HomeHeroLogoShape1 from "@/components/decorative-elements/HomeHeroLogoShape1";
 import ServicesLogoShape from "@/components/decorative-elements/ServicesLogoShape";
 import AuditForm from "@/components/ui/AuditForm";
+import {
+  AUDIT_TURNAROUND,
+  AUDIT_TURNAROUND_IS_COMMITTED,
+} from "@/content/audit";
+
+// Turnaround phrasing is centralised (src/content/audit.js) so the hero and the body never drift, and so
+// swapping in the real committed number is a one-line change.
+const turnaroundPhrase = AUDIT_TURNAROUND_IS_COMMITTED
+  ? `in ${AUDIT_TURNAROUND}`
+  : `within ${AUDIT_TURNAROUND}`;
 
 const AuditHero = () => {
   return (
@@ -99,18 +109,18 @@ const AuditHero = () => {
                     </i>
 
                     <h4 className="text-[1.8rem] font-bold tracking-[-0.02em] text-[#312749] md:text-[2.2rem]">
-                      What you get
+                      What you get back
                     </h4>
                   </div>
 
                   <ul className="grid grid-cols-1 gap-x-[2.8rem] gap-y-[.6rem] md:grid-cols-2 md:gap-y-[1.2rem]">
                     {[
                       "A short video, recorded for your site",
-                      "UX and user-journey issues",
-                      "SEO gaps worth fixing",
-                      "Speed and performance checks",
-                      "A few quick wins to action now",
-                      "Where we would focus first",
+                      "The specific issues we spot, explained",
+                      "A prioritised list of what to fix first",
+                      "Quick wins you can action right away",
+                      "Where we'd focus for the biggest gains",
+                      "Plain English, no jargon",
                     ].map((item, idx) => (
                       <li key={idx} className="flex items-center gap-[1.2rem]">
                         <i className="inline-flex size-[2.4rem] min-w-[2.4rem] items-center justify-center rounded-full bg-[#44b276]/20">
@@ -149,7 +159,7 @@ const AuditHero = () => {
 
                   <span className="text-[1.6rem] leading-[2rem] font-normal tracking-normal text-[#625C70]">
                     Reviewed by a real person, not an automated scan, and sent to
-                    your inbox within a few working days.
+                    your inbox {turnaroundPhrase}.
                   </span>
                 </div>
               </MotionEffect>
@@ -161,7 +171,11 @@ const AuditHero = () => {
               fade
               delay={0.45}
             >
-              <AuditForm />
+              {/* Anchor target for the closing "Get your free audit ↑" link — the single conversion.
+                  scroll-mt clears the fixed header so the form top is not hidden under it. */}
+              <div id="audit-form" className="scroll-mt-[12rem]">
+                <AuditForm />
+              </div>
             </MotionEffect>
           </div>
         </div>

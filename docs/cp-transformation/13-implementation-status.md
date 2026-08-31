@@ -91,6 +91,48 @@ Next in order (after review): /audit rebuild, tighten How-It-Works + four-pillar
 (3 thin industries — restaurants curate-adjacent food work honestly labelled, pharmacies + driving-schools
 no work section; Careers "Apply Now" → job application form).
 
+## /audit rebuilt as a proper landing page (28 Aug 2026, STOP for review)
+
+The page was a hero-with-form + generic site testimonials ("three screens of nothing"). It is the
+destination for every secondary CTA and the mega-menu, and the page most likely to take paid traffic
+(a free audit is an easier ad proposition than "start a project"), so it now works as a real landing
+page that lowers the barrier rather than just collecting an email. The form stays the SINGLE conversion —
+no competing CTA added.
+
+New structure (hero unchanged in layout; body rebuilt):
+- Hero — retuned the "What you get" box to be purely the DELIVERABLE ("What you get back": the video, a
+  prioritised fix list, quick wins, plain English) so it no longer overlaps the new scope section. Added
+  `id="audit-form"` (scroll-mt to clear the fixed header) as the anchor target for the closing nudge.
+- What we review (scope) — 4 areas in plain terms: UX & user journey, SEO & visibility, Speed &
+  performance, Conversion & clarity. Answers "what the audit actually looks at."
+- How it works (process) — 3 steps: send URL → a specialist reviews it by hand (not a scan) → you get a
+  personal video, back with you <turnaround>. Answers who does it / what form / how long.
+- Who reviews it ("A person, not a plugin") — honest proof: a real senior person reviews it, backed by a
+  genuine track record (real {YEARS_IN_BUSINESS}+ / {PROJECTS_DELIVERED}+ from company.js), plus a
+  no-obligation reassurance card. Generic testimonials removed; NO fake audit quote shown.
+- FAQ — 6 barrier-lowering Qs specific to the audit (is it free, any obligation, how long, who looks at
+  it, not technical, will you spam me).
+- Closing nudge — a light text link back to the same form (`#audit-form`), not a second button, so it
+  never competes with the single conversion.
+
+Two facts still owed by Hassan, centralised in `src/content/audit.js` and clearly flagged (page reads
+correctly today via soft placeholders, one-line swap later):
+  1. TURNAROUND — `AUDIT_TURNAROUND` (currently "a few working days", matching the old live hero copy so
+     no regression). Set the real number + flip `AUDIT_TURNAROUND_IS_COMMITTED` to state it plainly.
+  2. REVIEWER — `AUDIT_REVIEWER_NAME` (currently null → renders "A senior specialist from our team"). Set
+     a name to strengthen "a person, not a plugin".
+  3. (Also flagged) AUDIT_TESTIMONIAL — no real audit-recipient quote exists, so none is shown. A slot is
+     wired; drop a genuine one in and it renders. Never invent one.
+
+Verified 375 / 768 / 1440: zero horizontal overflow at all three; six sections in order; scope grid
+2-col→1-col, steps 3-col→1-col; single `<form>` (no competing conversion); no `null`/placeholder tokens
+leaking into copy; no fake testimonial rendered. Build compiles clean, /audit prerenders static.
+Vertical rhythm/spacing is the one thing I can't judge headlessly (no screenshots) — worth a scroll on
+staging. development only, staging, not pushed.
+
+Next in order (after review): tighten How-It-Works + the four-pillar block on the money pages, then the
+polish batch (3 thin industries + Careers "Apply Now" → job application form).
+
 ## Studio schema pack — verified & completed against staging data (27 Aug 2026)
 
 Verified the schema pack (`docs/cp-transformation/studio-schemas/`) against the ACTUAL staging documents
