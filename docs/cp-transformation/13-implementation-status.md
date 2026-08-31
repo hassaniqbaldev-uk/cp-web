@@ -70,6 +70,27 @@ complete and Hassan signs off final cutover.
 
 ---
 
+## Conversion fixes batch 2 — inline CTAs at decision points (27 Aug 2026, STOP for review)
+
+Pushed the prior batch (audit + StickyCta/counters + schema pack) to origin/development first (pre-push
+checks passed; main untouched). Then built the inline CTAs.
+
+New `InlineCta` component — a deliberately SECONDARY, mid-page CTA: a text link ("<prompt> · Start a
+project →"), tracked via `trackCta`, NOT a solid button, so it never competes with the hero/final/sticky
+primaries. Placed at four decision points (not every section — sparingly):
+- Homepage: after Selected Work ("Like what you see?"), after the four pillars ("Know what you need?"),
+  directly under the testimonials ("Ready to work with us?").
+- Service pages: after the fit-check / ProjectShowcase, before Investment ("Sounds like a fit?") — peak intent.
+Each sits pulled up (negative top margin) to feel connected to the section it follows.
+Verified 375/768/1440: all four render as text links (no solid button), homepage three land after Work /
+after pillars / under reviews, the service one sits between the fit-check and Investment, no overflow at any
+width. Exact vertical rhythm/spacing is the one thing I can't judge headlessly (no screenshots) — worth a
+glance on staging. development only, staging, not pushed.
+
+Next in order (after review): /audit rebuild, tighten How-It-Works + four-pillar block, then the polish batch
+(3 thin industries — restaurants curate-adjacent food work honestly labelled, pharmacies + driving-schools
+no work section; Careers "Apply Now" → job application form).
+
 ## Studio schema pack — verified & completed against staging data (27 Aug 2026)
 
 Verified the schema pack (`docs/cp-transformation/studio-schemas/`) against the ACTUAL staging documents

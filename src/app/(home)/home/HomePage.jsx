@@ -2,6 +2,7 @@
 
 import HomeHeader from "@/components/layout/HomeHeader";
 import HomeHero from "@/components/sections/hero/HomeHero";
+import InlineCta from "@/components/ui/InlineCta";
 import ServicesPillars from "@/components/sections/services/ServicesPillars";
 import PillarFeature from "@/components/sections/home/PillarFeature";
 import Established from "@/components/sections/established/Established";
@@ -103,12 +104,19 @@ const HomePage = ({ selectedWork, founderImage, navData, testimonials }) => {
         title="Work we've delivered."
         description="A selection of recent projects across brand, web and ecommerce."
       />
+      {/* Secondary inline CTA — a light nudge after the proof, not a loud button (CRO). */}
+      <div className="relative z-[10] -mt-[3rem] pb-[3rem] xl:-mt-[6rem] xl:pb-[6rem]">
+        <InlineCta prompt="Like what you see?" ctaPosition="home-after-work" />
+      </div>
       {/* Four pillars — reuses the services-hub ServicesPillars (one source, no second version).
           Web & Ecommerce leads by order and carries the weight there. Replaces the old generic
           Expertise + Services sections, which predated the pillar model. The standalone Web & Ecommerce
           feature block was cut (CRO P1): it duplicated coverage the pillars + Selected work already give,
           and Selected work is itself web/ecommerce work (Ayoa, AlertForce, Minnessak). */}
       <ServicesPillars columns={navData.serviceColumns} />
+      <div className="relative z-[10] -mt-[1rem] pb-[3rem] xl:-mt-[3rem] xl:pb-[6rem]">
+        <InlineCta prompt="Know what you need?" ctaPosition="home-after-pillars" />
+      </div>
       {/* AI & Automation — the one pillar that earns a standalone slot (it carries the single proof that
           pillar has, Biome4Pets). Brand & Growth were dropped: they only restated the pillar overview
           above. The #F7FAFF tint keeps the background alternating (pillars dark, AI tint, Established
@@ -140,6 +148,13 @@ const HomePage = ({ selectedWork, founderImage, navData, testimonials }) => {
           (Founder tint -> Reviews white -> Investment tint). */}
       <section className="px-[2rem] py-[5rem] xl:px-[0rem] xl:py-[10rem]">
         <Testimonials testimonials={testimonials} />
+        {/* Directly under the reviews — proof is peak, so the nudge sits here (CRO). */}
+        <div className="mt-[3rem] xl:mt-[5rem]">
+          <InlineCta
+            prompt="Ready to work with us?"
+            ctaPosition="home-after-testimonials"
+          />
+        </div>
       </section>
       {/* Investment — a light price signal from the single pricing source (tint). */}
       <Investment />

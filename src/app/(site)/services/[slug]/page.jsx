@@ -13,6 +13,7 @@ import CuratedWorkGrid from "@/components/sections/services/detail/CuratedWorkGr
 import ProjectShowcase from "@/components/sections/services/detail/ProjectShowcase";
 import Investment from "@/components/sections/services/detail/Investment";
 import ServicesHubCta from "@/components/sections/services/ServicesHubCta";
+import InlineCta from "@/components/ui/InlineCta";
 import {
   SERVICES_DETAIL_QUERY,
   SERVICES_SITEMAP_QUERY,
@@ -234,6 +235,10 @@ const ServicesDetailPage = async (props) => {
       )}
       {/* 8 — Is this right for you */}
       <ProjectShowcase service={service.projectShowcase} />
+      {/* Secondary inline CTA at peak intent — right after the fit-check (CRO). */}
+      <div className="relative z-[10] -mt-[2rem] pb-[4rem] xl:-mt-[4rem] xl:pb-[7rem]">
+        <InlineCta prompt="Sounds like a fit?" ctaPosition="service-after-fit" />
+      </div>
       {/* 9 — Investment */}
       <Investment
         slug={slug}
