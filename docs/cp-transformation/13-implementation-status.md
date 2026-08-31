@@ -70,6 +70,32 @@ complete and Hassan signs off final cutover.
 
 ---
 
+## Studio schema pack — verified & completed against staging data (27 Aug 2026)
+
+Verified the schema pack (`docs/cp-transformation/studio-schemas/`) against the ACTUAL staging documents
+(introspected every field on 18 services / 4 solutions / 42 industries / 33 case studies / 11 testimonials).
+Findings + fixes:
+- **Two custom fields existed in the data but were missing from the pack — now added:** `category`
+  (services/solutions/industries; live-used — `/solutions` hub + nav group on `category=="goal"/"industry"`;
+  required on solutions) and `order` (industries/caseStudies sort). Everything else the pack covered is
+  present and the field NAMES match the data keys exactly (so existing content connects — no re-save).
+- **Added the base CONTENT field shapes** as supplementary, clearly-marked files so the pack is complete
+  whether or not a base Studio exists: `contentObjectTypes` (expertiseCard, methodologyStep, partnerCard,
+  faqItem) in `objectTypes.js`, and `contentFields.shared.js` (detailHero, expertise/methodology/
+  partnerWithUs cards, projectShowcase fit/not-fit, options.includeCard, faqs, excerpt, icon, seo) — "add
+  only if your base type lacks them."
+- **Rewrote the README** as a full handover: verification results, a per-type FIELD MANIFEST
+  (pack/content/base), what-happens-to-existing-content (values appear automatically, no re-save; name/type
+  match is why), step-by-step apply, post-deploy checks, and breakage risks (duplicate field name, type
+  mismatch, wrong dataset, unregistered object type — none of which touch the data).
+- All 7 schema files pass `node --check`.
+- **The one thing not self-verifiable:** whether the base Studio already defines the content objects (the
+  build treated them as pre-existing; the site renders from them, but I have no Studio-repo access). The
+  manifest + supplementary content files cover both cases.
+Editable-after answer documented: per-document content (services/solutions/industries/case studies/
+testimonials/blog/legal) becomes editable; homepage, footer/mobile nav, pricing, company facts, section
+defaults, route metadata and redirects stay in code. No data or site changes. development only, not pushed.
+
 ## Conversion fixes batch 1 — persistent CTA + "0+" counters (27 Aug 2026, STOP for review)
 
 First two conversion fixes from the audit. On `development`/staging, not pushed.

@@ -35,4 +35,10 @@ export const caseStudiesCustomFields = [
     description:
       "The \"Technical decisions\" section on the detail page — the key technical/architecture choices and why. Render-when-populated: shows only when filled.",
   }),
+  defineField({
+    name: "order",
+    title: "Order",
+    type: "number",
+    description: "Optional manual sort position (lower first). Present in the data.",
+  }),
 ];

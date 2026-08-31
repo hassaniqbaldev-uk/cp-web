@@ -36,6 +36,20 @@ export const industriesCustomFields = [
     description:
       "Curated case studies by slug, order preserved — the sector's genuine work. Absent/empty = the honest \"Recent work\" fallback (newest across sectors), never a fake vertical.",
   }),
+  defineField({
+    name: "category",
+    title: "Category",
+    type: "string",
+    description:
+      "Present in the data as \"industry\" on industry docs. Informational grouping; not required for the page to render.",
+    initialValue: "industry",
+  }),
+  defineField({
+    name: "order",
+    title: "Order",
+    type: "number",
+    description: "Optional sort position for the industry (lower first). Present in the data.",
+  }),
 ];
 
 // ── NESTED additions (same shapes as services): if not already present on the industries

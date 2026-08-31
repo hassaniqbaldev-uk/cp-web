@@ -11,6 +11,21 @@ import { defineField } from "sanity";
 
 // ── TOP-LEVEL fields to add to solutions.fields[] ──────────────────────────────
 export const solutionsCustomFields = [
+  defineField({
+    name: "category",
+    title: "Category",
+    type: "string",
+    description:
+      "REQUIRED. Buckets the solution on the /solutions hub and in the mega-menu. \"goal\" = an outcome (Increase Leads, Automate Operations…); \"industry\" = a sector solution. The hub filters and the nav's goal list read this exact value — a wrong/blank value drops the solution from both.",
+    options: {
+      list: [
+        { title: "Goal", value: "goal" },
+        { title: "Industry", value: "industry" },
+      ],
+      layout: "radio",
+    },
+    validation: (r) => r.required(),
+  }),
   defineField({ name: "modularLayout", title: "Modular layout", type: "boolean", initialValue: false, description: "ON = the modular layout (same gate as services; a goal page omits the Investment/pricing section). All current solutions are ON." }),
   defineField({
     name: "specialistLinks",

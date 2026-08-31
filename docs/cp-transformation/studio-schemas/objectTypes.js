@@ -131,10 +131,81 @@ export const decisionBlock = defineType({
   preview: { select: { title: "title" } },
 });
 
+// ── CONTENT object types ──────────────────────────────────────────────────────
+// These describe the MAIN page content (hero, the "what we do" cards, process steps,
+// FAQs). They existed in the data before this pack; register them only if your base
+// Studio schema does not already define them (see the README's manifest + risks).
+
+// One card in the "What we do / What we build" grid (services/solutions/industries).
+export const expertiseCard = defineType({
+  name: "expertiseCard",
+  title: "Expertise card",
+  type: "object",
+  fields: [
+    defineField({ name: "title", title: "Title", type: "string", validation: (r) => r.required() }),
+    defineField({ name: "description", title: "Description", type: "text", rows: 3 }),
+    defineField({
+      name: "listItem",
+      title: "Bullets",
+      type: "array",
+      of: [{ type: "bulletPoint" }],
+      description: "Short supporting points under the card.",
+    }),
+    defineField({ name: "icon", title: "Icon", type: "image", description: "Optional card icon." }),
+  ],
+  preview: { select: { title: "title" } },
+});
+
+// One numbered step in the "How it works" process.
+export const methodologyStep = defineType({
+  name: "methodologyStep",
+  title: "Methodology step",
+  type: "object",
+  fields: [
+    defineField({ name: "title", title: "Title", type: "string", validation: (r) => r.required() }),
+    defineField({ name: "description", title: "Description", type: "text", rows: 3 }),
+    defineField({ name: "icon", title: "Icon", type: "image", description: "Optional step icon." }),
+  ],
+  preview: { select: { title: "title" } },
+});
+
+// One problem/benefit block in the "Why it matters / problems we solve" section.
+export const partnerCard = defineType({
+  name: "partnerCard",
+  title: "Problem / benefit card",
+  type: "object",
+  fields: [
+    defineField({ name: "title", title: "Title", type: "string", validation: (r) => r.required() }),
+    defineField({ name: "description", title: "Description", type: "text", rows: 3 }),
+    defineField({ name: "icon", title: "Icon", type: "image", description: "Optional icon." }),
+  ],
+  preview: { select: { title: "title" } },
+});
+
+// One FAQ.
+export const faqItem = defineType({
+  name: "faqItem",
+  title: "FAQ",
+  type: "object",
+  fields: [
+    defineField({ name: "question", title: "Question", type: "string", validation: (r) => r.required() }),
+    defineField({ name: "answer", title: "Answer", type: "text", rows: 4, validation: (r) => r.required() }),
+  ],
+  preview: { select: { title: "question" } },
+});
+
 export const sharedObjectTypes = [
   sectionHeading,
   linkCard,
   bulletPoint,
   caseHighlight,
   decisionBlock,
+];
+
+// Register these ONLY if your base Studio does not already define the content objects.
+export const contentObjectTypes = [
+  expertiseCard,
+  methodologyStep,
+  partnerCard,
+  faqItem,
 ];

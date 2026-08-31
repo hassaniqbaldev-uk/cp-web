@@ -13,6 +13,22 @@ import { defineField } from "sanity";
 // ── TOP-LEVEL fields to add to services.fields[] ───────────────────────────────
 export const servicesCustomFields = [
   // Navigation / mega-menu
+  defineField({
+    name: "category",
+    title: "Category",
+    type: "string",
+    description:
+      "Legacy grouping bucket for the service (\"design-development\", \"growth\", \"support\"). Present on every service in the data. Mega-menu grouping is driven by `pillar` (below), not this — keep `category` in sync if you rely on it anywhere, otherwise it is informational.",
+    options: {
+      list: [
+        { title: "Design & Development", value: "design-development" },
+        { title: "Growth", value: "growth" },
+        { title: "Support", value: "support" },
+      ],
+      layout: "radio",
+    },
+    group: "nav",
+  }),
   defineField({ name: "navLabel", title: "Nav label", type: "string", description: "Mega-menu / footer label for the service. Optional — falls back to the document title.", group: "nav" }),
   defineField({ name: "navExcerpt", title: "Nav excerpt", type: "string", description: "Short tagline under the label in the mega-menu. Optional.", group: "nav" }),
   defineField({ name: "navOrder", title: "Nav order", type: "number", description: "Order within its pillar column in the mega-menu. Optional — unset sorts last, then alphabetical.", group: "nav" }),
