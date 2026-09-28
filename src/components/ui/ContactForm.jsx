@@ -7,11 +7,16 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import HoneypotField from "@/components/ui/HoneypotField";
+import { FORM_SERVICES } from "@/contants";
+import useSpamProtection from "@/utils/useSpamProtection";
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
 
 const ContactForm = () => {
+  const { honeypotProps, preload, getSpamFields } =
+    useSpamProtection("contact");
   const [formData, setFormData] = useState({
     name: "",
     service: "",
@@ -40,7 +45,7 @@ const ContactForm = () => {
       const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({ ...formData, ...(await getSpamFields()) }),
       });
 
       // ✅ Step 3: Handle response
@@ -51,7 +56,9 @@ const ContactForm = () => {
         return;
       }
 
-      setStatus("❌ Failed to send. Please try again later.");
+      setStatus(
+        `❌ ${data.error || "Failed to send. Please try again later."}`,
+      );
     } catch (error) {
       console.error("Error submitting form:", error);
       setStatus("❌ Something went wrong. Try again.");
@@ -71,11 +78,15 @@ const ContactForm = () => {
   return (
     <form
       onSubmit={handleSubmit}
+      onFocus={preload}
       style={{
         boxShadow: "13px 13px 40px 0px #00000014",
       }}
       className="flex w-full flex-col items-center justify-center overflow-hidden rounded-[2rem] border-t-8 border-[#FF37B3] bg-white p-[3.8rem] md:w-[59.5rem]"
     >
+      {/* HoneyPot */}
+      <HoneypotField {...honeypotProps} />
+
       {/* Header */}
       <div className="flex w-full flex-col gap-[1rem] border-b border-[#D6D6D6] pb-[2.5rem]">
         <h4 className="text-[2.6rem] leading-[3rem] font-bold tracking-[-0.02em] text-[#312749]">
@@ -129,16 +140,11 @@ const ContactForm = () => {
                 <SelectValue placeholder="Select..." />
               </SelectTrigger>
               <SelectContent align="center">
-                <SelectItem value="Design & Branding">
-                  Design & Branding
-                </SelectItem>
-                <SelectItem value="Website Development">
-                  Website Development
-                </SelectItem>
-                <SelectItem value="Maintenance & Growth">
-                  Maintenance & Growth
-                </SelectItem>
-                <SelectItem value="Something else">Something else</SelectItem>
+                {FORM_SERVICES.map((service) => (
+                  <SelectItem key={service} value={service}>
+                    {service}
+                  </SelectItem>
+                ))}
               </SelectContent>
             </Select>
           </fieldset>

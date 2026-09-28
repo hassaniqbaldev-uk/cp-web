@@ -7,11 +7,15 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import RightArrowIcon from "@/components/icons/RightArrowIcon";
+import HoneypotField from "@/components/ui/HoneypotField";
+import { FORM_SERVICES } from "@/contants";
+import useSpamProtection from "@/utils/useSpamProtection";
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
 
 const AuditForm = () => {
+  const { honeypotProps, preload, getSpamFields } = useSpamProtection("audit");
   const [formData, setFormData] = useState({
     websiteUrl: "",
     email: "",
@@ -42,7 +46,7 @@ const AuditForm = () => {
       const res = await fetch("/api/audit", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({ ...formData, ...(await getSpamFields()) }),
       });
 
       const data = await res.json();
@@ -52,7 +56,9 @@ const AuditForm = () => {
         return;
       }
 
-      setStatus("❌ Failed to submit. Please try again later.");
+      setStatus(
+        `❌ ${data.error || "Failed to submit. Please try again later."}`,
+      );
     } catch (error) {
       console.error("Error submitting form:", error);
       setStatus("❌ Something went wrong. Try again.");
@@ -71,11 +77,15 @@ const AuditForm = () => {
   return (
     <form
       onSubmit={handleSubmit}
+      onFocus={preload}
       style={{
         boxShadow: "13px 13px 40px 0px #00000014",
       }}
       className="flex w-full flex-col items-center justify-center overflow-hidden rounded-[2rem] border-t-8 border-[#FF37B3] bg-white px-[2.7rem] py-[4rem] md:w-[52.5rem]"
     >
+      {/* HoneyPot */}
+      <HoneypotField {...honeypotProps} />
+
       {/* Header */}
       <div className="flex w-full flex-col gap-[1rem] border-b border-[#D6D6D6] pb-[2.5rem]">
         <h4 className="text-[2.6rem] leading-[3rem] font-bold tracking-[-0.02em] text-[#312749]">
@@ -172,16 +182,11 @@ const AuditForm = () => {
                 <SelectValue placeholder="Select..." />
               </SelectTrigger>
               <SelectContent align="center">
-                <SelectItem value="Design & Branding">
-                  Design & Branding
-                </SelectItem>
-                <SelectItem value="Website Development">
-                  Website Development
-                </SelectItem>
-                <SelectItem value="Maintenance & Growth">
-                  Maintenance & Growth
-                </SelectItem>
-                <SelectItem value="Something else">Something else</SelectItem>
+                {FORM_SERVICES.map((service) => (
+                  <SelectItem key={service} value={service}>
+                    {service}
+                  </SelectItem>
+                ))}
               </SelectContent>
             </Select>
           </fieldset>

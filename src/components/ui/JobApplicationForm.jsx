@@ -1,10 +1,15 @@
 "use client";
 import React, { useEffect, useRef, useState } from "react";
+import HoneypotField from "@/components/ui/HoneypotField";
+import useSpamProtection from "@/utils/useSpamProtection";
 
 const JobApplicationForm = ({
   jobTitle = "UI/UX Product Designer",
   onClose,
 }) => {
+  const { honeypotProps, preload, getSpamFields } =
+    useSpamProtection("job_application");
+
   // States
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
@@ -98,6 +103,11 @@ const JobApplicationForm = ({
       formData.append("resume", resumeFile);
       formData.append("jobTitle", jobTitle);
 
+      const spamFields = await getSpamFields();
+      Object.entries(spamFields).forEach(([key, value]) =>
+        formData.append(key, value),
+      );
+
       const res = await fetch("/api/job-application", {
         method: "POST",
         body: formData,
@@ -116,7 +126,7 @@ const JobApplicationForm = ({
         setPortfolio("");
         setResumeFile(null);
       } else {
-        setStatus("❌ Failed to submit. Please try again.");
+        setStatus(`❌ ${data.error || "Failed to submit. Please try again."}`);
       }
     } catch (error) {
       setStatus("❌ Something went wrong. Try again.");
@@ -210,7 +220,10 @@ const JobApplicationForm = ({
         </div>
 
         {/* Main */}
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} onFocus={preload}>
+          {/* HoneyPot */}
+          <HoneypotField {...honeypotProps} />
+
           {/* Fields */}
           <div className="mt-[2.5rem] mb-[3rem] flex w-full flex-col items-start gap-[2.5rem]">
             {/* Full Name */}

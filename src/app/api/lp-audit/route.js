@@ -1,31 +1,18 @@
 import { getAuditEmailTemplate } from "@/emails/lp-audit-template";
 import { getCustomerEmailTemplate } from "@/emails/lp-customer-template";
+import { checkSpam, escapeFields } from "@/lib/spamProtection";
 import { NextResponse } from "next/server";
 import nodemailer from "nodemailer";
 
 export async function POST(req) {
   try {
     const body = await req.json();
-    const { name, service, email, phone, message, website } = body;
-
-    // Honeypot — silently succeed
-    if (website) {
-      return NextResponse.json({ success: true });
-    }
+    const { name, service, email, phone, message } = body;
 
     // 1️⃣ Validate required fields
     if (!name || !email || !phone || !service) {
       return NextResponse.json(
         { success: false, error: "Missing required fields" },
-        { status: 400 },
-      );
-    }
-
-    // Email format
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) {
-      return NextResponse.json(
-        { success: false, error: "Invalid email" },
         { status: 400 },
       );
     }
@@ -39,7 +26,20 @@ export async function POST(req) {
       );
     }
 
-    // 2️⃣ Setup mail transporter (Amazon SES / SMTP)
+    // 2️⃣ Spam protection (honeypot, timing, rate limit, reCAPTCHA, content)
+    // Email format is checked in here too
+    const spam = await checkSpam(req, body, {
+      action: "lp_audit",
+      email,
+      name,
+      text: [message],
+    });
+    if (!spam.ok) return spam.response;
+
+    // Escape user input for the HTML emails
+    const safe = escapeFields({ name, service, email, phone, message });
+
+    // 3️⃣ Setup mail transporter (Amazon SES / SMTP)
     const transporter = nodemailer.createTransport({
       host: process.env.SMTP_HOST,
       port: Number(process.env.SMTP_PORT),
@@ -56,11 +56,11 @@ export async function POST(req) {
       to: process.env.LP_AUDIT_RECIPIENTS.split(",").map((s) => s.trim()),
       subject: `New Free Audit Request from ${name || email}`,
       html: getAuditEmailTemplate(
-        name,
-        service || "Website Audit",
-        email,
-        phone,
-        message,
+        safe.name,
+        safe.service || "Website Audit",
+        safe.email,
+        safe.phone,
+        safe.message,
       ),
     });
 
@@ -70,11 +70,11 @@ export async function POST(req) {
       to: email,
       subject: `Thanks for requesting a free audit${service ? ` for ${service}` : ""}`,
       html: getCustomerEmailTemplate(
-        name,
-        service || "Website Audit",
-        email,
-        phone,
-        message,
+        safe.name,
+        safe.service || "Website Audit",
+        safe.email,
+        safe.phone,
+        safe.message,
       ),
     });
 
