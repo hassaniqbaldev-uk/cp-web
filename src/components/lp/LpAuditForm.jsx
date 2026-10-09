@@ -8,10 +8,11 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import HoneypotField from "@/components/ui/HoneypotField";
 import { LP_SERVICES_CARD } from "@/contants";
 import useServiceStore from "@/store/useServiceStore";
+import useSpamProtection from "@/utils/useSpamProtection";
 import { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
 
 const isValidPhone = (phone) => {
   const digitsOnly = phone.replace(/\D/g, "");
@@ -21,7 +22,8 @@ const isValidPhone = (phone) => {
 
 const LpAuditForm = () => {
   const { selectedService, setSelectedService } = useServiceStore();
-  const router = useRouter();
+  const { honeypotProps, preload, getSpamFields } =
+    useSpamProtection("lp_audit");
 
   const serviceName =
     LP_SERVICES_CARD.find((item) => item.value === selectedService)?.title ||
@@ -32,7 +34,6 @@ const LpAuditForm = () => {
     email: "",
     phone: "",
     message: "",
-    website: "", // honeypot
   });
   const [loading, setLoading] = useState(false);
   const [status, setStatus] = useState("");
@@ -43,12 +44,6 @@ const LpAuditForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    if (formData.website) {
-      // Bot detected. Pretend success, do nothing.
-      router.push("/wordpress-web-development/thank-you");
-      return;
-    }
 
     if (
       !formData.name ||
@@ -75,6 +70,7 @@ const LpAuditForm = () => {
         body: JSON.stringify({
           ...formData,
           service: serviceName,
+          ...(await getSpamFields()),
         }),
       });
 
@@ -85,7 +81,9 @@ const LpAuditForm = () => {
         return;
       }
 
-      setStatus("❌ Failed to submit. Please try again later.");
+      setStatus(
+        `❌ ${data.error || "Failed to submit. Please try again later."}`,
+      );
       setLoading(false);
     } catch (error) {
       console.error("Error submitting form:", error);
@@ -104,22 +102,15 @@ const LpAuditForm = () => {
   return (
     <form
       onSubmit={handleSubmit}
+      onFocus={preload}
       style={{
         boxShadow: "13px 13px 40px 0px #00000014",
       }}
       className="flex w-full flex-col items-center justify-center overflow-hidden rounded-[2rem] border-t-8 border-[#FF37B3] bg-white px-[3rem] py-[4rem]"
     >
       {/* HoneyPot */}
-      <input
-        type="text"
-        name="website"
-        tabIndex={-1}
-        autoComplete="off"
-        value={formData.website || ""}
-        onChange={handleChange}
-        className="absolute left-[-9999px] h-0 w-0 opacity-0"
-        aria-hidden="true"
-      />
+      <HoneypotField {...honeypotProps} />
+
       {/* Main */}
       <div className="mb-[2rem] flex w-full flex-col items-start gap-[2.5rem]">
         <div className="grid w-full grid-cols-1 gap-[1.5rem] md:grid-cols-2">

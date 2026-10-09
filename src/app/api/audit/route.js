@@ -1,5 +1,7 @@
 import { getAuditEmailTemplate } from "@/emails/audit-template";
 import { getCustomerEmailTemplate } from "@/emails/customer-template";
+import { FORM_SERVICES } from "@/contants/contact";
+import { checkSpam, escapeFields, normalizeUrl } from "@/lib/spamProtection";
 import { NextResponse } from "next/server";
 import nodemailer from "nodemailer";
 
@@ -16,7 +18,40 @@ export async function POST(req) {
       );
     }
 
-    // 2️⃣ Setup mail transporter (Amazon SES / SMTP)
+    const cleanUrl = normalizeUrl(websiteUrl);
+    if (!cleanUrl) {
+      return NextResponse.json(
+        { success: false, error: "Invalid website URL" },
+        { status: 400 },
+      );
+    }
+
+    // Service is optional, but must be one of the dropdown options
+    if (service && !FORM_SERVICES.includes(service)) {
+      return NextResponse.json(
+        { success: false, error: "Invalid service" },
+        { status: 400 },
+      );
+    }
+
+    // 2️⃣ Spam protection (honeypot, timing, rate limit, reCAPTCHA, content)
+    const spam = await checkSpam(req, body, {
+      action: "audit",
+      email,
+      name,
+      text: [primaryGoal],
+    });
+    if (!spam.ok) return spam.response;
+
+    // Escape user input for the HTML emails (service is already whitelisted)
+    const safe = escapeFields({
+      name,
+      email,
+      websiteUrl: cleanUrl,
+      primaryGoal,
+    });
+
+    // 3️⃣ Setup mail transporter (Amazon SES / SMTP)
     const transporter = nodemailer.createTransport({
       host: process.env.SMTP_HOST,
       port: Number(process.env.SMTP_PORT),
@@ -34,11 +69,11 @@ export async function POST(req) {
       // to: "taha.b@cp.agency",
       subject: `New Free Audit Request from ${name || email}`,
       html: getAuditEmailTemplate(
-        name,
-        email,
-        websiteUrl,
+        safe.name,
+        safe.email,
+        safe.websiteUrl,
         service,
-        primaryGoal,
+        safe.primaryGoal,
       ),
     });
 
@@ -48,10 +83,10 @@ export async function POST(req) {
       to: email,
       subject: `Thanks for requesting a free audit${service ? ` for ${service}` : ""}`,
       html: getCustomerEmailTemplate(
-        name,
-        email,
+        safe.name,
+        safe.email,
         service || "Website Audit",
-        primaryGoal || "",
+        safe.primaryGoal || "",
       ),
     });
 
