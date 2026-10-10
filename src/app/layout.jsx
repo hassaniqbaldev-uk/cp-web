@@ -1,6 +1,7 @@
 import "@/styles/globals.css";
 import { Onest } from "next/font/google";
 import Script from "next/script";
+import WhatsAppWidget from "@/components/layout/WhatsAppWidget";
 
 const onest = Onest({
   subsets: ["latin"],
@@ -53,6 +54,9 @@ export default function RootLayout({ children }) {
         {/* End Google Tag Manager (noscript) */}
 
         {children}
+
+        {/* WhatsApp chat widget (all pages) */}
+        <WhatsAppWidget />
 
         {/* Google Tag Manager */}
         <Script
