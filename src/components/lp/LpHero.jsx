@@ -16,7 +16,6 @@ import GameArtImg from "@/assets/images/cards/game-art.png";
 import AyoaImg from "@/assets/images/cards/ayoa.png";
 import CasaImg from "@/assets/images/cards/casa.png";
 import LittleAstroImg from "@/assets/images/cards/little-astro.png";
-import NewCompassImg from "@/assets/images/cards/new-compass.png";
 import TeleqoTechImg from "@/assets/images/cards/teleqo-tech.png";
 import AlertForceImg from "@/assets/images/cards/alert-force.png";
 import dynamic from "next/dynamic";
@@ -82,13 +81,6 @@ const projects = [
     excerpt:
       "Website redesign and SEO for a US enterprise mobile mapping and geospatial intelligence company.",
     thumbnailImage: TeleqoTechImg,
-  },
-  {
-    id: "10",
-    title: "New Compass",
-    excerpt:
-      "Redesign, SEO and ongoing maintenance for a US-based cloud LiDAR mapping software company.",
-    thumbnailImage: NewCompassImg,
   },
 ];
 

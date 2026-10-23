@@ -4,7 +4,7 @@ import FultonsLogo from "@/assets/images/clients/fultons-logo.svg";
 import GameArtBrainLogo from "@/assets/images/clients/game-art-brain-logo.svg";
 import IvyDukeLogo from "@/assets/images/clients/ivy-duke-logo.svg";
 import JardinDeKiaraLogo from "@/assets/images/clients/jardin-de-kiara-logo.svg";
-import NewCompassLogo from "@/assets/images/clients/new-compass-logo.svg";
+import AsulaLogo from "@/assets/images/clients/asula-logo.svg";
 
 export const CLIENT_LOGO = [
   {
@@ -64,11 +64,11 @@ export const CLIENT_LOGO = [
   //   href: "#",
   // },
   {
-    src: NewCompassLogo,
-    width: 180,
-    height: 31,
-    alt: "New Compass",
-    size: "h-[1.6rem] md:h-[3.1rem] w-[9.2rem] md:w-[18rem]",
-    href: "/case-studies/new-compass",
+    src: AsulaLogo,
+    width: 173,
+    height: 42,
+    alt: "Asula",
+    size: "h-[2.1rem] md:h-[4.2rem] w-[8.65rem] md:w-[17.3rem]",
+    href: "https://asula.io/",
   },
 ];

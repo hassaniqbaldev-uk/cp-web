@@ -12,7 +12,6 @@ import GameArtImg from "@/assets/images/cards/game-art-slide-img.png";
 import AyoaImg from "@/assets/images/cards/ayoa-slide-img.png";
 import CasaImg from "@/assets/images/cards/casa-slide-img.png";
 import LittleAstroImg from "@/assets/images/cards/little-astro-slide-img.png";
-import NewCompassImg from "@/assets/images/cards/new-compass-slide-img.png";
 import TeleqoTechImg from "@/assets/images/cards/teleqo-tech-slide-img.png";
 import AlertForceImg from "@/assets/images/cards/alert-force-slide-img.png";
 import CheckMarkIcon from "../icons/CheckMarkIcon";
@@ -25,7 +24,6 @@ const slides = [
   { id: 5, img: AyoaImg, alt: "Slide Image" },
   { id: 6, img: CasaImg, alt: "Slide Image" },
   { id: 7, img: LittleAstroImg, alt: "Slide Image" },
-  { id: 8, img: NewCompassImg, alt: "Slide Image" },
   { id: 9, img: TeleqoTechImg, alt: "Slide Image" },
   { id: 10, img: AlertForceImg, alt: "Slide Image" },
 ];
