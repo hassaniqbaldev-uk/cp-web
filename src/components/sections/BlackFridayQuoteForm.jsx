@@ -1,9 +1,10 @@
 "use client";
 
 import { useState } from "react";
-import { ArrowUpRight, ChevronLeft, Sparkles } from "lucide-react";
+import { ArrowUpRight, ChevronLeft } from "lucide-react";
 import Image from "next/image";
 import BookCallButton from "../ui/BookCallButton";
+import BlackFridayBooking from "./BlackFridayBooking";
 import HoneypotField from "../ui/HoneypotField";
 import useSpamProtection from "@/utils/useSpamProtection";
 
@@ -19,12 +20,6 @@ const jobTypes = [
 const contactMethods = [
   { id: "email", label: "Email" },
   { id: "call", label: "Call back" },
-];
-
-const successPoints = [
-  "We reply from a real person, usually within hours",
-  "You get a fixed quote, with clear timelines",
-  "Say yes, and we start on the job",
 ];
 
 const TOTAL_STEPS = 3;
@@ -59,6 +54,14 @@ const fieldClassName =
 const labelClassName =
   "mb-[8px] block text-[13px] font-medium tracking-[-0.02em] text-black";
 
+// Red asterisk marking a required field.
+const RequiredMark = () => (
+  <span className="text-[#D33]" aria-hidden="true">
+    {" "}
+    *
+  </span>
+);
+
 const OptionPill = ({ name, value, label, checked, onChange }) => (
   <label className="group has-[:checked]:bg-grey flex cursor-pointer items-center gap-[10px] rounded-full border border-black/15 px-[18px] py-[12px] transition-colors has-[:checked]:border-transparent max-sm:gap-[5px]">
     <input
@@ -92,7 +95,15 @@ const BlackFridayQuoteForm = () => {
     );
   };
 
-  const next = () => setStep((current) => Math.min(current + 1, TOTAL_STEPS));
+  const next = () => {
+    // Website is required; catch it on step 2 so it can't be missed on step 3.
+    if (step === 2 && !data.website.trim()) {
+      setErrors((current) => ({ ...current, website: true }));
+      return;
+    }
+
+    setStep((current) => Math.min(current + 1, TOTAL_STEPS));
+  };
 
   const back = () => {
     setError("");
@@ -189,39 +200,10 @@ const BlackFridayQuoteForm = () => {
 
         <p className="text-text-body mt-[10px] text-[14px] leading-[22px] tracking-[-0.02em]">
           Got your brief. A senior person will look at it and reply within a few
-          hours — from a real human, not an auto-responder.
+          hours from a real human, not an auto-responder.
         </p>
 
-        <ul className="mt-[25px] flex flex-col gap-[14px]">
-          {successPoints.map((point, index) => (
-            <li key={point} className="flex items-center gap-[12px]">
-              <span className="bg-dark-pink flex size-[22px] shrink-0 items-center justify-center rounded-full text-[12px] font-bold text-white">
-                {index + 1}
-              </span>
-
-              <span className="text-[14px] tracking-[-0.02em] text-black">
-                {point}
-              </span>
-            </li>
-          ))}
-        </ul>
-
-        <div className="mt-[25px] flex items-start gap-[10px] rounded-[10px] bg-[#FFF6EC] p-[16px]">
-          <Sparkles
-            size={18}
-            strokeWidth={2}
-            className="text-orange mt-[2px] shrink-0"
-          />
-
-          <p className="text-[13px] leading-[20px] tracking-[-0.02em] text-black">
-            <span className="font-bold">Your Black Friday rate is held.</span>{" "}
-            Book your first job by 30 November and it’s yours for 6 months.
-          </p>
-        </div>
-
-        <BookCallButton className="mt-[25px] w-full gap-[10px] rounded-full border border-black py-[16px] text-[14px] font-extrabold tracking-[-0.02em] text-black uppercase transition-colors hover:bg-black hover:text-white">
-          Prefer to talk? Book a 15-min call
-        </BookCallButton>
+        <BlackFridayBooking name={data.name} email={data.email} />
 
         <button
           type="button"
@@ -300,7 +282,8 @@ const BlackFridayQuoteForm = () => {
         <div className="mt-[20px] flex flex-col gap-[20px]">
           <div>
             <label htmlFor="quote-website" className={labelClassName}>
-              Website URL (optional)
+              Website URL
+              <RequiredMark />
             </label>
 
             <input
@@ -309,7 +292,7 @@ const BlackFridayQuoteForm = () => {
               placeholder="yoursite.com"
               value={data.website}
               onChange={set("website")}
-              className={fieldClassName}
+              className={`${fieldClassName} ${errors.website ? "border-[#D33]!" : ""}`}
             />
           </div>
 
@@ -336,6 +319,7 @@ const BlackFridayQuoteForm = () => {
             <div>
               <label htmlFor="quote-name" className={labelClassName}>
                 Your name
+                <RequiredMark />
               </label>
 
               <input
@@ -369,6 +353,7 @@ const BlackFridayQuoteForm = () => {
             <div>
               <label htmlFor="quote-email" className={labelClassName}>
                 Work email
+                <RequiredMark />
               </label>
 
               <input
@@ -385,6 +370,7 @@ const BlackFridayQuoteForm = () => {
             <div>
               <label htmlFor="quote-phone" className={labelClassName}>
                 Phone
+                <RequiredMark />
               </label>
 
               <input
@@ -446,7 +432,6 @@ const BlackFridayQuoteForm = () => {
           Book a 15-min call
         </BookCallButton>
       </p>
-
     </div>
   );
 };
