@@ -45,10 +45,33 @@
     #ee8d00 99.88%
   );
 
+  --color-white: #ffffff;
+  --color-black: #000000;
+  --color-dark-pink: #ec3593;
+  --color-orange: #ec9122;
+  --color-grey: #e4e4e4;
+  --color-blue: #3078ff;
+  --color-text-body: #3f3b37;
+
   /* ------------------------------
     FONT FAMILY
  ------------------------------- */
   --font-primary: "Onest", sans-serif;
+  --font-heading: var(--font-dm-sans);
+  --font-body: var(--font-dm-sans);
+
+  /* Black Friday only. These are namespaced with a `bf-` prefix so they apply
+     ONLY where used in Black Friday markup (e.g. `bf-lg:` / `max-bf-xl:`) and
+     never override the rest of the site's default Tailwind breakpoints.
+     Values match the original Black Friday scale. */
+  --breakpoint-bf-sm: 480px;
+  --breakpoint-bf-md: 768px;
+  --breakpoint-bf-lg: 1024px;
+  --breakpoint-bf-xl: 1280px;
+  --breakpoint-bf-2xl: 1440px;
+
+  /* Current BF markup uses `bf:` / `max-bf:` (= 480px, the old `sm`). */
+  --breakpoint-bf: 480px;
 }
 
 @layer base {
@@ -63,6 +86,13 @@
     font-family: var(--font-primary);
     line-height: 1.6;
   }
+}
+
+/* Hide the Google reCAPTCHA v3 badge on pages that opt in via this body class
+   (Black Friday). The required text attribution is shown in the form instead,
+   so this stays within Google's terms. */
+body.hide-recaptcha-badge .grecaptcha-badge {
+  visibility: hidden !important;
 }
 
 @layer components {
