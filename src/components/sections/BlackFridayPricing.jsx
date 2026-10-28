@@ -190,7 +190,7 @@ const BlackFridayPricing = () => {
           ))}
         </div>
 
-        <div className="mt-[50px] text-center">
+        <div className="max-bf-sm:max-w-[300px] max-bf-sm:mx-auto mt-[50px] text-center">
           <p className="text-text-body text-[14px] font-medium">
             Prices in USD. Black Friday 25% applies to hourly and monthly work.
           </p>
