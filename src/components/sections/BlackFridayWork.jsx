@@ -128,7 +128,6 @@ const BlackFridayWork = () => {
             </button>
           </div>
         </div>
-        {/* h */}
       </Container>
     </Section>
   );
