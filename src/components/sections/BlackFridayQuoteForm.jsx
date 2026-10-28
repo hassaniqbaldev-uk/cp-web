@@ -84,8 +84,13 @@ const BlackFridayQuoteForm = () => {
   const [step, setStep] = useState(1);
   const [data, setData] = useState(initialData);
 
-  const set = (key) => (event) =>
+  const set = (key) => (event) => {
     setData((current) => ({ ...current, [key]: event.target.value }));
+    // Clear a field's red border as soon as the user starts fixing it.
+    setErrors((current) =>
+      current[key] ? { ...current, [key]: false } : current,
+    );
+  };
 
   const next = () => setStep((current) => Math.min(current + 1, TOTAL_STEPS));
 
@@ -99,34 +104,35 @@ const BlackFridayQuoteForm = () => {
     setData(initialData);
     setStep(1);
     setError("");
+    setErrors({});
     setSubmitted(false);
   };
 
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState("");
+  // Per-field validation state: true = invalid (shows a red border).
+  const [errors, setErrors] = useState({});
 
   const { honeypotProps, preload, getSpamFields } =
     useSpamProtection("black_friday");
 
   const submit = async () => {
+    // Validation failures just turn the offending fields' borders red
+    // (no message).
+    const fieldErrors = {
+      name: !data.name.trim(),
+      email: !isValidEmail(data.email),
+      phone: !isValidPhone(data.phone),
+    };
+
+    if (fieldErrors.name || fieldErrors.email || fieldErrors.phone) {
+      setErrors(fieldErrors);
+      return;
+    }
+
+    setErrors({});
     setError("");
-
-    if (!data.name.trim()) {
-      setError("Please add your name.");
-      return;
-    }
-
-    if (!isValidEmail(data.email)) {
-      setError("Please enter a valid email.");
-      return;
-    }
-
-    if (!isValidPhone(data.phone)) {
-      setError("Please enter a valid phone number.");
-      return;
-    }
-
     setSubmitting(true);
 
     try {
@@ -339,7 +345,7 @@ const BlackFridayQuoteForm = () => {
                 placeholder="Sarah"
                 value={data.name}
                 onChange={set("name")}
-                className={fieldClassName}
+                className={`${fieldClassName} ${errors.name ? "border-[#D33]!" : ""}`}
               />
             </div>
 
@@ -372,7 +378,7 @@ const BlackFridayQuoteForm = () => {
                 placeholder="name@agency.co.uk"
                 value={data.email}
                 onChange={set("email")}
-                className={fieldClassName}
+                className={`${fieldClassName} ${errors.email ? "border-[#D33]!" : ""}`}
               />
             </div>
 
@@ -388,7 +394,7 @@ const BlackFridayQuoteForm = () => {
                 placeholder="07123 456789"
                 value={data.phone}
                 onChange={set("phone")}
-                className={fieldClassName}
+                className={`${fieldClassName} ${errors.phone ? "border-[#D33]!" : ""}`}
               />
             </div>
           </div>

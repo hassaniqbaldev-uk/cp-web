@@ -69,7 +69,9 @@ const BlackFridayHeader = () => {
   // Let the sticky bar know when the hamburger menu is open so it can hide
   // behind the overlay.
   useEffect(() => {
-    window.dispatchEvent(new CustomEvent("bf:menu-toggle", { detail: { open } }));
+    window.dispatchEvent(
+      new CustomEvent("bf:menu-toggle", { detail: { open } }),
+    );
   }, [open]);
 
   // Collapse the top bar and give the nav a background once scrolled past it.
@@ -108,7 +110,7 @@ const BlackFridayHeader = () => {
         <Container
           className={`flex items-center justify-between rounded-[60px] border transition-all duration-300 ${
             isScrolled
-              ? "border-black/10 bg-white px-[30px] py-[12px] shadow-[0_4px_24px_rgba(0,0,0,0.08)] max-sm:px-[20px]"
+              ? "border-black/10 bg-white px-[20px] py-[8px] shadow-[0_4px_24px_rgba(0,0,0,0.08)] max-sm:px-[15px]"
               : "border-transparent py-[25px] max-xl:px-[40px] max-sm:px-[20px] max-sm:py-[16px]"
           }`}
         >
@@ -120,10 +122,10 @@ const BlackFridayHeader = () => {
                   : "/images/common/cp-logo-with-text.svg"
               }
               alt="Creative Pixels"
-              width={197}
-              height={70}
+              width={121}
+              height={46}
               priority
-              className="h-[70px] w-auto max-sm:h-[42px]"
+              className="h-[46px] w-auto max-sm:h-[36px]"
             />
           </Link>
 
@@ -170,13 +172,13 @@ const BlackFridayHeader = () => {
               aria-label="Open menu"
               aria-expanded={open}
               onClick={() => setOpen(true)}
-              className={`hidden size-[44px] items-center justify-center rounded-[10px] border transition-colors max-xl:flex ${
+              className={`hidden size-[44px] items-center justify-center rounded-full border transition-colors max-xl:flex max-sm:size-[40px] ${
                 isScrolled
                   ? "border-black/20 text-black"
                   : "border-white/30 text-white"
               }`}
             >
-              <Menu size={22} strokeWidth={2} />
+              <Menu size={18} strokeWidth={2} />
             </button>
           </div>
         </Container>
@@ -213,7 +215,7 @@ const BlackFridayHeader = () => {
               type="button"
               aria-label="Close menu"
               onClick={close}
-              className="flex size-[44px] items-center justify-center rounded-[10px] border border-white/30 text-white"
+              className="max-bf-sm:size-[40px] flex size-[44px] items-center justify-center rounded-full border border-white/30 text-white"
             >
               <X size={22} strokeWidth={2} />
             </button>
