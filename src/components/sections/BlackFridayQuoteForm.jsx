@@ -45,8 +45,16 @@ const META = {
 
 const isValidEmail = (value) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value.trim());
 
-// Accepts international formats; just needs enough digits to be a real number.
-const isValidPhone = (value) => value.replace(/\D/g, "").length >= 7;
+// Accepts every local and international format: an optional leading "+" or
+// "00" country prefix, then digits with any common separators (spaces, dashes,
+// dots, parentheses, slashes). Validity is judged on the digit count alone —
+// 7 to 15 digits, matching the E.164 international maximum.
+const isValidPhone = (value) => {
+  const trimmed = value.trim();
+  if (!/^(\+|00)?[\d\s().\-/]+$/.test(trimmed)) return false;
+  const digits = trimmed.replace(/\D/g, "");
+  return digits.length >= 7 && digits.length <= 15;
+};
 
 const fieldClassName =
   "w-full rounded-[10px] border border-black/15 px-[16px] py-[12px] text-[16px] tracking-[-0.02em] text-black placeholder:text-text-body/50 focus:border-black focus:outline-none";
@@ -199,8 +207,8 @@ const BlackFridayQuoteForm = () => {
         </h2>
 
         <p className="text-text-body mt-[10px] text-[14px] leading-[22px] tracking-[-0.02em]">
-          Got your brief. A senior person will look at it and reply within a few
-          hours from a real human, not an auto-responder.
+          Got your brief.  I'll look at it and reply within a few hours. If
+          easier, book a call.
         </p>
 
         <BlackFridayBooking name={data.name} email={data.email} />
