@@ -22,7 +22,7 @@ const BlackFridayCta = () => {
               </span>
             </h2>
 
-            <p className="mt-[20px] max-w-[380px] text-[18px] leading-[30px] tracking-[-0.02em] text-[#E4E4E4] max-xl:mx-auto max-sm:max-w-full max-sm:text-[14px] max-sm:leading-[20px]">
+            <p className="mt-[20px] max-w-[380px] text-[17px] leading-[26px] font-bold tracking-[-0.02em] text-[#E4E4E4] max-xl:mx-auto max-sm:max-w-full max-sm:text-[14px] max-sm:leading-[20px]">
               Flexible milestones and a 3-month guarantee. Black Friday: 25%
               off, 10 spots only.
             </p>

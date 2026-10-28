@@ -97,7 +97,7 @@ const ToolLogo = ({ src, alt, width, height }) => (
     alt={alt}
     width={width}
     height={height}
-    className="h-[22px] w-auto object-contain"
+    className="max-bf-lg:h-[15px] h-[22px] w-auto object-contain"
   />
 );
 
@@ -193,23 +193,25 @@ const BlackFridayProcess = () => {
         </div>
 
         <div className="mt-[60px] rounded-[20px] bg-white p-[40px] max-sm:mt-[40px] max-sm:p-[20px]">
-          <p className="text-text-body text-center text-[16px] tracking-[-0.02em]">
+          <p className="text-text-body max-bf-sm:mx-auto max-bf-sm:max-w-[300px] text-center text-[16px] tracking-[-0.02em]">
             <span className="font-bold text-black">
               We work in the tools you already use.
             </span>{" "}
             Send a brief at the end of your day, and it’s moving by morning.
           </p>
 
-          <div className="mt-[30px] flex flex-wrap items-center justify-center gap-[40px] max-sm:mt-[25px] max-sm:gap-[20px]">
-            {toolsRowOne.map((tool) => (
-              <ToolLogo key={tool.id} {...tool} />
-            ))}
-          </div>
+          <div className="max-bf-sm:max-w-[280px] max-bf-sm:mx-auto">
+            <div className="mt-[30px] flex flex-wrap items-center justify-center gap-[40px] max-sm:mt-[25px] max-sm:gap-[20px]">
+              {toolsRowOne.map((tool) => (
+                <ToolLogo key={tool.id} {...tool} />
+              ))}
+            </div>
 
-          <div className="mt-[20px] flex flex-wrap items-center justify-center gap-[40px] max-sm:gap-[20px]">
-            {toolsRowTwo.map((tool) => (
-              <ToolLogo key={tool.id} {...tool} />
-            ))}
+            <div className="mt-[20px] flex flex-wrap items-center justify-center gap-[40px] max-sm:gap-[20px]">
+              {toolsRowTwo.map((tool) => (
+                <ToolLogo key={tool.id} {...tool} />
+              ))}
+            </div>
           </div>
         </div>
       </Container>

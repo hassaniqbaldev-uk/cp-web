@@ -46,7 +46,9 @@ const PlanCard = ({
       }`}
     >
       <div className="flex items-center justify-between gap-[20px]">
-        <h3 className="text-[22px] font-bold tracking-[-0.03em]">{name}</h3>
+        <h3 className="text-[22px] leading-[25px] font-bold tracking-[-0.03em]">
+          {name}
+        </h3>
 
         <span className="text-[12px] font-extrabold tracking-[0.08em] text-white uppercase">
           Black Friday price
@@ -160,7 +162,7 @@ const BlackFridayPricing = () => {
           </PlanCard>
         </div>
 
-        <p className="mt-[40px] text-center text-[20px] font-bold text-black max-sm:max-w-[230px] max-sm:text-left max-sm:text-[18px]">
+        <p className="mt-[40px] text-center text-[20px] font-bold text-black max-sm:mx-auto max-sm:max-w-[230px] max-sm:text-[18px]">
           Prefer a fixed price? Typical starting points:
         </p>
 

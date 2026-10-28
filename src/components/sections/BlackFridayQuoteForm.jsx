@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { ArrowUpRight, ChevronLeft, Sparkles } from "lucide-react";
 import Image from "next/image";
 import BookCallButton from "../ui/BookCallButton";
@@ -28,10 +28,6 @@ const successPoints = [
 ];
 
 const TOTAL_STEPS = 3;
-
-// After the thank-you screen, reset back to a blank form so the same person can
-// send another job.
-const RESET_DELAY_MS = 15000;
 
 const initialData = {
   jobType: "wordpress",
@@ -98,24 +94,18 @@ const BlackFridayQuoteForm = () => {
     setStep((current) => Math.max(current - 1, 1));
   };
 
+  // Clear the thank-you screen and start a fresh blank form.
+  const reset = () => {
+    setData(initialData);
+    setStep(1);
+    setError("");
+    setSubmitted(false);
+  };
+
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState("");
 
-  // Once the thank-you screen has shown for a while, reset to a blank form so
-  // the same person can send another job.
-  useEffect(() => {
-    if (!submitted) return;
-
-    const timer = setTimeout(() => {
-      setData(initialData);
-      setStep(1);
-      setError("");
-      setSubmitted(false);
-    }, RESET_DELAY_MS);
-
-    return () => clearTimeout(timer);
-  }, [submitted]);
   const { honeypotProps, preload, getSpamFields } =
     useSpamProtection("black_friday");
 
@@ -226,6 +216,15 @@ const BlackFridayQuoteForm = () => {
         <BookCallButton className="mt-[25px] w-full gap-[10px] rounded-full border border-black py-[16px] text-[14px] font-extrabold tracking-[-0.02em] text-black uppercase transition-colors hover:bg-black hover:text-white">
           Prefer to talk? Book a 15-min call
         </BookCallButton>
+
+        <button
+          type="button"
+          onClick={reset}
+          className="mt-[12px] flex w-full items-center justify-center gap-[10px] rounded-full bg-black py-[16px] text-[14px] font-extrabold tracking-[-0.02em] text-white uppercase transition-opacity hover:opacity-90"
+        >
+          Add another query
+          <ArrowUpRight size={18} strokeWidth={2.5} />
+        </button>
       </div>
     );
   }
@@ -442,28 +441,6 @@ const BlackFridayQuoteForm = () => {
         </BookCallButton>
       </p>
 
-      {/* Required by Google when the reCAPTCHA badge is hidden. */}
-      <p className="text-text-body/70 mt-[10px] text-center text-[11px] leading-[16px] tracking-[-0.02em]">
-        This site is protected by reCAPTCHA and the Google{" "}
-        <a
-          href="https://policies.google.com/privacy"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="underline underline-offset-2 hover:text-black"
-        >
-          Privacy Policy
-        </a>{" "}
-        and{" "}
-        <a
-          href="https://policies.google.com/terms"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="underline underline-offset-2 hover:text-black"
-        >
-          Terms of Service
-        </a>{" "}
-        apply.
-      </p>
     </div>
   );
 };

@@ -14,47 +14,47 @@ const projects = [
     image: "/images/black-friday/ivy-duke-thumbnail.jpg",
     title: "Ivy & Duke",
     category: "WooCommerce",
-    href: "/work/ivy-duke",
+    href: "https://ivyandduke.co.uk/",
   },
   {
     id: "fultons",
     image: "/images/black-friday/fultons-thumbnail.jpg",
     title: "Fultons Jewellery",
     category: "WooCommerce",
-    href: "/work/fultons",
+    href: "https://fultonjewellery.co.uk/",
   },
   {
     id: "smokey-carter",
     image: "/images/black-friday/smokey-carter-thumbnail.jpg",
     title: "The Smokey Carter",
     category: "WooCommerce",
-    href: "/work/the-smokey-carter",
+    href: "https://thesmokeycarter.com/",
   },
   {
     id: "peter-jones",
     image: "/images/black-friday/peter-jones-thumbnail.jpg",
     title: "Peter Jones Foundation",
     category: "Dashboard",
-    href: "/work/peter-jones-foundation",
+    href: "https://tycoon.com/",
   },
   {
     id: "minessak",
     image: "/images/black-friday/minessak-thumbnail.jpg",
     title: "Minessak",
     category: "Shopify",
-    href: "/work/minessak",
+    href: "https://minnessak.com/",
   },
   {
     id: "lola-blake",
     image: "/images/black-friday/lola-thumbnail.jpg",
     title: "lola & blake",
     category: "Wordpress",
-    href: "/work/lola-and-blake",
+    href: "https://lolaandblake.co.uk/",
   },
 ];
 
 const WorkCard = ({ image, title, category, href }) => (
-  <Link href={href} className="group block">
+  <Link target="_blank" href={href} className="group block">
     <div className="relative aspect-[4/3] overflow-hidden rounded-[20px]">
       <Image
         src={image}
