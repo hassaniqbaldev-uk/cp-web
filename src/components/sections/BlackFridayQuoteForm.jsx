@@ -1,9 +1,8 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
-import { ArrowUpRight, ChevronLeft } from "lucide-react";
+import { useState } from "react";
+import { ArrowUpRight, ChevronLeft, Sparkles } from "lucide-react";
 import Image from "next/image";
-import Cal, { getCalApi } from "@calcom/embed-react";
 import BookCallButton from "../ui/BookCallButton";
 import HoneypotField from "../ui/HoneypotField";
 import useSpamProtection from "@/utils/useSpamProtection";
@@ -20,6 +19,12 @@ const jobTypes = [
 const contactMethods = [
   { id: "email", label: "Email" },
   { id: "call", label: "Call back" },
+];
+
+const successPoints = [
+  "We reply from a real person, usually within hours",
+  "You get a fixed quote, with clear timelines",
+  "Say yes, and we start on the job",
 ];
 
 const TOTAL_STEPS = 3;
@@ -112,58 +117,6 @@ const BlackFridayQuoteForm = () => {
   const { honeypotProps, preload, getSpamFields } =
     useSpamProtection("black_friday");
 
-  // Wrapper around the inline <Cal> embed, used to stop its auto-scroll.
-  const calWrapRef = useRef(null);
-
-  // Cal's inline embed scrolls the page back to the top of the calendar on
-  // every step change (embed-core has no flag to disable it), which yanks the
-  // view around after picking a date/time. Neutralise scrollIntoView on the
-  // <cal-inline> element once Cal has created it.
-  useEffect(() => {
-    if (!submitted) return;
-
-    const wrap = calWrapRef.current;
-    if (!wrap) return;
-
-    const patch = () => {
-      const inline = wrap.querySelector("cal-inline");
-      if (inline && !inline.dataset.noAutoscroll) {
-        inline.scrollIntoView = () => {};
-        inline.dataset.noAutoscroll = "true";
-        return true;
-      }
-      return false;
-    };
-
-    if (patch()) return;
-
-    const observer = new MutationObserver(() => {
-      if (patch()) observer.disconnect();
-    });
-
-    observer.observe(wrap, { childList: true, subtree: true });
-
-    return () => observer.disconnect();
-  }, [submitted]);
-
-  // Register the inline booking calendar shown on the thank-you screen. Uses
-  // its own namespace so it doesn't clash with the popup BookCallButton.
-  useEffect(() => {
-    (async () => {
-      const cal = await getCalApi({ namespace: "bf-thankyou" });
-
-      cal("ui", {
-        theme: "light",
-        cssVarsPerTheme: {
-          light: { "cal-brand": "#292929" },
-          dark: { "cal-brand": "#FF37B3" },
-        },
-        hideEventTypeDetails: true,
-        layout: "month_view",
-      });
-    })();
-  }, []);
-
   const submit = async () => {
     // Validation failures just turn the offending fields' borders red
     // (no message).
@@ -239,33 +192,41 @@ const BlackFridayQuoteForm = () => {
           hours — from a real human, not an auto-responder.
         </p>
 
-        <div className="mt-[25px]">
-          <h3 className="text-[16px] font-bold tracking-[-0.02em] text-black">
-            Want to talk it through? Grab a time that suits you.
-          </h3>
+        <ul className="mt-[25px] flex flex-col gap-[14px]">
+          {successPoints.map((point, index) => (
+            <li key={point} className="flex items-center gap-[12px]">
+              <span className="bg-dark-pink flex size-[22px] shrink-0 items-center justify-center rounded-full text-[12px] font-bold text-white">
+                {index + 1}
+              </span>
 
-          <div
-            ref={calWrapRef}
-            className="mt-[14px] overflow-hidden rounded-[12px] border border-black/10"
-          >
-            <Cal
-              namespace="bf-thankyou"
-              calLink="hassan-iqbal-mznzu9/15min"
-              style={{ width: "100%", height: "350px", overflow: "scroll" }}
-              config={{
-                layout: "month_view",
-                theme: "light",
-                name: data.name,
-                email: data.email,
-              }}
-            />
-          </div>
+              <span className="text-[14px] tracking-[-0.02em] text-black">
+                {point}
+              </span>
+            </li>
+          ))}
+        </ul>
+
+        <div className="mt-[25px] flex items-start gap-[10px] rounded-[10px] bg-[#FFF6EC] p-[16px]">
+          <Sparkles
+            size={18}
+            strokeWidth={2}
+            className="text-orange mt-[2px] shrink-0"
+          />
+
+          <p className="text-[13px] leading-[20px] tracking-[-0.02em] text-black">
+            <span className="font-bold">Your Black Friday rate is held.</span>{" "}
+            Book your first job by 30 November and it’s yours for 6 months.
+          </p>
         </div>
+
+        <BookCallButton className="mt-[25px] w-full gap-[10px] rounded-full border border-black py-[16px] text-[14px] font-extrabold tracking-[-0.02em] text-black uppercase transition-colors hover:bg-black hover:text-white">
+          Prefer to talk? Book a 15-min call
+        </BookCallButton>
 
         <button
           type="button"
           onClick={reset}
-          className="mt-[20px] flex w-full items-center justify-center gap-[10px] rounded-full bg-black py-[16px] text-[14px] font-extrabold tracking-[-0.02em] text-white uppercase transition-opacity hover:opacity-90"
+          className="mt-[12px] flex w-full items-center justify-center gap-[10px] rounded-full bg-black py-[16px] text-[14px] font-extrabold tracking-[-0.02em] text-white uppercase transition-opacity hover:opacity-90"
         >
           Add another query
           <ArrowUpRight size={18} strokeWidth={2.5} />
@@ -485,6 +446,7 @@ const BlackFridayQuoteForm = () => {
           Book a 15-min call
         </BookCallButton>
       </p>
+
     </div>
   );
 };
