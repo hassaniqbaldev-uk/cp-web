@@ -11,9 +11,40 @@ import BlackFridayCta from "@/components/sections/BlackFridayCta";
 import BlackFridayFooter from "@/components/layout/BlackFridayFooter";
 import Image from "next/image";
 
-// Keep this page out of search engines while it's only deployed for testing.
-// Remove (or set index: true) before the real launch.
+const title = "Black Friday: 25% Off for 6 Months | CreativePixels";
+const description =
+  "Agencies this Black Friday, get 25% off CreativePixels for 6 months. Senior WordPress, WooCommerce, Shopify and design help from $30/hr. Limited spots.";
+const ogImage = "/images/og-image-assets/og-image-compressed.jpg";
+
 export const metadata = {
+  title,
+  description,
+  alternates: { canonical: "/black-friday" },
+
+  openGraph: {
+    title,
+    description,
+    url: "/black-friday",
+    type: "website",
+    images: [
+      {
+        url: ogImage,
+        width: 2400,
+        height: 1260,
+        alt: "CreativePixels Black Friday — 25% off for 6 months",
+      },
+    ],
+  },
+
+  twitter: {
+    card: "summary_large_image",
+    title,
+    description,
+    images: [ogImage],
+  },
+
+  // Keep this page out of search engines while it's only deployed for testing.
+  // Remove (or set index: true) before the real launch.
   robots: { index: false, follow: false },
 };
 
