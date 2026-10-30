@@ -62,6 +62,7 @@ const WorkCard = ({ image, title, category, href }) => (
         fill
         sizes="(max-width: 480px) 85vw, (max-width: 1200px) 33vw, 380px"
         className="object-cover transition-transform duration-500 ease-out group-hover:scale-105"
+        unoptimized
       />
     </div>
 

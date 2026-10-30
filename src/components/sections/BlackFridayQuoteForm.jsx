@@ -56,6 +56,10 @@ const isValidPhone = (value) => {
   return digits.length >= 7 && digits.length <= 15;
 };
 
+// A website just needs to look like a domain: a dot + TLD and no spaces.
+const isLikelyUrl = (value) =>
+  /\.[a-z]{2,}/i.test(value.trim()) && !/\s/.test(value.trim());
+
 const fieldClassName =
   "w-full rounded-[10px] border border-black/15 px-[16px] py-[12px] text-[16px] tracking-[-0.02em] text-black placeholder:text-text-body/50 focus:border-black focus:outline-none";
 
@@ -105,13 +109,38 @@ const BlackFridayQuoteForm = () => {
   };
 
   const next = () => {
-    // Website is required; catch it on step 2 so it can't be missed on step 3.
-    if (step === 2 && !data.website.trim()) {
+    // Website is optional, but if one is typed it must look like a URL.
+    if (step === 2 && data.website.trim() && !isLikelyUrl(data.website)) {
       setErrors((current) => ({ ...current, website: true }));
       return;
     }
 
     setStep((current) => Math.min(current + 1, TOTAL_STEPS));
+  };
+
+  // Enter key advances / submits (the card is a <form>).
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    if (step === TOTAL_STEPS) submit();
+    else next();
+  };
+
+  // Validate a field when the user leaves it, so typos surface early. An empty
+  // field isn't flagged here (that happens when they try to advance/submit).
+  const validateOnBlur = (key) => () => {
+    const value = data[key] ?? "";
+    if (!value.trim()) return;
+
+    const invalid =
+      key === "email"
+        ? !isValidEmail(value)
+        : key === "phone"
+          ? !isValidPhone(value)
+          : key === "website"
+            ? !isLikelyUrl(value)
+            : false;
+
+    if (invalid) setErrors((current) => ({ ...current, [key]: true }));
   };
 
   // Step 1: picking a job type auto-advances to step 2 (short delay so the
@@ -150,6 +179,7 @@ const BlackFridayQuoteForm = () => {
   // Scroll back to the top of the form card whenever the step changes (or the
   // thank-you screen appears), so a taller step doesn't leave the user mid-form.
   const cardRef = useRef(null);
+  const firstFieldRef = useRef(null);
   const firstRender = useRef(true);
 
   useEffect(() => {
@@ -159,6 +189,8 @@ const BlackFridayQuoteForm = () => {
     }
 
     cardRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+    // Autofocus the first text field of the new step (steps 2 & 3 only).
+    firstFieldRef.current?.focus({ preventScroll: true });
   }, [step, submitted]);
 
   const submit = async () => {
@@ -253,7 +285,23 @@ const BlackFridayQuoteForm = () => {
   }
 
   return (
-    <div ref={cardRef} className={cardClassName} onFocus={preload}>
+    <form
+      ref={cardRef}
+      className={cardClassName}
+      onFocus={preload}
+      onSubmit={handleSubmit}
+      noValidate
+    >
+      {/* Offer badge at the top of the form */}
+      <div className="mx-auto mb-[20px] flex w-max max-w-full rounded-full bg-black px-[16px] py-[8px]">
+        <p className="text-center text-[12px] font-bold tracking-[-0.02em] text-white max-sm:text-[11px]">
+          Black Friday: 25% off for 6 months.{" "}
+          <span className="bg-[linear-gradient(90deg,var(--color-dark-pink)_0%,var(--color-orange)_100%)] bg-clip-text text-transparent">
+            8 spots only.
+          </span>
+        </p>
+      </div>
+
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-[12px]">
           {step > 1 && (
@@ -319,17 +367,28 @@ const BlackFridayQuoteForm = () => {
           <div>
             <label htmlFor="quote-website" className={labelClassName}>
               Website URL
-              <RequiredMark />
             </label>
 
             <input
+              ref={firstFieldRef}
               id="quote-website"
               type="text"
               placeholder="yoursite.com"
               value={data.website}
               onChange={set("website")}
+              onBlur={validateOnBlur("website")}
+              aria-invalid={errors.website ? true : undefined}
+              aria-describedby={
+                errors.website ? "quote-website-error" : undefined
+              }
               className={`${fieldClassName} ${errors.website ? "border-[#D33]!" : ""}`}
             />
+
+            {errors.website && (
+              <span id="quote-website-error" className="sr-only">
+                Please enter a valid website URL.
+              </span>
+            )}
           </div>
 
           <div>
@@ -359,14 +418,23 @@ const BlackFridayQuoteForm = () => {
               </label>
 
               <input
+                ref={firstFieldRef}
                 id="quote-name"
                 type="text"
                 autoComplete="name"
                 placeholder="Sarah"
                 value={data.name}
                 onChange={set("name")}
+                aria-invalid={errors.name ? true : undefined}
+                aria-describedby={errors.name ? "quote-name-error" : undefined}
                 className={`${fieldClassName} ${errors.name ? "border-[#D33]!" : ""}`}
               />
+
+              {errors.name && (
+                <span id="quote-name-error" className="sr-only">
+                  Please enter your name.
+                </span>
+              )}
             </div>
 
             <div>
@@ -399,8 +467,19 @@ const BlackFridayQuoteForm = () => {
                 placeholder="name@agency.co.uk"
                 value={data.email}
                 onChange={set("email")}
+                onBlur={validateOnBlur("email")}
+                aria-invalid={errors.email ? true : undefined}
+                aria-describedby={
+                  errors.email ? "quote-email-error" : undefined
+                }
                 className={`${fieldClassName} ${errors.email ? "border-[#D33]!" : ""}`}
               />
+
+              {errors.email && (
+                <span id="quote-email-error" className="sr-only">
+                  Please enter a valid email address.
+                </span>
+              )}
             </div>
 
             <div>
@@ -415,8 +494,19 @@ const BlackFridayQuoteForm = () => {
                 placeholder="07123 456789"
                 value={data.phone}
                 onChange={set("phone")}
+                onBlur={validateOnBlur("phone")}
+                aria-invalid={errors.phone ? true : undefined}
+                aria-describedby={
+                  errors.phone ? "quote-phone-error" : undefined
+                }
                 className={`${fieldClassName} ${errors.phone ? "border-[#D33]!" : ""}`}
               />
+
+              {errors.phone && (
+                <span id="quote-phone-error" className="sr-only">
+                  Please enter a valid phone number.
+                </span>
+              )}
             </div>
           </div>
 
@@ -442,8 +532,7 @@ const BlackFridayQuoteForm = () => {
       <HoneypotField {...honeypotProps} />
 
       <button
-        type="button"
-        onClick={step === TOTAL_STEPS ? submit : next}
+        type="submit"
         disabled={submitting}
         className="mt-[33px] flex w-full items-center justify-center gap-[10px] rounded-full bg-black py-[15px] text-[18px] font-extrabold tracking-[-0.02em] text-white uppercase disabled:opacity-60"
       >
@@ -461,13 +550,17 @@ const BlackFridayQuoteForm = () => {
         </p>
       )}
 
-      <p className="text-text-body mt-[14px] text-center text-[12px] tracking-[-0.02em]">
+      <p className="text-text-body/70 mt-[12px] text-center text-[12px] tracking-[-0.02em]">
+        No obligation · A real person replies · We never share your details
+      </p>
+
+      <p className="text-text-body mt-[10px] text-center text-[12px] tracking-[-0.02em]">
         Prefer to talk?{" "}
         <BookCallButton className="font-bold underline underline-offset-2 hover:text-black">
           Book a 15-min call
         </BookCallButton>
       </p>
-    </div>
+    </form>
   );
 };
 
