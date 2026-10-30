@@ -7,7 +7,7 @@ import Image from "next/image";
 import { Play } from "lucide-react";
 
 const foundersFilm = {
-  src: "/videos/origin-story.mp4",
+  src: "/images/black-friday/hassan-video.mp4",
   poster: "/images/home/hassan-about-img.png",
 };
 
@@ -76,7 +76,7 @@ const BlackFridayFounder = () => {
             </p>
           </div>
 
-          <div className="relative h-[337px] w-full overflow-hidden rounded-[20px] bg-[#D9D9D9] max-sm:h-[240px]">
+          <div className="relative h-[400px] w-full overflow-hidden rounded-[20px] bg-[#D9D9D9] max-xl:h-[500px] max-sm:h-[240px]">
             <video
               ref={videoRef}
               playsInline
@@ -85,7 +85,7 @@ const BlackFridayFounder = () => {
               controls={isPlaying}
               onPlay={() => setIsPlaying(true)}
               onPause={() => setIsPlaying(false)}
-              className="h-full w-full object-cover object-top"
+              className="h-full w-full object-cover object-top-left"
             >
               <source src={foundersFilm.src} type="video/mp4" />
               Your browser does not support the video tag.
@@ -106,7 +106,7 @@ const BlackFridayFounder = () => {
                   <Play size={12} className="fill-white text-white" />
 
                   <span className="text-[12px] tracking-[-0.02em] text-white">
-                    How we work · 1 min
+                    How we work
                   </span>
                 </span>
               </>

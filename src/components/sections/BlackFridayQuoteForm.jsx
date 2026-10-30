@@ -142,7 +142,9 @@ const BlackFridayQuoteForm = () => {
     const fieldErrors = {
       name: !data.name.trim(),
       email: !isValidEmail(data.email),
-      phone: !isValidPhone(data.phone),
+      // Phone is optional; only flag it when something was typed but isn't a
+      // valid number.
+      phone: data.phone.trim() ? !isValidPhone(data.phone) : false,
     };
 
     if (fieldErrors.name || fieldErrors.email || fieldErrors.phone) {
@@ -378,7 +380,6 @@ const BlackFridayQuoteForm = () => {
             <div>
               <label htmlFor="quote-phone" className={labelClassName}>
                 Phone
-                <RequiredMark />
               </label>
 
               <input

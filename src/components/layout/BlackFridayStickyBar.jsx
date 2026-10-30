@@ -24,8 +24,8 @@ const BlackFridayStickyBar = () => {
       const y = window.scrollY;
 
       setShow((prev) => {
-        if (!prev && y > window.innerHeight * 0.75) return true;
-        if (prev && y < window.innerHeight * 0.5) return false;
+        if (!prev && y > window.innerHeight * 1.5) return true;
+        if (prev && y < window.innerHeight * 1.1) return false;
         return prev;
       });
     };
