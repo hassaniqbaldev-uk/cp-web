@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { ArrowUpRight, ChevronLeft } from "lucide-react";
 import Image from "next/image";
 import BookCallButton from "../ui/BookCallButton";
@@ -25,7 +25,7 @@ const contactMethods = [
 const TOTAL_STEPS = 3;
 
 const initialData = {
-  jobType: "wordpress",
+  jobType: "",
   website: "",
   details: "",
   engagement: "one-off",
@@ -70,7 +70,7 @@ const RequiredMark = () => (
   </span>
 );
 
-const OptionPill = ({ name, value, label, checked, onChange }) => (
+const OptionPill = ({ name, value, label, checked, onChange, onClick }) => (
   <label className="group has-[:checked]:bg-grey flex cursor-pointer items-center gap-[10px] rounded-full border border-black/15 px-[18px] py-[12px] transition-colors has-[:checked]:border-transparent max-sm:gap-[5px]">
     <input
       type="radio"
@@ -78,6 +78,7 @@ const OptionPill = ({ name, value, label, checked, onChange }) => (
       value={value}
       checked={checked}
       onChange={onChange}
+      onClick={onClick}
       className="sr-only"
     />
 
@@ -113,6 +114,16 @@ const BlackFridayQuoteForm = () => {
     setStep((current) => Math.min(current + 1, TOTAL_STEPS));
   };
 
+  // Step 1: picking a job type auto-advances to step 2 (short delay so the
+  // selection is visible first). Fires on click so re-selecting the already
+  // highlighted default option still advances.
+  const goToStep2 = () => {
+    window.setTimeout(
+      () => setStep((current) => (current === 1 ? 2 : current)),
+      200,
+    );
+  };
+
   const back = () => {
     setError("");
     setStep((current) => Math.max(current - 1, 1));
@@ -135,6 +146,20 @@ const BlackFridayQuoteForm = () => {
 
   const { honeypotProps, preload, getSpamFields } =
     useSpamProtection("black_friday");
+
+  // Scroll back to the top of the form card whenever the step changes (or the
+  // thank-you screen appears), so a taller step doesn't leave the user mid-form.
+  const cardRef = useRef(null);
+  const firstRender = useRef(true);
+
+  useEffect(() => {
+    if (firstRender.current) {
+      firstRender.current = false;
+      return;
+    }
+
+    cardRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+  }, [step, submitted]);
 
   const submit = async () => {
     // Validation failures just turn the offending fields' borders red
@@ -179,11 +204,11 @@ const BlackFridayQuoteForm = () => {
   };
 
   const cardClassName =
-    "w-[540px] shrink-0 rounded-[20px] bg-white p-[30px] max-xl:w-full max-sm:p-[20px]";
+    "w-[540px] shrink-0 scroll-mt-[120px] rounded-[20px] bg-white p-[30px] max-xl:w-full max-sm:p-[20px]";
 
   if (submitted) {
     return (
-      <div className={cardClassName}>
+      <div ref={cardRef} className={cardClassName}>
         <div className="flex items-center gap-[12px]">
           <Image
             src="/images/home/hassan-avatar-img.png"
@@ -228,7 +253,7 @@ const BlackFridayQuoteForm = () => {
   }
 
   return (
-    <div className={cardClassName} onFocus={preload}>
+    <div ref={cardRef} className={cardClassName} onFocus={preload}>
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-[12px]">
           {step > 1 && (
@@ -281,6 +306,7 @@ const BlackFridayQuoteForm = () => {
                   label={label}
                   checked={data.jobType === id}
                   onChange={set("jobType")}
+                  onClick={goToStep2}
                 />
               ))}
             </div>

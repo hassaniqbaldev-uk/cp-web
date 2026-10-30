@@ -38,7 +38,7 @@ const BlackFridayHero = () => {
           className="hidden object-cover max-sm:block"
         />
 
-        <Starfield className="absolute top-1/2 right-0 h-[916px] w-[245px] -translate-y-1/2 max-sm:top-auto max-sm:right-auto max-sm:bottom-0 max-sm:left-0 max-sm:h-[200px] max-sm:w-full max-sm:translate-y-0" />
+        <Starfield className="absolute top-0 right-[-50px] z-0 h-full w-[260px] mask-[radial-gradient(ellipse_at_center,#000_25%,transparent_72%)]" />
       </div>
 
       <Container className="relative z-10 pt-[180px] pb-[100px] max-xl:px-[40px] max-sm:px-[20px] max-sm:pt-[130px] max-sm:pb-[60px]">

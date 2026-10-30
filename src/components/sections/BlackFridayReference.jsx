@@ -23,7 +23,9 @@ const BlackFridayReference = () => {
       <div className="pointer-events-none absolute inset-0 z-0 mx-auto max-w-[1440px]">
         <div className="absolute inset-0 bg-[radial-gradient(117.98%_81.75%_at_76.32%_0%,rgba(0,0,0,0.6)_0%,#000000_45%)]" />
 
-        <Starfield className="absolute right-0 bottom-0 h-[200px] w-[774px]" />
+        <div className="absolute top-0 left-1/2 h-full w-full max-w-[1440px] -translate-x-1/2">
+          <Starfield className="absolute right-0 bottom-[-50px] z-0 h-[200px] w-[770px] mask-[radial-gradient(ellipse_at_center,#000_25%,transparent_72%)]" />
+        </div>
       </div>
 
       <Container className="relative z-10 max-xl:px-[40px] max-sm:px-[20px]">
@@ -53,7 +55,7 @@ const BlackFridayReference = () => {
 
           <div className="gradient-border relative w-[520px] shrink-0 rounded-[20px] bg-white/20 p-[40px] backdrop-blur-[10px] [--gradient-border-image:linear-gradient(140.55deg,rgba(255,255,255,0)_7.24%,rgba(255,255,255,0.6)_47.59%,rgba(255,255,255,0)_76.61%)] [--gradient-border-width:1.24px] max-xl:w-full max-sm:p-[30px]">
             <p className="text-orange text-[18px] font-semibold tracking-[-0.02em] uppercase max-sm:text-[14px]">
-              Partner story
+              Partner Review
             </p>
 
             {/* <h3 className="mt-[7px] text-[35px] font-bold tracking-[-0.07em] text-white max-sm:text-[26px]">
