@@ -48,6 +48,7 @@ export const metadata = {
   robots: { index: false, follow: false },
 };
 
+// Black Friday campaign landing page.
 const BlackFriday = () => {
   return (
     <main>
