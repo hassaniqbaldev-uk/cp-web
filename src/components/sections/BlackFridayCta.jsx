@@ -24,7 +24,7 @@ const BlackFridayCta = () => {
 
             <p className="mt-[20px] max-w-[380px] text-[17px] leading-[26px] font-bold tracking-[-0.02em] text-[#E4E4E4] max-xl:mx-auto max-sm:max-w-[320px] max-sm:text-[14px] max-sm:leading-[20px]">
               Flexible milestones and a 3-month guarantee. Black Friday: 25%
-              off, 10 spots only.
+              off, 8 spots only.
             </p>
 
             <div className="mt-[30px] flex w-full flex-col gap-[20px]">
@@ -40,7 +40,10 @@ const BlackFridayCta = () => {
                 />
               </ScrollLink>
 
-              <BookCallButton className="w-full rounded-full border border-white/40 px-[24px] py-[14px] text-[18px] font-extrabold tracking-[-0.02em] text-white uppercase max-sm:text-[15px]">
+              <BookCallButton
+                source="footer"
+                className="w-full rounded-full border border-white/40 px-[24px] py-[14px] text-[18px] font-extrabold tracking-[-0.02em] text-white uppercase max-sm:text-[15px]"
+              >
                 Book a 15 min call
               </BookCallButton>
             </div>

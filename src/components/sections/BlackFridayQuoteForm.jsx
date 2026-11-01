@@ -7,9 +7,12 @@ import BookCallButton from "../ui/BookCallButton";
 import BlackFridayBooking from "./BlackFridayBooking";
 import HoneypotField from "../ui/HoneypotField";
 import useSpamProtection from "@/utils/useSpamProtection";
+import { initLeadSource, getLeadTouches } from "@/utils/leadSource";
+import { track, getLeadParams, mapJobType, newEventId } from "@/utils/track";
+import { LEAD_VALUE, TRACKING_CURRENCY } from "@/config/tracking";
 
 const jobTypes = [
-  { id: "wordpress", label: "Wordpress" },
+  { id: "wordpress", label: "WordPress" },
   { id: "woocommerce", label: "WooCommerce" },
   { id: "shopify", label: "Shopify" },
   { id: "seo", label: "SEO" },
@@ -108,13 +111,27 @@ const BlackFridayQuoteForm = () => {
     );
   };
 
+  // Fire bf_form_start once, on the first real interaction.
+  const startedRef = useRef(false);
+  const markStart = (jobType) => {
+    if (startedRef.current) return;
+    startedRef.current = true;
+    track("bf_form_start", { job_type: jobType ?? mapJobType(data.jobType) });
+  };
+
   const next = () => {
     // Website is optional, but if one is typed it must look like a URL.
     if (step === 2 && data.website.trim() && !isLikelyUrl(data.website)) {
       setErrors((current) => ({ ...current, website: true }));
+      track("bf_field_error", { step: 2, field: "website" });
       return;
     }
 
+    track("bf_step_complete", {
+      step,
+      job_type: mapJobType(data.jobType),
+      engagement: data.engagement,
+    });
     setStep((current) => Math.min(current + 1, TOTAL_STEPS));
   };
 
@@ -140,13 +157,23 @@ const BlackFridayQuoteForm = () => {
             ? !isLikelyUrl(value)
             : false;
 
-    if (invalid) setErrors((current) => ({ ...current, [key]: true }));
+    if (invalid) {
+      setErrors((current) => ({ ...current, [key]: true }));
+      track("bf_field_error", { step, field: key });
+    }
   };
 
-  // Step 1: picking a job type auto-advances to step 2 (short delay so the
-  // selection is visible first). Fires on click so re-selecting the already
-  // highlighted default option still advances.
-  const goToStep2 = () => {
+  // Step 1: picking a job type marks the form start, completes step 1 and
+  // auto-advances to step 2 (short delay so the selection is visible first).
+  // Fires on click so re-selecting the already highlighted option still works.
+  const onJobClick = (event) => {
+    const jobType = mapJobType(event.target.value);
+    markStart(jobType);
+    track("bf_step_complete", {
+      step: 1,
+      job_type: jobType,
+      engagement: data.engagement,
+    });
     window.setTimeout(
       () => setStep((current) => (current === 1 ? 2 : current)),
       200,
@@ -160,6 +187,8 @@ const BlackFridayQuoteForm = () => {
 
   // Clear the thank-you screen and start a fresh blank form.
   const reset = () => {
+    track("bf_add_another");
+    startedRef.current = false;
     setData(initialData);
     setStep(1);
     setError("");
@@ -181,6 +210,32 @@ const BlackFridayQuoteForm = () => {
   const cardRef = useRef(null);
   const firstFieldRef = useRef(null);
   const firstRender = useRef(true);
+
+  // Capture lead source (UTMs / referrer / click IDs) on page load.
+  useEffect(() => {
+    initLeadSource();
+  }, []);
+
+  // Fire bf_form_view once when the form is 50% in view.
+  const viewedRef = useRef(false);
+  useEffect(() => {
+    const el = cardRef.current;
+    if (!el || typeof IntersectionObserver === "undefined") return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !viewedRef.current) {
+          viewedRef.current = true;
+          track("bf_form_view");
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.5 },
+    );
+
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
 
   useEffect(() => {
     if (firstRender.current) {
@@ -206,30 +261,63 @@ const BlackFridayQuoteForm = () => {
 
     if (fieldErrors.name || fieldErrors.email || fieldErrors.phone) {
       setErrors(fieldErrors);
+      Object.entries(fieldErrors).forEach(([field, invalid]) => {
+        if (invalid) track("bf_field_error", { step: 3, field });
+      });
       return;
     }
+
+    // Step 3 passed validation.
+    track("bf_step_complete", {
+      step: 3,
+      job_type: mapJobType(data.jobType),
+      engagement: data.engagement,
+    });
 
     setErrors({});
     setError("");
     setSubmitting(true);
 
+    // Shared id for browser event + server CAPI de-duplication.
+    const eventId = newEventId();
+
     try {
+      const { first, last } = getLeadTouches();
+
       const response = await fetch("/api/black-friday", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...data, ...(await getSpamFields()) }),
+        body: JSON.stringify({
+          ...data,
+          firstTouch: first,
+          lastTouch: last,
+          eventId,
+          ...(await getSpamFields()),
+        }),
       });
 
       const result = await response.json().catch(() => ({}));
 
       if (!response.ok || !result.ok) {
         setError("Something went wrong. Please try again, or book a call.");
+        track("bf_form_error", { step: 3, error_type: "api" });
         return;
       }
 
       setSubmitted(true);
+      track("bf_form_submit", {
+        event_id: eventId,
+        job_type: mapJobType(data.jobType),
+        engagement: data.engagement,
+        contact_method: data.contact,
+        nda_requested: false,
+        ...getLeadParams(),
+        value: LEAD_VALUE,
+        currency: TRACKING_CURRENCY,
+      });
     } catch {
       setError("Something went wrong. Please try again, or book a call.");
+      track("bf_form_error", { step: 3, error_type: "network" });
     } finally {
       setSubmitting(false);
     }
@@ -288,7 +376,10 @@ const BlackFridayQuoteForm = () => {
     <form
       ref={cardRef}
       className={cardClassName}
-      onFocus={preload}
+      onFocus={() => {
+        preload();
+        markStart();
+      }}
       onSubmit={handleSubmit}
       noValidate
     >
@@ -354,7 +445,7 @@ const BlackFridayQuoteForm = () => {
                   label={label}
                   checked={data.jobType === id}
                   onChange={set("jobType")}
-                  onClick={goToStep2}
+                  onClick={onJobClick}
                 />
               ))}
             </div>

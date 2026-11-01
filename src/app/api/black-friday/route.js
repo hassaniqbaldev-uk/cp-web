@@ -4,8 +4,27 @@ import { checkSpam } from "@/lib/spamProtection";
 import { HONEYPOT_FIELD } from "@/lib/spamConfig";
 import { sendMail } from "@/lib/mail/smtp";
 import { blackFridayLeadEmail } from "@/lib/mail/templates/blackFridayLead";
+import { sendMetaEvent } from "@/lib/meta/capi";
+import { LEAD_VALUE } from "@/config/tracking";
 
 export const runtime = "nodejs";
+
+// Lead-source touch sent from the browser (UTMs / referrer / click IDs). All
+// fields optional and length-capped; unknown keys are stripped.
+const touchSchema = z
+  .object({
+    source: z.string().max(200).optional(),
+    medium: z.string().max(200).optional(),
+    campaign: z.string().max(200).optional(),
+    content: z.string().max(200).optional(),
+    term: z.string().max(200).optional(),
+    fbclid: z.string().max(500).optional(),
+    gclid: z.string().max(500).optional(),
+    referrer: z.string().max(1000).optional(),
+    landing_page: z.string().max(1000).optional(),
+    timestamp: z.string().max(40).optional(),
+  })
+  .nullish();
 
 const schema = z.object({
   jobType: z.string().max(100).default(""),
@@ -18,6 +37,9 @@ const schema = z.object({
   phone: z.string().max(60).default(""),
   contact: z.string().max(60).default(""),
   updates: z.boolean().default(false),
+  firstTouch: touchSchema,
+  lastTouch: touchSchema,
+  eventId: z.string().max(100).optional(),
   [HONEYPOT_FIELD]: z.string().optional(),
 });
 
@@ -63,6 +85,24 @@ export async function POST(request) {
       { status: 502 },
     );
   }
+
+  // Server-side Meta Conversions API (Lead), de-duplicated with the browser
+  // Pixel via the shared eventId. No-ops until META_CAPI_TOKEN is set.
+  const last = data.lastTouch || {};
+  await sendMetaEvent("Lead", {
+    request,
+    eventId: data.eventId,
+    email: data.email,
+    phone: data.phone,
+    value: LEAD_VALUE,
+    customData: {
+      job_type: data.jobType === "something-else" ? "other" : data.jobType || "",
+      lead_source: last.source || "",
+      lead_medium: last.medium || "",
+      lead_campaign: last.campaign || "",
+    },
+    fbclid: last.fbclid || "",
+  });
 
   return NextResponse.json({ ok: true });
 }

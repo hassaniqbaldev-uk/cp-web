@@ -20,11 +20,34 @@ const row = (label, value) =>
       </tr>`
     : "";
 
+// "source / medium / campaign [/ content]" from a touch object.
+const touchLine = (touch) => {
+  if (!touch) return "";
+  const parts = [touch.source, touch.medium, touch.campaign, touch.content]
+    .filter(Boolean)
+    .join(" / ");
+  return parts || "";
+};
+
+const shortDate = (iso) => {
+  if (!iso) return "";
+  const d = new Date(iso);
+  if (Number.isNaN(d.getTime())) return "";
+  return d.toLocaleDateString("en-GB", { day: "numeric", month: "short" });
+};
+
 // Builds the lead notification email from the Black Friday quote form data.
 export function blackFridayLeadEmail(data) {
   const subject = `Black Friday lead — ${data.name}${
     data.agency ? ` (${data.agency})` : ""
   }`;
+
+  const first = touchLine(data.firstTouch);
+  const firstVisit = shortDate(data.firstTouch?.timestamp);
+  const source = first
+    ? `${first}${firstVisit ? `  (first visit ${firstVisit})` : ""}`
+    : "";
+  const lastTouch = touchLine(data.lastTouch);
 
   const html = `
     <div style="font:14px/1.5 Arial,sans-serif;color:#111;">
@@ -38,6 +61,8 @@ export function blackFridayLeadEmail(data) {
         ${row("Job type", data.jobType)}
         ${row("Website", data.website)}
         ${row("Details", data.details)}
+        ${row("Source", source)}
+        ${row("Last touch", lastTouch)}
       </table>
     </div>`;
 

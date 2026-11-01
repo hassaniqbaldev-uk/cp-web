@@ -2,6 +2,9 @@
 
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { Check, ChevronLeft, ChevronRight, Loader2 } from "lucide-react";
+import { getLeadMetadata, getLeadTouches } from "@/utils/leadSource";
+import { track, getLeadParams, newEventId } from "@/utils/track";
+import { BOOKING_VALUE, TRACKING_CURRENCY } from "@/config/tracking";
 
 const WEEKDAYS = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
 const MONTHS = [
@@ -105,6 +108,11 @@ const BlackFridayBooking = ({ name = "", email = "" }) => {
     loadSlots();
   }, [loadSlots]);
 
+  // The inline calendar on the thank-you screen counts as a booking view.
+  useEffect(() => {
+    track("bf_booking_view", { source: "thank_you" });
+  }, []);
+
   // Earliest day with availability in the loaded month.
   const earliestOpenDay = useMemo(() => {
     const open = Object.keys(slots)
@@ -155,6 +163,10 @@ const BlackFridayBooking = ({ name = "", email = "" }) => {
     setBooking(true);
     setError("");
 
+    // Shared id for browser event + server CAPI (Schedule) de-duplication.
+    const eventId = newEventId();
+    const leadParams = getLeadParams();
+
     try {
       const res = await fetch("/api/cal/book", {
         method: "POST",
@@ -164,6 +176,10 @@ const BlackFridayBooking = ({ name = "", email = "" }) => {
           name,
           email,
           timeZone: tz,
+          metadata: getLeadMetadata(),
+          eventId,
+          leadSource: leadParams,
+          fbclid: getLeadTouches().last?.fbclid || "",
         }),
       });
 
@@ -180,6 +196,13 @@ const BlackFridayBooking = ({ name = "", email = "" }) => {
       }
 
       setBooked({ start: selectedTime });
+      track("bf_booking_complete", {
+        event_id: eventId,
+        source: "thank_you",
+        ...leadParams,
+        value: BOOKING_VALUE,
+        currency: TRACKING_CURRENCY,
+      });
     } catch {
       setError("Could not complete the booking. Please try again.");
     } finally {
@@ -316,7 +339,10 @@ const BlackFridayBooking = ({ name = "", email = "" }) => {
                     <button
                       key={slot.start}
                       type="button"
-                      onClick={() => setSelectedTime(slot.start)}
+                      onClick={() => {
+                        setSelectedTime(slot.start);
+                        track("bf_slot_selected");
+                      }}
                       className={`rounded-[8px] border py-[10px] text-center text-[13px] font-semibold tracking-[-0.02em] transition-colors ${
                         isSelected
                           ? "border-dark-pink bg-dark-pink text-white"

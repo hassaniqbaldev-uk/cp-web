@@ -1,4 +1,6 @@
 import { NextResponse } from "next/server";
+import { sendMetaEvent } from "@/lib/meta/capi";
+import { BOOKING_VALUE } from "@/config/tracking";
 
 const isValidEmail = (value) =>
   typeof value === "string" && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value.trim());
@@ -18,7 +20,8 @@ export async function POST(request) {
   }
 
   const body = await request.json().catch(() => ({}));
-  const { start, name, email, timeZone } = body;
+  const { start, name, email, timeZone, metadata, eventId, leadSource, fbclid } =
+    body;
 
   if (!start || !name?.trim() || !isValidEmail(email) || !timeZone) {
     return NextResponse.json(
@@ -26,6 +29,18 @@ export async function POST(request) {
       { status: 400 },
     );
   }
+
+  // Lead-source metadata: keep only non-empty string values, capped, so it's
+  // visible against the booking in Cal.com.
+  const cleanMetadata = {};
+  if (metadata && typeof metadata === "object") {
+    for (const [key, value] of Object.entries(metadata)) {
+      if (typeof value === "string" && value.trim()) {
+        cleanMetadata[String(key).slice(0, 40)] = value.slice(0, 500);
+      }
+    }
+  }
+  const hasMetadata = Object.keys(cleanMetadata).length > 0;
 
   try {
     // Cal's v2 booking-create endpoint authenticates the personal API key as a
@@ -48,6 +63,7 @@ export async function POST(request) {
           timeZone,
           language: "en",
         },
+        ...(hasMetadata ? { metadata: cleanMetadata } : {}),
       }),
       },
     );
@@ -73,6 +89,21 @@ export async function POST(request) {
         { status: taken ? 409 : 502 },
       );
     }
+
+    // Server-side Meta Conversions API (Schedule), de-duplicated with the
+    // browser Pixel via the shared eventId. No-ops until META_CAPI_TOKEN is set.
+    await sendMetaEvent("Schedule", {
+      request,
+      eventId,
+      email,
+      value: BOOKING_VALUE,
+      customData: {
+        lead_source: leadSource?.lead_source || "",
+        lead_medium: leadSource?.lead_medium || "",
+        lead_campaign: leadSource?.lead_campaign || "",
+      },
+      fbclid: fbclid || "",
+    });
 
     return NextResponse.json({ ok: true, data: result.data || {} });
   } catch {

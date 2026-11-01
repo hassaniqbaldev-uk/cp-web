@@ -48,7 +48,7 @@ const projects = [
     id: "lola-blake",
     image: "/images/black-friday/lola-thumbnail.jpg",
     title: "Lola & Blake",
-    category: "Wordpress",
+    category: "WooCommerce",
     href: "https://lolaandblake.co.uk/",
   },
 ];

@@ -259,6 +259,7 @@ const BlackFridayHeader = () => {
               </Button>
 
               <BookCallButton
+                source="menu"
                 onClick={close}
                 className="w-full rounded-full border border-white/40 px-[24px] py-[16px] text-[14px] font-extrabold tracking-[-0.02em] text-white uppercase"
               >
