@@ -31,7 +31,9 @@ const initialData = {
   jobType: "",
   website: "",
   details: "",
-  engagement: "one-off",
+  // No engagement selector on the form (kept short); "not_set" keeps the
+  // tracking reports honest rather than implying a choice the user never made.
+  engagement: "not_set",
   name: "",
   agency: "",
   email: "",
@@ -111,7 +113,8 @@ const BlackFridayQuoteForm = () => {
     );
   };
 
-  // Fire bf_form_start once, on the first real interaction.
+  // Fire bf_form_start once, on the first real interaction — which is always
+  // picking a job type (step 1), so the chosen job_type is included.
   const startedRef = useRef(false);
   const markStart = (jobType) => {
     if (startedRef.current) return;
@@ -120,11 +123,21 @@ const BlackFridayQuoteForm = () => {
   };
 
   const next = () => {
-    // Website is optional, but if one is typed it must look like a URL.
-    if (step === 2 && data.website.trim() && !isLikelyUrl(data.website)) {
-      setErrors((current) => ({ ...current, website: true }));
-      track("bf_field_error", { step: 2, field: "website" });
-      return;
+    if (step === 2) {
+      // The job description is required; the website is optional but, if typed,
+      // must look like a URL.
+      const stepErrors = {
+        details: !data.details.trim(),
+        website: data.website.trim() ? !isLikelyUrl(data.website) : false,
+      };
+
+      if (stepErrors.details || stepErrors.website) {
+        setErrors((current) => ({ ...current, ...stepErrors }));
+        Object.entries(stepErrors).forEach(([field, invalid]) => {
+          if (invalid) track("bf_field_error", { step: 2, field });
+        });
+        return;
+      }
     }
 
     track("bf_step_complete", {
@@ -310,7 +323,8 @@ const BlackFridayQuoteForm = () => {
         job_type: mapJobType(data.jobType),
         engagement: data.engagement,
         contact_method: data.contact,
-        nda_requested: false,
+        // No NDA checkbox on the form; "not_set" rather than a misleading false.
+        nda_requested: "not_set",
         ...getLeadParams(),
         value: LEAD_VALUE,
         currency: TRACKING_CURRENCY,
@@ -376,10 +390,7 @@ const BlackFridayQuoteForm = () => {
     <form
       ref={cardRef}
       className={cardClassName}
-      onFocus={() => {
-        preload();
-        markStart();
-      }}
+      onFocus={preload}
       onSubmit={handleSubmit}
       noValidate
     >
@@ -485,6 +496,7 @@ const BlackFridayQuoteForm = () => {
           <div>
             <label htmlFor="quote-details" className={labelClassName}>
               What needs doing?
+              <RequiredMark />
             </label>
 
             <textarea
@@ -493,8 +505,18 @@ const BlackFridayQuoteForm = () => {
               placeholder="e.g. Fix the checkout on a WooCommerce store, move a site to a new host…"
               value={data.details}
               onChange={set("details")}
-              className={`${fieldClassName} resize-none`}
+              aria-invalid={errors.details ? true : undefined}
+              aria-describedby={
+                errors.details ? "quote-details-error" : undefined
+              }
+              className={`${fieldClassName} resize-none ${errors.details ? "border-[#D33]!" : ""}`}
             />
+
+            {errors.details && (
+              <span id="quote-details-error" className="sr-only">
+                Please tell us what needs doing.
+              </span>
+            )}
           </div>
         </div>
       )}
