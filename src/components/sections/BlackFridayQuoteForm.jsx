@@ -1,14 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import {
-  ArrowUpRight,
-  ChevronLeft,
-  HelpCircle,
-  Printer,
-  Search,
-  ShoppingBag,
-} from "lucide-react";
+import { ArrowUpRight, ChevronLeft } from "lucide-react";
 import Image from "next/image";
 import BookCallButton from "../ui/BookCallButton";
 import BlackFridayBooking from "./BlackFridayBooking";
@@ -18,52 +11,13 @@ import { initLeadSource, getLeadTouches } from "@/utils/leadSource";
 import { track, getLeadParams, mapJobType, newEventId } from "@/utils/track";
 import { LEAD_VALUE, TRACKING_CURRENCY } from "@/config/tracking";
 
-// Each option is tinted with its brand colour and shows a brand-coloured icon
-// on a white circle. WordPress and WooCommerce use coloured brand SVGs; the
-// rest use lucide glyphs tinted with `color`. `tint` is the pill background.
 const jobTypes = [
-  {
-    id: "wordpress",
-    label: "WordPress",
-    color: "#21759B",
-    tint: "bg-[#EDF4F7]",
-    icon: { img: "/icons/wordpress-icon-color.svg" },
-  },
-  {
-    id: "woocommerce",
-    label: "WooCommerce",
-    color: "#7F54B3",
-    tint: "bg-[#F5F1F9]",
-    icon: { img: "/icons/woocommerce-icon-color.svg" },
-  },
-  {
-    id: "shopify",
-    label: "Shopify",
-    color: "#5E8E3E",
-    tint: "bg-[#F2F6F0]",
-    icon: { Glyph: ShoppingBag },
-  },
-  {
-    id: "seo",
-    label: "SEO",
-    color: "#2563EB",
-    tint: "bg-[#EEF3FD]",
-    icon: { Glyph: Search },
-  },
-  {
-    id: "print",
-    label: "Print",
-    color: "#475569",
-    tint: "bg-[#F0F1F3]",
-    icon: { Glyph: Printer },
-  },
-  {
-    id: "something-else",
-    label: "Something else",
-    color: "#EC4899",
-    tint: "bg-[#FDF0F7]",
-    icon: { Glyph: HelpCircle },
-  },
+  { id: "wordpress", label: "WordPress" },
+  { id: "woocommerce", label: "WooCommerce" },
+  { id: "shopify", label: "Shopify" },
+  { id: "seo", label: "SEO" },
+  { id: "print", label: "Print" },
+  { id: "something-else", label: "Something else" },
 ];
 
 const contactMethods = [
@@ -125,65 +79,27 @@ const RequiredMark = () => (
   </span>
 );
 
-const OptionPill = ({
-  name,
-  value,
-  label,
-  checked,
-  onChange,
-  onClick,
-  icon,
-  color,
-  tint,
-}) => {
-  const Glyph = icon?.Glyph;
+const OptionPill = ({ name, value, label, checked, onChange, onClick }) => (
+  <label className="group has-[:checked]:bg-grey flex cursor-pointer items-center gap-[10px] rounded-full border border-black/15 px-[18px] py-[12px] transition-colors has-[:checked]:border-transparent max-sm:gap-[5px]">
+    <input
+      type="radio"
+      name={name}
+      value={value}
+      checked={checked}
+      onChange={onChange}
+      onClick={onClick}
+      className="sr-only"
+    />
 
-  // Tinted variant (job types): brand-tinted pill, icon on a white circle.
-  // Plain variant (contact methods): the original grey-on-checked pill.
-  const pillClass = tint
-    ? `${tint} border border-transparent has-[:checked]:ring-1 has-[:checked]:ring-black/15`
-    : "has-[:checked]:bg-grey border border-black/15 has-[:checked]:border-transparent";
+    <span className="flex size-[14px] shrink-0 items-center justify-center rounded-full border border-black/30 group-has-[:checked]:border-black">
+      <span className="size-[6px] scale-0 rounded-full bg-black transition-transform group-has-[:checked]:scale-100" />
+    </span>
 
-  return (
-    <label
-      className={`group flex cursor-pointer items-center gap-[10px] rounded-full px-[16px] py-[10px] transition-colors max-sm:gap-[8px] max-sm:px-[12px] ${pillClass}`}
-    >
-      <input
-        type="radio"
-        name={name}
-        value={value}
-        checked={checked}
-        onChange={onChange}
-        onClick={onClick}
-        className="sr-only"
-      />
-
-      <span className="flex size-[14px] shrink-0 items-center justify-center rounded-full border border-black/30 group-has-[:checked]:border-black">
-        <span className="size-[6px] scale-0 rounded-full bg-black transition-transform group-has-[:checked]:scale-100" />
-      </span>
-
-      {icon && (
-        <span className="flex size-[26px] shrink-0 items-center justify-center rounded-full bg-white shadow-[0_1px_2px_rgba(0,0,0,0.08)] max-sm:size-[24px]">
-          {icon.img ? (
-            <Image
-              src={icon.img}
-              alt=""
-              width={15}
-              height={15}
-              className="size-[15px]"
-            />
-          ) : (
-            Glyph && <Glyph size={15} strokeWidth={2.2} color={color} />
-          )}
-        </span>
-      )}
-
-      <span className="truncate text-[14px] tracking-[-0.02em] text-black max-sm:text-[12px]">
-        {label}
-      </span>
-    </label>
-  );
-};
+    <span className="text-[14px] tracking-[-0.02em] text-black max-sm:text-[12px]">
+      {label}
+    </span>
+  </label>
+);
 
 const BlackFridayQuoteForm = () => {
   const [step, setStep] = useState(1);
@@ -531,16 +447,13 @@ const BlackFridayQuoteForm = () => {
           <fieldset className="mt-[30px]">
             <legend className="sr-only">What do you need help with?</legend>
 
-            <div className="grid grid-cols-2 gap-[10px] max-sm:grid-cols-1 max-sm:text-[14px]">
-              {jobTypes.map(({ id, label, icon, color, tint }) => (
+            <div className="grid grid-cols-2 gap-[10px] max-sm:text-[14px]">
+              {jobTypes.map(({ id, label }) => (
                 <OptionPill
                   key={id}
                   name="job-type"
                   value={id}
                   label={label}
-                  icon={icon}
-                  color={color}
-                  tint={tint}
                   checked={data.jobType === id}
                   onChange={set("jobType")}
                   onClick={onJobClick}
