@@ -707,3 +707,28 @@ body.hide-recaptcha-badge .grecaptcha-badge {
     z-index: -1;
   }
 }
+
+/* Store Review "Live stores" carousel: the active (centred) card is full size
+   and the side cards scale down. We scale the inner .store-card (not the
+   .swiper-slide), because Swiper sets its own inline transform on the slide
+   elements in loop mode, which would override a scale set here. The slot width
+   stays fixed, so Swiper never re-measures — the motion stays smooth. */
+.live-stores-swiper .swiper-slide .store-card {
+  transform: scale(0.8);
+  transition: transform 0.45s ease;
+}
+
+.live-stores-swiper .swiper-slide-active .store-card {
+  transform: scale(1);
+}
+
+/* The badge + info pill overlay appears only on the active (centre) card; the
+   side cards show just the thumbnail. */
+.live-stores-swiper .swiper-slide .store-overlay {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.live-stores-swiper .swiper-slide-active .store-overlay {
+  opacity: 1;
+}
