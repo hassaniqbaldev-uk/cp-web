@@ -105,18 +105,18 @@ const BlackFridayProcess = () => {
   return (
     <Section
       id="how-it-works"
-      className="bg-[#EAF0FF] py-[80px] max-sm:py-[60px]"
+      className="bg-[#EAF0FF] py-[80px] max-bf-sm:py-[60px]"
     >
-      <Container className="max-xl:px-[40px] max-sm:px-[20px]">
-        <p className="text-center text-[22px] font-medium tracking-[-0.02em] text-black uppercase max-sm:text-[14px]">
+      <Container className="max-bf-xl:px-[40px] max-bf-sm:px-[20px]">
+        <p className="text-center text-[22px] font-medium tracking-[-0.02em] text-black uppercase max-bf-sm:text-[14px]">
           How it works
         </p>
 
-        <h2 className="mt-[10px] text-center text-[52px] leading-[56px] font-extrabold tracking-[-0.07em] text-black max-sm:mx-auto max-sm:max-w-[190px] max-sm:text-[30px] max-sm:leading-[34px]">
+        <h2 className="mt-[10px] text-center text-[52px] leading-[56px] font-extrabold tracking-[-0.07em] text-black max-bf-sm:mx-auto max-bf-sm:max-w-[190px] max-bf-sm:text-[30px] max-bf-sm:leading-[34px]">
           Start small. <span className="text-black/40">Pay as we go.</span>
         </h2>
 
-        <div className="relative mt-[94px] max-xl:hidden">
+        <div className="relative mt-[94px] max-bf-xl:hidden">
           <div className="grid grid-cols-3">
             {steps.map(({ num }) => (
               <span
@@ -163,7 +163,7 @@ const BlackFridayProcess = () => {
           </div>
         </div>
 
-        <div className="hidden max-xl:mt-[40px] max-xl:flex max-xl:flex-col max-xl:gap-[45px]">
+        <div className="hidden max-bf-xl:mt-[40px] max-bf-xl:flex max-bf-xl:flex-col max-bf-xl:gap-[45px]">
           {steps.map(({ num, title, description }) => (
             <div key={num} className="text-center">
               <span className="bg-[linear-gradient(180deg,#A8C6FF_-32.95%,rgba(168,198,255,0)_134.08%)] bg-clip-text text-[90px] leading-none font-extrabold tracking-[-0.04em] text-transparent">
@@ -192,7 +192,7 @@ const BlackFridayProcess = () => {
           ))}
         </div>
 
-        <div className="mt-[60px] rounded-[20px] bg-white p-[40px] max-sm:mt-[40px] max-sm:p-[20px]">
+        <div className="mt-[60px] rounded-[20px] bg-white p-[40px] max-bf-sm:mt-[40px] max-bf-sm:p-[20px]">
           <p className="text-text-body max-bf-sm:mx-auto max-bf-sm:max-w-[300px] text-center text-[16px] tracking-[-0.02em]">
             <span className="font-bold text-black">
               We work in the tools you already use.
@@ -201,13 +201,13 @@ const BlackFridayProcess = () => {
           </p>
 
           <div className="max-bf-sm:max-w-[280px] max-bf-sm:mx-auto">
-            <div className="mt-[30px] flex flex-wrap items-center justify-center gap-[40px] max-sm:mt-[25px] max-sm:gap-[20px]">
+            <div className="mt-[30px] flex flex-wrap items-center justify-center gap-[40px] max-bf-sm:mt-[25px] max-bf-sm:gap-[20px]">
               {toolsRowOne.map((tool) => (
                 <ToolLogo key={tool.id} {...tool} />
               ))}
             </div>
 
-            <div className="mt-[20px] flex flex-wrap items-center justify-center gap-[40px] max-sm:gap-[20px]">
+            <div className="mt-[20px] flex flex-wrap items-center justify-center gap-[40px] max-bf-sm:gap-[20px]">
               {toolsRowTwo.map((tool) => (
                 <ToolLogo key={tool.id} {...tool} />
               ))}

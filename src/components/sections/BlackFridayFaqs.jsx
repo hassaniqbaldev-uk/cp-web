@@ -67,10 +67,10 @@ const faqs = [
 
 const BlackFridayFaqs = () => {
   return (
-    <Section id="faq" className="bg-[#F7F1E7] py-[120px] max-xl:py-[60px]">
-      <Container className="max-xl:px-[40px] max-sm:px-[20px]">
-        <div className="flex items-start justify-between gap-[60px] max-xl:flex-col-reverse max-xl:gap-[35px]">
-          <div className="w-[626px] shrink-0 max-xl:w-full">
+    <Section id="faq" className="bg-[#F7F1E7] py-[120px] max-bf-xl:py-[60px]">
+      <Container className="max-bf-xl:px-[40px] max-bf-sm:px-[20px]">
+        <div className="flex items-start justify-between gap-[60px] max-bf-xl:flex-col-reverse max-bf-xl:gap-[35px]">
+          <div className="w-[626px] shrink-0 max-bf-xl:w-full">
             <Accordion
               type="single"
               collapsible
@@ -80,10 +80,10 @@ const BlackFridayFaqs = () => {
                 <AccordionItem
                   key={id}
                   value={id}
-                  className="rounded-[30px] border-transparent bg-white px-[30px] max-sm:px-[20px]"
+                  className="rounded-[30px] border-transparent bg-white px-[30px] max-bf-sm:px-[20px]"
                 >
                   <AccordionTrigger className="group flex w-full items-center justify-between gap-[20px] py-[18px]">
-                    <span className="text-left text-[25px] font-semibold tracking-[-0.07em] text-black max-sm:text-[15px]">
+                    <span className="text-left text-[25px] font-semibold tracking-[-0.07em] text-black max-bf-sm:text-[15px]">
                       {question}
                     </span>
                     <span className="flex size-[30px] shrink-0 items-center justify-center rounded-full border border-black/25 text-black transition-transform duration-200 group-data-[state=open]:rotate-180">
@@ -92,7 +92,7 @@ const BlackFridayFaqs = () => {
                   </AccordionTrigger>
 
                   <AccordionContent className="pb-[24px]">
-                    <p className="text-text-body text-[16px] leading-[22px] tracking-[-0.02em] max-sm:text-[14px]">
+                    <p className="text-text-body text-[16px] leading-[22px] tracking-[-0.02em] max-bf-sm:text-[14px]">
                       {answer}
                     </p>
                   </AccordionContent>
@@ -101,12 +101,12 @@ const BlackFridayFaqs = () => {
             </Accordion>
           </div>
 
-          <div className="w-[420px] shrink-0 max-xl:w-full">
-            <p className="text-[22px] tracking-[-0.02em] text-black uppercase max-xl:text-center max-sm:text-[13px]">
+          <div className="w-[420px] shrink-0 max-bf-xl:w-full">
+            <p className="text-[22px] tracking-[-0.02em] text-black uppercase max-bf-xl:text-center max-bf-sm:text-[13px]">
               Frequently asked questions
             </p>
 
-            <h2 className="mt-[10px] text-[52px] leading-[60px] font-extrabold tracking-[-0.07em] text-black max-xl:text-center max-sm:text-[30px] max-sm:leading-[34px]">
+            <h2 className="mt-[10px] text-[52px] leading-[60px] font-extrabold tracking-[-0.07em] text-black max-bf-xl:text-center max-bf-sm:text-[30px] max-bf-sm:leading-[34px]">
               What agencies
               <br />
               <span className="text-black/40">ask us first</span>

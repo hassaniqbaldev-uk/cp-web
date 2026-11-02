@@ -80,7 +80,7 @@ const RequiredMark = () => (
 );
 
 const OptionPill = ({ name, value, label, checked, onChange, onClick }) => (
-  <label className="group has-[:checked]:bg-grey flex cursor-pointer items-center gap-[10px] rounded-full border border-black/15 px-[18px] py-[12px] transition-colors has-[:checked]:border-transparent max-sm:gap-[5px]">
+  <label className="group has-[:checked]:bg-grey flex cursor-pointer items-center gap-[10px] rounded-full border border-black/15 px-[18px] py-[12px] transition-colors has-[:checked]:border-transparent max-bf-sm:gap-[5px]">
     <input
       type="radio"
       name={name}
@@ -95,7 +95,7 @@ const OptionPill = ({ name, value, label, checked, onChange, onClick }) => (
       <span className="size-[6px] scale-0 rounded-full bg-black transition-transform group-has-[:checked]:scale-100" />
     </span>
 
-    <span className="text-[14px] tracking-[-0.02em] text-black max-sm:text-[12px]">
+    <span className="text-[14px] tracking-[-0.02em] text-black max-bf-sm:text-[12px]">
       {label}
     </span>
   </label>
@@ -338,7 +338,7 @@ const BlackFridayQuoteForm = () => {
   };
 
   const cardClassName =
-    "w-[540px] shrink-0 scroll-mt-[120px] rounded-[20px] bg-white p-[30px] max-xl:w-full max-sm:p-[20px]";
+    "w-[540px] shrink-0 scroll-mt-[120px] rounded-[20px] bg-white p-[30px] max-bf-xl:w-full max-bf-sm:p-[20px]";
 
   if (submitted) {
     return (
@@ -396,7 +396,7 @@ const BlackFridayQuoteForm = () => {
     >
       {/* Offer badge at the top of the form */}
       <div className="mx-auto mb-[20px] flex w-max max-w-full rounded-full bg-black px-[16px] py-[8px]">
-        <p className="text-center text-[12px] font-bold tracking-[-0.02em] text-white max-sm:text-[11px]">
+        <p className="text-center text-[12px] font-bold tracking-[-0.02em] text-white max-bf-sm:text-[11px]">
           Black Friday: 25% off for 6 months.{" "}
           <span className="bg-[linear-gradient(90deg,var(--color-dark-pink)_0%,var(--color-orange)_100%)] bg-clip-text text-transparent">
             8 spots only.
@@ -447,7 +447,7 @@ const BlackFridayQuoteForm = () => {
           <fieldset className="mt-[30px]">
             <legend className="sr-only">What do you need help with?</legend>
 
-            <div className="grid grid-cols-2 gap-[10px] max-sm:text-[14px]">
+            <div className="grid grid-cols-2 gap-[10px] max-bf-sm:text-[14px]">
               {jobTypes.map(({ id, label }) => (
                 <OptionPill
                   key={id}

@@ -67,11 +67,11 @@ const WorkCard = ({ image, title, category, href }) => (
     </div>
 
     <div className="mt-[16px] flex items-center justify-between gap-[20px]">
-      <h3 className="text-[20px] font-bold tracking-[-0.02em] text-black max-sm:text-[18px]">
+      <h3 className="text-[20px] font-bold tracking-[-0.02em] text-black max-bf-sm:text-[18px]">
         {title}
       </h3>
 
-      <span className="text-[14px] text-[#555555] max-sm:text-[12px]">
+      <span className="text-[14px] text-[#555555] max-bf-sm:text-[12px]">
         {category}
       </span>
     </div>
@@ -82,25 +82,25 @@ const BlackFridayWork = () => {
   const [swiper, setSwiper] = useState(null);
 
   return (
-    <Section id="black-friday-work" className="py-[80px] max-xl:py-[60px]">
-      <Container className="max-xl:px-[40px] max-sm:pr-0 max-sm:pl-[20px]">
-        <p className="text-center text-[22px] font-medium tracking-[-0.02em] text-black uppercase max-sm:pr-[20px] max-sm:text-[14px]">
+    <Section id="black-friday-work" className="py-[80px] max-bf-xl:py-[60px]">
+      <Container className="max-bf-xl:px-[40px] max-bf-sm:pr-0 max-bf-sm:pl-[20px]">
+        <p className="text-center text-[22px] font-medium tracking-[-0.02em] text-black uppercase max-bf-sm:pr-[20px] max-bf-sm:text-[14px]">
           Our work
         </p>
 
-        <h2 className="mt-[20px] text-center text-[52px] leading-[56px] font-extrabold tracking-[-0.07em] text-black max-sm:mx-auto max-sm:max-w-[256px] max-sm:pr-[20px] max-sm:text-[30px] max-sm:leading-[34px]">
+        <h2 className="mt-[20px] text-center text-[52px] leading-[56px] font-extrabold tracking-[-0.07em] text-black max-bf-sm:mx-auto max-bf-sm:max-w-[256px] max-bf-sm:pr-[20px] max-bf-sm:text-[30px] max-bf-sm:leading-[34px]">
           Stores, sites and dashboards
           <br />
           <span className="text-black/40">we’ve designed and built.</span>
         </h2>
 
-        <div className="mt-[50px] grid grid-cols-3 gap-x-[24px] gap-y-[32px] max-xl:hidden">
+        <div className="mt-[50px] grid grid-cols-3 gap-x-[24px] gap-y-[32px] max-bf-xl:hidden">
           {projects.map((project) => (
             <WorkCard key={project.id} {...project} />
           ))}
         </div>
 
-        <div className="hidden max-xl:mt-[40px] max-xl:block max-sm:mt-[30px]">
+        <div className="hidden max-bf-xl:mt-[40px] max-bf-xl:block max-bf-sm:mt-[30px]">
           <Swiper
             onSwiper={setSwiper}
             loop
@@ -113,13 +113,13 @@ const BlackFridayWork = () => {
             }}
           >
             {projects.map((project) => (
-              <SwiperSlide key={project.id} className="max-sm:w-[82%]!">
+              <SwiperSlide key={project.id} className="max-bf-sm:w-[82%]!">
                 <WorkCard {...project} />
               </SwiperSlide>
             ))}
           </Swiper>
 
-          <div className="mt-[45px] flex justify-end max-sm:pr-[20px]">
+          <div className="mt-[45px] flex justify-end max-bf-sm:pr-[20px]">
             <button
               type="button"
               onClick={() => swiper?.slideNext()}

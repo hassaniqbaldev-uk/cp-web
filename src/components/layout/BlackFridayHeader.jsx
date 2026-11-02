@@ -88,13 +88,13 @@ const BlackFridayHeader = () => {
   return (
     <header className="fixed top-0 left-0 z-50 w-full">
       <div
-        className={`overflow-hidden bg-[linear-gradient(90deg,#EC4899_0%,#F7931E_100%)] transition-all duration-300 max-sm:px-[20px] ${
+        className={`overflow-hidden bg-[linear-gradient(90deg,#EC4899_0%,#F7931E_100%)] transition-all duration-300 max-bf-sm:px-[20px] ${
           isScrolled
             ? "max-h-0 py-0 opacity-0"
             : "max-h-[80px] py-[12px] opacity-100"
         }`}
       >
-        <p className="text-center text-[15px] font-bold tracking-[-0.02em] text-white max-sm:text-[11px] max-sm:font-semibold">
+        <p className="text-center text-[15px] font-bold tracking-[-0.02em] text-white max-bf-sm:text-[11px] max-bf-sm:font-semibold">
           Black Friday: 25% off for 6 months. 8 spots only.{" "}
           <Link
             href="#black-friday-pricing"
@@ -106,12 +106,12 @@ const BlackFridayHeader = () => {
         </p>
       </div>
 
-      <div className={isScrolled ? "px-[20px] pt-[12px] max-sm:px-[16px]" : ""}>
+      <div className={isScrolled ? "px-[20px] pt-[12px] max-bf-sm:px-[16px]" : ""}>
         <Container
           className={`flex items-center justify-between rounded-[60px] border transition-all duration-300 ${
             isScrolled
-              ? "border-black/10 bg-white px-[20px] py-[8px] shadow-[0_4px_24px_rgba(0,0,0,0.08)] max-sm:px-[15px]"
-              : "border-transparent py-[25px] max-xl:px-[40px] max-sm:px-[20px] max-sm:py-[16px]"
+              ? "border-black/10 bg-white px-[20px] py-[8px] shadow-[0_4px_24px_rgba(0,0,0,0.08)] max-bf-sm:px-[15px]"
+              : "border-transparent py-[25px] max-bf-xl:px-[40px] max-bf-sm:px-[20px] max-bf-sm:py-[16px]"
           }`}
         >
           <Link href="/black-friday" aria-label="Creative Pixels home">
@@ -125,12 +125,12 @@ const BlackFridayHeader = () => {
               width={121}
               height={46}
               priority
-              className="h-[46px] w-auto max-sm:h-[36px]"
+              className="h-[46px] w-auto max-bf-sm:h-[36px]"
             />
           </Link>
 
-          <div className="flex items-center gap-[40px] max-xl:gap-[10px]">
-            <nav aria-label="Primary" className="max-xl:hidden">
+          <div className="flex items-center gap-[40px] max-bf-xl:gap-[10px]">
+            <nav aria-label="Primary" className="max-bf-xl:hidden">
               <ul className="flex items-center gap-[40px]">
                 {navLinks.map(({ label, href }) => (
                   <li key={href}>
@@ -151,7 +151,7 @@ const BlackFridayHeader = () => {
             <a
               href="tel:+441618202667"
               aria-label="Call us on 0161 820 2667"
-              className="bg-dark-pink flex size-[44px] shrink-0 items-center justify-center rounded-full text-white max-sm:size-[40px]"
+              className="bg-dark-pink flex size-[44px] shrink-0 items-center justify-center rounded-full text-white max-bf-sm:size-[40px]"
             >
               <Phone size={20} strokeWidth={2} />
             </a>
@@ -162,9 +162,9 @@ const BlackFridayHeader = () => {
               aria-expanded={chatOpen}
               aria-controls="cp-wa-panel"
               aria-label="Chat with us on WhatsApp"
-              className="hidden size-[44px] shrink-0 items-center justify-center rounded-full bg-[#25D366] text-white max-xl:flex max-sm:size-[40px]"
+              className="hidden size-[44px] shrink-0 items-center justify-center rounded-full bg-[#25D366] text-white max-bf-xl:flex max-bf-sm:size-[40px]"
             >
-              <WhatsappIcon className="size-[22px] max-sm:size-[20px]" />
+              <WhatsappIcon className="size-[22px] max-bf-sm:size-[20px]" />
             </button>
 
             <button
@@ -172,7 +172,7 @@ const BlackFridayHeader = () => {
               aria-label="Open menu"
               aria-expanded={open}
               onClick={() => setOpen(true)}
-              className={`hidden size-[44px] items-center justify-center rounded-full border transition-colors max-xl:flex max-sm:size-[40px] ${
+              className={`hidden size-[44px] items-center justify-center rounded-full border transition-colors max-bf-xl:flex max-bf-sm:size-[40px] ${
                 isScrolled
                   ? "border-black/20 text-black"
                   : "border-white/30 text-white"

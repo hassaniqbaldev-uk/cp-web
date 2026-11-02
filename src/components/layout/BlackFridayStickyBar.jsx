@@ -63,19 +63,19 @@ const BlackFridayStickyBar = () => {
 
   return (
     <div
-      className={`fixed bottom-[30px] left-1/2 z-[90] -translate-x-1/2 transition-all duration-300 max-sm:right-[20px] max-sm:bottom-[20px] max-sm:left-[20px] max-sm:translate-x-0 ${
+      className={`fixed bottom-[30px] left-1/2 z-[90] -translate-x-1/2 transition-all duration-300 max-bf-sm:right-[20px] max-bf-sm:bottom-[20px] max-bf-sm:left-[20px] max-bf-sm:translate-x-0 ${
         show && !atFooter && !menuOpen
           ? "translate-y-0 opacity-100"
           : "pointer-events-none translate-y-[20px] opacity-0"
       }`}
     >
-      <div className="flex items-center justify-between gap-[30px] rounded-full bg-black py-[12px] pr-[12px] pl-[30px] shadow-[0_10px_40px_rgba(0,0,0,0.35)] max-sm:gap-[16px] max-sm:pl-[20px]">
+      <div className="flex items-center justify-between gap-[30px] rounded-full bg-black py-[12px] pr-[12px] pl-[30px] shadow-[0_10px_40px_rgba(0,0,0,0.35)] max-bf-sm:gap-[16px] max-bf-sm:pl-[20px]">
         <div>
-          <p className="bg-[linear-gradient(90deg,var(--color-dark-pink)_0%,var(--color-orange)_100%)] bg-clip-text text-[14px] font-bold tracking-[-0.02em] text-transparent max-sm:text-[12px]">
+          <p className="bg-[linear-gradient(90deg,var(--color-dark-pink)_0%,var(--color-orange)_100%)] bg-clip-text text-[14px] font-bold tracking-[-0.02em] text-transparent max-bf-sm:text-[12px]">
             Black Friday: 25% off
           </p>
 
-          <p className="text-[18px] font-bold tracking-[-0.02em] text-white max-sm:text-[16px]">
+          <p className="text-[18px] font-bold tracking-[-0.02em] text-white max-bf-sm:text-[16px]">
             From $30/hr
           </p>
         </div>
@@ -83,7 +83,7 @@ const BlackFridayStickyBar = () => {
         <Button
           href="#black-friday-hero"
           onClick={scrollToHero}
-          className="shrink-0 rounded-full bg-white px-[24px] py-[14px] text-[14px] font-extrabold tracking-[-0.02em] text-black uppercase max-sm:px-[18px] max-sm:py-[12px] max-sm:text-[12px]"
+          className="shrink-0 rounded-full bg-white px-[24px] py-[14px] text-[14px] font-extrabold tracking-[-0.02em] text-black uppercase max-bf-sm:px-[18px] max-bf-sm:py-[12px] max-bf-sm:text-[12px]"
         >
           Send a job
         </Button>

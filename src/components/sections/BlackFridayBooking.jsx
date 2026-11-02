@@ -244,9 +244,9 @@ const BlackFridayBooking = ({ name = "", email = "" }) => {
         Want to talk it through? Grab a 15-min slot.
       </h3>
 
-      <div className="mt-[14px] flex gap-[16px] max-sm:flex-col">
+      <div className="mt-[14px] flex gap-[16px] max-bf-sm:flex-col">
         {/* Calendar (left) */}
-        <div className="w-[260px] shrink-0 self-start rounded-[12px] border border-black/10 p-[12px] max-sm:w-full">
+        <div className="w-[260px] shrink-0 self-start rounded-[12px] border border-black/10 p-[12px] max-bf-sm:w-full">
           {/* Month header */}
           <div className="flex items-center justify-between">
             <button
@@ -332,7 +332,7 @@ const BlackFridayBooking = ({ name = "", email = "" }) => {
               <p className="text-text-body/70 mb-[8px] text-[12px] tracking-[-0.02em]">
                 Times in your timezone ({tz.replace(/_/g, " ")})
               </p>
-              <div className="grid max-h-[250px] auto-rows-max grid-cols-2 gap-[8px] overflow-y-auto pr-[4px] max-sm:max-h-[180px] max-sm:grid-cols-3">
+              <div className="grid max-h-[250px] auto-rows-max grid-cols-2 gap-[8px] overflow-y-auto pr-[4px] max-bf-sm:max-h-[180px] max-bf-sm:grid-cols-3">
                 {daySlots.map((slot) => {
                   const isSelected = slot.start === selectedTime;
                   return (
