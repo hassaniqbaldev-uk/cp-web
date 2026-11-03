@@ -23,6 +23,7 @@ const stores = [
     mobileSrc: "/images/black-friday/smokey-carter-logo-mobile.png",
     mobileWidth: 118,
     mobileHeight: 136,
+    mobileInvert: true,
     alt: "The Smokey Carter",
   },
   {
@@ -33,6 +34,7 @@ const stores = [
     mobileSrc: "/images/black-friday/ivy-duke-logo-mobile.png",
     mobileWidth: 179,
     mobileHeight: 86,
+    mobileInvert: true,
     alt: "Ivy & Duke",
   },
   {
@@ -43,6 +45,7 @@ const stores = [
     mobileSrc: "/images/black-friday/fultons-logo-mobile.png",
     mobileWidth: 164,
     mobileHeight: 72,
+    mobileInvert: true,
     alt: "Fultons Jewellery",
   },
   {
@@ -53,6 +56,7 @@ const stores = [
     mobileSrc: "/images/black-friday/lola-logo-mobile.png",
     mobileWidth: 119,
     mobileHeight: 119,
+    mobileInvert: true,
     alt: "Lola & Blake",
   },
   {
@@ -63,6 +67,7 @@ const stores = [
     mobileSrc: "/images/store-review/cycling-logo-mobile.png",
     mobileWidth: 199,
     mobileHeight: 57,
+    mobileInvert: true, // this mobile logo is dark, so invert it to white
     alt: "Cycling Jewellery",
   },
 ];
@@ -158,6 +163,7 @@ const StoreReviewHero = () => {
                   mobileSrc,
                   mobileWidth,
                   mobileHeight,
+                  mobileInvert,
                 }) => (
                   <li
                     key={id}
@@ -172,13 +178,16 @@ const StoreReviewHero = () => {
                       className="max-bf-sm:hidden object-contain [filter:brightness(0)_invert(1)]"
                     />
 
-                    {/* Mobile: compact already-white logo, no filter */}
+                    {/* Mobile: compact logo. Most are already white; a dark one
+                        (mobileInvert) is inverted to white. */}
                     <Image
                       src={mobileSrc}
                       alt={alt}
                       width={mobileWidth}
                       height={mobileHeight}
-                      className="max-bf-sm:block hidden h-auto max-h-[26px] w-auto max-w-[40px] object-contain"
+                      className={`max-bf-sm:block hidden h-auto max-h-[26px] w-auto max-w-[40px] object-contain ${
+                        mobileInvert ? "[filter:brightness(0)_invert(1)]" : ""
+                      }`}
                     />
                   </li>
                 ),

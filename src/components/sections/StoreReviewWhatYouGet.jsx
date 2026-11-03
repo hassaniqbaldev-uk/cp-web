@@ -186,7 +186,7 @@ const StoreReviewWhatYouGet = () => {
         </div>
 
         {/* Panel: laptop + breakdown */}
-        <div className="max-bf-sm:p-[20px] bg-grey max-bf-sm:rounded-[0px] rounded-[24px] p-[40px]">
+        <div className="max-bf-sm:p-[20px] bg-grey max-bf-sm:rounded-[0px] max-bf-sm:rounded-bl-[14px] max-bf-sm:rounded-br-[14px] rounded-[24px] p-[40px]">
           <div className="max-bf-xl:flex-col flex items-center gap-[40px]">
             {/* Laptop mockup with the review screenshot inside the screen. The
                 inset percentages match the white screen area of the mockup. */}

@@ -86,7 +86,7 @@ const StoreReviewFaqs = () => {
             </Accordion>
           </div>
 
-          <div className="max-bf-xl:w-full w-[470px] shrink-0">
+          <div className="max-bf-xl:w-full max-bf-xl:flex w-[470px] shrink-0 flex-col items-center">
             <p className="max-bf-xl:text-center max-bf-sm:text-[13px] text-[22px] font-medium tracking-[-0.02em] text-black uppercase">
               Frequently asked questions
             </p>
@@ -103,7 +103,7 @@ const StoreReviewFaqs = () => {
                 alt="Hassan, Creative Pixels"
                 width={100}
                 height={100}
-                className="size-[100px] shrink-0 rounded-full object-cover"
+                className="max-bf-sm:size-[70px] size-[100px] shrink-0 rounded-full object-cover"
               />
 
               <div>

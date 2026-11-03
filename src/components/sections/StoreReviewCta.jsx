@@ -35,7 +35,7 @@ const StoreReviewCta = () => {
             </ScrollLink>
           </div>
 
-          <div className="max-bf-xl:w-full max-bf-sm:max-w-[360px] w-[520px] shrink-0">
+          <div className="max-bf-xl:mx-auto max-bf-xl:w-full max-bf-xl:max-w-[420px] max-bf-sm:max-w-[320px] w-[520px] shrink-0">
             <Image
               src="/images/store-review/cta-img.png"
               alt="Find what's stopping your shoppers buying"
