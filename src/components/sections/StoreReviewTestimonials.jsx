@@ -18,7 +18,7 @@ const testimonials = [
       "Fantastic! One of the best! Hassan and his team are really very talented and built an outstanding website.",
     rating: "5.0",
     name: "Ben, Little Astro",
-    avatar: null, // TODO: add avatar image
+    avatar: "/images/book-a-call/ben-img-avatar.png", // TODO: add avatar image
   },
   // TODO: replace the placeholders below with real client testimonials.
   {
