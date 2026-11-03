@@ -11,14 +11,14 @@ import WhatsappIcon from "../ui/WhatsappIcon";
 import { useWhatsappChat } from "./WhatsappChatContext";
 
 const navLinks = [
-  { label: "What you get", href: "#what-you-get" },
+  { label: "What you get", href: "#book-call-hero" },
   { label: "How it works", href: "#how-it-works" },
   { label: "Prices", href: "#prices" },
   { label: "FAQ", href: "#faq" },
 ];
 
 const menuLinks = [
-  { label: "What you get", href: "#what-you-get" },
+  { label: "What you get", href: "#book-call-hero" },
   { label: "How it works", href: "#how-it-works" },
   { label: "Prices", href: "#prices" },
   { label: "FAQ", href: "#faq" },
