@@ -66,6 +66,29 @@ const googleCalendarUrl = (startIso) => {
   return `https://calendar.google.com/calendar/render?${params.toString()}`;
 };
 
+// The booking phase comes after the numbered form steps, so it shows its own
+// short label (back control / status) rather than a "Step X of N" counter.
+const PhaseHeader = ({ showBack, status, onBack }) => (
+  <div className="flex items-center justify-between">
+    <div className="flex items-center gap-[12px]">
+      {showBack && (
+        <button
+          type="button"
+          onClick={onBack}
+          aria-label="Go back a step"
+          className="flex size-[32px] shrink-0 items-center justify-center rounded-full border border-black/15 text-black transition-colors hover:bg-black hover:text-white"
+        >
+          <ChevronLeft size={18} strokeWidth={2.5} />
+        </button>
+      )}
+
+      <span className="text-dark-pink text-[16px] font-medium tracking-[-0.02em]">
+        {status}
+      </span>
+    </div>
+  </div>
+);
+
 // Steps 5 (pick a time) and 6 (booked) of the Store Review form. Self-contained:
 // it fetches availability and books against the shared /api/cal endpoints, using
 // the attendee details and qualifying answers collected in the earlier steps.
@@ -248,28 +271,6 @@ const StoreReviewBooking = ({ name = "", email = "", metadata = {}, onBack }) =>
     }
   };
 
-  // The booking phase comes after the numbered form steps, so it shows its own
-  // short label (back control / status) rather than a "Step X of N" counter.
-  const PhaseHeader = ({ showBack, status }) => (
-    <div className="flex items-center justify-between">
-      <div className="flex items-center gap-[12px]">
-        {showBack && (
-          <button
-            type="button"
-            onClick={onBack}
-            aria-label="Go back a step"
-            className="flex size-[32px] shrink-0 items-center justify-center rounded-full border border-black/15 text-black transition-colors hover:bg-black hover:text-white"
-          >
-            <ChevronLeft size={18} strokeWidth={2.5} />
-          </button>
-        )}
-
-        <span className="text-dark-pink text-[16px] font-medium tracking-[-0.02em]">
-          {status}
-        </span>
-      </div>
-    </div>
-  );
 
   // ── Booked confirmation ───────────────────────────────────────────────────
   if (booked) {
@@ -283,14 +284,14 @@ const StoreReviewBooking = ({ name = "", email = "", metadata = {}, onBack }) =>
 
     return (
       <div>
-        <PhaseHeader showBack={false} status="All done" />
+        <PhaseHeader showBack={false} status="All done" onBack={onBack} />
 
         <div className="mt-[22px] flex items-center gap-[12px]">
-          <span className="flex size-[44px] shrink-0 items-center justify-center rounded-full bg-[#1FA463] text-white">
+          <span className="max-bf-sm:size-[38px] flex size-[44px] shrink-0 items-center justify-center rounded-full bg-[#1FA463] text-white">
             <Check size={24} strokeWidth={3} />
           </span>
 
-          <h2 className="text-[26px] font-bold tracking-[-0.04em] text-black">
+          <h2 className="max-bf-sm:text-[22px] text-[26px] font-bold tracking-[-0.04em] text-black">
             You’re booked in.
           </h2>
         </div>
@@ -300,7 +301,7 @@ const StoreReviewBooking = ({ name = "", email = "", metadata = {}, onBack }) =>
           confirmation with your Google Meet link.
         </p>
 
-        <div className="mt-[20px] rounded-[12px] bg-[#F6FBF6] p-[18px]">
+        <div className="max-bf-sm:p-[14px] mt-[20px] rounded-[12px] bg-[#F6FBF6] p-[18px]">
           <p className="text-[13px] font-bold tracking-[-0.02em] text-black uppercase">
             What happens next
           </p>
@@ -342,9 +343,9 @@ const StoreReviewBooking = ({ name = "", email = "", metadata = {}, onBack }) =>
   // ── Pick a time ───────────────────────────────────────────────────────────
   return (
     <div>
-      <PhaseHeader showBack status="Pick a time" />
+      <PhaseHeader showBack status="Pick a time" onBack={onBack} />
 
-      <h2 className="mt-[20px] text-[25px] leading-[32px] font-bold tracking-[-0.04em] text-black">
+      <h2 className="max-bf-sm:text-[22px] max-bf-sm:leading-[28px] mt-[20px] text-[25px] leading-[32px] font-bold tracking-[-0.04em] text-black">
         Pick a time for your call
       </h2>
 
@@ -440,7 +441,7 @@ const StoreReviewBooking = ({ name = "", email = "", metadata = {}, onBack }) =>
               <p className="text-text-body/70 mb-[8px] text-[12px] tracking-[-0.02em]">
                 Times in your timezone ({tz.replace(/_/g, " ")})
               </p>
-              <div className="grid max-h-[250px] auto-rows-max grid-cols-2 gap-[8px] overflow-y-auto pr-[4px] max-bf-sm:max-h-[180px] max-bf-sm:grid-cols-3">
+              <div className="grid max-h-[250px] auto-rows-max grid-cols-[repeat(auto-fill,minmax(88px,1fr))] gap-[8px] overflow-y-auto pr-[4px] max-bf-sm:max-h-[200px]">
                 {daySlots.map((slot) => {
                   const isSelected = slot.start === selectedTime;
                   return (
